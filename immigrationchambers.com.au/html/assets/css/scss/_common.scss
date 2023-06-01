@@ -20,6 +20,25 @@ body {
     }
 }
 
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: $primary;
+    text-decoration: none;
+    &:focus,
+    &:hover {
+        color: $primary;
+        text-decoration: none;
+    }
+    &:focus-visible {
+        outline: 3px solid #f0ab2e !important;
+        @include border-radius(4px);
+    }
+}
+
 .container {
 	padding-left: 20px; padding-right: 20px;
 	@media (min-width:1400px) {
@@ -302,7 +321,6 @@ h4, .h4 {
 					}
 				}
 			}
-
 			&.menu-megamenu {
 				position: static;
 				@media (min-width:1200px) {
@@ -437,6 +455,41 @@ h4, .h4 {
 			margin-left: auto; margin-right: 15px;
 		}
 	}
+	.coundry-dropdown {
+		position: relative;
+		&:hover, &:focus, &:focus-visible {
+			> ul.sub-menu {
+				@include opacity(1); visibility: visible; @include transform(translateY(0px)); z-index: 99;
+			}
+		}
+		.sub-menu {
+			border-top: 3px solid #354753; @include box-shadow(10px 14px 12px 2px rgba(#000000, 0.06)); min-width: 200px; padding: 15px 0px;
+			li {
+				padding: 8px 20px; line-height: 0.7;
+				a {
+					@include flexbox; @include align-items(center); color: $primary; font-size: 16px;
+					.flag {
+						width: 30px; height: 30px; background-size: contain !important; display: inline-block; @include border-radius(50%); margin-right: 12px;
+						&.flag-nz {
+							background: url(../images/flag-new-zealand.png) no-repeat center center;
+						}
+						&.flag-in {
+							background: url(../images/flag-india.png) no-repeat center center;
+						}
+						&.flag-aus {
+							background: url(../images/flag-australia.png) no-repeat center center;
+						}
+					}
+				}
+				&.current-menu-item {
+					background: #FDF7DC;
+					a {
+						color: $black;
+					}
+				}
+			}
+		}
+	}
 	.country-name {
 		max-width: 45px; max-height: 45px; min-width: 45px; min-height: 45px; @include border-radius(50%); background: #D9D9D9; @include flexbox; @include align-items(center); @include justify-content(center); margin-left: 30px; position: relative;
 		@media (max-width:1199px) {
@@ -446,7 +499,7 @@ h4, .h4 {
 			margin-left: auto; margin-right: 15px; max-width: 35px; max-height: 35px; min-width: 35px; min-height: 35px;
 		}
 		&.country-aus {
-			background: url(../images/country-flag.jpg) no-repeat center center; background-size: contain;
+			background: url(../images/flag-australia.png) no-repeat center center; background-size: contain;
 		}
 		&::before {
 			content: ''; max-width: 45px; max-height: 45px; min-width: 45px; min-height: 45px; @include border-radius(50%); position: absolute; top: 0; left: 0; background: rgba(217, 217, 217, 0.7);
@@ -470,10 +523,67 @@ h4, .h4 {
 	}
 }
 
+.grid {
+	display: grid;
+	&.grid-2 {
+		grid-template-columns: repeat(2, 1fr);
+		@media (max-width: 992px) { 
+            grid-template-columns: repeat(1, 1fr);
+        }
+	}
+}
+
+.check-list {
+	margin-bottom: 15px;
+	li {
+		@include flexbox; @include align-items(center); font-weight: 600; font-size: 18px; color: $primary; padding-bottom: 25px;
+		@media (max-width: 1200px) { 
+            font-size: 16px;
+        }
+		&::before {
+			content: ''; background: url(../images/icons/icon-check-circle.svg) no-repeat center center; background-size: contain; width: 20px; height: 20px; display: inline-block; margin-right: 10px;
+		}
+	}
+}
+
+.left-yellow-bg { 
+	position: relative;
+	& > * {
+		position: relative; z-index: 1;
+	}
+	&::before {
+        position: absolute; content: ""; width: 775px; height: 775px; background: #FDF7DC; opacity: 0.8; filter: blur(75px); top: -300px; left: -110px; z-index: -1;
+        @media (max-width: 992px) { 
+            width: 650px; height: 650px;
+        }
+        @media (max-width: 767px) { 
+            width: 500px; height: 500px;
+        }
+    }
+	&::after {
+        position: absolute; content: ""; width: 775px; height: 775px; background: #E5F2F2; opacity: 0.8; filter: blur(75px); top: -305px; right: -110px; z-index: -1;
+        @media (max-width: 992px) { 
+            width: 650px; height: 650px;
+        }
+        @media (max-width: 767px) { 
+            width: 500px; height: 500px; top: 300px;
+        }
+    }
+}
+
 .section-title {
 	margin-bottom: 40px;
 	@media (max-width:991px) {
 		margin-bottom: 30px;
+	}
+	.tagline {
+		font-size: 18px; font-weight: 500; color: $primary; margin-bottom: 20px; @include inline-flex; @include align-items(center); 
+		&::after {
+			content: ''; width: 95px; height: 4px; background: #FED200; display: inline-block; margin-left: 10px;
+		}
+		@media (max-width:991px) {
+			font-size: 16px;
+		}
 	}
 	.sort-info, p {
 		margin-bottom: 30px;
@@ -495,14 +605,44 @@ h4, .h4 {
 	}
 }
 
+.image-block {
+	@media (max-width: 767px) {  
+		margin-top: 40px;
+	}
+	.square-block {
+		@include border-radius(10px); padding: 10px; position: relative;
+		@media (max-width: 767px) {  
+			max-width: 500px; margin: 0 auto;
+		}
+		&::before {
+			content: ""; width: 211px; height: 182px; background: #001F7E; @include border-radius(10px); position: absolute; top: 0; right: 0; z-index: -1;
+		}
+		&::after {
+			content: ""; width: 211px; height: 182px; background: #001F7E; @include border-radius(10px); position: absolute; bottom: 0; left: 0; z-index: -1;
+		}
+		img {
+			@include border-radius(10px); width: 100%;
+		}
+	}
+	
+}
+
+.left-img-block {
+	.image-block {
+		margin-right: 80px;
+		@media (max-width: 1200px) {  
+			margin-right: 40px;
+		}
+		@media (max-width: 767px) {  
+			margin-right: 0px;
+		}
+	}
+}
+
 .main-section {
-    position: relative;
-    padding-top: 100px;
-	padding-bottom: 100px;
-    z-index: 1;
+    position: relative; padding-top: 100px; padding-bottom: 100px; z-index: 1;
     @media (max-width: 1350px) {
-		padding-top: 50px;
-		padding-bottom: 50px;
+		padding-top: 50px; padding-bottom: 50px;
     }
 	.content-info {
 		margin-bottom: 30px;
