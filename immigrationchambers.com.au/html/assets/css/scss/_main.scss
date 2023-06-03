@@ -121,7 +121,7 @@
 }
 
 .feedback-section {
-    background: $white; z-index: 5; position: relative; padding: 30px 0;
+    background: $white; z-index: 5; position: relative; padding: 30px 0 50px;
     .section-title {
         @include flexbox; @include align-items(center); @include justify-content(space-between);
         span {
@@ -132,8 +132,29 @@
     }
 }
 
+.team-section {
+    &::before {
+        top: -400px; bottom: auto; left: -110px;
+    }
+	&::after {
+        top: -400px; bottom: auto; right: -110px; 
+    }
+    .section-title {
+        h2 {
+            margin-bottom: 25px;
+        }
+        p {
+            max-width: 1175px; margin-bottom: 15px; font-weight: 500;
+        }
+    }
+    
+}
+
 .partners-section {
-	padding: 70px 0;
+	padding: 0 0 70px;
+    &.left-yellow-bg::before, &.left-yellow-bg::after {
+        top: auto; bottom: -50px;
+    }
 	.logo-block {
 		@include flexbox(); @include flex-wrap(wrap); text-align: center; border-top: 1px solid #d8eaf7; border-left: 1px solid #d8eaf7;
 		.logo-item {
@@ -154,4 +175,9 @@
 
 .testimonial-slider {
     margin: 0 80px;
+}
+.team-section {
+    .team-slider {
+        margin-top: 20px;
+    }
 }

@@ -44,4 +44,36 @@ jQuery(document).ready(function($) {
             ]
         });
     };
+    if ($('.team-slider').length) {
+        $('.team-slider').slick({
+            autoplay: true,
+            autoplaySpeed: 3000,
+            arrows: true,
+            dots: false,
+            slidesToShow: 4,
+            infinite: true,
+            accessibility: false,
+            responsive: [
+                {
+                breakpoint: 992,
+                    settings: {
+                        arrows: false,
+                        dots:true,
+                    }
+                }
+            ]
+        });
+    };
+    $(".collapse-item .collapse-title").click(function () {
+        if ($(this).closest(".collapse-item").hasClass("is-open")) {
+           $(this).closest(".collapse-item").stop(true,true).removeClass("is-open");
+           $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).slideUp();
+        } else {
+           $(".collapse-item").removeClass("is-open");
+           $(".collapse-item").find(".collapse-body").stop(true,true).slideUp();
+           $(this).closest(".collapse-item").stop(true,true).addClass("is-open");
+           $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).slideDown();
+        }
+        return false;
+    });
 })
