@@ -35,10 +35,9 @@ jQuery(document).ready(function($) {
             accessibility: false,
             responsive: [
                 {
-                breakpoint: 992,
+                breakpoint: 767,
                     settings: {
-                        arrows: false,
-                        dots:true,
+                        slidesToShow: 1,
                     }
                 }
             ]
@@ -55,10 +54,19 @@ jQuery(document).ready(function($) {
             accessibility: false,
             responsive: [
                 {
-                breakpoint: 992,
+                    breakpoint: 1200,
                     settings: {
-                        arrows: false,
-                        dots:true,
+                        slidesToShow: 3,
+                    }
+                }, {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 2,
+                    }
+                }, {
+                    breakpoint: 575,
+                    settings: {
+                        slidesToShow: 1,
                     }
                 }
             ]
