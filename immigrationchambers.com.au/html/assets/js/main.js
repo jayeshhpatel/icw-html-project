@@ -94,6 +94,16 @@ jQuery(document).ready(function($) {
                 }, {
                     breakpoint: 992,
                     settings: {
+                        slidesToShow: 3,
+                    }
+                }, {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 2,
+                    }
+                }, {
+                    breakpoint: 575,
+                    settings: {
                         slidesToShow: 1,
                     }
                 }
