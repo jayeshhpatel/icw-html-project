@@ -14,7 +14,7 @@ hr {
     box-sizing: content-box; height: 0; overflow: visible;
 }
 body {
-    margin: 0; padding: 0; font-family: $bodyfont; color: $bodycolor; font-size: $bodyfontsize; font-weight: 400; position: relative; line-height: 1.5; overflow-x: hidden; min-height: 100vh; @include flexbox(); @include flex-direction(column);
+    margin: 0; padding: 0; font-family: $bodyfont; color: $darkblack; font-size: $bodyfontsize; font-weight: 400; position: relative; line-height: 1.5; overflow-x: hidden; min-height: 100vh; @include flexbox(); @include flex-direction(column);
     &.is-visible {
         overflow: hidden;
     }
@@ -44,7 +44,7 @@ img {
 	}
 }
 h1, .h1 {
-	font-weight: 600; font-size: 55px; margin-bottom: 25px; color: $black;	
+	font-weight: 600; font-size: 55px; margin-bottom: 20px; color: $black;	
 	@media (max-width: 1440px) {
 		font-size: 35px;
     }
@@ -83,13 +83,19 @@ h5, .h5 {
     }	
 }
 .text-yellow {
-	color: $secondary !important;
+	color: $primary !important;
 }
 .text-blue {
 	color: $primary !important;
 }
 .bg-primary {
 	background: $primary !important;
+}
+.bg-darkblack {
+	background: $darkblack; color: $white;
+	h1, h2 {
+		color: $white;
+	}
 }
 .g-3 {
 	margin-left: -10px; margin-right: -10px;
@@ -104,7 +110,7 @@ h5, .h5 {
 	}
 }
 .btn {
-	min-height: 44px; padding: 5px 25px; font-weight: 600; font-size: 16px; min-width: 150px; @include transition(0.3s, ease-in-out); @include border-radius(0); @include inline-flex; @include align-items(center); @include justify-content(center);
+	min-height: 44px; padding: 5px 25px; font-weight: 500; font-size: 16px; min-width: 150px; @include transition(0.3s, ease-in-out); @include border-radius(0); @include inline-flex; @include align-items(center); @include justify-content(center);
 	&.mw-200 {
 		max-width: 200px; width: 100%;
 	}
@@ -115,34 +121,31 @@ h5, .h5 {
 		margin-left: 8px;
 	}
 	&.btn-primary {
-		color: $white !important; border: 1px solid transparent; background-color:$primary;
+		color: $black !important; border: 1px solid transparent; background-color: $primary;
 		&:hover, &:focus, &:active{
-			background-color: $white; color: $primary !important; border: 1px solid $primary;
+			background-color: $black; color: $primary !important; border: 1px solid $primary;
 		}
 	}
-	&.btn-secondary{
-		color: $black !important; border: 1px solid transparent; background-color: $secondary;
+	&.btn-outline-primary {
+		color: $primary !important; border: 1px solid $primary; background-color: transparent;
 		&:hover, &:focus, &:active{
-			background-color: $white; color: $black !important; border: 1px solid $secondary;
+			background-color: $primary; color: $black !important; border: 1px solid $primary;
 		}
 	}
-	&.btn-white{
-		color: $primary !important; border: 1px solid transparent; background-color:$white;
+	&.btn-black {
+		color: $white !important; border: 1px solid transparent; background-color:$darkblack;
 		&:hover, &:focus, &:active{
-			background-color: $primary; color: $white !important; border: 1px solid $primary;
+			background-color: transparent; color: $darkblack !important; border: 1px solid $darkblack;
 		}
 	}
 }
 .main-header {
-	position: fixed; left: 0; right: 0; z-index: 10; top: 0; @include transition(0.3s, ease-in-out); padding: 6px 0; background-color: $white; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); @include box-shadow(0px 1px 4px rgba(0, 0, 0, 0.25));
-	&.fixed-header {
-		background: rgba(250,250,255,0.75);
+	position: fixed; left: 0; right: 0; z-index: 10; top: 0; @include transition(0.3s, ease-in-out); padding: 6px 0; background-color: $darkblack; @include box-shadow(0px 1px 4px rgba(0, 0, 0, 0.25));
+	&.fixed-header {	
+		@include box-shadow(0px 7px 14px rgba(0, 0, 0, 0.25));
 		.header-logo {
 			img {
-				@include transform(scale(0.75));
-				@media (max-width:1199px) {
-					@include transform(scale(1));
-				}
+				@include transform(scale(0.90));
 			}
 		}
 		li.menu-megamenu > ul.sub-menu  {
@@ -151,7 +154,7 @@ h5, .h5 {
 	}
 	@media (max-width:1199px) {
 		&.is-visible {
-			background-color: $white !important;
+			background-color: $darkblack !important;
 			.menu-list {
 				left: 0;
 			}
@@ -172,7 +175,7 @@ h5, .h5 {
 				}				
 			}
 			span {
-				width: 25px; height: 2px; margin: 5px 0; background-color: #303245; @include border-radius(4px); display: block; left: 0; top: 0; position: relative; @include transition(0.3s, ease-in-out);
+				width: 25px; height: 2px; margin: 5px 0; background-color: $white; @include border-radius(4px); display: block; left: 0; top: 0; position: relative; @include transition(0.3s, ease-in-out);
 				&:nth-child(1) {
 					width: 13px;
 				}
@@ -181,10 +184,7 @@ h5, .h5 {
 				}
 			}
 		}
-	}
-	&.fixed-header {
-		top: 0;
-	}
+	}	
 	.navbar {
 		padding: 0;
 		>.container {
@@ -195,23 +195,7 @@ h5, .h5 {
 		margin-left: auto;
 		@media (min-width:1200px) {
 			li {
-				&:hover {
-					> ul.sub-menu {
-						@include opacity(1); visibility: visible; @include transform(translateY(0px)); z-index: 99;
-						.sub-menu {
-							visibility: visible; @include opacity(1); @include transform(translateY(0px)); position: unset; box-shadow: none; padding: 0 0 0 10px; margin-top: 10px; @include box-shadow(none);
-						}
-					}
-				}
-				&:focus {
-					> ul.sub-menu {
-						@include opacity(1); visibility: visible; @include transform(translateY(0px)); z-index: 99;
-						.sub-menu {
-							visibility: visible; @include opacity(1); @include transform(translateY(0px)); position: unset; box-shadow: none; padding: 0 0 0 10px; margin-top: 10px; @include box-shadow(none);
-						}
-					}
-				}
-				&:focus-visible {
+				&:hover, &:focus, &:focus-visible {
 					> ul.sub-menu {
 						@include opacity(1); visibility: visible; @include transform(translateY(0px)); z-index: 99;
 						.sub-menu {
@@ -223,12 +207,13 @@ h5, .h5 {
 		}
 		// Mobile
 		@media (max-width:1199px) {
-			min-height: calc(100vh - 82px); overflow-y: auto; width: 100%; max-width: 290px; display: block; padding: 15px 15px 30px; background-color: $white; position: fixed; top: 0; left: -400px; bottom: 0; z-index: 99; margin-top: 82px; @include transition(0.3s, ease-in-out);
-			>ul {
+			min-height: calc(100vh - 82px); overflow-y: auto; width: 100%; max-width: 290px; display: block; padding: 15px 15px 30px; background-color: $darkblack; position: fixed; top: 0; left: -400px; bottom: 0; z-index: 99; margin-top: 82px; @include transition(0.3s, ease-in-out);
+			> ul {
 				display: block;
-				>li {
+				> li {
 					margin: 0; padding: 10px 0; width: 100%;
 					a {
+						color: $white;
 						&:hover,&:focus {
 							color: $primary;
 						}
@@ -246,9 +231,19 @@ h5, .h5 {
 			margin: 0 15px; padding: 10px 0; position: relative;
 			@media (max-width:1399px) {
 				margin: 0 10px;
+			}			
+			@media (max-width:1199px) {
+				&.menu-item-has-children {
+					.sub-menu {
+						padding-top: 10px; min-width:100%;
+					}
+				}
 			}
-			&.menu-item-has-children{
-				.arrow{
+			@media (max-width:1299px) {
+				margin: 0 8px;
+			}			
+			&.menu-item-has-children {
+				.arrow {
 					position: relative; float: right; width: 25px;
 					&.is-active {
 						&:after {
@@ -256,24 +251,21 @@ h5, .h5 {
                         }
 					}
 					&:after {
-						vertical-align: middle; content: ""; background: url(../images/icons/arrow-down.svg) no-repeat center right; background-size: contain; width: 10px; height: 10px; margin-left: 8px; display: inline-block; @include transition(0.3s, ease-in-out); filter: brightness(0); -webkit-filter: brightness(0);
+						vertical-align: middle; content: ""; background: url(../images/icons/arrow-down.svg) no-repeat center right; background-size: contain; width: 10px; height: 10px; margin-left: 8px; display: inline-block; @include transition(0.3s, ease-in-out);
                     }
 					@media (min-width:1200px) {
 						display: none;
 					}
 				}
-			}
-			@media (min-width:1200px) {
-				&.menu-item-has-children {
-					>a {
+				@media (min-width:1200px) {
+					& > a {
 						@include flexbox(); @include align-items(center);
 						&:after {
-							vertical-align: middle; content: ""; background: url(../images/icons/arrow-down.svg) no-repeat center right; background-size: contain; width: 10px; height: 10px; margin-left: 8px; display: inline-block; @include transition(0.3s, ease-in-out); filter: brightness(0); -webkit-filter: brightness(0);
+							vertical-align: middle; content: ""; background: url(../images/icons/arrow-down.svg) no-repeat center right; background-size: contain; width: 10px; height: 10px; margin-left: 8px; display: inline-block; @include transition(0.3s, ease-in-out);
 						}
 					}
-
 					&:hover, &:focus {
-						>a {
+						> a {
 							color: $primary;
 							&:before {
 								width: 50%; left: 0;
@@ -284,23 +276,12 @@ h5, .h5 {
 						}
 					}
 				}
-			}
-			@media (max-width:1199px) {
-				&.menu-item-has-children {
-					.sub-menu {
-						padding-top: 10px; min-width:100%;
-					}
-				}
-			}
-			@media (max-width:1299px) {
-				margin: 0 8px;
-			}
-			
+			}			
 			&:last-child {
 				margin-right: 0;
 			}
 			a {
-				color: $black; position: relative; z-index: 1; text-decoration: none; font-weight: 500; font-size: 16px; @include transition(0.3s, ease-in-out);
+				color: $white; position: relative; z-index: 1; text-decoration: none; font-weight: 400; font-size: 16px; @include transition(0.3s, ease-in-out);
 				@media (max-width:1399px) {
 					font-size: 14px;
 				}
@@ -317,12 +298,12 @@ h5, .h5 {
 
 			&.menu-title {
 				& > a {
-					margin-bottom: 10px;
+					margin-bottom: 10px; color: $black;
 					@media (min-width:1200px) {
 						font-size: 22px;
 					}
 					@media (max-width:1199px) {
-						font-size: 14px;
+						font-size: 14px; color: $white;
 					}
 				}
 			}
@@ -338,7 +319,7 @@ h5, .h5 {
 					& > ul.sub-menu {
 						width:100%; left: 0px; top: 100%; display: grid; grid-gap: 0; padding: 0 !important; grid-template-columns: repeat(auto-fill, minmax(33%, 1fr)); border-top: 3px solid #354753; @include box-shadow(10px 14px 12px 2px rgba($black, 0.06));
 						&::before, &::after{
-							content: ""!important; position: absolute; height: calc(100% + 3px); width: 100%; left: -100%; top: -3px; background-color: #F7F7F7; display: block!important; border-top: 3px solid #354753; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); @include box-shadow(10px 14px 12px 2px rgba($black, 0.06));
+							content: ""!important; position: absolute; height: calc(100% + 3px); width: 100%; left: -100%; top: -3px; background-color: $white; display: block!important; border-top: 3px solid #354753; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); @include box-shadow(10px 14px 12px 2px rgba($black, 0.06));
 						}		
 						&::after {
 							left: auto; right: -100%; background-color: $white;
@@ -347,7 +328,7 @@ h5, .h5 {
 							padding: 20px 25px;
 						}
 						li.menuinfo {
-							background-color: #F7F7F7!important; border-right: 4px solid #6BC9DF; padding-left: 0; max-width: 315px;
+							background-color: $white!important; border-right: 4px solid #6BC9DF; padding-left: 0;
 							& > a[href='#menuinfo#'] {
 								pointer-events: none; display: block !important;
 								&::before {
@@ -381,7 +362,7 @@ h5, .h5 {
 		}
 		li.current-menu-item:not(.hash-menu), 
 		li.current-menu-parent:not(.hash-menu) {
-			>a {
+			> a {
 				color: $primary;
 				&:before {
 					width: 50%; left: 0;
@@ -397,13 +378,16 @@ h5, .h5 {
 			display: none;
 		}
 		@media (min-width:1200px) {
-			visibility: hidden; @include opacity(0); @include transition(0.2s, ease-in-out); position: absolute; background-color: #fefefe; left: -1.5rem; z-index: 1; padding: 15px 20px; margin: 0.40rem 0 0 0; @include transform(translateY(10px)); min-width: 235px;
+			visibility: hidden; @include opacity(0); @include transition(0.2s, ease-in-out); position: absolute; background-color: $white; left: -1.5rem; top: 100%; z-index: 1; padding: 15px 20px; margin: 0.40rem 0 0 0; @include transform(translateY(10px)); min-width: 180px; @include box-shadow(0px 1px 4px rgba(0, 0, 0, 0.25));
 			&.is-menu {
 				@include opacity(1); visibility: visible; @include transform(translateY(0px)); z-index: 99;
 			}
 			li {
 				a {
-					display: -webkit-inline-box !important; display: -webkit-inline-flex !important; display: -moz-inline-flex !important; display: -ms-inline-flexbox !important; display: inline-flex !important;
+					display: -webkit-inline-box !important; display: -webkit-inline-flex !important; display: -moz-inline-flex !important; display: -ms-inline-flexbox !important; display: inline-flex !important; color: $darkblack;
+					&:hover, &:focus {
+						color: $primary;
+					}
 				}
 				a:after {
 					content: unset !important; display: none !important;
@@ -449,7 +433,15 @@ h5, .h5 {
 	}
 	.action-btn {
 		margin-left: 30px;
-		.btn {white-space: nowrap;}
+		.btn {
+			white-space: nowrap; color: $white !important;
+			&:hover, &:focus {
+				color: $black !important;
+			}
+			@media (max-width: 575px) {
+				min-width: auto; padding: 5px 10px;
+			}
+		}
 		@media (min-width:1200px) and (max-width:1439px) {
 			.btn {
 				padding-left: 12px; padding-right: 12px;
@@ -460,22 +452,22 @@ h5, .h5 {
 			margin-left: auto; margin-right: 15px;
 		}
 	}
-	.coundry-dropdown {
+	.country-dropdown {
 		position: relative;
 		@media(max-width: 575px) {
 			margin-left: auto;
 		}
-		&:hover, &:focus, &:focus-visible {
+		&.show {
 			> ul.sub-menu {
 				@include opacity(1); visibility: visible; @include transform(translateY(0px)); z-index: 99;
 			}
 		}
 		.sub-menu {
-			visibility: hidden; @include opacity(0); @include transition(0.2s, ease-in-out); position: absolute; background-color: #fefefe; z-index: 1; margin: 0.40rem 0 0 0; @include transform(translateY(10px));  @include box-shadow(10px 14px 12px 2px rgba($black, 0.06)); min-width: 180px; padding: 15px 0px; right: 0; left: auto; display: block;			
+			visibility: hidden; @include opacity(0); @include transition(0.2s, ease-in-out); position: absolute; background-color: #fefefe; z-index: 1; margin: 0.40rem 0 0 0; @include transform(translateY(10px));  @include box-shadow(10px 14px 12px 2px rgba($black, 0.06)); min-width: 180px; padding: 10px; right: 0; left: auto; display: block;			
 			li {
-				padding: 8px 20px; line-height: 0.7; border: none; margin-left: 0 !important;
+				padding: 8px 15px; line-height: 0.7; border: none; margin-left: 0 !important;
 				a {
-					@include flexbox; @include align-items(center); color: $primary; font-size: 13px; font-weight: 400;
+					@include flexbox; @include align-items(center); color: $darkblack; font-size: 13px; font-weight: 400;
 					.flag {
 						width: 20px; height: 20px; background-size: contain !important; display: inline-block; @include border-radius(50%); margin-right: 12px;
 						&.flag-nz {
@@ -491,11 +483,11 @@ h5, .h5 {
 				}
 				&:hover, &:focus {
 					a {
-						color: $black;
+						color: $primary;
 					}
 				}
 				&.current-menu-item {
-					background: #FDF7DC;
+					background: rgba($darkblack, 0.09);
 					a {
 						color: $black;
 					}
@@ -521,7 +513,7 @@ h5, .h5 {
 			}
 		}
 		span {
-			font-weight: 600; font-size: 16px; text-transform: uppercase; display: inline-block; line-height: 0.7; z-index: 1;
+			font-weight: 500; font-size: 16px; text-transform: uppercase; display: inline-block; line-height: 0.7; z-index: 1; color: $black;
 			@media (max-width:575px) {
 				font-size: 14px;
 			}
@@ -535,7 +527,7 @@ h5, .h5 {
 	}
 }
 .main-footer {
-	background: $primary; border-top: 1px solid $white; padding-top: 60px;
+	background: $darkblack; border-top: 1px solid $white; padding-top: 50px;
 	.logo-block {
 		margin-bottom: 15px;
 		a > img {
@@ -583,7 +575,7 @@ h5, .h5 {
 				margin-bottom: 10px;
 			}
 			&.heading {
-				font-weight: 800; font-size: 24px; color: $white; margin-bottom: 30px;
+				font-weight: 600; font-size: 24px; color: $white; margin-bottom: 30px;
 				@media(max-width: 992px) {
 					font-size: 20px;
 				}
@@ -595,14 +587,15 @@ h5, .h5 {
 				}
 			}
 			a {
-				color: $white; font-weight: 500; font-size: 16px; @include transition(0.3s, ease-in-out); position: relative;				
+				color: $white; font-weight: 400; font-size: 16px; @include transition(0.3s, ease-in-out); position: relative;				
 				@media(max-width: 767px) {
 					font-size: 14px; font-weight: 400;
 				}
 				&:before {
-					content: ""; position: absolute; z-index: 1; left: 0; bottom: -2px; background: $white; width: 0; height: 1px; @include transition(0.3s, ease-in-out);
+					content: ""; position: absolute; z-index: 1; left: 0; bottom: -2px; background: $primary; width: 0; height: 1px; @include transition(0.3s, ease-in-out);
 				}
 				&:hover, &:focus {
+					color: $primary;
 					&::before {
 						width: 50%;
 					}
@@ -624,16 +617,17 @@ h5, .h5 {
 				text-align: center;
 			}
 			p {
-				color: $white; margin-bottom: 0;
-				a { 
-					color: $white; display: inline-block; margin-right: 12px; @include transition(0.3s, ease-in-out); position: relative;
-					&:before {
-						content: ""; position: absolute; z-index: 1; left: 0; bottom: -2px; background: $white; width: 0; height: 1px; @include transition(0.3s, ease-in-out);
-					}
-					&:hover, &:focus {
-						&::before {
-							width: 50%;
-						}
+				color: $white; margin-bottom: 0;				
+			}
+			a { 
+				color: $white; display: inline-block; margin-right: 12px; @include transition(0.3s, ease-in-out); position: relative;
+				&:before {
+					content: ""; position: absolute; z-index: 1; left: 0; bottom: -2px; background: $primary; width: 0; height: 1px; @include transition(0.3s, ease-in-out);
+				}
+				&:hover, &:focus {
+					color: $primary;
+					&::before {
+						width: 50%;
 					}
 				}
 			}
@@ -651,20 +645,6 @@ h5, .h5 {
 				@media(max-width: 767px) {
 					@include justify-content(center); @include flex-wrap(wrap);
 				}
-				a { 
-					color: $white; display: inline-block; margin-right: 12px; @include transition(0.3s, ease-in-out); position: relative;
-					&:last-child {
-						margin-right: 0;
-					}
-					&:before {
-						content: ""; position: absolute; z-index: 1; left: 0; bottom: -2px; background: $white; width: 0; height: 1px; @include transition(0.3s, ease-in-out);
-					}
-					&:hover, &:focus {
-						&::before {
-							width: 50%;
-						}
-					}
-				}
 			}
 		}
 		.coundry-dropdown {
@@ -676,7 +656,7 @@ h5, .h5 {
 				color: $white;
 			}
 			.arrow {
-				background: url(../images/icons/arrow-down-white.svg) no-repeat center center; width: 13px; height: 8px; background-size: contain; display: inline-block; margin-left: 5px; @include transition(0.3s, ease-in-out);
+				background: url(../images/icons/arrow-down.svg) no-repeat center center; width: 13px; height: 8px; background-size: contain; display: inline-block; margin-left: 5px; @include transition(0.3s, ease-in-out);
 			}
 			&:hover, &:focus, &:focus-visible {
 				.arrow {
@@ -687,19 +667,19 @@ h5, .h5 {
 				}
 			}
 			.sub-menu {
-				visibility: hidden; @include opacity(0); @include transition(0.3s, ease-in-out); position: absolute; background-color: #fefefe; left:auto; right: 0; bottom: 25px; z-index: 1; padding: 15px 20px; margin: 0.40rem 0 0 0; @include transform(translateY(10px)); min-width: 235px; @include box-shadow(10px 14px 12px 2px rgba($black, 0.06)); min-width: 150px; padding: 15px 0px;
+				visibility: hidden; @include opacity(0); @include transition(0.3s, ease-in-out); position: absolute; background-color: #fefefe; left:auto; right: 0; bottom: 25px; z-index: 1; padding: 10px; margin: 0.40rem 0 0 0; @include transform(translateY(10px)); min-width: 180px; @include box-shadow(10px 14px 12px 2px rgba($black, 0.06)); min-width: 150px; 
 				li {
 					padding: 10px 20px; line-height: 0.7;
 					a {
-						@include flexbox; @include align-items(center); color: $primary; font-size: 13px; font-weight: 500;						
+						@include flexbox; @include align-items(center); color: $black; font-size: 13px; font-weight: 500;						
 					}
 					&:hover, &:focus {
 						a {
-							color: $black;
+							color: $primary;
 						}
 					}
 					&.current-menu-item {
-						background: #FDF7DC;
+						background: rgba($darkblack, 0.09);
 						a {
 							color: $black;
 						}
@@ -739,7 +719,7 @@ h5, .h5 {
 .check-list {
 	margin-bottom: 15px;
 	li {
-		@include flexbox; @include align-items(center); font-weight: 600; font-size: 18px; color: $primary; padding-bottom: 25px;
+		@include flexbox; @include align-items(center); font-weight: 600; font-size: 18px; color: $black; padding-bottom: 25px;
 		@media (max-width: 1200px) { 
             font-size: 16px;
         }
@@ -826,9 +806,11 @@ h5, .h5 {
 		margin-bottom: 30px;
 	}
 	.tagline {
-		font-size: 18px; font-weight: 500; color: $primary; margin-bottom: 20px; @include inline-flex; @include align-items(center); 
-		&::after {
-			content: ''; width: 95px; height: 4px; background: $secondary; display: inline-block; margin-left: 10px;
+		font-size: 18px; font-weight: 500; color: rgba($darkblack, 0.87); margin-bottom: 20px; @include inline-flex; @include align-items(center); 
+		&.line {
+			&::after {
+				content: ''; width: 95px; height: 4px; background: $darkblack; display: inline-block; margin-left: 10px;
+			}
 		}
 		&.ml-0 {
 			&::after {
@@ -837,6 +819,11 @@ h5, .h5 {
 		}
 		@media (max-width:992px) {
 			font-size: 16px;
+		}
+	}
+	h1, h2 {
+		strong {
+			color: $primary;
 		}
 	}
 	.sort-info, p {
@@ -860,21 +847,32 @@ h5, .h5 {
 }
 .image-block {
 	@media (max-width: 767px) {  
-		margin-top: 30px;
+		margin-top: 40px; text-align: center;
+		& > img {
+			max-width: 65%;
+		}
 	}
-	.square-block {
+	@media (max-width: 575px) { 
+		& > img {
+			max-width: 75%;
+		}
+	}
+	.square-style-1 {
 		@include border-radius(10px); padding: 10px; position: relative;
 		@media (max-width: 767px) {  
 			max-width: 500px; margin: 0 auto;
 		}
 		&::before, &::after {
-			content: ""; width: 211px; height: 182px; background: $primary; @include border-radius(10px); position: absolute; top: 0; right: 0; z-index: -1;
+			content: ""; width: 210px; height: 180px; background: $primary; @include border-radius(10px); position: absolute; top: 0; right: 0; z-index: -1;
 			@media (max-width: 767px) {  
 				width: 150px; height: 100px;
 			}
 		}
 		&::after {
-			bottom: 0; left: 0; top: auto; right: auto;
+			bottom: 0; left: 0; top: auto; right: auto; width: 220px; height: 350px;
+			@media (max-width: 767px) {  
+				width: 150px; height: 200px;
+			}
 		}
 		img {
 			@include border-radius(10px); width: 100%;
@@ -909,7 +907,7 @@ h5, .h5 {
 	}
 }
 .info-card {
-	padding: 35px 20px; @include border-radius(8px); position: relative; @include transition(0.3s, ease-in-out); background: $white; @include box-shadow(0px 5px 15px 3px rgba(0, 0, 0, 0.06)); height: 100%;
+	padding: 30px; @include border-radius(10px); position: relative; @include transition(0.3s, ease-in-out); background: $white;  height: 100%; display: block; border: 1px solid rgba($darkblack, 0.3);
 	@media (max-width:992px) {
 		padding: 25px;
 	}
@@ -917,19 +915,7 @@ h5, .h5 {
 		padding: 20px;
 	}
 	.card-icon{
-		margin-bottom: 20px; max-width: 82px; min-width: 82px; max-height: 82px; min-height: 82px; @include inline-flex; @include align-items(center); @include justify-content(center); @include border-radius(50%);
-		&.bg-orange {
-			background: #FCEEE9;
-		}
-		&.bg-green {
-			background: #E5FCFD;
-		}
-		&.bg-blue {
-			background: #E2EBFF;
-		}
-		&.bg-red {
-			background: #FFE6E6;
-		}
+		margin-bottom: 20px; max-width: 82px; min-width: 82px; max-height: 82px; min-height: 82px; @include inline-flex; @include align-items(center); @include justify-content(center); @include border-radius(50%); background: #E7E7E7; 
 		@media (max-width:767px) {
 			max-height: 50px;
 		}
@@ -938,21 +924,26 @@ h5, .h5 {
 		margin-top: 15px;
 	}
 	h3 {
-		font-size: 18px; margin-bottom: 10px; text-transform: capitalize;
+		font-size: 18px; margin-bottom: 15px; text-transform: capitalize;
 		@media (max-width:992px) {
 			font-size: 16px; margin-bottom: 8px;
 		}
 	}	
 	p {
 		&:last-child {
-			margin-bottom: 0;
+			margin-bottom: 0; color: $black;
 		}
+	}	
+}
+a.info-card {
+	&:hover {
+		background: $primary; @include transform(translateY(-8px)); @include box-shadow(0px 5px 15px 3px rgba(0, 0, 0, 0.06)); border-color: $primary;
 	}
 }
 .icon-box {
-	background: $white; @include box-shadow(0px 5px 15px 3px rgba(0, 0, 0, 0.06)); @include border-radius(10px); @include flexbox; @include align-items(center); @include flex-direction(column); padding: 40px 20px; position: relative; @include transition(0.3s, ease-in-out); margin: 15px 10px; max-height: 195px;
+	background: $white; @include border-radius(10px); @include flexbox; @include align-items(center); @include flex-direction(column); padding: 25px; position: relative; @include transition(0.3s, ease-in-out); margin: 15px 10px; max-height: 195px; border: 1px solid rgba($darkblack, 0.3);
 	@media (max-width: 1200px) {
-		padding: 20px 15px; margin: 10px 8px;
+		margin: 10px 8px; padding: 20px;
     }
 	.box-img {
 		margin-bottom: 25px;
@@ -979,7 +970,7 @@ h5, .h5 {
 		}
 	}
 	&:hover, &:focus {
-		background: $secondary; @include transform(translateY(-8px));
+		background: $primary; @include transform(translateY(-8px)); @include box-shadow(0px 5px 15px 3px rgba(0, 0, 0, 0.06)); border-color: $primary;
 	}
 }
 .icon-boxes {
@@ -1038,7 +1029,13 @@ h5, .h5 {
     }
 }
 .client-slide {
-	background: #FCFBFB; @include border-radius(10px); padding: 40px 35px; height: 100%;
+	background: #FCFBFB; @include border-radius(10px); padding: 30px; height: 100%; color: $black;
+	.client-img {
+		min-width: 50px; max-width: 50px; @include border-radius(50%); @include flexbox; @include align-items(center); @include justify-content(center); margin: 0 auto 15px; 
+		img {
+			min-width: 50px; max-width: 50px;
+		}
+	}
 	@media (max-width: 992px) {
 		padding: 30px 25px;
 	}
@@ -1123,7 +1120,7 @@ h5, .h5 {
 				width: 25px; 
 			}
 			button {
-				width: 31px; background: $secondary; @include border-radius(23px); @include transition(0.3s, ease-in-out);
+				width: 31px; background: $primary; @include border-radius(23px); @include transition(0.3s, ease-in-out);
 				@media(max-width: 575px) {
 					width: 25px; 
 				}
@@ -1183,14 +1180,14 @@ h5, .h5 {
 		.team-box-inner {
 			.team-name {
 				a {
-					color: $secondary;
+					color: $primary;
 				}
 			}
 		}
 	}
 }
 .collapse-item{
-	padding: 30px 0; margin-left: 45px; border-bottom: 1px solid $black;
+	padding: 20px 0; margin-left: 45px; border-bottom: 1px solid $black;
 	@media (max-width:992px) {
 		padding: 20px 0 20px 10px;
 	}
@@ -1210,7 +1207,7 @@ h5, .h5 {
 	&:last-child {
 		border-bottom: none;
 	}
-	.collapse-title{
+	.collapse-title {
 		@include flexbox(); @include align-items(center); text-align: left; cursor: pointer; background-color: transparent; border: none; width: 100%; padding: 5px; position: relative;
 		&::before {
 			width: 40px; margin-right: 47px; background-size: contain; -webkit-box-flex: 0; -ms-flex: none; flex: none; font-weight: 600; font-size: 24px; line-height: 100%; color: $primary; margin-top: 1px;
@@ -1230,7 +1227,7 @@ h5, .h5 {
 			}
 		}
 		.icon-question {
-			font-weight: 500; font-size: 24px; position: absolute; left: -45px;
+			font-weight: 600; font-size: 24px; position: absolute; left: -45px;
 			@media (max-width:992px) {
 				font-size: 18px; left: -35px;
 			}
@@ -1239,7 +1236,7 @@ h5, .h5 {
 			}
 		}
 		h3 {
-			color: #282938; font-size: 22px; font-weight: 500; margin-bottom: 0;
+			color: $black; font-size: 24px; font-weight: 600; margin-bottom: 0; @include transition(0.3s, ease-in-out);
 			@media (max-width:992px) {
 				font-size: 18px;
 			}
@@ -1247,9 +1244,14 @@ h5, .h5 {
 				font-size: 16px;
 			}
 		}
+		&:hover, &:focus {
+			h3 {
+				color: $primary;
+			}
+		}
 	}
 	.card-content{
-		color: #282938;
+		color: $darkblack;
 	}
 	.collapse-body{
 		margin-top: 20px;
