@@ -34,6 +34,15 @@ a {
 img {
     max-width:100%; height: auto; image-rendering:-moz-crisp-edges; image-rendering:-o-crisp-edges; image-rendering:-webkit-optimize-contrast; image-rendering:crisp-edges; -ms-interpolation-mode:nearest-neighbor;
 }
+.container {
+	padding-left: 20px; padding-right: 20px;
+	@media (min-width:1440px) {
+		max-width: 1440px;
+	}
+	@media (max-width:1199px) {
+		max-width: 100%; padding-left: 15px; padding-right: 15px;
+	}
+}
 h1, .h1 {
 	font-weight: 600; font-size: 55px; margin-bottom: 20px; color: $black;	
 	@media (max-width: 1440px) {
@@ -44,7 +53,7 @@ h1, .h1 {
     }
 }
 h2, .h2 {
-	font-weight: 600; font-size: 40px; margin-bottom: 20px; color: $black;
+	font-weight: 600; font-size: 45px; margin-bottom: 20px; color: $black;
 	@media (max-width: 1440px) {
 		font-size: 30px;
     }
@@ -528,9 +537,9 @@ h5, .h5 {
 	}
 }
 .main-footer {
-	background: $darkblack; border-top: 1px solid $white; padding: 50px 0;
+	background: $darkblack; border-top: 1px solid $white; padding-top: 50px;
 	.logo-block {
-		margin-bottom: 35px;
+		margin-bottom: 15px;
 		a > img {
 			min-width: 102px; max-width: 102px;
 			@media (max-width: 575px) {
@@ -538,40 +547,11 @@ h5, .h5 {
 			}
 		}
 	}
-	.divider {
-		border-top: 1px solid $white; margin: 40px 0 50px;
-	}
-	.location-list {
-		margin-bottom: 20px;
-		li {
-			margin-bottom: 10px; 
-			a {
-				font-size: 14px; color: $white; @include inline-flex; @include align-items(center); @include transition(0.3s, ease-in-out); position: relative;
-				&:before {
-					content: ""; position: absolute; z-index: 1; left: 22px; bottom: -2px; background: $primary; width: 0; height: 1px; @include transition(0.3s, ease-in-out);
-				}
-				span {
-					margin-right: 8px;
-					svg {
-						width: 14px; height: 14px;
-						path {
-							@include transition(0.3s, ease-in-out);
-						}
-					}
-				}
-				&:hover, &:focus {
-					color: $primary;
-					&::before {
-						width: 50%;
-					}
-					span {
-						svg {
-							path {
-								fill: $primary;
-							}
-						}
-					}
-				}
+	.sort-info {
+		p {
+			color: $white; max-width: 430px;
+			@media (max-width: 992px) {
+				max-width: 100%;
 			}
 		}
 	}
@@ -596,106 +576,31 @@ h5, .h5 {
 					}
 				}
 			}
-			&.country-dropdown-list {
-				.country-dropdown {
-					position: relative;  margin-left: 30px;
-					@media(max-width: 575px) {
-						margin-left: auto;
-					}
-					&.show {
-						.country-name.with-icon:after {
-							@include transform(rotate(180deg));
-						}
-						> ul.sub-menu {
-							@include opacity(1); visibility: visible; @include transform(translateY(0px)); z-index: 99;
-						}
-					}
-					.sub-menu {
-						visibility: hidden; @include opacity(0); @include transition(0.2s, ease-in-out); position: absolute; background-color: #fefefe; z-index: 1; margin: 0.40rem 0 0 0; @include transform(translateY(10px)); @include box-shadow(10px 14px 12px 2px rgba($black, 0.06)); min-width: 180px; padding: 10px; right: 0; left: auto; display: block;			
-						li {
-							padding: 8px 15px; line-height: 0.7; border: none; margin-left: 0 !important;
-							a {
-								@include flexbox; @include align-items(center); color: $darkblack; font-size: 13px; font-weight: 400;
-								.flag {
-									width: 20px; height: 20px; background-size: contain !important; display: inline-block; @include border-radius(50%); margin-right: 12px;
-									&.flag-nz {
-										background: url(../images/flag-new-zealand.png) no-repeat center center;
-									}
-									&.flag-in {
-										background: url(../images/flag-india.png) no-repeat center center;
-									}
-									&.flag-aus {
-										background: url(../images/flag-australia.png) no-repeat center center;
-									}
-								}
-							}
-							&:hover, &:focus {
-								a {
-									color: $primary;
-								}
-							}
-							&.current-menu-item {
-								background: rgba($darkblack, 0.09);
-								a {
-									color: $black;
-								}
-							}
-						}
-					}
-				}
-				.country-name {
-					max-width: 45px; max-height: 45px; min-width: 45px; min-height: 45px; @include border-radius(50%); background: #D9D9D9; @include flexbox; @include align-items(center); @include justify-content(center); position: relative;
-					@media (max-width:1199px) {
-						margin-left: 15px; margin-right: 25px;
-					}
-					@media (max-width:575px) {
-						margin-left: auto; margin-right: 15px; max-width: 35px; max-height: 35px; min-width: 35px; min-height: 35px;
-					}
-					&.country-aus {
-						background: url(../images/flag-australia.png) no-repeat center center; background-size: contain;
-					}
-					&::before {
-						content: ''; max-width: 45px; max-height: 45px; min-width: 45px; min-height: 45px; @include border-radius(50%); position: absolute; top: 0; left: 0; background: rgba(217, 217, 217, 0.7);
-						@media (maxx-width:575px) {
-							max-width: 35px; max-height: 35px; min-width: 35px; min-height: 35px;
-						}
-					}
-					span {
-						font-weight: 400; font-size: 16px; text-transform: uppercase; display: inline-block; line-height: 0.7; z-index: 1; color: $black;
-						@media (max-width:575px) {
-							font-size: 14px;
-						}
-					}
-					&.with-icon {
-						max-width: 100%; max-height: 100%; min-width: auto; min-height: auto; background: transparent; @include border-radius(0); @include justify-content(flex-start);
-						&:after {
-							vertical-align: middle; content: ""; background: url(../images/icons/arrow-down.svg) no-repeat center right; background-size: contain; width: 10px; height: 10px; margin-left: 8px; display: inline-block; @include transition(0.3s, ease-in-out);
-						}
-						&::before {
-							content: none;
-						}
-						.flag {
-							width: 24px; height: 24px; background-size: contain !important; display: inline-block; @include border-radius(50%); margin-right: 12px;
-							&.flag-aus {
-								background: url(../images/flag-australia.png) no-repeat center center;
-							}
-						}
-						span {
-							color: $white;
-						}
-					}
-				}
-			}
 		}
-	}
-	h5 {
-		color: $white; 
 	}
 	.menu-list {
 		li {
-			margin-bottom: 10px;
+			margin-bottom: 15px;
+			@media (max-width: 575px) {
+				margin-bottom: 10px;
+			}
+			&.heading {
+				font-weight: 600; font-size: 24px; color: $white; margin-bottom: 30px;
+				@media(max-width: 992px) {
+					font-size: 20px;
+				}
+				@media(max-width: 767px) {
+					font-size: 18px;
+				}
+				@media (max-width: 575px) {
+					font-weight: 600; margin-bottom: 15px; margin-top: 10px;
+				}
+			}
 			a {
-				color: $white; font-weight: 400; font-size: 14px; @include transition(0.3s, ease-in-out); position: relative;		
+				color: $white; font-weight: 400; font-size: 16px; @include transition(0.3s, ease-in-out); position: relative;				
+				@media(max-width: 767px) {
+					font-size: 14px; font-weight: 400;
+				}
 				&:before {
 					content: ""; position: absolute; z-index: 1; left: 0; bottom: -2px; background: $primary; width: 0; height: 1px; @include transition(0.3s, ease-in-out);
 				}
@@ -709,8 +614,9 @@ h5, .h5 {
 		}
 	}
 	.copyright-block {
-		margin-top: 45px; padding: 20px 0 0; text-align: center; color: rgba($white, 0.6); font-size: 14px;
-		.copyright-text-block {			
+		margin-top: 45px; border-top: 1px solid $white; padding: 20px 0;
+		.copyright-text-block {
+			@include flexbox; @include align-items(center);
 			@media(max-width: 992px) {
 				display: block;
 			}
@@ -719,6 +625,9 @@ h5, .h5 {
 			}
 			@media (max-width: 575px) {
 				text-align: center;
+			}
+			p {
+				color: $white; margin-bottom: 0;				
 			}
 			a { 
 				color: $white; display: inline-block; margin-right: 12px; @include transition(0.3s, ease-in-out); position: relative;
@@ -732,44 +641,100 @@ h5, .h5 {
 					}
 				}
 			}
-		}		
-		.sort-info {
-			max-width: 950px; margin: 20px auto 0;
+			span {
+				color: $white; display: inline-block; margin: 0 10px;
+				@media(max-width: 992px) {
+					display: none;
+				}
+			}
+			.link-block {
+				@include flexbox; @include align-items(center); 
+				@media(max-width: 992px) {
+					margin-top: 12px;
+				}
+				@media(max-width: 767px) {
+					@include justify-content(center); @include flex-wrap(wrap);
+				}
+			}
 		}
+		.coundry-dropdown {
+			position: relative; max-width: 150px; margin-left: auto; text-align: right;
+			@media(max-width: 575px) {
+				margin: 20px auto 0; text-align: center;
+			}
+			a {
+				color: $white;
+			}
+			.arrow {
+				background: url(../images/icons/arrow-down.svg) no-repeat center center; width: 13px; height: 8px; background-size: contain; display: inline-block; margin-left: 5px; @include transition(0.3s, ease-in-out);
+			}
+			&:hover, &:focus, &:focus-visible {
+				.arrow {
+        			@include transform(rotate(180deg));
+				}
+				> ul.sub-menu {
+					@include opacity(1); visibility: visible; @include transform(translateY(0px)); z-index: 99;
+				}
+			}
+			.sub-menu {
+				visibility: hidden; @include opacity(0); @include transition(0.3s, ease-in-out); position: absolute; background-color: #fefefe; left:auto; right: 0; bottom: 25px; z-index: 1; padding: 10px; margin: 0.40rem 0 0 0; @include transform(translateY(10px)); min-width: 180px; @include box-shadow(10px 14px 12px 2px rgba($black, 0.06)); min-width: 150px; 
+				li {
+					padding: 10px 20px; line-height: 0.7;
+					a {
+						@include flexbox; @include align-items(center); color: $black; font-size: 13px; font-weight: 500;						
+					}
+					&:hover, &:focus {
+						a {
+							color: $primary;
+						}
+					}
+					&.current-menu-item {
+						background: rgba($darkblack, 0.09);
+						a {
+							color: $black;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.grid {
+	display: grid;
+	&.grid-2 {
+		grid-template-columns: repeat(2, 1fr);
+		@media (max-width: 992px) { 
+            grid-template-columns: repeat(1, 1fr);
+        }
+	}
+	&.grid-4 {
+		grid-template-columns: repeat(4, 25%);
+		@media (max-width: 992px) { 
+            grid-template-columns: repeat(2, 50%);
+        }
+		@media (max-width: 575px) { 
+            grid-template-columns: repeat(1, 100%);
+        }
+	}
+	&.grid-5 {
+		grid-template-columns: repeat(5, 20%);
+		@media (max-width: 767px) { 
+            grid-template-columns: repeat(3, 33.33%);
+        }
+		@media (max-width: 575px) { 
+            grid-template-columns: repeat(2, 50%);
+        }
 	}
 }
 .check-list {
 	margin-bottom: 15px;
 	li {
-		@include flexbox; @include align-items(center); font-weight: 500; font-size: 18px; color: $black; margin-bottom: 25px; position: relative;
+		@include flexbox; @include align-items(center); font-weight: 600; font-size: 18px; color: $black; padding-bottom: 25px;
 		@media (max-width: 1200px) { 
             font-size: 16px;
         }
 		&::before {
-			content: ''; background: url(../images/icons/icon-check-circle.svg) no-repeat center center; background-size: contain; min-width: 20px; max-width: 20px; min-height: 20px; display: inline-block; margin-right: 10px;
-		}
-		a {
-			color: $black; @include transition(0.3s, ease-in-out); 
-			&::after {
-				content: ''; width: 0; height: 1px; background: $black; @include transition(0.3s, ease-in-out); position: absolute; top: auto; bottom: 0; left: 30px;
-			}
-		}
-		&:hover, &:focus {
-			a {
-				color: $primary;
-				&::after { 
-					width: 40%;
-				}
-			}
-		}
-	}
-	&.check-list-col-2 {
-		@include flexbox; @include align-items(flex-start); @include flex-wrap(wrap);
-		li {
-			width: 50%;
-			@media (max-width:575px) {
-				width: 100%;
-			}
+			content: ''; background: url(../images/icons/icon-check-circle.svg) no-repeat center center; background-size: contain; width: 20px; height: 20px; display: inline-block; margin-right: 10px;
 		}
 	}
 }
@@ -813,18 +778,13 @@ h5, .h5 {
 			}
 		}
 	}
-	.action-block {
-		@media (max-width: 575px) {
-			margin-top: 30px;
-		}
-	}
 	& * :last-child {margin-bottom: 0px !important;}
 	.form-group {
 		margin-bottom: 24px !important;
 	}
 }
 .image-block {
-	@media (max-width: 992px) {  
+	@media (max-width: 767px) {  
 		margin-top: 40px; text-align: center;
 		& > img {
 			max-width: 65%;
@@ -885,10 +845,7 @@ h5, .h5 {
 	}
 }
 .info-card {
-	padding: 30px; @include border-radius(10px); position: relative; @include transition(0.3s, ease-in-out); background: $white;  height: 100%; display: block; border: 1px solid rgba($darkblack, 0.3); overflow: hidden;
-	&::before {
-		content: ''; width: 35px; height: 35px; background: $black; background-size: contain; display: block; position: absolute; top: 15px; right: 15px; @include transition(0.3s,ease-in-out); visibility: hidden; @include opacity(0); @include transform (scale(0)); 
-	}
+	padding: 30px; @include border-radius(10px); position: relative; @include transition(0.3s, ease-in-out); background: $white;  height: 100%; display: block; border: 1px solid rgba($darkblack, 0.3);
 	@media (max-width:992px) {
 		padding: 25px;
 	}
@@ -910,23 +867,21 @@ h5, .h5 {
 			font-size: 16px; margin-bottom: 8px;
 		}
 	}	
-	.sort-info {
-		color: $black; 
+	p {
+		&:last-child {
+			margin-bottom: 0; color: $black;
+		}
 	}	
 }
 a.info-card {
 	&:hover {
-		background: $primary; border-color: rgba($black, 0.15);  
-		&::before {
-			visibility: visible; @include opacity(1);  @include transform (scale(1)); 
-		}
+		background: $primary; @include transform(translateY(-8px)); @include box-shadow(0px 5px 15px 3px rgba(0, 0, 0, 0.06)); border-color: $primary;
 	}
 }
-
 .icon-box {
-	background: $white; @include border-radius(10px); @include flexbox; @include align-items(center); @include flex-direction(column); padding: 25px; position: relative; @include transition(0.3s, ease-in-out); max-height: 195px; border: 1px solid rgba($darkblack, 0.3); height: 100%;
+	background: $white; @include border-radius(10px); @include flexbox; @include align-items(center); @include flex-direction(column); padding: 25px; position: relative; @include transition(0.3s, ease-in-out); margin: 15px 10px; max-height: 195px; border: 1px solid rgba($darkblack, 0.3);
 	@media (max-width: 1200px) {
-		padding: 20px;
+		margin: 10px 8px; padding: 20px;
     }
 	.box-img {
 		margin-bottom: 25px;
@@ -944,7 +899,7 @@ a.info-card {
 		}
 	}
 	.box-title {
-		font-weight: 600; font-size: 18px; text-transform: capitalize; color: $black; text-align: center;
+		font-weight: 600; font-size: 20px; text-transform: capitalize; color: $black; text-align: center;
 		@media (max-width: 992px) {
 			font-size: 16px;
 		}
@@ -953,7 +908,7 @@ a.info-card {
 		}
 	}
 	&:hover, &:focus {
-		background: $primary; border-color: $primary;
+		background: $primary; @include transform(translateY(-8px)); @include box-shadow(0px 5px 15px 3px rgba(0, 0, 0, 0.06)); border-color: $primary;
 	}
 }
 .horizontal-icon-box {
@@ -962,47 +917,39 @@ a.info-card {
 		margin-top: 20px;
 	}
 	.icon {
-		max-width: 48px; min-width: 48px; margin-right: 30px;
+		max-width: 67px; min-width: 67px; margin-right: 40px;
 		@media(max-width: 992px) {
-			max-width: 35px; min-width: 35px; margin-right: 15px;
+			max-width: 50px; min-width: 50px; margin-right: 20px;
+		}
+		@media(max-width: 575px) {
+			max-width: 40px; min-width: 40px; margin-right: 15px;
 		}
 		img {
-			width: 100%; max-height: 48px;
-			@media(max-width: 992px) {
-				max-height: 35px;
-			}
+			width: 100%;
 		}
 	}
 	.content {
 		.box-title {
-			font-weight: 500; font-size: 18px; margin-bottom: 10px;
+			font-weight: 500; font-size: 20px; margin-bottom: 15px;
+			@media(max-width: 992px) {
+				font-size: 18px;
+			}
+			@media(max-width: 575px) {
+				font-size: 16px; margin-bottom: 10px;
+			}
+		}
+		p {
+			font-weight: 400; font-size: 18px;
 			@media(max-width: 992px) {
 				font-size: 16px;
 			}
 			@media(max-width: 575px) {
-				margin-bottom: 8px;
-			}
-		}
-		.sort-info {
-			font-weight: 400; font-size: 16px;
-			@media(max-width: 992px) {
 				font-size: 14px;
 			}
 		}
 	}
 }
 .icon-boxes {
-	.row {
-		.col {
-			width: 100%; margin: 12px 0; min-width: 20%;
-			@media(max-width: 992px) {
-				min-width: 240px;
-			}
-		}
-		@media (max-width: 992px) {
-			min-width: 1320px;
-		}
-	}
 	&.icon-box-blue-text {
 		.icon-box {
 			padding: 30px 20px; @include box-shadow(0px 4px 42px #E7E7E7);
@@ -1016,12 +963,9 @@ a.info-card {
 	}
 }
 .why-choose-block {
-	background: $darkblack; backdrop-filter: blur(2px); @include border-radius(12px); padding: 100px; margin: 0 -120px;
-	@media (max-width: 1600px) { 
-		margin: 0 -50px;
-	}
+	background: $darkblack; backdrop-filter: blur(2px); @include border-radius(30px); padding: 100px;
 	@media (max-width: 1200px) { 
-		padding: 70px; margin: 0 -20px;
+		padding: 70px;
 	}
 	@media (max-width: 992px) { 
 		padding: 50px;
@@ -1030,7 +974,7 @@ a.info-card {
 		padding: 30px; @include border-radius(20px);
 	}
 	@media (max-width: 575px) { 
-		padding: 50px 25px; margin: 0 -12px; @include border-radius(0px);
+		padding: 20px;
 	}
 	.section-title {
 		color: $white;
@@ -1061,27 +1005,18 @@ a.info-card {
 	}
 }
 .slick-arrow {
-	width: 50px; height: 50px; @include transition(0.3s, ease-in-out);
-	&::before {
-		background-size: contain !important; width: 50px; height: 50px; display: block; @include transition(0.3s, ease-in-out);
-		@media(max-width: 992px) {
-			width: 30px; height: 30px;
-		}
-		@media(max-width: 575px) {
-			width: 20px; height: 20px;
-		}	
-	}
+	background-size: contain !important; width: 50px; height: 50px; @include transition(0.3s, ease-in-out);
 	@media(max-width: 992px) {
 		width: 30px; height: 30px;
 	}
 	@media(max-width: 575px) {
 		width: 20px; height: 20px;
-	}	
+	}
+	&::before {
+		content: none;
+	}
 	&.slick-prev {
-		left: -82px;
-		&::before {
-			content: ''; background: url(../images/icons/circle-arrow-left.svg) no-repeat center center; 
-		}
+		background: url(../images/icons/circle-arrow-left.svg) no-repeat center center; left: -82px;
 		@media(max-width: 992px) {
 			left: -40px;
 		}
@@ -1090,10 +1025,7 @@ a.info-card {
 		}
 	}
 	&.slick-next {
-		right: -82px;
-		&::before {
-			content: ''; background: url(../images/icons/circle-arrow-right.svg) no-repeat center center; 
-		}
+		background: url(../images/icons/circle-arrow-right.svg) no-repeat center center; right: -82px;
 		@media(max-width: 992px) {
 			right: -40px;
 		}
@@ -1105,36 +1037,48 @@ a.info-card {
 		cursor: default; @include opacity(0.5);
 		&:hover {
 			&.slick-prev {
-				&::before { background: url(../images/icons/circle-arrow-left.svg) no-repeat center center; }
+				background: url(../images/icons/circle-arrow-left.svg) no-repeat center center;
 			}
 			&.slick-next {
-				&::before { background: url(../images/icons/circle-arrow-right.svg) no-repeat center center; }
+				background: url(../images/icons/circle-arrow-right.svg) no-repeat center center;
 			}
 		}
 	}
-	&:hover {		
+	&:hover {
 		&.slick-prev {
-			&::before { background: url(../images/icons/fill-circle-arrow-left.svg) no-repeat center center; @include transform(translateX(-8px)); } 
+			background: url(../images/icons/fill-circle-arrow-left.svg) no-repeat center center;
 		}
 		&.slick-next {
-			&::before { background: url(../images/icons/fill-circle-arrow-right.svg) no-repeat center center; @include transform(translateX(8px)); }
+			background: url(../images/icons/fill-circle-arrow-right.svg) no-repeat center center;
 		}
 	}
 }
 .slick-dots {
 	bottom: -45px;
 	li {
-		width: 10px; height: 10px;
+		width: 16px; height: 16px;
+		@media(max-width: 575px) {
+			width: 12px; height: 12px;
+		}
 		button {
-			width: 10px; height: 10px; background: #DCDCDC; padding: 0; @include border-radius(50%);
+			width: 16px; height: 16px; background: #DCDCDC; padding: 0; @include border-radius(50%);
+			@media(max-width: 575px) {
+				width: 12px; height: 12px;
+			}
 			&::before {
 				content: none;
 			}
 		}
 		&.slick-active {
-			width: 25px; @include transition(0.3s, ease-in-out);
+			width: 31px; @include transition(0.3s, ease-in-out);
+			@media(max-width: 575px) {
+				width: 25px; 
+			}
 			button {
-				width: 25px; background: $primary; @include border-radius(23px); @include transition(0.3s, ease-in-out);
+				width: 31px; background: $primary; @include border-radius(23px); @include transition(0.3s, ease-in-out);
+				@media(max-width: 575px) {
+					width: 25px; 
+				}
 			}
 		}
 	}
@@ -1146,11 +1090,11 @@ a.info-card {
     height: inherit !important; margin: 0 10px;
 }
 .team-box {
-	background: $white; @include border-radius(10px); position: relative; height: 100%; @include transition(0.3s, ease-in-out); border: 1px solid rgba(21, 37, 50, 0.15);
+	background: $white; @include border-radius(10px); position: relative; height: 100%; @include transition(0.3s, ease-in-out); border: 1px solid rgba(21, 37, 50, 0.3);
 	.team-box-img {
-		@include border-radius(10px); position: relative; margin: -1px; overflow: hidden; max-height: 175px;
+		@include border-radius(10px); position: relative; margin: -1px;
 		img {
-			width: 100%; @include transition(0.3s, ease-in-out);
+			width: 100%;
 		}
 		.logo {
 			position: absolute; right: 30px; bottom: -30px;
@@ -1160,30 +1104,28 @@ a.info-card {
 		}
 	}
 	.team-box-inner {
-		padding: 20px;
+		padding: 30px 25px;
+		@media(max-width: 1200px) {
+			padding: 25px 20px 20px;
+		}
 		.team-name {
 			margin-bottom: 5px;
 			a {
-				font-weight: 700; font-size: 16px; color: $darkblack; @include transition(0.3s, ease-in-out);	
+				font-weight: 700; font-size: 18px; color: $darkblack; @include transition(0.3s, ease-in-out);				
+				@media(max-width: 767px) {
+					font-size: 16px;
+				}
 			}
 		}
 		.team-post {
-			font-weight: 400; font-size: 14px; color: $darkblack;
+			font-weight: 400; font-size: 16px; color: $darkblack;
+			@media(max-width: 767px) {
+				font-size: 14px;
+			}
 		}
 	}
 	&:hover, &:focus {
 		@include box-shadow(0px 4px 5px #E7E7E7);
-		.team-box-img {			
-			img {
-				@include transform(scale(1.05));
-			}
-			.logo {
-				position: absolute; right: 30px; bottom: -30px;
-				@media(max-width: 767px) {
-					max-width: 50px; right: 20px; bottom: -20px;
-				}
-			}
-		}
 		.team-box-inner {
 			.team-name {
 				a {
@@ -1228,13 +1170,13 @@ a.info-card {
 			}
 		}
 		&:after {
-			content: ""; width: 28px; height: 28px; -webkit-box-flex: 0; -ms-flex: none; flex: none; margin-left: auto; background: url(../images/icons/plus.svg) no-repeat center center; @include transition(0.1s, ease-in-out);
+			content: ""; width: 28px; height: 28px; -webkit-box-flex: 0; -ms-flex: none; flex: none; margin-left: auto; background: url(../images/icons/plus.svg) no-repeat center center; @include transition(0.3s, ease-in-out);
 			@media (max-width:992px) {
 				width: 20px; height: 20px;
 			}
 		}
 		.icon-question {
-			font-weight: 600; font-size: 24px; position: absolute; left: -45px; color: rgba($black, 0.3);
+			font-weight: 600; font-size: 24px; position: absolute; left: -45px;
 			@media (max-width:992px) {
 				font-size: 18px; left: -35px;
 			}

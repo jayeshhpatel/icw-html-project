@@ -3,7 +3,6 @@ var $ = jQuery.noConflict();
 jQuery(document).ready(function($) {
 
     $('[data-bs-toggle="tooltip"]').tooltip();
-    $('[data-bs-toggle="dropdown"]').dropdown();
 
     $('.toggle-sidebar,.bg-overly').on('click', function (e) {
         $('.bg-overly,.toggle-sidebar,body,.main-header').toggleClass('is-visible');
@@ -24,8 +23,8 @@ jQuery(document).ready(function($) {
                 $(".main-header").removeClass("fixed-header");
             }
         });
-        if($('.country-dropdown').length){
-            $(".country-dropdown").click(function() {
+        if($('.main-header .country-dropdown').length){
+            $(".main-header .country-dropdown").click(function() {
                 $(this).toggleClass('show');
             });
         }
@@ -43,32 +42,21 @@ jQuery(document).ready(function($) {
         $("li.menu-item-has-children > a").after('<i class="arrow"></i>');
     }
     $('li.menu-item-has-children .arrow').on('click',function(event){
-        event.preventDefault();
-        $(this).toggleClass('is-active');
-        $(this).parent().find('.sub-menu').first().toggle(300);
-        $(this).parent().siblings().find('.sub-menu').hide(200);
-        
-        //Hide menu when clicked outside
-        $(this).parent().find('.sub-menu').parent().mouseleave(function(){ 
-            var thisUI = $(this);
-            $('html').click(function(){
-            thisUI.children(".sub-menu").hide();
-            thisUI.children(".arrow").removeClass('is-active');
-            $('html').unbind('click');
-            });
-        });
-    });
-    wow = new WOW({
-        boxClass:     'wow',      // default
-        animateClass: 'custom-animated', // default
-        offset:      300,          // default
-        mobile:       true,       // default
-        live:         true,       // default
-        callback:     function(box) {
-            $( '.block-animate' ).addClass( 'block-initiate-animation' );
-        }
-    });
-    wow.init();
+          event.preventDefault();
+          $(this).toggleClass('is-active');
+          $(this).parent().find('.sub-menu').first().toggle(300);
+          $(this).parent().siblings().find('.sub-menu').hide(200);
+          
+          //Hide menu when clicked outside
+          $(this).parent().find('.sub-menu').parent().mouseleave(function(){ 
+             var thisUI = $(this);
+             $('html').click(function(){
+                thisUI.children(".sub-menu").hide();
+                thisUI.children(".arrow").removeClass('is-active');
+                $('html').unbind('click');
+             });
+          });
+       });
     if ($('.testimonial-slider').length) {
         $('.testimonial-slider').slick({
             autoplay: true,
