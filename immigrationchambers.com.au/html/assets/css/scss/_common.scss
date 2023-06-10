@@ -575,15 +575,56 @@ h5, .h5 {
 			}
 		}
 	}
+	.privacy-list {
+		@include flexbox; @include align-items(center);
+		li {			
+			&::after {
+				content: "/"; color: rgba($white, 0.6); font-size: 14px; @include transition(0.3s, ease-in-out); margin: 0 10px;
+			}
+			&:last-child {
+				&::after {
+					content: none;
+				}
+			}
+			a {
+				font-size: 14px; color: $white; @include inline-flex; @include align-items(center); @include transition(0.3s, ease-in-out); position: relative;
+				&:before {
+					content: ""; position: absolute; z-index: 1; left: 0; bottom: -2px; background: $primary; width: 0; height: 1px; @include transition(0.3s, ease-in-out);
+				}
+				span {
+					margin-right: 8px;
+					svg {
+						width: 14px; height: 14px;
+						path {
+							@include transition(0.3s, ease-in-out);
+						}
+					}
+				}
+				&:hover, &:focus {
+					color: $primary;
+					&::before {
+						width: 50%;
+					}
+					span {
+						svg {
+							path {
+								fill: $primary;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	.social-list {
-		@include flexbox; @include align-items(center); margin-top: 10px;
+		@include flexbox; @include align-items(center);
 		@media (max-width: 992px) {
 			margin-bottom: 30px;
 		}
 		li { 
 			margin-right: 15px;
 			a {
-				@include inline-flex; @include align-items(center); @include justify-content(center); min-width: 40px; min-height: 40px; width: 40px; height: 40px; background: $white; @include border-radius(50%); border: 1px solid transparent; @include transition(0.3s, ease-in-out);
+				@include inline-flex; @include align-items(center); @include justify-content(center); min-width: 28px; min-height: 28px; width: 28px; height: 28px; background: rgba($white, 0.4); @include border-radius(4px); border: 1px solid transparent; @include transition(0.3s, ease-in-out);
 				svg {
 					path {
 						@include transition(0.3s, ease-in-out);
