@@ -23,13 +23,9 @@ jQuery(document).ready(function($) {
             } else {
                 $(".main-header").removeClass("fixed-header");
             }
-        });
-        if($('.country-dropdown').length){
-            $(".country-dropdown").click(function() {
-                $(this).toggleClass('show');
-            });
-        }
+        });       
     }
+    
     jQuery('body').bind('click', function(e) {
         if(jQuery(e.target).closest('.navbar').length == 0) {
             // click happened outside of .navbar, so hide
@@ -65,7 +61,7 @@ jQuery(document).ready(function($) {
         mobile:       true,       // default
         live:         true,       // default
         callback:     function(box) {
-            $( '.block-animate' ).addClass( 'block-initiate-animation' );
+            $( '.square-animate' ).addClass( 'square-initiate-animation' );
         }
     });
     wow.init();

@@ -297,7 +297,7 @@ h5, .h5 {
 						}
 					}
 					& > ul.sub-menu {
-						width:100%; left: 0px; top: 100%; display: grid; grid-gap: 0; padding: 0 !important; grid-template-columns: repeat(auto-fill, minmax(33%, 1fr)); border-top: 3px solid #354753; @include box-shadow(10px 14px 12px 2px rgba($black, 0.06));
+						width:100%; left: 0px; top: 100%; display: grid; grid-gap: 0; padding: 0 !important; grid-template-columns: repeat(auto-fill, minmax(33%, 1fr)); border-top: 3px solid #354753; @include box-shadow(10px 14px 12px 2px rgba($black, 0.06));  
 						&::before, &::after{
 							content: ""!important; position: absolute; height: calc(100% + 3px); width: 100%; left: -100%; top: -3px; background-color: $white; display: block!important; border-top: 3px solid #354753; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); @include box-shadow(10px 14px 12px 2px rgba($black, 0.06));
 						}		
@@ -323,7 +323,7 @@ h5, .h5 {
 							}
 						}
 						ul.sub-menu {
-							border-left:0px; margin: 0px; padding: 0px; min-width: auto;
+							border-left:0px; margin: 0px; padding: 0px; min-width: auto; border: none;
 						}
 					}
 				}
@@ -433,24 +433,66 @@ h5, .h5 {
 		}
 	}
 	.country-dropdown {
-		position: relative;  margin-left: 30px;
-		@media(max-width: 575px) {
-			margin-left: auto;
-		}
-		&.show {
-			.country-name.with-icon:after {
-				@include transform(rotate(180deg));
+		position: relative;  margin-left: 30px;		
+		.country-name {
+			max-width: 45px; max-height: 45px; min-width: 45px; min-height: 45px; @include border-radius(50%); background: #D9D9D9; @include flexbox; @include align-items(center); @include justify-content(center); position: relative;
+			@media (max-width:1199px) {
+				margin-left: 15px; margin-right: 25px;
 			}
-			> ul.sub-menu {
-				@include opacity(1); visibility: visible; @include transform(translateY(0px)); z-index: 99;
+			@media (max-width:575px) {
+				margin-left: auto; margin-right: 15px; max-width: 35px; max-height: 35px; min-width: 35px; min-height: 35px;
+			}
+			&.country-aus {
+				background: url(../images/flag-australia.png) no-repeat center center; background-size: contain;
+			}
+			&::before {
+				content: ''; max-width: 45px; max-height: 45px; min-width: 45px; min-height: 45px; @include border-radius(50%); position: absolute; top: 0; left: 0; background: rgba(217, 217, 217, 0.7);
+				@media (maxx-width:575px) {
+					max-width: 35px; max-height: 35px; min-width: 35px; min-height: 35px;
+				}
+			}
+			span {
+				font-weight: 400; font-size: 16px; text-transform: uppercase; display: inline-block; line-height: 0.7; z-index: 1; color: $black;
+				@media (max-width:575px) {
+					font-size: 14px;
+				}
+			}
+			&.with-icon {
+				max-width: 100%; max-height: 100%; min-width: auto; min-height: auto; background: transparent; @include border-radius(0); @include justify-content(flex-start);
+				&:after {
+					vertical-align: middle; content: ""; background: url(../images/icons/arrow-down.svg) no-repeat center right; background-size: contain; width: 10px; height: 10px; margin-left: 8px; display: inline-block; @include transition(0.3s, ease-in-out); border: none;
+				}
+				&::before {
+					content: none;
+				}
+				.flag {
+					width: 24px; height: 24px; background-size: contain !important; display: inline-block; @include border-radius(50%); margin-right: 12px;
+					&.flag-aus {
+						background: url(../images/flag-australia.png) no-repeat center center;
+					}
+				}
+				span {
+					color: $white;
+				}
+			}
+			.show {
+				&.with-icon:after {
+					@include transform(rotate(180deg));
+				}
 			}
 		}
 		.sub-menu {
-			visibility: hidden; @include opacity(0); @include transition(0.2s, ease-in-out); position: absolute; background-color: #fefefe; z-index: 1; margin: 0.40rem 0 0 0; @include transform(translateY(10px)); @include box-shadow(10px 14px 12px 2px rgba($black, 0.06)); min-width: 180px; padding: 10px; right: 0; left: auto; display: block;			
+			padding: 10px; right: 0; left: auto; @include border-radius(0);
+			&.show {
+				@include opacity(1); visibility: visible; @include transform(translateY(0px)); z-index: 99;
+			}		
 			li {
-				padding: 8px 15px; line-height: 0.7; border: none; margin-left: 0 !important;
+				padding: 8px 15px; line-height: 0.7; border: none; margin-left: 0 !important; @include transition(0.3s, ease-in-out); margin-bottom: 5px; 
+				&:last-child {
+					margin-bottom: 0;
+				}
 				a {
-					@include flexbox; @include align-items(center); color: $darkblack; font-size: 13px; font-weight: 400;
+					@include flexbox; @include align-items(center); color: $darkblack; font-size: 13px; font-weight: 400; @include transition(0.3s, ease-in-out); 
 					.flag {
 						width: 20px; height: 20px; background-size: contain !important; display: inline-block; @include border-radius(50%); margin-right: 12px;
 						&.flag-nz {
@@ -464,12 +506,7 @@ h5, .h5 {
 						}
 					}
 				}
-				&:hover, &:focus {
-					a {
-						color: $primary;
-					}
-				}
-				&.current-menu-item {
+				&:hover, &:focus, &.current-menu-item  {
 					background: rgba($darkblack, 0.09);
 					a {
 						color: $black;
@@ -478,48 +515,7 @@ h5, .h5 {
 			}
 		}
 	}
-	.country-name {
-		max-width: 45px; max-height: 45px; min-width: 45px; min-height: 45px; @include border-radius(50%); background: #D9D9D9; @include flexbox; @include align-items(center); @include justify-content(center); position: relative;
-		@media (max-width:1199px) {
-			margin-left: 15px; margin-right: 25px;
-		}
-		@media (max-width:575px) {
-			margin-left: auto; margin-right: 15px; max-width: 35px; max-height: 35px; min-width: 35px; min-height: 35px;
-		}
-		&.country-aus {
-			background: url(../images/flag-australia.png) no-repeat center center; background-size: contain;
-		}
-		&::before {
-			content: ''; max-width: 45px; max-height: 45px; min-width: 45px; min-height: 45px; @include border-radius(50%); position: absolute; top: 0; left: 0; background: rgba(217, 217, 217, 0.7);
-			@media (maxx-width:575px) {
-				max-width: 35px; max-height: 35px; min-width: 35px; min-height: 35px;
-			}
-		}
-		span {
-			font-weight: 400; font-size: 16px; text-transform: uppercase; display: inline-block; line-height: 0.7; z-index: 1; color: $black;
-			@media (max-width:575px) {
-				font-size: 14px;
-			}
-		}
-		&.with-icon {
-			max-width: 100%; max-height: 100%; min-width: auto; min-height: auto; background: transparent; @include border-radius(0); @include justify-content(flex-start);
-			&:after {
-				vertical-align: middle; content: ""; background: url(../images/icons/arrow-down.svg) no-repeat center right; background-size: contain; width: 10px; height: 10px; margin-left: 8px; display: inline-block; @include transition(0.3s, ease-in-out);
-			}
-			&::before {
-				content: none;
-			}
-			.flag {
-				width: 24px; height: 24px; background-size: contain !important; display: inline-block; @include border-radius(50%); margin-right: 12px;
-				&.flag-aus {
-					background: url(../images/flag-australia.png) no-repeat center center;
-				}
-			}
-			span {
-				color: $white;
-			}
-		}
-	}
+	
 }
 .bg-overly {
 	position: fixed; top: 0; left: 0; bottom: 0; right: 0; z-index: 9; background-color: rgba(0, 0, 0, 0.5); visibility: hidden; @include opacity(0); @include transition(0.3s, ease-in-out);
@@ -540,9 +536,15 @@ h5, .h5 {
 	}
 	.divider {
 		border-top: 1px solid $white; margin: 40px 0 50px;
+		@media(max-width: 575px) {
+			margin: 20px 0 30px;
+		}
 	}
 	.location-list {
-		margin-bottom: 20px;
+		margin-bottom: 30px;
+		@media(max-width: 575px) {
+			margin-bottom: 10px;
+		}
 		li {
 			margin-bottom: 10px; 
 			a {
@@ -577,7 +579,11 @@ h5, .h5 {
 	}
 	.privacy-list {
 		@include flexbox; @include align-items(center);
+		@media(max-width: 575px) {
+			margin-bottom: 30px; @include justify-content(center);
+		}
 		li {			
+			margin-bottom: 0 !important;
 			&::after {
 				content: "/"; color: rgba($white, 0.6); font-size: 14px; @include transition(0.3s, ease-in-out); margin: 0 10px;
 			}
@@ -586,79 +592,64 @@ h5, .h5 {
 					content: none;
 				}
 			}
-			a {
-				font-size: 14px; color: $white; @include inline-flex; @include align-items(center); @include transition(0.3s, ease-in-out); position: relative;
-				&:before {
-					content: ""; position: absolute; z-index: 1; left: 0; bottom: -2px; background: $primary; width: 0; height: 1px; @include transition(0.3s, ease-in-out);
-				}
-				span {
-					margin-right: 8px;
-					svg {
-						width: 14px; height: 14px;
-						path {
-							@include transition(0.3s, ease-in-out);
-						}
-					}
-				}
-				&:hover, &:focus {
-					color: $primary;
-					&::before {
-						width: 50%;
-					}
-					span {
-						svg {
-							path {
-								fill: $primary;
-							}
-						}
-					}
-				}
-			}
 		}
 	}
 	.social-list {
 		@include flexbox; @include align-items(center);
-		@media (max-width: 992px) {
-			margin-bottom: 30px;
+		@media(max-width: 575px) {
+			@include justify-content(center);
 		}
-		li { 
+		& > li { 
 			margin-right: 15px;
-			a {
-				@include inline-flex; @include align-items(center); @include justify-content(center); min-width: 28px; min-height: 28px; width: 28px; height: 28px; background: rgba($white, 0.4); @include border-radius(4px); border: 1px solid transparent; @include transition(0.3s, ease-in-out);
+			& > a {
+				@include inline-flex; @include align-items(center); @include justify-content(center); min-width: 28px; min-height: 28px; width: 28px; height: 28px; background: rgba($white, 0.2); @include border-radius(4px); border: 1px solid transparent; @include transition(0.3s, ease-in-out);
 				svg {
 					path {
 						@include transition(0.3s, ease-in-out);
 					}
 				}
 				&:hover, &:focus {
-					background: transparent; border-color: $white;
+					background: $white; border-color: $white;
 					svg path {
-						fill: $white;
+						fill: $darkblack;
 					}
 				}
 			}
 			&.country-dropdown-list {
+				margin-right: 0; line-height: 0.7;
 				.country-dropdown {
-					position: relative;  margin-left: 30px;
-					@media(max-width: 575px) {
-						margin-left: auto;
-					}
-					&.show {
-						.country-name.with-icon:after {
-							@include transform(rotate(180deg));
+					position: relative; 
+					.country-name {	
+						@include inline-flex; @include align-items(center); padding: 5px 10px; background: rgba($white, 0.2); @include border-radius(4px); min-height: 28px;
+						&:after {
+							vertical-align: middle; content: ""; background: url(../images/icons/arrow-down.svg) no-repeat center right; background-size: contain; width: 10px; height: 10px; margin-left: 8px; display: inline-block; @include transition(0.3s, ease-in-out); border: none;
+						}	
+						.flag {
+							width: 16px; height: 16px; background-size: contain !important; display: inline-block; @include border-radius(50%); margin-right: 8px;
+							&.flag-aus {
+								background: url(../images/flag-australia.png) no-repeat center center;
+							}
+						}				
+						span {
+							font-weight: 400; font-size: 12px; text-transform: uppercase; display: inline-block; line-height: 0.7; z-index: 1; color: $white; margin-top: 2px;
 						}
-						> ul.sub-menu {
-							@include opacity(1); visibility: visible; @include transform(translateY(0px)); z-index: 99;
+						.show {
+							&::after {
+								@include transform(rotate(180deg));
+							}
 						}
 					}
 					.sub-menu {
-						visibility: hidden; @include opacity(0); @include transition(0.2s, ease-in-out); position: absolute; background-color: #fefefe; z-index: 1; margin: 0.40rem 0 0 0; @include transform(translateY(10px)); @include box-shadow(10px 14px 12px 2px rgba($black, 0.06)); min-width: 180px; padding: 10px; right: 0; left: auto; display: block;			
+						padding: 10px; right: 0; left: auto; @include border-radius(0);
+						&.show {
+							@include opacity(1); visibility: visible; @include transform(translateY(0px)); z-index: 99;
+						}		
 						li {
-							padding: 8px 15px; line-height: 0.7; border: none; margin-left: 0 !important;
+							padding: 8px 10px; line-height: 0.7; border: none; margin-right: 0 !important;
 							a {
-								@include flexbox; @include align-items(center); color: $darkblack; font-size: 13px; font-weight: 400;
+								@include flexbox; @include align-items(center); color: $darkblack; font-size: 13px; font-weight: 400; @include transition(0.3s, ease-in-out); 
 								.flag {
-									width: 20px; height: 20px; background-size: contain !important; display: inline-block; @include border-radius(50%); margin-right: 12px;
+									width: 20px; height: 20px; background-size: contain !important; display: inline-block; @include border-radius(50%); margin-right: 8px;
 									&.flag-nz {
 										background: url(../images/flag-new-zealand.png) no-repeat center center;
 									}
@@ -684,53 +675,14 @@ h5, .h5 {
 						}
 					}
 				}
-				.country-name {
-					max-width: 45px; max-height: 45px; min-width: 45px; min-height: 45px; @include border-radius(50%); background: #D9D9D9; @include flexbox; @include align-items(center); @include justify-content(center); position: relative;
-					@media (max-width:1199px) {
-						margin-left: 15px; margin-right: 25px;
-					}
-					@media (max-width:575px) {
-						margin-left: auto; margin-right: 15px; max-width: 35px; max-height: 35px; min-width: 35px; min-height: 35px;
-					}
-					&.country-aus {
-						background: url(../images/flag-australia.png) no-repeat center center; background-size: contain;
-					}
-					&::before {
-						content: ''; max-width: 45px; max-height: 45px; min-width: 45px; min-height: 45px; @include border-radius(50%); position: absolute; top: 0; left: 0; background: rgba(217, 217, 217, 0.7);
-						@media (maxx-width:575px) {
-							max-width: 35px; max-height: 35px; min-width: 35px; min-height: 35px;
-						}
-					}
-					span {
-						font-weight: 400; font-size: 16px; text-transform: uppercase; display: inline-block; line-height: 0.7; z-index: 1; color: $black;
-						@media (max-width:575px) {
-							font-size: 14px;
-						}
-					}
-					&.with-icon {
-						max-width: 100%; max-height: 100%; min-width: auto; min-height: auto; background: transparent; @include border-radius(0); @include justify-content(flex-start);
-						&:after {
-							vertical-align: middle; content: ""; background: url(../images/icons/arrow-down.svg) no-repeat center right; background-size: contain; width: 10px; height: 10px; margin-left: 8px; display: inline-block; @include transition(0.3s, ease-in-out);
-						}
-						&::before {
-							content: none;
-						}
-						.flag {
-							width: 24px; height: 24px; background-size: contain !important; display: inline-block; @include border-radius(50%); margin-right: 12px;
-							&.flag-aus {
-								background: url(../images/flag-australia.png) no-repeat center center;
-							}
-						}
-						span {
-							color: $white;
-						}
-					}
-				}
 			}
 		}
 	}
 	h5 {
 		color: $white; 
+		@media(max-width: 575px) {
+			margin-top: 20px;
+		}
 	}
 	.menu-list {
 		li {
@@ -750,7 +702,7 @@ h5, .h5 {
 		}
 	}
 	.copyright-block {
-		margin-top: 45px; padding: 20px 0 0; text-align: center; color: rgba($white, 0.6); font-size: 14px;
+		margin-top: 45px; text-align: center; color: rgba($white, 0.6); font-size: 14px;
 		.copyright-text-block {			
 			@media(max-width: 992px) {
 				display: block;
@@ -782,17 +734,17 @@ h5, .h5 {
 .check-list {
 	margin-bottom: 15px;
 	li {
-		@include flexbox; @include align-items(center); font-weight: 500; font-size: 18px; color: $black; margin-bottom: 25px; position: relative;
+		@include flexbox; @include align-items(center); font-weight: 500; font-size: 16px; color: $black; margin-bottom: 15px; position: relative;
 		@media (max-width: 1200px) { 
-            font-size: 16px;
+            font-size: 14px;
         }
 		&::before {
-			content: ''; background: url(../images/icons/icon-check-circle.svg) no-repeat center center; background-size: contain; min-width: 20px; max-width: 20px; min-height: 20px; display: inline-block; margin-right: 10px;
+			content: ''; background: url(../images/icons/icon-check-circle.svg) no-repeat center center; background-size: contain; min-width: 20px; max-width: 20px; min-height: 20px; display: inline-block; margin-right: 10px; @include transition(0.3s, ease-in-out);
 		}
 		a {
 			color: $black; @include transition(0.3s, ease-in-out); 
 			&::after {
-				content: ''; width: 0; height: 1px; background: $black; @include transition(0.3s, ease-in-out); position: absolute; top: auto; bottom: 0; left: 30px;
+				content: ''; width: 0; height: 1px; background: $primary; @include transition(0.3s, ease-in-out); position: absolute; top: auto; bottom: 0; left: 30px;
 			}
 		}
 		&:hover, &:focus {
@@ -896,8 +848,41 @@ h5, .h5 {
 		img {
 			@include border-radius(10px); width: 100%;
 		}
+		&:hover {
+			&.square-initiate-animation {
+				&::before, &::after {
+					animation: pulse 1s forwards infinite;
+					-webkit-animation: pulse 1s forwards infinite;
+				}
+			}
+		}
 	}
 	
+}
+@-webkit-keyframes pulse{
+	0% {
+		@include transform(scale(1));
+	}
+	50% {
+		@include transform(scale(1.02));
+	}
+	to {
+		@include transform(scale(1));
+	}
+}
+@keyframes pulse{
+	0% {
+		@include transform(scale(1));
+	}
+	50% {
+		@include transform(scale(1.02));
+	}
+	to {
+		@include transform(scale(1));
+	}
+}
+.animate__pulse{
+	-webkit-animation-name:pulse; animation-name:pulse; -webkit-animation-timing-function:ease-in-out; animation-timing-function:ease-in-out
 }
 .left-img-block {
 	.image-block {
@@ -926,7 +911,7 @@ h5, .h5 {
 	}
 }
 .info-card {
-	padding: 30px; @include border-radius(10px); position: relative; @include transition(0.3s, ease-in-out); background: $white;  height: 100%; display: block; border: 1px solid rgba($darkblack, 0.3); overflow: hidden;
+	padding: 30px; @include border-radius(10px); position: relative; @include transition(0.3s, ease-in-out); background: $white linear-gradient(#000, #000) bottom/0% 3px no-repeat; height: 100%; display: block; border: 1px solid rgba($darkblack, 0.3); overflow: hidden;
 	&::before {
 		content: ''; width: 35px; height: 35px; background: $black; background-size: contain; display: block; position: absolute; top: 15px; right: 15px; @include transition(0.3s,ease-in-out); visibility: hidden; @include opacity(0); @include transform (scale(0)); 
 	}
@@ -957,7 +942,7 @@ h5, .h5 {
 }
 a.info-card {
 	&:hover {
-		background: $primary; border-color: rgba($black, 0.15);  
+		background: $primary linear-gradient(#000, #000) bottom/0% 3px no-repeat; border-color: $primary; border-bottom: $black; background-size: 100% 3px; 
 		&::before {
 			visibility: visible; @include opacity(1);  @include transform (scale(1)); 
 		}
@@ -965,7 +950,7 @@ a.info-card {
 }
 
 .icon-box {
-	background: $white; @include border-radius(10px); @include flexbox; @include align-items(center); @include flex-direction(column); padding: 25px; position: relative; @include transition(0.3s, ease-in-out); max-height: 195px; border: 1px solid rgba($darkblack, 0.3); height: 100%;
+	background: $white linear-gradient(#000, #000) bottom/0% 3px no-repeat; @include border-radius(10px); @include flexbox; @include align-items(center); @include flex-direction(column); padding: 25px; position: relative; @include transition(0.3s, ease-in-out); max-height: 195px; border: 1px solid rgba($darkblack, 0.3); height: 100%;
 	@media (max-width: 1200px) {
 		padding: 20px;
     }
@@ -985,16 +970,18 @@ a.info-card {
 		}
 	}
 	.box-title {
-		font-weight: 600; font-size: 18px; text-transform: capitalize; color: $black; text-align: center;
+		font-weight: 600; font-size: 18px; text-transform: capitalize; color: $black; text-align: center; margin-bottom: 0;
 		@media (max-width: 992px) {
 			font-size: 16px;
 		}
 		@media (max-width: 575px) {
 			font-size: 14px;
 		}
-	}
+	}	
+}
+a.icon-box {
 	&:hover, &:focus {
-		background: $primary; border-color: $primary;
+		background: $primary linear-gradient(#000, #000) bottom/0% 3px no-repeat; border-color: $primary; border-bottom: $black; background-size: 100% 3px;
 	}
 }
 .horizontal-icon-box {
