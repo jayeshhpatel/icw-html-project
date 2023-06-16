@@ -1,0 +1,319 @@
+.gform_wrapper {
+	::placeholder {
+		color: #A0A0B8;
+	}
+	@include mobile {
+		margin-top: 2em;
+	}
+	.gform_body {
+		text-align: left;
+
+		.gfield {
+			input,
+			textarea,
+			select {
+				background: transparent;
+				border: none;
+				border-bottom: 1px solid #321BB2;
+				padding: 1em;
+				width: 100%;
+				font-family: $main-font;
+				color: #A0A0B8;
+				padding: 2rem 1rem 1rem !important;
+				font-size: 1.8rem !important;
+			}
+			label {
+				color: $text;
+			}
+			.ginput_container_fileupload {
+				span {
+					color: #ffffff;
+				}
+				.gform_fileupload_rules {
+					display: none;
+				}
+			}
+			.ginput_container_select {
+				option {
+					background-color: #00000099;
+					color: #ffffff;
+				}
+			}
+			textarea.medium {
+				height: 12rem !important;
+			}
+		}
+	}
+	.gform_footer {
+		flex-direction: column;
+
+		input {
+			background-color: #321bb2;
+			border: 1px solid #321bb2;
+			color: #fff;
+			border-radius: 30px;
+			padding: 1.4rem 4.4rem;
+			font-weight: 700;
+			font-size: 1.4rem;
+			letter-spacing: 0.05rem;
+			display: inline-block;
+			transition: 0.3s all ease;
+			cursor: pointer;
+
+			@include mobile {
+				align-self: center !important;
+			}
+		}
+	}
+}
+select {
+	cursor: pointer;
+	border-radius: .25em;
+}
+.hubspot-form {
+	margin-top: 4rem;
+
+	::placeholder {
+		color: #A0A0B8;
+	}
+	@include mobile {
+		form {
+			text-align: left;
+		}
+	}
+	label {
+		color: #A0A0B8;
+		padding-left: 1.4rem;
+		font-size: 1.6rem;
+	}
+	input,
+	textarea,
+	select {
+		background: transparent;
+		border: none;
+		border-bottom: 1px solid #321BB2;
+		width: 100%;
+		font-family: $main-font;
+		padding: 10px 15px;
+		color: #fff;
+		font-size: 16px !important;
+		resize: none !important;
+		// &:focus-within{
+		// 	outline: -webkit-focus-ring-color auto 1px;
+		// }
+		// &:focus-visible{
+		// 	outline: none;
+		// }
+		&.error{
+			border-bottom: 1px solid red;
+		}
+		&::-webkit-input-placeholder {
+			color: #ffffff;
+		}
+		&::-moz-placeholder {
+			color: #ffffff;
+		}
+		&:-ms-input-placeholder {
+			color: #ffffff;
+		}
+		&:-moz-placeholder {
+			color: #ffffff;
+		}
+	}
+	option {
+		background-color: #00000099;
+		color: #ffffff;
+	}
+	.hs-error-msg{
+		padding: 0;
+		font-size: 13px;
+		color: red;
+	}
+	.hs-error-msgs {
+		padding: 0;
+		margin: 0;
+		line-height: normal;
+	}
+	.hs_error_rollup {
+		display: none !important;
+	}
+	.hs-form-field {
+		margin-bottom: 2rem;
+		>label{
+			margin-bottom: 10px;
+			display: block;
+			@media (max-width:991px) {
+				margin-bottom: 5px;
+			}
+		}
+	}
+	.hs-submit {
+		display: flex;
+		flex-direction: row-reverse;
+
+		input[type=submit] {
+			background: #321BB2;
+			border: 1px solid #321BB2;
+			color: #fff;
+			font-family: $main-font;
+			padding: 0.8rem 3rem !important;
+			border-radius: 21px;
+			margin-top: 2rem;
+			cursor: pointer;
+		}
+	}
+	.submitted-message {
+		color: #fff;
+	}
+	.hs-fieldtype-file {
+		input {
+			&:after {
+				content: url(https://www.codium.ai/wp-content/uploads/2023/03/upload-icon.svg);
+				float: right;
+				cursor: pointer;
+			}
+		}
+	}
+	.hs-fieldtype-select {
+		.input {
+			position: relative;
+
+			select {
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				text-indent: 1px;
+				text-overflow: '';
+
+				option {
+					background-color: #fff;
+					color: #222;
+					font-size: 16px;
+				}
+			}
+			&:after {
+				content: '';
+				background-image: url(https://www.codium.ai/wp-content/uploads/2023/02/arrow-grey2.svg);
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				padding-right: 2em;
+				-webkit-transition: .25s all ease;
+				transition: .25s all ease;
+				pointer-events: none;
+				background-repeat: no-repeat;
+				background-position: 50%;
+				background-size: 50%;
+			}
+		}
+	}
+	.hs-fieldtype-select{
+		.hs-input{
+			display: none !important;
+		}
+		.input{
+			&::after{
+				display: none;
+			}
+		}
+	}
+	.select2.select2-container {
+		width: 100% !important;
+		&.select2-container--open{
+			.select2-selection__arrow{
+				transform: scaleY(-1);
+			}
+		}
+		.select2-selection {
+			border: none;
+			border-bottom: 1px solid #321BB2;
+			background-color: transparent;
+			border-radius: 0;
+			outline: none !important;
+			-webkit-transition: all .15s ease-in-out;
+			transition: all .15s ease-in-out;
+			min-height: 44px;
+			display: flex;
+			align-items: center;
+			position: relative;
+			padding:0 30px 0 15px;
+			span{
+				font-size: 16px;
+				color: #ffffff;
+				padding: 0;
+			}
+			.select2-selection__placeholder{
+				color: #cccccc;
+			}
+		}
+		.select2-selection__arrow{
+			top: 14px;
+			width: 20px;
+			right: 10px;
+			height: 20px;
+			background: url(https://www.codium.ai/wp-content/uploads/2023/02/arrow-grey2.svg) no-repeat center center;
+			background-size: 13px;
+			b{
+				display: none;
+			}
+		}
+	}
+}
+.select2-container{
+	.select2-dropdown--below{
+		&.select2-dropdown{
+			border-radius: 0 0 10px 10px;
+			overflow: hidden;
+		}
+	}
+	.select2-dropdown{
+		background-color: #321BB2;
+		border: none;
+		ul{
+			padding: 5px 0;
+			&.select2-results__options {
+				max-height: 280px;
+			}
+			&::-webkit-scrollbar {
+				background-color: transparent;
+				width: 7px;
+				height: 7px;
+				border-radius: 16px;
+			}
+			&::-webkit-scrollbar-thumb {
+				background-color: #ffffff;
+				border-radius: 16px;
+			}
+			&::-webkit-scrollbar-track {
+				background-color: rgba(6,147,227,0.05);
+			}
+			li{
+				color: #ffffff;
+				font-size: 14px;
+				padding: 10px 20px;
+				line-height: normal;
+			}
+		}
+	}
+	.select2-search--dropdown {
+		display: block;
+		padding: 15px 20px;
+		.select2-search__field {
+			border: 1px solid #00e3b1 !important;
+			min-height: 40px;
+			background-color: transparent;
+			border-radius: 5px;
+			color: #ffffff;
+			font-size: 15px;
+			padding: 0 18px;
+			outline: none;
+			font-family: $main-font;
+		}
+	}
+	&.select2-container--default{
+		.select2-results__option--highlighted[aria-selected],.select2-results__option[aria-selected=true] {
+			background-color: #00e3b1;
+			color: #000000;
+		}
+	}
+}
