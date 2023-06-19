@@ -658,7 +658,7 @@
             height: 100%;
           }
           .slider--item-bg {
-            background: url(https://www.codium.ai/wp-content/uploads/2023/03/join-slider-decor.svg);
+            background: url(/wp-content/uploads/2023/03/join-slider-decor.svg);
             position: absolute;
             top: 0;
             left: 0;
@@ -675,21 +675,51 @@
               backdrop-filter: blur(0);
             }
           }
-          &-quote p {
-            color: #ffffff;
-            margin: 0;
-            font-size: 1.6rem;
-            position: relative;
-            z-index: 1;
-            text-align: left;
-            @include mobile {
-              font-size: 4vw;
-              // display: -webkit-box;
-              // overflow: hidden;
-              // -webkit-line-clamp: 7;
-              // -webkit-box-orient: vertical;
+          &-quote {
+            p {
+              color: #ffffff;
+              margin: 0;
+              font-size: 1.6rem;
+              position: relative;
+              z-index: 1;
+              text-align: left;
+              @include mobile {
+                font-size: 1.6rem;
+              }
+              strong {
+                color: #05E5AD;
+              }
+              span {
+                color: #05E5AD;
+              }
+              a {
+                color: #05E5AD;
+                text-decoration: none;
+                text-underline-offset: 4px;
+                font-weight: 700;
+                &:hover, &:focus {
+                  color: #05E5AD;
+
+                  text-decoration: underline;
+                }
+              }
+            }
+            .slider-star {
+              padding-top: 8px;
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+
+              span {
+                flex: none;
+                min-width: 14px;
+                width: 14px;
+                height: 14px;
+                margin-right: 3px;
+              }
             }
           }
+          
           &-content {
             position: relative;
             z-index: 1;
@@ -699,7 +729,7 @@
             &-inner {
               display: flex;
               flex-direction: column;
-              justify-content: space-around;
+              justify-content: center;
               align-items: baseline;
             }
             img {
@@ -715,8 +745,9 @@
               color: #a0a0b8;
               font-weight: 400;
               font-size: 1.8rem;
+              padding-bottom: 5px;
               @include mobile {
-                font-size: 4vw;
+                font-size: 1.8rem;
               }
             }
             .slider-date {
@@ -725,7 +756,7 @@
               font-size: 1.4rem;
               font-weight: 700;
               @include mobile {
-                font-size: 2.4vw;
+                font-size: 1.4rem;
               }
             }
           }
