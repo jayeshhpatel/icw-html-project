@@ -62,6 +62,20 @@
                             </nav>
                         </div>
                         <div class="site-header--menu-cta-right desktop">
+                            <div class="marketplace-value-block">
+                                <div class="marketplace-value-box">
+                                    <img src="assets/icons/visual-studio-icon.svg" alt="Visual Studio">
+                                    <div class="value">
+                                        <em class="icon-star"></em><span>49k</span>
+                                    </div>
+                                </div>
+                                <div class="marketplace-value-box">
+                                    <img src="assets/icons/jetbrains-icon.svg" alt="JetBrains">
+                                    <div class="value">
+                                        <em class="icon-star"></em><span>22k</span>
+                                    </div>
+                                </div>
+                            </div>
                             <a href="#" target="_blank" class="btn btn-grey"><img src="assets/icons/discord-puple.svg" width="20px" height="16px" alt="" data-lazy-src="assets/icons/discord-puple.svg" data-ll-status="loaded" class="entered lazyloaded"><noscript><img src="assets/icons/discord-puple.svg" width="20px" height="16px" alt=""></noscript>JOIN OUR DISCORD</a>
                             <div class="header-dropdown">
                                 <button type="button" class="btn btn-green btn-has">Get CodiumAI</button>
@@ -619,6 +633,20 @@
                         </li>
                     </ul>
                 </div>
+            </div>            
+            <div class="marketplace-value-block">
+                <div class="marketplace-value-box">
+                    <img src="assets/icons/visual-studio-icon.svg" alt="Visual Studio">
+                    <div class="value">
+                        <em class="icon-star"></em><span>49k</span>
+                    </div>
+                </div>
+                <div class="marketplace-value-box">
+                    <img src="assets/icons/jetbrains-icon.svg" alt="JetBrains">
+                    <div class="value">
+                        <em class="icon-star"></em><span>22k</span>
+                    </div>
+                </div>
             </div>
             <div class="mobile-header-cta">
                 <a href="https://discord.gg/SgSxuQ65GF" target="_blank" class="btn btn-grey">
@@ -648,269 +676,268 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>    
         <script src='assets/lib/highlightjs/highlight-icw.js?ver=1687165670'></script>
-        <script src="assets/js/main.js"></script>
-    
-    <script type="rocketlazyloadscript">
-        // hljs.addPlugin(new CopyButtonPlugin());
-        const preElement = document.createElement("pre");
-        const codeElement = document.createElement("code");
-        preElement.classList.add("language-python");
-        preElement.appendChild(codeElement);
+        <script src="assets/js/main.js"></script>    
+        <script type="rocketlazyloadscript">
+            // hljs.addPlugin(new CopyButtonPlugin());
+            const preElement = document.createElement("pre");
+            const codeElement = document.createElement("code");
+            preElement.classList.add("language-python");
+            preElement.appendChild(codeElement);
 
-        function createInnerElement() {
-            document.querySelector(".slideshow-container button.btn-green").disabled = true;
-            const slideshowContainer = document.querySelector(".slideshow-container");
-            const backgroundDiv = document.createElement("div");
-            backgroundDiv.classList.add("backgroundDiv");
-            const preElementClone = preElement.cloneNode(true);
-            preElementClone.childNodes[0].innerHTML = `import unittest
-    from math import nan, isnan
-    import numpy as np
-    from ..gaussian_elimination import gaussian_elimination
-
-
-
-
-    class TestGaussianElimination(unittest.TestCase):
-
-
-    def test_valid_input_with_unique_solution(self):
-        # Test with a system of linear equations that has a unique solution
-        coefficients = np.array([[2, 1, -1], [4, -6, 0], [-2, 7, 2]])
-        vector = np.array([[8], [-2], [7]])
-        expected_output = np.array([[2.5], [2], [-1]])
-        results = gaussian_elimination(coefficients, vector)
-        self.assertTrue(np.allclose(results, expected_output))
-
-
-    def test_valid_input_with_multiple_solutions(self):
-        # Test with a system of linear equations that has multiple solutions
-        coefficients = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-        vector = np.array([[6], [15], [24]])
-        expected_output = np.array([[1], [1], [1]]) # one possible solution
-        results = gaussian_elimination(coefficients, vector)
-        self.assertTrue(np.allclose(results, expected_output))
-
-
-    def test_valid_input_with_no_solution(self):
-        # Test with a system of linear equations that has no solution
-        coefficients = np.array([[1, 2, -1], [2, 4, -2], [-1, -2, 1]])
-        vector = np.array([[1], [0], [0]])
-        expected_output = np.array([[nan], [nan], [nan]])
-        results = gaussian_elimination(coefficients, vector)
-        self.assertTrue(isnan(results[0]) and isnan(results[1]) and isnan(results[2]))
-
-
-    def test_empty_input_arrays(self):
-        # Test with empty input arrays
-        coefficients = np.array([])
-        vector = np.array([])
-        expected_output = np.array(([]), dtype=float)
-        self.assertTrue(np.array_equal(gaussian_elimination(coefficients, vector), expected_output))
-
-
-    def test_input_arrays_with_incorrect_dimensions(self):
-        # Test with input arrays that have incorrect dimensions
-        coefficients = np.array([[1, 2], [3, 4], [5, 6]])
-        vector = np.array([[1], [2]])
-        expected_output = np.array((), dtype=float)
-        self.assertTrue(np.array_equal(gaussian_elimination(coefficients, vector), expected_output))
-
-
-    def test_invalid_input(self):
-        # Test with invalid input: ValueError should be raised
-        coefficients = np.array([[1, 2], [3, 4]])
-        vector = np.array([[1], [2], [3]])
-        with self.assertRaises(ValueError):
-            gaussian_elimination(coefficients, vector)`;
-
-            const button = document.createElement("button");
-            const nextSlideButtonDiv = document.createElement("div");
-            nextSlideButtonDiv.classList.add("demo-inner-btn");
-            button.onclick = () => changeInnerText(1);
-            button.classList.add("next-slide-button", "btn");
-            button.innerHTML = "Make this with PyTest";
-            preElementClone.classList.add("inner-slide");
-            triggerHighlight(preElementClone.childNodes[0]);
-            //   hljs.highlightElement(preElementClone.childNodes[0]);
-            nextSlideButtonDiv.appendChild(button)
-            preElementClone.childNodes[0].appendChild(nextSlideButtonDiv);
-            backgroundDiv.appendChild(preElementClone);
-            slideshowContainer.appendChild(backgroundDiv);
-        }
-
-        function changeInnerText(index) {
-            const button = document.createElement("button");
-            button.classList.add("next-slide-button", "btn");
-            const nextSlideButtonDiv = document.createElement("div");
-            nextSlideButtonDiv.classList.add("demo-inner-btn");
-            nextSlideButtonDiv.appendChild(button);
-            switch (index) {
-                case 1:
-                    button.onclick = () => changeInnerText(2);
-                    button.innerHTML = "Give me more";
-                    document.querySelector(".inner-slide code").innerHTML = `import pytest
-    from math import nan, isnan
-    import numpy as np
-    from ..gaussian_elimination import gaussian_elimination
-
-
-
-    class TestGaussianElimination:
-
-
-    def test_valid_input_with_unique_solution(self):
-        # Test with valid input that has a unique solution
-        coefficients = np.array([[2, 1, -1], [-3, -1, 2], [-2, 1, 2]])
-        vector = np.array([[8], [-11], [-3]])
-        expected_output = np.array([[2], [3], [-1]])
-        assert np.allclose(gaussian_elimination(coefficients, vector), expected_output)
-
-
-    def test_valid_input_with_multiple_solutions(self):
-        # Test with valid input that has multiple solutions
-        coefficients = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-        vector = np.array([[6], [15], [24]])
-        expected_output = np.array([[1], [1], [1]]) # one of the possible solutions
-        assert np.allclose(gaussian_elimination(coefficients, vector), expected_output)
-
-
-    def test_valid_input_with_no_solution(self):
-        # Test with valid input that has no solution
-        coefficients = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-        vector = np.array([[6], [15], [25]])
-        assert np.isnan(gaussian_elimination(coefficients, vector)).all()
-
-
-    def test_empty_input_arrays(self):
-        # Test with empty input arrays
-        coefficients = np.array([])
-        vector = np.array([])
-        assert np.array_equal(gaussian_elimination(coefficients, vector), np.array([], dtype=float))
-
-
-    def test_input_arrays_with_incorrect_dimensions(self):
-        # Test with input arrays that have incorrect dimensions
-        coefficients = np.array([[1, 2], [3, 4], [5, 6]])
-        vector = np.array([[1], [2]])
-        assert np.array_equal(gaussian_elimination(coefficients, vector), np.array([], dtype=float))
+            function createInnerElement() {
+                document.querySelector(".slideshow-container button.btn-green").disabled = true;
+                const slideshowContainer = document.querySelector(".slideshow-container");
+                const backgroundDiv = document.createElement("div");
+                backgroundDiv.classList.add("backgroundDiv");
+                const preElementClone = preElement.cloneNode(true);
+                preElementClone.childNodes[0].innerHTML = `import unittest
+        from math import nan, isnan
+        import numpy as np
+        from ..gaussian_elimination import gaussian_elimination
 
 
 
 
-    def test_invalid_input(self):
-        # Test with invalid input
-        coefficients = np.array([[1, 2], [3, 4]])
-        vector = np.array([[1], [2], [3]])
-        assert np.array_equal(gaussian_elimination(coefficients, vector), np.array([], dtype=float))`;
-                    //   hljs.highlightElement(document.querySelector(".inner-slide code"));
-                    triggerHighlight(document.querySelector(".inner-slide code"));
-                    document.querySelector(".inner-slide code").appendChild(nextSlideButtonDiv);
-                    break;
-                case 2:
-                    button.onclick = () => changeInnerText(3);
-                    button.innerHTML = "Try negative values & funny pirate-like comments";
-                    document.querySelector(".inner-slide code").innerHTML = `import pytest
-    from math import nan, isnan
-    import numpy as np
-    from ..gaussian_elimination import gaussian_elimination
+        class TestGaussianElimination(unittest.TestCase):
 
 
+        def test_valid_input_with_unique_solution(self):
+            # Test with a system of linear equations that has a unique solution
+            coefficients = np.array([[2, 1, -1], [4, -6, 0], [-2, 7, 2]])
+            vector = np.array([[8], [-2], [7]])
+            expected_output = np.array([[2.5], [2], [-1]])
+            results = gaussian_elimination(coefficients, vector)
+            self.assertTrue(np.allclose(results, expected_output))
 
 
-    class TestGaussianElimination:
+        def test_valid_input_with_multiple_solutions(self):
+            # Test with a system of linear equations that has multiple solutions
+            coefficients = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+            vector = np.array([[6], [15], [24]])
+            expected_output = np.array([[1], [1], [1]]) # one possible solution
+            results = gaussian_elimination(coefficients, vector)
+            self.assertTrue(np.allclose(results, expected_output))
 
 
-    def test_matrix_already_triangular(self):
-        # Test with a matrix that is already triangular
-        coefficients = np.array([[1, 0, 0], [2, 3, 0], [4, 5, 6]], dtype=float)
-        vector = np.array([[1], [2], [3]], dtype=float)
-        expected_output = np.array([[1], [0], [-1/6]], dtype=float)
-        assert np.allclose(gaussian_elimination(coefficients, vector), expected_output)
+        def test_valid_input_with_no_solution(self):
+            # Test with a system of linear equations that has no solution
+            coefficients = np.array([[1, 2, -1], [2, 4, -2], [-1, -2, 1]])
+            vector = np.array([[1], [0], [0]])
+            expected_output = np.array([[nan], [nan], [nan]])
+            results = gaussian_elimination(coefficients, vector)
+            self.assertTrue(isnan(results[0]) and isnan(results[1]) and isnan(results[2]))
 
 
-    def test_singular_matrix(self):
-        # Test with a singular matrix
-        coefficients = np.array([[1, 2, 3], [1, 2, 3], [7, 8, 9]], dtype=float)
-        vector = np.array([[1], [2], [3]], dtype=float)
-        expected_output = np.array((), dtype=float)
-        assert np.array_equal(gaussian_elimination(coefficients, vector), expected_output)
+        def test_empty_input_arrays(self):
+            # Test with empty input arrays
+            coefficients = np.array([])
+            vector = np.array([])
+            expected_output = np.array(([]), dtype=float)
+            self.assertTrue(np.array_equal(gaussian_elimination(coefficients, vector), expected_output))
 
 
-    def test_ill_conditioned_matrix(self):
-        # Test with an ill-conditioned matrix
-        coefficients = np.array([[1e-10, 1], [1, 1]], dtype=float)
-        vector = np.array([[1], [2]], dtype=float)
-        expected_output = np.array([[1], [1]], dtype=float)
-        assert np.allclose(gaussian_elimination(coefficients, vector), expected_output);
-                    //   hljs.highlightElement(document.querySelector(".inner-slide code"));
-                    triggerHighlight(document.querySelector(".inner-slide code"));
-                    document.querySelector(".inner-slide code").appendChild(nextSlideButtonDiv);
-                    break;
-                case 3:
-                    button.onclick = () => changeInnerText(4);
-                    button.innerHTML = "Thanks this works great!";
-                    document.querySelector(".inner-slide code").innerHTML = `import pytest
-    from math import nan, isnan
-    import numpy as np
-    from ..gaussian_elimination import gaussian_elimination
+        def test_input_arrays_with_incorrect_dimensions(self):
+            # Test with input arrays that have incorrect dimensions
+            coefficients = np.array([[1, 2], [3, 4], [5, 6]])
+            vector = np.array([[1], [2]])
+            expected_output = np.array((), dtype=float)
+            self.assertTrue(np.array_equal(gaussian_elimination(coefficients, vector), expected_output))
 
 
+        def test_invalid_input(self):
+            # Test with invalid input: ValueError should be raised
+            coefficients = np.array([[1, 2], [3, 4]])
+            vector = np.array([[1], [2], [3]])
+            with self.assertRaises(ValueError):
+                gaussian_elimination(coefficients, vector)`;
 
-    class TestGaussianElimination:
-
-
-    def test_input_arrays_with_float_and_negative_values(self):
-        """
-        Ahoy matey! Let's test this function with some tricky input arrays.
-        We'll use float and negative values to make sure it can handle them properly.
-
-
-        Why did the pirate go to the Gaussian elimination party?
-        To solve the system of arrrrrrrrrrrrrrrrrrrrrrghquations!
-        """
-        # Test case 1
-        coefficients = np.array([[1.0, 2.0, -3.0], [4.0, -5.0, 6.0], [7.0, 8.0, 9.0]])
-        vector = np.array([[-1.0], [2.0], [3.0]])
-        expected_output = np.array([[0.09090909], [-0.63636364], [0.72727273]]) #verify
-        assert np.allclose(gaussian_elimination(coefficients, vector), expected_output)
-
-
-        # Test case 2
-        coefficients = np.array([[2.0, -3.0, 4.0], [5.0, 6.0, -7.0], [-8.0, 9.0, 10.0]])
-        vector = np.array([[1.0], [-2.0], [3.0]])
-        expected_output = np.array([[0.5], [-1.0], [1.5]]) #verify
-        assert np.allclose(gaussian_elimination(coefficients, vector), expected_output)
-
-
-        # Test case 3
-        coefficients = np.array([[1.0, 2.0], [3.0, 4.0]])
-        vector = np.array([[-1.0], [-2.0]])
-        expected_output = np.array([[-3.], [2.]]) #verify
-        assert np.allclose(gaussian_elimination(coefficients, vector), expected_output)
-    `;
-                    //   hljs.highlightElement(document.querySelector(".inner-slide code"));
-                    triggerHighlight(document.querySelector(".inner-slide code"));
-                    document.querySelector(".inner-slide code").appendChild(nextSlideButtonDiv);
-                    break;
-                case 4:
-                    // 	document.querySelector(".backgroundDiv").style.height = '0px';
-                    //   setTimeout(() => {
-                    // 	document.querySelector(".backgroundDiv").remove();
-                    // }, 500);
-                    const preElement = document.querySelector(".inner-slide");
-                    preElement.classList.remove("inner-slide");
-                    preElement.classList.add("slide-right");
-                    setTimeout(() => {
-                        document.querySelector(".backgroundDiv").remove();
-                        document.querySelector(".slideshow-container button.btn-green").disabled = false;
-                    }, 500);
-                    break;
-
-                default:
-                    break;
+                const button = document.createElement("button");
+                const nextSlideButtonDiv = document.createElement("div");
+                nextSlideButtonDiv.classList.add("demo-inner-btn");
+                button.onclick = () => changeInnerText(1);
+                button.classList.add("next-slide-button", "btn");
+                button.innerHTML = "Make this with PyTest";
+                preElementClone.classList.add("inner-slide");
+                triggerHighlight(preElementClone.childNodes[0]);
+                //   hljs.highlightElement(preElementClone.childNodes[0]);
+                nextSlideButtonDiv.appendChild(button)
+                preElementClone.childNodes[0].appendChild(nextSlideButtonDiv);
+                backgroundDiv.appendChild(preElementClone);
+                slideshowContainer.appendChild(backgroundDiv);
             }
-        }
-    </script>
+
+            function changeInnerText(index) {
+                const button = document.createElement("button");
+                button.classList.add("next-slide-button", "btn");
+                const nextSlideButtonDiv = document.createElement("div");
+                nextSlideButtonDiv.classList.add("demo-inner-btn");
+                nextSlideButtonDiv.appendChild(button);
+                switch (index) {
+                    case 1:
+                        button.onclick = () => changeInnerText(2);
+                        button.innerHTML = "Give me more";
+                        document.querySelector(".inner-slide code").innerHTML = `import pytest
+        from math import nan, isnan
+        import numpy as np
+        from ..gaussian_elimination import gaussian_elimination
+
+
+
+        class TestGaussianElimination:
+
+
+        def test_valid_input_with_unique_solution(self):
+            # Test with valid input that has a unique solution
+            coefficients = np.array([[2, 1, -1], [-3, -1, 2], [-2, 1, 2]])
+            vector = np.array([[8], [-11], [-3]])
+            expected_output = np.array([[2], [3], [-1]])
+            assert np.allclose(gaussian_elimination(coefficients, vector), expected_output)
+
+
+        def test_valid_input_with_multiple_solutions(self):
+            # Test with valid input that has multiple solutions
+            coefficients = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+            vector = np.array([[6], [15], [24]])
+            expected_output = np.array([[1], [1], [1]]) # one of the possible solutions
+            assert np.allclose(gaussian_elimination(coefficients, vector), expected_output)
+
+
+        def test_valid_input_with_no_solution(self):
+            # Test with valid input that has no solution
+            coefficients = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+            vector = np.array([[6], [15], [25]])
+            assert np.isnan(gaussian_elimination(coefficients, vector)).all()
+
+
+        def test_empty_input_arrays(self):
+            # Test with empty input arrays
+            coefficients = np.array([])
+            vector = np.array([])
+            assert np.array_equal(gaussian_elimination(coefficients, vector), np.array([], dtype=float))
+
+
+        def test_input_arrays_with_incorrect_dimensions(self):
+            # Test with input arrays that have incorrect dimensions
+            coefficients = np.array([[1, 2], [3, 4], [5, 6]])
+            vector = np.array([[1], [2]])
+            assert np.array_equal(gaussian_elimination(coefficients, vector), np.array([], dtype=float))
+
+
+
+
+        def test_invalid_input(self):
+            # Test with invalid input
+            coefficients = np.array([[1, 2], [3, 4]])
+            vector = np.array([[1], [2], [3]])
+            assert np.array_equal(gaussian_elimination(coefficients, vector), np.array([], dtype=float))`;
+                        //   hljs.highlightElement(document.querySelector(".inner-slide code"));
+                        triggerHighlight(document.querySelector(".inner-slide code"));
+                        document.querySelector(".inner-slide code").appendChild(nextSlideButtonDiv);
+                        break;
+                    case 2:
+                        button.onclick = () => changeInnerText(3);
+                        button.innerHTML = "Try negative values & funny pirate-like comments";
+                        document.querySelector(".inner-slide code").innerHTML = `import pytest
+        from math import nan, isnan
+        import numpy as np
+        from ..gaussian_elimination import gaussian_elimination
+
+
+
+
+        class TestGaussianElimination:
+
+
+        def test_matrix_already_triangular(self):
+            # Test with a matrix that is already triangular
+            coefficients = np.array([[1, 0, 0], [2, 3, 0], [4, 5, 6]], dtype=float)
+            vector = np.array([[1], [2], [3]], dtype=float)
+            expected_output = np.array([[1], [0], [-1/6]], dtype=float)
+            assert np.allclose(gaussian_elimination(coefficients, vector), expected_output)
+
+
+        def test_singular_matrix(self):
+            # Test with a singular matrix
+            coefficients = np.array([[1, 2, 3], [1, 2, 3], [7, 8, 9]], dtype=float)
+            vector = np.array([[1], [2], [3]], dtype=float)
+            expected_output = np.array((), dtype=float)
+            assert np.array_equal(gaussian_elimination(coefficients, vector), expected_output)
+
+
+        def test_ill_conditioned_matrix(self):
+            # Test with an ill-conditioned matrix
+            coefficients = np.array([[1e-10, 1], [1, 1]], dtype=float)
+            vector = np.array([[1], [2]], dtype=float)
+            expected_output = np.array([[1], [1]], dtype=float)
+            assert np.allclose(gaussian_elimination(coefficients, vector), expected_output);
+                        //   hljs.highlightElement(document.querySelector(".inner-slide code"));
+                        triggerHighlight(document.querySelector(".inner-slide code"));
+                        document.querySelector(".inner-slide code").appendChild(nextSlideButtonDiv);
+                        break;
+                    case 3:
+                        button.onclick = () => changeInnerText(4);
+                        button.innerHTML = "Thanks this works great!";
+                        document.querySelector(".inner-slide code").innerHTML = `import pytest
+        from math import nan, isnan
+        import numpy as np
+        from ..gaussian_elimination import gaussian_elimination
+
+
+
+        class TestGaussianElimination:
+
+
+        def test_input_arrays_with_float_and_negative_values(self):
+            """
+            Ahoy matey! Let's test this function with some tricky input arrays.
+            We'll use float and negative values to make sure it can handle them properly.
+
+
+            Why did the pirate go to the Gaussian elimination party?
+            To solve the system of arrrrrrrrrrrrrrrrrrrrrrghquations!
+            """
+            # Test case 1
+            coefficients = np.array([[1.0, 2.0, -3.0], [4.0, -5.0, 6.0], [7.0, 8.0, 9.0]])
+            vector = np.array([[-1.0], [2.0], [3.0]])
+            expected_output = np.array([[0.09090909], [-0.63636364], [0.72727273]]) #verify
+            assert np.allclose(gaussian_elimination(coefficients, vector), expected_output)
+
+
+            # Test case 2
+            coefficients = np.array([[2.0, -3.0, 4.0], [5.0, 6.0, -7.0], [-8.0, 9.0, 10.0]])
+            vector = np.array([[1.0], [-2.0], [3.0]])
+            expected_output = np.array([[0.5], [-1.0], [1.5]]) #verify
+            assert np.allclose(gaussian_elimination(coefficients, vector), expected_output)
+
+
+            # Test case 3
+            coefficients = np.array([[1.0, 2.0], [3.0, 4.0]])
+            vector = np.array([[-1.0], [-2.0]])
+            expected_output = np.array([[-3.], [2.]]) #verify
+            assert np.allclose(gaussian_elimination(coefficients, vector), expected_output)
+        `;
+                        //   hljs.highlightElement(document.querySelector(".inner-slide code"));
+                        triggerHighlight(document.querySelector(".inner-slide code"));
+                        document.querySelector(".inner-slide code").appendChild(nextSlideButtonDiv);
+                        break;
+                    case 4:
+                        // 	document.querySelector(".backgroundDiv").style.height = '0px';
+                        //   setTimeout(() => {
+                        // 	document.querySelector(".backgroundDiv").remove();
+                        // }, 500);
+                        const preElement = document.querySelector(".inner-slide");
+                        preElement.classList.remove("inner-slide");
+                        preElement.classList.add("slide-right");
+                        setTimeout(() => {
+                            document.querySelector(".backgroundDiv").remove();
+                            document.querySelector(".slideshow-container button.btn-green").disabled = false;
+                        }, 500);
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        </script>
     </body>
 </html>
