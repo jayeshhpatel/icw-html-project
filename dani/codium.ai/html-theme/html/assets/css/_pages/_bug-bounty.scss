@@ -84,9 +84,7 @@
 }
 .check-list {
     padding: 0; margin: 0;
-    @media(min-width: 1220px) {
-        margin-left: 40px;
-    }
+   
     li {
         position: relative; padding-left: 35px; margin-bottom: 20px; line-height: 1.5;
         &::before {
@@ -258,6 +256,83 @@
             }
             @media(max-width: 575px) {
                 margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+.nobg {
+    background: transparent !important;
+}
+.left-content-block {
+    .section-title {
+        h2 {
+            color: #01012A; margin-bottom: 15px;
+        }
+        .sort-info {
+            color: rgba(#01012A, 0.6); font-size: 18px; line-height: 1.5; max-width: 570px;
+        }
+    }
+    .check-list {
+        margin-top: 40px;
+        @media (max-width: 767px) {
+            margin-top: 25px;
+        }
+        li {
+            color: #01012A !important;
+        }
+    }
+}
+.right-content-block {
+    height: 100%;
+}
+.with-bg-content-block {
+    background: url(../images/list-bg.jpg) no-repeat center center; background-size: cover; height: 100%; padding: 70px; @include border-radius(25px); overflow: hidden; position: relative; z-index: 1;
+    @media (max-width: 1440px) {
+        padding: 50px;
+    }
+    @media (max-width: 992px) {
+        margin-top: 30px;
+    }
+    @media (max-width: 767px) {
+        padding: 25px;
+    }
+    &::before {
+        content: ''; background: url(../images/circle-img-7.png) no-repeat center center; width: 275px; height: 165px; display: block; position: absolute; right: -60px; top: 150px; background-size: cover; z-index: -1;
+        @media (max-width: 767px) {
+            content: none;
+        }
+    }
+    .sort-info {
+        color: #ffffff; line-height: 1.5; font-size: 18px;
+    }
+}
+.with-bg-number-list {
+    counter-reset: list-number; margin: 0; padding: 0; margin-top: 30px;
+    li {
+        position: relative; margin-bottom: 10px; line-height: 1.5; background: #ffffff; @include border-radius(15px); padding: 20px;
+        @media (max-width: 767px) {
+            padding: 15px; font-size: 16px;
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+        div { 
+            position: relative; padding-left: 35px; @include inline-flex;
+            &::before {
+                width: 24px; height: 24px; min-width: 24px; min-height: 24px; background: url(../images/number-list-bg.png) no-repeat center center; @include inline-flex; @include align-items(center); @include justify-content(center); @include border-radius(50%); margin-right: 10px; color: #FFFFFF; font-weight: 700; font-size: 12px; counter-increment: list-number; content: counter(list-number); position: absolute; top: 2px; left: 0;
+                @media (max-width: 767px) {
+                    top: 0;
+                }
+            }
+            span {
+                color: #684BFE;
+            }
+            a {
+                color: #05E5AD; @include transition(0.3s, ease-in-out);
+                &:hover, &:focus {
+                    color: #01012a;
+                }
             }
         }
     }
