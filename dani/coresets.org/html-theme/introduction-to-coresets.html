@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name='robots' content='noindex, nofollow' />
     <title>Introduction to Coresets - Coresets</title>
+    <link rel='stylesheet' id='icw-main-css' href='assets/css/coresets.css' type='text/css' media='all' />
     <link rel='stylesheet' id='icw-main-css' href='assets/css/main.css' type='text/css' media='all' />
     <script type='text/javascript' src='assets/js/jquery.min.js'></script>
     <script type='text/javascript' src='assets/js/jquery-migrate.min.js'></script>
@@ -67,141 +68,78 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="row justify-content-center">
-                            <div class="col-lg-8">
+                            <div class="col-lg-10">
+                                <div class="section-title">
+                                    <h1>Introduction to Coresets</h1>
+                                </div>
                                 <div class="card-content">
-                                    <h2>Motivation &#038; Coresets</h2>
-                                    <p><strong>Big Data</strong> is a catchy buzzword nowadays. You may hear it in many conversations on trending topics, such as deep learning (DL), machine learning
-                                        (ML), robotics, and more. Notably, the gains of machine learning have come at
-                                        the expense of ever-larger and more complicated models trained on vast volumes
-                                        of datasets. In fact, many recent advancements in ML have been made possible by
-                                        the sheer size of the training data.</p>
-                                    <div class="img-block">
-                                        <picture>
-                                            <source media="(max-width:575px)"
-                                                srcset="/wp-content/uploads/2023/01/big-banner-m.png">
-                                            <img decoding="async" src="/wp-content/uploads/2023/01/big-banner.png"
-                                                alt="Motivation &#038; Coresets" style="width:100%;">
-                                        </picture>
+                                    <h2>Motivation</h2>
+                                    <p>In recent times, the term "Big Data" is being widely used in various domains, including deep learning, machine learning, and robotics, among others. The achievements of machine learning have resulted in increasingly intricate and complex models that require massive amounts of data for training. The availability of these large and diverse datasets has played a crucial role in many of the recent advancements in machine learning.</p>
+                                    <div class="highlight-bg-block">
+                                        <h2>But do you know “how<span>BIG</span>is Big Data”?</h2>
                                     </div>
-                                    <p>Well, the answer to this question depends on the scenario at hand:</p>
+                                    <p class="pb-3">Well, the answer to this question depends on the specific context.</p>
                                     <div class="row g-4 g-md-5">
                                         <div class="col-md-6">
                                             <div class="icon-content-block">
                                                 <div class="image-block">
-                                                    <img decoding="async"
-                                                        src="/wp-content/uploads/2023/01/limited-hardware.png"
-                                                        alt="Limited Hardware" />
+                                                    <img decoding="async" src="uploads/icon-limited-hardware.svg" alt="Limited Hardware" />
                                                 </div>
                                                 <h3>Limited Hardware</h3>
-                                                <div class="sort-info">In many cases, we are interested in applying a
-                                                    machine/deep learning algorithm on an edge device with power
-                                                    constraints such as IoT devices and smartphones, such hardware may
-                                                    not be able to handle the large memory/CPU demands of the ML
-                                                    algorithm (training process), even on a tiny input data. In this
-                                                    case, even a set of 1000 training images will be considered Big
-                                                    Data.</div>
+                                                <div class="sort-info">In some scenarios, there is a need to implement machine learning algorithms on edge devices, like smartphones and IoT devices. These devices have limited computational resources and memory capacity, which makes it challenging to run machine learning algorithms even on small data. For edge devices, even a small dataset of 1000 images can be considered 'Big Data'.</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="icon-content-block">
                                                 <div class="image-block">
-                                                    <img decoding="async"
-                                                        src="/wp-content/uploads/2023/01/limited-time.png"
-                                                        alt="Limited Time" />
+                                                    <img decoding="async" src="uploads/icon-limited-time.svg" alt="Limited Time" />
                                                 </div>
                                                 <h3>Limited Time</h3>
-                                                <div class="sort-info">When we have time constraints for solving a given
-                                                    problem, small data sets may be considered Big Data. For example,
-                                                    assume that we are interested in parsing 100 images each of size
-                                                    256× 256× 3 in less than a millisecond → this small set of images,
-                                                    is considered as big data under the given time constraints.</div>
+                                                <div class="sort-info">Small data may be considered as big data when there are time constraints to solve a problem. This is because quick processing and analysis of data is needed within the limited time frame. For example, in self-driving cars, real-time decision-making requires quick processing and analysis of small amounts of data generated by multiple sensors. Although this data is small, it can be considered as big data given the limited time constraints imposed by the need for real-time decision-making.</div>
                                             </div>
                                         </div>
                                     </div>
                                     <h3>New computation models</h3>
                                     <div class="sort-info">
-                                        <p>In addition to the previously detailed cases, sometimes, Big data is actually
-                                            big! Every day, 2.5 exabytes of data (2.5× 10<sup>18</sup>) is generated by
-                                            a large number of information-sensing mobile devices, remote sensing,
-                                            software logs, cameras, forums, microphones, RFID readers, wireless sensor
-                                            networks, and more.</p>
-                                        <p>Thus, such a massive amount of data created every day may be considered
-                                            infinite data, requiring supporting new computation models:</p>
+                                        <p>Big data is not always just a concept - sometimes it is actually very big. Data sets have grown rapidly with the advent of devices such as mobile devices, IoT devices, aerial and remote sensing, software logs, cameras, microphones, RFID readers, and wireless sensor networks. The world's storage capacity for information has doubled roughly every 40 months since the 1980s, and as of 2012, 2.5 exabytes of data are generated every day. IDC (International Data Group) predicts that global data volume will continue to grow exponentially, reaching 163 zettabytes by 2025.</p>
+                                        <p>For the massive amounts of data created every day which can be considered infinite data, new computation models may be required to support the processing.</p>
                                     </div>
                                     <div class="row g-4 g-md-5">
                                         <div class="col-md-6">
                                             <div class="icon-content-block">
                                                 <div class="image-block">
-                                                    <img decoding="async"
-                                                        src="/wp-content/uploads/2023/01/streaming-model.png"
-                                                        alt="The streaming model" />
+                                                    <img decoding="async" src="uploads/icon-streaming-model.svg" alt="The streaming model" />
                                                 </div>
                                                 <h3>The streaming model</h3>
-                                                <div class="sort-info">Here, the input data is streamed
-                                                    (&#8220;on-the-fly&#8221;). Data items enter one by one (or in
-                                                    batch/chunk form) into a system with limited memory that cannot
-                                                    store more than m points at a time. The objective here is to
-                                                    maintain the optimal solution (or a robust approximation to it) for
-                                                    the whole data received so far in the infinite stream.</div>
+                                                <div class="sort-info">A streaming model is a dynamic computational model that processes data in real-time as it is generated, enabling faster and more efficient analysis compared. To maintain an optimal or approximate solution for infinite data streams, a memory-limited system is used, processing data items one-by-one or in batches. The system aims to optimise the solution for the entire data stream despite being able to store only a maximum of m points at a time.</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="icon-content-block">
                                                 <div class="image-block">
-                                                    <img decoding="async"
-                                                        src="/wp-content/uploads/2023/01/distributed-model.png"
-                                                        alt="The distributed model" />
+                                                    <img decoding="async" src="uploads/icon-distributed-model.svg" alt="The distributed model" />
                                                 </div>
                                                 <h3>The distributed model</h3>
-                                                <div class="sort-info">The input data items come at multiple nodes
-                                                    (machines, on the cloud, networks, AWS, or GPUs) in a parallel
-                                                    setup, and the solution must be aggregated effectively at a root
-                                                    node. The aim in this case is to keep the optimal solution (or a
-                                                    close approximation to it) for the union of the datasets dispersed
-                                                    over all nodes.</div>
+                                                <div class="sort-info">The distributed model involves the processing and storage of data across multiple nodes or computing devices. This approach enables the distribution of computational tasks, making it possible to process and analyse vast amounts of data in a more efficient and scalable manner. The data is partitioned across multiple nodes, with each node processing its subset of data and then communicating the results with other nodes. The goal is to maintain the optimal solution for the entire data set distributed over all nodes.</div>
                                             </div>
                                         </div>
                                     </div>
                                     <h3>Mislabeled input data</h3>
                                     <div class="sort-info">
-                                        <p>Even if we can handle this massive data under these computation models,
-                                            usually, the usage of these large datasets requires human interaction. For
-                                            example, although there are billions of images of cats and dogs across the
-                                            web, to use them for training a machine learning model to classify an input
-                                            image whether it is a cat or a dog, we still need to label these images
-                                            first. Typically, data labeling begins by asking humans (or even experts) to
-                                            make judgments on each item from the unlabeled data. In our example,
-                                            labelers are requested to tag all images by answering the question &#8220;Is
-                                            it a photo of a cat or a dog?&#8221;.</p>
-                                        <p>Dealing with a huge dataset raises a big possibility of human mistakes while
-                                            labeling the images. These mistakes are translated into mislabeled input
-                                            data, which may harm the performance of the desired ML algorithm. Hence,
-                                            data scientists are required to identify mislabeled input items before
-                                            applying the machine learning algorithm to the incorrectly labeled data, in
-                                            order to obtain a solution that reflects the real world.</p>
+                                        <p>Although modern computation models can handle vast amounts of data, the utilisation of such datasets for machine learning applications often necessitates human intervention. For instance, consider the task of training a machine learning model to differentiate between images of cats and dogs, which requires labelling the images. This process typically entails requesting humans to provide judgments on unlabelled data, such as categorising images as either cats or dogs.</p>
+                                        <p>However, the use of vast datasets in machine learning introduces the possibility of human errors during the labelling process, which can result in mislabelled input data and negatively impact the performance of the machine learning algorithm. Thus, data scientists must identify mislabelled data items before applying the machine learning algorithm to ensure a more accurate reflection of the real world.</p>
                                     </div>
                                     <div class="img-block text-center">
-                                        <img decoding="async" src="/wp-content/uploads/2023/04/animals-vimg-1.jpg"
-                                            alt="mislabeled input data" />
+                                        <img decoding="async" src="uploads/animals-img-1.png" alt="Mislabeled input data" />
                                     </div>
                                     <h3>Data quality</h3>
-                                    <p>Even when the data is correctly labeled, data scientists are interested in
-                                        identifying important (high-quality) images. If we are dealing with a
-                                        classification problem for dogs or cows, and we are given the following data
-                                        set:</p>
+                                    <p>Data quality is a critical aspect of any data-driven application or analysis, and it requires ongoing attention and investment to ensure that data is accurate, complete, and consistent. Even when the data is accurately labelled, data scientists must carefully curate the dataset to extract the most important images for their application. For instance, when faced with a classification problem for cows or dogs given the following dataset:</p>
                                     <div class="img-block text-center">
-                                        <img decoding="async" src="/wp-content/uploads/2023/01/animals-img-2.jpg"
-                                            alt="mislabeled input data" />
+                                        <img decoding="async" src="uploads/animals-img-2.png" alt="Mislabeled input data" />
                                     </div>
-                                    <p>We can observe that the 4th image is very weird, as it is very strange to see a
-                                        cow indoors. Hence this image is either (i) very important as it is one of a
-                                        kind, and in this case, we should focus on such an image when we train our model
-                                        to make sure we classify it correctly, or (ii) should be removed as it does not
-                                        reflect the usual cases, and we do not want our model to take this image into
-                                        consideration.</p>
-                                    <div class="img-block text-center">
-                                        <img decoding="async" src="/wp-content/uploads/2023/01/animals-img-3.jpg"
-                                            alt="mislabeled input data" />
+                                    <p>We can see that the 4th image looks odd as it is unusual to see a cow indoors. Selecting an image of a cow indoors may be crucial to train the model effectively, or conversely, it may need to be discarded as an outlier that doesn't accurately represent the typical use case. The decision to keep or discard the image depends on the specific problem and the goals of the machine learning model.</p>
+                                    <div class="img-block text-center mb-0">
+                                        <img decoding="async" src="uploads/animals-img-3.png" alt="Mislabeled input data" />
                                     </div>
                                 </div>
                             </div>
@@ -217,16 +155,10 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
                                 <div class="card-content">
-                                    <h3>Coresets</h3>
-                                    <p>A common practical and theoretically supported approach for solving the above
-                                        challenges is called “coreset”. Coresets have been getting increased attention
-                                        during the past year. Informally, a coreset is (usually) a small, weighted
-                                        subset of the original input set of items, such that solving the problem on the
-                                        coreset will yield the same solution as solving the problem on the original big
-                                        data.</p>
+                                    <h2>Coresets</h2>
+                                    <p>An effective solution to tackle the challenges described above is through the use of "coresets". Recently, this approach has gained more attention in both practical and theoretical domains. In simple terms, a coreset is generally a weighted and smaller subset of the initial dataset, which provides the same solution as solving the problem on the complete and larger dataset without affecting performance metrics.</p>
                                     <div class="img-block">
-                                        <img decoding="async" src="/wp-content/uploads/2023/01/data-coreset.jpg"
-                                            alt="Coresets" />
+                                        <img decoding="async" src="uploads/data-coreset.jpg" alt="Coresets" />
                                     </div>
                                     <h3>Defining a problem</h3>
                                     <p>To formally define and build coresets for a machine learning problem, first, we
@@ -698,11 +630,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <link rel='stylesheet'
-                            href='https://dataheroes.ai/wp-content/themes/dataheroes/assets/css/coresets.css'
-                            type='text/css' />
-                        <script type='text/javascript'
-                            src='https://dataheroes.ai/wp-content/themes/dataheroes/assets/js/youtube.min.js'></script>
+                        <script type='text/javascript' src='https://dataheroes.ai/wp-content/themes/dataheroes/assets/js/youtube.min.js'></script>
                         <style>
                             .v-align-b {
                                 vertical-align: bottom !important;
