@@ -18,6 +18,15 @@
 .section-title {     
     h1 {
         color: #007DFC; font-size: 78px; font-family: $font-merriweather; position: relative; padding-bottom: 24px; margin-bottom: 60px;
+        @media (max-width: 1440px){
+            font-size: 60px; margin-bottom: 50px;
+        }
+        @media (max-width: 992px){
+            font-size: 48px;
+        }
+        @media (max-width: 767px){
+            font-size: 36px; margin-bottom: 40px;
+        }
         &::after {
             content: ''; height: 10px; width: 500px; background: #007DFC; @include border-radius(3px); display: inline-block; position: absolute; bottom: 0; left: 0;
         }
@@ -309,15 +318,13 @@
     }
 }
 
-h3 {
-    font-family: $font-merriweather; font-weight: 900 !important;
-}
+
 
 .data-section{
     color: #43474A;
     // padding-top: 240px;
     // margin-top: -200px;
-
+    
     @media (max-width:991px) {
         padding-bottom: 20px;
     }
@@ -330,7 +337,19 @@ h3 {
             font-size: 36px;
             margin-bottom: 20px;
         }
+        @media (max-width:767px) {
+            font-size: 28px;
+        }
     }
+    h3 {
+        font-family: $font-merriweather; font-weight: 900 !important; font-size: 36px;
+        @media (max-width:991px) {
+            font-size: 28px;
+        }
+        @media (max-width:767px) {
+            font-size: 20px;
+        }
+    } 
     img{
         vertical-align: middle;
     }
@@ -382,8 +401,7 @@ h3 {
         }
         span{
             color: $primary;
-            font-style: italic;
-            font-weight: 500;
+            font-weight: 700;
         }
     }
     .icon-content-block{
@@ -417,14 +435,20 @@ h3 {
         }
         li{
             list-style: decimal;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             .image-block{
-                margin-left: -20px;
+                margin-left: -20px; margin-bottom: 40px;
+                margin-top: 40px;
+            }
+            p {
+                line-height: 1.8;
+                &:last-child{
+                    margin-bottom: 0;
+                }
             }
             span{
                 color: $primary;
-                font-style: italic;
-                font-weight: 500;
+                font-weight: 700;
             }
             &:last-child{
                 margin-bottom: 0;
@@ -442,11 +466,10 @@ h3 {
         }
         li{
             list-style: disc;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             span{
                 color: $primary;
-                font-style: italic;
-                font-weight: 500;
+                font-weight: 700;
             }
             &:last-child{
                 margin-bottom: 0;
@@ -491,10 +514,25 @@ h3 {
     .video-block .ratio iframe{border:0}
     .highlight-bg-block {
         background: #E4EBF4; @include border-radius(20px); border-bottom: 5px solid #007DFC; text-align: center; padding: 40px; margin: 35px 0;
+        @media (max-width:991px) {
+            padding: 30px;
+        }
+        @media (max-width:767px) {
+            padding: 15px;
+        }
         h2 {
             margin-bottom: 0; font-size: 36px;
+            @media (max-width:991px) {
+                font-size: 28px;
+            }
+            @media (max-width:767px) {
+                font-size: 20px;
+            }
             span {
                 color: #007DFC; background: url(../images/border-curve-img.svg) no-repeat center bottom; padding: 0 10px 8px; background-size: contain;
+                @media (max-width:767px) {
+                    padding: 0 8px 5px;
+                }
             }
         }
     }
