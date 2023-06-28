@@ -448,7 +448,12 @@
 
     <script>
         $(document).ready(function () {
-            
+            $(".collapse-item-block .collapse-header").on("click", function() {
+                $(".collapse-header").removeClass("active");
+                $(".collapse-header").next().slideUp(200);
+                $(this).toggleClass("active");
+                $(this).next().slideToggle(200);
+            });
             $('.btn-search').click(function(e){
                 $('.post-search').find('#q').val('');
                 $(this).closest('.post-search').toggleClass('active');
