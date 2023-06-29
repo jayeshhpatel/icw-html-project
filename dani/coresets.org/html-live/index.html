@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Introduction to Coresets - Coresets</title>
+    <title>How to use Coresets in the real world? - Coresets</title>
     <meta name="Googlebot" content="noindex,nofollow">
     <meta name="author" content="coresets.org">
     <meta name="description" content="Our introduction to coreset selection explains how to efficiently select a subset of your data for improved model performance.">
@@ -110,11 +110,11 @@
                         <h3>Data quality</h3>
                         <p>Data quality is a critical aspect of any data-driven application or analysis, and it requires ongoing attention and investment to ensure that data is accurate, complete, and consistent. Even when the data is accurately labelled, data scientists must carefully curate the dataset to extract the most important images for their application. For instance, when faced with a classification problem for cows or dogs given the following dataset:</p>
                         <div class="img-block text-center">
-                            <img src="uploads/animals-img-2.png" alt="Mislabeled input data" />
+                            <img src="uploads/animals-img-2.png" alt="Data quality" />
                         </div>
                         <p>We can see that the 4th image looks odd as it is unusual to see a cow indoors. Selecting an image of a cow indoors may be crucial to train the model effectively, or conversely, it may need to be discarded as an outlier that doesn't accurately represent the typical use case. The decision to keep or discard the image depends on the specific problem and the goals of the machine learning model.</p>
                         <div class="img-block text-center">
-                            <img src="uploads/animals-img-3.png" alt="Mislabeled input data" />
+                            <img src="uploads/animals-img-3.png" alt="Coresets - Data quality" />
                         </div>
                     </div>
                 </div>
@@ -134,16 +134,16 @@
                         <h3>Defining a problem</h3>
                         <p>To precisely define and construct coresets for a machine learning problem, it is imperative to formally establish all the fundamental components needed to formulate a machine learning problem. The fundamental components that are required to define an optimization problem are:</p>
                         <ol>
-                            <li> The input data (denoted by <span>[%F]</span>): This refers to a dataset, typically large, on which we aim to optimise some cost function.</li>
-                            <li>The query set (denoted by <span>[%F]</span>): This is the set of potential solutions or models, from which machine learning algorithms aim to derive an optimal model that minimises a given cost function in relation to the input dataset.</li>
-                            <li>The cost function <span>[%F]</span> we aim to optimise.</li>
+                            <li> The input data (denoted by <img src="uploads/formulas-img1.jpg" alt="Coresets">): This refers to a dataset, typically large, on which we aim to optimise some cost function.</li>
+                            <li>The query set (denoted by <img src="uploads/formulas-img2.jpg" alt="Coresets">): This is the set of potential solutions or models, from which machine learning algorithms aim to derive an optimal model that minimises a given cost function in relation to the input dataset.</li>
+                            <li>The cost function <img src="uploads/formulas-img3.jpg" alt="Coresets"> we aim to optimise.</li>
                         </ol>
                         <p>These three components serve to precisely define the optimization problem under consideration.</p>
                         <p>For example, in linear regression:</p>
                         <ul>
-                            <li>The input data comprises a set <span>[%F]</span> and their corresponding label function <span>[%F]</span> (as depicted by the red points in the diagram).</li>
-                            <li>The query set <span>[%F]</span> is composed of every vector in <span>[%F]</span> (the green line is an example of a query/candidate solution).</li>
-                            <li>The cost function we aim to minimise is <span>[%F]</span></li>
+                            <li>The input data comprises a set <img src="uploads/formulas-img4.jpg" alt="Coresets"> and their corresponding label function <img src="uploads/formulas-img5.jpg" alt="Coresets"> (as depicted by the red points in the diagram).</li>
+                            <li>The query set <img src="uploads/formulas-img2.jpg" alt="Coresets"> is composed of every vector in <img src="uploads/formulas-img6.jpg" alt="Coresets"> (the green line is an example of a query/candidate solution).</li>
+                            <li>The cost function we aim to minimise is <img src="uploads/formulas-img7.jpg" alt="Coresets"></li>
                         </ul>
                         <div class="img-block">
                             <img src="uploads/defining-coreset.jpg" alt="Defining coreset" />
@@ -151,13 +151,13 @@
                         <h3>Defining a coreset</h3>
                         <p>Given the set of components that collectively formulate an optimization problem, i.e.</p>
                         <ul>
-                            <li>Let <span>[%F]</span> be an input set.</li>
-                            <li>Let <span>[%F]</span> be the query set.</li>
-                            <li>Let <span>[%F]</span> be a cost function.</li>
+                            <li>Let <img src="uploads/formulas-img1.jpg" alt="Coresets"> be an input set.</li>
+                            <li>Let <img src="uploads/formulas-img2.jpg" alt="Coresets"> be the query set.</li>
+                            <li>Let <img src="uploads/formulas-img8.jpg" alt="Coresets"> be a cost function.</li>
                         </ul>
-                        <p>Then, a coreset is a pair <span>[%F]</span> where <span>[%F]</span> and <span>[%F]</span> and such that for every query <span>[%F]</span></p>
+                        <p>Then, a coreset is a pair <img src="uploads/formulas-img9.jpg" alt="Coresets"> where <img src="uploads/formulas-img10.jpg" alt="Coresets"> and <img src="uploads/formulas-img11.jpg" alt="Coresets"> and such that for every query <img src="uploads/formulas-img12.jpg" alt="Coresets"></p>
                         <ul>
-                            <li><span>[%F]</span></li>
+                            <li><img src="uploads/formulas-img13.jpg" alt="Coresets"></li>
                         </ul>
                         <div class="img-block">
                             <img src="uploads/linear-regression.png" alt="Linear Regression" />
@@ -166,29 +166,29 @@
                         <p>A coreset has several interesting properties beyond serving as a close approximation of the optimal solution derived from the original big data. In this blog, we shall outline three properties of a coreset.</p>
                         <ol>
                             <li>
-                                <p>The loss of the input data <span>[%F]</span> can be approximated by a coreset <span>[%F]</span> with respect to any candidate solution, not just the optimal one, for all <span>[%F]</span>. This property is of great significance as it supports the processing of streaming data and validates the efficacy of heuristics derived from the coreset in achieving good results for the entire data set.</p>
+                                <p>The loss of the input data <img src="uploads/formulas-img9.jpg" alt="Coresets"> can be approximated by a coreset <img src="uploads/formulas-img1.jpg" alt="Coresets"> with respect to any candidate solution, not just the optimal one, for all <img src="uploads/formulas-img1.jpg" alt="Coresets">. This property is of great significance as it supports the processing of streaming data and validates the efficacy of heuristics derived from the coreset in achieving good results for the entire data set.</p>
                                 <div class="image-block">
-                                    <img src="uploads/coreset-two.jpg" alt="Coresets" />
+                                    <img src="uploads/coreset-two.jpg" alt="Coresets Properties" />
                                 </div>
                             </li>
                             <li>
-                                <p>A union of coresets is a coreset. Suppose you are given a set [%F] that was partitioned into 5 subsets <span>[%F]</span>. For each of these subsets, we computed a coreset, i.e., for every set <span>[%F]</span> we have computed its own coreset <span>[%F]</span> - which satisfies for every <span>[%F]</span>.</p>
-                                <p>Define the set <span>[%F]</span> and the weights function <span>[%F]</span> as the union of the five weight functions, we get that <span>[%F]</span> is a coreset for <span>[%F]</span>, i.e., for every <span>[%F]</span></p>
+                                <p>A union of coresets is a coreset. Suppose you are given a set <img src="uploads/formulas-img1.jpg" alt="Coresets"> that was partitioned into 5 subsets <img src="uploads/formulas-img15.jpg" alt="Coresets">. For each of these subsets, we computed a coreset, i.e., for every set <img src="uploads/formulas-img16.jpg" alt="Coresets"> we have computed its own coreset <img src="uploads/formulas-img17.jpg" alt="Coresets"> - which satisfies for every <img src="uploads/formulas-img18.jpg" alt="Coresets">.</p>
+                                <p>Define the set <img src="uploads/formulas-img19.jpg" alt="Coresets"> and the weights function <img src="uploads/formulas-img20.jpg" alt="Coresets"> as the union of the five weight functions, we get that <img src="uploads/formulas-img9.jpg" alt="Coresets"> is a coreset for <img src="uploads/formulas-img1.jpg" alt="Coresets">, i.e., for every <img src="uploads/formulas-img21.jpg" alt="Coresets"></p>
                                 <div class="image-block">
-                                    <img src="uploads/all-data-1.jpg" alt="Coresets" />
+                                    <img src="uploads/all-data-1.jpg" alt="Union of coresets" />
                                 </div>
                             </li>
                             <li>
-                                <p>Coreset of a Coreset is a Coreset. Recall the set <span>[%F]</span> which is a coreset for the input data <span>[%F]</span>. We can further compute a coreset (once more) for <span>[%F]</span> to obtain a new smaller coreset <span>[%F]</span>. Now, for every <span>[%F]</span>:</p>
+                                <p>Coreset of a Coreset is a Coreset. Recall the set <img src="uploads/formulas-img9.jpg" alt="Coresets"> which is a coreset for the input data <img src="uploads/formulas-img1.jpg" alt="Coresets">. We can further compute a coreset (once more) for <img src="uploads/formulas-img9.jpg" alt="Coresets"> to obtain a new smaller coreset <img src="uploads/formulas-img22.jpg" alt="Coresets">. Now, for every <img src="uploads/formulas-img12.jpg" alt="Coresets"></p>
                                 <ol class="lower-alpha">
-                                    <li><span>[%F]</span> and</li>
-                                    <li><span>[%F]</span></li>
+                                    <li><img src="uploads/formulas-img13.jpg" alt="Coresets"> and</li>
+                                    <li><img src="uploads/formulas-img23.jpg" alt="Coresets"></li>
                                 </ol>
                             </li>
                         </ol>                                    
-                        <p>Thus, <span>[%F]</span> is a (smaller) coreset for <span>[%F]</span>. We note that now the approximation error of <span>[%F]</span> is larger than the one of <span>[%F]</span>, as we computed a coreset for a coreset.</p>
-                        <div class="img-bloc">
-                            <img src="uploads/all-data-2.jpg" alt="Coresets" />
+                        <p>Thus, <img src="uploads/formulas-img24.jpg" alt="Coresets"> is a (smaller) coreset for <img src="uploads/formulas-img1.jpg" alt="Coresets">. We note that now the approximation error of <img src="uploads/formulas-img22.jpg" alt="Coresets"> is larger than the one of <img src="uploads/formulas-img9.jpg" alt="Coresets">, as we computed a coreset for a coreset.</p>
+                        <div class="img-block">
+                            <img src="uploads/all-data-2.jpg" alt="Computed a Coresets" />
                         </div>
                     </div>
                 </div>
@@ -210,35 +210,47 @@
                         </ol>
                         <p>Each of these classes has its own advantages and disadvantages. For instance, the second category involves probabilistic methods that might fail on some occasions. However, these methods are typically very efficient, resulting in rapid approximations of the initial dataset. Additionally, a common importance sampling framework is frequently employed to calculate a sampling-based coreset, which has been widely used in recent publications. The framework outlines a set of guidelines that involve the following:</p>
                         <ol>
-                            <li>Given the tuple <span>[%F]</span> which defines our ML problem at hand.</li>
-                            <li>For every item <span>[%F]</span> be a number defining its importance/sensitivity - we will explain how to compute it next.</li>
+                            <li>Given the tuple <img src="uploads/formulas-img25.jpg" alt="Coresets"> which defines our ML problem at hand.</li>
+                            <li>For every item <img src="uploads/formulas-img26.jpg" alt="Coresets"> be a number defining its <strong>importance/sensitivity</strong> - we will explain how to compute it next.</li>
                         </ol>
                         <p>Having defined and computed the importance weight of each item in the set, the importance sampling framework proceeds to derive a coreset by applying the following steps</p>
                         <ol>
-                            <li>Set <span>[%F]</span>, i.e., t is the total (sum of) importance of all points.</li>
-                            <li> Build the set <span>[%F]</span> as an i.i.d Sample of <span>[%F]</span> points according to <span>[%F]</span>. The larger the m the better the approximation error of the final coreset.</li>
-                            <li>For every <span>[%F]</span> define its weight as: <span>[%F]</span></li>
+                            <li>Set <img src="uploads/formulas-img27.jpg" alt="Coresets">, i.e., t is the total (sum of) importance of all points.</li>
+                            <li> Build the set <img src="uploads/formulas-img28.jpg" alt="Coresets"> as an i.i.d Sample of <img src="uploads/formulas-img29.jpg" alt="Coresets"> points according to <img src="uploads/formulas-img30.jpg" alt="Coresets">. The larger the m the better the approximation error of the final coreset.</li>
+                            <li>For every <img src="uploads/formulas-img31.jpg" alt="Coresets"> define its weight as: <img src="uploads/formulas-img32.jpg" alt="Coresets"></li>
                         </ol>
-                        <p>Then, with high probability, <span>[%F]</span> is a coreset for <span>[%F]</span>, i.e., <span>[%F]</span> and <span>[%F]</span>, such that for every query <span>[%F]</span>:</p>
-                        <p><span>[%F]</span></p>
+                        <p>Then, with high probability, <img src="uploads/formulas-img9.jpg" alt="Coresets"> is a coreset for <img src="uploads/formulas-img25.jpg" alt="Coresets">, i.e., <img src="uploads/formulas-img33.jpg" alt="Coresets"> and <img src="uploads/formulas-img11.jpg" alt="Coresets">, such that for every query <img src="uploads/formulas-img12.jpg" alt="Coresets"></p>
+                        <p style="text-align: center;"><img src="uploads/formulas-img13.jpg" alt="Coresets"></p>
                         <p> Note. The sample (coreset) size is a function of the desired approximation error, probability of failure, total sensitivity t, and another problem-dependent measure of complexity. We will provide more theoretical detail and insights in future blog posts.</p>
                         <h3>But how to compute the importance</h3>
-                        <p>Informally, the significance or weight assigned to an item/point <span>[%F]</span> is defined as its maximum impact on the loss or cost function over all potential candidate solutions, i.e., if there exists <span>[%F]</span> such that <span>[%F]</span> is large with respect to <span>[%F]</span> then, <span>[%F]</span> is important to the query <span>[%F]</span>.</p>
+                        <p style="line-height: 1.8;">Informally, the significance or weight assigned to an item/point <img src="uploads/formulas-img34.jpg" alt="Coresets"> is defined as its maximum impact on the loss or cost function over all potential candidate solutions, i.e., if there exists <img src="uploads/formulas-img35.jpg" alt="Coresets"> such that <img src="uploads/formulas-img36.jpg" alt="Coresets"> is large with respect to <img src="uploads/formulas-img37.jpg" alt="Coresets" style="vertical-align: text-top;"> then, <img src="uploads/formulas-img1.jpg" alt="Coresets"> is important to the query <img src="uploads/formulas-img38.jpg" alt="Coresets"></p>
                         <p>The formal definition is given as follows: </p>
                         <ul>
-                            <li>For every <span>[%F]</span>: <span>[%F]</span></li>
-                            <li>To explain the definition of sensitivity/importance let’s look at the following two cases, when <span>[%F]</span> is high and when <span>[%F]</span> is low and see the difference between them.</li>
+                            <li>For every <img src="uploads/formulas-img34.jpg" alt="Coresets">: 
+                                <p class="text-center"><img src="uploads/formulas-img39.jpg" alt="Coresets"></p>
+                            </li>
+                            <li>To explain the definition of sensitivity/importance let’s look at the following two cases, when <img src="uploads/formulas-img40.jpg" alt="Coresets"> is high and when <img src="uploads/formulas-img40.jpg" alt="Coresets"> is low and see the difference between them.</li>
                         </ul>
-                        <p>If <span>[%F]</span> is high</p>
-                        <ul>
-                            <li>There exists a solution <span>[%F]</span>, such that <span>[%F]</span> affects the loss too much (<span>[%F]</span> is important).</li>
-                            <li><span>[%F]</span> affects <span>[%F]</span></li>
-                        </ul>
-                        <p>If <span>[%F]</span> is low</p>
-                        <ul>
-                            <li>For every solution <span>[%F]</span> does not affect the loss, hence, it is not important.</li>
-                            <li><span>[%F]</span> <strong>does not affect</strong> <span>[%F]</span></li>
-                        </ul>
+                        <div class="row column-box g-4 g-md-0">
+                            <div class="col-md-6">
+                                <p class="title-text" style="color:#00b050;">If <img src="uploads/formulas-img40.jpg" alt="Coresets"> is high</p>
+                                <div class="column-item">
+                                    <p>There exists a solution <img src="uploads/formulas-img35.jpg" alt="Coresets">, such that <img src="uploads/formulas-img1.jpg" alt="Coresets"> affects the loss too much (<img src="uploads/formulas-img1.jpg" alt="Coresets"> is important).</p>
+                                </div>
+                                <div class="column-item">
+                                    <p><img src="uploads/formulas-img41.jpg" alt="Coresets"> affects <img src="uploads/formulas-img42.jpg" alt="Coresets"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="title-text" style="color:#00b050;">If <img src="uploads/formulas-img40.jpg" alt="Coresets"> is low</p>
+                                <div class="column-item">
+                                    <p>For every solution <img src="uploads/formulas-img35.jpg" alt="Coresets">, <img src="uploads/formulas-img1.jpg" alt="Coresets"> does not affect the loss, hence, it is not important.</p>
+                                </div>
+                                <div class="column-item">
+                                    <p><img src="uploads/formulas-img43.jpg" alt="Coresets"> <strong>does not affect</strong> <img src="uploads/formulas-img42.jpg" alt="Coresets"></p>
+                                </div>
+                            </div>
+                        </div>
                         <p>Therefore, we perform sampling based on this criterion since it reflects the existence of a solution where our point has a significant contribution to the cost, thus making it critical concerning this solution.</p>
                     </div>
                 </div>
@@ -255,37 +267,37 @@
                         <h3>Limited hardware/time</h3>
                         <p>One approach to tackling computational or time constraints in applying machine learning algorithms is by constructing a coreset for the data using an efficient sensitivity sampling framework. The coreset can then be used as a representative subset to apply classic machine learning algorithms, resulting in a more efficient approximation with reduced memory and energy consumption.</p>
                         <div class="img-block">
-                            <img src="uploads/recude-img.jpg" alt="Coresets" />
+                            <img src="uploads/recude-img.jpg" alt="Coresets - Applications" />
                         </div>
                         <p><strong>“Magically” supports the pre-discussed computational settings:</strong></p>
-                        <ul>
+                        <ol>
                             <li>The streaming setting, which operates on a limited memory with only one pass over an infinite input stream.</li>
                             <li>The parallel/distributed setting, which employs multiple threads, such as in GPUs, or more broadly, distributed data across a network, cloud or AWS. The approach may minimise or even eliminate communication between the machines.</li>
                             <li>The combined utilisation of (i) and (ii), which allows simultaneous handling of an unbounded stream of data and distributed data.</li>
-                        </ul>
+                        </ol>
                         <p>In the <strong>streaming setting</strong>, where the data is received in an infinite stream, computing a coreset can help in maintaining a small representation of the Big Dataset. This is done by merging the newly received data chunk/batch with the pre-computed coreset, and then computing a new coreset when the size of the coreset exceeds a predefined limit. By leveraging the property that the coreset of a coreset is a coreset, we can maintain a small coreset for the entire dataset seen so far.</p>
                         <div class="img-block">
-                            <img src="uploads/streaming-setting.jpg" alt="Coresets" />
+                            <img src="uploads/streaming-setting.jpg" alt="Coresets - Streaming Setting" />
                         </div>
                         <p>It is important to note that as we compute more and more coresets, the approximation error gets larger. To address this issue, we can use the streaming tree to obtain smaller approximation errors and improve the overall accuracy of the results.</p>
                         <div class="img-block">
-                            <img src="uploads/distributed-setting.jpg" alt="Coresets" />
+                            <img src="uploads/distributed-setting.jpg" alt="Coresets - Distributed Setting" />
                         </div>
                         <p>In the <strong>distributed setting</strong>, where the data is distributed across multiple machines, we can compute a coreset for each dataset separately and merge these coresets into one, allowing for the computation of a solution for the entire dataset. This approach can be further optimised by computing a new coreset for the merged coreset and then solving the problem on the result. Additionally, the streaming tree can be utilised to improve the approximation error and obtain better results.</p>
                         <h3>Identifying Incorrectly Labelled Data and High-Quality Data</h3>
                         <p>Let us revisit the concept of importance defined earlier, which pertains to the sensitivity/importance framework used for sampling points based on their relevance with respect to the loss/cost function.</p>
-                        <p>[%F]</p>
+                        <p><img src="uploads/formulas-img39.jpg" alt="Coresets"></p>
                         <p> According to the importance definition, an item is deemed significant due to its contribution to the cost/loss of a specific query, whereas other items hardly affect the same query. In other words, other items seem to conform well to the given solution, e.g., being correctly classified, while this specific item does not.</p>
                         <p>This observation naturally leads to the conclusion that the identified item (e.g., input image) might have been mislabelled at the outset since it exhibits high loss, while other items have a low one. Consequently, one could hypothesise that modifying the label of this item would result in a lower loss for the same query. To detect mislabelled items in a smart way, we can utilise an algorithm based on the importance/sensitivity of the items.</p>
                         <div class="img-block">
-                            <img src="uploads/animals-img-4.png" alt="Coresets" />
+                            <img src="uploads/animals-img-4.png" alt="Distributed Setting" />
                         </div>
                         <p>The identified point (e.g., input image) exhibits high quality, that is, the point carries a high degree of sensitivity or importance and is correctly labelled but there are features present in the image, such as the background, surroundings, or colour, that suggest it should be labelled with a different label. e.g., an image of a cow indoors - this is very rare.</p>
                         <p>Therefore, by applying a smart searching algorithm based on the importance or sensitivity of data points, we can detect important high-quality images. This discovery process can either allow us to identify rare and unusual data that require more focused attention during training to accurately classify them or these images could be misleading to our model and do not represent typical cases. Thus, they should be excluded to prevent their confounding effect on our model's overall performance.</p>
                         <div class="img-block">
                             <img src="uploads/animals-img-5.png" alt="Coresets" />
                         </div>
-                        <p>Coresets possess a diverse range of potential applications, and we would like to direct the attention of the interested readers towards the following surveys on the subject matter: <a href="#">Introduction to Core-sets: an Updated Survey</a> and <a href="#">Overview of accurate coresets.</a></p>
+                        <p>Coresets possess a diverse range of potential applications, and we would like to direct the attention of the interested readers towards the following surveys on the subject matter: <a href="https://arxiv.org/abs/2011.09384" target="_blank">Introduction to Core-sets: an Updated Survey</a> and <a href="https://wires.onlinelibrary.wiley.com/doi/abs/10.1002/widm.1429" target="_blank">Overview of accurate coresets.</a></p>
                     </div>
                 </div>
             </div>
@@ -295,6 +307,24 @@
 <footer class="main-footer">
     <div class="footer-container" style="padding: 20px 0;">
         <div class="container">
+            <div class="row mt-4 mb-4">
+                <div class="col-md-4 col-lg-3">
+                    <a class="footer-logo mb-3" href="/" title="Introduction to Coresets" rel="home"><img src="assets/images/logo.svg" alt="Coresets" /></a>
+                </div>
+                <div class="col-md-8 col-lg-9">
+                    <div class="footer-grid-menu">
+                        <ul id="menu-footer-menu" class="footer-menu">
+                            <li class="menu-item-has-children">
+                                <ul class="sub-menu">
+                                    <li><a href="https://dataheroes.ai/introduction-to-coresets/" target="_blank">DataHeroes</a></li>
+                                    <li><a href="https://arxiv.org/abs/1807.04518" target="_blank">Wikipedia</a></li>
+                                    <li><a href="https://arxiv.org/abs/1910.08707" target="_blank">The existing links we have on DH's website (2+3)</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="copyright-info">
