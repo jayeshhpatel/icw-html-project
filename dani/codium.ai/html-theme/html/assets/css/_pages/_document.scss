@@ -210,7 +210,12 @@
                 @include justify-content(space-between);
                 border-bottom: 1px solid #E5E3F2;
                 padding-bottom: 16px;
-
+                cursor: pointer;
+                &:hover, &:focus {
+                    label {
+                        color: #684BFE;
+                    }
+                }
                 &.active {
                     .collapse-action {
                         @include transform(rotate(0deg));
@@ -218,12 +223,15 @@
                 }
 
                 label {
-                    margin-bottom: 0;
+                    margin-bottom: 0; @include transition(0.2s, ease-in-out);
                 }
 
                 .collapse-action {
                     width: 20px;
                     height: 20px;
+                    border: none; 
+                    padding: 0; 
+                    background: transparent;
                     cursor: pointer;
                     @include inline-flex;
                     @include align-items(center);
@@ -245,6 +253,22 @@
                 padding-top: 25px;
                 padding-bottom: 40px;
                 border-bottom: 1px solid #E5E3F2;
+                height: calc(100vh - 370px);
+                overflow: hidden;
+                overflow-y: auto;
+                &::-webkit-scrollbar {
+                    background-color: transparent;
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 16px;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background-color: #9898aa;
+                    border-radius: 16px;
+                }
+                &::-webkit-scrollbar-track {
+                    background-color: #eeeeee;
+                }
             }
         }
     }
@@ -375,6 +399,23 @@
                         border-color: rgba(242, 240, 255, 1);
                     }
                 }
+            }
+        }
+    }
+    .resources-details-section {
+        padding: 230px 0 100px;
+        .section-title {
+            max-width: 475px;
+            h1 {
+                margin-bottom: 25px;
+            }
+            .btn {
+                text-transform: uppercase; margin-top: 10px;
+            }
+        }
+        .image-block {
+            img {
+                width: 100%;
             }
         }
     }

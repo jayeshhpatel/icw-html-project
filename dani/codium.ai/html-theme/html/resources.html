@@ -161,29 +161,17 @@
                             <div class="collapse-item-block">
                                 <div class="collapse-header active">
                                     <label>Content type</label>
-                                    <span class="collapse-action"><em class="icon-arrow"></em></span>
+                                    <button type="button" class="collapse-action"><em class="icon-arrow"></em></button>
                                 </div>
                                 <div class="collapse-body" style="display: block;">
                                     <ul class="nav-filter">
                                         <li class="active"><a href="#" data-filter="category" data-term="all-terms" data-page="1"><span class="check"></span>All Topics</a></li>
-                                        <li>
-                                            <a href="#" data-filter="category" data-term="articles" data-page="1"><span class="check"></span>Articles</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-filter="category" data-term="inverviews" data-page="1"><span class="check"></span>Inverviews</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-filter="category" data-term="education-elearning" data-page="1"><span class="check"></span>Education & eLearning Education & eLearning</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-filter="category" data-term="inverviews" data-page="1"><span class="check"></span>Inverviews</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-filter="category" data-term="Ggovernment-non-profits" data-page="1"><span class="check"></span>Government & Non-Profits</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-filter="category" data-term="finance" data-page="1"><span class="check"></span>Finance</a>
-                                        </li>
+                                        <li><a href="#" data-filter="category" data-term="articles" data-page="1"><span class="check"></span>Articles</a></li>
+                                        <li><a href="#" data-filter="category" data-term="inverviews" data-page="1"><span class="check"></span>Inverviews</a></li>
+                                        <li><a href="#" data-filter="category" data-term="education-elearning" data-page="1"><span class="check"></span>Education & eLearning Education & eLearning</a></li>
+                                        <li><a href="#" data-filter="category" data-term="inverviews" data-page="1"><span class="check"></span>Inverviews</a></li>
+                                        <li><a href="#" data-filter="category" data-term="Ggovernment-non-profits" data-page="1"><span class="check"></span>Government & Non-Profits</a></li>
+                                        <li><a href="#" data-filter="category" data-term="finance" data-page="1"><span class="check"></span>Finance</a></li>                                        
                                     </ul>
                                 </div>
                             </div>
@@ -518,6 +506,8 @@
 
             $(function () {
                 $(".collapse-header").click(function (j) {
+                    
+                    j.preventDefault();
                     var collapse = $(this).closest(".collapse-item-block").find(".collapse-body");
                     $(this).closest(".collapse-block").find(".collapse-body").not(collapse).slideUp();
 
@@ -528,8 +518,7 @@
                         $(this).addClass("active");
                     }
 
-                    collapse.stop(false, true).slideToggle();
-                    j.preventDefault();
+                    collapse.slideToggle();
                 });
             });
 
