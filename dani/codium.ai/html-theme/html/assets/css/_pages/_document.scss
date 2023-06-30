@@ -2,7 +2,7 @@
     .resources-container {
         position: relative;
         padding-top: 250px;
-        padding-bottom: 70px;
+        padding-bottom: 50px;
         z-index: 3;
 
         @media (max-width: 992px) {
@@ -293,7 +293,7 @@
     }
 
     .resource-archive-list {
-        .content {
+        .resources-card-list {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 55px 40px;
@@ -403,9 +403,64 @@
         }
     }
     .resources-details-section {
-        padding: 230px 0 100px;
+        padding: 230px 0 80px;
+        @media (max-width: 1200px) {
+            padding: 230px 0 30px;
+        }
+        @media (max-width: 992px) {
+            padding: 180px 0 30px;
+        }
+        @media (max-width: 767px) {
+            padding: 150px 0 30px;
+        }
+        &::before {
+            content: '';
+            background: url(../images/circle-img-11.png) no-repeat center left;
+            background-size: contain;
+            width: 70px;
+            height: 90px;
+            display: block;
+            position: absolute;
+            z-index: -1;
+            top: 200px;
+            left: 0;
+            @media (max-width: 1200px) {
+                top: 130px;
+            }
+            @media (max-width: 992px) {
+                width: 50px;
+                height: 50px;
+                top: 120px;
+            }
+            @media (max-width: 767px) {
+                top: 100px;
+            }
+        }
+
+        &::after {
+            content: '';
+            background: url(../images/circle-img-12.png) no-repeat center right;
+            background-size: contain;
+            width: 165px;
+            height: 230px;
+            display: block;
+            position: absolute;
+            z-index: -1;
+            top: 430px;
+            right: 0;
+            @media (max-width: 992px) {
+                width: 90px;
+                height: 120px;
+                top: 350px;
+            }
+            @media (max-width: 767px) {
+                top: 450px;
+            }
+        }
         .section-title {
-            max-width: 475px;
+            @media(min-width: 992px) {
+                max-width: 475px;
+            }
             h1 {
                 margin-bottom: 25px;
             }
@@ -414,8 +469,23 @@
             }
         }
         .image-block {
+            @include flexbox; @include align-items(center); height: 100%; @include border-radius(15px);
+            @media (max-width: 767px) {
+                margin-top: 30px;
+            }
             img {
-                width: 100%;
+                width: 100%; @include border-radius(15px);
+            }
+        }
+    }
+    .other-resources-card-section {
+        .resources-card-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px 25px;
+            padding: 0;
+            @media(max-width: 767px) {
+                grid-template-columns: repeat(1, 1fr);
             }
         }
     }
