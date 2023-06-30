@@ -95,3 +95,96 @@
         }
     }
 }
+
+.number-pagination {
+    margin-top: 80px;
+
+    @media (max-width: 767px) {
+        margin-top: 40px;
+    }
+
+    ul {
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+        padding: 0;
+
+        li {
+            line-height: 0.7;
+            margin: 0 3px;
+            @include border-radius(40px);
+
+            a {
+                width: 40px;
+                height: 40px;
+                @include border-radius(40px);
+                border: 1px solid #EBEAF1;
+                @include inline-flex;
+                @include align-items(center);
+                @include justify-content(center);
+                font-size: 16px;
+                color: rgba(#01012A, 0.6);
+                @include transition(0.3s, ease-in-out);
+                flex: none;
+
+                &.page-link-previous {
+                    min-width: 40px;
+                    min-height: 40px;
+                    border-color: rgba(242, 240, 255, 1);
+                    background: rgba(242, 240, 255, 1);
+                    width: 7px;
+                    margin-right: 25px;
+
+                    .icon-arrow-left {
+                        background: url(../icons/icon-arrow-left.svg) no-repeat center center;
+                        width: 7px;
+                        height: 12px;
+                        display: inline-block;
+                        background-size: contain;
+                    }
+
+                    @media (max-width: 575px) {
+                        margin-right: 15px;
+                    }
+                }
+
+                &.page-link-next {
+                    border-color: rgba(242, 240, 255, 1);
+                    background: rgba(242, 240, 255, 1);
+                    width: 7px;
+                    margin-left: 25px;
+                    min-width: 40px;
+                    min-height: 40px;
+
+                    @media (max-width: 575px) {
+                        margin-left: 15px;
+                    }
+
+                    .icon-arrow-right {
+                        background: url(../icons/icon-arrow-right.svg) no-repeat center center;
+                        width: 7px;
+                        height: 12px;
+                        display: inline-block;
+                        background-size: contain;
+                    }
+                }
+            }
+
+            &.active {
+                a {
+                    font-weight: 700;
+                    color: #01012A;
+                    border-color: #684BFE;
+                }
+            }
+
+            &:hover,
+            &:focus {
+                a {
+                    background: rgba(242, 240, 255, 1);
+                    border-color: rgba(242, 240, 255, 1);
+                }
+            }
+        }
+    }
+}
