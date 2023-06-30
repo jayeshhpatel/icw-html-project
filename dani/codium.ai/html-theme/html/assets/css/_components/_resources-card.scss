@@ -2,20 +2,28 @@
     height: 100%; position: relative;
 
     .resources-card-content {
-        height: 100%; @include flexbox;
-        @include align-items(flex-start);
+        height: 100%; 
+        @include flexbox;
         @include flex-direction(column);
         .card-image {
-            position: relative; max-height: 260px; overflow: hidden; @include border-radius(10px); line-height: 0.7; @include transition(0.3s, ease-in-out); width: 100%;
-            @media (max-width: 575px) {
-                max-height: 100%;
-            }
+            @include border-radius(10px); 
+            position: relative;
+            padding-top: 55%;
+            @include transform(scale(1));
+            @include transition(0.2s, ease);            
             img {
+                display: block;
+                object-fit: cover;
+                @include border-radius(10px);
+                position: absolute;
+                top: 0;
+                left: 0;
                 width: 100%;
+                height: 100%;
             }
             &.card-video {
                 &::before {
-                    content: ''; width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: block; background: rgba(26, 21, 52, 0.4);
+                    content: ''; width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: block; background: rgba(26, 21, 52, 0.4); @include border-radius(10px); z-index: 1;
                 }
                 .icon-play {
                     background: url(../icons/icon-play.svg) no-repeat center center;
@@ -24,11 +32,12 @@
                     left: 50%;
                     width: 65px;
                     height: 65px;
-                    @include transform(translate(-50%, -50%) scale(0.98)); 
+                    @include transform(translate(-50%, -50%) scale(1)); 
                     @include transition(0.3s, ease-in-out);
                     @include border-radius(50%);
                     display: inline-block;
                     flex: none;
+                    z-index: 2;
                 }
             }
         }
@@ -75,7 +84,7 @@
                @include transform(scale(1.02));
                &.card-video {
                     .icon-play {
-                        @include box-shadow(0px 0px 30px 5px rgba(255,255,255,0.7)); 
+                        @include box-shadow(0px 0px 20px 5px rgba(255,255,255,0.3)); @include transform(translate(-50%, -50%) scale(1));
                     }
                }
             }
