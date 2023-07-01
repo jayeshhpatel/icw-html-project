@@ -24,5 +24,21 @@ $('.icw-slider-testimonial').slick({
     dots: false,
     infinite: false,
     focusOnSelect: true,
-    autoplay: false,
+    autoplay: false, 
+    responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+          },
+        },
+        {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            },
+        },
+    ]
 }); 
