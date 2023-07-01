@@ -14,13 +14,24 @@
 	}
 	.tagline {
 		font-size: 18px;
-		font-weight: 700;
+		font-weight: 500;
 		color: $primary;
 		margin-bottom: 15px;
-		display: inline-block;
-		background: -webkit-linear-gradient(45deg, $primary, $secondary 80%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+		@include inline-flex;
+		@include align-items(center);
+		&::after {
+			content: ''; 
+			width: 90px; 
+			height: 4px;
+			background: #152532;
+			display: inline-block;
+			margin-left: 5px;
+		}
+		&.gradient-text {
+			background: -webkit-linear-gradient(45deg, $primary, $secondary 80%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
 		@media (max-width:991px) {
 			font-size: 16px;
 		}
@@ -864,6 +875,11 @@ body.is-header-transparent {
 			}
 		}
 	}
+	&.with-border-card {
+		@include border-radius(10px);
+		border: 1px solid rgba(0, 0, 0, 0.50);
+		height: 100%;
+	}
 	.card-icon{
 		margin-bottom: 25px;
 		max-height: 60px;
@@ -874,6 +890,18 @@ body.is-header-transparent {
 			img{
 				max-height: 40px;
 			}
+		}
+		&.with-bg {
+			max-width: 85px;
+			max-height: 85px;
+			min-width: 85px;
+			min-height: 85px;
+			@include flexbox;
+			@include align-items(center);
+			@include justify-content(center);
+			flex: 0;
+			background: rgba(231, 231, 231, 1);
+			@include border-radius(50%);
 		}
 		img{
 			max-height: 60px;
@@ -933,6 +961,29 @@ body.is-header-transparent {
 		}
 	}
 	
+}
+a.info-card {
+	display: block;
+	height: 100%;
+	&.with-border-card {
+		&::before {
+			content: "";
+			position: absolute;
+			z-index: -1;
+			left: 20px;
+			bottom: -1px;
+			background: #000000;
+			width: 0;
+			height: 2px;
+			@include transition(0.3s, ease-in-out);
+		}
+		&:hover {
+			border-color: transparent;
+			&::before {
+				width: 50%;
+			}
+		}
+	}
 }
 .with-info-card-box {
 
@@ -1216,6 +1267,8 @@ body.is-header-transparent {
 	background-position: right top;
 	background-size: contain;
 	background-repeat: no-repeat;
+
+	
 }
 
 .helper-slider{
@@ -1969,6 +2022,11 @@ body.is-header-transparent {
 		&:last-child{
 			margin-bottom: 0;
 		}
+	}
+	&.list-style-col-2 {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 10px 30px;
 	}
 }
 
