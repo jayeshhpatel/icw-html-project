@@ -22,7 +22,7 @@ $('.icw-slider-testimonial').slick({
     slidesToScroll: 1,
     arrows: true,
     dots: false,
-    infinite: false,
+    infinite: true,
     focusOnSelect: true,
     autoplay: false, 
     responsive: [
