@@ -896,9 +896,15 @@
     .table-block {            
         .logo-codium {
             background: url(../images/codium-logo.svg) no-repeat center center; background-size: contain; display: inline-block; width: 138px; height: 30px;
+            @media (max-width: 992px) {
+                width: 120px; height: 30px;
+            }
         }
         .logo-chatgpt {
             background: url(../images/chatgpt-logo.svg) no-repeat center center; background-size: contain; display: inline-block; width: 125px; height: 38px;
+            @media (max-width: 992px) {
+                width: 100px; height: 30px;
+            }
         }
         .icon-close {
             background: url(../icons/icon-circle-close.svg) no-repeat center center; background-size: contain; display: inline-block; width: 24px; height: 24px;
@@ -907,51 +913,153 @@
             background: url(../icons/icon-circle-check.svg) no-repeat center center; background-size: contain; display: inline-block; width: 24px; height: 24px;
         }
         .table-header {
-            display: grid; grid-template-columns: 290px auto;
+            display: grid; grid-template-columns: 290px auto; border-bottom: 1px solid #E9E6FA;
+            @media (max-width: 992px) {
+                grid-template-columns: 190px auto;
+            }
+            @media (max-width: 767px) {
+                display: none;
+            }
             .col-parameter {
                 align-self: flex-end; color: #8E8EA7; font-size: 14px; padding: 20px 25px 20px 10px;
+                @media (max-width: 992px) {
+                    padding: 15px 15px 15px 8px;
+                }
             }
             .col-inner-grid {
-                display: grid; grid-template-columns: 190px 190px auto; grid-gap: 7px;
+                display: grid; grid-template-columns: 190px 190px auto; grid-gap: 7px; align-items: stretch;
+                @media (max-width: 992px) {
+                    grid-template-columns: 140px 140px auto; grid-gap: 5px;
+                }
                 .col-codium {
-                    background: #F8F6FF; border-radius: 20px 20px 0px 0px; padding: 35px 25px 65px; text-align: center;
+                    background: #F8F6FF; border-radius: 20px 20px 0px 0px; padding: 35px 25px 65px; text-align: center; display: flex; align-items: center; justify-content: center;
+                    @media (max-width: 992px) {
+                        padding: 25px 15px 45px;
+                    }
                 }
                 .col-chatgpt {
-                    background: #FAFAFA; border-radius: 20px 20px 0px 0px; padding: 35px 25px 65px; text-align: center;
+                    background: #FAFAFA; border-radius: 20px 20px 0px 0px; padding: 35px 25px 65px; text-align: center; display: flex; align-items: center; justify-content: center;
+                    @media (max-width: 992px) {
+                        padding: 25px 15px 45px;
+                    }
                 }
                 .col-notes {
                     align-self: flex-end; color: #8E8EA7; font-size: 14px; padding: 20px 25px 20px 40px;
+                    @media (max-width: 992px) {
+                        padding: 15px;
+                    }
                 }
             }
         }
         .table-body {
             .table-row {
-                display: grid; grid-template-columns: 290px auto;
+                display: grid; grid-template-columns: 290px auto; border-bottom: 1px solid #E9E6FA;
+                @media (max-width: 767px) {
+                    padding: 15px 0;
+                }
+                @media (max-width: 992px) {
+                    grid-template-columns: 190px auto;
+                }
+                @media (max-width: 767px) {
+                    grid-template-columns: 100%;
+                }
                 .col-parameter {
                     align-self: center; color: #01012A; font-size: 16px; padding: 20px 25px 20px 10px;
+                    @media (max-width: 992px) {
+                        padding: 15px 15px 15px 8px;
+                    }
+                    @media (max-width: 767px) {
+                        display: flex; align-items: center; justify-content: space-between;
+                    }
+                    .collapse-action {
+                        width: 20px;
+                        height: 20px;
+                        border: none; 
+                        padding: 0; 
+                        background: transparent;
+                        @include inline-flex;
+                        @include align-items(center);
+                        @include justify-content(center);
+                        cursor: pointer;
+                        display: none;
+                        @media (max-width: 767px) {
+                            display: block;
+                        }
+                        .icon-arrow {
+                            background: url(../icons/chev-down-black.svg) no-repeat center center;
+                            background-size: contain;
+                            display: inline-block;
+                            width: 12px;
+                            height: 10px;
+                            @include transform(rotate(180deg));
+                            @include transition(0.3s, ease-in-out);
+                        }
+                    }
                 }
                 .col-inner-grid {
-                    display: grid; grid-template-columns: 190px 190px auto; grid-gap: 7px;                    
+                    display: grid; grid-template-columns: 190px 190px auto; grid-gap: 7px; align-items: stretch;    
+                    @media (max-width: 992px) {
+                        grid-template-columns: 140px 140px auto; grid-gap: 5px;
+                    }  
+                    @media (max-width: 767px) {
+                        grid-template-columns: 50% 50% auto;
+                        & > div:last-child {
+                           grid-column : 1 / -1;
+                        }
+                    }              
+                    .text-green {
+                        color: #00D7A1;
+                    }
+                    span {
+                        display: block;
+                    }                  
                     .col-codium {
-                        background: #F8F6FF; text-align: center; padding: 20px;
+                        background: #F8F6FF; text-align: center; padding: 20px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;
+                        @media (max-width: 992px) {
+                            padding: 15px;
+                        }
+                        @media (max-width: 767px) {
+                            flex-direction: column;
+                            border-radius: 12px;
+                            -webkit-border-radius: 12px;
+                            -moz-border-radius: 12px;
+                            -ms-border-radius: 12px;
+                            -o-border-radius: 12px;
+}
                         .img {
                             display: none;
                             @media (max-width: 767px) {
                                 display: block;
+                                margin-bottom: 12px;
                             }
                         }
                     }
                     .col-chatgpt {
-                        background: #FAFAFA; text-align: center; padding: 20px;
+                        background: #FAFAFA; text-align: center; padding: 20px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;
+                        @media (max-width: 992px) {
+                            padding: 15px;
+                        }
+                        @media (max-width: 767px) {
+                            flex-direction: column;
+                            border-radius: 12px;
+                            -webkit-border-radius: 12px;
+                            -moz-border-radius: 12px;
+                            -ms-border-radius: 12px;
+                            -o-border-radius: 12px;
+                        }
                         .img {
                             display: none;
                             @media (max-width: 767px) {
                                 display: block;
+                                margin-bottom: 12px;
                             }
                         }
                     }                
                     .col-notes {
                         align-self: center; color: rgba(#01012A, 0.6); font-size: 16px; padding: 20px 25px 20px 40px;
+                        @media (max-width: 992px) {
+                            padding: 15px;
+                        }
                     }
                 }
             }
