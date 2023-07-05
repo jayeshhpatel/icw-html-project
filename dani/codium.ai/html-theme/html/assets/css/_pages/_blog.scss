@@ -28,34 +28,47 @@
     &-bg-images-wrapper {
       position: relative;
       margin: auto;
-      max-width: 1920px;
+      max-width: 100%;
       width: 100%;
-      overflow-x: hidden;
+      // overflow-x: hidden;
 
       .blog-page-bg-image-left {
         position: absolute;
         z-index: -1;
         top: 120px;
-        right: 1350px;
-        left: auto;
+        right: auto;
+        left: -50px;
 
-        @media (min-width: 1440px) {
-          right: auto;
-          left: -70px;
+        @media (max-width: 1200px) {
+          top: 90px;
         }
+        @media (max-width: 767px) {
+          max-width: 80px;
+        }
+
+        // @media (min-width: 1440px) {
+        //   right: auto;
+        //   left: -70px;
+        // }
       }
 
       .blog-page-bg-image-right {
         position: absolute;
         z-index: -1;
         top: -40px;
-        left: 1355px;
-        right: auto;
+        left: auto;
+        right: -20px;
+        max-width: 120px;
 
-        @media (min-width: 1440px) {
-          left: auto;
-          right: -65px;
+        @media (max-width: 1200px) {
+          top: 0px;
+          max-width: 90px;
         }
+
+        // @media (min-width: 1440px) {
+        //   left: auto;
+        //   right: -65px;
+        // }
       }
     }
 
@@ -78,7 +91,6 @@
         margin: 0 auto;
         @include mobile {
           font-size: 10vw;
-          line-height: 1;
         }
       }
       .blog-subtitle {
@@ -86,16 +98,13 @@
         margin-bottom: 3em;
         font-size: 22px;
         line-height: 125%;
-        @include mobile {
-          font-size: 20px;
-        }
       }
     }
     &--content {
       .posts-archive {
         position: relative;
         &-categories {
-          background: #ffffff;
+          
           margin: 0px auto;
           position: relative;
 
@@ -105,6 +114,7 @@
             overflow: hidden;
             border: 1px solid #f3f1fc;
             @include border-radius(45px);
+            background: #ffffff;
           }
           @media (max-width: 991px) {
             @include flexbox();
@@ -183,6 +193,7 @@
               @include border-radius(45px);
               padding: 5px;
               margin-bottom: 15px;
+              background-color: #fff;
 
               .post-search {
                 border: 0px !important;

@@ -1,0 +1,229 @@
+.demo-wrapper {
+  width: 100%;
+  position: relative;
+  @include mobile{
+    padding: 2rem;
+    border: 1px solid white;
+    border-radius: 20px;
+    background: url(.png), linear-gradient(0deg, rgba(1, 1, 42, 0.4), rgba(1, 1, 42, 0.4)), linear-gradient(105.87deg, rgba(255, 255, 255, 0.4) 3.04%, rgba(255, 255, 255, 0) 99.23%);
+    background-blend-mode: overlay, normal, normal;
+    backdrop-filter: blur(40px);
+    border: 1px solid #ffffff66;
+  }
+  .btn {
+    font-size: 1.8rem;
+  }
+  .demo-background {
+    width: 100%;
+    padding-top: 49.5%;
+    background: url(https://www.codium.ai/wp-content/uploads/2023/03/Demo.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border-radius: 18px;
+    @include mobile{
+      padding-top: initial;
+    }
+  }
+  .slideshow-container {
+    position: absolute;
+    //   width: 70vw;
+    background: #000000;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    overflow: none;
+    border-radius: 18px;
+    top: 3rem;
+    left: 3rem;
+    right: 3rem;
+    bottom: 3rem;
+    max-height: 100%;
+    overflow: hidden;
+    box-shadow: 0px 48px 13px rgba(1, 1, 42, 0.01), 0px 30px 12px rgba(1, 1, 42, 0.05), 0px 17px 10px rgba(1, 1, 42, 0.16), 0px 8px 8px rgba(1, 1, 42, 0.27), 0px 2px 4px rgba(1, 1, 42, 0.31), 0px 0px 0px rgba(1, 1, 42, 0.31);
+    @include mobile{
+      position: initial;
+      flex-direction: column;
+      background: transparent;
+    }
+    .btn-green {
+      position: absolute;
+      top: 2rem;
+      left: 3rem;
+      font-family: "CentraNo1";
+      @include mobile{
+        top: 4rem;
+        left: 4rem;
+      }
+    }
+    &:before {
+      content: "";
+    }
+    pre{
+      background: #000;
+      margin: 0;
+      border-radius: 18px;
+    }
+    code {
+      background-color: #000000;
+      text-align: left;
+      padding: 2rem 3rem 0;
+      @include mobile{
+        padding: 5rem 3rem 0;
+      }
+    }
+    .backgroundDiv {
+      transition: 0.5s all ease;
+      width: 100%;
+      z-index: 10;
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: stretch;
+      justify-content: flex-end;
+      overflow: none;
+      @include mobile {
+        top: 100%;
+        margin-top: 1em;
+        position: relative;
+        background: transparent;
+      }
+      pre.inner-slide {
+        width: 50%;
+        height: 100%;
+        margin: 0px;
+        position: relative;
+        transform: translateX(0);
+        @include mobile{
+          width: 100%;
+        }
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          background: linear-gradient(
+            180deg,
+            rgba(2, 0, 36, 0) 0%,
+            rgba(1, 1, 41, 0) 62%,
+            rgba(1, 1, 41, 1) 100%
+          );
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          pointer-events: none;
+        }
+      }
+      code {
+        background: #01012a;
+        border-left: 1px solid #28284c;
+        height: 100%;
+        padding: 4rem 3rem;
+        @include mobile{
+          border-radius: 18px;
+          max-height: 48rem;
+          padding-bottom: 13rem;
+        }
+      }
+    }
+    // @include mobile {
+    //   overflow: auto;
+    // }
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+.demo-inner-btn {
+  position: absolute;
+  bottom: 3rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 1;
+  padding: 0 10px;
+  .next-slide-button {
+    background-color: #9b8afc;
+    border: 1px solid #9b8afc;
+    white-space: normal !important;
+    color: #ffffff;
+    @media (max-width:767px) {
+      max-width: 95%;
+    }
+    &:hover {
+      background-color: #7962FE;
+    }
+    // box-shadow:0px 0px 15px 6px rgba(0,0,0,0.6);
+  }
+}
+
+.hljs-copy {
+  float: right;
+  cursor: pointer;
+}
+
+@keyframes right-enter {
+  0% {
+    clip-path: inset(0 0 0 100%);
+    /* width: 0; */
+  }
+  100% {
+    clip-path: inset(0);
+    /* width: 50%; */
+  }
+}
+@keyframes right-close {
+  0% {
+    // clip-path: inset(30%);
+    transform: translateX(50%);
+    /* width: 0; */
+    
+  }
+  100% {
+    // clip-path: inset(0 0 0 100%);
+    transform: translateX(100%);
+    /* width: 50%; */
+  }
+}
+@keyframes top-enter {
+  0% {
+    clip-path: inset(0 0 100% 0);
+    /* width: 0; */
+  }
+  100% {
+    clip-path: inset(0);
+    /* width: 50%; */
+  }
+}
+@keyframes top-close {
+  0% {
+    clip-path: inset(0);
+    /* width: 0; */
+  }
+  100% {
+    clip-path: inset(0 0 100% 0);
+    /* width: 50%; */
+  }
+}
+
+.slide-right{
+  animation-name: right-close;
+  animation-duration: 0.5s;
+  // width: 50%;
+  // height: 100%;
+  @include mobile {
+    animation-name: top-close;
+  }
+}
+.inner-slide {
+  animation-name: right-enter;
+  animation-duration: 0.5s;
+  @include mobile {
+    animation-name: top-enter;
+  }
+}
+.inner-slide code::-webkit-scrollbar {
+  display: none;
+}
