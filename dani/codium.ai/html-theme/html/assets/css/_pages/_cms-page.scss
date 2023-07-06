@@ -991,8 +991,15 @@
                             display: inline-block;
                             width: 12px;
                             height: 10px;
-                            @include transform(rotate(180deg));
+                            @include transform(rotate(0deg));
                             @include transition(0.3s, ease-in-out);
+                        }
+                    }
+                    &.active {
+                        .collapse-action {
+                            .icon-arrow { 
+                                @include transform(rotate(180deg));
+                            }
                         }
                     }
                 }
@@ -1010,6 +1017,9 @@
                     .text-green {
                         color: #00D7A1;
                     }
+                    .text-danger {
+                        color: #FF6B9C;
+                    }
                     span {
                         display: block;
                     }                  
@@ -1025,7 +1035,7 @@
                             -moz-border-radius: 12px;
                             -ms-border-radius: 12px;
                             -o-border-radius: 12px;
-}
+                        }
                         .img {
                             display: none;
                             @media (max-width: 767px) {
