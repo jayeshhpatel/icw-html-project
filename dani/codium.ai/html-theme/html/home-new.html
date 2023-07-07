@@ -25,7 +25,7 @@
         }
     </style>
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" media="all">
-    <link rel="stylesheet" href="assets/css/splide.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/swiper.min.css" type="text/css">
 </head>
 <body class="home page-template page-template-page-homepage page-template-page-homepage-php page page-id-10 show-header-strip is-dark">
     <div class="popup-overlay"></div>
@@ -164,10 +164,10 @@
                     <h2 class="gradient-text">Over 60 000 installs</h2>
                     <p class="text-bigger">Join the CodiumAI community</p>
                 </div>
-                <div class="customer-review-slider splide">
-                    <div class="splide__track">
-                        <ul class="splide__list">
-                            <li class="splide__slide">
+                <div class="customer-review-slider">
+                    <div class="swiper-container mySwiper" id="swiper-1">
+                        <div class="swiper-wrapper" id="swiper-1-wrapper">
+                            <div class="swiper-slide">
                                 <div class="customer-review-box">
                                     <div class="app-box">
                                         <div class="box-title">Visual Studio Code</div>
@@ -185,8 +185,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </li>
-                            <li class="splide__slide">
+                            </div>
+                            <div class="swiper-slide">
                                 <div class="customer-review-box">
                                     <div class="box-desc">One of the best extensions , it makes life easier by generating unit tests automatically , Integrates smoothly with VSCode and assists in enhancing the quality of your code. Amazingly good !!”</div>
                                     <div class="box-customer-details">
@@ -194,8 +194,17 @@
                                         <div class="date">May 9, 2023</div>
                                     </div>
                                 </div>
-                            </li>
-                            <li class="splide__slide">
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="customer-review-box">
+                                    <div class="box-desc">Excited to see @CodiumAI coming out of stealth! don't miss early access, the ultimate code integrity tool for Python developers. These are exciting times for developers! #AI #developertools #coding</div>
+                                    <div class="box-customer-details">
+                                        <div class="user-name">Ronald Richards</div>
+                                        <div class="date">May 9, 2023</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
                                 <div class="customer-review-box">
                                     <div class="box-desc">One of the best extensions , it makes life easier by generating unit tests automatically , Integrates smoothly with VSCode and assists in enhancing the quality of your code. Amazingly good !!”</div>
                                     <div class="box-customer-details">
@@ -203,17 +212,17 @@
                                         <div class="date">May 9, 2023</div>
                                     </div>
                                 </div>
-                            </li>
-                            <li class="splide__slide">
+                            </div>
+                            <div class="swiper-slide">
                                 <div class="customer-review-box">
-                                    <div class="box-desc">One of the best extensions , it makes life easier by generating unit tests automatically , Integrates smoothly with VSCode and assists in enhancing the quality of your code. Amazingly good !!”</div>
+                                    <div class="box-desc">Excited to see @CodiumAI coming out of stealth! don't miss early access, the ultimate code integrity tool for Python developers. These are exciting times for developers! #AI #developertools #coding</div>
                                     <div class="box-customer-details">
-                                        <div class="user-name">Godknows Pesanai</div>
+                                        <div class="user-name">Ronald Richards</div>
                                         <div class="date">May 9, 2023</div>
                                     </div>
                                 </div>
-                            </li>
-                        </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -702,40 +711,50 @@
                     src="/wp-content/uploads/2023/01/discord.svg" alt="Discord"> JOIN OUR DISCORD</a></div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>   
-    <script src="assets/js/splide.min.js"></script>
+    <script src="assets/js/swiper.min.js"></script>
     <script src='https://www.codium.ai/wp-content/themes/codium/assets/lib/highlightjs/highlight-icw.js?ver=1688635335'></script>
     <script src='https://www.codium.ai/wp-content/themes/codium/assets/lib/lottie/lottie-player.js?ver=1688635335'></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script> -->
 
     <script src="assets/js/main.js"></script>
     <script>
-        const splide = new Splide(".splide", {
-            // Optional parameters
-            start: 1,
-            perPage: 3.5,
-            perMove: 1,
-            gap: 25,
-            type: "loop",
-            drag: "free",
-            snap: false,
-            interval: 3000,
-            arrows: true,
-            pagination: true,
-            rewind: true,
-            rewindByDrag: true,
-            lazyLoad: true,
-
-            // Responsive breakpoint
-            breakpoints: {
-                768: {
-                    perPage: 1.5,
-                    snap: true
-                }
-            }
-        });
-
-        splide.mount();
+        var newSwiper = document.getElementsByClassName("mySwiper");
+for(var i = 0; i < newSwiper.length; i++){
+	var swiper = new Swiper("#"+newSwiper[i].id, {
+        slidesPerView: 3.5,
+        spaceBetween: 20,
+        slidesPerGroup: 2,
+		longSwipesMs: 400,
+        freeMode: true,
+        freeModeMomentum: true,
+        freeModeMomentumVelocityRatio: 0.4,
+		    freeModeSticky: true,
+		    mousewheel: {
+			    invert: false,
+			    forceToAxis: true,
+	    },	
+		  on: {
+			    slideChange: function () {
+				    swiperID = this.el.id;
+				    swiperContainer = document.getElementById(swiperID);
+				    swiperWrapper = document.getElementById(swiperID+"-wrapper");
+				    if(!this.isBeginning && !this.isEnd) {	
+					  swiperWrapper.classList.add("swiper-wrapper-moved");	 
+				    }
+			    },
+			    reachBeginning: function () {
+				if(this.isBeginning) {
+					swiperWrapper.classList.remove("swiper-wrapper-moved");	
+				}
+			},
+			reachEnd: function () {
+				if(this.isEnd) {					
+					swiperWrapper.classList.remove("swiper-wrapper-moved");	  
+				}
+			},
+		},
+	});
+} 
 
     </script>
 </body>
