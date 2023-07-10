@@ -1573,10 +1573,28 @@
 }
 .customer-review-section {
   padding: 170px 0 100px;
+  overflow: hidden;
+  @media (max-width: 992px) {
+    padding: 120px 0 100px;
+  }
+  @media (max-width: 767px) {
+    padding: 70px 0 50px;
+  }
+  .section-title {
+    @media (max-width: 992px) {
+      p {
+        margin: 20px 0 30px; font-size: 18px;
+      }
+    }
+  }
 }
 .customer-review-slider {
   position: relative;
   margin-top: 80px;
+  padding: 0 15px;
+  @media (max-width: 992px) {
+    margin-top: 60px;
+  }
   .icw-swiper-buttons {
     @include flexbox;
     @include align-items(center);
@@ -1586,6 +1604,21 @@
     position: absolute;
     top: -110px;
     right: 0;
+    @media (max-width: 992px) {
+      top: -120px; right: 15px;
+    }
+    @media (max-width: 767px) {
+      top: 0; right: 0;
+      position: relative;
+      @include justify-content(center);
+      margin-top: 40px;
+    }
+    @media (max-width: 575px) {
+      top: 0; right: 0;
+      position: relative;
+      @include justify-content(center);
+      margin-top: 20px;
+    }
     .icw-swiper-button-prev, .icw-swiper-button-next {
       position: static !important;
       width: 54px;
@@ -1634,6 +1667,12 @@
   display: inline-block;
   width: 360px;
   position: relative;
+  @media (max-width: 992px) {
+    width: 300px;
+  }
+  @media (max-width: 575px) {
+    width: 250px;
+  }
   &::before {
     display: block;
     padding-top: 100%;
@@ -1651,6 +1690,9 @@
   }
   .app-box {
     padding: 40px;
+    @media (max-width: 992px) {
+      padding: 25px;
+    }
   }
 
   .review-info { 
@@ -1658,12 +1700,18 @@
     @include flex-direction(column);
     height: 100%;
     padding: 40px 2px 40px 0;
+    @media (max-width: 992px) {
+      padding: 25px 2px 25px 0;
+    }
     .box-desc {
       flex: 1 1 auto;
       padding: 0 40px;
       max-height: 205px; 
       overflow: hidden;
       overflow-y: auto;
+      @media (max-width: 992px) {
+        padding: 0 25px;
+      }
       &::-webkit-scrollbar {
           background-color: transparent;
           width: 6px;
@@ -1681,6 +1729,9 @@
     }
     .box-customer-details {
       padding: 0 40px;
+      @media (max-width: 992px) {
+        padding: 0 25px;
+      }
     }
   }
 
@@ -1701,6 +1752,10 @@
       max-width: 38px;
       min-width: 38px;
       margin-right: 15px;
+      @media (max-width: 767px) {
+        max-width: 34px;
+        min-width: 34px;
+      }
     }
 
     .text {
@@ -1708,7 +1763,13 @@
       font-weight: 700;
       display: block;
       line-height: 1;
-      color: #FFF
+      color: #FFF;
+      @media (max-width: 992px) {
+        font-size: 58px;
+      }
+      @media (max-width: 767px) {
+        font-size: 50px;
+      }
     }
   }
 
@@ -1733,6 +1794,13 @@
     text-align: left;
     margin-bottom: 25px;
     line-height: 1.5;
+    @media (max-width: 992px) {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    @media (max-width: 767px) {
+      font-size: 14px;
+    }
   }
 
   .box-customer-details {
@@ -1742,11 +1810,72 @@
       margin-bottom: 5px;
       color: #ffffff;
       line-height: 1.5;
+      @media (max-width: 767px) {
+        font-size: 14px;
+      }
     }
 
     .date {
       font-size: 14px;
       color: rgba(255, 255, 255, 0.6);
+      @media (max-width: 767px) {
+        font-size: 12px;
+      }
+    }
+  }
+}
+.single-review-section {
+  background: #ffffff;
+  padding: 100px 15px;
+}
+.single-review-block {
+  background: url(../images/single-review-bg.png) no-repeat center center; background-size: cover; @include border-radius(20px); padding: 100px; text-align: center;
+  @media (max-width: 992px) {
+    padding: 70px;
+  }
+  .review-app {
+    color: rgba(255, 255, 255, 0.6); font-size: 14px; margin-bottom: 25px; @include flexbox; @include align-items(center); @include justify-content(center);
+    .app-icon {
+      margin-left: 15px; max-width: 22px;
+    }
+  }
+  .review-content {
+    font-size: 26px; color: #ffffff;
+    max-width: 750px; margin: 0 auto;
+  }
+  .review-user-info {
+    @include flexbox; @include align-items(center); @include justify-content(center); margin-top: 40px;
+    .user-img {
+      @include border-radius(50%); overflow: hidden; max-width: 48px; max-height: 48px; min-width: 48px; min-height: 48px;
+      img {
+        width: 100%;
+      }
+    }
+    .user-details {
+      text-align: left; margin-left: 15px;
+      .name {
+        font-size: 16px; font-weight: 700; color: #ffffff; line-height: 1.5;
+      }
+      span {
+        font-size: 14px; color: rgba(255, 255, 255, 0.6); display: inline-block; line-height: 1.5;
+      }
+    }
+  }
+  .action {
+    margin-top: 65px;
+    .main-btn {
+      background: #5865F2; backdrop-filter: blur(40px);  @include inline-flex; @include align-items(center); @include justify-content(center); @include transition(0.3s, ease-in-out);
+      img {
+        filter: contrast(0) brightness(0) invert(1);
+        -webkit-filter: contrast(0) brightness(0) invert(1); margin-right: 10px; @include transition(0.3s, ease-in-out);
+      }
+      &:hover, &:focus {
+        background: #ffffff; color: #5865F2;
+        img {
+          filter: none;
+          -webkit-filter: none;
+        }
+      }
     }
   }
 }
