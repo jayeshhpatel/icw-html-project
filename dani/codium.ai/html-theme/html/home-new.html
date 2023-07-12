@@ -302,7 +302,7 @@
                             </div>
                         </div>
                     </div>
-                </div>                
+                </div>        
             </div>
         </section>
         <section class="testimonial-grid-section">
@@ -1001,79 +1001,103 @@
                     src="/wp-content/uploads/2023/01/discord.svg" alt="Discord"> JOIN OUR DISCORD</a></div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="assets/js/swiper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src='https://www.codium.ai/wp-content/themes/codium/assets/lib/highlightjs/highlight-icw.js?ver=1688635335'></script>
     <script src='https://www.codium.ai/wp-content/themes/codium/assets/lib/lottie/lottie-player.js?ver=1688635335'></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script> -->
 
     <script src="assets/js/main.js"></script>
     <script>
-        var newSwiper = document.getElementsByClassName("customer-review-slider-container");
-        for(var i = 0; i < newSwiper.length; i++){
-	        var swiper = new Swiper("#"+newSwiper[i].id, {
-                slidesPerView: 1.17,
-                spaceBetween: 10,
-                slidesPerGroup: 2,
-                longSwipesMs: 400,
-                freeMode: true,
-                freeModeMomentum: true,
-                freeModeMomentumVelocityRatio: 0.4,
-                freeModeSticky: true,
-                mousewheel: {
-                    invert: false,
-                    forceToAxis: true,
-                },	        
-                // Navigation arrows
-                navigation: {
-                    nextEl: '.icw-swiper-button-next',
-                    prevEl: '.icw-swiper-button-prev',
-                },
-                breakpoints: { 
-                    420: {
-                        slidesPerView: 1.5,
-                    },
-                    575: {
-                        slidesPerView: 2.1,
-                    },                   
-                    767: {
-                        slidesPerView: 2.4,
-                    },
-                    992: {
-                        slidesPerView: 2.6,
-                    },
-                    1068: {
-                        slidesPerView: 2.7,
-                    },
-                    1440: {
-                        slidesPerView: 2.9,
-                    },
-                    1600: {
-                        slidesPerView: 3.2,
-                    },
-                },
-                on: {
-                    slideChange: function () {
-                        swiperID = this.el.id;
-                        swiperContainer = document.getElementById(swiperID);
-                        swiperWrapper = document.getElementById(swiperID+"-wrapper");
-                        if(!this.isBeginning && !this.isEnd) {	
-                        swiperWrapper.classList.add("swiper-wrapper-moved");	 
-                        }
-                    },
-                    reachBeginning: function () {
-                        if(this.isBeginning) {
-                            swiperWrapper.classList.remove("swiper-wrapper-moved");	
-                        }
-                    },
-                    reachEnd: function () {
-                        if(this.isEnd) {					
-                            swiperWrapper.classList.remove("swiper-wrapper-moved");	  
-                        }
-                    },
-                },
-            });
-        } 
+        // var newSwiper = document.getElementsByClassName("customer-review-slider-container");
+        // for(var i = 0; i < newSwiper.length; i++){
+	    //     var swiper = new Swiper("#"+newSwiper[i].id, {
+        //         slidesPerView: 1.17,
+        //         spaceBetween: 10,
+        //         slidesPerGroup: 2,
+        //         longSwipesMs: 400,
+        //         freeMode: true,
+        //         freeModeMomentum: true,
+        //         freeModeMomentumVelocityRatio: 0.4,
+        //         freeModeSticky: true,
+        //         mousewheel: {
+        //             invert: false,
+        //             forceToAxis: true,
+        //         },	        
+        //         // Navigation arrows
+        //         navigation: {
+        //             nextEl: '.icw-swiper-button-next',
+        //             prevEl: '.icw-swiper-button-prev',
+        //         },
+        //         breakpoints: { 
+        //             420: {
+        //                 slidesPerView: 1.5,
+        //             },
+        //             575: {
+        //                 slidesPerView: 2.1,
+        //             },                   
+        //             767: {
+        //                 slidesPerView: 2.4,
+        //             },
+        //             992: {
+        //                 slidesPerView: 2.6,
+        //             },
+        //             1068: {
+        //                 slidesPerView: 2.7,
+        //             },
+        //             1440: {
+        //                 slidesPerView: 2.9,
+        //             },
+        //             1600: {
+        //                 slidesPerView: 3.5,
+        //             },
+        //         },
+        //         on: {
+        //             slideChange: function () {
+        //                 swiperID = this.el.id;
+        //                 swiperContainer = document.getElementById(swiperID);
+        //                 swiperWrapper = document.getElementById(swiperID+"-wrapper");
+        //                 if(!this.isBeginning && !this.isEnd) {	
+        //                 swiperWrapper.classList.add("swiper-wrapper-moved");	 
+        //                 }
+        //             },
+        //             reachBeginning: function () {
+        //                 if(this.isBeginning) {
+        //                     swiperWrapper.classList.remove("swiper-wrapper-moved");	
+        //                 }
+        //             },
+        //             reachEnd: function () {
+        //                 if(this.isEnd) {					
+        //                     swiperWrapper.classList.remove("swiper-wrapper-moved");	  
+        //                 }
+        //             },
+        //         },
+        //     });
+        // } 
 
+
+        var swiper = new Swiper(".customer-review-slider-container", {
+            slidesPerView: 1.2,
+            spaceBetween: 25,
+            freeMode: true,
+            freeModeMomentum: true,
+            freeModeMomentumVelocityRatio: 0.4,
+            freeModeSticky: true,
+            navigation: {
+                nextEl: '.icw-swiper-button-next',
+                prevEl: '.icw-swiper-button-prev',
+            },
+            breakpoints: { 
+                420: {
+                    slidesPerView: 2,
+                },
+                767: {
+                    slidesPerView: 3,
+                },
+                1200: {
+                    slidesPerView: 4,
+                },
+            }
+        });
     </script>
    
 </body>
