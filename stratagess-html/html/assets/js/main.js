@@ -35,22 +35,43 @@ $('.menu-item-has-children .arrow').on('click',function(event){
 
    
 });
-var logoslider = new Splide( '.logo-slider', {
-   type   : 'loop',
-   drag   : 'free',
-   pagination : false,
-   arrows: false,
-   perPage: 4,
-   breakpoints: {
-             991: {
-                perPage:2,
-                
-             },
-             425: {
-                 perPage:1,
-             }
+
+if ($('.logo-slider').length) {
+   var logoslider = new Splide( '.logo-slider', {
+      type   : 'loop',
+      drag   : 'free',
+      pagination : false,
+      arrows: false,
+      perPage: 4,
+      breakpoints: {
+         1200: {
+            perPage:3,
             
-          },
- } );
+         },
+             991: {
+                  perPage:2,
+                  
+               },
+               425: {
+                  perPage:1,
+               }
+               
+            },
+   } );
+   
+   logoslider.mount();
+   };
  
- logoslider.mount();
+
+    /* collapse */
+    $(".collapse-item .collapse-title").click(function () {
+      if ($(this).closest(".collapse-item").hasClass("is-open")) {
+         $(this).closest(".collapse-item").stop().removeClass("is-open");
+         $(this).closest(".collapse-item").find(".collapse-body").stop().slideUp();
+      } else {
+         $(".collapse-item").removeClass("is-open");
+         $(".collapse-item").find(".collapse-body").stop().slideUp();
+         $(this).closest(".collapse-item").stop().addClass("is-open");
+         $(this).closest(".collapse-item").find(".collapse-body").stop().slideDown();
+      }
+  });
