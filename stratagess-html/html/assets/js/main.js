@@ -21,6 +21,28 @@ jQuery(document).ready(function($) {
           }
        });
     }
+
+   $(".counter").each(function () {
+      var $this = $(this),
+         countTo = $this.attr("data-countto");
+         countDuration = parseInt($this.attr("data-duration"));
+      $({ counter: $this.find('span').text() }).animate({
+         counter: countTo
+      },
+      {
+         duration: countDuration,
+         easing: "linear",
+         step: function () {
+            $this.find('span').text(Math.floor(this.counter));
+         },
+         complete: function () {
+            $this.find('span').text(this.counter);
+         }
+      });
+   });
+   $('.categories-btn').on('click', function(){
+      $(this).toggleClass('active');
+   })
 })
 
 
@@ -30,10 +52,6 @@ $('.menu-item-has-children .arrow').on('click',function(event){
    // $(this).next().toggleClass('d-none');
    $(this).parent().find('.sub-menu').first().toggle(300);
    $(this).parent().siblings().find('.sub-menu').hide(200);
-
-
-
-   
 });
 
 if ($('.logo-slider').length) {
@@ -45,19 +63,16 @@ if ($('.logo-slider').length) {
       perPage: 4,
       breakpoints: {
          1200: {
-            perPage:3,
-            
+            perPage:3,            
          },
-             991: {
-                  perPage:2,
-                  
-               },
-               425: {
-                  perPage:1,
-               }
-               
-            },
-   } );
+         991: {
+            perPage:2,                  
+         },
+         425: {
+            perPage:1,
+         }         
+      },
+   });
    
    logoslider.mount();
    };

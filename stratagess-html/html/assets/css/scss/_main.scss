@@ -10,17 +10,57 @@
     @media (max-width: 767px) {
         margin-bottom: 30px;
     }
+    &.text-center {
+        .sort-info {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
     h1, h2 {
         margin-bottom: 20px; color: $primary;
     }
     .sort-info {
         font-size: 16px;
         max-width: 900px;
+        @media (max-width: 767px) {
+            font-size: 14px;
+        }
+    }
+    .action {
+        margin-top: 30px;
+    }
+    ul {
+        padding: 0; margin: 0; margin-top: 25px; 
+        &.with-two-column {
+            column-count: 2;
+            @media (max-width:991px) {
+                column-count: 1;
+            }
+        }
+        li{
+            margin-bottom: 12px;
+            position: relative;
+            font-size: 16px;
+            @include flexbox;
+            &::before{
+                background-image: url(../images/icons/check-circle.svg);
+                display: inline-block;
+                min-width: 20px;
+                max-width: 20px;
+                min-height: 20px;
+                max-height: 20px;
+                background-size: 20px;
+                background-repeat: no-repeat;
+                content: "";
+                margin-right: 10px;
+                margin-top: 2px;
+            }
+        }
     }
 }
 
 .hero-header {
-    padding: 50px 0px;
+    padding: 60px 0px;
     background: linear-gradient(90deg, #0F3D8B 43.02%, rgba(15, 61, 139, 0.48) 98.71%);
 
     .row {
@@ -42,20 +82,18 @@
         strong {
             color: $secondary;
         }
+        .sort-info {
+            font-size: 18px;
+            @media (max-width: 992px) {
+                font-size: 16px;
+            }
+        }
     }
 
     .sub-title {
         color: #ffffff;
         font-size: 28px;
-
-        p {
-            margin-bottom: 20px;
-
-            &:last-child {
-                margin-bottom: 0;
-            }
-        }
-
+        margin-bottom: 20px;
         @media (max-width: 991px) {
             font-size: 24px;
         }
@@ -67,13 +105,29 @@
 
     .hero-img {
         text-align: right;
-
         @media (max-width:767px) {
             text-align: center;
             margin-bottom: 20px;
-
             img {
                 max-width: 50%;
+            }
+        }
+    }
+    .hero-sm-img {
+        text-align: right;
+        img {
+            max-width: 50%;
+        }
+        @media (max-width:767px) {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    }
+    &.case-study-hero-header {
+        .section-title {
+            h1 {
+                font-size: 50px;
+                font-weight: 500;
             }
         }
     }
@@ -303,6 +357,8 @@
     }
     .info-card{
         border-top: 5px solid $secondary;
+        
+        @include box-shadow(0 2px 10px 0 rgba(0,0,0,0.1));
         @media (min-width:768px) {
             height: 100%;
         }
@@ -319,14 +375,11 @@
         }
         .card-text{
             flex: 1 1 auto;
-            margin-bottom: 10px;
-            p{
-                color: $black;
-                font-weight: 400;
-                margin-bottom: 10px;
-                @media (max-width:991px) {
-                    font-size: 14px;
-                }
+            margin-bottom: 20px;            
+            color: $black;
+            font-weight: 400;
+            @media (max-width:991px) {
+                font-size: 14px;
             }
         }
         .card-icon{
@@ -387,6 +440,29 @@
             
         }
     }
+.counter-box {
+    text-align: center;
+    &.with-bg {
+        background: rgba(#0F3D8B, 0.05);
+        @include border-radius(12px); 
+        padding: 30px;
+        @include box-shadow(0 2px 10px 0 rgba(0,0,0,0.1));
+    }
+    .counter {
+        margin-bottom: 10px;
+        line-height: 1;
+        white-space: nowrap;
+    }
+    .info-text {
+        font-size: 20px;
+        font-weight: 500;
+        color: $primary;
+        text-transform: capitalize;
+    }
+    @media (max-width:991px) {
+        margin-bottom: 40px;
+    }
+}
 .counter-section {
     @media (max-width:991px) {
         padding-bottom: 20px;
@@ -397,49 +473,34 @@
         h2{
             margin-bottom: 0px;
         }
-    }
-    .counter{
-        text-align: center;
-        h3 {
-            margin-bottom: 15px;
-            @media (max-width:991px) {
-                margin-bottom: 10px;
-            }
-        }
-        p{
-            font-size: 20px;
-        }
-        @media (max-width:991px) {
-            margin-bottom: 40px;
+        &.text-center {
+            display: block;
         }
     }
+    
 }
 .cta-block-section {
-    background-position: top center;
+    background-position: top left;
     background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 700px;
-    @media (max-width: 991px) {
-        min-height: 400px;
+    background-repeat: no-repeat;  
+    padding: 0;  
+    .container {
+        padding-top: 400px;
+        padding-bottom: 50px;
     }
-    @media (max-width: 767px) {
-        min-height: 300px;
-    }
-    .card{
-        position: absolute;
-        bottom:50px;
-        left: 50px;
-        max-width: calc(100vw - 30px);
-        width:460px;
-        background-color: $primary;
-        border: none;
+    .cta-card{        
+      
+        max-width: 460px;
+        background-color: $primary;       
         color: $white;
-        @media (max-width:767px) {
-            left: 10px;
+        @include border-radius(25px);
+        padding: 30px;
+        @media (max-width: 767px) {
+            padding: 20px;
+            @include border-radius(15px);
         }
         .card-body{
-            border-radius: 25px;
-            padding: 30px;
+            
             .section-title {
                 margin-bottom: 0;
                 h2 {
@@ -454,60 +515,29 @@
 }
 
 .image-content-block{
-    .card-image-block{
+    .card-image-block {
+        overflow: hidden; @include border-radius(12px); margin-right: 30px;
         img{
-            border-radius: 12px;
+            @include border-radius(12px); @include transition(0.3s, ease-in-out);
         }
         @media (max-width:767px) {
-            margin-bottom: 20px;
+            margin-bottom: 30px; margin-right: 0;
         }
-    }
-    ul{
-        column-count: 2;
-        @media (max-width:991px) {
-            column-count: 1;
-        }
-        li{
-            margin-bottom: 10px;
-            position: relative;
-            font-size: 14px;
-            padding-left: 30px;
-            &::after{
-                background-image: url(../images/icons/check-circle.svg);
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 18px;
-                height: 18px;
-                background-repeat: no-repeat;
-                content: "";
+        &:hover {
+            img {
+                @include transform(scale(1.05));
             }
         }
-    }
+    }   
 }
 .faq-section {
     padding-bottom: 100px;
     @media (max-width:991px) {
         padding-bottom: 50px;
     }
-    .section-title{
-        margin-bottom: 40px;
-        @media (max-width:991px) {
-            margin-bottom: 20px;
-        }
-        h2{
-            color: $primary;
-        }
-    }
-    .sort-info{
-        margin-bottom: 20px;
-        text-align: center;
-        max-width:815px;
-        margin-left: auto;
-        margin-right: auto;       
-    }
     .faq-block {
         counter-reset: list;
+        margin-bottom: 30px;
         .is-open {
             .collapse-title {
                 &::after {
@@ -523,37 +553,41 @@
             border-radius: 10px;
             background: #F6F6F6;
             padding: 20px;
-            @media (max-width:991px) {
-                padding: 10px;
+            @include transition(0.3s, ease-in-out);
+            @media (max-width: 767px) {
+                padding: 15px;
                 border-radius: 5px;
             }
             .collapse-body {
                 .sort-info {
-                    padding-top: 10px;
+                    padding-top: 15px;
                 }
             }
             .collapse-title {
-                &::before {
-                    width: 40px;
-                    background-size: contain;
-                    flex: none;
-                    font-weight: 500;
-                    font-size: 24px;
-                    line-height: 100%;
-                    content: "0"counter(list);
-                    counter-increment: list;
-                    color: #1E4397;
-                    margin-top: 1px;
-                }
                 background-color: transparent;
                 padding: 0;
                 border: none;
                 display: block;
                 width: 100%;
                 text-align: left;
-                display: flex;
+                @include flexbox;
+                @include align-items(center);
                 position: relative;
                 cursor: pointer;
+                &::before {
+                    width: 40px;
+                    background-size: contain;
+                    flex: none;
+                    font-weight: 500;
+                    font-size: 18px;
+                    line-height: 100%;
+                    content: "0"counter(list);
+                    counter-increment: list;
+                    color: $black;
+                    @media (max-width:991px) {
+                        font-size: 16px;
+                    }
+                }                
                 &::after {
                     content: "";
                     position: absolute;
@@ -561,19 +595,23 @@
                     top: 4px;
                     width: 24px;
                     height: 24px;
-                    background: url(../images/icons/dawon.svg) no-repeat center center;
+                    background: url(../images/icons/down.svg) no-repeat center center;
                 }
 
                 h3 {
                     margin-bottom: 0;
-                    font-size: 22px;
-                    font-weight: 400;
+                    font-size: 18px;
+                    font-weight: 500;
+                    color: $primary;
                     @media (max-width:991px) {
                         font-size: 16px;
                     }
                 }
             }
-
+            
+            &:hover {
+                @include box-shadow(0 2px 10px 0 rgba(0,0,0,0.1));
+            }
         }
     }
 }
@@ -595,9 +633,11 @@
             margin-bottom: 15px; 
     }
     .post-text{
-        @media (min-width:575px) {
+        @media (min-width:767px) {
             min-height: 160px;
+            margin-bottom: 0px;
         }
+   margin-bottom: 20px;
     }
     .post-meta {
         display: flex;
@@ -647,7 +687,10 @@
         h3{
             font-size: 18px;
             margin-bottom: 0px;
-            color: $primary;
+            color: $black;
+            &:hover{
+                color: $primary;
+            }
         }
     }
     
@@ -666,8 +709,14 @@
 } 
 }
 .blog-details-section{
+    p{
+        margin-bottom: 20px;
+    }
     .post-image{
-        margin-bottom: 30px;
+        margin-bottom: 50px;
+        @media (max-width:991px) {
+            margin-bottom: 30px;
+        }
     }
     h2{
         font-size: 30px; 
@@ -678,11 +727,78 @@
         -ms-flex: 1 1 auto;
         flex: 1 1 auto;
     }
-       
+    .sort-info{
+        margin-bottom: 50px;
+    }
+   .list{
+    padding-left: 30px;
+    li{
+        list-style: disc;
+    }
+   }
+    .blog-box {
+        position: relative;
+        overflow: hidden;
+        padding: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        .blog-text-box {
+        overflow: hidden;
+        position: relative;
+        background-color: $primary;
+        padding: 30px 30px;
+        z-index: 100;
+            
+            p{
+                color: white;
+            }
+        }
+        .back-orange {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: $secondary;
+            width: 50%;
+            height: 75%;
+            z-index: 1;   
+        }
+    }
+}
+.relatad-post-section{
+    padding-bottom: 100px;
+    @media (max-width:991px) {
+        padding-bottom: 50px;
+    }
+    h2{
+        color: $primary;
+        margin-bottom: 30px;
+        @media (max-width:991px) {
+            margin-bottom: 20px;
+        }
+    }
+    .blog-post{
+        margin-bottom: 30px;
+        border-bottom: 1px solid #e1e1e1;
+        padding: 20px 0px;
+        margin-right: 10px;
+    }
+    a{
+        color: $black;
+        &:hover{
+        color: $primary;
+        }
+    }
 }
 .case-study-section{
+    padding-top: 100px;
+    padding-bottom: 50px;
+    @media (max-width:991px) {
+        padding-top: 50px;
+        padding-bottom: 30px;
+    }
     h1{
         color: $primary;
+        font-size: 60px;
     }
     .counter{
     align-items: center;
@@ -707,13 +823,29 @@
        }
     }
 }
-.catagary-section{
-    .section-categories-wrap {
-        background: #fff;
-        overflow: hidden;
-        overflow-x: auto;
+.catagary-list-block{
+    background: #fff;
+    overflow: hidden;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+    &::-webkit-scrollbar {
+        background-color: transparent;
+        width: 6px;
+        height: 6px;
+        border-radius: 16px;
     }
-    .freebie-categories {
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #9898aa;
+        border-radius: 16px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #eeeeee;
+        border-radius: 16px;
+    }
+    .categories-list {
         list-style: none;
         margin: 0px;
         padding: 0px;
@@ -723,14 +855,18 @@
         li {
             flex-grow: 0;
             flex-shrink: 0;
-            a {
+            .categories-btn {
                 text-decoration: none;
                 display: block;
-                padding: 10px 20px;
-                border: 1px solid #eaeaea;
+                padding: 8px 20px;
+                border: 1px solid rgba($primary, 0.1);
                 color: #5f5f5f;
-                border-radius: 110px;
-                margin-right: 30px;
+                margin-right: 10px;
+                @include border-radius(6px);
+                @include transition(0.3s, ease-in-out);
+                &.active, &:hover, &:focus {
+                    border-color: $primary; color: $white; background: $primary;
+                }
             }
         }
     }
@@ -739,39 +875,111 @@
 
 
 
-.Portfolio-card-section{
-    .card{
+.case-studies-card-section {
+    padding-top: 0; 
+    .card {
         padding: 20px;
-        margin-bottom: 30px;
-        border-radius: 0px;
-    }
-    .card-body{
-        padding: 20px 0px;
+        border-radius: 0px; 
+        height: 100%;
+        @include transition(0.3s, ease-in-out);
         .card-img-top{
-            border-radius: 0px;
+            border-radius: 0px; overflow: hidden;      
+            img {
+                width: 100%; @include transition(0.3s, ease-in-out);
+            }     
         }
-        .tag {
-            font-size: 12px;
+        .card-body{
+            padding: 20px 0px 0;     
+            flex: 1 1 auto;
+            .tag {
+                font-size: 12px;
+                display: inline-block;
+                padding: 6px 12px;
+                background: $secondary;
+                color: $primary;
+                border-radius: 5px;
+                margin-bottom: 10px;
+                @include transition(0.3s, ease-in-out);
+            }
+            .card-title {
+                margin-bottom: 20px;
+                color: $primary;
+            }
+        }        
+        .card-footer {   
+            padding: 0; 
+            background: transparent;
+            border-top: 0;
+        }
+        &:hover, &:focus {
+            border-color: $primary;
+            .card-img-top {
+                img {
+                    @include transform(scale(1.05));
+                }     
+            }
+            .card-body {  
+                .tag {                    
+                    background: $primary;
+                    color: $white;
+                }
+                .card-title {
+                    color: $black;
+                }
+            }
+            .card-footer {                
+                .btn-link {
+                    &:before {
+                        width: 50%;
+                    }
+                    &:after {
+                        margin-left: 12px;
+                    }
+                }
+            }
+        }     
+    }  
+}
+.case-study-details-block {
+    @include flexbox;
+    @include align-items(flex-start);
+    margin-top: 40px;
+    .detail-box {
+        padding: 0 20px; border-right: 1px solid rgba(#ffffff, 0.3);
+        height: 100%;
+        &:first-child {
+            padding-left: 0;
+        }
+        &:last-child {
+            border-right: none; 
+        }
+        .title {
+            color: rgba(#ffffff, 0.8);
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        .details {
+            font-size: 16px;
+        }
+    }
+}
+.case-study-detail-section{
+    
+   
+    .full-view-img{
+        text-align: center;
+    }
+    .recent-work{
+        display: inline-flex;
+        margin-bottom: 50px;
+        @media (max-width:767px) {
             display: inline-block;
-            padding: 8px 15px;
-            background: $secondary;
-            color: $primary;
-            border-radius: 5px;
             margin-bottom: 20px;
         }
     }
-
-}
-
-
-.case-study-detail-section{
-    .recent-work{
-        display: inline-flex;
-        @media (max-width:767px) {
-            display: inline-block;
-        }
-    }
     h2{
+        color: $primary;
         margin-bottom: 40px;
         @media (max-width:991px) {
             margin-bottom: 20px;
@@ -797,4 +1005,8 @@
     @media (max-width:991px) {
         padding-bottom: 50px;
     }
-        }
+
+    .card-img-top{
+               border-radius: 0px;   
+       }
+}
