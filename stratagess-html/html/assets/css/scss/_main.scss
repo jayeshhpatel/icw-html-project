@@ -128,6 +128,12 @@
             h1 {
                 font-size: 50px;
                 font-weight: 500;
+                @media (max-width:992px) {
+                    font-size: 40px;
+                }
+                @media (max-width: 767px) {
+                    font-size: 32px;
+                }
             }
         }
     }
@@ -488,8 +494,7 @@
         padding-top: 400px;
         padding-bottom: 50px;
     }
-    .cta-card{        
-      
+    .cta-card{
         max-width: 460px;
         background-color: $primary;       
         color: $white;
@@ -616,8 +621,8 @@
     }
 }
 .blog-section{
-.blog-post{
-    margin-bottom: 50px;
+.blog-post-card {
+    margin-bottom: 50px; padding: 20px; border: 1px solid rgba(#000000, 0.15);
     .blog-post-inner{
         padding: 30px 0px;
     }
@@ -943,70 +948,95 @@
 .case-study-details-block {
     @include flexbox;
     @include align-items(flex-start);
+    @include flex-wrap(wrap);
     margin-top: 40px;
+    @media (max-width: 767px) {
+        margin-top: 20px;
+    }
     .detail-box {
         padding: 0 20px; border-right: 1px solid rgba(#ffffff, 0.3);
-        height: 100%;
+        height: 100%; 
         &:first-child {
             padding-left: 0;
         }
         &:last-child {
             border-right: none; 
         }
+        @media (max-width: 767px) {
+            width: 50%; margin: 10px 0;
+            &:nth-last-child(odd) {
+                padding-right: 0; border-right: none;
+            }
+            &:nth-last-child(even) {
+                padding-left: 0;
+            }
+        }
         .title {
-            color: rgba(#ffffff, 0.8);
+            color: rgba(#ffffff, 0.7);
             font-size: 18px;
             font-weight: 500;
             margin-bottom: 5px;
+            @media (max-width: 992px) { 
+                font-size: 16px;
+            }
         }
         .details {
             font-size: 16px;
-        }
-    }
-}
-.case-study-detail-section{
-    
-   
-    .full-view-img{
-        text-align: center;
-    }
-    .recent-work{
-        display: inline-flex;
-        margin-bottom: 50px;
-        @media (max-width:767px) {
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-    }
-    h2{
-        color: $primary;
-        margin-bottom: 40px;
-        @media (max-width:991px) {
-            margin-bottom: 20px;
-        }
-    }
-    .recent-work-item{
-        padding-right: 30px;
-        p{
-            font-size: 16px;
-            font-weight: 400;
-            @media (max-width:991px) {
+            @media (max-width: 992px) { 
                 font-size: 14px;
             }
         }
-        @media (max-width:991px) {
-            padding-right: 20px;
+    }
+}
+.case-study-detail-section { 
+    .full-view-img{
+        @include border-radius(12px); overflow: hidden; margin-bottom: 30px;   
+        img {
+            width: 100%; @include transition(0.3s, ease-in-out);
+        }
+        &:hover, &:focus {
+            img {
+                @include transform(scale(1.05));
+            }   
         }
     }
-
-}
-.Portfolio-card-details-section{
-    padding-bottom: 100px;
-    @media (max-width:991px) {
-        padding-bottom: 50px;
+    .content-block {
+        h2, h3 {
+            color: $primary;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        h2 {
+            font-size: 30px;
+            @media (max-width: 767px) { 
+                font-size: 24px;
+            }
+        }
+        h3 {
+            font-size: 24px;
+            @media (max-width: 767px) { 
+                font-size: 18px;
+            }
+        }
+        ul {
+            list-style-type: disc; padding-left: 20px; margin-bottom: 15px;
+            li {
+                list-style-type: disc;
+                padding: 5px 0;
+                &::marker {
+                    color: $primary;
+                }
+            }
+        }
+        ol {
+            list-style-type: decimal; padding-left: 20px; margin-bottom: 15px;
+            li {
+                list-style-type: decimal;
+                padding: 5px 0;
+                &::marker {
+                    color: $primary; font-weight: 700;
+                }
+            }
+        }
     }
-
-    .card-img-top{
-               border-radius: 0px;   
-       }
 }
