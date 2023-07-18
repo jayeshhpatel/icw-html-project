@@ -116,7 +116,7 @@ img {
 
     @media (max-width:767px) {
         font-size: 14px;
-        padding: 5px 18px;
+        padding: 5px 15px;
         min-height: 44px;
     }
 
@@ -308,23 +308,36 @@ h2,
 h3,
 .h3 {
     font-weight: 600;
-    font-size: 20px;
+    font-size: 28px;
     margin-bottom: 25px;
     color: $black;
     line-height: 1.4;
 
     @media (max-width: 1440px) {
-        font-size: 28px;
+        font-size: 24px;
     }
 
     @media (max-width:991px) {
-        font-size: 22px;
+        font-size: 20px;
         margin-bottom: 20px;
     }
 }
 
 h4,
 .h4 {
+    font-weight: 600;
+    color: $black;
+    font-size: 20px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+
+    @media (max-width: 991px) {
+        font-size: 18px;
+    }
+}
+
+h5,
+.h5 {
     font-weight: 600;
     color: $black;
     font-size: 18px;
@@ -911,3 +924,38 @@ h4,
         }
     }
 }
+
+/*You can use [title] selector as well*/
+[data-title] {
+    @media (min-width:1025px) {
+    position: relative;
+    &:hover, &:focus {
+      &::before {
+        content: attr(data-title);
+        position: absolute;
+        bottom: -26px;
+        display: inline-block;
+        padding: 4px 6px;
+        border-radius: 4px;
+        background: #01012A;
+        color: #fff;
+        font-size: 11px;
+        font-family: sans-serif;
+        white-space: nowrap;
+        left: 10px;
+        z-index: 1;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 20px;
+        z-index: -1;
+        display: inline-block;
+        color: #fff;
+        border: 8px solid transparent;	
+        border-bottom: 8px solid #01012A;
+      }
+    }
+  }
+  }

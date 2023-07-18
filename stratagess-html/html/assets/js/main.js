@@ -57,21 +57,9 @@ $('.menu-item-has-children .arrow').on('click',function(event){
 if ($('.logo-slider').length) {
    var logoslider = new Splide( '.logo-slider', {
       type   : 'loop',
-      drag   : 'free',
       pagination : false,
-      arrows: false,
-      perPage: 4,
-      breakpoints: {
-         1200: {
-            perPage:3,            
-         },
-         991: {
-            perPage:2,                  
-         },
-         425: {
-            perPage:1,
-         }         
-      },
+      autoWidth: true,
+      arrows: false,      
    });
    
    logoslider.mount();
