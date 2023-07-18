@@ -101,9 +101,7 @@
 
 .hero-header {
     padding: 60px 0px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: bottom center;
+    background: linear-gradient(90deg, #0F3D8B 43.02%, rgba(15, 61, 139, 0.48) 98.71%);
 
     .row {
         @media (max-width:767px) {
@@ -2143,7 +2141,6 @@
     }
     h2 {
         color: $primary;
-        line-height: 1.5;
         // font-size: 32px;
     }
 
@@ -2241,6 +2238,44 @@
         }
     }
 }
+
+.form-input{
+    position: relative;
+    margin-bottom: 15px
+  }
+  .form-input .form-control{
+    display: block;
+    width: 400px;
+    height: 40px;
+    background: transparent;
+    border: solid 1px #ccc;
+    transition: all .3s ease;
+    padding: 0 15px
+  }
+  .form-input .form-control:focus{
+    border-color: blue
+  }
+  .form-input label{
+    position: absolute;
+    cursor: text;
+    z-index: 2;
+    top: 13px;
+    left: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    background: #fff;
+    padding: 0 10px;
+    color: #999;
+    transition: all .3s ease
+  }
+  .form-input .form-control:focus + label,
+  .form-input .form-control:valid + label{
+    font-size: 11px;
+    top: -5px
+  }
+  .form-input .form-control:focus + label{
+    color: blue
+  }
 
 .contact-form-block {
     margin-left: 30px;
