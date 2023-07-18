@@ -37,6 +37,10 @@
         margin-bottom: 20px;
         color: $primary;
     }
+    h3 {
+        margin-bottom: 15px;
+        font-size: 22px;
+    }
 
     .sort-info {
         font-size: 16px;
@@ -97,7 +101,9 @@
 
 .hero-header {
     padding: 60px 0px;
-    background: linear-gradient(90deg, #0F3D8B 43.02%, rgba(15, 61, 139, 0.48) 98.71%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom center;
 
     .row {
         @media (max-width:767px) {
@@ -147,7 +153,9 @@
 
     .hero-img {
         text-align: right;
-
+        img {
+            max-height: 360px;
+        }
         @media (max-width:767px) {
             text-align: center;
             margin-bottom: 30px;
@@ -979,6 +987,7 @@
                     -webkit-box-orient: vertical;
                     text-overflow: ellipsis;
                     overflow: hidden;
+                    color: $black;
                 }
             }
 
@@ -1333,7 +1342,9 @@
 
                 li {
                     margin: 0 10px;
-
+                    &:last-child {
+                        margin-right: 0;
+                    }
                     @media (max-width: 767px) {
                         margin: 0 5px;
                     }
@@ -2132,7 +2143,8 @@
     }
     h2 {
         color: $primary;
-        font-size: 28px;
+        line-height: 1.5;
+        // font-size: 32px;
     }
 
     .sort-info {
@@ -2147,11 +2159,9 @@
 
         span {
             position: relative;
-
             &::before {
                 content: "";
-                position: absolute;
-                z-index: -1;
+                position: absolute;               
                 left: 0;
                 bottom: 0px;
                 background: $primary;
@@ -2190,14 +2200,20 @@
     }
 
     .social-info {
+        margin-top: 40px;
         ul {
             @include flexbox;
             @include align-items(center);
             li {
+                padding: 0 5px;
+                &:first-child {
+                    padding-left: 0;
+                }
                 a {
                     min-width: 35px;
                     min-height: 35px;
                     display: inline-flex;
+                    border: 1px solid rgba(#94A4AD, 0.4);
                     @include align-items(center);
                     @include justify-content(center);
                     @include border-radius(5px);
@@ -2214,6 +2230,7 @@
                     &:hover,
                     &:focus {
                         background: $primary;
+                        border-color: $primary;
 
                         .icons {
                             filter: brightness(0) invert(1);
@@ -2226,4 +2243,70 @@
 }
 
 .contact-form-block {
+    margin-left: 30px;
+    @media (max-width: 767px) {
+        margin-left: 0px;
+        margin-top: 40px;
+    }
+    .tag {
+        color: #9A9A9A;
+        font-size: 14px;
+    }
+    h3 {
+        color: $primary;
+    }
+}
+.job-list {
+    border: 1px solid rgba(#94A4AD, 0.4); padding: 25px; width: 100%; margin-bottom: 20px; @include border-radius(8px); @include transition(0.3s, ease-in-out); background: #fff;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    @media (max-width: 992px) {
+        padding: 20px;
+    }
+    @media (max-width: 767px) {
+        padding: 15px;
+    }
+    a {
+        @include flexbox; @include align-items(center); @include flex-wrap(wrap);
+    }
+    h3 {
+        width: 50%; color: $primary; font-size: 18px; margin-bottom: 0; @include transition(0.3s, ease-in-out); white-space: nowrap;
+        @media (max-width: 767px) {
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 5px;
+        }
+    }
+    .role {
+        color: $black; width: 40%;
+    }
+    .action {
+        margin-left: auto;
+        .icon-right-arrow {
+            background: url(../images/icons/next.svg) no-repeat center center; background-size: contain; width: 18px; height: 18px; display: inline-block; @include transition(0.3s, ease-in-out);
+            @media (max-width: 767px) {
+                width: 16px; height: 16px;
+            }
+        }
+    }
+    &:hover {
+        border-color: $primary;
+        h3 {
+            color: $black; 
+        }
+        .action {
+            .icon-right-arrow {
+                @include transform(translateX(5px));
+            }
+        }
+    }
+}
+.apply-job-section {
+    .apply-job-form-block {
+        margin-left: 30px;
+        @media (max-width: 767px) {
+            margin-left: 0px;
+        }
+    }
 }
