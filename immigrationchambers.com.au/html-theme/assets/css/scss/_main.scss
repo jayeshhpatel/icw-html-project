@@ -2481,3 +2481,102 @@ body.is-header-transparent {
 .page-numbers{height: 45px; line-height: 45px; display: inline-block; padding: 0 20px; border-radius: 4px !important; font-size: 12px; font-weight: 600; color: $black; outline: none !important; border: 1px solid #dee2e6; margin: 0px 2px 4px;
 	&.current{background: $primary; color: #fff;}
 	&:hover{ background: $primary; color: #fff; text-decoration: none;}}
+
+.testimonial-block {
+	background: #DFFFFF;
+	padding: 70px;
+	width: 80%;
+	margin: 30px auto;
+	text-align: center;
+	position: relative;
+	@include border-radius(8px);
+
+	@media (max-width: 767px) {
+		padding: 40px;
+	}
+
+	&::after {
+		content: '';
+		background: rgba(254, 210, 0, 1);
+		@include border-radius(8px);
+		display: block;
+		width: 280px;
+		height: 200px;
+		position: absolute;
+		bottom: -20px;
+		left: -20px;
+		background-size: contain;
+		z-index: -1;
+		@media (max-width: 767px) {
+			width: 120px;
+			height: 120px;
+			left: -12px;
+			bottom: -50px;
+		}
+	}
+
+	&::before {
+		content: '';
+		background: rgba(254, 210, 0, 1);
+		@include border-radius(8px);
+		display: block;
+		width: 100px;
+		height: 170px;
+		position: absolute;
+		top: -20px;
+		right: -20px;
+		background-size: contain;
+		z-index: -1;
+		@media (max-width: 767px) {
+			width: 70px;
+			height: 70px;
+			right: -12px;
+		}
+	}
+
+	.user-img {
+		margin-bottom: 20px;
+		img {
+			min-height: 85px;
+			max-height: 85px;
+			margin: 0 auto;
+			@include border-radius(50%);
+
+			@media (max-width: 767px) {
+				min-height: 60px;
+				max-height: 60px;
+			}
+		}
+	}
+
+	.sort-info {
+		font-size: 18px;
+		max-width: 650px;
+		margin: 0 auto 20px;
+
+		@media (max-width: 767px) {
+			font-size: 16px;
+		}
+	}
+
+	.user-name {
+		.name {
+			font-size: 22px;
+			font-weight: 600;
+			color: $primary;
+
+			@media (max-width: 767px) {
+				font-size: 18px;
+			}
+		}
+
+		.designation {
+			font-size: 14px;
+			color: #9A9A9A;
+
+			@media (max-width: 767px) {
+				font-size: 12px;
+			}
+		}
+	}
+}

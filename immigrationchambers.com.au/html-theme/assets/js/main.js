@@ -118,6 +118,25 @@ if ($('.testimonial-slider').length) {
         ]
     });
 };
+if ($('.testimonial-content-slider').length) {
+    $('.testimonial-content-slider').slick({
+        autoplay: true,
+        autoplaySpeed: 3000,
+        arrows: true,
+        slidesToShow: 1,
+        infinite: true,
+        accessibility: false,
+        responsive: [
+            {
+            breakpoint: 992,
+                settings: {
+                    arrows: false,
+                    dots:true,
+                }
+            }
+        ]
+    });
+};
 if ($('.helper-slider').length) {
     $('.helper-slider').slick({
         autoplay: true,
