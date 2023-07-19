@@ -2482,58 +2482,37 @@ body.is-header-transparent {
 	&.current{background: $primary; color: #fff;}
 	&:hover{ background: $primary; color: #fff; text-decoration: none;}}
 
+
+.section-testimonial-content-slider {
+	.slick-dots {
+		margin-top: 0;
+		li {
+			button { 
+				@include border-radius(50%); border: 1px solid transparent; 
+				&::before {
+					content: ''; width: 6px; height: 6px; font-size: 0; @include border-radius(50%); background: $primary; left: 50%; top: 50%; @include transform(translate(-50%, -50%));
+				}
+			}
+			&.slick-active {
+				button {
+					border-color: $primary; 
+				}
+			}
+		}
+	}
+}
 .testimonial-block {
-	background: #DFFFFF;
-	padding: 70px;
+	background: #fff;
+	padding: 40px;
 	width: 80%;
 	margin: 30px auto;
 	text-align: center;
 	position: relative;
-	@include border-radius(8px);
+	@include border-radius(10px);
 
 	@media (max-width: 767px) {
 		padding: 40px;
 	}
-
-	&::after {
-		content: '';
-		background: rgba(254, 210, 0, 1);
-		@include border-radius(8px);
-		display: block;
-		width: 280px;
-		height: 200px;
-		position: absolute;
-		bottom: -20px;
-		left: -20px;
-		background-size: contain;
-		z-index: -1;
-		@media (max-width: 767px) {
-			width: 120px;
-			height: 120px;
-			left: -12px;
-			bottom: -50px;
-		}
-	}
-
-	&::before {
-		content: '';
-		background: rgba(254, 210, 0, 1);
-		@include border-radius(8px);
-		display: block;
-		width: 100px;
-		height: 170px;
-		position: absolute;
-		top: -20px;
-		right: -20px;
-		background-size: contain;
-		z-index: -1;
-		@media (max-width: 767px) {
-			width: 70px;
-			height: 70px;
-			right: -12px;
-		}
-	}
-
 	.user-img {
 		margin-bottom: 20px;
 		img {
@@ -2551,8 +2530,8 @@ body.is-header-transparent {
 
 	.sort-info {
 		font-size: 18px;
-		max-width: 650px;
-		margin: 0 auto 20px;
+		max-width: 950px;
+		margin: 0 auto 30px;
 
 		@media (max-width: 767px) {
 			font-size: 16px;

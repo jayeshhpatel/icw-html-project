@@ -122,19 +122,11 @@ if ($('.testimonial-content-slider').length) {
     $('.testimonial-content-slider').slick({
         autoplay: true,
         autoplaySpeed: 3000,
-        arrows: true,
+        arrows: false,
         slidesToShow: 1,
         infinite: true,
         accessibility: false,
-        responsive: [
-            {
-            breakpoint: 992,
-                settings: {
-                    arrows: false,
-                    dots:true,
-                }
-            }
-        ]
+        dots:true
     });
 };
 if ($('.helper-slider').length) {
