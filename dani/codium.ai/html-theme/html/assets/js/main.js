@@ -199,7 +199,7 @@ jQuery(document).ready(function ($) {
     },
   });
 
-  if (!isMobile()) {
+  if (!isMobile() && $('.lottie-section').length) {
     var swiperLottie = new Swiper(".lottie-section", {
       //direction: "vertical",
       spaceBetween: 220,
@@ -359,23 +359,26 @@ jQuery(document).ready(function ($) {
   );
   }
 
-  swiperLottie.on("slideChange", function () {
+  if($('.lottie-player').length){
+    swiperLottie.on("slideChange", function () {
+      player.forEach((ply) => {
+        ply.stop();
+      });
+      player[swiperLottie.activeIndex].seek(0);
+      player[swiperLottie.activeIndex].play();
+    });
     player.forEach((ply) => {
-      ply.stop();
+      ply.addEventListener("complete", () => {
+        setTimeout(() => {
+          swiperLottie.slideNext();
+          player[swiperLottie.activeIndex].seek(0);
+          player[swiperLottie.activeIndex].play();
+        }, 0);
+      });
     });
-    player[swiperLottie.activeIndex].seek(0);
-    player[swiperLottie.activeIndex].play();
-  });
-  player.forEach((ply) => {
-    ply.addEventListener("complete", () => {
-      setTimeout(() => {
-        swiperLottie.slideNext();
-        player[swiperLottie.activeIndex].seek(0);
-        player[swiperLottie.activeIndex].play();
-      }, 0);
-    });
-  });
-  let i = 0;
+    let i = 0;
+  }
+
 });
 
 // hide on scroll down, reveal on up
