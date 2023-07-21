@@ -2485,7 +2485,7 @@ body.is-header-transparent {
 
 .section-testimonial-content-slider {
 	.slick-dots {
-		margin-top: 0;
+		margin-top: 0; bottom: -70px;
 		li {
 			button { 
 				@include border-radius(50%); border: 1px solid transparent; 
@@ -2502,16 +2502,26 @@ body.is-header-transparent {
 	}
 	.testimonial-content-slider {
 		@include border-radius(10px);
+		background: #F4F6FC;
+		padding: 20px 10px 0;
+		.slick-track {
+			@include flexbox;
+		}
+		.slick-slide {
+			height: auto !important;
+		}
 	}
 }
-.testimonial-block {
-	background: #F4F6FC;
-	padding: 40px;
-	margin: 30px 15px;
+.testimonial-block {	
+	padding: 20px;
+	margin: 0 30px;
 	text-align: center;
 	position: relative;
 	@include border-radius(10px);
-
+	@include flexbox;
+	@include align-items(center);
+	@include flex-direction(column);
+	height: 100%;
 	@media (max-width: 767px) {
 		padding: 20px;
 	}
@@ -2533,6 +2543,7 @@ body.is-header-transparent {
 	.sort-info {
 		max-width: 750px;
 		margin: 0 auto 30px;
+		flex: 1 1 auto;
 	}
 
 	.user-name {

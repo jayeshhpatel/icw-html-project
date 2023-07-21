@@ -123,7 +123,7 @@ if ($('.testimonial-content-slider').length) {
         autoplay: true,
         autoplaySpeed: 3000,
         arrows: false,
-        slidesToShow: 1,
+        slidesToShow: 2,
         infinite: true,
         accessibility: false,
         dots:true
