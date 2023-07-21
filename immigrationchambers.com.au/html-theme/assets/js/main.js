@@ -126,7 +126,16 @@ if ($('.testimonial-content-slider').length) {
         slidesToShow: 2,
         infinite: true,
         accessibility: false,
-        dots:true
+        dots:true,
+        responsive: [
+            {
+            breakpoint: 767,
+                settings: {
+                    slidesToShow: 1.1,
+                    dots:true,
+                }
+            },
+        ]
     });
 };
 if ($('.helper-slider').length) {
