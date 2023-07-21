@@ -131,7 +131,8 @@ if ($('.testimonial-content-slider').length) {
             {
             breakpoint: 767,
                 settings: {
-                    slidesToShow: 1.1,
+                    slidesToShow: 1,
+                    // initialSlide: 0.5,
                     dots:true,
                 }
             },
