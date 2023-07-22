@@ -1783,6 +1783,9 @@ body .icw-gravityform {
     .card{
         border: none; 
         padding-bottom: 40px;
+        @media (max-width:767px) {
+            padding-bottom: 20px;
+        }
         .head-image {
             border: 1px solid #efefef;
             overflow: hidden;
@@ -1794,6 +1797,16 @@ body .icw-gravityform {
                 img{
                     @include transform(scale(1.1));
                 }
+            }
+        }
+        .card-image {
+            @include transition(0.3s, ease-in-out);
+            img {
+                @include transition(0.3s, ease-in-out);
+                width: 100%;
+            }
+            &:hover {
+                @include box-shadow(0px 3px 10px rgba(0,0,0,0.75));
             }
         }
         .card-body{
