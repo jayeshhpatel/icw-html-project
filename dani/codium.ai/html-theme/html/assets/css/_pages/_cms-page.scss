@@ -1097,10 +1097,25 @@
             -ms-transition: all 0.3s ease-in-out;
             -o-transition: all 0.3s ease-in-out;
             .icon-arrow-left {
-                background: url(../icons/arrow-left.svg) no-repeat center left; width: 14px; height: 7px; display: inline-block; margin-right: 8px;
+                background: url(../icons/arrow-left.svg) no-repeat center left; 
+                min-width: 14px; 
+                height: 7px; 
+                display: inline-block; 
+                margin-right: 8px;
+                transition: all 0.3s ease-in-out;
+                -webkit-transition: all 0.3s ease-in-out;
+                -moz-transition: all 0.3s ease-in-out;
+                -ms-transition: all 0.3s ease-in-out;
+                -o-transition: all 0.3s ease-in-out;
             }
             &:hover, &:focus {
                 color: #7962fe;
+                .icon-arrow-left {
+                    @include transform(translateX(-5px))
+                }
+            }
+            @media (max-width: 767px) {
+                font-size: 14px;
             }
         }
     }
