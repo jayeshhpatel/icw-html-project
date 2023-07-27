@@ -1080,8 +1080,8 @@
 .border-bottom {
     border-top: 1px solid #E9E6FA;
 }
-.full-content-section {
-    overflow: hidden;
+.full-content-section {    
+    position: relative;overflow: hidden;
     &::before {
         content: '';
         background: url(../images/circle-img-2.png) no-repeat center left;
@@ -1128,7 +1128,10 @@
         }
     }
     .main-full-section {  
-        padding: 80px 0;
+        padding: 80px 0; overflow: hidden;
+        @media (max-width: 767px) {
+            padding: 60px 0;
+        }
         .content-block {
             max-width: 1200px; margin: 0 auto;
             h2 {
@@ -1155,6 +1158,9 @@
         }
         .font-lg {
             font-size: 22px;
+            @media (max-width: 767px) {
+                font-size: 18px;
+            }
         }
     }
 }
@@ -1329,9 +1335,20 @@
         border: 1px solid #EDEDED;
         .icon-img {
             max-width: 150px; min-width: 150px; margin-right: 50px;
+            img {
+                width: 100%;
+            }
         }
         .sort-info {
             color: rgba(#01012A, 0.6); line-height: 1.5;
+        }
+        @media (max-width: 767px) {
+            display: block;
+            padding: 20px;
+            .icon-img {
+                margin-right: 0px;
+                margin-bottom: 15px;
+            }
         }
     }
     &:hover {
@@ -1401,6 +1418,55 @@
             -moz-transform: scale(1.05);
             -ms-transform: scale(1.05);
             -o-transform: scale(1.05);
+        }
+    }
+}
+.progress-block {
+    margin-bottom: 40px;
+    @media (max-width: 767px) {
+        margin-bottom: 20px;
+    }
+    .progress-content {
+        display: inline-flex; align-items: center; margin-right: 45px;
+        @media (max-width: 767px) {
+            display: grid; grid-template-columns: 120px auto; margin-right: 0; margin-top: 20px;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+        .progress-title {
+            margin-right: 15px; font-size: 18px; color: rgba(#01012A, 0.6); width: 100%;
+            @media (max-width: 767px) {
+                font-size: 16px;
+            }
+        }
+        .progerss {
+           @include border-radius(40px); border: 1px solid #E6E2F4; display: inline-flex; align-items: center; padding: 8px 12px; width: fit-content;
+            .progress-bar {
+                height: 8px; display: inherit;
+                svg {
+                    @media (max-width: 767px) {
+                       width: 75px;
+                    }
+                }
+                &.medium {
+                    svg {
+                        rect {
+                            fill: #F97D0B;
+                        }
+                    }
+                }
+                &.low {
+                    svg {
+                        rect {
+                            fill: #05E5AD;
+                        }
+                    }
+                }
+            }
+            .level {
+                font-size: 14px; font-weight: 700; color: #01012a; margin-left: 8px;               
+            }
         }
     }
 }
