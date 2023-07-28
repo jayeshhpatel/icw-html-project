@@ -45,8 +45,8 @@
 				dataType: 'json',
 				beforeSend: function(){
 					$($pager).show();
-					console.log('q loader 1');
 					$('.q-loader').addClass('show');
+					// console.log('q show');
 				},
 				success: function(data, textStatus, XMLHttpRequest) {					
 					if (data.status === 200) {
@@ -108,7 +108,10 @@
 						$content.html('<li>&nbsp;</li><li class="text-center pt-50 pb-50"><div class="alert alert-danger">No posts found</div></li><li>&nbsp;</li>');
 					}
 					$('.q-loader').removeClass('show');
-					
+					// $('.post-search').removeClass('active');
+					// console.log('q remove');
+
+				
 					/*console.log(data);
 					console.log(textStatus);*/
 				}
@@ -128,13 +131,14 @@
 			 */
 			if ($this.data('filter')) {
 				$page = 1;
+				$pager = $('.infscr-pager a').attr('href', '#page-2');
 
 				/**
 				 * If all terms, then deactivate all other
 				 */
 				if ($this.data('term') === 'all-terms') {
 					$this.closest('ul').find('.active').removeClass('active');
-					$('#q').val('')
+					$('#q').val('');
 				}
 				else {
 					$('a[data-term="all-terms"]').parent('li').removeClass('active');
@@ -167,8 +171,6 @@
 				} else {
 					$('a[data-term="all-terms"]').trigger('click');
 				}
-				
-
 			}
 			else {
 				/**
@@ -194,9 +196,9 @@
 		});
 
 		let typingTimer;
-		$("#q").on("keyup change", function(event) {
-			console.log('q change')
+		$("#q").on("keyup", function(event) {
 			$('.q-loader').addClass('show');
+			// console.log('q change');
 			clearTimeout(typingTimer);
 			typingTimer = setTimeout(function() {
 				$active = {};
@@ -225,23 +227,41 @@
 					'qty'   : $this.closest('#container-async').data('paged'),
 					'q' 	: $('#q').val()
 				};
-console.log('q loader show 2');
+
 				$('.q-loader').removeClass('show');
 				// Run query
 				get_posts($params);
 			}, 700);
 		});
 
-		document.getElementById("q").addEventListener("search", function(event) {
-			console.log('q search');
-			$("#q").trigger( 'change' );
-		});
+		// if ($('#q').length) {
+		// 	document.getElementById("q").addEventListener("search", function(event) {
+		// 		$("#q").trigger( 'change' );
+		// 	});
+		// }
+
+		// $('.q-search').click(function(event){
+		$(".q-search").on("click", function(event) {
+			// console.log("q-search event start");
+			if(event.preventDefault) { event.preventDefault(); }
+
+			$(this).closest('.post-search').toggleClass('active');
+			if($('.post-search').hasClass('active')){
+				$('.post-search').find('#q').removeAttr('tabindex');
+				$('.post-search').find('#q').focus();
+			}else{
+				$('.post-search').find('#q').val('');
+				$('.post-search').find('#q').attr('tabindex', '-1');
+				$("#q").trigger( 'keyup' );
+			}
+		});            
+		// $('#q').click(function(e){
+		// 	$(this).closest('.post-search').addClass('active');
+		// }); 
 
 		/**
 		 * Show all posts on page load
 		 */
 		$('a[data-term="all-terms"]').trigger('click');
-
 	});
-
 })(jQuery);

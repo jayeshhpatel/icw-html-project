@@ -23,6 +23,7 @@
       @media (min-width: 768px) {
         font-size: 64px;
         line-height: 64px;
+        margin-bottom: 30px;
       }
 
       span {
@@ -71,8 +72,8 @@
         position: absolute;
         z-index: -1;
         top: 50%;
-        left: -10vw;
-        width: 120vw;
+        left: -2rem;
+        width: 100vw;
         height: 1px;
         background-color: #8e8ea7;
         opacity: 0.25;
@@ -198,6 +199,19 @@
       background-color: #5d5fef;
       color: #fff;
     }
+
+    &[data-title] {
+      @media (min-width:1025px) {
+        &:hover, &:focus {
+          &::after {
+            content: '';
+            bottom: -12px;
+            border: 5px solid transparent;	
+            border-bottom: 5px solid #01012A;
+          }
+        }
+      }
+    }
   }
 
   &-author-avatar {
@@ -298,6 +312,18 @@
       @media (max-width: 991px) {
         margin-bottom: 25px;
       }
+
+      &.check-list {
+        padding-left: 0px;
+        * {
+          color: #01012A;
+        }
+        li {
+          list-style: none;
+        }
+
+      }
+
       li {
         list-style: disc;
         margin-bottom: 15px;
@@ -347,7 +373,7 @@
       }
     }
 
-    table {
+    table:not(.table-theme) {
       padding: 0px;
       font-size: 14px;
       border-collapse: collapse;
@@ -420,7 +446,7 @@
       display: block;
       position: sticky;
       top: 200px;
-      margin-top: 510px;
+      margin-top: 410px;
       width: 100%;
       max-width: 200px;
       height: fit-content;
@@ -522,6 +548,19 @@
   &-sidebar-share {
     display: flex;
     gap: 8px;
+
+    [data-title] {
+      @media (min-width:1025px) {
+        &:hover, &:focus {
+          &::after {
+            content: '';
+            bottom: -12px;
+            border: 5px solid transparent;	
+            border-bottom: 5px solid #01012A;
+          }
+        }
+      }
+    }
   }
 
   &-sidebar-share-icon {
@@ -557,8 +596,8 @@
         position: absolute;
         z-index: -1;
         top: 0;
-        left: -10vw;
-        width: 120vw;
+        left: -2rem;
+        width: 100vw;
         height: 1px;
         background-color: #8e8ea7;
         opacity: 0.25;
@@ -620,8 +659,8 @@
       position: absolute;
       z-index: -1;
       top: 0;
-      left: -10vw;
-      width: 120vw;
+      left: -2rem;
+      width: 100vw;
       height: 1px;
       background-color: #8e8ea7;
       opacity: 0.25;
@@ -774,7 +813,7 @@
       gap: 25px;
       @include mobile {
         grid-template-columns: repeat(1, 1fr);
-        gap: 50px;
+        gap: 25px;
 
         &.inline-on-mobile {
           grid-template-columns: repeat(3, 1fr) !important;
