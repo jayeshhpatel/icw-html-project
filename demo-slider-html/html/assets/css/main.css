@@ -19,20 +19,32 @@
 }
 
 .splide__slide, .splide__slide.is-visible.is-active .image-block {
-    transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
 }
 
 .splide__slide .image-block {
-    margin: 0 20px;
+    margin: 0 10px;
+} 
+.splide__slide .image-block img {
+    max-width: 300px;
+} 
+.splide__slide:not(.is-visible.is-active) .image-block{
+    padding: 20px 0px;
+}
+.splide__slide.is-visible.is-active .image-block{
+    padding: 40px 0px; margin: 0;
+}
+.splide__slide.is-visible.is-prev .image-block{
+    margin-right: 40px
+}
+.splide__slide.is-visible.is-next .image-block{
+    margin-left: 40px
 }
 
-.splide__slide:not(.is-visible.is-active) .image-block{
-    padding: 40px 0px;
-}
 
 .splide__slide.is-visible.is-active{
     transform: translate(0px, 25px) ;
@@ -43,12 +55,16 @@
 }
 
 
-.splide__slide .image-block img{
-   
+.splide__slide .image-block img {
+    transform: scale(0.9);
     transition-property: transform, height, width, top;
     transition-timing-function: all;
-    transition-duration: 0.3s;
+    transition-duration: 0.5s;
     width: 100%;
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
 }
 .splide__slide.is-visible.is-active{
     transform: translate(0px);
@@ -58,18 +74,25 @@
     -o-transform: translate(0px);
     z-index: 5;
 }
-.splide__slide.is-visible.is-active .image-block {
-    transform: scale(1.25);
-    -webkit-transform: scale(1.25);
-    -moz-transform: scale(1.25);
-    -ms-transform: scale(1.25);
-    -o-transform: scale(1.25);
+.splide__slide.is-visible.is-active .image-block img {
+    max-width: 100%;
+}
+.splide__slide.is-visible.is-active .image-block img {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
 }
 
-.splide__slide.is-visible.is-prev{
+.splide__slide:nth-child(3n - 1){
     transform: translate(0px, -24px);
+    -webkit-transform: translate(0px, -24px);
+    -moz-transform: translate(0px, -24px);
+    -ms-transform: translate(0px, -24px);
+    -o-transform: translate(0px, -24px);
 }
 
-.splide__slide.is-visible.is-next{
+.splide__slide:nth-child(3n + 1){
     transform: translate(0px, 24px);
 }

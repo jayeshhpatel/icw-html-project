@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slider</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/splidejs/4.1.4/css/splide.min.css" integrity="sha512-KhFXpe+VJEu5HYbJyKQs9VvwGB+jQepqb4ZnlhUF/jQGxYJcjdxOTf6cr445hOc791FFLs18DKVpfrQnONOB1g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <div class="splide clinic-slider">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide">
+                        <div class="clinic-slider__content">
+                            <img class="clinic-slider__content-img" src="./images/slide1.jpg"/>
+                        </div>
+                    </li>
+                    <li class="splide__slide">
+                        <div class="clinic-slider__content">
+                            <img class="clinic-slider__content-img" src="./images/slide2.jpg"/>
+                        </div>
+                    </li>
+                    <li class="splide__slide">
+                        <div class="clinic-slider__content">
+                            <img class="clinic-slider__content-img" src="./images/slide3.jpg"/>
+                        </div>
+                    </li>
+                    <li class="splide__slide">
+                        <div class="clinic-slider__content">
+                            <img class="clinic-slider__content-img" src="./images/slide4.jpg"/>
+                        </div>
+                    </li>
+                    <li class="splide__slide">
+                        <div class="clinic-slider__content">
+                            <img class="clinic-slider__content-img" src="./images/slide5.jpg"/>
+                        </div>
+                    </li>
+                    <li class="splide__slide">
+                        <div class="clinic-slider__content">
+                            <img class="clinic-slider__content-img" src="./images/slide6.jpg"/>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+          </div>
+          <div>Hello</div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/splidejs/4.1.4/js/splide.min.js" integrity="sha512-4TcjHXQMLM7Y6eqfiasrsnRCc8D/unDeY1UGKGgfwyLUCTsHYMxF7/UHayjItKQKIoP6TTQ6AMamb9w2GMAvNg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="text/javascript">
+            var splide = new Splide( '.clinic-slider', {
+                type: 'loop',
+                arrows: false,
+                pagination: false,
+                focus: 'center',
+                perPage: 3,
+                autoWidth: true,
+                gap: '40px',
+                mediaQuery: 'max',
+                width: '100%',
+				fixedWidth: 'auto',
+                breakpoints: {
+                    480: {
+                        perPage: 2,
+                        gap: '16px',
+                        focus: false,
+                        padding: '0px',
+                    },
+                }
+            } );
+            splide.mount();
+            let splideDoc = splide?.root;
+            splide.on('moved', function () {
+                var nextSlides = getAllNextSlidesFromActiveSlide();
+                console.log(nextSlides);
+            });
+            function getAllNextSlidesFromActiveSlide() {
+               
+                var allSlides = splideDoc.querySelectorAll('.splide__slide');
+
+                var nextSlides = [];
+                allSlides.forEach(element => {
+                    console.log(element.classList);
+                    if( element.classList.contains('.is-visible.is-active') ){
+                        return;
+                    }
+                    nextSlides.push(element);
+                });
+
+                return nextSlides;
+            }
+        </script>
+    </body>
+</html>
