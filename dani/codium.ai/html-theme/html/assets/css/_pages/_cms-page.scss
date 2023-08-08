@@ -2259,6 +2259,17 @@
         }
         .pricing-action {
             padding: 25px 0;
+            .dropdown-action {                
+                background-position: calc(100% - 15px) top;
+                background-repeat: no-repeat;
+                background-size: 15px;
+                @include transition(0.3s, ease-in);
+                &:hover, &:focus, &:focus-visible {
+                    background-image: url(../icons/chev-down-white.svg);
+                    background-position: calc(100% - 15px) center;
+                    @include transition(0.3s, ease-out);
+                }
+            }
             .dropdown-action-block {                
                 opacity: 0;
                 visibility: hidden;
@@ -2302,15 +2313,14 @@
                     }
                 }
                 input {
-                    background: #01012a;
                     width: 100%;
                     border: 2px solid #684bfe;
                     border-radius: 8px;
                     padding: 1rem;
                     font-size: 16px;
-                    color: #fff;
+                    color: #01012A;
                     font-family: centrano1,sans-serif;
-                    background: #01012A;
+                    background: #e9e9e9;
                     margin-bottom: 5px;
                 }
                 .hs-error-msgs  {
@@ -2335,6 +2345,9 @@
                     margin-top: 1rem;
                     margin-bottom: 0px;
                     width: auto;
+                    &:hover, &:focus, &:focus-visible {
+                        background: #00bd85;
+                    }
                 }
             }
             .btn {
@@ -2346,29 +2359,29 @@
                 &.btn-outline {
                     color: #01012A; 
                     border: 1px solid $black;
-                    background: #ffffff;
+                    background-color: #ffffff;
                     &:hover, &:focus {
                         color: #ffffff; 
-                        background: $black;
+                        background-color: $black;
                     }
                 }
                 &.btn-pro {
                     color: #ffffff; 
                     border: 1px solid var(--pricing-color, #918EA1);
-                    background: var(--pricing-color, #918EA1);
+                    background-color: var(--pricing-color, #918EA1);
                     &:hover, &:focus {
                         color: #ffffff; 
-                        background: #563ed5;
+                        background-color: #563ed5;
                         border-color: #563ed5;
                     }
                 }
                 &.btn-enterprise {
                     color: #ffffff; 
                     border: 1px solid var(--pricing-color, #918EA1);
-                    background: var(--pricing-color, #918EA1);
+                    background-color: var(--pricing-color, #918EA1);
                     &:hover, &:focus {
                         color: #ffffff; 
-                        background: #9d31c9;
+                        background-color: #9d31c9;
                         border-color: #9d31c9;
                     }
                 }
@@ -2382,6 +2395,9 @@
                 z-index: 1;
                 line-height: 1;
                 margin-bottom: 10px;
+                @include flexbox;
+                @include align-items(center);
+                @include justify-content(center);
                 span {
                     display: inline-block;
                     z-index: 1;                    
@@ -2402,8 +2418,9 @@
                     width: 100%;
                     height: 1px;
                     position: absolute;
-                    top: 9px;
+                    top: 50%;
                     left: 0;
+                    @include transform(translateY(-50%));
                 }
             }
             ul {
@@ -2437,7 +2454,7 @@
                         background-repeat: no-repeat;
                         background-position: center;
                         background-size: 10px;
-                        margin-top: 6px;
+                        margin-top: 2px;
                         margin-right: 10px;
                         @media (max-width: 767px) {
                             width: 16px;
