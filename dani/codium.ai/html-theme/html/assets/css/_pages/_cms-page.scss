@@ -2259,15 +2259,32 @@
         }
         .pricing-action {
             padding: 25px 0;
-            .dropdown-action {                
-                background-position: calc(100% - 15px) top;
-                background-repeat: no-repeat;
-                background-size: 15px;
+            .dropdown-action {  
+                span {
+                    position: relative; @include inline-flex; @include align-items(center); @include justify-content(center);   
+                }
+                .arrow-down {
+                    background: url(../icons/chev-down-white.svg) no-repeat;
+                    margin-left: 10px;
+                    background-size: 12px;
+                    width: 12px;
+                    height: 12px;
+                    flex: none;
+                    position: absolute;
+                    right: -22px;
+                    display: inline-block;
+                    background-position: center right;
+                    @include transform(translateY(-10px));
+                    opacity: 0;
+                    @include transition(0.3s, ease-in-out);
+                }              
+                
                 @include transition(0.3s, ease-in);
                 &:hover, &:focus, &:focus-visible {
-                    background-image: url(../icons/chev-down-white.svg);
-                    background-position: calc(100% - 15px) center;
-                    @include transition(0.3s, ease-out);
+                   .arrow-down {
+                    opacity: 1;
+                    @include transform(translateY(0px));
+                   }
                 }
             }
             .dropdown-action-block {                
@@ -2304,6 +2321,7 @@
                 padding: 20px;
                 margin: 10px 0 0 0;
                 @include border-radius(15px);
+                @include box-shadow(0px 69px 140px rgba(143,136,182,0.45));
                 label {
                     font-size: 14px; 
                     margin-bottom: 1rem;
@@ -2356,7 +2374,8 @@
             }
             .btn {
                 text-transform: uppercase; width: 100%;
-                text-align: center;
+                text-align: center; 
+                padding: 1.5rem 3rem;
                 @media (max-width: 767px) {
                     padding: 15px 25px;
                 }
@@ -2364,9 +2383,15 @@
                     color: #01012A; 
                     border: 1px solid $black;
                     background-color: #ffffff;
+                    span {
+                        color: #01012A; 
+                    }
                     &:hover, &:focus {
                         color: #ffffff; 
                         background-color: $black;
+                        span {
+                            color: #ffffff; 
+                        }
                     }
                 }
                 &.btn-pro {
