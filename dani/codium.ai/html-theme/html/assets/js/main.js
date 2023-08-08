@@ -537,3 +537,16 @@ jQuery.fn.accessibleDropDown = function () {
       jQuery(this).parents("li").removeClass("hover");
     });
 };
+$(".dropdown-action").on("click", function () {
+    if(!$(this).hasClass("active")){
+        $(".dropdown-action").removeClass("active");
+        $(this).addClass("active");
+    } else {
+        $(".dropdown-action").removeClass("active");
+    }
+})
+$(document).on('click touchend', function (event) {
+    if (!$(event.target).closest('.pricing-action').length && ($(".dropdown-action").hasClass("active"))) {
+        $(".dropdown-action").removeClass("active");
+    }
+});
