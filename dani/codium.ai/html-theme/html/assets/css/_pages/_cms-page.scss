@@ -1456,9 +1456,9 @@
         @include border-radius(30px);
         background: #ffffff;
         box-shadow: 0px 19px 46px 0px rgba(52, 61, 96, 0.08);
-        padding: 40px;
+        padding: 40px 20px;
         @media (max-width: 1200px) {
-            padding: 30px;
+            padding: 30px 10px;
         }
         @media (max-width: 992px) {
            max-width: 450px;
@@ -1466,14 +1466,24 @@
            margin: 0 auto;
         }
         @media (max-width: 767px) {
-            padding: 25px;
+            padding: 25px 5px;
             @include border-radius(20px);
+        }
+        &.active {
+            .pricing-title {
+                z-index: 99;   
+            }  
+            .arrow-down {
+                opacity: 1 !important;
+                @include transform(translateY(0px)!important);
+            }
         }
         .pricing-title {
             position: sticky;
             top: 85px;
             background: #ffffff;
             z-index: 5;
+            padding: 0px 20px;
             h2 {
                 font-size: 28px;
                 font-weight: 700;
@@ -1513,6 +1523,7 @@
         }
         .pricing-action {
             padding: 25px 0;
+            max-height: 100px;
             .dropdown-action {  
                 span {
                     position: relative; @include inline-flex; @include align-items(center); @include justify-content(center);   
@@ -1549,9 +1560,9 @@
                 height: 0;
             }
             .dropdown-action.active+.dropdown-action-block {
-                opacity: 1;
-                visibility: visible;
-                @include transform(translateY(0px));
+                opacity: 1 !important;
+                visibility: visible !important;
+                @include transform(translateY(0px) !important);
                 .dropdown-menu {
                     opacity: 1;
                     visibility: visible;
@@ -1625,7 +1636,6 @@
                 .hs_error_rollup {
                     display: none;
                 }
-
                 div.submitted-message, div.submitted-message * {
                     text-align: center;
                     color: #694dfc !important;
@@ -1637,6 +1647,7 @@
                 text-transform: uppercase; width: 100%;
                 text-align: center; 
                 padding: 1.5rem 3rem;
+                position: relative;
                 @media (max-width: 767px) {
                     padding: 15px 25px;
                 }
@@ -1647,7 +1658,7 @@
                     span {
                         color: #01012A; 
                     }
-                    &:hover, &:focus {
+                    &:hover, &:focus, &.active {
                         color: #ffffff; 
                         background-color: $black;
                         span {
@@ -1675,10 +1686,23 @@
                         border-color: #9d31c9;
                     }
                 }
+
+                .badge {
+                    background: #05E5AD;
+                    color: #01012A;
+                    padding: 4px 8px 2px;
+                    border-radius: 10px;
+                    position: absolute;
+                    font-size: 10px;
+                    line-height: 1;
+                    top: -8px;
+                    right: 10px;
+                  }
             }
         }
         .features-list {
-            padding-top: 15px;
+            padding: 15px 20px 0;
+
             .features-title {
                 position: relative;                
                 text-align: center;
