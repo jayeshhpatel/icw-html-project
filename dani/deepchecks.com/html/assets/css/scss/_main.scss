@@ -1122,6 +1122,10 @@ img {
         margin:32px 0 0;
         font-size: 18px;
     }
+
+    .action-btn {
+        margin-top: 30px;
+    }
     @media (max-width: 1199px) {
         h1, .h1-title,
         h2, .h2-title {
@@ -8239,7 +8243,21 @@ body .icw-gallery-imgs {
                 font-weight: 600;
                 font-size: 36px;
                 margin-bottom: 25px;
-                font-family: $font-poppins;
+                font-family: $font-poppins; 
+                &.with-label {
+                    @include flexbox;
+                    @include align-items(center);
+                }               
+                .label {
+                    @include border-radius(5px);
+                    display: inline-block;
+                    margin-left: 25px;
+                    background: #DDDDE3;
+                    padding: 10px;
+                    font-size: 16px;
+                    color: $bodyfontcolor;
+                    font-family: 'Inter', sans-serif;
+                }
                 @media (max-width:991px) {
                     font-size: 24px;
                     margin-bottom: 15px;
@@ -8259,6 +8277,9 @@ body .icw-gallery-imgs {
                     -moz-border-radius:20px;
                     -ms-border-radius:20px;
                     -o-border-radius:20px;
+                    @media (max-width: 767px) {
+                        text-align: center;
+                    }
                 img{
                     max-width: 470px;
                     width: 100%;
