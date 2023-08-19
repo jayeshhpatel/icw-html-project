@@ -112,8 +112,8 @@ if ($('.testimonial-slider').length) {
             breakpoint: 992,
                 settings: {
                     slidesToShow: 1,
-                    centerMode: true,
-                    centerPadding: '60px',
+                    // centerMode: true,
+                    // centerPadding: '60px',
                     arrows: false,
                     dots:false,
                 }
