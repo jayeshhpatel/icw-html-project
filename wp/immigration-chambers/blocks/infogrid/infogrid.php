@@ -47,7 +47,7 @@ if(!empty($gs_setting)){
     }
 }
 
-pr($group_info_grid__image);
+// pr($group_info_grid__image);
 ?>
 <section <?php echo $gs_anchor; ?> class="main-section infogrid-section <?php echo $gs_class; ?>" <?php echo $gs_style; ?>>       
     <?php if(!empty($group_info_grid__image)) { ?>
