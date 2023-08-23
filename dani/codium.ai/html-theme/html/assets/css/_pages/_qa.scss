@@ -338,7 +338,7 @@
             @include flexbox;
             @include align-items(center);
             @media (max-width: 767px) {
-                display: block;
+                // display: block;
                 font-size: 14px;
             }
             .user {
@@ -350,6 +350,12 @@
                     flex: none;
                     margin-right: 12px;
                     @include border-radius(50%);
+                    @media (max-width: 767px) {
+                        min-width: 28px;
+                        min-height: 28px;
+                        flex: none;
+                        margin-right: 8px;
+                    }
                 }
             }
             span {
@@ -360,10 +366,8 @@
                 border-left: 1px solid #F0EDFB;
                 display: inline-block;
                 @media (max-width: 767px) {
-                    border-left: none;
-                    margin-top: 10px;
-                    padding: 0;
-                    margin-left: 0;
+                    margin-left: 8px;
+                    padding: 3px 8px;
                 }
             }
         }
@@ -391,6 +395,43 @@
         margin-top: 100px !important;
         @media (max-width:767px) {
             margin-top: 60px !important;
+        }
+    }
+}
+.question-page-header {   
+    .container {
+        border-bottom: 1px solid #E9E6FA;
+    }
+    .back-action {
+        max-width: 1060px;
+        margin: 0 auto;
+        margin-bottom: 50px;
+        a {
+            color: #8E8EA7;
+            font-size: 16px;
+            @include inline-flex;
+            @include align-items(center);
+            @include transition(0.2s, ease-in-out);
+            em {
+                display: inline-block;
+                margin-right: 8px;
+                @include transition(0.2s, ease-in-out);
+            }
+            &:hover, &:focus {
+                color: #684BFE;
+                text-decoration: underline;
+                em {
+                    @include transform(translateX(-5px));
+                }
+            }
+        }
+    }
+    .section-title {
+        max-width: 1060px;
+        margin: 0 auto;
+        border-bottom: none;
+        h1 {
+            font-size: 40px;
         }
     }
 }
