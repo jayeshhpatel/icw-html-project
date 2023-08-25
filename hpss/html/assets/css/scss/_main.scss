@@ -13,12 +13,9 @@
 }
 
 .content-grid {
-    background-color: var(--bg-color, $white);
+    background-color: $white;
     @include border-radius(20px);
-    padding: 30px;
-    @media (max-width: 767px) {
-        padding: 20px;
-    }
+    padding: 20px;
     @include box-shadow(0 4px 20px 5px rgba(0, 0, 0, 0.1));
     .intro-text {
         font-size: 24px;
@@ -27,8 +24,22 @@
         }
     }
 }
+.row.g-15 {
+    margin-left: -15px !important;
+    margin-right: -15px !important;
+    margin-top: -30px;
+    & > * {
+        margin-top: 30px;
+        padding: 0 15px !important;
+    }
+}
 
 .icon-box {
+    padding: 20px;
+    @include transition(0.2s, ease-in-out);
+    @include border-radius(15px);
+    height: 100%;
+    position: relative;
     &.left-icon-box {
         @include flexbox;
         @include justify-content(flex-start);
@@ -37,7 +48,10 @@
         }
         .box-image {            
             width: 90px;
-            margin-right: 30px;            
+            margin-right: 30px; 
+            img {
+                @include transition(0.2s, ease-in-out);
+            }           
             @media (max-width: 767px) {
                 width: 70px;
                 margin-right: 20px;    
@@ -46,6 +60,26 @@
                 margin-right: 0px;
                 margin-bottom: 20px;
             }
+        }
+    }
+    &.bg-icon-box {
+        background-color: var(--bg-color, $brightblue);
+        @include flexbox;
+        @include flex-direction(column);
+        .box-info {
+            flex: 1 1 auto;
+        }
+        h3 {
+            color: $white;
+            text-transform: unset;
+            font-weight: 700;
+        }
+        .sort-info {
+            color: $white;
+        }
+        &:hover, &:focus {
+            @include box-shadow(0 4px 20px 5px rgba(0,0,0,0.1));
+            @include transform(translateY(-5px)); 
         }
     }
     .box-image {
@@ -59,6 +93,7 @@
         color: $brightblue;
         font-size: 28px;
         margin-bottom: 15px;
+        @include transition(0.2s, ease-in-out);
         @media (max-width: 767px) {
             font-size: 22px;
             margin-bottom: 10px;
@@ -69,6 +104,40 @@
         @media (max-width: 992px) {
             max-width: 100%;
         }
+    } 
+    .box-action {
+        margin-top: 30px;
+    }   
+}
+a.icon-box {
+    &:hover, &:focus {
+        @include box-shadow(0 4px 20px 5px rgba(0,0,0,0.1));
+        @include transform(translateY(-5px));        
+        .box-image {
+            img {
+                filter: grayscale(1) brightness(0.5);
+            }
+        }
+        h3 {
+            color: $darkgary;
+        }
+    }
+}
+
+.info-card {
+    background: $white;
+    @include box-shadow(0 4px 20px 5px rgba(0,0,0,0.1));
+    padding: 20px;
+    .card-info {
+        h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: $purple;
+            text-transform: unset;
+        }
+    }
+    .card-action {
+        margin-top: 20px;
     }
 }
 
@@ -110,13 +179,26 @@
     }
 }
 .section-icon-content {
-    padding-top: 110px;
-    @media (max-width: 767px) {
-        padding-top: 80px;
+    &.pt-110 {
+        padding-top: 110px;
+        @media (max-width: 767px) {
+            padding-top: 80px;
+        }
     }
+    
     .section-title {
         h2 {
             color: #797979;
+        }
+    }
+}
+.section-infocard-content {
+    .action {
+        margin-top: 60px;
+        text-align: center;
+        &.border-bottom {
+            border-bottom: 1px solid #e2e2e2;
+            padding-bottom: 50px;
         }
     }
 }

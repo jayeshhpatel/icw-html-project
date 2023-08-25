@@ -753,7 +753,7 @@ INPUT
 	right: -300px !important;
 }
 
-
+// Tooltip
 .tooltip {
 	z-index: 1080;
 	display: block;
@@ -847,10 +847,87 @@ INPUT
     -o-border-radius: 3px;
 }
 
+
+// Button
+.btn {
+	min-height: 40px;
+	padding: 10px 30px;
+	font-weight: 700;
+	font-size: 16px;
+	min-width: 180px;
+	@include transition(0.3s, ease-in-out);
+	@include border-radius(5px);
+	@include inline-flex;
+	@include align-items(center);
+	@include justify-content(center);
+	text-align: center;
+	cursor: pointer;
+	text-transform: uppercase;
+	&.mw-200 {
+		max-width: 200px;
+		width: 100%;
+	}
+	@media (max-width:767px) {
+		font-size: 14px;
+		padding: 10px 15px;
+		min-height: 44px;
+	}
+	.btn-icon {
+		margin-right: 10px;
+		max-width: 18px; max-height: 18px;
+	}
+	&.btn-white {
+		color: $darkgary;
+		border: 1px solid transparent;
+		background-color:$white;
+		&:hover, &:focus, &:active{
+			background-color: transparent;
+			color: $white;
+			border: 1px solid $white;
+			.btn-icon {
+				filter: none;
+				-webkit-filter: none;
+			}
+		}
+	}
+	&.btn-purple {
+		color: $white;
+		border: 1px solid transparent;
+		background-color:$purple;
+		&:hover, &:focus, &:active{
+			background-color: transparent;
+			color: $purple;
+			border: 1px solid $purple;
+			.btn-icon {
+				filter: none;
+				-webkit-filter: none;
+			}
+		}
+	}
+	&.btn-brightblue {
+		color: $white;
+		border: 1px solid transparent;
+		background-color:$brightblue;
+		&:hover, &:focus, &:active{
+			background-color: transparent;
+			color: $brightblue;
+			border: 1px solid $brightblue;
+			.btn-icon {
+				filter: none;
+				-webkit-filter: none;
+			}
+		}
+	}
+}
+
 /* Common CSS */
 ul {
     margin: 0;
     padding: 0;
+    list-style-type: none;
+    li {
+        list-style-type: none;        
+    }
 }
 
 a {
@@ -961,6 +1038,9 @@ h5, .h5 {
 }
 .sort-info {
     color: $black;
+    &.font-lg {
+        font-size: 22px;
+    }
 }
 .sub-heading {
     color: $brightblue;
@@ -978,6 +1058,28 @@ h5, .h5 {
     background-color: $brightblue !important;    
 }
 
+.bg-triangle-shape {
+    overflow: hidden;
+    position: relative;
+    background-color: rgba($gold, 0.1);
+    &::after {
+		content: '';
+		position: absolute;
+		background-color: $gold;
+		padding-bottom: 141.42136%;
+		width: 60%;
+		bottom: 0;
+		right: 0;
+		transform: rotate(8.5deg);
+		transform-origin: left bottom;
+        z-index: -1;
+    }
+}
+
+.text-purple {
+    color: $purple !important;
+}
+
 .main-content-wrapper {
     margin-top: 64px;
     @media (max-width: 992px) {
@@ -989,5 +1091,46 @@ h5, .h5 {
     padding: 80px 0;
     @media (max-width: 767px) {
         padding: 50px 0;
+    }
+    ul {
+        li {
+            color: $black;
+            @include inline-flex; 
+            @include align-items (flex-start);
+            width: 100%;
+            padding-bottom: 10px;
+            a {
+                color: $brightblue;
+                font-weight: 500;
+                position: relative;
+                &::before {
+                    content: ''; 
+                    width: 0;
+                    height: 1px;
+                    background-color: $darkgary;
+                    position: absolute;
+                    left: 0;
+                    bottom: -1px;
+                    display: inline-block;
+                    @include transition(0.2s, ease-in-out);
+                }
+                &:hover {
+                    color: $darkgary;
+                    &::before {
+                        width: 70%;
+                    }
+                }
+            }
+            &::before {
+                content: ''; 
+                width: 8px; 
+                height: 8px; 
+                flex: none;
+                background-color: $gold; 
+                display: inline-block;
+                margin-right: 12px;
+                margin-top: 10px;
+            }
+        }
     }
 }
