@@ -1040,9 +1040,12 @@ h5, .h5 {
     color: $black;
     &.font-lg {
         font-size: 22px;
+        @media (max-width: 767px) {
+            font-size: 18px;
+        }
     }
 }
-.sub-heading {
+.sub-title {
     color: $brightblue;
     font-weight: 500;
     text-transform: uppercase;
@@ -1059,25 +1062,52 @@ h5, .h5 {
 }
 
 .bg-triangle-shape {
-    overflow: hidden;
-    position: relative;
-    background-color: rgba($gold, 0.1);
-    &::after {
-		content: '';
-		position: absolute;
-		background-color: $gold;
-		padding-bottom: 141.42136%;
-		width: 60%;
-		bottom: 0;
-		right: 0;
-		transform: rotate(8.5deg);
-		transform-origin: left bottom;
-        z-index: -1;
+    overflow: hidden;   
+    background: linear-gradient(to right,  rgba($gold, 0.1) 0%,rgba($gold, 0.1) 50%,$gold 50%,$gold 100%);
+    @media (max-width: 992px) {
+        background: linear-gradient(to bottom,  rgba($gold, 0.1) 0%,rgba($gold, 0.1) 50%,$gold 50%,$gold 100%);
+    }
+    .triangle-shape {
+        position: relative;
+        &::after {
+            content: '';
+            position: absolute;
+            background-color: $gold;
+            padding-bottom: 140%;
+            width: 60%;
+            bottom: 0;
+            left: 0;
+            transform: rotate(6.5deg);
+            transform-origin: left bottom;
+            z-index: -1;
+            @media (max-width: 1200px) {
+                left: -3%;
+                transform: rotate(4.5deg);
+            }
+            @media (max-width: 992px) {
+                top: 0;
+                bottom: auto;
+                left: -8%;
+                width: 140%;
+                transform: rotate(-4.5deg);
+            }
+        }
     }
 }
 
 .text-purple {
     color: $purple !important;
+}
+
+.masonry-card-layout {
+    column-count: 2;
+    column-gap: 30px;
+    @media (max-width: 992px) {
+        column-count: 1;
+    }
+    .info-card {
+        margin-bottom: 30px;
+    }
 }
 
 .main-content-wrapper {
@@ -1099,6 +1129,9 @@ h5, .h5 {
             @include align-items (flex-start);
             width: 100%;
             padding-bottom: 10px;
+            @media (max-width: 767px) {
+                padding-bottom: 8px;
+            }
             a {
                 color: $brightblue;
                 font-weight: 500;
@@ -1130,6 +1163,11 @@ h5, .h5 {
                 display: inline-block;
                 margin-right: 12px;
                 margin-top: 10px;
+                @media (max-width: 767px) {
+                    width: 6px; 
+                    height: 6px; 
+                    margin-top: 9px;
+                }
             }
         }
     }
