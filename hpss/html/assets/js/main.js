@@ -49,3 +49,20 @@ jQuery(document).ready(function($) {
         });
     });
 });
+
+if ($('.event-slider').length) {
+    var eventSlider = new Splide( '.event-slider', {
+        perPage: 2,
+        perMove: 1,
+        arrowPath: 'M11 2L28.949 19.9998L11 38',        
+        pagination : false,
+        padding  : '0',
+        type   : 'loop',
+        breakpoints: {
+            992: {
+                perPage: 1,
+            },
+        },
+    });  
+    eventSlider.mount();
+ };
