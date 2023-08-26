@@ -48,6 +48,9 @@ jQuery(document).ready(function($) {
            });
         });
     });
+    if ($('[data-bs-toggle=tooltip]').length) {
+        $("body").tooltip({ selector: '[data-bs-toggle=tooltip]' });
+        }
 });
 
 if ($('.event-slider').length) {
@@ -59,8 +62,10 @@ if ($('.event-slider').length) {
         padding  : '0',
         type   : 'loop',
         breakpoints: {
-            992: {
+            767: {
                 perPage: 1,
+                arrows: false,
+                pagination: true,
             },
         },
     });  

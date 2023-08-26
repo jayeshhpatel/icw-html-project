@@ -34,6 +34,24 @@ p {
     }
 }
 
+blockquote {
+    color: $dawnblue;
+    font-weight: 400;
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 20px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+    @media (max-width: 992px) {
+        margin-bottom: 20px;
+    }
+    @media (max-width: 767px) {
+        font-size: 20px;
+    }
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -111,10 +129,7 @@ h5, .h5 {
     color: $purple;
     font-style: italic;
 }
-.intro-text, .quotes {
-    color: $dawnblue;
-    font-weight: 400;
-}
+
 .sort-info {
     color: $black;
     &.font-lg {
@@ -192,6 +207,28 @@ h5, .h5 {
         overflow-x: auto;
         margin-left: -10px;
         margin-right: -10px;
+        scrollbar-width: thin;
+        &::-webkit-scrollbar {
+            background-color:transparent;
+            width:5px; height: 5px;
+            border-radius:16px;
+        }
+        &::-webkit-scrollbar-track {
+            background-color:rgba(#404040, 0.05)
+        }
+        &::-webkit-scrollbar-track:hover {
+            background-color:rgba(#404040, 0.15)
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color:rgba(#404040, 0.60);
+            border-radius:16px;
+        }
+        &::-webkit-scrollbar-thumb:hover {
+            background-color:rgba(#404040, 0.80);
+        }
+        &::-webkit-scrollbar-button {
+            display:none
+        }
     }
     .info-card {
         margin-bottom: 30px;
@@ -206,7 +243,7 @@ h5, .h5 {
             min-width: 500px;
         }
         @media (max-width: 420px) {
-            min-width: 280px;
+            min-width: 260px;
         }
     }
 }
@@ -292,6 +329,37 @@ h5, .h5 {
     @media (max-width: 767px) {
         padding: 50px 0;
     }
+    &.bg-blue-half {
+        position: relative;       
+        &::after {
+            content: '';
+            width: 100%;
+            height: 90%;
+            background: $brightblue;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    }
+    &.bg-gold-half {
+        position: relative;             
+        &::after {
+            content: '';
+            width: 100%;
+            height: 80%;
+            background: $gold;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            @media (max-width: 767px) {
+                height: 85%;
+            }
+        }
+    }
     ul.dot-list {
         li {
             color: $black;
@@ -341,6 +409,7 @@ h5, .h5 {
             }
         }
     }
+    
 }
 
 .section-title {
@@ -362,15 +431,6 @@ h5, .h5 {
     @include border-radius(20px);
     padding: 30px;
     @include box-shadow(0 4px 20px 5px rgba(0, 0, 0, 0.1));
-    .intro-text {
-        font-size: 24px;
-        @media (max-width: 992px) {
-            margin-bottom: 20px;
-        }
-        @media (max-width: 767px) {
-            font-size: 20px;
-        }
-    }
 }
 
 .row.g-15 {
@@ -474,6 +534,9 @@ a.icon-box {
     border: none;
     @include border-radius(15px);
     @include transition(0.2s, ease-in-out);
+    @media (max-width: 767px) {
+        padding: 20px;
+    }
     .card-body {
         flex: 1 1 auto;
         padding: 0;
@@ -481,9 +544,6 @@ a.icon-box {
             line-height: 1;
             text-transform: unset;
             margin-bottom: 15px;
-            @media (max-width: 767px) {
-                min-width: 500px;
-            }
         }
     }
     .card-footer{
@@ -536,25 +596,25 @@ a.icon-box {
     }
     &--prev {
         left: -40px;
+        @media (max-width: 1200px) {
+            left: -35px;
+        }
         &:hover, &:focus {
             left: -45px;
-            @media (max-width: 992px) {
-                left: -30px;
+            @media (max-width: 1200px) {
+                left: -40px;
             }
-        }
-        @media (max-width: 992px) {
-            left: -25px;
         }
     }
     &--next {
         right: -40px;
-        @media (max-width: 992px) {
-            right: -25px;
+        @media (max-width: 1200px) {
+            right: -35px;
         }
         &:hover, &:focus {
-            right: -45px;            
-            @media (max-width: 992px) {
-                right: -30px;
+            right: -45px;
+            @media (max-width: 1200px) {
+                right: -40px;
             }
         }
     }
@@ -562,10 +622,23 @@ a.icon-box {
        opacity: 0.7;
     }
 }
+.splide__pagination {
+    bottom: -10px;
+    li {
+        .splide__pagination__page {
+            background: rgba($darkgary, 0.3);
+            &.is-active {
+                background: $gold;
+            }
+        }
+    }
+}
 
 .event-slider {
-    margin-left: -15px;
-    margin-right: -15px;
+    .splide__track  {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
     .splide__slide {
         padding: 15px 15px 25px;
     }
@@ -573,6 +646,9 @@ a.icon-box {
     @media (max-width: 992px) {
         max-width: calc(100% - 40px);
         margin: 0 auto;
+    }
+    @media (max-width: 767px) {
+        max-width: 100%;
     }
 }
 
@@ -585,20 +661,21 @@ a.icon-box {
     height: 100%;
     @include flexbox;
     @include flex-direction(column);
+    @media (max-width: 767px) {
+        padding: 20px;
+    }
     .event-info {
         flex: 1 1 auto;
         h3 {
             color: $purple;
             line-height: 1;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
-        .date {
-            color: $purple;
-            font-weight: 600;
-            font-size: 28px;
+        .event-date {
+            font-size: 24px;
             line-height: 1;
-            font-style: italic;
-            margin-bottom: 10px;
+            color: $purple;
+            margin-bottom: 15px;
             @media (max-width: 992px) {
                 font-size: 24px;
             }
@@ -614,9 +691,10 @@ a.icon-box {
         }
     }
     .event-action {
-        margin-top: 25px;
+        margin-top: 15px;
         .btn {
             margin-right: 20px;
+            margin-top: 10px;
         }
     }
 }
@@ -649,23 +727,7 @@ a.icon-box {
     }
 }
 
-.section-content-grid {
-    .content-grid {
-        margin-bottom: -110px;
-        @media (max-width: 767px) {
-            margin-bottom: -80px;
-        }
-    }
-}
-
-.section-icon-content {
-    &.pt-110 {
-        padding-top: 110px;
-        @media (max-width: 767px) {
-            padding-top: 80px;
-        }
-    }
-    
+.section-icon-content {  
     .section-title {
         h2 {
             color: #797979;
@@ -688,11 +750,48 @@ a.icon-box {
             }
         }
     }
+    @media (max-width: 767px) {        
+        .row {
+            @include flex-wrap(nowrap);
+            overflow: hidden;
+            overflow-x: auto;
+            & > * {
+                margin-bottom: 10px;
+            }
+            .col-md-6 {
+                max-width: 270px;
+            }
+            &::-webkit-scrollbar {
+                background-color:transparent;
+                width:5px; height: 5px;
+                border-radius:16px;
+            }
+            &::-webkit-scrollbar-track {
+                background-color:rgba(#404040, 0.05)
+            }
+            &::-webkit-scrollbar-track:hover {
+                background-color:rgba(#404040, 0.15)
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color:rgba(#404040, 0.60);
+                border-radius:16px;
+            }
+            &::-webkit-scrollbar-thumb:hover {
+                background-color:rgba(#404040, 0.80);
+            }
+            &::-webkit-scrollbar-button {
+                display:none
+            }
+        }
+    }
 }
 
 .section-events-slider {
     .section-title {
         margin-bottom: 30px;
+        h2 {
+            color: $white;
+        }
         @media (max-width: 767px) {
             margin-bottom: 15px;
         }
@@ -737,12 +836,23 @@ a.icon-box {
 
 .logos-content-block {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-gap: 30px 20px;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 30px 25px;
     .logo {
         @include transition(0.2s, ease-in-out);
+        padding: 10px;
+        display: block;
+        @include border-radius(5px);
+        img {
+            @include transition(0.2s, ease-in-out);
+        }        
+    }
+    a.logo {
         &:hover, &:focus { 
-            @include transform(scale(1.05));  
+            @include box-shadow(0 4px 12px 5px rgba(0,0,0,0.1));
+            img {
+                @include transform(scale(1.05));  
+            }
         }
     }
     @media (max-width: 1200px) {
