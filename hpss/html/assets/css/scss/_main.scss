@@ -138,7 +138,61 @@ h5, .h5 {
             font-size: 18px;
         }
     }
+    &.mw-1000 {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    ul {
+        li {
+            color: $black;
+            @include inline-flex; 
+            @include align-items (flex-start);
+            width: 100%;
+            padding-bottom: 10px;
+            @media (max-width: 767px) {
+                padding-bottom: 8px;
+            }
+            a {
+                color: $brightblue;
+                font-weight: 500;
+                position: relative;
+                &::before {
+                    content: ''; 
+                    width: 0;
+                    height: 1px;
+                    background-color: $darkgary;
+                    position: absolute;
+                    left: 0;
+                    bottom: -1px;
+                    display: inline-block;
+                    @include transition(0.2s, ease-in-out);
+                }
+                &:hover {
+                    color: $darkgary;
+                    &::before {
+                        width: 70%;
+                    }
+                }
+            }
+            &::before {
+                content: ''; 
+                width: 8px; 
+                height: 8px; 
+                flex: none;
+                background-color: $gold; 
+                display: inline-block;
+                margin-right: 12px;
+                margin-top: 10px;
+                @media (max-width: 767px) {
+                    width: 6px; 
+                    height: 6px; 
+                    margin-top: 9px;
+                }
+            }
+        }
+    }
 }
+
 .sub-title {
     color: $brightblue;
     font-weight: 500;
@@ -151,6 +205,7 @@ h5, .h5 {
         color: $white;
     }
 }
+
 .bg-brightblue {
     background-color: $brightblue !important;    
 }
@@ -363,57 +418,7 @@ h5, .h5 {
                 height: 85%;
             }
         }
-    }
-    ul.dot-list {
-        li {
-            color: $black;
-            @include inline-flex; 
-            @include align-items (flex-start);
-            width: 100%;
-            padding-bottom: 10px;
-            @media (max-width: 767px) {
-                padding-bottom: 8px;
-            }
-            a {
-                color: $brightblue;
-                font-weight: 500;
-                position: relative;
-                &::before {
-                    content: ''; 
-                    width: 0;
-                    height: 1px;
-                    background-color: $darkgary;
-                    position: absolute;
-                    left: 0;
-                    bottom: -1px;
-                    display: inline-block;
-                    @include transition(0.2s, ease-in-out);
-                }
-                &:hover {
-                    color: $darkgary;
-                    &::before {
-                        width: 70%;
-                    }
-                }
-            }
-            &::before {
-                content: ''; 
-                width: 8px; 
-                height: 8px; 
-                flex: none;
-                background-color: $gold; 
-                display: inline-block;
-                margin-right: 12px;
-                margin-top: 10px;
-                @media (max-width: 767px) {
-                    width: 6px; 
-                    height: 6px; 
-                    margin-top: 9px;
-                }
-            }
-        }
-    }
-    
+    }      
 }
 
 .section-title {
@@ -423,6 +428,19 @@ h5, .h5 {
     }
     h1, h2 {
         margin-bottom: 20px;
+    }
+    &.inner-page-section-title {
+        h2 {
+            font-size: 46px;
+            color: $brightblue;
+            margin-bottom: 15px;
+        }
+        .sub-title {
+            color: $darkgary;
+            text-transform: unset;
+            font-size: 55px;
+            font-family: $font-merriweather;
+        }
     }
 }
 
@@ -755,7 +773,7 @@ a.icon-box {
     100% {
         background-size: 100% 100%;
     }
-  }
+}
 
 .section-icon-content {  
     .section-title {
@@ -864,7 +882,6 @@ a.icon-box {
     }
 }
 
-
 .logos-content-block {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
@@ -902,3 +919,34 @@ a.icon-box {
     }
 }
 
+.post-content {
+    h3 {
+        margin-bottom: 20px;
+    }
+    h4 {
+        margin-bottom: 15px;
+    }
+    ol {
+        list-style-type: decimal;
+        padding: 0;
+        padding-left: 20px;
+        margin: 0;
+        display: inline-block;
+        margin-bottom: 20px;
+        li {
+            list-style-type: decimal;
+            padding: 5px 0;
+        }
+    }
+    img {
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto 30px;
+        display: block;
+    }
+    hr {
+        border-color: $darkgary;
+        opacity: 0.5;
+        margin: 30px 0;
+    }
+}
