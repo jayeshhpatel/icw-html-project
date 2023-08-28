@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <title>About | HPSS Collaboration</title>
+        <title>Deployments | HPSS Collaboration</title>
         <meta name="Googlebot" content="noindex,nofollow">
         <meta name="description" content="The Ultimate Solution for Your Expanding Universe of Data">
 
@@ -95,68 +95,105 @@
                         <img src="assets/images/inner-page-logo.png" alt="HPSS Collaboration">
                     </div>
                 </div>
-            </section>
-            <section class="main-section pb-0">
+            </section>      
+            <section class="main-section">
                 <div class="container">
                     <div class="section-title inner-page-section-title text-center mb-0">
-                        <h1>HPSS RAIT TECHNOLOGY</h1>
-                        <h2 class="mb-0">Software technology for striping data on tape with the added benefit of parity for redundancy</h2>
+                        <h1 class="h3 mb-0">PRODUCT DEPLOYMENTS</h1>
                     </div>
                 </div>
             </section>
-            <section class="main-section section-content">
-                <div class="container">                    
-                    <div class="post-content">
-                        <h3>WHAT IS HPSS RAIT?</h3>
-                        <blockquote>HPSS RAIT (Redundant Array of Independent Tapes) is an HPSS software technology for striping data on tape with the added benefit of parity for redundancy. HPSS RAIT with single parity is similar to RAID-5 and HPSS RAIT with two parities is similar to RAID-6, except HPSS RAIT is used with tape. HPSS with RAIT still streams the tape drives at hardware speed, and stripe widths of up to 16 (data+parity) are available.</blockquote>
-                        <blockquote>HPSS RAIT is transparent to the client using any of the existing HPSS client interfaces: HPSSFS Fuse, SwiftOnHPSS, FTP, Parallel FTP, HSI, HTAR, and other third-party HPSS client applications.</blockquote>
-                        <hr>
-                        <h3>WHY USE HPSS RAIT?</h3>
-                        <h4>RAIT allows data to flow to and from tape in a parallel manner</h4>
-                        <p>Parallel tape I/O allows single file transfers to exceed the native transfer rate of a single tape drive. At Oak Ridge National Laboratory (ORNL), large file I/O exceeds 1 GB/s with their 4+P HPSS RAIT stripe deployed on 250 MB/s tape technology. Thus, a 1 TB file can be written to tape in less than 17 minutes. Without parallel I/O, a 1 TB file might take over an hour to  transfer using a single 250 MB/s tape drive.</p>
-                        <h4>When compared to dual-copy tape, HPSS RAIT lowers redundant tape costs.</h4>
-                        <p>At the lowest level, a 2+P HPSS RAIT will deliver up to 2x improvement in tape bandwidth and typically cuts the cost of redundant tape by 45%. Redundant tape costs are cut by 45%, rather than 50%, because typically 90% of the files by count only take 10% of the space in an HPSS repository, while 10% of the files by count take up 90% of the space. HPSS RAIT is intended for large files, so for greater recall efficiency, dual-copy tape is used to protect smaller files.</p>
-                        <p>There are two basic methods of redundancy: making multiple copies (mirroring), and redundancy through error-correcting codes (such as Reed-Solomon). RAIT uses Reed-Solomon error-correcting codes which are less expensive than making multiple copies due to the lower tape, drive, space, and power requirements.</p>
-                        <hr>
-                        <h3>THE VALUE OF RAIT OVER MIRRORING</h3>
-                        <h4>Use less media</h4>
-                        <p>There is a lower cost of fault tolerance with RAIT: fewer tape drives and cartridges are required. There are also faster mount times when compared with writing to a mirrored volume. For example, in the case of an 8 tape stripe and adding single failure  tape, resulting in a total of 9 tapes to accomplish the redundancy.</p>
-                        <h4>Automatic data recovery </h4>
-                        <h5>There is a high tolerance for tape loss</h5>
-                        <p>within the HPSS RAIT stripe. RAIT reads and RAIT writes will continue even if there is a tape mount or tape media error. Automatic data recovery takes place during the RAIT read operation because HPSS can reconstruct the missing data using the parity and surviving data blocks.</p>
-                    </div>
+            <section class="main-section section-full-content p-0">
+                <div class="bg-title bg-dawnblue">
+                    <h2>HPSS DEPLOYMENTS AROUND THE WORLD</h2>
                 </div>
-            </section>
-            <section class="main-section bg-gold">
-                <div class="container">
-                    <div class="sort-info mw-1200">
-                        <h2>Proven in the field...</h2>
-                        <blockquote><i>ORNL began using HPSS RAIT in January 2015, and are seeing faster tape mounts when compared to writing a mirror. ORNL was able to cut redundant tape cost-estimates by 75% with 4+Parity HPSS RAIT (tape stripe with rotating parity) and enjoy large file tape transfers beyond 1 GB/s.</i></blockquote>
-                    </div>
+                <div class="img-block">
+                    <img src="upload/world-hpss.png" alt="World Of HPSS">
                 </div>
             </section>
             <section class="main-section section-content">
                 <div class="container">
                     <div class="post-content">
-                        <h3>WHAT’S UNDER THE HOOD OF HPSS RAIT?</h3>
-                        <p>At the heart of HPSS RAIT is the HPSS RAIT engine. Client data will automatically flow through the HPSS RAIT engine for all HPSS RAIT transfers to and from tape.</p>
-                        <p>Like HPSS’ RAID counterparts, the HPSS RAIT parity rotates across all tapes in the RAIT stripe. Rotating the parity evens out the compressibility of the data on tape by ensuring an equal amount of data and parity are written to each tape cartridge.</p>
-                        <p>The figure below illustrates a single HPSS RAIT engine accepts four data blocks (A, B, C, and D) at a time from the client, generate the two parity blocks (P and Q), and send the six data blocks to tape in a parallel manner. Notice that the figure illustrates how the “File Data Block” is processed in four iterations, as follows:</p>
-                            <ol>
-                                <li>A1, B1, C1, and D1 + P1 and Q1</li>
-                                <li>A2, B2, C2, and D2 + P2 and Q2</li>
-                                <li>A3, B3, C3, and D3 + P3 and Q3</li>
-                                <li>A4, B4, C4, and D4 + P4 and Q4</li>
-                            </ol>       
-                        <p>The following illustration shows how data movement occurs:</p>
-                        <img src="upload/hood-hpss.png" alt="WHAT’S UNDER THE HOOD OF HPSS RAIT?">
-                        <hr>
-                        <h3>HPSS RAIT CONFIGURATION OPTIONS AND FEATURES</h3>
-                        <ul>
-                            <li>HPSS RAIT supports data stripe width of up to 15 and a parity stripe width of up to 7.</li>
-                            <li>You can control whether to mount the entire RAIT volume or only a minimal set of tapes for reading from a RAIT volume. For an 8 data/3 parity volume, this would cause 9 tapes to be mounted rather than 11 if the data is being verified against parity</li>
-                            <li>Read verification allows users to verify that the data being read still matches the parity, with stripe-level data integrity</li>
-                        </ul>
+                        <h3>PUBLICLY DISCLOSED DEPLOYMENTS <br>LISTED BY CAPACITY WITH FILE COUNTS</h3>
+                        <blockquote>These are deployments that have accumulated a petabyte or more of data. Each entry represents a single instance of HPSS; the capacity numbers for a single HPSS namespace.</blockquote>         
+                        <div class="table-block">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Sites - 2Q2023</th>
+                                        <th>Petabytes</th>
+                                        <th>M Files</th>
+                                        <th>Since</th>
+                                        <th>Country</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><img src="upload/logo-ecmwf.jpg" alt="">European Centre for Medium-Range Weather Forecasts</td>
+                                        <td>824</td>
+                                        <td>556</td>
+                                        <td>2002</td>
+                                        <td>United Kingdom</td>
+                                    </tr>
+                                    <tr>
+                                        <td>United Kingdom Met Office</td>
+                                        <td>604</td>
+                                        <td>1408</td>
+                                        <td>2009</td>
+                                        <td>United Kingdom</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shared Services Canada</td>
+                                        <td>560</td>
+                                        <td>49</td>
+                                        <td>2017</td>
+                                        <td>Canada</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Meteo France - French Weather and Climate</td>
+                                        <td>527</td>
+                                        <td>937</td>
+                                        <td>2015</td>
+                                        <td>France</td>
+                                    </tr>
+                                    <tr>
+                                        <td>National Oceanic and Atmospheric Administration Research & Development  </td>
+                                        <td>331</td>
+                                        <td>116</td>
+                                        <td>2002</td>
+                                        <td>United States</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Lawrence Berkeley National Laboratory - User</td>
+                                        <td>312</td>
+                                        <td>248</td>
+                                        <td>1998</td>
+                                        <td>United States</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Max Planck Computing and Data Facility</td>
+                                        <td>257</td>
+                                        <td>111</td>
+                                        <td>2011</td>
+                                        <td>Germany</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Commissariat a l`Energie Atomique - Tera Project</td>
+                                        <td>230</td>
+                                        <td>41</td>
+                                        <td>1999</td>
+                                        <td>France</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Brookhaven National Laboratory</td>
+                                        <td>229</td>
+                                        <td>228</td>
+                                        <td>1998</td>
+                                        <td>United States</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>               
                     </div>
                 </div>
             </section>

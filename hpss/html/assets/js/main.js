@@ -59,7 +59,9 @@ if ($('.event-slider').length) {
         perMove: 1,
         arrowPath: 'M11 2L28.949 19.9998L11 38',        
         pagination : false,
-        padding  : '0',
+        gap    : '30px',
+        padding: '1rem',
+        snap   : true,
         type   : 'loop',
         breakpoints: {
             767: {
