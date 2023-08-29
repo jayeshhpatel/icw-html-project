@@ -53,23 +53,45 @@ jQuery(document).ready(function($) {
         }
 });
 
+// if ($('.event-slider').length) {
+//     var eventSlider = new Splide( '.event-slider', {
+//         perPage: 2,
+//         perMove: 1,
+//         arrowPath: 'M11 2L28.949 19.9998L11 38',        
+//         pagination : false,
+//         gap    : '30px',
+//         padding: '1rem',
+//         snap   : true,
+//         type   : 'loop',
+//         breakpoints: {
+//             767: {
+//                 perPage: 1,
+//                 arrows: false,
+//                 pagination: true,
+//             },
+//         },
+//     });  
+//     eventSlider.mount();
+//  };
+
+ 
+
+
+
+
+
+
 if ($('.event-slider').length) {
-    var eventSlider = new Splide( '.event-slider', {
-        perPage: 2,
-        perMove: 1,
-        arrowPath: 'M11 2L28.949 19.9998L11 38',        
-        pagination : false,
-        gap    : '30px',
-        padding: '1rem',
-        snap   : true,
-        type   : 'loop',
-        breakpoints: {
-            767: {
-                perPage: 1,
-                arrows: false,
-                pagination: true,
-            },
-        },
-    });  
-    eventSlider.mount();
- };
+
+var eventSlider = new Splide( '.splide', {
+    type   : 'loop',
+    perPage: 2,
+    perMove: 1,
+    arrowPath: 'M11 2L28.949 19.9998L11 38',
+    pagination : false,
+    gap: '30px',
+    snap   : true,
+});
+  
+  eventSlider.mount();
+}

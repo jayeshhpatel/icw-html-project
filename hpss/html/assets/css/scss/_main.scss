@@ -807,6 +807,28 @@ a.icon-box {
     }
     table {
         width: 100%;
+        &.with-padding {
+            thead {
+                th {
+                    padding-left: 25px !important;
+                    padding-right: 25px !important;
+                }
+            }
+            tbody {
+                td {
+                    padding-left: 25px !important;
+                    padding-right: 25px !important;
+                }
+            }
+            tr {  
+                padding: 3px 0;    
+                &:hover, &:focus {
+                    td {
+                        background: #dfeef7;
+                    }
+                }
+            }
+        }
         thead {
             th {
                 font-size: 22px;
@@ -840,10 +862,19 @@ a.icon-box {
                     font-size: 18px;
                     padding: 15px;
                 }
-                &:first-child {
-                    font-size: 24px;
+                strong {
                     font-weight: 600;
-                    color: $dawnblue;
+                    color: $dawnblue;                
+                }
+                a {
+                    font-weight: 600;
+                    color: $dawnblue;   
+                    @include transition(0.2s, ease-in-out);
+                    &:hover {
+                        color: $gold;
+                    }
+                }
+                &:first-child {                   
                     text-align: left;
                     padding-left: 0px;
                     @include flexbox;
