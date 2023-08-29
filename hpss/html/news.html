@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <title>Releases | HPSS Collaboration</title>
+        <title>Documentation | HPSS Collaboration</title>
         <meta name="Googlebot" content="noindex,nofollow">
         <meta name="description" content="The Ultimate Solution for Your Expanding Universe of Data">
 
@@ -24,6 +24,7 @@
         <meta name="application-name" content="HPSS Collaboration">
         <meta name="theme-color" content="#ffffff">
         
+        <!-- <link href="assets/css/masonry-layout-vanilla.min.css" rel="stylesheet"> -->
         <link href="assets/css/main.css" rel="stylesheet">
     </head>
     <body>
@@ -99,91 +100,71 @@
             <section class="main-section pb-5">
                 <div class="container">
                     <div class="section-title inner-page-section-title text-center mb-0">
-                        <h1 class="h3 mb-0">PRODUCT RELEASES</h1>
+                        <h1 class="h3">NEWS</h1>
+                        <h2>HPSS Happenings and History</h2>
                     </div>
                 </div>
             </section>
             <section class="main-section section-content pt-0">
                 <div class="container">
                     <div class="post-content">
-                        <div class="table-block mt-0">
-                            <table class="with-padding col-width-fixed">
-                                <thead>
-                                    <tr>
-                                        <th>Release</th>
-                                        <th>Date</th>
-                                        <th style="text-align: right;">Release Details & Features</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><strong>10.2.0</strong></td>
-                                        <td class="date">January 2023</td>
-                                        <td style="text-align: right;"><a href="#">View Details and Features</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>10.2.0</strong></td>
-                                        <td>January 2023</td>
-                                        <td style="text-align: right;"><a href="#">View Details and Features</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>10.2.0</strong></td>
-                                        <td>January 2023</td>
-                                        <td style="text-align: right;"><a href="#">View Details and Features</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>10.2.0</strong></td>
-                                        <td>January 2023</td>
-                                        <td style="text-align: right;"><a href="#">View Details and Features</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>10.2.0</strong></td>
-                                        <td>January 2023</td>
-                                        <td style="text-align: right;"><a href="#">View Details and Features</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>10.2.0</strong></td>
-                                        <td>January 2023</td>
-                                        <td style="text-align: right;"><a href="#">View Details and Features</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>10.2.0</strong></td>
-                                        <td>January 2023</td>
-                                        <td style="text-align: right;"><a href="#">View Details and Features</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>10.2.0</strong></td>
-                                        <td>January 2023</td>
-                                        <td style="text-align: right;"><a href="#">View Details and Features</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>10.2.0</strong></td>
-                                        <td>January 2023</td>
-                                        <td style="text-align: right;"><a href="#">View Details and Features</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>    
-                    </div>
-                </div>
-            </section>
-            <section class="main-section section-content pt-0">
-                <div class="container">
-                    <div class="post-content">
-                        <h3>RELEASE 10.2.0 DETAILS AND FEATURES</h3>
-                        <h4>Purge on migrate flag</h4>
-                        <p>HPSS now supports setting a flag on a bitfile which informs HPSS that the file should not be kept on disk after migration. This can be used for files which an application or user knows will not be needed again soon. When a file is written with this flag set, the file will immediately be purged off disk after it has been migrated to tape. When a file is staged with this flag enabled, it will behave normally, according to the purge policy. The purge on migrate flag can be set using the HPSS C API, the HPSS Python client, and scrub. See the Programmer’s Reference for more information.a </p>
-                        <h4>Low overhead read interface (LORI)</h4>
-                        <p>lori is a new tool which behaves similarly to quaid and shares many of the same options including organizing requests by tape, callouts upon read completion, filtering, and more. However, while quaid stages files up to the top level of the hierarchy, lori uses PIO to read data out of HPSS with minimal overhead and into the selected output directory. See the lori man page for more details.</p>
-                        <p>In the future, lori will take advantage of upcoming changes to enable mass recall with read recovery</p>
-                        <h4>Discover new control paths in the SCSI PVR during runtime</h4>
-                        <p>The SCSI PVR can now re-scan the SCSI Media Changer devices it has access to looking for new control paths to the tape library. This is triggered by doing a “Reinit” of the SCSI PVR server. Note that it will detect new devices, but will not remove old devices unless they are not in use by the SCSI PVR. Old devices which may have been in use but no longer exist will be marked as DOWN and will not be used by the SCSI PVR.</p>
-                        <h4>Optional ASAN-enabled versions of HPSS Servers</h4>
-                        <p>RPMs are now provided for ASAN-enabled versions of HPSS servers. These special binaries are otherwise the same as standard binaries, but have support compiled in to improve memory issue detection. These binaries can be used to spot certain kinds of memory use errors that generate crashes or memory leaks. The information from these binaries can reduce speed to resolution for these defect categories. One major advantage over prior tools is that an ASAN-enabled server may be modestly slower (20-30%) than the typical server, whereas prior tools could be multiple times slower.</p>
-                        <h4>Disable Direct IO</h4>
-                        <p>Historically, the HPSS Mover only performed direct IO to disk devices. The HPSS administrator may disbale direct IO for faster disk transfer performance. Use HPSS end-to-end data integrity to identify silent data corruption.</p>
-                        <h4>Simplify AWS tape storage gateway support</h4>
-                        <p>Deliver script to create hpss-compatible tape volumes in AWS tape storage gateweays.</p>
+                        <div class="news-layout">
+                            <div class="masonry-grid-layout">
+                                <div class="card info-card">
+                                    <div class="card-body">
+                                        <h3 class="h4"><a href="#">HPSS 10.2 Release</a></h3>
+                                        <div class="sort-info">HPSS 10.2 was released on February 16th, 2023 and introduces six new features and numerous minor updates including the ability to discover new control paths in the SCSI PVR during runtime.</div>                                    
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#" class="btn btn-brightblue rounded-0">Release Details and Features</a>
+                                    </div>
+                                </div>    
+                                <div class="card info-card">
+                                    <div class="card-body">
+                                        <h3 class="h4"><a href="#">Lots of Data</a></h3>
+                                        <div class="sort-info">In March 2022, IBM/HPSS delivered a storage solution to a customer in Canada, and demonstrated a sustained tape ingest rate of 33 GB/sec (2.86 PB/day peak tape ingest x 2 for dual copy), while simultaneously demonstrating a sustained tape recall rate of 24 GB/sec (2.0 PB/day peak tape recall). HPSS pushed six 18-frame IBM TS4500 tape libraries (scheduled to house over 1.6 Exabytes of tape media) to over 3,000 mounts/hour</div>
+                                    </div>
+                                </div>
+                                <div class="card info-card">
+                                    <div class="card-body">
+                                        <h3 class="h4"><a href="#">Celebrating 30 Years</a></h3>
+                                        <div class="sort-info">
+                                            <p>2022 marks the 30th anniversary of the High Performance Storage System (HPSS) Collaboration.</p>
+                                            <ul class="dot-list">
+                                                <li><a href="#">30th Anniversary Participation Lists</a></li>
+                                                <li><a href="#">Collaboration’s One-Pager</a></li>
+                                                <li><a href="#">LLNL’s Website and Video</a></li>
+                                                <li><a href="#">NERSC’s Website</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card info-card">
+                                    <div class="card-body">
+                                        <h3 class="h4"><a href="#">HPSS 9.3 Release</a></h3>
+                                        <div class="sort-info">HPSS 9.3 was released on December 14th, 2021 and introduces eight new features and numerous minor updates</div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#" class="btn btn-brightblue rounded-0">Release Details and Features</a>
+                                    </div>
+                                </div>
+                                <div class="card info-card">
+                                    <div class="card-body">
+                                        <h3 class="h4"><a href="#">HPSS 10.1 Release</a></h3>
+                                        <div class="sort-info">HPSS 10.1 was released on September 30th, 2022 and introduces fourteen <a href="#">new features</a> and numerous minor updates</div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#" class="btn btn-brightblue rounded-0">Release Details and Features</a>
+                                    </div>
+                                </div>     
+                                <div class="card info-card">
+                                    <div class="card-body">
+                                        <h3 class="h4"><a href="#">DOE Announces HPSS Milestone</a></h3>
+                                        <div class="sort-info">Todd Heer, Deputy Program Lead, Advanced Simulation and Computing (ASC) Facilities, Operations, and User Support (FOUS), announced that DOE High Performance Storage Systems (HPSS) eclipse one exabyte in stored data</div>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>         
                     </div>
                 </div>
             </section>

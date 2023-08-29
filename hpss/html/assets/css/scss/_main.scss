@@ -28,7 +28,6 @@ a {
 p {
     margin-top: 0;
     margin-bottom: 20px;
-
     &:last-child {
         margin-bottom: 0;
     }
@@ -141,6 +140,29 @@ h5, .h5 {
     &.mw-1200 {
         max-width: 1200px;
         margin: 0 auto;
+    }
+    a {
+        color: $dawnblue;
+        font-weight: 600;
+        @include transition(0.2s, ease-in-out);
+        position: relative;
+        &::before {
+            content: ''; 
+            width: 0;
+            height: 1px;
+            background-color: $gold;
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            display: inline-block;
+            @include transition(0.2s, ease-in-out);
+        }
+        &:hover {
+            color: $gold;
+            &::before {
+                width: 70%;
+            }
+        }
     }
     ul {
         li {
@@ -256,7 +278,7 @@ h5, .h5 {
         column-count: 2;
         column-gap: 30px;
         .info-card {
-            display: block;
+            display: inline-block;
         }
     }
     @media (max-width: 992px) {
@@ -303,6 +325,27 @@ h5, .h5 {
         }
         @media (max-width: 420px) {
             min-width: 260px;
+        }
+    }
+}
+.masonry-layout {
+    display: grid;
+    grid-template-columns: repeat(2,  1fr);
+    grid-gap: 30px;
+    @media (max-width: 767px) {
+        grid-template-columns: repeat(1,  1fr);
+        grid-gap: 0px;
+    }
+    .info-card {
+        @include box-shadow(0 4px 20px 5px rgba(0,0,0,0.08));
+        margin-bottom: 30px;
+        height: auto;
+        @include border-radius(0);
+        background: #fafafa;  
+        
+        &:hover {
+            @include transform(translateY(-5px));
+            @include box-shadow(0 4px 12px 5px rgba(0,0,0,0.1));
         }
     }
 }
@@ -626,6 +669,61 @@ a.icon-box {
     }
 }
 
+.event-card {
+    @include box-shadow(0 4px 20px 5px rgba(0,0,0,0.08));
+    padding: 25px;
+    @include transition(0.2s, ease-in-out);
+    @include border-radius(15px);
+    background: $white;
+    border: none;
+    margin-bottom: 30px;
+    @media (max-width: 767px) {
+        padding: 20px;
+    }
+    .event-info {
+        h3 {
+            color: $purple;
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+        .event-date {
+            font-size: 24px;
+            line-height: 1;
+            color: $purple;
+            margin-bottom: 15px;
+            @media (max-width: 992px) {
+                font-size: 24px;
+            }
+            @media (max-width: 767px) {
+                font-size: 20px;
+            }
+        }
+        .sort-info {
+            color: $black;
+            & > * {
+                color: $black;
+            }
+        }
+    }
+    .event-action {
+        margin-top: 15px;
+        .btn {
+            margin-right: 20px;
+            margin-top: 10px;
+            &:last-child {
+                margin-right: 0;
+            }
+            @media (max-width: 992px) {
+                margin-right: 10px;
+            }
+        }
+    }
+    &:hover {
+        @include transform(translateY(-5px));
+        @include box-shadow(0 4px 12px 5px rgba(0,0,0,0.1));
+    }
+}
+
 .splide__list {    
     .splide__slide {
         &::before {
@@ -867,12 +965,30 @@ a.icon-box {
                     color: $dawnblue;                
                 }
                 a {
+                    color: $dawnblue;
                     font-weight: 600;
-                    color: $dawnblue;   
                     @include transition(0.2s, ease-in-out);
+                    position: relative;
+                    &::before {
+                        content: ''; 
+                        width: 0;
+                        height: 1px;
+                        background-color: $gold;
+                        position: absolute;
+                        left: 0;
+                        bottom: -1px;
+                        display: inline-block;
+                        @include transition(0.2s, ease-in-out);
+                    }
                     &:hover {
                         color: $gold;
+                        &::before {
+                            width: 70%;
+                        }
                     }
+                }
+                &.date {
+                    white-space: nowrap;
                 }
                 &:first-child {                   
                     text-align: left;
@@ -883,7 +999,7 @@ a.icon-box {
                         display: block;
                     }
                     @media (max-width: 992px) {
-                        min-width: 400px;
+                        max-width: 400px;
                     }
                     @media (max-width: 767px) {
                         font-size: 20px;
@@ -902,6 +1018,100 @@ a.icon-box {
                         margin-right: 0px;
                     }
                 }
+            }
+        }
+    }
+}
+
+.documentation-content-block {
+    margin-top: 70px;
+    @media (max-width: 767px) {
+        margin-top: 40px;
+    }
+    h3 {
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content (space-between);
+        margin-bottom: 25px;
+        @media (max-width: 767px) {
+            margin-bottom: 15px;
+        }
+        @media (max-width: 575px) {
+            display: block;
+            span {
+                display: block;
+            }
+        }
+        a {
+            color: $dawnblue;
+            font-weight: 700;
+            position: relative;
+            font-size: 22px;
+            @media (max-width: 767px) {
+                font-size: 18px;
+                text-align: right;
+            }
+            &::before {
+                content: ''; 
+                width: 0;
+                height: 1px;
+                background-color: $darkgary;
+                position: absolute;
+                left: 0;
+                bottom: -1px;
+                display: inline-block;
+                @include transition(0.2s, ease-in-out);
+            }
+            &:hover {
+                color: $darkgary !important;
+                &::before {
+                    width: 70%;
+                }
+            }
+        }
+    }
+    .document-info {
+        border-bottom: 1px solid rgba($darkgary, 0.6);
+        margin-bottom: 25px;
+        h4 {
+            margin-bottom: 25px;
+            @media (max-width: 767px) {
+                margin-bottom: 15px;
+            }
+        }
+        .desc {
+            @include flexbox; 
+            @include align-items(flex-start);
+            @include justify-content(space-between);
+            width: 100%;
+            margin-bottom: 25px;
+            @media (max-width: 767px) {
+                display: block;
+                margin-bottom: 15px;
+            }
+            .date-version {
+                @include flexbox; @include align-items(flex-start);
+                margin-left: 25px;
+                @media (max-width: 767px) {
+                    margin-left: 0px;
+                    margin-top: 15px;
+                }
+                & > div {
+                    max-width: 200px;
+                    padding: 0 20px;
+                    white-space: nowrap;
+                    @media (max-width: 767px) {
+                        &:first-child {
+                            padding-left: 0;
+                        }
+                    }
+                } 
+            }
+        }
+        .action {
+            margin-bottom: 25px;
+            @media (max-width: 767px) {
+                margin-bottom: 15px;
             }
         }
     }
@@ -1076,6 +1286,18 @@ a.icon-box {
 .post-content {
     h3 {
         margin-bottom: 20px;
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(space-between);
+        a {
+            font-size: 22px;
+            color: $dawnblue;
+            font-weight: 700;
+            @include transition(0.2s, ease-in-out);
+            &:hover {
+                color: $gold;
+            }
+        }
     }
     h4 {
         margin-bottom: 15px;

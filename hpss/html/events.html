@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <title>Releases | HPSS Collaboration</title>
+        <title>Documentation | HPSS Collaboration</title>
         <meta name="Googlebot" content="noindex,nofollow">
         <meta name="description" content="The Ultimate Solution for Your Expanding Universe of Data">
 
@@ -24,6 +24,7 @@
         <meta name="application-name" content="HPSS Collaboration">
         <meta name="theme-color" content="#ffffff">
         
+        <!-- <link href="assets/css/masonry-layout-vanilla.min.css" rel="stylesheet"> -->
         <link href="assets/css/main.css" rel="stylesheet">
     </head>
     <body>
@@ -99,91 +100,85 @@
             <section class="main-section pb-5">
                 <div class="container">
                     <div class="section-title inner-page-section-title text-center mb-0">
-                        <h1 class="h3 mb-0">PRODUCT RELEASES</h1>
+                        <h1 class="h3">UPCOMING EVENTS</h1>
+                        <h2>Come Meet With Us</h2>
                     </div>
                 </div>
             </section>
             <section class="main-section section-content pt-0">
                 <div class="container">
                     <div class="post-content">
-                        <div class="table-block mt-0">
-                            <table class="with-padding col-width-fixed">
-                                <thead>
-                                    <tr>
-                                        <th>Release</th>
-                                        <th>Date</th>
-                                        <th style="text-align: right;">Release Details & Features</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><strong>10.2.0</strong></td>
-                                        <td class="date">January 2023</td>
-                                        <td style="text-align: right;"><a href="#">View Details and Features</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>10.2.0</strong></td>
-                                        <td>January 2023</td>
-                                        <td style="text-align: right;"><a href="#">View Details and Features</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>10.2.0</strong></td>
-                                        <td>January 2023</td>
-                                        <td style="text-align: right;"><a href="#">View Details and Features</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>10.2.0</strong></td>
-                                        <td>January 2023</td>
-                                        <td style="text-align: right;"><a href="#">View Details and Features</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>10.2.0</strong></td>
-                                        <td>January 2023</td>
-                                        <td style="text-align: right;"><a href="#">View Details and Features</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>10.2.0</strong></td>
-                                        <td>January 2023</td>
-                                        <td style="text-align: right;"><a href="#">View Details and Features</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>10.2.0</strong></td>
-                                        <td>January 2023</td>
-                                        <td style="text-align: right;"><a href="#">View Details and Features</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>10.2.0</strong></td>
-                                        <td>January 2023</td>
-                                        <td style="text-align: right;"><a href="#">View Details and Features</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>10.2.0</strong></td>
-                                        <td>January 2023</td>
-                                        <td style="text-align: right;"><a href="#">View Details and Features</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>    
-                    </div>
-                </div>
-            </section>
-            <section class="main-section section-content pt-0">
-                <div class="container">
-                    <div class="post-content">
-                        <h3>RELEASE 10.2.0 DETAILS AND FEATURES</h3>
-                        <h4>Purge on migrate flag</h4>
-                        <p>HPSS now supports setting a flag on a bitfile which informs HPSS that the file should not be kept on disk after migration. This can be used for files which an application or user knows will not be needed again soon. When a file is written with this flag set, the file will immediately be purged off disk after it has been migrated to tape. When a file is staged with this flag enabled, it will behave normally, according to the purge policy. The purge on migrate flag can be set using the HPSS C API, the HPSS Python client, and scrub. See the Programmer’s Reference for more information.a </p>
-                        <h4>Low overhead read interface (LORI)</h4>
-                        <p>lori is a new tool which behaves similarly to quaid and shares many of the same options including organizing requests by tape, callouts upon read completion, filtering, and more. However, while quaid stages files up to the top level of the hierarchy, lori uses PIO to read data out of HPSS with minimal overhead and into the selected output directory. See the lori man page for more details.</p>
-                        <p>In the future, lori will take advantage of upcoming changes to enable mass recall with read recovery</p>
-                        <h4>Discover new control paths in the SCSI PVR during runtime</h4>
-                        <p>The SCSI PVR can now re-scan the SCSI Media Changer devices it has access to looking for new control paths to the tape library. This is triggered by doing a “Reinit” of the SCSI PVR server. Note that it will detect new devices, but will not remove old devices unless they are not in use by the SCSI PVR. Old devices which may have been in use but no longer exist will be marked as DOWN and will not be used by the SCSI PVR.</p>
-                        <h4>Optional ASAN-enabled versions of HPSS Servers</h4>
-                        <p>RPMs are now provided for ASAN-enabled versions of HPSS servers. These special binaries are otherwise the same as standard binaries, but have support compiled in to improve memory issue detection. These binaries can be used to spot certain kinds of memory use errors that generate crashes or memory leaks. The information from these binaries can reduce speed to resolution for these defect categories. One major advantage over prior tools is that an ASAN-enabled server may be modestly slower (20-30%) than the typical server, whereas prior tools could be multiple times slower.</p>
-                        <h4>Disable Direct IO</h4>
-                        <p>Historically, the HPSS Mover only performed direct IO to disk devices. The HPSS administrator may disbale direct IO for faster disk transfer performance. Use HPSS end-to-end data integrity to identify silent data corruption.</p>
-                        <h4>Simplify AWS tape storage gateway support</h4>
-                        <p>Deliver script to create hpss-compatible tape volumes in AWS tape storage gateweays.</p>
+                        <div class="news-layout">
+                            <div class="masonry-grid-layout">
+                                <div class="card event-card">
+                                    <div class="event-info">
+                                        <h3 class="h4">2023 HUF</h3>
+                                        <div class="event-date">October 23-27, 2023</div>
+                                        <div class="sort-info">
+                                            <p>The 2023 HPSS User Forum (HUF) will be an in-person event scheduled October 23-27, 2023, in Tucson, AZ or perhaps Washington, DC. Please check back for registration details. This will be a great opportunity to hear from HPSS users, collaboration developers, testers, support folks and leadership (from IBM and DOE Labs).</p>
+                                            <p>Please contact us if you are not a customer but would like to attend.</p>
+                                        </div>
+                                    </div>
+                                    <div class="event-action">
+                                        <a href="#" class="btn btn-purple">Learn More</a>
+                                        <a href="#" class="btn btn-yellow">Contact Us</a>
+                                    </div>
+                                </div>   
+                                <div class="card event-card">
+                                    <div class="event-info">
+                                        <h3 class="h4">HPSS @ SC23</h3>
+                                        <div class="event-date">November 12-17, 2023</div>
+                                        <div class="sort-info">
+                                            <p>The 2023 international conference for high performance computing, networking, storage and analysis will be in Denver, CO from November 12th through 17th, 2023. As we have each year (pre-pandemic), we are scheduling and meeting with customers via IBM Single Client Briefings.</p>
+                                            <p>Please contact your local IBM client executive or contact us to schedule a HPSS Single Client Briefing to meet with the IBM business and technical leaders of HPSS.</p>
+                                        </div>
+                                    </div>
+                                    <div class="event-action">
+                                        <a href="#" class="btn btn-purple">Learn More</a>
+                                        <a href="#" class="btn btn-yellow">Contact Us</a>
+                                    </div>
+                                </div>   
+                                <div class="card event-card">
+                                    <div class="event-info">
+                                        <h3 class="h4">HPSS @ STS 2024</h3>
+                                        <div class="event-date">TBD</div>
+                                        <div class="sort-info">
+                                            <p>The 5th Annual Storage Technology Showcase is in the planning phase, but HPSS expects to support the event.</p>
+                                        </div>
+                                    </div>
+                                    <div class="event-action">
+                                        <a href="#" class="btn btn-purple">Learn More</a>
+                                        <a href="#" class="btn btn-yellow">Contact Us</a>
+                                    </div>
+                                </div>   
+                                <div class="card event-card">
+                                    <div class="event-info">
+                                        <h3 class="h4">HPSS @ MSST 2024</h3>
+                                        <div class="event-date">TBD</div>
+                                        <div class="sort-info">
+                                            <p>The 38th International Conference on Massive Storage Systems and Technology will be in Santa Clara, California in May of 2024 - Learn More. Please contact us if you would like to meet with the IBM business and technical leaders of HPSS at Santa Clara University.</p>
+                                        </div>
+                                    </div>
+                                    <div class="event-action">
+                                        <a href="#" class="btn btn-purple">Learn More</a>
+                                        <a href="#" class="btn btn-yellow">Contact Us</a>
+                                    </div>
+                                </div>   
+                                <div class="card event-card">
+                                    <div class="event-info">
+                                        <h3 class="h4">HPSS @ ISC 2024</h3>
+                                        <div class="event-date">TBD</div>
+                                        <div class="sort-info">
+                                            <p>ISC 2024 is the event for high performance computing, machine learning, and data analytics, and will be in Hamburg, Germany at the Congress Center Hamburg, from May 12th through May 16th, 2024 - Learn More. As we have done each year (pre-pandemic), we are scheduling and meeting with folks attending the conference. Please contact us meet with the IBM business and technical leaders of HPSS.</p>
+                                        </div>
+                                    </div>
+                                    <div class="event-action">
+                                        <a href="#" class="btn btn-purple">Learn More</a>
+                                        <a href="#" class="btn btn-yellow">Contact Us</a>
+                                    </div>
+                                </div>   
+                            </div>  
+                        </div>         
                     </div>
                 </div>
             </section>
