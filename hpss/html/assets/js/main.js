@@ -101,5 +101,7 @@ var fecthMasonry = function (container, items, columns) {
     });
 };
 if ($('.masonry-grid-layout').length) {
-    fecthMasonry('masonry-grid-layout', 'card', 2);
+    if ($(window).width() > 767) {
+        fecthMasonry('masonry-grid-layout', 'card', 2);
+    }
 }
