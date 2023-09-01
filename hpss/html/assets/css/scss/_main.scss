@@ -302,61 +302,6 @@ h5, .h5 {
     color: $purple !important;
 }
 
-.masonry-card-layout {
-    @media (min-width: 992px) {
-        column-count: 2;
-        column-gap: 30px;
-        .info-card {
-            display: inline-block;
-        }
-    }
-    @media (max-width: 992px) {
-        @include flexbox; 
-        overflow: hidden; 
-        overflow-x: auto;
-        margin-left: -10px;
-        margin-right: -10px;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: thin;
-        &::-webkit-scrollbar {
-            background-color:transparent;
-            width:5px; height: 5px;
-            border-radius:16px;
-        }
-        &::-webkit-scrollbar-track {
-            background-color:rgba(#404040, 0.05)
-        }
-        &::-webkit-scrollbar-track:hover {
-            background-color:rgba(#404040, 0.15)
-        }
-        &::-webkit-scrollbar-thumb {
-            background-color:rgba(#404040, 0.60);
-            border-radius:16px;
-        }
-        &::-webkit-scrollbar-thumb:hover {
-            background-color:rgba(#404040, 0.80);
-        }
-        &::-webkit-scrollbar-button {
-            display:none
-        }
-    }
-    .info-card {
-        margin-bottom: 30px;
-        @include border-radius(0);
-        @media (max-width: 992px) {
-            width: 100%;
-            min-width: 600px;
-            margin: 15px 10px;
-            height: unset;
-        }
-        @media (max-width: 767px) {
-            min-width: 500px;
-        }
-        @media (max-width: 420px) {
-            min-width: 260px;
-        }
-    }
-}
 .masonry-layout {
     display: grid;
     grid-template-columns: repeat(2,  1fr);
@@ -545,6 +490,17 @@ h5, .h5 {
     @include border-radius(20px);
     padding: 30px;
     @include box-shadow(0 4px 20px 5px rgba(0, 0, 0, 0.1));
+    .highlights-text {
+        font-family: $font-merriweather;
+        font-size: 34px;
+        text-align: center;
+        max-width: 1000px;
+        margin: 0 auto;
+        hr {
+            border: none;
+            border-bottom: 1px solid $gold;
+        }
+    }
     @media (max-width: 992px) {
         blockquote {
             &:last-child {
@@ -647,6 +603,64 @@ a.icon-box {
     }
 }
 
+.news-card {
+    background: #fafafa;
+    @include box-shadow(0 4px 12px 5px rgba(0,0,0,0.1));
+    padding: 25px;
+    border: none;
+    @include border-radius(0px);
+    @include transition(0.2s, ease-in-out);
+    position: relative;
+    margin-bottom: 30px;
+    @media (max-width: 767px) {
+        padding: 20px;
+    }
+    .card-body {
+        flex: 1 1 auto;
+        padding: 0;
+        h3 {
+            line-height: 1;
+            text-transform: unset;
+            margin-bottom: 15px;      
+            & > a {
+                color: $purple;
+                @include transition(0.2s, ease-in-out);
+            }      
+        }
+    }
+    .card-footer{
+        margin-top: 20px;
+        padding: 0;
+        border-top: none;
+        background: transparent;
+    }
+    &.with-bg {
+        background-color: var(--bg-color, $brightblue);
+        .card-body {
+            h3 {
+                color: $white;
+                text-transform: unset;
+                font-weight: 700;
+            }
+            .sort-info {
+                color: $white;
+            }
+        }
+        &:hover, &:focus {
+            @include transform(translateY(-5px)); 
+        }
+    }
+    &:hover, &:focus {
+        .card-body {
+            h3 {
+                & > a {
+                    color: $gold;
+                }
+            }
+        }
+    }
+}
+
 .info-card {
     background: $white;
     @include box-shadow(0 4px 12px 5px rgba(0,0,0,0.1));
@@ -656,6 +670,8 @@ a.icon-box {
     @include border-radius(15px);
     @include transition(0.2s, ease-in-out);
     position: relative;
+    @include flexbox;
+    @include flex-direction(column);
     @media (max-width: 767px) {
         padding: 20px;
     }
@@ -771,6 +787,57 @@ a.icon-box {
     }
 }
 
+.registration-card {
+    background: #fafafa;
+    @include box-shadow(0 4px 12px 5px rgba(0,0,0,0.1));
+    padding: 25px;
+    border: none;
+    @include border-radius(0px);
+    @include transition(0.2s, ease-in-out);
+    position: relative;
+    margin-bottom: 30px;
+    @media (max-width: 767px) {
+        padding: 20px;
+    }
+    .card-body {
+        flex: 1 1 auto;
+        padding: 0;
+        h3 {
+            line-height: 1;
+            text-transform: unset;
+            margin-bottom: 15px; 
+            color: $gold;     
+            & > a {
+                color: $gold; 
+                @include transition(0.2s, ease-in-out);
+                &:hover, &:focus {
+                    color: $purple;
+                }
+            }      
+        }
+        .time {
+            font-size: 26px;
+            font-style: italic;
+            font-weight: 600;
+            color: $purple;
+            max-width: 450px;
+            margin-bottom: 15px;
+        }
+        .label {
+            font-size: 26px;
+            font-weight: 700;
+            color: $purple;
+            margin-bottom: 15px;
+        }
+    }
+    .card-footer{
+        margin-top: 20px;
+        padding: 0;
+        border-top: none;
+        background: transparent;
+    }
+}
+
 .splide__list {    
     .splide__slide {
         &::before {
@@ -784,10 +851,12 @@ a.icon-box {
 .splide__arrow {
     background: transparent;
     opacity: 1;
+    width: 50px;
+    height: 50px;
     @include transition(0.2s, ease-in-out);
     svg {
-        width: 36px;
-        height: 36px;
+        width: 50px;
+        height: 50px;
         fill: none;
         path {
             stroke-width: 3px;
@@ -796,24 +865,24 @@ a.icon-box {
         }
     }
     &--prev {
-        left: -40px;
+        left: -50px;
         @media (max-width: 1200px) {
             left: -35px;
         }
         &:hover, &:focus {
-            left: -45px;
+            left: -55px;
             @media (max-width: 1200px) {
                 left: -40px;
             }
         }
     }
     &--next {
-        right: -40px;
+        right: -50px;
         @media (max-width: 1200px) {
             right: -35px;
         }
         &:hover, &:focus {
-            right: -45px;
+            right: -55px;
             @media (max-width: 1200px) {
                 right: -40px;
             }
@@ -847,60 +916,65 @@ a.icon-box {
     @media (max-width: 767px) {
         max-width: 100%;
     }
+    .event-card {
+        &:hover, &:focus {
+            @include transform(unset);
+        }
+    }
 }
 
-.event-slide {
-    @include box-shadow(0 4px 12px 5px rgba(0,0,0,0.1));
-    padding: 25px;
-    @include transition(0.2s, ease-in-out);
-    @include border-radius(15px);
-    background: $white;
-    height: 100%;
-    @include flexbox;
-    @include flex-direction(column);
-    @media (max-width: 767px) {
-        padding: 20px;
-    }
-    .event-info {
-        flex: 1 1 auto;
-        h3 {
-            color: $purple;
-            line-height: 1;
-            margin-bottom: 15px;
-        }
-        .event-date {
-            font-size: 24px;
-            line-height: 1;
-            color: $purple;
-            margin-bottom: 15px;
-            @media (max-width: 992px) {
-                font-size: 24px;
-            }
-            @media (max-width: 767px) {
-                font-size: 20px;
-            }
-        }
-        .sort-info {
-            color: $black;
-            & > * {
-                color: $black;
-            }
-        }
-    }
-    .event-action {
-        margin-top: 15px;
-        .btn {
-            margin-right: 20px;
-            margin-top: 10px;
-            &:last-child {
-                margin-right: 0;
-            }
-            @media (max-width: 992px) {
-                margin-right: 10px;
-            }
-        }
-    }
-}
+// .event-slide {
+//     @include box-shadow(0 4px 12px 5px rgba(0,0,0,0.1));
+//     padding: 25px;
+//     @include transition(0.2s, ease-in-out);
+//     @include border-radius(15px);
+//     background: $white;
+//     height: 100%;
+//     @include flexbox;
+//     @include flex-direction(column);
+//     @media (max-width: 767px) {
+//         padding: 20px;
+//     }
+//     .event-info {
+//         flex: 1 1 auto;
+//         h3 {
+//             color: $purple;
+//             line-height: 1;
+//             margin-bottom: 15px;
+//         }
+//         .event-date {
+//             font-size: 24px;
+//             line-height: 1;
+//             color: $purple;
+//             margin-bottom: 15px;
+//             @media (max-width: 992px) {
+//                 font-size: 24px;
+//             }
+//             @media (max-width: 767px) {
+//                 font-size: 20px;
+//             }
+//         }
+//         .sort-info {
+//             color: $black;
+//             & > * {
+//                 color: $black;
+//             }
+//         }
+//     }
+//     .event-action {
+//         margin-top: 15px;
+//         .btn {
+//             margin-right: 20px;
+//             margin-top: 10px;
+//             &:last-child {
+//                 margin-right: 0;
+//             }
+//             @media (max-width: 992px) {
+//                 margin-right: 10px;
+//             }
+//         }
+//     }
+// }
 
 .hero-header {
     min-height: 100%;
@@ -1408,6 +1482,7 @@ a.icon-box {
         display: block;
         @include border-radius(5px);
         border: 1px solid rgba($darkgary, 0.07);
+        line-height: 0.7;
         img {
             @include transition(0.2s, ease-in-out);
         }        

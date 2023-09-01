@@ -68,6 +68,7 @@ if ($('.event-slider').length) {
                 perPage: 1,
                 arrows: false,
                 pagination: true,
+                padding: '0',
             },
         },
     });  
@@ -102,6 +103,6 @@ var fecthMasonry = function (container, items, columns) {
 };
 if ($('.masonry-grid-layout').length) {
     if ($(window).width() > 767) {
-        fecthMasonry('masonry-grid-layout', 'card', 2);
+        fecthMasonry('masonry-grid-layout', 'masonry-card', 2);
     }
 }
