@@ -178,6 +178,10 @@ h5, .h5 {
         text-align: center;
     }
     ul {
+        margin-bottom: 15px;
+        &:last-child {
+            margin-bottom: 0;
+        }
         li {
             color: $black;
             @include inline-flex; 
@@ -302,24 +306,13 @@ h5, .h5 {
     color: $purple !important;
 }
 
-.masonry-layout {
-    display: grid;
-    grid-template-columns: repeat(2,  1fr);
-    grid-gap: 30px;
-    @media (max-width: 767px) {
-        grid-template-columns: repeat(1,  1fr);
-        grid-gap: 0px;
-    }
-    .info-card {
-        @include box-shadow(0 4px 20px 5px rgba(0,0,0,0.08));
-        margin-bottom: 30px;
+.masonry-grid-layout {
+    width: 100% !important;
+    .masonry-card {
+        width: calc(50% - 15px);
         height: auto;
-        @include border-radius(0);
-        background: #fafafa;  
-        
-        &:hover {
-            @include transform(translateY(-5px));
-            @include box-shadow(0 4px 12px 5px rgba(0,0,0,0.1));
+        @media (max-width: 767px) {
+            width: 100%;
         }
     }
 }

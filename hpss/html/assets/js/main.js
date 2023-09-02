@@ -50,7 +50,14 @@ jQuery(document).ready(function($) {
     });
     if ($('[data-bs-toggle=tooltip]').length) {
         $("body").tooltip({ selector: '[data-bs-toggle=tooltip]' });
-        }
+    }
+
+    var $grid = $(".masonry-grid-layout").masonry({
+        itemSelector: ".masonry-card",
+        columnWidth: ".masonry-card",
+        gutter: 30,
+        fitWidth: true
+    });
 });
 
 if ($('.event-slider').length) {
@@ -75,34 +82,3 @@ if ($('.event-slider').length) {
     eventSlider.mount();
  };
 
- /*
-    Masonry Layout JS Vanilla
-    https://github.com/Mathiew82/masonry-layout-vanilla
-*/
-
-var fecthMasonry = function (container, items, columns) {
-    var CONTAINER_EL = document.querySelector("." + container);
-    var WRAPPER_CONTAINER_EL = CONTAINER_EL.parentNode;
-    var ITEMS_ELS = document.querySelectorAll("." + items);
-    CONTAINER_EL.parentNode.removeChild(CONTAINER_EL);
-    var NEW_CONTAINER_EL = document.createElement('div');
-    NEW_CONTAINER_EL.setAttribute('id', container);
-    NEW_CONTAINER_EL.classList.add('masonry-layout', "columns-" + columns);
-    WRAPPER_CONTAINER_EL.appendChild(NEW_CONTAINER_EL);
-    for (var i = 1; i <= columns; i++) {
-        var COLUMN = document.createElement('div');
-        COLUMN.classList.add("masonry-column-" + i);
-        NEW_CONTAINER_EL.appendChild(COLUMN);
-    }
-    var countColumn = 1;
-    ITEMS_ELS.forEach(function (item) {
-        var col = document.querySelector("#" + container + " > .masonry-column-" + countColumn);
-        col.appendChild(item);
-        countColumn = countColumn < columns ? countColumn + 1 : 1;
-    });
-};
-if ($('.masonry-grid-layout').length) {
-    if ($(window).width() > 767) {
-        fecthMasonry('masonry-grid-layout', 'masonry-card', 2);
-    }
-}
