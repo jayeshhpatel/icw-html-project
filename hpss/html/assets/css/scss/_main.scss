@@ -1610,6 +1610,9 @@ a.icon-box {
         @include flexbox;
         @include align-items(center);
         @include justify-content(space-between);
+        &.justify-content-center {
+            @include justify-content(center);
+        }
         a {
             font-size: 22px;
             color: $dawnblue;
@@ -1694,19 +1697,34 @@ a.icon-box {
 }
 
 .agenda-table-block {
-    margin-top: 15px;
+    margin: 25px 0;
+    @media (max-width: 767px) {
+        max-width: 800px;
+        overflow: hidden;
+        overflow-x: auto;
+    }
     .table-row {
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
         grid-gap: 10px;
+        margin-bottom: 10px;
+        @media (max-width: 767px) {
+            grid-template-columns: 200px 400px 200px;
+        }
         &.table-title {
             .table-col {
                 background: $purple;
                 color: $white;
-                text-align: center;
-                padding: 15px;
-                font-size: 20px;
+                text-align: center;                
+                font-size: 22px;
                 font-weight: 700;
+                border-color: transparent;
+                @media (max-width: 992px) {
+                    font-size: 20px;
+                }
+                @media (max-width: 767px) {
+                    font-size: 18px;
+                }
                 span {
                     display: block;
                     font-weight: 400;
@@ -1714,8 +1732,38 @@ a.icon-box {
                 }
             }
         }
+        &.table-row-bg-dawnblue {
+            .table-col {
+                background: #7da9c0;
+                color: $white;
+                border-color: transparent;
+            }
+        }
+        &.table-row-bg-purple {
+            .table-col {
+                background: $purple;
+                color: $white;
+                border-color: transparent;
+            }
+        }
         .table-col {
-            
+            padding: 10px 15px;
+            font-size: 22px;
+            border: 1px solid #7da9c0;
+            color: $dawnblue;
+            font-weight: 700;
+            min-height: 85px;
+            @media (max-width: 992px) {
+                font-size: 20px;
+            }
+            @media (max-width: 767px) {
+                font-size: 18px;
+                padding: 8px 10px;
+            }
+            span {
+                font-weight: 400;
+                display: block;
+            }
         }
     }
 }
