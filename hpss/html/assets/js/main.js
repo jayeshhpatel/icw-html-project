@@ -69,7 +69,6 @@ if ($('.event-slider').length) {
         gap    : '30px',
         padding: '1rem',
         snap   : true,
-        type   : 'loop',
         breakpoints: {
             767: {
                 perPage: 1,
