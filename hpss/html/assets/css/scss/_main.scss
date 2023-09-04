@@ -445,6 +445,13 @@ h5, .h5 {
     &.bg-dots-white {
         background: url(../images/dots-white.png) no-repeat top left, url(../images/dots-white.png) no-repeat bottom right;
         background-size: contain;
+        @media (max-width: 1200px) {
+            background-size: 60%;
+        }
+        @media (max-width: 767px) {
+            background: url(../images/dots-white.png) no-repeat top left;
+            background-size: 50%;
+        }
     }    
 }
 
@@ -966,6 +973,12 @@ a.icon-box {
     }
     .event-card {
         height: 100%;
+        margin-bottom: 0;
+        @include flexbox;
+        @include flex-direction(column);
+        .event-info {
+            flex: 1 1 auto;
+        }
         &:hover, &:focus {
             @include transform(unset);
         }
