@@ -25,6 +25,21 @@ a {
     }
 }
 
+.link-underline {
+    span {
+        background-image: linear-gradient(transparent calc(100% - 1px), black 1px);
+        background-repeat: no-repeat;
+        background-size: 0% 100%;
+        transition: background-size .6s;
+        line-height: 1.3;
+    }
+    &:hover, &:focus {
+        span {
+            background-size: 100% 100%;
+        }
+    }
+}
+
 p {
     margin-top: 0;
     margin-bottom: 20px;
@@ -155,21 +170,17 @@ h5, .h5 {
         font-weight: 600;
         @include transition(0.2s, ease-in-out);
         position: relative;
-        &::before {
-            content: ''; 
-            width: 0;
-            height: 1px;
-            background-color: $gold;
-            position: absolute;
-            left: 0;
-            bottom: -1px;
-            display: inline-block;
-            @include transition(0.2s, ease-in-out);
+        span {
+            background-image: linear-gradient(transparent calc(100% - 1px), $gold 1px);
+            background-repeat: no-repeat;
+            background-size: 0% 100%;
+            transition: background-size .6s;
+            line-height: 1.3;
         }
         &:hover {
             color: $gold;
-            &::before {
-                width: 70%;
+            span {
+                background-size: 100% 100%;
             }
         }
     }
@@ -195,21 +206,17 @@ h5, .h5 {
                 color: $brightblue;
                 font-weight: 500;
                 position: relative;
-                &::before {
-                    content: ''; 
-                    width: 0;
-                    height: 1px;
-                    background-color: $darkgary;
-                    position: absolute;
-                    left: 0;
-                    bottom: -1px;
-                    display: inline-block;
-                    @include transition(0.2s, ease-in-out);
+                span {
+                    background-image: linear-gradient(transparent calc(100% - 1px), $darkgary 1px);
+                    background-repeat: no-repeat;
+                    background-size: 0% 100%;
+                    transition: background-size .6s;
+                    line-height: 1.3;
                 }
                 &:hover {
                     color: $darkgary !important;
-                    &::before {
-                        width: 70%;
+                    span {
+                        background-size: 100% 100%;
                     }
                 }
             }
@@ -450,7 +457,7 @@ h5, .h5 {
         margin-bottom: 20px;
     }
     &.inner-page-section-title {
-        h1, .h1 {
+        h1, .h1, .h3 {
             font-size: 46px;
             color: $brightblue;
             margin-bottom: 15px;
@@ -461,9 +468,10 @@ h5, .h5 {
                 font-size: 32px;
             }
         }
-        h2 {
+        h2, .h2 {
             color: $darkgary;
             font-size: 55px;
+            text-transform: unset;
             @media (max-width: 992px) {
                 font-size: 48px;
             }
@@ -495,10 +503,18 @@ h5, .h5 {
         }
     }
     @media (max-width: 992px) {
+        .highlights-text {
+            font-size: 30px;
+        }
         blockquote {
             &:last-child {
                 margin-bottom: 15px;
             }
+        }
+    }
+    @media (max-width: 767px) {
+        .highlights-text {
+            font-size: 24px;
         }
     }
 }
@@ -795,18 +811,11 @@ a.icon-box {
     .card-body {
         flex: 1 1 auto;
         padding: 0;
-        h3 {
+        h3 , .h3{
             line-height: 1;
             text-transform: unset;
             margin-bottom: 15px; 
-            color: $gold;     
-            & > a {
-                color: $gold; 
-                @include transition(0.2s, ease-in-out);
-                &:hover, &:focus {
-                    color: $purple;
-                }
-            }      
+            color: $gold; 
         }
         .time {
             font-size: 26px;
@@ -815,11 +824,31 @@ a.icon-box {
             color: $purple;
             max-width: 450px;
             margin-bottom: 15px;
+            @media (max-width: 767px) {
+                font-size: 22px;
+            }
         }
         .label {
             font-size: 26px;
             font-weight: 700;
             color: $purple;
+            margin-bottom: 15px;
+            @media (max-width: 767px) {
+                font-size: 22px;
+            }
+        }
+        h5 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            @media (max-width: 767px) {
+                font-size: 18px;
+            }
+        }
+        a {
+            color: $black;
+            font-weight: 400;
+        }
+        ul {
             margin-bottom: 15px;
         }
     }
@@ -828,6 +857,28 @@ a.icon-box {
         padding: 0;
         border-top: none;
         background: transparent;
+    }
+}
+.highlight-card {
+    background: $purple;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    h3, .h3, .sort-info {
+        color: $white !important;
+    }
+    .h3 {
+        font-size: 32px;
+        font-weight: 500;
+        @media (max-width: 767px) {
+            font-size: 26px;
+        }
+    }
+    .sort-info {
+        font-size: 26px;
+        @media (max-width: 767px) {
+            font-size: 20px;
+        }
     }
 }
 
@@ -908,8 +959,13 @@ a.icon-box {
     }
     @media (max-width: 767px) {
         max-width: 100%;
+        .splide__slide {
+            padding: 0 0 15px;
+            max-width: calc(100% - 25%);
+        }  
     }
     .event-card {
+        height: 100%;
         &:hover, &:focus {
             @include transform(unset);
         }
@@ -1296,9 +1352,18 @@ a.icon-box {
             @include flexbox;
             @include align-items(center);
             @include justify-content(space-around);
+            @include flex-wrap(wrap);
+            @media (max-width: 767px) {
+                margin: 0 -15px;
+            }
             li {
                 padding: 20px 15px;
                 position: relative;
+                @media (max-width: 767px) {
+                    padding: 15px 10px;
+                    width: 50%;
+                    text-align: center;
+                }
                 &::after {
                     content: '';
                     display: none;
@@ -1311,12 +1376,21 @@ a.icon-box {
                     bottom: -15px;
                     left: 50%;
                     @include transform(translateX(-50%));
+                    @media (max-width: 767px) {
+                        content: none;
+                    }
                 }
                 a {
                     color: $dawnblue;
                     font-size: 22px;
                     font-weight: 700;
                     @include transition(0.2s, ease-in-out);
+                    @media (max-width: 992px) {
+                        font-size: 18px;
+                    }
+                    @media (max-width: 767px) {
+                        font-size: 16px;
+                    }
                 }
                 &:hover, &:focus {
                     a {
@@ -1329,6 +1403,12 @@ a.icon-box {
                     }
                     a {
                         color: $purple;
+                    }
+                    @media (max-width: 767px) {
+                        background-color: $purple;
+                        a {
+                            color: $white;                        
+                        }
                     }
                 }
             }
@@ -1548,21 +1628,17 @@ a.icon-box {
                 color: $brightblue;
                 font-weight: 500;
                 position: relative;
-                &::before {
-                    content: ''; 
-                    width: 0;
-                    height: 1px;
-                    background-color: $darkgary;
-                    position: absolute;
-                    left: 0;
-                    bottom: -1px;
-                    display: inline-block;
-                    @include transition(0.2s, ease-in-out);
+                span {
+                    background-image: linear-gradient(transparent calc(100% - 1px), $darkgary 1px);
+                    background-repeat: no-repeat;
+                    background-size: 0% 100%;
+                    transition: background-size .6s;
+                    line-height: 1.4;
                 }
                 &:hover {
                     color: $darkgary;
-                    &::before {
-                        width: 70%;
+                    span {
+                        background-size: 100% 100%;
                     }
                 }
             }

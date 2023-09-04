@@ -76,6 +76,7 @@ if ($('.event-slider').length) {
                 arrows: false,
                 pagination: true,
                 padding: '0',
+                gap    : '15px',
             },
         },
     });  
