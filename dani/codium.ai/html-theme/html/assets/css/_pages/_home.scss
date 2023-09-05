@@ -1736,12 +1736,9 @@
         @include transition(0.2s, ease-in-out);
     }
     
-    &:hover {
+    &:hover, &:focus {
       color: #05E5AD;
       text-decoration: underline;
-      &::after { 
-        background: rgba(255, 255, 255, 0.15);
-      }
     }
   }
 
@@ -1790,10 +1787,9 @@
   &.vs-review-box {
     @include transition(0.32s, ease-in-out);
     transform: scale(1);
-    border-radius: 40px;
-    overflow: hidden;
-    &:hover {
+    &:hover, &:focus {
       transform: scale(1.02);
+      opacity: 0.8;
     }
   }
 }
@@ -1840,20 +1836,26 @@
     width: 145px;
     height: 145px;
     position: absolute;
+    z-index: 1;
     bottom: 70px;
     left: -70px;
     @include transform(rotate(3deg));
 
     // animation: animationScale 7s infinite linear;
-        @media (max-width: 767px) {
-            content: none;
-        }
-
+        // @media (max-width: 767px) {
+        //     content: none;
+        // }
+      @media (max-width: 1024px) {
+        width: 105px;
+        height: 105px;
+        bottom: 30px;
+        left: -15px;
+      }
     @media (max-width: 767px) {
       width: 85px;
       height: 85px;
       bottom: 30px;
-      left: -60px;
+      left: -15px;
     }
   }
 
@@ -1865,24 +1867,29 @@
     width: 253px;
     height: 190px;
     position: absolute;
+    z-index: 1;
     top: 115px;
     right: -130px;
 
     // animation: animationScale 5s infinite linear;
-      @media (max-width: 767px) {
-          content: none;
-      }
+    // @media (max-width: 767px) {
+    //     content: none;
+    // }
+    @media (max-width: 1440px) {
+      width: 160px;
+      height: 120px;
+      right: -100px;
+    }
 
-    @media (max-width: 992px) {
-      width: 200px;
-      height: 150px;
+    @media (max-width: 1024px) {
+      width: 107px;
+      height: 80px;
+      right: -60px;
+      top: 15%;
     }
 
     @media (max-width: 767px) {
-      width: 105px;
-      height: 79px;
-      top: 50px;
-      right: -70px;
+      top: 20px;
     }
   }
 

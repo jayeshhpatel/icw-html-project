@@ -504,6 +504,21 @@ jQuery(document).ready(function ($) {
     let i = 0;
   }
 
+  /* scroll page to top */
+  if (jQuery('.back-to-top').length) {
+    jQuery(window).scroll(function() {
+      if(jQuery(this).scrollTop() > 1080) {
+          jQuery('.back-to-top').addClass('visible');	
+      } else {
+          jQuery('.back-to-top').removeClass('visible');
+      }
+    });
+    jQuery('.back-to-top').on('click', function(e){
+      e.preventDefault();
+      jQuery('body,html').animate({scrollTop:0},50);
+    });
+  }
+
 });
 
 // hide on scroll down, reveal on up

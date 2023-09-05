@@ -239,61 +239,83 @@ footer#site-footer{
         display: flex;
         -webkit-box-align: center;
             -ms-flex-align: center;
-                align-items: center;
+                align-items: flex-start;
         -webkit-box-pack: justify;
             -ms-flex-pack: justify;
                 justify-content: space-between;
         border-top: 1px solid #EBE9F6;
         padding: 34px 0;
+
+        &.footer-flex-column {
+            flex-wrap: wrap;
+            gap: 25px;
+            // flex-direction: column;
+            // gap: 25px;
+            // align-items: flex-start !important;
+            @media (max-width:992px) {
+                gap: 25px;
+            }
+        }
         @media (max-width:575px) {
-            text-align: center;
+            // text-align: center;
             -webkit-box-orient: vertical;
             -webkit-box-direction: normal;
                 -ms-flex-direction: column;
                     flex-direction: column;
-            gap: 30px 10px;   
+            gap: 20px 10px;   
+
+            &.footer-bottom {
+                flex-direction: column-reverse;
+                gap: 0px 10px; 
+            }
         }
         @media (min-width:576px) and (max-width:767px) {
-            gap: 10px;
+            gap: 20px;
         }
         .title-text{
             color: #fff;
             font-size: 14px;
             margin-right: 16px;
-            @media (min-width:768px) and (max-width:992px) {
-                text-align:right;
-                line-height: 1;
-            }
-            @media (max-width:767px) {
-                margin: 0 0 10px;
-                display: block;
-            }
+
+            margin: 0 0 10px;
+            display: block;
+            // @media (min-width:768px) and (max-width:992px) {
+            //     text-align:right;
+            //     line-height: 1;
+            // }
+            // @media (max-width:767px) {
+                
+            // }
         }
         .footer-item{
-            display: inline-flex;
-            align-items: center;
-            @media (max-width:767px) {
+            // display: inline-flex;
+            // align-items: center;
+            // @media (max-width:767px) {
                 display: block;
-            }
-            @media (min-width:576px) and (max-width:767px) {
-                width: 50%;
-                text-align: left;
-            }
+            // }
+            // @media (min-width:576px) and (max-width:767px) {
+            //     width: 50%;
+            //     text-align: left;
+            // }
         }
         .footer-software{
             display: -webkit-inline-box;
             display: -ms-inline-flexbox;
             display: inline-flex;
+            flex-wrap: wrap;
+            gap: 14px;
             span {
                 display: inline-flex;
-                margin-right: 14px;
+                // margin-right: 14px;
+                flex: none;
                 &:last-child{
                     margin-right: 0;
                 }
             }
             a{
                 display: inline-flex;
-                margin-right: 14px;
+                flex: none;
+                // margin-right: 14px;
                 transition: all 0.1s ease-in-out;
                 -webkit-transition: all 0.1s ease-in-out;
                 -moz-transition: all 0.1s ease-in-out;
@@ -306,6 +328,7 @@ footer#site-footer{
                     -moz-transform: scale(1.1);
                     -ms-transform: scale(1.1);
                     -o-transform: scale(1.1);
+                    z-index: 9;
                 }
                 &:last-child{
                     margin-right: 0;
@@ -314,14 +337,14 @@ footer#site-footer{
         }
         .site-footer--content{
             .footer-menu{
-                margin-right: 40px;
+                // margin-right: 40px;
                 a{
                     color: #A0A0B8;
                     &:hover{
                         color: #ffffff;
                     }
                     @media (max-width:1023px) {
-                        margin-right: 15px;
+                        // margin-right: 15px;
                         &:last-child{
                             margin-right: 0;
                         }
@@ -338,9 +361,9 @@ footer#site-footer{
                 }
             }
             @media (min-width:576px) and (max-width:1023px) {
-                -webkit-box-align: end;
-                -ms-flex-align: end;
-                align-items: flex-end;
+                // -webkit-box-align: end;
+                // -ms-flex-align: end;
+                // align-items: flex-end;
                 .footer-copyright {
                     margin-top: 5px;
                 }

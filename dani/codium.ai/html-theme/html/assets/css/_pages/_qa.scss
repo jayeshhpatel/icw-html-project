@@ -1,3 +1,11 @@
+.questionpage-header.themebg {
+    .section-title {
+        padding-bottom: 100px;
+        border-bottom: none;
+    }
+
+    border-bottom: 1px solid #E9E6FA;
+}
 .search-block{
     position: relative;
     max-width: 860px;
@@ -218,6 +226,8 @@
 
 .question-wrapper {
     padding: 40px 0 100px;
+    position: relative;
+    z-index: 9;
     .container {
         padding: 0px 15px;
     }
@@ -227,7 +237,7 @@
         max-width: 860px;
         margin: 0 auto 80px;
         @media (max-width:767px) {
-            margin: 0 auto 40px;
+            margin: 0 -15px 40px;
         }
     }
     .question-cats{
@@ -244,6 +254,7 @@
                 flex-wrap: nowrap;
             padding-bottom: 10px;
             @include justify-content(start);
+            padding: 0 15px;
         }
         li {
             margin:0px 5px 10px;
@@ -253,7 +264,7 @@
             font-size: 14px;
             text-decoration: none;
             background: #FFFFFF;
-            padding: 12px 16px;
+            padding: 0px 20px;
             color: #9B8AFC;
             text-transform: uppercase;
             border: 1px solid #9B8AFC;
@@ -261,10 +272,11 @@
             @include transition(0.3s, ease-in-out);
             display: inline-block;
             vertical-align: middle;
-            line-height: 1;
+            height: 40px;
+            line-height: 40px;
+            white-space: nowrap;
             &:hover, &:focus {
-                background: #9B8AFC;
-                color: #ffffff !important;
+                background: #f5f2fd;
             }
         }
         .active {
@@ -289,18 +301,19 @@
         @include align-items(flex-start);
         margin-bottom: 20px;
         width: 100%;
-        @include transition(0.3s, ease-in-out);
+
 
         &:hover, &:focus {
             @include box-shadow(0px 16px 62px 0px rgba(201, 197, 219, 0.47));
             // @include transform (translateY(-10px));
+            // transform: scale(1.005);
 
             h3 {
-                text-decoration: underline;
+              border-bottom: 1px solid #01012A;  
             }
             .icon-right {
-                // margin-right: -15px;
                 background: #684BFE;
+                transform: scale(1.1);
                 svg {
                     stroke: #ffffff;
                 }
@@ -321,13 +334,13 @@
         }
         
         h3 {
-            font-weight: 700;
+            font-weight: 600;
             font-size: 20px;
             color: #01012A;
             line-height: normal;  
             margin-right: 15px;
-            text-underline-offset: 5px;
-            @include transition(0.3s, ease-in-out);
+            padding-bottom: 3px;
+            border-bottom: 1.5px solid transparent;  
             @media (max-width:767px) {
                 font-size: 16px;
             }
@@ -345,16 +358,20 @@
                 @include flexbox;
                 @include align-items(center);
                 img {
+                    width: 35px;
+                    height: 35px;
                     min-width: 35px;
                     min-height: 35px;
                     flex: none;
                     margin-right: 12px;
                     @include border-radius(50%);
+                    border: 1px solid #f0f0f0;
                     @media (max-width: 767px) {
+                        width: 28px;
+                        height: 28px;
                         min-width: 28px;
                         min-height: 28px;
                         flex: none;
-                        margin-right: 8px;
                     }
                 }
             }
@@ -382,12 +399,10 @@
             @include align-items(center);
             @include justify-content(center);
             @include border-radius(50%);
+            @include transition(0.2s, ease-in-out);
             svg {
                 width: 16px;
                 height: 16px;
-            }
-            @media (max-width:767px) {
-                display: none !important;
             }
         }
     }
@@ -576,15 +591,20 @@
                     font-size: 14px;
                 }
                 img {
+                    width: 40px;
+                    height: 40px;
                     min-width: 40px;
                     min-height: 40px;
                     @include border-radius(50%);
                     flex: none;
                     margin-right: 15px;
+                    border: 1px solid #f0f0f0;
                     @media (max-width: 767px) {
+                        width: 32px;
+                        height: 32px;
                         min-width: 32px;
                         min-height: 32px;                        
-                        margin-right: 8px;
+                        margin-right: 15px;
                     }
                 }
             }
@@ -599,9 +619,12 @@
     .single-contnet {
         max-width: 1060px;
         margin: 0 auto;
+        word-break:break-word;
+        font-weight: 400;
+        color: #01012A;
         p {
             font-weight: 400;
-            color: rgba(#01012A, 0.6);
+            color: #01012A;
             margin-bottom: 20px;
             strong {
                 font-weight: 700;
