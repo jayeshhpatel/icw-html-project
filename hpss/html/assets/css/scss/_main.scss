@@ -187,6 +187,11 @@ h5, .h5 {
         margin-top: 40px;
         text-align: center;
     }
+    p {
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
     ul {
         margin-bottom: 15px;
         &:last-child {
@@ -717,6 +722,15 @@ a.icon-box {
         ul {
             margin-bottom: 15px;
         }
+        .contact-info {
+            margin-bottom: 20px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            p {
+                margin-bottom: 5px;
+            }
+        }
     }
     .card-footer{
         margin-top: 20px;
@@ -776,7 +790,7 @@ a.icon-box {
                 color: $purple;
                 @include transition(0.2s, ease-in-out);
             }      
-        }
+        }        
     }
     .card-footer{
         margin-top: 20px;
@@ -877,69 +891,6 @@ a.icon-box {
     }
 }
 
-.registration-card {
-    background: #fafafa;
-    @include box-shadow(0 4px 12px 5px rgba(0,0,0,0.1));
-    padding: 25px;
-    border: none;
-    @include border-radius(0px);
-    @include transition(0.2s, ease-in-out);
-    position: relative;
-    margin-bottom: 30px;
-    @media (max-width: 767px) {
-        padding: 20px;
-    }
-    .card-body {
-        flex: 1 1 auto;
-        padding: 0;
-        h3 , .h3{
-            line-height: 1;
-            text-transform: unset;
-            margin-bottom: 15px; 
-            color: $gold; 
-        }
-        .time {
-            font-size: 26px;
-            font-style: italic;
-            font-weight: 600;
-            color: $purple;
-            max-width: 450px;
-            margin-bottom: 15px;
-            @media (max-width: 767px) {
-                font-size: 22px;
-            }
-        }
-        .label {
-            font-size: 26px;
-            font-weight: 700;
-            color: $purple;
-            margin-bottom: 15px;
-            @media (max-width: 767px) {
-                font-size: 22px;
-            }
-        }
-        h5 {
-            font-size: 20px;
-            margin-bottom: 5px;
-            @media (max-width: 767px) {
-                font-size: 18px;
-            }
-        }
-        a {
-            color: $black;
-            font-weight: 400;
-        }
-        ul {
-            margin-bottom: 15px;
-        }
-    }
-    .card-footer{
-        margin-top: 20px;
-        padding: 0;
-        border-top: none;
-        background: transparent;
-    }
-}
 .highlight-card {
     background: $purple;
     text-align: center;
@@ -1262,22 +1213,11 @@ a.icon-box {
                     font-weight: 600;
                     @include transition(0.2s, ease-in-out);
                     position: relative;
-                    &::before {
-                        content: ''; 
-                        width: 0;
-                        height: 1px;
-                        background-color: $gold;
-                        position: absolute;
-                        left: 0;
-                        bottom: -1px;
-                        display: inline-block;
-                        @include transition(0.2s, ease-in-out);
+                    span {
+                        background-image: linear-gradient(transparent calc(100% - 1px), $gold 1px);
                     }
                     &:hover {
-                        color: $gold;
-                        &::before {
-                            width: 70%;
-                        }
+                        color: $gold;                        
                     }
                 }
                 &.date {
