@@ -306,12 +306,21 @@ img {
             font-size: 2.2rem;
         }
     }
-    ul{
+    ul {
+        @media (max-width: 767px) {
+            margin-bottom: 10px;
+        }
         li{
             padding: 10px 0;
+            @media (max-width: 767px) {
+                padding: 5px 0;
+            }
             a{
                 color: $white;
                 font-size: 20px;
+                @media (max-width: 767px) {
+                    font-size: 18px;
+                }
                 &:hover{
                     text-decoration: none;
                 }
@@ -320,5 +329,43 @@ img {
     }
     .sort-info{
         color: $white;
+    }
+    .footer-social {
+        margin-top: 30px;
+        @media (max-width: 767px) {
+            padding-bottom: 70px;
+        }
+        ul {
+            li {
+                display: inline-block;
+                margin: 0 8px;
+                &:first-child {
+                    margin-left: 0;
+                }
+                a {
+                    @include inline-flex;
+                    @include align-items(center);
+                    @include justify-content(center);
+                    padding: 8px;
+                    border: 1px solid #ffffff;
+                    @include border-radius(50%);
+                    @include transition(0.3s, ease-in-out);
+                    svg {
+                        display: inline-block; 
+                        background-size: contain !important;
+                        min-height: 25px;
+                        min-width: 25px;
+                        @media (max-width: 767px) {
+                            min-height: 20px;
+                            min-width: 20px;
+                        }
+                    }
+                    &:hover, &:focus {
+                        background: #65B9C3;
+                        border-color: #65B9C3;
+                    }
+                }
+            }
+        }
     }
 }
