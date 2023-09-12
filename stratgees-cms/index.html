@@ -87,6 +87,7 @@
                 </div>
             </div>
         </section>
+
         <section class="our-approach main-section has-background" style="background-image: url(assets/images/background.jpg);">
             <div class="container">
                 <div class="section-title">
@@ -119,6 +120,52 @@
                                 <h3 class="title">Execute</h3>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="main-section our-result-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2 class="title">Our Results</h2>
+                    <h3 class="sub-title">Strategy + Success</h3>
+                </div>
+                <div class="result-progress-block">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="result-progress">
+                                <div class="barOverflow">
+                                    <div class="bar"></div>
+                                </div>
+                                <div class="result-value">
+                                    <span>87</span>%
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="result-progress">
+                                <div class="barOverflow">
+                                    <div class="bar"></div>
+                                </div>
+                                <div class="result-value">
+                                    <span>96</span>%
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="result-progress">
+                                <div class="barOverflow">
+                                    <div class="bar"></div>
+                                </div>
+                                <div class="result-value">
+                                    <span>94</span>%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action">
+                        <a href="#" class="btn btn-yellow btn-large">Content TBD</a>
                     </div>
                 </div>
             </div>
@@ -218,6 +265,22 @@
             </div>
         </section>
 
+        <section class="main-section text-animation-section">
+            <div class="container">
+                <div class="animation-text-block">
+                    <h2>“But What Do You Actually Do?”</h2>
+                    <div class="animation-text-content">
+                      <span class="word wisteria">We areglad you asked...</span>
+                      <span class="word belize">We value efficiency and prioritize results.</span>
+                      <span class="word pomegranate">WE center Our business around growing and strengthening yours.</span>
+                      <span class="word green">We act with clarity, speed, andstrategy</span>
+                      <span class="word midnight">We balance short-term wins with long-term vision</span>
+                      <span class="word midnight">We don’t waste time telling it to you, we work to prove it to you.</span>
+                    </p>
+                  </div>
+            </div>
+        </section>
+
         <section class="promotion-banner has-background main-section" style="background-image: url(assets/images/bg-wave.jpg);">
             <div class="container">
                 <div class="section-title text-center">
@@ -259,5 +322,61 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src='assets/js/main.js'></script>
+    <script>
+var words = document.getElementsByClassName('word');
+var wordArray = [];
+var currentWord = 0;
+
+words[currentWord].style.opacity = 1;
+for (var i = 0; i < words.length; i++) {
+  splitLetters(words[i]);
+}
+
+function changeWord() {
+  var cw = wordArray[currentWord];
+  var nw = currentWord == words.length-1 ? wordArray[0] : wordArray[currentWord+1];
+  for (var i = 0; i < cw.length; i++) {
+    animateLetterOut(cw, i);
+  }
+  
+  for (var i = 0; i < nw.length; i++) {
+    nw[i].className = 'letter behind';
+    nw[0].parentElement.style.opacity = 1;
+    animateLetterIn(nw, i);
+  }
+  
+  currentWord = (currentWord == wordArray.length-1) ? 0 : currentWord+1;
+}
+
+function animateLetterOut(cw, i) {
+  setTimeout(function() {
+		cw[i].className = 'letter out';
+  }, i*80);
+}
+
+function animateLetterIn(nw, i) {
+  setTimeout(function() {
+		nw[i].className = 'letter in';
+  }, 340+(i*80));
+}
+
+function splitLetters(word) {
+  var content = word.innerHTML;
+  word.innerHTML = '';
+  var letters = [];
+  for (var i = 0; i < content.length; i++) {
+    var letter = document.createElement('span');
+    letter.className = 'letter';
+    letter.innerHTML = content.charAt(i);
+    word.appendChild(letter);
+    letters.push(letter);
+  }
+  
+  wordArray.push(letters);
+}
+
+changeWord();
+setInterval(changeWord, 8000);
+    </script>
 </body>
 </html> 
