@@ -408,18 +408,34 @@ img{
 	@include border-radius(5px);
 	@include inline-flex;
 	@include align-items(center);
-	@include justify-content(center);
+	@include justify-content(center);	
 	&.mw-200 {
 		max-width: 200px;
 		width: 100%;
 	}
 	@media (max-width:767px) {
 		font-size: 14px;
-		padding: 5px 18px;
+		padding: 5px 15px;
 		min-height: 40px;
 	}
 	.icons {
-		margin-left: 8px;
+		margin-right: 8px;
+	}
+	&.btn-icon {
+		@include inline-flex;
+		@include align-items(center);
+		.icons {
+			filter: brightness(0) contrast(1) invert(1);
+			@include transition(0.3s, ease-in-out);
+		}
+		&:hover, &:focus, &:active{
+			.icons {
+				filter: unset;
+			}
+		}
+	}
+	&.btn-rounded {
+		@include border-radius(30px);
 	}
 	&.btn-primary{
 		color: $white !important;
@@ -428,7 +444,7 @@ img{
 		&:hover, &:focus, &:active{
 			background-color: $white;
 			color: $primary !important;
-			border: 1px solid $primary;
+			border: 1px solid $white;
 		}
 	}
 	&.btn-primary-outline{
@@ -469,6 +485,16 @@ img{
 			background-color: $primary;
 			color: $white !important;
 			border: 1px solid $primary;
+		}
+	}
+	&.btn-outline-white {
+		color: $white !important;
+		border: 1px solid $white;
+		background-color: transparent;
+		&:hover, &:focus, &:active{
+			background-color: $white;
+			color: $secondary !important;
+			border: 1px solid $white;
 		}
 	}
 }
@@ -632,7 +658,7 @@ h4, .h4 {
 		@include transition(0.3s, ease-in-out);
 	}
 	&.icon-phone {
-		background: url(../images/icons/phone.svg) no-repeat center center;
+		background: url(../images/icons/icon-phone.svg) no-repeat center center;
 		width: 20px;
         height: 20px;
 		@include transition(0.3s, ease-in-out);

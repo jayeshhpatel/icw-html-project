@@ -1,6 +1,6 @@
 .main-content-wrapper {
 	flex: 1 1 auto;
-	padding-top: 88px;
+	padding-top: 87px;
 	@media (max-width:1199px) {
 		padding-top: 72px;
 	}
@@ -58,12 +58,143 @@
 			}
 		}
 	}
+	.action {
+		.btn {
+			margin-right:  20px;
+			&:last-child {
+				margin-right: 0;
+			}
+			@media (max-width: 767px) {
+				margin-right: 15px;
+			}
+			@media (max-width: 767px) {
+				margin-right: 8px;
+			}
+		}
+	}
 	& * :last-child {
         margin-bottom: 0px !important;
     }
 
 	.form-group {
 		margin-bottom: 24px !important;
+	}
+}
+
+.marquee-wrapper {	
+	@include flexbox;
+	@include justify-content(flex-end);
+	position: absolute;
+	top: 0;
+	right: 20px;
+	width: 43%;
+	@media (max-width: 767px) {
+		position: relative;
+		width: 100%;
+		margin-top: 30px;
+		right: 0;
+	}
+	.marquee-block{
+		width: 100%;
+		max-width: 320px;
+		height: 100vh;
+		overflow: hidden;
+		box-sizing: border-box;
+		position: relative;
+		margin: 8px;
+		@media (max-width: 767px) {
+			max-height: 400px;
+			margin: 5px;
+		}
+		.marquee-inner {
+			display: block;
+			position: absolute;
+			&.to-left{
+				animation: marqueeTop 25s linear infinite;
+			}
+			&.to-right{
+				animation: marqueeBottom 25s linear infinite;
+			}
+			.marquee-item {
+				max-width: 320px;
+				max-height: 340px;
+				flex: none;
+				margin-bottom: 15px;
+				@media (max-width: 767px) {
+					margin-bottom: 10px;
+				}
+				@include border-radius(10px);
+				overflow: hidden;
+				img {
+					@include border-radius(10px);
+					width: 100%;
+					@include transition(0.3s, ease-in-out);
+				}
+				&:hover, &:focus {
+					img {
+						@include transform(scale(1.1));
+					}
+				}
+			}
+		}
+	}
+}
+
+@keyframes marqueeTop{
+	0% {
+	  	top: 0;
+	}
+	100% {
+	  	top: -100%;
+	}
+}
+@keyframes marqueeBottom {
+	0% { 
+	  	top: -100%; 
+	}
+	100% {
+	 	top: 0; 
+	}
+}
+@keyframes marqueeLeft {
+	0% {
+	  	left: 0;
+	}
+	100% {
+	  	left: -100%;
+	}
+}
+@keyframes marqueeRight {
+	0% { 
+	  	right: -100%; 
+	}
+	100% {
+	 	right: 0; 
+	}
+}
+
+.logo-content {
+	@include flexbox;
+	@include align-items(center);
+	@include justify-content(center);
+}
+
+.hero-section {
+	overflow: hidden;
+	min-height: calc(100vh - 87px);
+	@include flexbox;
+	@include align-items(center);
+	background-image: url(../../upload/hero-bg-img.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	.section-title {
+		margin-bottom: 0;
+		* {
+			color: $white;
+		}
+	}
+	@media (max-width: 767px) {
+		min-height: auto;
 	}
 }
 
