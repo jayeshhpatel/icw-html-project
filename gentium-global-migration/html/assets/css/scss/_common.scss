@@ -53,7 +53,6 @@ body {
 	.container-sm, 
 	.container-xl, 
 	.container-xxl {
-		max-width:1220px;
 		padding: 0 15px;
 	}
 }
@@ -82,8 +81,11 @@ body {
 .bg-primary {
 	background-color: $primary !important;
 }
-.bg-lightyellow {
+.bg-yellow {
 	background-color: $lightyellow !important;
+}
+.bg-lightyellow {
+	background-color: #FEFDFC !important;
 }
 .bg-secondary {
 	background-color: $secondary !important;
@@ -447,10 +449,10 @@ img{
 			border: 1px solid $white;
 		}
 	}
-	&.btn-primary-outline{
+	&.btn-primary-outline {
 		color: $primary !important;
 		border: 1px solid $primary;
-		background-color: $white;
+		background-color: transparent;
 		&:hover, &:focus, &:active{
 			background-color: $primary;
 			color: $white !important;
@@ -500,14 +502,16 @@ img{
 }
 
 .btn-link {
-	color: $primary;
+	color: $darkblack;
 	font-weight: 500;
 	position: relative;
 	z-index: 3;
 	text-decoration: none;
+	padding: 0;
 	@include inline-flex;
 	@include align-items(center);
 	@include transition(0.3s, ease-in-out);
+	min-width: 90px;
 	&:hover, &:focus, &:active {
 		color: $primary;
 		box-shadow: none !important;
@@ -515,27 +519,13 @@ img{
 	}
 	&:hover,&:focus{
 		color: $primary;
-		&:before {
-			width: 50%;
-		}
-	}
-	&:before {
-		content: "";
-		position: absolute;
-		z-index: -1;
-		left: 0;
-		bottom: 0px;
-		background: $primary;
-		width: 0;
-		height: 1px;
-		@include transition(0.3s, ease-in-out);
 	}
 	&.text-sm {
 		font-size: 14px;
 		&.with-icon {
 			&:after {
-				width: 12px;
-				height: 12px;
+				width: 10px;
+				height: 10px;
 			}
 		}
 	}
@@ -544,15 +534,17 @@ img{
 			content: "";
 			display: block;
 			margin-left: 8px;
-			width: 16px;
-			height: 16px;
+			width: 12px;
+			height: 12px;
 			background: url(../images/icons/next.svg) no-repeat center;
 			background-size: contain;
 			@include transition(0.3s, ease-in-out);
+			filter: contrast(0.2) brightness(0.4);
 		}
 		&:hover, &:focus, &:active {
 			&:after {
 				margin-left: 12px;
+				filter: unset;
 			}
 		}
 	}
@@ -620,69 +612,9 @@ h4, .h4 {
 
 .icons {
 	background-size: contain !important;
-    display: inline-block;
-	&.icon-facebook {
-		background: url(../images/icons/facebook.svg) no-repeat center center;
-		width: 18px;
-        height: 18px;
-		@include transition(0.3s, ease-in-out);
-	}
-	&.icon-linkedin {
-		background: url(../images/icons/linkedin.svg) no-repeat center center;
-		width: 18px;
-        height: 18px;
-		@include transition(0.3s, ease-in-out);
-	}
-	&.icon-twitter {
-		background: url(../images/icons/twitter.svg) no-repeat center center;
-		width: 18px;
-        height: 18px;
-		@include transition(0.3s, ease-in-out);
-	}
-	&.icon-instagram {
-		background: url(../images/icons/instagram.svg) no-repeat center center;
-		width: 18px;
-        height: 18px;
-		@include transition(0.3s, ease-in-out);
-	}
-	&.icon-skype {
-		background: url(../images/icons/skype.svg) no-repeat center center;
-		width: 18px;
-        height: 18px;
-		@include transition(0.3s, ease-in-out);
-	}
-	&.icon-youtube {
-		background: url(../images/icons/youtube.svg) no-repeat center center;
-		width: 18px;
-        height: 18px;
-		@include transition(0.3s, ease-in-out);
-	}
+    display: inline-block;	
 	&.icon-phone {
 		background: url(../images/icons/icon-phone.svg) no-repeat center center;
-		width: 20px;
-        height: 20px;
-		@include transition(0.3s, ease-in-out);
-	}
-	&.icon-mail {
-		background: url(../images/icons/mail.svg) no-repeat center center;
-		width: 20px;
-        height: 20px;
-		@include transition(0.3s, ease-in-out);
-	}
-	&.icon-call {
-		background: url(../images/icons/call.svg) no-repeat center center;
-		width: 20px;
-        height: 20px;
-		@include transition(0.3s, ease-in-out);
-	}
-	&.icon-skype {
-		background: url(../images/icons/skype.svg) no-repeat center center;
-		width: 20px;
-        height: 20px;
-		@include transition(0.3s, ease-in-out);
-	}
-	&.icon-location {
-		background: url(../images/icons/location.svg) no-repeat center center;
 		width: 20px;
         height: 20px;
 		@include transition(0.3s, ease-in-out);
@@ -903,7 +835,7 @@ h4, .h4 {
 						@include transform(rotate(135deg)); width: 25px; top: 7px;
 					}
 					&:nth-child(2) {
-						@include opacity(0); left: -20px; width: 20px;
+						@include opacity(0); left: 0px; width: 20px;
 					}
 					&:nth-child(3) {
 						@include transform(rotate(-135deg)); width: 25px; top: -7px;
@@ -1304,7 +1236,8 @@ h4, .h4 {
 		flex: none;
 		img {
 			@include transition(0.3s, ease-in-out); 
-			transform-origin: left;			
+			transform-origin: left;		
+			height: 60px;	
 		}
 		@media (max-width: 1024px) {
 			img {
@@ -1669,16 +1602,34 @@ h4, .h4 {
 		}
 		.country-dropdown {
 			position: relative; 
+			.flag {
+				width: 18px; height: 18px; background-size: contain !important; display: inline-block; @include border-radius(5px); margin-right: 8px;
+				&.flag-nz {
+					background: url(../images/flag-new-zealand.png) no-repeat center center;
+				}
+				&.flag-in {
+					background: url(../images/flag-india.png) no-repeat center center;
+				}
+				&.flag-aus {
+					background: url(../images/flag-australia.png) no-repeat center center;
+				}
+			}
 			.country-name {	
 				@include inline-flex; @include align-items(center); @include transition(0.3s, ease-in-out);
 				&::before {
 					content: none;
 				}
 				&:after {
-					vertical-align: middle; content: ""; background: url(../images/icons/arrow-down.svg) no-repeat center right; background-size: contain; width: 14px; height: 8px; margin-left: 8px; display: inline-block; @include transition(0.3s, ease-in-out); border: none; filter: invert(1);
+					vertical-align: middle; content: ""; background: url(../images/icons/arrow-down.svg) no-repeat center right; background-size: contain; width: 10px; height: 10px; margin-left: 8px; display: inline-block; @include transition(0.3s, ease-in-out); border: none; filter: invert(1);
 				}		
+				.flag {
+					width: 16px; height: 16px; border: 1px solid $white;
+					&.flag-aus {
+						background: url(../images/flag-australia.png) no-repeat center center;
+					}
+				}
 				span {
-					font-weight: 400; font-size: 16px; display: inline-block; z-index: 1; color: $black; @include transition(0.3s, ease-in-out);
+					font-weight: 400; font-size: 14px; display: inline-block; z-index: 1; color: $black; @include transition(0.3s, ease-in-out);
 				}
 				.show {
 					&::after {
@@ -1702,7 +1653,7 @@ h4, .h4 {
 				right: 0; left: auto; 
 				@include border-radius(0);				
 				background-color: $white; 				
-				padding: 15px 20px; 
+				padding: 15px 15px; 
 				margin: 0.40rem 0 0 0; 				
 				@include box-shadow(0px 8px 15px rgba(0, 0, 0, 0.15)); 
 				border: 1px solid rgba($black, 0.20);
@@ -1710,12 +1661,13 @@ h4, .h4 {
 					@include opacity(1); visibility: visible; @include transform(translateY(0px)); z-index: 99;
 				}		
 				li {
-					padding: 0 0 10px;
+					padding: 0 0 15px;
 					&:last-child {
 						padding-bottom: 0;
 					}
 					a {
-						font-size: 14px;
+						font-size: 14px; @include flexbox; @include align-items(center); @include transition(0.3s, ease-in-out); 
+						
 					}
 					&.current-menu-item {
 						a {

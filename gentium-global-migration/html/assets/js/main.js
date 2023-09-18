@@ -46,4 +46,27 @@ jQuery(document).ready(function($) {
             });
         });
     });
+    if ($('.testimonial-slider').length) {
+        $('.testimonial-slider').slick({
+            autoplay: true,
+            autoplaySpeed: 5000,
+            slidesToScroll: 3,
+		    slidesToShow: 3,
+            infinite: false,
+            accessibility: false,
+            arrows: false,
+            responsive: [
+                {
+                breakpoint: 992,
+                    settings: {
+                        slidesToShow: 1,
+                        // centerMode: true,
+                        // centerPadding: '60px',
+                        arrows: false,
+                        dots:false,
+                    }
+                }
+            ]
+        });
+    };
 });
