@@ -748,6 +748,16 @@
 			}
 		}
 	}
+	&:hover {
+		.collapse-title {
+			h3 {
+				color: $primary;
+			}
+			&:after { 
+				filter: unset;
+			}
+		}
+	}
 	&:first-child {
 		border-top: 1px solid $black;
 	}
@@ -771,16 +781,18 @@
 			margin-left: auto;
 			background: url(../images/icons/collapse-arrow.svg) no-repeat center center;
 			background-size: contain;
+			filter: brightness(0);
 			@include transition(0.2s, ease-in-out);
 			@media (max-width:991px) {
 				width: 25px;
 				height: 25px;
 			}
 		}
-		h3{
+		h3 {
 			font-size: 18px;
-			font-weight: 500;
+			font-weight: 700;
 			margin-bottom: 0;
+			@include transition(0.3s, ease-in-out);
 			@media (max-width:767px) {
 				font-size: 16px;
 			}
