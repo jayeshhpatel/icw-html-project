@@ -48,7 +48,7 @@ jQuery(document).ready(function($) {
     });
     if ($('.testimonial-slider').length) {
         $('.testimonial-slider').slick({
-            autoplay: true,
+            autoplay: false,
             autoplaySpeed: 5000,
             slidesToScroll: 3,
 		    slidesToShow: 3,
