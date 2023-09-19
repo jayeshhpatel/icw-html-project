@@ -411,6 +411,7 @@ img{
 	@include inline-flex;
 	@include align-items(center);
 	@include justify-content(center);	
+	line-height: 0.7;
 	&.mw-200 {
 		max-width: 200px;
 		width: 100%;
@@ -424,8 +425,6 @@ img{
 		margin-right: 8px;
 	}
 	&.btn-icon {
-		@include inline-flex;
-		@include align-items(center);
 		.icons {
 			filter: brightness(0) contrast(1) invert(1);
 			@include transition(0.3s, ease-in-out);
@@ -512,7 +511,7 @@ img{
 	@include align-items(center);
 	@include transition(0.3s, ease-in-out);
 	min-width: 90px;
-	&:hover, &:focus, &:active {
+	&:hover, &:focus, &:active, &:focus-visible {
 		color: $primary;
 		box-shadow: none !important;
 		text-decoration: none;
@@ -541,9 +540,9 @@ img{
 			@include transition(0.3s, ease-in-out);
 			filter: contrast(0.2) brightness(0.4);
 		}
-		&:hover, &:focus, &:active {
+		&:hover, &:focus, &:active, &:focus-visible {
 			&:after {
-				margin-left: 12px;
+				@include transform(translateX(5px));
 				filter: unset;
 			}
 		}
@@ -806,8 +805,15 @@ h4, .h4 {
 	z-index: 10; 
 	top: 0; 
 	@include transition(0.3s, ease-in-out); 
-	padding: 15px 0; 
+	padding: 10px 0; 
 	background-color: $secondary; 
+	// &.fixed-header {
+	// 	.header-logo {
+	// 		img {
+	// 			max-height: 60px;
+	// 		}
+	// 	}
+	// }
 	body.logged-in.admin-bar & {
 		top: 32px;
 	}
@@ -1236,8 +1242,9 @@ h4, .h4 {
 		flex: none;
 		img {
 			@include transition(0.3s, ease-in-out); 
-			transform-origin: left;		
-			height: 60px;	
+			transform-origin: left;
+			max-height: 75px;			
+			transition: max-height 0.3s ease-in-out;		
 		}
 		@media (max-width: 1024px) {
 			img {
@@ -1416,7 +1423,7 @@ h4, .h4 {
 	background: $white; 
 	border-top: 1px solid $white; 
 	padding: 40px 0;
-	.logo-block {
+	.foooter-logo-block {
 		max-width: 450px;
 		.footer-logo {
 			margin-bottom: 20px;
