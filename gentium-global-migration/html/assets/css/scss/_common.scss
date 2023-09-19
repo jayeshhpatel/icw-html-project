@@ -46,15 +46,14 @@ body {
         overflow: hidden;
     }
 }
-@media (min-width:1400px) {
-	.container, 
-	.container-lg, 
-	.container-md, 
-	.container-sm, 
-	.container-xl, 
-	.container-xxl {
-		padding: 0 15px;
-	}
+
+.container, 
+.container-lg, 
+.container-md, 
+.container-sm, 
+.container-xl, 
+.container-xxl {
+	padding: 0 15px;
 }
 
 
@@ -510,7 +509,6 @@ img{
 	@include inline-flex;
 	@include align-items(center);
 	@include transition(0.3s, ease-in-out);
-	min-width: 90px;
 	&:hover, &:focus, &:active, &:focus-visible {
 		color: $primary;
 		box-shadow: none !important;
@@ -618,6 +616,24 @@ h4, .h4 {
         height: 20px;
 		@include transition(0.3s, ease-in-out);
 	}
+	&.icon-dribble {
+		background: url(../images/icons/icon-dribble.svg) no-repeat center center;
+		width: 25px;
+        height: 25px;
+		@include transition(0.3s, ease-in-out);
+	}
+	&.icon-linkedin {
+		background: url(../images/icons/icon-linkedin.svg) no-repeat center center;
+		width: 25px;
+        height: 25px;
+		@include transition(0.3s, ease-in-out);
+	}
+	&.icon-x {
+		background: url(../images/icons/icon-x.svg) no-repeat center center;
+		width: 25px;
+        height: 25px;
+		@include transition(0.3s, ease-in-out);
+	}
 }
 
 .icw-slick-loading:not(.slick-initialized) {
@@ -643,14 +659,16 @@ h4, .h4 {
 
 .slick-arrow {
 	top: auto;
-	bottom: 20px;
+	bottom: -15px;
 	@include transform(translate(0px));
 	&.slick-next,
 	&.slick-prev {
 		width: 38px;
 		height: 38px;
 		background-color: $white;
+		border: 1px solid $black !important;
 		z-index: 1;
+		@include border-radius(50%);
 		@include transition(0.2s, ease-in-out);
 
 		&:hover,
@@ -668,6 +686,7 @@ h4, .h4 {
 			&:focus { 
 				&::before {
 					@include transform(translateX(2px));
+					filter: invert(1);
 				}
 			}
 		}
@@ -676,43 +695,33 @@ h4, .h4 {
 			&:focus { 
 				&::before {
 					@include transform(translateX(-2px));
+					filter: invert(1);
 				}
 			}
 		}
 
 		&::before {
 			content: "";
-			width: 12px;
-			height: 20px;
+			width: 24px;
+			height: 24px;
 			opacity: 1;
 			display: block;
 			margin: auto;
 			background-size: contain !important;
-			@include transition(0.3s, ease-in-out);
-			@media (max-width: 991px) {
-				width: 10px;
-			}
+			@include transition(0.3s, ease-in-out);			
 		}
 	}
 	&.slick-next {
-		right: 20px;
+		right: 0px;
 		&::before {
-			background: url(../images/icons/next.svg) no-repeat center;
-			margin: 0 auto 0 14px;
-			@media (max-width: 991px) {
-				margin: 0 auto 0 16px;
-			}
+			background: url(../images/icons/icon-slide-next.svg) no-repeat center;	
 		}
 	}
 	&.slick-prev {
 		left: auto;
-		right: 80px;
+		right: 60px;
 		&::before {
-			background: url(../images/icons/prev.svg) no-repeat center;
-			margin: 0 14px 0 auto;
-			@media (max-width: 991px) {
-				margin: 0 16px 0 auto;
-			}
+			background: url(../images/icons/icon-slide-prev.svg) no-repeat center;
 		}
 	}
 }
@@ -720,23 +729,32 @@ h4, .h4 {
 .slick-dots {
 	position: relative;
 	bottom: 0;
-	margin-top: 5px;
-	@media (max-width: 991px) {
-		margin-top: 20px;
-	}
+	margin-top: 15px;
+	@include flexbox;
+	@include justify-content(center);
 	li {
+		margin: 0 4px;
 		&.slick-active {
 			button {
+				width: 8px;
+				height: 8px;
 				&::before {
-					background: $secondary;
+					width: 8px;
+					height: 8px;
+					background: $black;
 					@include opacity(1);
 				}
 			}
 		}
 		button {
+			width: 8px;
+			height: 8px;
+			padding: 0;
 			&::before {
-				font-size: 40px;
-				background: $primary;
+				width: 8px;
+				height: 8px;
+				background: #D9D9D9;
+				@include opacity(1);
 			}
 		}
 	}

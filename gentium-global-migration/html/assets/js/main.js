@@ -46,11 +46,25 @@ jQuery(document).ready(function($) {
             });
         });
     });
+
+    $(".collapse-item .collapse-title").click(function () {
+        if ($(this).closest(".collapse-item").hasClass("is-open")) {
+           $(this).closest(".collapse-item").stop(true,true).removeClass("is-open");
+           $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).slideUp("fast");
+        } else {
+           $(".collapse-item").removeClass("is-open");
+           $(".collapse-item").find(".collapse-body").stop(true,true).slideUp();
+           $(this).closest(".collapse-item").stop(true,true).addClass("is-open");
+           $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).slideDown("fast");
+        }
+        return false;
+    });
+
     if ($('.testimonial-slider').length) {
         $('.testimonial-slider').slick({
-            autoplay: false,
+            autoplay: true,
             autoplaySpeed: 5000,
-            slidesToScroll: 3,
+            slidesToScroll: 1,
 		    slidesToShow: 3,
             infinite: false,
             accessibility: false,
@@ -65,14 +79,53 @@ jQuery(document).ready(function($) {
                     }
                 },
                 {
-                    breakpoint: 767,
+                    breakpoint: 768,
                     settings: {
                         slidesToShow: 1,
                         arrows: false,
-                        dots:false,
+                        dots:true,
                     }
                 }
             ]
         });
     };
+    if (jQuery(".team-slider").length > 0) {
+        jQuery('.team-slider').slick({
+            autoplay: true,
+            autoplaySpeed: 3000,
+            arrows: true,
+            dots: true,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            infinite: false,
+            accessibility: false,
+            variableWidth: true,
+            responsive: [
+                {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 3,
+                        dots: true,
+                        arrows: true,
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2,
+                        dots: true,
+                        arrows: false,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        arrows: false,
+                        dots: true,
+                    }
+                }
+            ]
+        });
+    }
 });
