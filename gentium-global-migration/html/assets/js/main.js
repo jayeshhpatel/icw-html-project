@@ -62,7 +62,7 @@ jQuery(document).ready(function($) {
 
     if ($('.testimonial-slider').length) {
         $('.testimonial-slider').slick({
-            autoplay: true,
+            autoplay: false,
             autoplaySpeed: 5000,
             slidesToScroll: 1,
 		    slidesToShow: 3,
@@ -91,7 +91,7 @@ jQuery(document).ready(function($) {
     };
     if (jQuery(".team-slider").length > 0) {
         jQuery('.team-slider').slick({
-            autoplay: true,
+            autoplay: false,
             autoplaySpeed: 3000,
             arrows: true,
             dots: true,

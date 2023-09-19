@@ -731,10 +731,16 @@
 	}
 }
 
-.collapse-item{
+.collapse-block {
+	margin-top: 50px;	
+	@media (max-width: 767px) {
+		margin-top: 20px;
+	}
+}
+
+.collapse-item {
 	padding: 20px 0;
 	border-bottom: 1px solid $black;
-
 	&.is-open {
 		.collapse-title{
 			&:after {
@@ -745,11 +751,9 @@
 	&:first-child {
 		border-top: 1px solid $black;
 	}
-	&:last-child {
-		border-bottom: none;
-	}
-	.collapse-title{
+	.collapse-title {
 		@include flexbox();
+		@include align-items(center);
 		text-align: left;
 		cursor: pointer;
 		background-color: transparent;
@@ -766,10 +770,11 @@
 			flex: none;
 			margin-left: auto;
 			background: url(../images/icons/collapse-arrow.svg) no-repeat center center;
+			background-size: contain;
 			@include transition(0.2s, ease-in-out);
 			@media (max-width:991px) {
-				width: 20px;
-				height: 20px;
+				width: 25px;
+				height: 25px;
 			}
 		}
 		h3{
@@ -784,6 +789,9 @@
 	.card-content {
 		color: $black;
 		font-size: 16px;
+		@media (max-width:767px) {
+			font-size: 14px;
+		}
 	}
 	.collapse-body {
 		margin-top: 10px;
@@ -860,8 +868,6 @@
 	}
 }
 
-
-
 .hero-section {
 	overflow: hidden;
 	min-height: calc(100vh - 87px);
@@ -889,6 +895,22 @@
 
 .testimonial-section, .expect-team-section {
 	overflow: hidden;
+}
+
+.faq-section {
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	background-size: 100% 100%;
+	@media (max-width: 1200px) {
+		background-size: contain;
+	}
+	.action {
+		margin-top: 40px;
+		text-align: center;
+		@media (max-width: 767px) {
+			margin-top: 30px;
+		}
+	}
 }
 
 .cta-section {
