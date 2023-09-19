@@ -57,11 +57,17 @@ jQuery(document).ready(function($) {
             arrows: false,
             responsive: [
                 {
-                breakpoint: 992,
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 2,
+                        arrows: false,
+                        dots:false,
+                    }
+                },
+                {
+                    breakpoint: 767,
                     settings: {
                         slidesToShow: 1,
-                        // centerMode: true,
-                        // centerPadding: '60px',
                         arrows: false,
                         dots:false,
                     }
