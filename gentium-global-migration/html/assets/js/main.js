@@ -60,72 +60,48 @@ jQuery(document).ready(function($) {
         return false;
     });
 
-    if ($('.testimonial-slider').length) {
-        $('.testimonial-slider').slick({
-            autoplay: false,
-            autoplaySpeed: 5000,
-            slidesToScroll: 1,
-		    slidesToShow: 3,
-            infinite: false,
-            accessibility: false,
-            arrows: false,
-            responsive: [
-                {
-                    breakpoint: 992,
-                    settings: {
-                        slidesToShow: 2,
-                        arrows: false,
-                        dots:false,
-                    }
+    if ($('.customer-review-slider').length) { 
+        var splide = new Splide( '.customer-review-slider', {
+            perPage: 3,
+            perMove: 1,
+            gap: 30,
+            breakpoints: {
+                992: {
+                    perPage: 2,
                 },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 1,
-                        arrows: false,
-                        dots:true,
-                    }
-                }
-            ]
-        });
-    };
-    if (jQuery(".team-slider").length > 0) {
-        jQuery('.team-slider').slick({
-            autoplay: false,
-            autoplaySpeed: 3000,
-            arrows: true,
-            dots: true,
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            infinite: false,
-            accessibility: false,
-            variableWidth: true,
-            responsive: [
-                {
-                    breakpoint: 992,
-                    settings: {
-                        slidesToShow: 3,
-                        dots: true,
-                        arrows: true,
-                    }
+                767: {
+                    perPage: 1,
                 },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 2,
-                        dots: true,
-                        arrows: false,
-                    }
+                480: {
+                    perPage: 1,
                 },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        slidesToShow: 1,
-                        arrows: false,
-                        dots: true,
-                    }
-                }
-            ]
-        });
+            },
+        });        
+        splide.mount();
+    }
+    if ($('.team-slider').length) { 
+        var splide = new Splide( '.team-slider', {
+            perPage: 4,
+            perMove: 1,
+            gap: 30,
+            classes: {
+                pagination: 'splide__pagination dark-pagination',
+            },
+            breakpoints: {
+                1200: {
+                    perPage: 3,
+                    autoWidth: true,
+                },
+                767: {
+                    perPage: 2,
+                    gap: 20,
+                    autoWidth: true,
+                },
+                480: {
+                    perPage: 1,
+                },
+            },
+        });        
+        splide.mount();
     }
 });
