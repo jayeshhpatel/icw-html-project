@@ -104,4 +104,52 @@ jQuery(document).ready(function($) {
         });        
         splide.mount();
     }
+    if('.tab-slider-block') {
+        var main = new Splide( '.tab-image-slider', {
+            type: 'fade',
+            pagination: false,
+            arrows: false,
+            cover: true,
+            type: 'loop',
+            autoplay: true,
+        });
+          
+          var thumbnails = new Splide( '.tab-nav-slider', {
+            perPage : 3,
+            rewind: true,
+            perMove    : 1,
+            isNavigation: true,
+            pagination: false,
+            arrows: false,      
+             
+        });
+          
+        main.sync( thumbnails );
+        main.mount();
+        thumbnails.mount();
+    }
+    if('.tab-slider-block') {
+        var main = new Splide( '#tab-image-slider1', {
+            type: 'fade',
+            pagination: false,
+            arrows: false,
+            cover: true,
+            type: 'loop',
+            autoplay: true,
+        });
+          
+          var thumbnails = new Splide( '#tab-nav-slider1', {
+            perPage : 3,
+            rewind: true,
+            perMove    : 1,
+            isNavigation: true,
+            pagination: false,
+            arrows: false,      
+             
+        });
+          
+        main.sync( thumbnails );
+        main.mount();
+        thumbnails.mount();
+    }
 });
