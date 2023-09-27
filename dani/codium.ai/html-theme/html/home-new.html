@@ -997,19 +997,21 @@
             const close = modal.querySelector(".modal-close");
 
             function closeModal() {
-                
+                document.querySelector('body').classList.remove('overflow-hidden');
+                document.querySelector('.homepage-hero').style.cssText = `z-index: unset; position: relative;`;
+                document.querySelector('.modal-wrapper').style.cssText = `-webkit-animation:gzoomOut .5s ease;animation:gzoomOut .5s ease;`; 
                 setTimeout(function () {
-                    modal.classList.remove("show");   
-                    document.querySelector('body').classList.remove('overflow-hidden');
-                    document.querySelector('.homepage-hero').style.cssText = `z-index: unset; position: relative;`;
+                    modal.classList.remove("show"); 
+                   
                 }, 100);
             }
             function openModal() {
-                setTimeout(function () {
-                    modal.classList.add("show"); 
+                modal.classList.add("show"); 
+                document.querySelector('.homepage-hero').style.cssText = `z-index: 1000; position: relative;`;
+                document.querySelector('.modal-wrapper').style.cssText = ``; 
+                setTimeout(function () {                    
                     document.querySelector('body').classList.add('overflow-hidden');
-                    document.querySelector('.homepage-hero').style.cssText = `z-index: 1000; position: relative;`;
-                }, 100);
+                }, 500);
             }
             button.addEventListener("click", function (e) {
                 openModal();

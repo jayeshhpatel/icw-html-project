@@ -738,22 +738,30 @@
   overflow: hidden !important;
 }
 
-.icw-modal {
-  z-index: 1055;
+.icw-modal {  
   width: 500px;
   padding: 1rem;
   position: fixed;
   top: 0;
   left: 0;
-  display: none;
+  opacity: 0;
+  visibility: hidden;
   width: 100%;
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
   outline: 0;
   background-color: rgba(0, 0, 0, 0.7);
+  @include transition(0.3s, ease-in-out);
   &.show {
-    display: block;
+    z-index: 1055;
+    opacity: 1;
+    visibility: visible;
+    .modal-wrapper {
+      // @include transform(scale(1));
+      // @include transition(0.5s, ease-in-out);
+      -webkit-animation:gzoomIn .3s ease;animation:gzoomIn .3s ease;
+    }
   }
   .modal-wrapper {
     max-width: 350px;    
@@ -761,6 +769,9 @@
     display: flex;
     align-items: center;
     min-height: 100%;
+    
+    // @include transform(scale(0));
+    // @include transition(0.5s, ease-in-out);
     &.modal-green {    
       .modal-content {
         border: 2px solid #05e5ad;
@@ -856,7 +867,10 @@
     }
   }
 }
-
+@-webkit-keyframes gzoomIn{from{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}to{opacity:1}}
+@keyframes gzoomIn{from{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}to{opacity:1}}
+@-webkit-keyframes gzoomOut{from{opacity:1}50%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}to{opacity:0}}
+@keyframes gzoomOut{from{opacity:1}50%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}to{opacity:0}}
 
 .marketplace-download {
   @include inline-flex; @include flex-wrap(nowrap);
