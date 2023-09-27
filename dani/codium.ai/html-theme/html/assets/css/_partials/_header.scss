@@ -734,6 +734,130 @@
   }
 }
 
+.overflow-hidden {
+  overflow: hidden !important;
+}
+
+.icw-modal {
+  z-index: 1055;
+  width: 500px;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  &.show {
+    display: block;
+  }
+  .modal-wrapper {
+    max-width: 350px;    
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    min-height: 100%;
+    &.modal-green {    
+      .modal-content {
+        border: 2px solid #05e5ad;
+       }
+    }
+    .modal-close {
+      --size: 28px;
+      position: absolute;
+      top: calc(var(--size) / 2 * -1);
+      right: calc(var(--size) / 2 * -1);
+      border: 0;
+      background: #000;
+      color: #fff;
+      font-weight: bold;
+      width: var(--size);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .modal-content {
+      padding: 15px !important;
+      @include border-radius(9px);
+      background: #ffffff;
+      position: relative;
+      .icon-img {
+        margin-bottom: 15px;
+        line-height: 0.7;
+        img {
+          margin-right: 10px;
+          max-height: 24px;
+        }
+      }
+      .popup-title {
+        font-size: 16px; font-weight: 700; margin-bottom: 15px;
+      }
+      .pop-info {
+        font-size: 15px;
+        color: #01012A;
+        margin-bottom: 15px;
+      }
+      .hbspt-form {
+        .hs-form-field {
+          label {
+            color: #01012A;
+            font-size: 14px;
+            margin-bottom: 1rem;
+            display: block;
+            font-weight: 600;
+          }
+          input {
+            width: 100%;
+            border: 2px solid #684bfe;
+            border-radius: 8px;
+            padding: 1rem;
+            font-size: 16px;
+            color: #01012A;
+            background: #e9e9e9;
+            margin-bottom: 5px;
+          } 
+          .hs-error-msgs  {
+            padding: 0;
+            margin: 0;
+            line-height: normal;
+            .hs-error-msg {
+                padding: 0;
+                font-size: 13px;
+                color: #ff5722;
+            }
+          }
+        }
+        .hs-submit {
+          input[type=submit] {
+            background: #05e5ad;
+            border: 1px solid #05e5ad;
+            color: #01012a;
+            padding: 0.8rem 3rem !important;
+            border-radius: 21px;
+            white-space: nowrap;
+            cursor: pointer;
+            margin-top: 1rem;
+            margin-bottom: 0px;
+            width: auto;
+            @include transition(0.3s, ease-in-out);
+            &:hover, &:focus, &:focus-visible {
+              background: #00bd85;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
 .marketplace-download {
   @include inline-flex; @include flex-wrap(nowrap);
   column-gap:1rem;

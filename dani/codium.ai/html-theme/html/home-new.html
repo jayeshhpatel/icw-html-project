@@ -141,7 +141,7 @@
                                     </ul>
                                 </div>
                                 <div class="herder-popup">
-                                    <a href="#popup-content" class="btn btn-green glightbox4" data-glightbox="width: 350; height: auto;"><img src="assets/icons/jetbrains-icon.svg" alt="JetBrains" width="20px" height="20px" /><img src="assets/icons/visual-studio-icon.svg" alt="VS Code" width="20px" height="20px" /> Get CodiumAI</a>
+                                    <a href="#popup-content" class="btn btn-green glightbox" data-glightbox="width: 350; height: auto;"><img src="assets/icons/jetbrains-icon.svg" alt="JetBrains" width="20px" height="20px" /><img src="assets/icons/visual-studio-icon.svg" alt="VS Code" width="20px" height="20px" /> Get CodiumAI</a>
                                     <div id="popup-content" class="mini-popup mini-popup-green" style="display: none">
                                         <div class="popup-inner-content">
                                             <div class="icon-img">
@@ -156,9 +156,35 @@
                                                     hbspt.forms.create({
                                                         region: "eu1",
                                                         portalId: "26816375",
-                                                        formId: "30df702a-2b0a-4bbf-b324-1f718e488db8"
+                                                        formId: "30df702a-2b0a-4bbf-b324-1f718e488db8",
                                                     });
                                                 </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="herder-popup">
+                                    <button class="btn btn-green btn-modal" data-modal="getCodiumAIModal"><img src="assets/icons/jetbrains-icon.svg" alt="JetBrains" width="20px" height="20px" /><img src="assets/icons/visual-studio-icon.svg" alt="VS Code" width="20px" height="20px" /> Get CodiumAI</button>
+                                    <div class="icw-modal" id="getCodiumAIModal">
+                                        <div class="modal-wrapper modal-green">                                           
+                                            <div class="modal-content">
+                                                <button class="modal-close">✕</button>
+                                                <div class="icon-img">
+                                                    <img src="assets/icons/visual-studio-icon.svg" alt="VS Code" width="24px" height="24px" />
+                                                    <img src="assets/icons/jetbrains-icon.svg" alt="JetBrains" width="24px" height="24px" />
+                                                </div>
+                                                <div class="popup-title">Get CodiumAI</div>
+                                                <div class="pop-info">Put your email here and we will send you a link you can use to download when you are back on your computer.</div>
+                                                <div class="hubspot-homepage-form">
+                                                    <script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/embed/v2.js"></script>
+                                                    <script data-hubspot-rendered="true">
+                                                        hbspt.forms.create({
+                                                            region: "eu1",
+                                                            portalId: "26816375",
+                                                            formId: "30df702a-2b0a-4bbf-b324-1f718e488db8",
+                                                        });
+                                                    </script>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -955,18 +981,50 @@
                 delay: 10000,
             },
         });
-      </script>
-      <script>
+    </script>
+    <script>
         var lightboxInlineIframe = GLightbox({
-                selector: '.glightbox4'
+            selector: '.glightbox',
+        });
+    </script>
+    <script>
+        const buttons = document.querySelectorAll(".btn-modal");
+
+        // Loop through each button to attach click event listeners
+        buttons.forEach(button => {
+            const modalId = button.getAttribute("data-modal");
+            const modal = document.getElementById(modalId);
+            const close = modal.querySelector(".modal-close");
+
+            function closeModal() {
+                
+                setTimeout(function () {
+                    modal.classList.remove("show");   
+                    document.querySelector('body').classList.remove('overflow-hidden');
+                    document.querySelector('.homepage-hero').style.cssText = `z-index: unset; position: relative;`;
+                }, 100);
+            }
+            function openModal() {
+                setTimeout(function () {
+                    modal.classList.add("show"); 
+                    document.querySelector('body').classList.add('overflow-hidden');
+                    document.querySelector('.homepage-hero').style.cssText = `z-index: 1000; position: relative;`;
+                }, 100);
+            }
+            button.addEventListener("click", function (e) {
+                openModal();
             });
-            // var lightbox = GLightbox({
-            //     selector: '.glightbox',
-            //     elements: [{
-            //         'content': document.getElementById('popup-content')
-            //     }]
+            close.addEventListener("click", function (e) {
+                closeModal();
+            });
+            // modal.addEventListener("click", function (e) {
+            //     if (e.target.tagName === "DIALOG") {
+            //     closeModal();
+            //     }
             // });
-      </script>
+        });
+
+    </script>
 </body>
 
 </html>
