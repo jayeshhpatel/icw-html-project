@@ -2366,6 +2366,7 @@ img {
                 color: $white;
                 margin-top: 5px;
                 display: inline-block;
+                margin-left: -30px;
             }
             @media (max-width:991px) {
                 font-size: 32px;
@@ -7310,8 +7311,9 @@ body .icw-gallery-imgs {
     .img-block{
         margin-bottom: 20px;
         &.mh-200 {
+            margin-bottom: 30px;
             img {
-                max-height: 200px;
+                max-height: 200px;                
             }
         }
         img{
@@ -9103,6 +9105,7 @@ body .icw-gallery-imgs {
                         margin-bottom: 20px;
                     }
                     ul {
+                        padding-left: 20px;
                         li {
                             margin-top: 35px;
                             list-style-type: disc;
@@ -9166,31 +9169,62 @@ body .icw-gallery-imgs {
         }
     }
 }
-
-.debug-data-link {
+.debug-data-link-block {    
     padding-bottom: 100px;
-    .with-border-box {
-        border-radius: 15px;
-        border: 2px solid #E6E6E6;
-        width: 100%;
-        padding: 30px 20px;
+    @media (max-width: 992px) {
+        padding-bottom: 50px;
+    }
+    .debug-data-link {
         @include flexbox;
-        @include align-items(center);
-        @include justify-content(center);
-        font-size: 16px;
-        text-align: center;
-        font-weight: 600;
-        text-transform: uppercase;
-        max-height: 80px;
-        min-height: 80px;
-        @include transition(0.3s, ease-in-out);
-        color: #545770;
-        &:hover {
-            transform: rotate(-3deg) scale(1.05);
-            color: #545770;
+        gap: 15px;
+        @media (max-width: 992px) {
+            overflow: hidden;
+            overflow-x: auto;
+            padding: 20px 15px 20px;
+            margin-bottom: 30px;
+            &::-webkit-scrollbar {
+                background-color: transparent;
+                width: 5px;
+                height: 5px;
+                border-radius: 16px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: $purple;
+                border-radius: 16px;
+            }
+            &::-webkit-scrollbar-track {
+                background-color: #eeeeee;
+            }
+        }
+        .with-border-box {
+            border-radius: 15px;
             border: 2px solid #E6E6E6;
-            background: #FFF;
-            box-shadow: 0px 1.85185px 3.14815px 0px rgba(84, 91, 104, 0.02), 0px 8.14815px 6.51852px 0px rgba(84, 91, 104, 0.03), 0px 20px 13px 0px rgba(84, 91, 104, 0.04), 0px 38.51852px 25.48148px 0px rgba(84, 91, 104, 0.04), 0px 64.81481px 46.85185px 0px rgba(84, 91, 104, 0.05), 0px 100px 80px 0px rgba(84, 91, 104, 0.07);
+            width: 100%;
+            padding: 10px 20px;
+            @include flexbox;
+            @include align-items(center);
+            @include justify-content(center);
+            font-size: 16px;
+            text-align: center;
+            font-weight: 600;
+            text-transform: uppercase;
+            max-height: 80px;
+            min-height: 80px;
+            @include transition(0.3s, ease-in-out);
+            color: #545770;
+            @media (max-width: 992px) {
+                white-space: nowrap;
+                max-height: 50px;
+                min-height: 50px;
+                font-size: 14px;
+            }
+            &:hover {
+                transform: rotate(-3deg) scale(1.05);
+                color: #545770;
+                border: 2px solid #E6E6E6;
+                background: #FFF;
+                box-shadow: 0px 1.85185px 3.14815px 0px rgba(84, 91, 104, 0.02), 0px 8.14815px 6.51852px 0px rgba(84, 91, 104, 0.03), 0px 20px 13px 0px rgba(84, 91, 104, 0.04), 0px 38.51852px 25.48148px 0px rgba(84, 91, 104, 0.04), 0px 64.81481px 46.85185px 0px rgba(84, 91, 104, 0.05), 0px 100px 80px 0px rgba(84, 91, 104, 0.07);
+            }
         }
     }
 }
