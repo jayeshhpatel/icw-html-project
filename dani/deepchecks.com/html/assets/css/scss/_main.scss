@@ -2367,6 +2367,9 @@ img {
                 margin-top: 5px;
                 display: inline-block;
                 margin-left: -30px;
+                @media (max-width: 992px) {
+                    margin-left: 0;
+                }
             }
             @media (max-width:991px) {
                 font-size: 32px;
@@ -7975,12 +7978,25 @@ body .icw-gallery-imgs {
     }
     &.bg-llm {
         background-image: url(../../assets/images/bg-llm.png);
-        background-position: center;
+        background-position: calc(100% + 50px) center;
         background-size: cover;
         background-repeat: no-repeat;
+        @media (max-width: 767px) {           
+            background-image: url(../../assets/images/bg-llm-m.png);
+            background-position: center 10%;
+            background-size: 100%;
+            .main-title {
+                text-align: center;
+            }
+            .hero-hubspot-form {
+                background: $white;
+                margin: 0 -15px;
+                padding: 30px 15px 0px;
+            }
+        }
     }
 	.main-title{
-		text-align: left;
+		text-align: left;       
         h1{
             margin-bottom: 30px;
             font-size: 56px;
