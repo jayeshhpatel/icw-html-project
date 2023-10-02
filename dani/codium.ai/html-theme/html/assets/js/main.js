@@ -3,25 +3,29 @@ jQuery(document).ready(function ($) {
     return $(window).width() < 1024;
   }
 
-  $(".hljs-keyword").prepend("<br>");
-
   $(".features-wrapper").on("click", function () {
     $(this).toggleClass("active");
     $(this).find(".feature-image").toggle();
   });
 
-  $(".twitter-tweert iframe").attr("scrolling", "yes");
+  if($(".twitter-tweert").length) {
+    $(".twitter-tweert iframe").attr("scrolling", "yes");
+  }
+
+  if($(".hljs-keyword").length) {
+    $(".hljs-keyword").prepend("<br>");
+  }
 
   $.fn.isInViewport = function () {
     var elementTop = $(this).offset().top;
     var elementBottom = elementTop + $(this).outerHeight();
-
+  
     var viewportTop = $(window).scrollTop();
     var viewportBottom = viewportTop + $(window).height();
-
+  
     return elementBottom > viewportTop && elementTop < viewportBottom;
   };
-
+  
   function throttle(fn, wait) {
     var time = Date.now();
     return function () {
@@ -31,8 +35,8 @@ jQuery(document).ready(function ($) {
       }
     };
   }
-
-  if ($("#background-video-footer").length) {
+ 
+  if($("#background-video-footer").length) {
     $(window).on(
       "resize scroll",
       throttle(function () {
@@ -40,7 +44,7 @@ jQuery(document).ready(function ($) {
           let id = $(this).attr("id");
           let played = $(this).attr("played");
 
-          if ($(this).isInViewport()) {
+          if ($("#background-video-footer").isInViewport()) {
             if (played == "false") {
               $(this)[0].play();
               $(this).attr("played", "true");
@@ -303,7 +307,7 @@ jQuery(document).ready(function ($) {
       return false;
   });
 
-  if ($('.play-iframe').length){
+  if($('.play-iframe').length){
     $('.play-iframe').click(function(ev){	
         videourl = $(this).data('videosrc')+"?api=1&autoplay=1&muted=1&rel=0&enablejsapi=1";
         if($(this).data('ext') == 'mp4'){
@@ -317,7 +321,7 @@ jQuery(document).ready(function ($) {
     });
   }
 
-  if ($('.icw-gallery-sider').length){
+  if($('.icw-gallery-sider').length){
     var swiperGallery = new Swiper(".icw-gallery-sider", {
       spaceBetween: 20,
       autoHeight: true,
@@ -358,9 +362,9 @@ jQuery(document).ready(function ($) {
       },
     });
   }
-
-  if($('.features--slider').length){
-    var swiperFeaturesReview = new Swiper(".features--slider", {
+  var swiperFeaturesReview;
+  function swiperFeaturesReviewSlider() {
+      swiperFeaturesReview= new Swiper(".features--slider", {
       grabCursor: true,
       slidesPerView: "auto",
       freeMode: true,
@@ -369,6 +373,34 @@ jQuery(document).ready(function ($) {
         hide: true,
       },
     });
+    
+  }
+  if ($(window).width() < 1200) {
+    swiperFeaturesReviewSlider();
+  }
+
+  $(window).resize(function() {
+    if ($(window).width() < 1200) {
+      swiperFeaturesReviewSlider();
+    } else {
+      this.location.reload(false);
+      swiperFeaturesReview.disable();
+      swiperFeaturesReview.destroy(true, true);
+    }
+  });
+    
+
+    if($('.reviewSlider').length){
+    var swiper = new Swiper(".reviewSlider", {
+      pagination: {
+          el: ".icw-swiper-pagination",  
+          clickable: true,              
+      }, 
+      loop: true,
+      autoplay: {
+          delay: 6000
+      },
+  });
   }
 
   // $.fn.isInViewport = function () {
@@ -552,3 +584,43 @@ jQuery.fn.accessibleDropDown = function () {
       jQuery(this).parents("li").removeClass("hover");
     });
 };
+
+// ICW-modal @ jayesh@InCreativeWeb.com (https://codepen.io/jayeshhpatel/pen/QWzrBaR)
+if (jQuery('.icw-modal-action').length) {
+const icwModelAction = document.querySelectorAll(".icw-modal-action");
+// if (icwModelAction.length === 0) {
+// Loop through each icwAction to attach click event listeners
+icwModelAction.forEach(icwAction => {
+    const icwModalId = icwAction.getAttribute("data-modal");
+    const icwModal = document.getElementById(icwModalId);
+    const icwModalClose = icwModal.querySelector(".icw--modal-close");
+
+    function icwCloseModal() {
+        document.querySelector('body').classList.remove('overflow-hidden');
+        // document.querySelector('.homepage-hero').style.cssText = `z-index: unset; position: relative;`;
+        document.querySelector('.icw--modal-wrapper').style.cssText = `-webkit-animation:gzoomOut .5s ease;animation:gzoomOut .5s ease;`; 
+        setTimeout(function () {
+            icwModal.classList.remove("show"); 
+        }, 100);
+    }
+    function icwOpenModal() {
+        icwModal.classList.add("show"); 
+        // document.querySelector('.homepage-hero').style.cssText = `z-index: 1000; position: relative;`;
+        document.querySelector('.icw--modal-wrapper').style.cssText = ``; 
+        setTimeout(function () {                    
+            document.querySelector('body').classList.add('overflow-hidden');
+        }, 500);
+    }
+    icwAction.addEventListener("click", function (e) {
+        icwOpenModal();
+    });
+    icwModalClose.addEventListener("click", function (e) {
+        icwCloseModal();
+    });
+    // modal.addEventListener("click", function (e) {
+    //     if (e.target.tagName === "DIALOG") {
+    //     icwCloseModal();
+    //     }
+    // });
+});
+}
