@@ -375,19 +375,21 @@ jQuery(document).ready(function ($) {
     });
     
   }
-  if ($(window).width() < 1200) {
-    swiperFeaturesReviewSlider();
-  }
-
-  $(window).resize(function() {
+  if($('.features--slider').length){
     if ($(window).width() < 1200) {
       swiperFeaturesReviewSlider();
-    } else {
-      this.location.reload(false);
-      swiperFeaturesReview.disable();
-      swiperFeaturesReview.destroy(true, true);
     }
-  });
+
+    $(window).resize(function() {
+      if ($(window).width() < 1200) {
+        swiperFeaturesReviewSlider();
+      } else {
+        this.location.reload(false);
+        swiperFeaturesReview.disable();
+        swiperFeaturesReview.destroy(true, true);
+      }
+    });
+  }
     
 
     if($('.reviewSlider').length){
