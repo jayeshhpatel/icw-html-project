@@ -2112,8 +2112,70 @@
 .main-headline-video-section {
     background: #fff url(../images/bg-video.png) no-repeat center center;
     background-size: cover;
+    overflow: hidden;
+    position: relative;
+    
     .only-video-block {
         max-width: 860px;
         margin: 0 auto;
+        position: relative;
+        @media (max-width: 992px) {
+            max-width: 650px;
+        }
+        @media (max-width: 767px) {
+            max-width: 550px;
+        }
+        &::before {
+            content: '';
+            background: url(../images/video-vector.png) no-repeat center center;
+            background-size: contain;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 5%;
+            left: -18%;
+            z-index: -1;
+            @media (max-width: 1200px) {
+                left: -10%;
+            }
+            @media (max-width: 992px) {
+                top: -50px;
+                left: -8%;
+            }
+        }
+        &::after {
+            content: '';
+            background: url(../images/circle-img-1.png) no-repeat center center;
+            background-size: contain;
+            width: 120px;
+            height: 85px;
+            position: absolute;
+            bottom: 0;
+            right: -20%;
+            z-index: -1;
+            @media (max-width: 1200px) {
+                right: -10%;
+            }
+            @media (max-width: 992px) {
+                bottom: -10%;
+                right: -10%;
+            }
+            @media (max-width: 767px) {
+                bottom: -25%;
+                right: -10%;
+            }
+        }
     }
+    .resource-thumbnail-video {
+        line-height: 0.7;        
+        .resource-thumbnail-block {
+            @include transition(0.3s, ease-in-out);
+            @include border-radius(15px);
+            @include transform(none);
+            &::before {
+                content: none;
+            }
+        }
+    }
+    
 }
