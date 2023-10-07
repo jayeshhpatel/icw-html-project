@@ -290,6 +290,11 @@ img{
                 z-index: 1;  
                 .icon {
                     margin-right: 10px;
+                    svg {
+                        path {
+                            @include transition(0.3s, ease-in-out);
+                        }
+                    }
                 }
                 &:before {
                     content: "";
@@ -305,6 +310,13 @@ img{
                 &:hover {
                     color: $primary;
                     background: transparent;
+                    .icon {
+                        svg {
+                            path {
+                                fill: $primary;
+                            }
+                        }
+                    }
                     &:before {
                         width: 100%;
                     }
@@ -330,7 +342,7 @@ img{
             @include align-items(center);
             @include justify-content(center);
             position: relative;
-            @include transition(0.3s, ease-in-out);
+            @include transition(0.3s, ease-in-out);            
             .number {
                 position: absolute;
                 font-size: 8px;
@@ -480,23 +492,29 @@ img{
     @include flexbox;
     @include align-items(center);
     padding: 0 15px;
+    &:hover {
+        .btn-icon { 
+            svg {
+                path {
+                    fill: $primary;
+                }
+            }
+        }
+    }
     .btn-icon {
         padding: 0;
         @include transition(0.3s, ease-in-out);
-        .icon {
-            width: 18px; 
-            height: 18px;
-            display: inline-block;
-            background-size: contain !important;
-            @include transition(0.3s, ease-in-out);
-            &.icon-search {
-                background: url(../images/icons/icon-search.svg) no-repeat center center;
+        svg {
+            path {
+                @include transition(0.3s, ease-in-out);
             }
         }
         &:hover, &:focus {
-            .icon {
-                @include opacity(0.5);
-                @include transform(scale(1.2) rotate(15deg));
+            @include transform(scale(1.2));
+            svg {
+                path {
+                    fill: $primary;
+                }
             }
         }
     }
