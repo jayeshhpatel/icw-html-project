@@ -1,0 +1,165 @@
+.main-sidebar {
+    max-width: 275px;   
+    @include transition(0.3s, ease-in-out);
+    z-index: 1040;
+    position: relative;
+    background: #f8f8f8; 
+    position: fixed;
+    left: 20px;
+    top: 135px;
+    width: 100%;
+    height: calc(100% - 135px);
+    overflow: auto;
+    &::-webkit-scrollbar {
+        background-color: transparent;
+        width: 6px;
+        height: 6px;
+        border-radius: 15px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: rgb(152, 152, 170);
+        border-radius: 15px;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: rgb(238, 238, 238);
+        border-radius: 15px;
+    }
+    @media (max-width: 1200px) {
+        top: 105px;
+        left: 0;
+        @include border-radius(0 15px 15px 0);
+        @include transform(translateX(-110%));
+        border: 1px solid #E7EEFF;
+        box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.05);
+        padding: 15px 0;
+        &.is-open {
+            @include transform(translateX(0));
+        }
+    }
+   
+    .sidebar-menu {
+        
+        @media (max-width: 1200px) {
+            padding: 0 15px;
+        }
+        ul {
+            li {                
+                margin-bottom: 5px;          
+                &:last-child {
+                    margin-bottom: 0;
+                }      
+                a {
+                    padding: 10px;
+                    color: $black;
+                    @include border-radius(12px);
+                    @include transition(0.3s, ease-in-out);
+                    @include flexbox;
+                    @include align-items(center);
+                    .icon {
+                        border-radius: 12px;
+                        border: 1px solid #FFCB79;
+                        background: #FFEEE0;
+                        padding: 8px;
+                        margin-right: 15px;
+                        svg {
+                            path {
+                                stroke: #D5870C;
+                            }
+                        }
+                    }
+                }
+                &:hover, &:focus {
+                    a {
+                        background: $white;
+                        @include box-shadow(0px 4px 6px rgba(0, 0, 0, 0.02));
+                    }
+                }
+                &.active {                    
+                    a {
+                        font-weight: 600;
+                        background: $white;
+                        @include box-shadow(0px 4px 6px rgba(0, 0, 0, 0.02));
+                        .icon {
+                            border-color: #448E4A !important;
+                            background: #448E4A !important;
+                            svg {
+                                path {
+                                    stroke: $white !important;
+                                }
+                            }
+                        }
+                    }
+                }  
+                .accordion {
+                    .accordion-item {
+                        .accordion-body {
+                            padding: 0;
+                            padding-top: 10px;
+                            .accordion-menu-list {
+                                li {
+                                    padding-left: 27px;
+                                    a {
+                                        font-size: 12px;
+                                        padding: 0;
+                                        padding-right: 20px;
+                                        position: relative;
+                                        z-index: 1;
+                                        @include box-shadow(none);
+                                        background: url(../images/icons/icon-check.svg) no-repeat center right;                                        
+                                        .sm-icon {
+                                            margin-right: 5px;
+                                            margin-top: -2px;
+                                            width: 13px;
+                                            height: 13px;
+                                            flex: none;
+                                            svg {
+                                                path {
+                                                    @include transition(0.3s, ease-in-out);
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &:hover, &:focus {
+                                        a {
+                                            @include box-shadow(none);
+                                            color: $primary;                                            
+                                            .sm-icon {
+                                                svg {
+                                                    path {
+                                                        stroke: $primary;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+    .sidebar-footer-action {
+        margin-top: 50px;
+        @media (max-width: 1200px) {
+            padding: 15px;
+        }
+        .btn.btn-primary {
+            @include border-radius(65px);
+            background: #115C51;
+            border-color: #115C51;
+            font-size: 24px;
+            &:hover, &:focus {
+                background: transparent;
+                color: #115C51 !important;
+                svg {
+                    path {
+                        fill: #115C51;
+                    }
+                }
+            }
+        }
+    }
+}
