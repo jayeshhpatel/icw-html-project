@@ -114,9 +114,11 @@ img{
 .row.g-15 {
     margin-left: -15px;
     margin-right: -15px;
+    margin-top: -30px;
     & > *{
         padding-left: 15px;
         padding-right: 15px;
+        margin-top: 30px;
     }
 }
 
@@ -313,6 +315,43 @@ img{
 }
 /* Dropdown - End */
 
+.avatar {
+    font-size: 14px;
+    line-height: 30px;
+    position: relative;
+    @include inline-flex;
+    @include align-items(center);
+    @include justify-content(center);
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+    background: transparent;
+    border: 1px solid transparent;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #FFEEE0;
+    .avatar-string {
+        color: #FFCB79;
+        line-height: 0.7;
+        font-weight: 500;
+        margin-top: 2px;
+    }
+    &.bg-lightgreen {
+        background: #E4F4D8;
+        .avatar-string {
+            color: #90CC54;
+        }
+    }
+    &.bg-lightpurple {
+        background: #E4ECFD;
+        .avatar-string {
+            color: #9DBDFF;
+        }
+    }
+}
+
 .basic-info-box {
     padding: 20px;
     border: 1px solid transparent;
@@ -384,6 +423,22 @@ img{
     }
     .card-body {
         padding: 20px 0;
+        .user-info {
+            @include flexbox;
+            @include align-items(center);
+            .avatar {
+                margin-right: 10px;
+            }
+            .name-info {
+                .name {
+                    font-size: 14px;
+                }
+                .post {
+                    font-size: 12px;
+                    color: #9B9B9B;
+                }
+            }
+        }
         .table-block {
             table {
                 empty-cells: show;
