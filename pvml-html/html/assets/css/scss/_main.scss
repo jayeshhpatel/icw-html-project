@@ -134,17 +134,64 @@ h1 {
         grid-template-columns: repeat(1, 1fr);
     }
     .image-block {
+        
         @media (min-width: 1441px) {
             text-align: right;
         }
         @media (max-width: 767px) {
             display: none;
         }
-        img {
+        svg {
+            .moveRightLeft {
+                animation: moveRightLeft 4s ease-out infinite;
+            }
+            .moveUpDown {
+                animation: moveUpDown 4s ease-out infinite;
+                animation-direction: reverse;
+            }
+            .zoomInZoomOut {
+                animation: zoomInZoomOut 8s ease-out infinite;
+            }
             @media (min-width: 1441px) {
                 max-width: 80%;
             }
         }
+    }
+}
+@keyframes zoomInZoomOut {
+    0% {
+      transform: scale(1, 1);
+      transform-origin: center;
+    }
+    50% {
+      transform: scale(1.04, 1.04);
+      transform-origin: center;
+    }
+    100% {
+      transform: scale(1, 1);
+      transform-origin: center;
+    }
+}
+@keyframes moveRightLeft {
+    0% {
+      transform: translateX(30px);
+    }
+    50% {
+        transform: translateX(0px);
+    }
+    100% {
+        transform: translateX(30px);
+    }
+}
+@keyframes moveUpDown {
+    0% {
+      transform: translateY(30px);
+    }
+    50% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(30px);
     }
 }
 
@@ -235,7 +282,7 @@ h1 {
         .hs_error_rollup {
             position: absolute;
             bottom: -22px;
-            font-size: 12px;
+            font-size: 14px;
             color: #ff0000;
             @media (max-width: 575px) {
                 margin-top: 20px;
