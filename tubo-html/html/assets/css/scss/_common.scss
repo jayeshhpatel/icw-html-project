@@ -50,6 +50,9 @@ body {
     @media (max-width: 1200px) {
         padding: 10px; 
     }
+    @media (max-width: 575px) {
+        padding: 0px; 
+    }
 }
 ul {
     margin: 0;
@@ -111,6 +114,10 @@ img{
     color: #F20000 !important;
 }
 
+.mb-30 {
+    margin-bottom: 30px;
+}
+
 .row.g-15 {
     margin-left: -15px;
     margin-right: -15px;
@@ -126,11 +133,11 @@ img{
 .bg-lightorange {
     background: #FFEEE0 !important;
     &.with-border {
-        border-color: #FFCB79 !important;
+        border-color: $orange !important;
     }
     svg {
         path {
-            stroke: #FFCB79 !important;
+            stroke: $orange !important;
         }
     }
 }
@@ -160,7 +167,7 @@ img{
 
 /* Border Color */
 .border-lightorange { 
-    border-color: #FFCB79;
+    border-color: $orange;
 }
 .border-lightgreen { 
     border-color: #90CC54;
@@ -218,12 +225,9 @@ img{
 	@include align-items(center);
 	@include transition(0.3s, ease-in-out);
 	&:hover, &:focus, &:active {
-		color: $primary;
+		color: #115C51;
 		box-shadow: none !important;
 		text-decoration: none;
-	}
-	&:hover,&:focus{
-		color: $primary;
 	}
 	&.with-icon {
 		&:after {
@@ -239,6 +243,7 @@ img{
 		&:hover, &:focus, &:active {
 			&:after {
 				margin-left: 12px;
+                background: url('data:image/svg+xml;utf8,<svg width="15" height="7" viewBox="0 0 15 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2187 0.84375L13.875 3.5M13.875 3.5L11.2187 6.15625M13.875 3.5L1.125 3.5" stroke="rgba(17, 92, 81, 1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center;
 			}
 		}
 	}
@@ -333,7 +338,7 @@ img{
     border-radius: 50%;
     background: #FFEEE0;
     .avatar-string {
-        color: #FFCB79;
+        color: $orange;
         line-height: 0.7;
         font-weight: 500;
         margin-top: 2px;
@@ -356,10 +361,11 @@ img{
     padding: 20px;
     border: 1px solid transparent;
     @include border-radius(15px);
-    margin-bottom: 30px;
     @include flexbox;
     @include align-items(center);
+    height: 100%;
     .title-info {
+        margin-right: 15px;
         .title {
             font-size: 14px;
         }
@@ -403,6 +409,14 @@ img{
         }
         .right-side-content {
             margin-left: auto;
+            @include inline-flex;
+            @include align-items(center);
+            & > * {
+                margin-right: 10px;
+                &:last-child {
+                    margin-right: 0
+                }
+            }
         }
         .dropdown {
             .dropdown-toggle {
@@ -422,7 +436,7 @@ img{
         }
     }
     .card-body {
-        padding: 20px 0;
+        padding: 10px 0;
         .user-info {
             @include flexbox;
             @include align-items(center);
@@ -442,6 +456,14 @@ img{
         .table-block {
             table {
                 empty-cells: show;
+                &.with-border {
+                    tr { 
+                        border-bottom: 1px solid #EBF1FF;
+                        &:last-child {
+                            border-bottom: none;
+                        }
+                    } 
+                }
                 tr {
                     border: none;
                     &:first-child { 
@@ -457,13 +479,21 @@ img{
                     td {
                         border: none;
                         font-size: 14px;
-                        padding: 5px;
+                        padding: 10px 5px;
+                        vertical-align: middle;
                         &:first-child {
                             padding-left: 0;
                         }
                         &:last-child {
                             text-align: right;
                             padding-right: 0;
+                        }
+                        .dropdown {
+                            .dropdown-toggle {
+                                &::after {
+                                    content: none !important;
+                                }
+                            }
                         }
                     }
                 }
@@ -561,8 +591,8 @@ img{
             .collapse-title { 
                 font-weight: 600;
                 .icon {
-                    border-color: #448E4A !important;
-                    background: #448E4A !important;
+                    border-color: $primary !important;
+                    background: $primary !important;
                     svg {
                         path {
                             stroke: $white !important;
