@@ -142,9 +142,6 @@ h1 {
             display: none;
         }
         svg {
-            .moveRightLeft {
-                animation: moveRightLeft 4s ease-out infinite;
-            }
             .moveUpDown {
                 animation: moveUpDown 4s ease-out infinite;
                 animation-direction: reverse;
@@ -172,17 +169,7 @@ h1 {
       transform-origin: center;
     }
 }
-@keyframes moveRightLeft {
-    0% {
-      transform: translateX(30px);
-    }
-    50% {
-        transform: translateX(0px);
-    }
-    100% {
-        transform: translateX(30px);
-    }
-}
+
 @keyframes moveUpDown {
     0% {
       transform: translateY(30px);
@@ -246,6 +233,15 @@ h1 {
                     }
                 }
             }
+            .hs-error-msgs {
+                position: absolute;                
+                bottom: -22px;
+                label {
+                    display: block;
+                    font-size: 14px;
+                    color: #ff0000;
+                }
+            }
             .hs_submit {
                 @media (min-width: 575px) {
                     position: absolute;
@@ -280,13 +276,7 @@ h1 {
             }
         }
         .hs_error_rollup {
-            position: absolute;
-            bottom: -22px;
-            font-size: 14px;
-            color: #ff0000;
-            @media (max-width: 575px) {
-                margin-top: 20px;
-            }
+            display: none;       
         }
     }
 }
