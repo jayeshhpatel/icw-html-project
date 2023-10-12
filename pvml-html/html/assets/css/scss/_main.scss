@@ -31,7 +31,7 @@ ul {
     margin: 0;
 }
  
-img {
+img, svg {
     max-width: 100%;
     height: auto;
 }
@@ -105,13 +105,11 @@ h1 {
         }
     }
 }
-.main-content-wrapper {
-    @media (min-height: 700px) {
-        min-height: calc(100vh - 230px);
-    }
+.main-content-wrapper {   
     @include flexbox;
     @include flex-direction(column);
     @include justify-content(center);
+    flex: 1 1 auto;
     .main-section {
         padding: 90px 0;
         @media (max-width: 992px) {
@@ -134,7 +132,6 @@ h1 {
         grid-template-columns: repeat(1, 1fr);
     }
     .image-block {
-        
         @media (min-width: 1441px) {
             text-align: right;
         }
@@ -158,15 +155,15 @@ h1 {
 @keyframes zoomInZoomOut {
     0% {
       transform: scale(1, 1);
-      transform-origin: center;
+      transform-origin: center bottom;
     }
     50% {
       transform: scale(1.04, 1.04);
-      transform-origin: center;
+      transform-origin: center bottom;
     }
     100% {
       transform: scale(1, 1);
-      transform-origin: center;
+      transform-origin: center bottom;
     }
 }
 
