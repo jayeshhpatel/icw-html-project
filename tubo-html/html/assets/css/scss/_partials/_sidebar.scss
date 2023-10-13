@@ -1,150 +1,137 @@
-.main-sidebar {
-    max-width: 275px;   
+.main-sidebar {    
+    top: 130px;
+    z-index: 1;  
+    @include border-radius(12px);
+    max-height: calc(100vh - 150px);
+    @include flexbox;
+    @include flex-direction(column);
+    @include justify-content(flex-start);
+    overflow: hidden;
+    overflow-y: auto;
+    background: #f8f8f8;
+    @include box-shadow(0px 4px 6px rgba(0, 0, 0, 0.02));
     @include transition(0.3s, ease-in-out);
-    z-index: 1040;
-    position: relative;
-    background: #f8f8f8; 
-    position: fixed;
-    left: 20px;
-    top: 135px;
-    width: 100%;
-    height: calc(100% - 135px);
-    overflow: auto;
     &::-webkit-scrollbar {
         background-color: transparent;
-        width: 6px;
-        height: 6px;
+        width: 2px;
+        height: 2px;
         border-radius: 15px;
     }
     &::-webkit-scrollbar-thumb {
-        background-color: rgb(152, 152, 170);
+        background-color: #EBF1FF;
         border-radius: 15px;
     }
     &::-webkit-scrollbar-track {
-        background-color: rgb(238, 238, 238);
+        background-color: transparent;
         border-radius: 15px;
     }
     @media (max-width: 1200px) {
-        top: 105px;
-        left: 0;
-        @include border-radius(0 15px 15px 0);
-        @include transform(translateX(-110%));
-        border: 1px solid #E7EEFF;
-        box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.05);
-        padding: 15px 0;
-        &.is-open {
+        position: fixed;
+        width: 275px;
+        top: 95px;
+        z-index: 1040;
+        height: 100%;
+        max-height: calc(100vh - 105px);
+        @include transform(translateX(-120%));
+        &.is-open {            
             @include transform(translateX(0));
         }
     }
-   
-    .sidebar-menu {
-        
-        @media (max-width: 1200px) {
-            padding: 0 15px;
-        }
-        ul {
-            li {                
-                margin-bottom: 5px;          
-                &:last-child {
-                    margin-bottom: 0;
-                }      
-                a {
-                    padding: 10px;
-                    color: $black;
-                    @include border-radius(12px);
-                    @include transition(0.3s, ease-in-out);
-                    @include flexbox;
-                    @include align-items(center);
-                    .icon {      
+    @media (max-width: 575px) {
+        top: 70px;
+        max-height: calc(100vh - 80px);
+    }
+    @media (min-width: 1200px) {
+        position: sticky;
+        background: $white;
+        &.is-done {
+            background: transparent;
+            @include box-shadow(none);
+            .sidebar-footer-action {
+                .btn.btn-primary {
+                    visibility: visible;
+                    opacity: 1;
+                }
+                .sidebar-collapse-action {                 
+                    margin-right: 12px;
+                    @include transform(translateX(0px));
+                }
+            }
+            .collapse-block {
+                .collapse-header {
+                    background: $white;
+                    @include box-shadow(0px 4px 6px rgba(0, 0, 0, 0.02));
+                    .icon {
                         margin-right: 15px;
-                        svg {
-                            path {
-                                stroke: #D5870C;
-                            }
-                        }
+                    }
+                    .text {
+                        display: block;
+                        visibility: visible;
+                        opacity: 1;
+                    }
+                    .action {
+                        @include inline-flex;
+                        visibility: visible;
+                        opacity: 1;
                     }
                 }
-                &:hover, &:focus {
-                    a {
-                        background: $white;
-                        @include box-shadow(0px 4px 6px rgba(0, 0, 0, 0.02));
-                    }
-                }
-                &.active {                    
-                    a {
-                        font-weight: 600;
-                        background: $white;
-                        @include box-shadow(0px 4px 6px rgba(0, 0, 0, 0.02));
-                        .icon {
-                            border-color: #448E4A !important;
-                            background: #448E4A !important;
-                            svg {
-                                path {
-                                    stroke: $white !important;
-                                }
-                            }
-                        }
-                    }
-                }  
-                .accordion {
-                    .accordion-item {
-                        .accordion-body {
-                            padding: 0;
-                            padding-top: 10px;
-                            .accordion-menu-list {
-                                li {
-                                    padding-left: 27px;
-                                    a {
-                                        font-size: 12px;
-                                        padding: 0;
-                                        position: relative;
-                                        z-index: 1;
-                                        @include box-shadow(none);                                        
-                                        .sm-icon {
-                                            margin-right: 5px;
-                                            margin-top: -2px;
-                                            width: 13px;
-                                            height: 13px;
-                                            flex: none;
-                                            svg {
-                                                path {
-                                                    @include transition(0.3s, ease-in-out);
-                                                }
-                                            }
-                                        }
-                                    }
-                                    &:hover, &:focus {
-                                        a {
-                                            @include box-shadow(none);
-                                            color: $primary;                                            
-                                            .sm-icon {
-                                                svg {
-                                                    path {
-                                                        stroke: $primary;
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    
-                }
+            }
+            .accordion { 
+                display: block;
+                visibility: visible;
+                opacity: 1;
             }
         }
     }
+    
+    .sidebar-menu {
+        flex: 1 1 auto;
+    }
     .sidebar-footer-action {
         margin-top: 50px;
+        margin-bottom: 20px;
+        @include flexbox;
+        @include align-items(center);
         @media (max-width: 1200px) {
             padding: 15px;
+        }
+        .sidebar-collapse-action {
+            margin-right: 12px;
+            @media (min-width: 1200px) {
+                margin-right: 0px;
+                @include transform(translateX(17px));
+            }
+            cursor: pointer;
+            @include transition(0.3s, ease-in-out);
+            svg {
+                path {                        
+                    @include transition(0.3s, ease-in-out);
+                }
+                line {
+                    @include transition(0.3s, ease-in-out);
+                }
+            }
+            &:hover, &:focus {
+                svg {
+                    path {                        
+                        fill: #4FCB8D;
+                    }
+                    line {
+                        stroke: #4FCB8D;
+                    }
+                }
+            }
         }
         .btn.btn-primary {
             @include border-radius(65px);
             background: #115C51;
             border-color: #115C51;
-            font-size: 24px;
+            font-size: 24px;            
+            width: 100%;            
+            @media (min-width: 1200px) { 
+                visibility: hidden;
+                opacity: 0;
+            }
             &:hover, &:focus {
                 background: transparent;
                 color: #115C51 !important;
@@ -155,5 +142,109 @@
                 }
             }
         }
+    }
+    .collapse-block {
+        .collapse-header {
+            padding: 10px;
+            color: $black;
+            @include border-radius(12px);
+            @include transition(0.3s, ease-in-out);
+            @include flexbox;
+            @include align-items(center);
+            @media (min-width: 1200px) { 
+                background: transparent;
+                @include box-shadow(none); 
+            }
+            .icon {      
+                border-color: $primary;
+                background: $primary;
+                margin-right: 15px;
+                @media (min-width: 1200px) {
+                    margin-right: 0;
+                }
+                svg {
+                    path {
+                        stroke: $white;
+                    }
+                }
+            }
+            .text {
+                display: block;
+                visibility: visible;
+                opacity: 1;
+            }
+            .action {
+                @include inline-flex;
+                visibility: visible;
+                opacity: 1;
+            }
+            @media (min-width: 1200px) { 
+                .text {
+                    display: none;
+                    visibility: hidden;
+                    opacity: 0;
+                }
+                .action {
+                    display: none;
+                    visibility: hidden;
+                    opacity: 0;
+                }
+            }
+            &:hover, &:focus {
+                background: $white;
+                @include box-shadow(0px 4px 6px rgba(0, 0, 0, 0.08));
+            }
+        }
+    }
+    .accordion {
+        @media (min-width: 1200px) { 
+            display: none;
+            visibility: hidden;
+            opacity: 0;
+        }
+        .accordion-item {
+            .accordion-body {
+                padding: 0;
+                padding-top: 10px;
+                .accordion-menu-list {
+                    li {
+                        padding-left: 25px;
+                        a {
+                            font-size: 12px;
+                            padding: 0;
+                            position: relative;
+                            z-index: 1;
+                            @include box-shadow(none);                                        
+                            .sm-icon {
+                                margin-right: 5px;
+                                margin-top: -2px;
+                                width: 13px;
+                                height: 13px;
+                                flex: none;
+                                svg {
+                                    path {
+                                        @include transition(0.3s, ease-in-out);
+                                    }
+                                }
+                            }
+                        }
+                        &:hover, &:focus {
+                            a {
+                                @include box-shadow(none);
+                                color: $primary;                                            
+                                .sm-icon {
+                                    svg {
+                                        path {
+                                            stroke: $primary;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
     }
 }

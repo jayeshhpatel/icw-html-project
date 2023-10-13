@@ -1,14 +1,24 @@
-.main-content-wrapper {
-    margin-top: 110px; 
-    min-height: calc(100vh - 110px);  
-    @include border-radius(15px);
+.main-content-wrapper { 
+    display: grid;
+    grid-template-columns: 235px auto;
+    margin-top: 110px;
+    
+    @include transition(0.3s, ease-in-out);
+    &.is-expand { 
+        grid-template-columns: 65px auto;
+    }
+    @media (max-width: 1200px) {
+        display: block;
+        margin-bottom: 30px;
+    }
     @media (max-width: 575px) {
         padding: 0 10px;
     }
-}
-.content-wrapper {
-    padding-left: 300px;    
-    @media (max-width: 1200px) {
-        padding-left: 0px;
+    .content-wrapper {
+        margin-left: 15px;
+        @media (max-width: 1200px) {
+            margin-left: 0px;
+            padding-left: 0px;
+        }
     }
 }
