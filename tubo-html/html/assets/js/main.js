@@ -10,21 +10,10 @@ jQuery(document).ready(function($) {
         $('.bg-overly,.navbar-toggler,body,.main-header, .main-sidebar').toggleClass('is-open');
         e.preventDefault();
     });
-    $('.sidebar-collapse-action').on('click', function (e) {
-        
-        if(!($('.main-sidebar').hasClass('is-minimize'))){
-            $('.main-sidebar').removeClass('is-done');           
-            setTimeout(() => {
-                $('.main-sidebar').addClass('is-minimize');
-                $('.main-content-wrapper').addClass('is-expand');
-            }, 50);
-        } else {
-            $('.main-sidebar').removeClass('is-minimize');
-            $('.main-content-wrapper').removeClass('is-expand');
-            setTimeout(() => {
-                $('.main-sidebar').addClass('is-done');
-            }, 80);
-        }
+
+    $('.sidebar-collapse-action').on('click', function (e) {        
+        $('.main-sidebar').toggleClass('is-minimize');
+        $('.main-content-wrapper').toggleClass('is-expand');
         e.preventDefault();
     });
 })

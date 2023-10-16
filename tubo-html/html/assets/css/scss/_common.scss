@@ -32,7 +32,7 @@ hr {
 }
 body {
     margin: 0; 
-    padding: 20px; 
+    padding: 0px; 
     background: $bodybg;
     font-family: $bodyfont; 
     color: $black; 
@@ -47,12 +47,6 @@ body {
     position: relative;
     &.is-open {
         overflow: hidden;
-    }
-    @media (max-width: 1200px) {
-        padding: 10px; 
-    }
-    @media (max-width: 575px) {
-        padding: 0px; 
     }
 }
 ul {
@@ -139,16 +133,18 @@ img{
 .row.g-15 {
     margin-left: -15px;
     margin-right: -15px;
-    margin-top: -30px;
     @media (max-width: 767px) {
-        margin-top: -20px;
-    }  
+        margin-left: -10px;
+        margin-right: -10px;
+    }
     & > *{
         padding-left: 15px;
         padding-right: 15px;
-        margin-top: 30px;
+        margin-bottom: 30px;
         @media (max-width: 767px) {
-            margin-top: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-bottom: 20px;
         }  
     }
 }
@@ -203,10 +199,11 @@ img{
 
 /* Button */
 .btn {
-	min-height: 32px;
-	padding: 7px 20px 5px;
+	min-height: 38px;
+	padding: 5px 20px;
 	font-weight: 500;
 	font-size: 14px;
+    line-height: normal;
 	@include transition(0.3s, ease-in-out);
 	@include border-radius(5px);
 	@include inline-flex;
@@ -307,10 +304,13 @@ img{
         box-shadow: 0px 3.5px 5.5px 0px rgba(0, 0, 0, 0.12);
         min-width: 120px;
         @include transition(0.3s, ease-in-out);
-        padding: 0;   
+        padding: 0;  
+        @include opacity(0);
+        visibility: hidden;
+        @include transform(translateY(10px) !important);
+        display: block; 
         li {
-            padding: 8px 12px;     
-            line-height: 1;   
+            padding: 8px 12px; 
             @include transition(0.3s, ease-in-out);    
             &:first-child {
                 @include border-radius(10px 10px 0 0);
@@ -323,6 +323,8 @@ img{
                 color: $black;
                 font-size: 13px;
                 padding: 0;
+                cursor: pointer;
+                background: transparent;
                 @include inline-flex;
                 @include align-items(center);
                 width: auto;
@@ -336,6 +338,17 @@ img{
                 background: rgba(#EBF1FF, 0.7);
             }
             
+        }
+        &.show {            
+            @include transform(translateY(3px) !important);
+            @include opacity(1);
+            visibility: visible;
+            &[data-popper-placement='bottom-end'] {
+                inset: auto 0 auto auto !important;
+            }
+            &[data-popper-placement='bottom-start'] {
+                inset: auto auto auto 0 !important;
+            }
         }
     } 
 }
@@ -478,15 +491,15 @@ img{
                 border: none;
                 font-size: 12px;
                 font-weight: 800;
-                padding: 5px 8px;
+                padding: 5px;
                 color: $black;
+                width: 28px;
+                height: 28px;
+                @include inline-flex;
+                @include align-items(center);
+                @include justify-content(center);
                 @include transition(0.3s,ease-in-out);
-                &[aria-label='Previous'], &[aria-label='Next'] {
-                    width: 28px;
-                    height: 28px;
-                    @include inline-flex;
-                    @include align-items(center);
-                    @include justify-content(center);
+                &[aria-label='Previous'], &[aria-label='Next'] {                    
                     background: #f8f8f8;
                     border: 1px solid #EBF1FF;
                     @include border-radius(5px);
@@ -575,6 +588,7 @@ img{
         border-radius: 15px;
     }
     .table {
+        overflow: hidden;
         &.with-border {
             tbody {
                 tr { 
@@ -640,14 +654,9 @@ img{
         tbody {
             tr {
                 border: none;
-                &:first-child { 
+                &:hover {
                     td {
-                        padding-top: 0;
-                    }
-                }
-                &:last-child { 
-                    td {
-                        padding-bottom: 0;
+                        background: #f8f8f8;
                     }
                 }
                 td {
@@ -656,6 +665,7 @@ img{
                     padding: 10px 5px;
                     vertical-align: middle;
                     white-space: nowrap;
+                    @include transition(0.3s, ease-in-out);
                     &:first-child {
                         padding-left: 0;
                     }
@@ -664,10 +674,15 @@ img{
                         padding-right: 0;
                     }
                     .dropdown {
+                        display: inline-block;
                         .dropdown-toggle {
+                            padding: 0 10px;
                             &::after {
                                 content: none !important;
                             }
+                        }
+                        .dropdown-menu {
+                            right: 0;
                         }
                     }
                 }
@@ -687,6 +702,10 @@ img{
         border-bottom: 1px solid #EBF1FF;
         @include flexbox;
         @include align-items(center);   
+        @media (max-width: 575px) {
+            @include flex-wrap(wrap);
+            padding: 0 0 8px;
+        }
         .icon {            
             margin-right: 15px;
             @media (max-width: 767px) {
@@ -712,16 +731,31 @@ img{
                 }
             }
         }
+        .left-side-content {
+            @include flexbox;
+            @include align-items(center);
+            @media (max-width: 575px) {
+                margin-bottom: 8px;
+            }
+        }
         .right-side-content {
             margin-left: auto;
-            @include inline-flex;
+            @include flexbox;
             @include align-items(center);
+            @media (max-width: 575px) {
+                @include align-items(center);
+            }
             & > * {
                 margin-right: 10px;
                 &:last-child {
                     margin-right: 0
                 }
             }
+        }
+        .btn {
+            font-size: 11px;
+            padding: 0px 15px;
+            min-height: 29px;
         }
         .dropdown {
             .dropdown-toggle {
@@ -734,9 +768,14 @@ img{
             }
             .dropdown-menu {               
                 min-width: 120px;
-                &.show {
-                    right: 0;
-                    left: auto;
+                .form-check {
+                    margin-bottom: 0;
+                    .form-check-input {
+                        width: 14px;
+                        height: 14px;
+                        background-size: 8px;
+                        @include border-radius(3px);
+                    }
                 }
             }
         }
@@ -815,10 +854,6 @@ img{
             }
             .dropdown-menu {               
                 min-width: 120px;
-                &.show {
-                    right: 0;
-                    left: auto;
-                }
             }
         }
     }
@@ -847,7 +882,7 @@ img{
         border: none;
         @include border-radius(0px);
         border-bottom: 1px solid #EBF1FF;
-        padding: 10px 15px;
+        padding: 15px;
         .accordion-header {
             @include flexbox;
             @include align-items(center);
@@ -876,8 +911,7 @@ img{
                     width: 8px;  
                     height: 8px;   
                 }
-            }            
-            
+            } 
         }
     }
 }
@@ -919,12 +953,7 @@ img{
             }
         }
     }
-    .collapseing {
-        .card {
-            padding: 0;
-        }
-    }
-    .collapse {
+    .collapse, .collapsing {
         .card {
             border: none;
             @include border-radius(0px);
@@ -1031,6 +1060,7 @@ img{
     label {
         cursor: pointer;
         @include transition(0.3s, ease-in-out);
+        @include inline-flex;
     }
     svg {
         width: 13px;
@@ -1047,6 +1077,9 @@ img{
             path {
                 stroke: $primary;
             }
+        }
+        .form-check-input { 
+            border-color: $primary;
         }
     }
     .icon, .sm-icon {

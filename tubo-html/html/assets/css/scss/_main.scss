@@ -1,24 +1,74 @@
 .main-content-wrapper { 
-    display: grid;
-    grid-template-columns: 235px auto;
-    margin-top: 110px;
-    
-    @include transition(0.3s, ease-in-out);
-    &.is-expand { 
-        grid-template-columns: 65px auto;
+    @include transition(0.3s, ease-in-out); 
+    overflow: hidden;
+    &.is-expand {
+        .content-wrapper {
+            @media (min-width: 1200px) {
+                margin-left: 105px;
+            }
+        }
+    }  
+    .content-wrapper {  
+        margin-top: 132px; 
+        margin-left: 20px;
+        margin-right: 20px;
+        @include transition(0.3s, ease-in-out); 
+        @media (min-width: 1200px) {
+            margin-left: 275px;
+            margin-right: 20px;
+        }
+        @media (max-width: 767px) {
+            margin-top: 92px; 
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+        @media (max-width: 575px) {
+            margin-top: 80px; 
+            margin-left: 15px;
+            margin-right: 15px;
+        }
     }
-    @media (max-width: 1200px) {
-        display: block;
-        margin-bottom: 30px;
+}
+
+.signup-main-wrapper {
+    min-height: 100vh;
+    .signup-img-block {
+        background: #D4ECC3;
+        padding: 100px;
+        min-height: 100vh;
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
     }
-    @media (max-width: 575px) {
-        padding: 0 10px;
-    }
-    .content-wrapper {
-        margin-left: 15px;
-        @media (max-width: 1200px) {
-            margin-left: 0px;
-            padding-left: 0px;
+    .form-content-block {
+        padding: 100px;
+        min-height: 100vh;
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+        .content-wrapper {
+            .title {
+                font-size: 34px;
+                color: #105C50;
+                font-weight: 700;
+                margin-bottom: 50px;
+            }
+            .form-block {
+                max-width: 350px;
+                margin: 0 auto;
+                .form-input {
+                    border-radius: 12px;
+                    border: 1px solid #E2E8F0;
+                    @include flexbox;
+                    @include align-items(center);
+                    padding: 8px 16px;
+                    min-height: 56px;
+                    label {
+                        color: #000;
+                        font-size: 16px;
+                    }
+                }
+            }
         }
     }
 }
