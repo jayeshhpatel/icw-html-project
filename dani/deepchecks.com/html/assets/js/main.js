@@ -433,7 +433,7 @@ function hubspot_labels() {
     jQuery('form').attr('autocomplete','off');
     jQuery('input, .hs-input').attr('autocomplete','off');
 
-    jQuery('input, .hs-input').prop('readonly', true);
+    // jQuery('input, .hs-input').prop('readonly', true);
 
     //turn autocomplete off for forms for Chrome 
     //based on a browser bug noted here: https://bugs.chromium.org/p/chromium/issues/detail?id=370363#c7
