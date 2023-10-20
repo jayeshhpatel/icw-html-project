@@ -87,9 +87,9 @@
                     .dropdown-menu {
                         @include transition(0.3s, ease-in-out);
                         li {
-                            padding: 10px 15px;   
                             a {
                                 font-size: 14px;
+                                padding: 10px 15px;
                                 color: $black;
                                 @include transition(0.3s, ease-in-out);                                
                             }
@@ -180,9 +180,17 @@
                         content: none;
                     }
                 }
-                .dropdown-menu {
-                    left: 18px;
-                    @include transition(0.3s, ease-in-out);                   
+                .dropdown-menu {                    
+                    min-width: 280px;
+                    @media (min-width: 1440px) {
+                        left: 18px;
+                    }
+                    @media (min-width: 767px) {
+                        left: 12px;
+                    }
+                    &[data-bs-popper="static"] {
+                        position: absolute;
+                    }
                 }
                 &:hover, &:focus {
                     .dropdown-toggle {
@@ -265,7 +273,6 @@
                     }
                     li {
                         border-bottom: none;
-                        padding: 8px 15px;
                         .icon {
                             @include box-shadow(none);
                             width: 18px;
