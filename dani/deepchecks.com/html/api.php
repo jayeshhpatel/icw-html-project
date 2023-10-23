@@ -29,7 +29,11 @@
          
             if(isset($obj['license'])){
                 echo '<pre>';
-                print_r($obj['license']['name']);
+                // print_r($obj);echo '<br>';
+                echo 'Github Stars:'; print_r($obj['stargazers_count']); echo '<br>';
+                echo 'Github last commit:'; print_r(date('Y-m-d',strtotime($obj['updated_at']))); echo '<br>';
+                echo 'Github open issues:'; print_r($obj['open_issues_count']); echo '<br>';
+                echo 'License:'; print_r($obj['license']['name']);
                 echo '</pre>';
               // github_stars
             //   <!-- update_post_meta( $tool, 'tool_info_github_stars', icw_number_format_short($obj['stargazers_count']) ); -->
@@ -49,7 +53,7 @@
 /* ---------------------- START - github */
     $surl = curl_init();
     curl_setopt_array($surl, array(
-      CURLOPT_URL => "https://api.stackexchange.com/2.3/questions/10196982?order=desc&sort=activity&site=stackoverflow&filter=!nNPvSNVZJS",
+      CURLOPT_URL => "https://api.stackexchange.com/2.3/questions/7155699?order=desc&sort=activity&site=stackoverflow&filter=!nNPvSNVZJS",
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => "",
       CURLOPT_MAXREDIRS => 10,
