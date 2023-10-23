@@ -29,7 +29,7 @@
          
             if(isset($obj['license'])){
                 echo '<pre>';
-                print_r($obj);echo '<br>';
+                // print_r($obj);echo '<br>';
                 echo 'Github Stars:'; print_r($obj['stargazers_count']); echo '<br>';
                 echo 'Github last commit:'; print_r(date('d M ',strtotime($obj['updated_at']))); echo '<br>';
                 echo 'Released:'; print_r(date('M, Y',strtotime($obj['created_at']))); echo '<br>';
