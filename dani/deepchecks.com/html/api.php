@@ -54,7 +54,7 @@
 /* ---------------------- START - github */
     $surl = curl_init();
     curl_setopt_array($surl, array(
-      CURLOPT_URL => "https://api.stackexchange.com/2.3/questions/7155699?order=desc&sort=activity&site=stackoverflow&filter=!nNPvSNVZJS",
+      CURLOPT_URL => "https://api.stackexchange.com/2.3/users/130164?order=desc&sort=reputation&site=stackoverflow&filter=!6WPIommSMB3m_",
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => "",
       CURLOPT_MAXREDIRS => 10,
@@ -81,7 +81,7 @@
          
             if(isset($object)){
                 echo '<pre>';
-                print_r($object);
+                echo 'Stackoverflow questions:'; print_r($object['items'][0]['question_count']);
                 echo '</pre>';
               // github_stars
             //   <!-- update_post_meta( $tool, 'tool_info_github_stars', icw_number_format_short($obj['stargazers_count']) ); -->
