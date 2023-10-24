@@ -16,4 +16,10 @@ jQuery(document).ready(function($) {
         $('.main-content-wrapper').toggleClass('is-expand');
         e.preventDefault();
     });
+    
+    $('.dropdown-menu').on('click', function(e) {
+        if($(this).hasClass('dropdown-menu-form')) {
+            e.stopPropagation();
+        }
+    });
 })

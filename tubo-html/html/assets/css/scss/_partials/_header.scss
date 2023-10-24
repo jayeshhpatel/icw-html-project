@@ -187,6 +187,9 @@
                     @media (min-width: 767px) {
                         left: 12px;
                     }
+                    @media (max-width: 767px) {
+                        @include transform(translateX(-60%));
+                    }
                     &[data-bs-popper="static"] {
                         position: absolute;
                     }
@@ -320,6 +323,9 @@
                     flex: none;
                     .icon {
                         box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.11);
+                        svg {
+                            animation: rotation 2s infinite linear;
+                        }
                     }
                     @media (max-width: 1440px) {
                         .icon {
@@ -394,6 +400,10 @@
                 .dropdown-menu {
                     left: auto;
                     right: 0;
+                    @media (max-width: 767px) {
+                        right: auto;
+                        @include transform(translateX(-50%));
+                    }
                     .search-form {
                         margin: 0;
                         min-width: 250px;
@@ -469,6 +479,14 @@
                     }  
 				}				
 			}
+        }
+    }
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(359deg);
         }
     }
 }
