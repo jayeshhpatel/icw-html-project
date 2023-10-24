@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/select-box.css">
+    <link rel="stylesheet" href="css/builder.css">
+    <script src="js/select-box.js"></script>
+    <script src="js/gen_dataheroes_snippet.js"></script>
+    <title>Code Wizard</title>
+</head></p>
+<body>
+    <svg class="sprites">
+    <symbol id="select-arrow-down" viewbox="0 0 10 6">
+      <polyline points="1 1 5 5 9 1"></polyline>
+    </symbol>
+    </svg>
+    <h1>Code Wizard</h1>
+    <div class="code-builder">
+    <div class="container">
+        <div class="row-label">Dataset type</div>
+        <div class="row">
+               <label class="select" for="Dataset type">
+                <select id="Dataset type" required="required">
+                  <option value="Tabular">Tabular</option>
+                  <option value="Computer Vision - Image Classification">Computer Vision - Image Classification</option>
+                  <option value="Computer Vision - Object Detection">Computer Vision - Object Detection</option>
+                  <option value="Computer Vision - Semantic Segmentation">Computer Vision - Semantic Segmentation</option>
+                  <option value="NLP">NLP</option>
+                </select>
+                <svg>
+                  <use xlink:href="#select-arrow-down"></use>
+                </svg>
+              </label>
+        </div>
+        <div class="row-label">Use case</div>
+        <div class="row">
+                <!--
+                 <div class="radio-group" id="Use Case Check">
+                </div>
+                -->
+                    <div class="radio-group" id="Use Case Check">
+                        <div class="checkbox-full" style="display: block;" id="grp_Model training and tuning">
+                            <input checked="" type="checkbox" onclick="handleUseCaseChange(this);" name="Model training and tuning" id="Model training and tuning">
+                            <label for="Model training and tuning" data-toggle="tooltip" title="Training and hyperparameter tuning models">Model training and tuning
+                            </label>
+                        </div>
+                        <div class="checkbox-full"  style="display: block;" id="grp_Model retraining">
+                            <input type="checkbox" onclick="handleUseCaseChange(this);" name="Model retraining" id="Model retraining">
+                            <label for="Model retraining" data-toggle="tooltip" title="Adding data and retraining the models">Model retraining
+                            </label>
+                        </div>
+                        <div class="checkbox-full" style="display: block;" id="grp_Data cleaning">
+                            <input type="checkbox" onclick="handleUseCaseChange(this);" name="Data cleaning" id="Data cleaning">
+                            <label for="Data cleaning" data-toggle="tooltip" title="Identifying mislabels and outliers">Data cleaning
+                            </label>
+                        </div>
+                    </div>
+        </div>
+    </div>
+    <div class="container">
+        <div id="tabularOptions" class="section-to-hide" style="display: block;">
+            <div class="row-label">ML algorithm</div>  
+             <div class="row">
+                    <label class="select" for="ML algorithm">
+                    <select  class="select" id="ML algorithm">
+                    </select>
+                        <svg>
+                          <use xlink:href="#select-arrow-down"></use>
+                        </svg>
+                    </label>
+            </div>
+            <div class="row-label">Library used to train models</div>
+            <div class="row">
+                    <label  class="select"  for="Library used to train models">
+                    <select  class="select"  id="Library used to train models">
+                    </select>
+                        <svg>
+                          <use xlink:href="#select-arrow-down"></use>
+                        </svg>
+                    </label>
+            </div>
+        </div>
+    <div class="row-label">In which form is your dataset available?</div>
+    <div class="row">
+            <label  class="select" for="datasetFormSelect">
+        <select  class="select" id="datasetFormSelect" >
+        <option value="File">File</option>
+        <option value="DF">pandas DataFrame</option>
+        <option value="NP">X and y numpy arrays</option>
+    </select>
+                <svg>
+                  <use xlink:href="#select-arrow-down"></use>
+                </svg>
+            </label>
+    </div>
+     <div id="optionFileContent" class="section-to-hide" style="display: none;">
+                    <div class="row-label">File type</div>
+                    <div class="row">
+                        <label  class="select" for="File Type">
+                            <select  class="select" id="File Type">
+                                <option value="CSV">CSV</option>
+                                <option value="TSV">TSV</option>
+                                <option value="NPY">NPY</option>
+                            </select>
+                            <svg>
+                              <use xlink:href="#select-arrow-down"></use>
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="row-label">Do you have separate file(s) or directory(ies) for the target and features?</div>
+                    <div class="row">
+                        <label  class="select" for="targetFeaturesSeparate">
+                        <select  class="select" id="targetFeaturesSeparate">
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select><svg>
+                              <use xlink:href="#select-arrow-down"></use>
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="row-label">How is your data organized?</div>
+                    <div class="row">
+                        <label  class="select"  for="singleMultFilesDirs">
+                        <select  class="select" id="singleMultFilesDirs">
+                            <option value="Single File">Single File</option>
+                            <option value="Multiple Files">Multiple Files</option>
+                            <option value="Single Directory">Single Directory</option>
+                            <option value="Multiple Directories">Multiple Directories</option>
+                        </select><svg>
+                              <use xlink:href="#select-arrow-down"></use>
+                            </svg>
+                        </label>
+                    </div>
+    </div>
+    <div id="optionDFContent" class="section-to-hide" style="display: none;">
+                <div class="row-label">Do you have separate DataFrame for the target and features?</div>
+                <div class="row">
+                        <label  class="select"  for="targetFeaturesSeparateDF">
+                <select  class="select" id="targetFeaturesSeparateDF" >
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select><svg>
+                              <use xlink:href="#select-arrow-down"></use>
+                            </svg>
+                        </label>
+                </div>
+                <div class="row-label">Do you have a Single DataFrame / Multiple DataFrame?</div>
+                <div class="row">
+                        <label  class="select" for="singleDF">
+                    <select  class="select" id="singleMultDF" >
+                        <option value="Single DataFrame">Single DataFrame</option>
+                        <option value="Multiple DataFrames">Multiple DataFrames</option>
+                    </select><svg>
+                              <use xlink:href="#select-arrow-down"></use>
+                            </svg>
+                        </label>
+                </div>
+                </div>
+    </div>
+    <div id="optionNPContent"  class="section-to-hide"  style="display: none;">
+                <div class="row-label">Do you have a Single numpy array?</div>
+                <div class="row">
+                        <label  class="select"  for="singleMultNPY">
+                    <select  class="select" id="singleMultNPY" >
+                        <option value="Single numpy array">Single numpy array</option>
+                        <option value="Multiple numpy arrays">Multiple numpy arrays</option>
+                    </select><svg>
+                              <use xlink:href="#select-arrow-down"></use>
+                            </svg>
+                        </label>
+     </div>
+    </div>
+    <div class="row">
+        <div id="warningDiv" class="admonition warning warningDiv"  style="display: none;" >
+            <p class="admonition-title">Warning</p>
+            <div id="warning_text">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+            <div class="language-py copy highlight codeSnippet" id="codeSnippet" >
+                <pre id="__code_0" class="snippetPre">
+                    <code id="codeSnippetText" class="codeSnippetTextClass" style="font-size: 1.05em">
+                        from sklearn.preprocessing import LabelEncoder
+                        from scipy.sparse import issparse
+                        from scipy import sparse
+                        def sensitivity_logit(X, y, w=None, *, sketch_size=None, use_y=True, class_weight: Dict[Any, float] = None):
+                            """
+                            Logit sampling from 2018 Paper On Coresets for Logistic Regression.
+                            """
+                            X = np.concatenate([X, np.ones([X.shape[0], 1])], axis=1)
+                            if w is not None:
+                                w = _check_sample_weight(w, X, dtype=X.dtype)
+                                X, y = w_dot_X(X, y=y, w=w)
+                            else:
+                                w = _check_sample_weight(w, X, dtype=X.dtype)
+                        </code>
+                </pre>
+            </div>
+    </div>
+    </div>
+    </div>
+    <script src="js/builder-controls.js"></script>
+</body>
+</html>
