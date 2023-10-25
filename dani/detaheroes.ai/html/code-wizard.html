@@ -35,9 +35,14 @@
     <link rel="apple-touch-icon" href="https://dataheroes.ai/wp-content/uploads/2023/06/cropped-favicon-new-180x180.png">
     <meta name="msapplication-TileImage" content="https://dataheroes.ai/wp-content/uploads/2023/06/cropped-favicon-new-270x270.png">
     <!--[if lte IE 8]><script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script><![endif]-->
-    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>    
+    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>  
+    <!-- <link rel="stylesheet" href="assets/css/builder.css">
+    <link rel="stylesheet" href="assets/css/select-box.css"> -->
+    <script src="assets/js/select-box.js"></script>
+    <script src="https://data-heroes.github.io/dh-library/0.7.0/javascripts/gen_dataheroes_snippet.js"></script>  
 </head>
-<body class="blog logged-in admin-bar  customize-support">    
+
+<body class="page-template-default page page-id-2799">
     <header class="main-header">
         <nav class="navbar header-section">
             <div class="container">
@@ -75,167 +80,197 @@
     </header>
     <div class="bg-overly"></div>
     <main id="main-content" class="main-content-wrapper">
-        <header class="page-header big-header is-light text-center" style="background-color: #002a73;">
+        <header class="page-header default-header is-light text-center bg-primary">
             <div class="container">
                 <h1>Code Wizard</h1>
             </div>
+            </div>
         </header>
         <!-- end page-header -->
-        <section class="main-section">
-            <div class="container">
-                <div class="icw-hubspot-form-shortcode code-wizard-form">
-                    <div class="form-with-slider-labels">
-                        <div class="hbspt-form" data-hs-forms-root="true">
-                            <form method="POST" accept-charset="UTF-8" enctype="multipart/form-data" novalidate="" action="" class="hs-form" autocomplete="off">
-                                <div class="hs-fieldtype-select field hs-form-field">
-                                    <label id="label-datasetType" class="" placeholder="Dataset Type" for="datasetType">
-                                        <span>Dataset Type</span>
-                                    </label>                                    
-                                    <div class="input">
-                                        <select id="datasetType" class="hs-input is-placeholder" name="datasetType">
-                                            <option value="Tabular">Tabular</option>
-                                            <option value="Tabular1">Tabular1</option>
-                                            <option value="Tabular2">Tabular2</option>
-                                        </select>
-                                    </div>
+        <section class="main-section bg-none">
+            <div class="code-wizard-block">
+                <svg class="sprites">
+                    <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                        <polyline points="1 1 5 5 9 1"></polyline>
+                    </symbol>
+                </svg>
+                <div class="code-builder">
+                    <div class="container">
+                        <div class="row-label">Dataset type</div>
+                        <div class="row">
+                            <label class="select" for="Dataset type">
+                                <select id="Dataset type" required="required">
+                                    <option value="Tabular">Tabular</option>
+                                    <option value="Computer Vision - Image Classification">Computer Vision - Image Classification</option>
+                                    <option value="Computer Vision - Object Detection">Computer Vision - Object Detection</option>
+                                    <option value="Computer Vision - Semantic Segmentation">Computer Vision - Semantic Segmentation</option>
+                                    <option value="NLP">NLP</option>
+                                </select>
+                                <svg>
+                                    <use xlink:href="#select-arrow-down"></use>
+                                </svg>
+                            </label>
+                        </div>
+                        <div class="row-label">Use case</div>
+                        <div class="row">
+                            <!-- <div class="radio-group" id="Use Case Check"></div> -->
+                            <div class="radio-group" id="Use Case Check">
+                                <div class="checkbox-full" style="display: block;" id="grp_Model training and tuning">
+                                    <input checked="" type="checkbox" onclick="handleUseCaseChange(this);" name="Model training and tuning" id="Model training and tuning">
+                                    <label for="Model training and tuning" data-toggle="tooltip" title="Training and hyperparameter tuning models">Model training and tuning</label>
                                 </div>
-                                <div class="hs_radio_buttons hs-radio_buttons hs-fieldtype-radio field hs-form-field">
-                                    <label id="label-radio_buttons" class="" placeholder="Enter your Radio Buttons" for="radio_buttons">
-                                        <span>Use Case</span>
+                                <div class="checkbox-full"  style="display: block;" id="grp_Model retraining">
+                                    <input type="checkbox" onclick="handleUseCaseChange(this);" name="Model retraining" id="Model retraining">
+                                    <label for="Model retraining" data-toggle="tooltip" title="Adding data and retraining the models">Model retraining</label>
+                                </div>
+                                <div class="checkbox-full" style="display: block;" id="grp_Data cleaning">
+                                    <input type="checkbox" onclick="handleUseCaseChange(this);" name="Data cleaning" id="Data cleaning">
+                                    <label for="Data cleaning" data-toggle="tooltip" title="Identifying mislabels and outliers">Data cleaning</label>
+                                </div>
+                            </div>
+                        </div>                
+                        <div id="tabularOptions" class="section-to-hide" style="display: block;">
+                            <div class="row-label">ML algorithm</div>  
+                             <div class="row">
+                                    <label class="select" for="ML algorithm">
+                                    <select  class="select" id="ML algorithm"></select>
+                                        <svg>
+                                            <use xlink:href="#select-arrow-down"></use>
+                                        </svg>
                                     </label>
-                                    <legend class="hs-field-desc" style="display: none;"></legend>
-                                    <div class="input">
-                                        <ul role="checkbox" class="inputs-list multi-container">
-                                            <li class="hs-form-radio" role="radio">
-                                                <label for="radio_buttons0" class="hs-form-radio-display">
-                                                    <input id="radio_buttons0" class="hs-input" type="radio" name="radio_buttons" value="Model training">
-                                                    <span>Model training</span>
-                                                </label>
-                                            </li>
-                                            <li class="hs-form-radio" role="radio">
-                                                <label for="radio_buttons1" class="hs-form-radio-display">
-                                                    <input id="radio_buttons1" class="hs-input" type="radio" name="radio_buttons" value="Model tuning">
-                                                    <span>Model tuning</span>
-                                                </label>
-                                            </li>
-                                            <li class="hs-form-radio" role="radio">
-                                                <label for="radio_buttons2" class="hs-form-radio-display">
-                                                    <input id="radio_buttons2" class="hs-input" type="radio" name="radio_buttons" value="Model maintenance">
-                                                    <span>Model maintenance</span>
-                                                </label>
-                                            </li>
-                                            <li class="hs-form-radio" role="radio">
-                                                <label for="radio_buttons3" class="hs-form-radio-display">
-                                                    <input id="radio_buttons3" class="hs-input" type="radio" name="radio_buttons" value="Data cleaning">
-                                                    <span>Data cleaning</span>
-                                                </label>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="hs-fieldtype-select field hs-form-field">
-                                    <label id="label-datasetType" class="" placeholder="ML Algorithm" for="datasetType">
-                                        <span>ML Algorithm</span>
-                                    </label>                                    
-                                    <div class="input">
-                                        <select id="datasetType" class="hs-input is-placeholder" name="datasetType">
-                                            <option value="Logic Regression">Logic Regression</option>
-                                            <option value="Logic Regression1">Logic Regression1</option>
-                                            <option value="Logic Regression2">Logic Regression2</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="hs-fieldtype-select field hs-form-field">
-                                    <label id="label-datasetType" class="" placeholder="Library Used to Train Models" for="datasetType">
-                                        <span>Library Used to Train Models</span>
-                                    </label>                                    
-                                    <div class="input">
-                                        <select id="datasetType" class="hs-input is-placeholder" name="datasetType">
-                                            <option value="Scikit-learn">Scikit-learn</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="hs-fieldtype-select field hs-form-field">
-                                    <label id="label-datasetType" class="" placeholder="In Which Form is Your Dataset Available" for="datasetType">
-                                        <span>In Which Form is Your Dataset Available</span>
-                                    </label>                                    
-                                    <div class="input">
-                                        <select id="datasetType" class="hs-input is-placeholder" name="datasetType">
-                                            <option value="File">File</option>
-                                            <option value="Images">Images</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="hs-fieldtype-select field hs-form-field">
-                                    <label id="label-datasetType" class="" placeholder="File Type" for="datasetType">
-                                        <span>File Type</span>
-                                    </label>                                    
-                                    <div class="input">
-                                        <select id="datasetType" class="hs-input is-placeholder" name="datasetType">
-                                            <option value="CSV">CSV</option>
-                                            <option value="mp4">mp4</option>
-                                            <option value="exe">exe</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="hs-fieldtype-select field hs-form-field">
-                                    <label id="label-datasetType" class="" placeholder="Do You Have Separate File(s) or Directory(ies) for the Target and Features?" for="datasetType">
-                                        <span>Do You Have Separate File(s) or Directory(ies) for the Target and Features?</span>
-                                    </label>                                    
-                                    <div class="input">
-                                        <select id="datasetType" class="hs-input is-placeholder" name="datasetType">
-                                            <option value="No">No</option>
-                                            <option value="Yes">Yes</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="hs-fieldtype-select field hs-form-field">
-                                    <label id="label-datasetType" class="" placeholder="How is Your Data Organized?" for="datasetType">
-                                        <span>How is Your Data Organized?</span>
-                                    </label>                                    
-                                    <div class="input">
-                                        <select id="datasetType" class="hs-input is-placeholder" name="datasetType">
-                                            <option value="Single File">Single File</option>
-                                            <option value="Multiple File">Multiple File</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="hs_submit hs-submit">
-                                    <div class="actions">
-                                        <input type="submit" class="hs-button primary large" value="Submit" autocomplete="off" readonly="">
-                                    </div>
-                                </div>                                
-                            </form>
+                            </div>
+                            <div class="row-label">Library used to train models</div>
+                            <div class="row">
+                                <label  class="select"  for="Library used to train models">
+                                    <select  class="select"  id="Library used to train models"></select>
+                                    <svg>
+                                        <use xlink:href="#select-arrow-down"></use>
+                                    </svg>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row-label">In which form is your dataset available?</div>
+                        <div class="row">
+                            <label  class="select" for="datasetFormSelect">
+                                <select  class="select" id="datasetFormSelect" >
+                                    <option value="File">File</option>
+                                    <option value="DF">pandas DataFrame</option>
+                                    <option value="NP">X and y numpy arrays</option>
+                                </select>
+                                <svg>
+                                    <use xlink:href="#select-arrow-down"></use>
+                                </svg>
+                            </label>
+                        </div>
+                        <div id="optionFileContent" class="section-to-hide" style="display: none;">
+                            <div class="row-label">File type</div>
+                            <div class="row">
+                                <label  class="select" for="File Type">
+                                    <select  class="select" id="File Type">
+                                        <option value="CSV">CSV</option>
+                                        <option value="TSV">TSV</option>
+                                        <option value="NPY">NPY</option>
+                                    </select>
+                                    <svg>
+                                        <use xlink:href="#select-arrow-down"></use>
+                                    </svg>
+                                </label>
+                            </div>
+                            <div class="row-label">Do you have separate file(s) or directory(ies) for the target and features?</div>
+                            <div class="row">
+                                <label  class="select" for="targetFeaturesSeparate">
+                                    <select  class="select" id="targetFeaturesSeparate">
+                                        <option value="No">No</option>
+                                        <option value="Yes">Yes</option>
+                                    </select>
+                                    <svg>
+                                        <use xlink:href="#select-arrow-down"></use>
+                                    </svg>
+                                </label>
+                            </div>
+                            <div class="row-label">How is your data organized?</div>
+                            <div class="row">
+                                <label  class="select"  for="singleMultFilesDirs">
+                                    <select  class="select" id="singleMultFilesDirs">
+                                        <option value="Single File">Single File</option>
+                                        <option value="Multiple Files">Multiple Files</option>
+                                        <option value="Single Directory">Single Directory</option>
+                                        <option value="Multiple Directories">Multiple Directories</option>
+                                    </select>
+                                    <svg>
+                                        <use xlink:href="#select-arrow-down"></use>
+                                    </svg>
+                                </label>
+                            </div>
+                        </div>
+                        <div id="optionDFContent" class="section-to-hide" style="display: none;">
+                            <div class="row-label">Do you have separate DataFrame for the target and features?</div>
+                            <div class="row">
+                                <label  class="select"  for="targetFeaturesSeparateDF">
+                                    <select  class="select" id="targetFeaturesSeparateDF" >
+                                        <option value="No">No</option>
+                                        <option value="Yes">Yes</option>
+                                    </select>
+                                    <svg>
+                                        <use xlink:href="#select-arrow-down"></use>
+                                    </svg>
+                                </label>
+                            </div>
+                            <div class="row-label">Do you have a Single DataFrame / Multiple DataFrame?</div>
+                            <div class="row">
+                                <label  class="select" for="singleDF">
+                                    <select  class="select" id="singleMultDF" >
+                                        <option value="Single DataFrame">Single DataFrame</option>
+                                        <option value="Multiple DataFrames">Multiple DataFrames</option>
+                                    </select>
+                                    <svg>
+                                        <use xlink:href="#select-arrow-down"></use>
+                                    </svg>
+                                </label>
+                            </div>
+                        </div>               
+                        <div id="optionNPContent"  class="section-to-hide"  style="display: none;">
+                            <div class="row-label">Do you have a Single numpy array?</div>
+                            <div class="row">
+                                <label  class="select"  for="singleMultNPY">
+                                    <select  class="select" id="singleMultNPY" >
+                                        <option value="Single numpy array">Single numpy array</option>
+                                        <option value="Multiple numpy arrays">Multiple numpy arrays</option>
+                                    </select>
+                                    <svg>
+                                        <use xlink:href="#select-arrow-down"></use>
+                                    </svg>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div id="warningDiv" class="admonition warning warningDiv"  style="display: none;" >
+                                <p class="admonition-title">Warning</p>
+                                <div id="warning_text"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="language-py copy highlight codeSnippet" id="codeSnippet" >
+                                <pre id="__code_0" class="snippetPre">
+                                    <code id="codeSnippetText" class="codeSnippetTextClass">
+                                        from sklearn.preprocessing import LabelEncoder
+                                        from scipy.sparse import issparse
+                                        from scipy import sparse
+                                        def sensitivity_logit(X, y, w=None, *, sketch_size=None, use_y=True, class_weight: Dict[Any, float] = None):
+                                            """
+                                            Logit sampling from 2018 Paper On Coresets for Logistic Regression.
+                                            """
+                                            X = np.concatenate([X, np.ones([X.shape[0], 1])], axis=1)
+                                            if w is not None:
+                                                w = _check_sample_weight(w, X, dtype=X.dtype)
+                                                X, y = w_dot_X(X, y=y, w=w)
+                                            else:
+                                                w = _check_sample_weight(w, X, dtype=X.dtype)
+                                    </code>
+                                </pre>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="code-preview-block">
-                    <code>
-                        from dataheroes import CoresetTreeServicelG<br><br>
-                        # Initialize the service for cleaning and build the Coreset tree<br>
-                        # Change the number of instances ‘n_instances’ and number of classes ‘n_classes’ to match your dataset<br>
-                        # The Coreset tree uses the local file system to store its data<br>
-                        # After this step you will have a new directory .dataheroes_cache<br>
-                        service_obj = CoresetTreeServicelG(optimized_for="cleaning”,<br>
-                        n_instances: b<br>
-                        n_classes:<br><br>
-                        # Prepare the definitions of path variables for the dataset files (replace with your directory name and file names)<br>
-                        data_file - data_generated / 'data.csv'<br><br>
-                        service_obj.build_from_file(data_file)<br><br>
-                        # Define the classes of interest and the number of samples you want to examine per class (adjust according to your needs).<br>
-                        # Alternatively just pass size=180 (or any other number) to get the top importance samples across all classes.
-                        samples_per_class=<br>
-                        result = service_obj.get_inportant_samples(class_size=sanples_per_class)<br>
-                        important_samples, importance = result['idx'], result[*importance"]<br><br>
-                        # Examine the returned samples for mislabels or other anomalies.<br>
-                        # Use update_targets to relabel samples.<br>
-                        # We simulated this by calling a fix_labels function. Replace it with your own method to select the relabeled samples).
-                        service_obj.update._targets(indices-indices.relabeled, y-y_train.relabeled<br><br>
-                        # Use remove_samples to remove samples from the dataset.<br>
-                        # Replace indices_to_remove with the indices you wish to remove.<br>
-                        service.ob. remove. sanples(inpor tant_sanples | SUNGHRNEBNRENGVE])<br><br>
-                        2 Ear a £117 natahank ahaeing hoe tn hidld a farasat tran far rleaninn niennase for the Teanakat datasst visit thie T4nk
-                    </code>
                 </div>
             </div>
         </section>
@@ -309,6 +344,7 @@
     <script type="text/javascript" src="assets/js/glightbox.min.js" id="icw-glightbox-js"></script>
     <script type="text/javascript" src="assets/js/slick.min.js" id="icw-slick-js"></script>
     <script type="text/javascript" src="assets/js/main-javascript.js" id="icw-main-javascript-js"></script>    
+    <script type="text/javascript" src="assets/js/builder-controls.js"></script>    
     <script type="text/javascript" src="assets/js/main.min.js" id="icw-main-js"></script>
 </body>
 

@@ -4975,3 +4975,126 @@ border-radius: 3px;
 		}
 	}
 }
+.code-wizard-block {
+	max-width: 800px;
+	margin: 0 auto;
+	.sprites {
+		position: absolute;
+		width: 0;
+		height: 0;
+		pointer-events: none;
+		user-select: none;
+	}
+	.row-label {
+		margin-bottom: 8px;
+		font-size: 16px;
+		font-weight: 600;
+		letter-spacing: -0.64px;
+		color: #24292D;
+		&.font-lg {
+			font-size: 24px;
+			font-weight: 500;
+		}
+	}
+	.select {
+		-webkit-appearance: none;
+		margin-bottom: 10px;
+		select {
+			-webkit-appearance: none;
+			-moz-appearance: none;	
+			background: #F2F4F8 url(../images/icons/arrow-down-gray.svg) no-repeat calc(100% - 20px) center;
+			background-size: 24px;
+			box-shadow: none;
+			border: 1px solid #EBEBEB;
+			height: 58px;
+			width: 100%;
+			font-size: 16px;
+			font-family: "Poppins",sans-serif;
+			color: #43474A;
+			@include border-radius(5px);
+			padding: 5px 15px;
+			line-height: 1.5;
+			&::-ms-expand {
+				display: none;
+			}
+		}
+		svg {
+			display: none;
+		}
+	}
+	.radio-group {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		max-width: 550px;
+		margin-bottom: 20px;
+		.checkbox-full {
+			margin: 15px 0 5px;
+			display: flex !important;
+			@include align-items(center);			
+			label {
+				cursor: help;
+			}
+			input[type="checkbox" i] {
+				width: 20px;
+				height: 20px;
+				background: #fff;
+    			border: 1px solid #BDC0C6;
+				appearance: none;
+				margin: 0 10px 0 0;
+				@include border-radius(50%);
+				position: relative;
+				&::after {
+					display: block;
+					position: absolute;
+					content: '';
+					width: 10px;
+					height: 10px;
+					top: 4px;
+					left: 4px;
+					visibility: hidden;
+					text-align: center;
+					background-color: #fff;
+					border-radius: 20px;
+					-moz-border-radius: 20px;
+					-webkit-border-radius: 20px;
+				}
+				&:checked {
+					background-color: #E21B1A;
+					border-color: #E21B1A;
+					&::after {
+						visibility: visible;
+					}
+					&:disabled {
+						background-color: rgba(#E21B1A, 0.5);
+						border-color: rgba(#E21B1A, 0.2);						
+					}
+				}
+				&:disabled {
+					background: rgba(#BDC0C6, 0.8);					
+				}
+			}
+		}
+	}
+	.codeSnippet {
+		background-color: #f5f5f5;
+		@include border-radius(5px);
+		padding: 15px;
+		margin-top: 50px;
+		pre {
+			margin: 0;
+		}
+		code {
+			word-break: break-word;
+			font-size: 16px;
+			overflow: hidden;
+			white-space: break-spaces;
+			display: block;
+			@media (max-width:767px) {
+				font-size: 14px;
+			}
+			.commentText {
+				color: #26a640;
+			}
+		}
+	}
+}
