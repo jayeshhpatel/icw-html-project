@@ -103,7 +103,7 @@
                 <div class="two-content-block col-50-50">
                     <div class="left-content-block">
                         <div class="section-title">
-                            <h1 class="gradient-text">documentation</h1>
+                            <h1 class="gradient-text">Documentary</h1>
                             <div class="sort-info mw-900">A short guide to help you lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed nunc tincidunt, tempus tortor id, ornare justo.</div> 
                         </div>
                     </div>
@@ -118,16 +118,15 @@
         <section class="main-section documentation-content-section p-0">
             <div class="container container-100">
                 <div class="documentation-content-wrapper">
-                    <div class="left-content-block">
-                        <div class="documentation-sidebar">
-                            
-                            <div class="collapse-block">
-                                <div class="collapse-item-block">
-                                    <div class="collapse-header active">
-                                        <label>Content type</label>
-                                        <button type="button" class="collapse-action"><em class="icon-arrow"></em></button>
-                                    </div>
-                                    <div class="collapse-body" style="display: block;">
+                    <div class="left-content-block">                           
+                        <div class="collapse-block">
+                            <div class="collapse-item-block">
+                                <div class="collapse-header active">
+                                    <label>Onboarding Toolkit</label>
+                                    <button type="button" class="collapse-action"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="#01012A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                                </div>
+                                <div class="collapse-body" style="display: block;">
+                                    <div class="documentation-sidebar"> 
                                         <div class="sidebar-menu">
                                             <h2>WELCOME TO FRONTEGG</h2>
                                             <ul>
@@ -149,14 +148,13 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                       
+                        </div>                       
                     </div>
                     <div class="right-content-block">
                         <div class="documentation-content">
                             <h2>Configuration</h2>
-                            <p>To configure the Codium.AI extension, please create a file named .codiumai.toml or .codiumai.local.toml in your source directory. The file can be next to the code under test or inside any parent directory. A .local file will take precedence (intended to be .gitignoreed).</p>
-                            <p>The following sections and keys are available:</p>
+                            <p class="font-lg">To configure the Codium.AI extension, please create a file named .codiumai.toml or .codiumai.local.toml in your source directory. The file can be next to the code under test or inside any parent directory. A .local file will take precedence (intended to be .gitignoreed).</p>
+                            <p class="font-lg">The following sections and keys are available:</p>
                             <h3>[tests]</h3>
                             <h4>framework</h4>
                             <p>The test framework used to test your code. Possible values are Jest, Mocha, Vitest, Karma, Jasmine, QUnit or React Testing Library in Javascript projects, or Pytest or Unittest in Python projects.</p>
@@ -175,6 +173,22 @@
                             <h4>overrideImports</h4>
                             <p>A multiline string containing import declaration to use in each test file.</p>
                             <h4>Example config file for a mocha/chai javascript environment:</h4>
+                            <pre>
+                                <code>[tests] 
+framework = "Mocha" 
+reference_test = """ 
+describe("foo", () => { 
+    it("says 'bar'", () => { 
+        expect(foo.say()).to.equal("bar"); 
+    }); 
+});""" 
+
+[tests.javascript]
+overrideTestRunCwd = "./test" 
+overrideTestRunScript = "npx mocha" 
+overrideImports = """
+import {expect} from 'chai'; """</code>
+                            </pre>
                         </div>
                     </div>
                 </div>
@@ -363,6 +377,25 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script> -->
 
     <script src="assets/js/main.js"></script>
+    <script>
+        $(function () {
+            $(".collapse-header").click(function (j) {
+                
+                j.preventDefault();
+                var collapse = $(this).closest(".collapse-item-block").find(".collapse-body");
+                $(this).closest(".collapse-block").find(".collapse-body").not(collapse).slideUp();
+
+                if ($(this).hasClass("active")) {
+                    $(this).removeClass("active");
+                } else {
+                    $(this).closest(".collapse-block").find(".collapse-header.active").removeClass("active");
+                    $(this).addClass("active");
+                }
+
+                collapse.slideToggle();
+            });
+        });
+    </script>
 </body>
 
 </html>
