@@ -116,6 +116,9 @@ img{
 .text-red {
     color: #F20000 !important;
 }
+.text-green {
+    color: #45CDAC !important;
+}
 
 .mb-30 {
     margin-bottom: 30px;
@@ -294,6 +297,14 @@ img{
         &.show {
             &::after {
                 @include transform(rotate(180deg))
+            }
+        }
+        &.no-icon {
+            svg {
+                margin-left: 15px;
+            }
+            &::after {
+                content: none;
             }
         }
     }
@@ -663,7 +674,8 @@ img{
     }
 }
 
-.table-block {
+.table-block {    
+    max-height: 400px;
     &::-webkit-scrollbar {
         background-color: transparent;
         width: 2px;
@@ -748,6 +760,10 @@ img{
                 &:hover {
                     td {
                         background: #f8f8f8;
+                        .action {
+                            @include opacity(1);
+                            visibility: visible;
+                        }
                     }
                 }
                 td {
@@ -769,6 +785,23 @@ img{
                         @media (max-width: 575px) {
                             padding-right: 15px;
                         }
+                    }
+                    &.type {
+                        font-size: 13px;
+                        @media (max-width: 992px) {
+                            font-size: 12px;
+                        }
+                        div {
+                            padding-bottom: 5px;
+                            &:last-child {
+                                padding-bottom: 0;
+                            }
+                        }
+                    }
+                    .action {
+                        @include opacity(0);
+                        visibility: hidden;
+                        @include transition(0.3s, ease-in-out);
                     }
                     .dropdown {
                         display: inline-block;
@@ -871,9 +904,7 @@ img{
     }
     .card-body {
         padding: 15px 20px;
-        max-height: 400px;
         overflow: hidden;
-        overflow-y: auto;
         @include border-radius(0 0 15px 15px);
         &.with-table {
             padding: 15px 0;
@@ -901,18 +932,36 @@ img{
         .user-info {
             @include flexbox;
             @include align-items(center);
+            min-width: 200px;
             .avatar {
                 margin-right: 10px;
             }
             .name-info {
                 .name {
                     font-size: 14px;
+                    display: block;
+                    color: #000;
+                    @include transition(0.3s, ease-in-out);
+                    &:hover {
+                        color: $primary;
+                    }
                 }
                 .post {
                     font-size: 12px;
+                    display: inline-block;
                     color: #9B9B9B;
+                    &.with-id {
+                        font-size: 12px;
+                        color: #000;
+                        @media (max-width: 992px) {
+                            font-size: 10px;
+                        }
+                    }
                 }
             }
+        }
+        .user-info + .status {
+            margin-left: 30px;
         }
         .status {
             border-radius: 4px;
@@ -922,14 +971,43 @@ img{
             text-align: center;
             font-size: 10px;
             font-weight: 500;   
-            max-width: 60px;
-            margin: 0 auto;
+            display: inline-block;
+            min-width: 60px;
             &.bg-lightred {
                 background: rgba(246, 45, 81, 0.20);
                 color: #F62D51;
             }
+            &.bg-lightblue {
+                background: #DEF3FD;
+                color: #00ADFF;
+            }
         }
-       
+        .action {
+            @include inline-flex;
+            @include align-items(center);
+            .btn-check, .btn-remove {
+                width: 20px;
+                height: 20px;
+                flex: none;
+                @include inline-flex;
+                @include align-items(center);
+                @include justify-content(center);
+                position: relative;
+                background: transparent;
+                border: 1px solid transparent;
+                @include border-radius(50%);
+                pointer-events: auto;
+                margin-left: 15px;
+            }
+            .btn-check {
+                background: #E4F4D8;
+                border-color: #448E4A;
+            }
+            .btn-remove {
+                background: #FFEBEB;
+                border-color: #FF0000;
+            }
+        }
     }
     .card-footer {
         background: transparent;
