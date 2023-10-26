@@ -5019,6 +5019,8 @@ border-radius: 3px;
 			font-size: 14px;		
 			label {
 				cursor: help;
+				@include flexbox;
+				@include align-items(center);
 			}
 			input[type="checkbox" i] {
 				width: 18px;
@@ -5076,24 +5078,66 @@ border-radius: 3px;
 				text-decoration: underline;
 			}
 		}
-		.clipboard-btn {
+		.clipboard-btn {			
+			background-color: transparent;
+			color: #24292D !important;
+			font-weight: 600;
+			font-size: 15px;
+			background-image: url("data:image/svg+xml; utf8,<svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M16.6667 7.5H9.16667C8.24619 7.5 7.5 8.24619 7.5 9.16667V16.6667C7.5 17.5871 8.24619 18.3333 9.16667 18.3333H16.6667C17.5871 18.3333 18.3333 17.5871 18.3333 16.6667V9.16667C18.3333 8.24619 17.5871 7.5 16.6667 7.5Z' stroke='rgb(36 ,41, 45)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/> <path d='M4.16602 12.5003H3.33268C2.89065 12.5003 2.46673 12.3247 2.15417 12.0122C1.84161 11.6996 1.66602 11.2757 1.66602 10.8337V3.33366C1.66602 2.89163 1.84161 2.46771 2.15417 2.15515C2.46673 1.84259 2.89065 1.66699 3.33268 1.66699H10.8327C11.2747 1.66699 11.6986 1.84259 12.0112 2.15515C12.3238 2.46771 12.4993 2.89163 12.4993 3.33366V4.16699' stroke='rgb(36 ,41, 45)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+			background-repeat: no-repeat;
+			background-position: center;
+			@include opacity(1);
+			@include border-radius (0px);
+			@include box-shadow(none);
 			border: none;
 			padding: 0;
-			background: transparent;
-			min-height: auto;
 			position: absolute;
 			top: 10px;
 			right: 10px;
-			svg {
-				path {
-					@include transition(0.3s, ease-in-out);
-				}
+			width: 20px;
+			min-height: 20px;
+			&::before, &::after {
+				opacity: 0;
+				pointer-events: none;
+				position: absolute;
+				box-sizing: border-box;
+				background-color: #000;
+				color: #fff;
+				@include transition(0.3s, ease-in-out);				
+			}
+			&::before {
+				content: "";
+				width: 16px;
+				height: 10px;
+				top: -11px;
+				left: 0;
+				right: 0;
+				margin: auto;
+				-webkit-clip-path: polygon(100% 0%, 50% 100%, 0% 0%);
+				clip-path: polygon(100% 0%, 50% 100%, 0% 0%);
+			}
+			&::after {
+				content: attr(tooltip);
+				white-space: nowrap;
+				top: -40px;
+				left: 0;
+				right: 0;
+				padding: 8px 10px;
+				@include border-radius(4px);
+				font-size: 12px;
+				text-align: center;
+				margin: auto;
+				width: max-content;
+				min-height: 32px;
+				@include transform(translateX(-44%));
 			}
 			&:hover {
-				svg {
-					path {
-						fill: rgba(0, 0, 0, 1);
-					}
+				&::before, &::after {
+					@include opacity(1);
+					@include transform(translateY(0));
+				}
+				&::after {
+					@include transform(translateX(-44%) translateY(0));
 				}
 			}
 		}
