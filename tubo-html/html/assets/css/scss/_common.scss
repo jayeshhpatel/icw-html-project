@@ -847,6 +847,9 @@ img{
                             padding-right: 15px;
                         }
                     }
+                    &.col-checkbox {
+                        width: 50px;
+                    }
                     &.type {
                         font-size: 13px;
                         @media (max-width: 992px) {
@@ -879,6 +882,41 @@ img{
                             right: 0;
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+.user-info {
+    @include flexbox;
+    @include align-items(center);
+    @media (min-width: 767px) {
+        min-width: 200px;
+    }
+    .avatar {
+        margin-right: 10px;
+    }
+    .name-info {
+        .name {
+            font-size: 14px;
+            display: block;
+            color: #000;
+            @include transition(0.3s, ease-in-out);
+            &:hover {
+                color: $primary;
+                text-decoration: underline;
+            }
+        }
+        .post {
+            font-size: 12px;
+            display: inline-block;
+            color: #9B9B9B;
+            &.with-id {
+                font-size: 12px;
+                color: #000;
+                @media (max-width: 992px) {
+                    font-size: 10px;
                 }
             }
         }
@@ -991,40 +1029,7 @@ img{
             background-color: transparent;
             border-radius: 15px;
         }
-        .user-info {
-            @include flexbox;
-            @include align-items(center);
-            @media (min-width: 767px) {
-                min-width: 200px;
-            }
-            .avatar {
-                margin-right: 10px;
-            }
-            .name-info {
-                .name {
-                    font-size: 14px;
-                    display: block;
-                    color: #000;
-                    @include transition(0.3s, ease-in-out);
-                    &:hover {
-                        color: $primary;
-                        text-decoration: underline;
-                    }
-                }
-                .post {
-                    font-size: 12px;
-                    display: inline-block;
-                    color: #9B9B9B;
-                    &.with-id {
-                        font-size: 12px;
-                        color: #000;
-                        @media (max-width: 992px) {
-                            font-size: 10px;
-                        }
-                    }
-                }
-            }
-        }
+        
         .user-info + .status {
             margin-left: 30px;
         }
@@ -1487,6 +1492,7 @@ img{
     }
 }
 .form-group {
+    margin-bottom: 20px;
     .form-label {
         font-size: 14px;
     }
@@ -1513,9 +1519,129 @@ img{
 }
 /* Form Control - End */
 
+.tag-group {
+    max-width: 250px;
+    @include flexbox;
+    @include flex-wrap(wrap);
+    @media (max-width: 575px) {
+        min-width: 250px;
+    }
+    .tag {
+        font-size: 12px;
+        font-weight: 400;
+        color: #000;
+        border-radius: 12px;
+        background: #E2E8F0;
+        padding: 5px 10px;
+        margin: 3px;
+        @include inline-flex; 
+        @include align-items(center);
+        a {
+            width: 15px;
+            height: 15px;
+            flex: none;
+            display: inline-block;
+            margin-left: 8px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" viewBox="0 0 7 7" fill="none"><path d="M3.4974 3.50033L2.03906 2.04199M3.4974 3.50033L4.95573 4.95866M3.4974 3.50033L4.95573 2.04199M3.4974 3.50033L2.03906 4.95866" stroke="black" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+            background-size: 15px;
+            background-repeat: no-repeat;
+            background-position: center;
+            @include transition(0.3s, ease-in-out);
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+    }
+}
+
 .group-box {
     border-radius: 10px;
     border: 1px solid #E7EEFF;
+    .box-header {
+        & > div {
+            border-bottom: 1px solid #E7EEFF; 
+            padding: 20px;
+            @media (max-width: 575px) {
+                padding: 15px;
+            }
+        }
+        .search-header {
+            @include flexbox;
+            @include align-items(center);
+            @media (max-width: 767px) {
+                @include justify-content(space-between);
+            }
+            @media (max-width: 575px) {
+                display: block;
+            }
+            .dropdown {
+                text-align: left;
+                .dropdown-toggle {
+                    &::after {
+                        content: none;
+                    }
+                    @media (max-width: 575px) {
+                        max-width: 100%;
+                        width: 100%;
+                    }
+                }
+                .dropdown-menu {
+                    min-width: 280px;
+                    padding-bottom: 5px;
+                    li {
+                        &:not(:first-child) {
+                            padding: 5px 10px;
+                            .dropdown-item {
+                                border-radius: 8px;
+                                border: 1px solid #F5F6F7;
+                                @include justify-content(space-between);
+                            }
+                        }
+                        &.active {
+                            .dropdown-item {
+                                background: #F7F8FA;
+                            }
+                        }
+                    }
+                    .dropdown-item {
+                        .form-group {
+                            @include flexbox;
+                            position: relative;
+                            width: 100%;  
+                            input {
+                                height: 34px;
+                            }                          
+                            span {
+                                position: absolute;
+                                right: 15px;
+                                top: 50%;
+                                transform: translateY(-50%);                                
+                            }
+                        }
+                        .icon {
+                            width: 34px;
+                            height: 34px;
+                            border-radius: 8px;
+                            background: #F8FAFC;
+                        }                        
+                    }
+                }
+            }
+            .tag-group {
+                margin-left: 90px;
+                @media (max-width: 767px) {
+                    margin-left: 30px;
+                }
+                @media (max-width: 575px) {
+                    margin-left: 0px;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+    .box-body {
+        border-radius: 0 0 10px 10px;
+    }
     .switch-box {
         border-bottom: 1px solid #E7EEFF;
         @include flexbox;
