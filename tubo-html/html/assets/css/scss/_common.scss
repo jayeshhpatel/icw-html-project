@@ -261,7 +261,7 @@ img{
 	&:hover, &:focus, &:active {
 		color: #115C51;
 		box-shadow: none !important;
-		text-decoration: none;
+		text-decoration: underline;
 	}
 	&.with-icon {
 		&:after {
@@ -275,6 +275,7 @@ img{
 			@include transition(0.3s, ease-in-out);
 		}
 		&:hover, &:focus, &:active {
+            text-decoration: none;
 			&:after {
 				margin-left: 12px;
                 background: url('data:image/svg+xml;utf8,<svg width="15" height="7" viewBox="0 0 15 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2187 0.84375L13.875 3.5M13.875 3.5L11.2187 6.15625M13.875 3.5L1.125 3.5" stroke="rgba(17, 92, 81, 1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center;
@@ -286,21 +287,50 @@ img{
 
 /* Alert */
 .alert {
-    @include border-radius(15px);
+    border: 1px solid transparent;     
+    @include border-radius(10px);
+    padding: 20px;
+    color: #115C51;
+    &.p-10 {
+        padding: 10px;
+    }
     .alert-heading {
         font-size: 16px;
         font-weight: 500;
         margin-bottom: 10px;
     }
     p {
-        color: #115C51;
+        font-size: 14px;
+    }
+    .btn-close {
+        padding: 5px;
+        background-size: 11px;
+        top: 20px;
+        right: 20px;
     }
     &.alert-notification {
-        border: 1px solid #FFCB79;        
+        border-color: #FFCB79;
         background: #FFEEE0;
         .alert-heading {
             color: #115C51;
         }
+    }
+    &.alert-success {
+        border: 1px solid #A3CFBB;        
+        background: #D1E7DD;
+        color: #0A3622;
+        .alert-heading {
+            font-size: 22px;
+            color: #0A3622;
+        }
+        hr {
+            border-color: #A3CFBB;
+            @include opacity(1);
+        }
+    }
+    &.alert-purple {
+        background: #F3E8FF;
+        color: #000;
     }
 }
 
@@ -490,12 +520,11 @@ img{
     white-space: nowrap;
     text-align: center;
     vertical-align: middle;
-    background: transparent;
+    background: #f8f8f8;
     border: 1px solid transparent;
     width: 32px;
     height: 32px;
-    border-radius: 50%;
-    background: #FFEEE0;
+    border-radius: 50%;    
     .avatar-string {
         color: $orange;
         line-height: 0.7;
@@ -516,6 +545,12 @@ img{
         background: #E4ECFD;
         .avatar-string {
             color: #9DBDFF;
+        }
+    }
+    &.bg-lightorange {
+        background: #FFEEE0;
+        .avatar-string {
+            color: #FFCB79;
         }
     }
 }
@@ -610,7 +645,6 @@ img{
 }
 
 .pagination-block {
-    margin-top: 10px;
     .pagination {
         @media (max-width: 767px) {
             @include justify-content(center);
@@ -687,7 +721,6 @@ img{
 .record-details-block {
     @include inline-flex;
     @include align-items(center);
-    margin-top: 10px;
     @media (max-width: 767px) {
         width: 100%;
         @include justify-content(center);
@@ -720,6 +753,11 @@ img{
     .table {
         overflow: hidden;
         &.with-border {
+            thead {
+                tr {                    
+                    border-bottom: 1px solid #EBF1FF;
+                }
+            }
             tbody {
                 tr { 
                     border-bottom: 1px solid #EBF1FF;
@@ -746,8 +784,7 @@ img{
             }
         }
         thead {
-            tr {
-                border: none;               
+            tr {            
                 th {
                     border: none;
                     font-size: 14px;
@@ -826,6 +863,9 @@ img{
                         @include opacity(0);
                         visibility: hidden;
                         @include transition(0.3s, ease-in-out);
+                        a:not(:first-child) {
+                            margin-left: 10px;                            
+                        }
                     }
                     .dropdown {
                         display: inline-block;
@@ -849,12 +889,13 @@ img{
     @include border-radius(15px);
     background: $white;
     box-shadow: 0px 3.5px 5.5px 0px rgba(0, 0, 0, 0.02);
-    
+    border: 1px solid #E7EEFF;
+    overflow: hidden;
     .card-header {
         background: $white;
         padding: 20px;
         @include border-radius(15px 15px 0 0);
-        border-bottom: 1px solid #EBF1FF;
+        border-bottom: 1px solid #E7EEFF;
         @include flexbox;
         @include align-items(center);   
         @media (max-width: 575px) {
@@ -888,10 +929,7 @@ img{
         }
         .left-side-content {
             @include flexbox;
-            @include align-items(center);
-            @media (max-width: 575px) {
-                margin-bottom: 8px;
-            }
+            @include align-items(center);            
         }
         .right-side-content {
             margin-left: auto;
@@ -970,6 +1008,7 @@ img{
                     @include transition(0.3s, ease-in-out);
                     &:hover {
                         color: $primary;
+                        text-decoration: underline;
                     }
                 }
                 .post {
@@ -1038,11 +1077,15 @@ img{
     .card-footer {
         background: transparent;
         border: none;
-        padding: 15px;
+        padding: 20px;
         @include flexbox;
         @include justify-content(space-between);
         @include align-items(center);
         @include border-radius(0 0 15px 15px);
+        border-top: 1px solid #E7EEFF;
+        @media (max-width: 575px) {
+            padding: 15px;
+        }
         @media (max-width: 767px) {
             display: block;
             text-align: center;
@@ -1193,6 +1236,52 @@ img{
     }
 }
 
+
+/* Collapse Card */
+.collapse-card {
+    border-radius: 15px;
+    border: 1px solid #E7EEFF;
+    background: #FFF;
+    max-width: 760px;
+    .collapse-card-header {
+        padding: 20px;
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(space-between);
+        .collapse-icon {
+            border-radius: 22px;
+            background: #DDD url('data:image/svg+xml;utf8,<svg width="10" height="3" viewBox="0 0 10 3" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.5H9" stroke="black" stroke-width="2" stroke-linecap="round"/></svg>') no-repeat center center;
+            background-size: 11px;
+            width: 24px;
+            height: 24px;
+            flex: none;
+            @include transition(0.3s, ease-in-out);
+        }
+        &.collapsed {
+            .collapse-icon {
+                background: #448E4A url('data:image/svg+xml;utf8,<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 1V11M1 6H11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
+                background-size: 11px;
+            }
+        }
+        .title {
+            font-size: 14px;
+            font-weight: 500;
+            color: $black;
+        }
+    }
+    .collapse-card-body {
+        border-top: 1px solid #EBF1FF;
+        padding: 20px;
+        .title {
+            font-size: 14px;
+            font-weight: 400;
+            color: $black;
+            margin-bottom: 15px
+        }
+    }
+}
+/* Collapse Card - End */
+
 /* Search Input */
 .search-form {
     @include border-radius(8px);
@@ -1256,17 +1345,19 @@ img{
 }
 /* Search Input - End */
 
-/* CheckBox */
+/* Form Control */
 .form-check {
     font-size: 12px;
     min-height: auto;   
     margin-bottom: 8px; 
     @include flexbox;
     @include align-items(center);
+    padding: 0;
     label {
         cursor: pointer;
         @include transition(0.3s, ease-in-out);
         @include inline-flex;
+        padding-left: 10px;
     }
     svg {
         width: 13px;
@@ -1292,11 +1383,12 @@ img{
         margin-right: 5px;
     }
     .form-check-input { 
-        width: 20px;
-        height: 20px;
+        width: 16px;
+        height: 16px;
         margin-top: 0px;
+        margin-left: 0;
         border: 1px solid #EBF1FF;
-        @include border-radius(5px);
+        @include border-radius(2px);
         background-size: 10px;
         @include transition(0.3s, ease-in-out);
         &:focus {
@@ -1338,86 +1430,99 @@ img{
         }
     }
 }
-
-/*  Toggle Switch  */
-.toggleSwitch {
-    display: inline-block;
-    height: 18px;
-    position: relative;
-    overflow: visible;
-    padding: 0;
-    margin-left: 50px;
+.form-switch {
     cursor: pointer;
-    width: 40px;
-    input {
-        position: absolute;
-        opacity: 0;
-        z-index: 5;
-        &:checked {
-            & ~ span:before {
-                border-color: #0097d1;
-                box-shadow: inset 0 0 0 30px #0097d1;
-            }
-        }
-        &:checked ~ span span:first-of-type {
-            opacity: 0;
-        }
-    }
-    & > span {
-        position: absolute;
-        left: -50px;
-        width: 100%;
-        margin: 0;
-        padding-right: 50px;
-        text-align: left;
-        white-space: nowrap;
-        line-height: 20px;
-        height: 20px;
-        vertical-align: middle;
-        & > span:before {
-            content: "";
-            display: block;
-            width: 100%;
-            height: 100%;
+    padding-left: 0;
+    .form-check-input {
+        margin-left: 0;
+        width: 56px;
+        height: 24px;
+        border-radius: 30px;
+        border: none;
+        background: #CBD5E1 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 8 8"><circle r="3" fill="rgb(255 255 255)" /></svg>') no-repeat 1px center;
+        background-size: 22px;
+        position: relative;
+        &::before {
+            content: 'Yes';
+            font-size: 12px;
+            font-weight: 400;
+            color: $white;
             position: absolute;
-            left: 50px;
-            top: -2px;
-            background-color: #fafafa;
-            border: 1px solid #ccc;
-            border-radius: 30px;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            transition: all 0.2s ease-out;
-        }
-        span {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 5;
-            display: block;
-            width: 50%;
-            margin-left: 50px;
-            text-align: left;
-            font-size: 0.9em;
-            width: 100%;
-            left: 15%;
-            top: -1px;
+            top: 50%;
+            left: 9px;
+            @include transform(translateY(-50%));
             opacity: 0;
-            &:first-of-type {
-                color: #ccc;
+            line-height: 1;
+        }
+        &::after {
+            content: 'No';
+            font-size: 12px;
+            font-weight: 400;
+            color: #1B1B1B;
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            @include transform(translateY(-50%));
+            opacity: 1;
+            line-height: 1;
+        }
+        &:checked[type=checkbox] {
+            background: #448E4A url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 8 8"><circle r="3" fill="rgb(255 255 255)" /></svg>') no-repeat calc(100% - 1px) center;
+            background-size: 22px;       
+            &::before {
                 opacity: 1;
-                left: 45%;
-            }
+            }          
+            &::after {
+                opacity: 0;
+            }          
         }
     }
-    label {
-        line-height: 20px;
-        height: 20px;
-        vertical-align: middle;
+    &:hover, &:focus {
+        .form-check-input {
+            opacity: 0.8;
+        }
     }
 }
+.form-group {
+    .form-label {
 
-/* CheckBox - End */
+    }
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #E7EEFF;
+        background: #F8F8F8;
+        height: 38px;
+        &[type="date"] {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><g clip-path="url(#clip0_403_604)"><path d="M5.67326 0C6.05986 0 6.37326 0.313244 6.37326 0.699649L6.373 2.009H13.89L13.8901 0.708141C13.8901 0.321736 14.2035 0.0084919 14.5901 0.0084919C14.9767 0.0084919 15.2901 0.321736 15.2901 0.708141L15.29 2.009L18 2.00902C19.1046 2.00902 20 2.904 20 4.00802V18.001C20 19.105 19.1046 20 18 20H2C0.89543 20 0 19.105 0 18.001V4.00802C0 2.904 0.89543 2.00902 2 2.00902L4.973 2.009L4.97326 0.699649C4.97326 0.313244 5.28666 0 5.67326 0ZM1.4 7.742V18.001C1.4 18.3322 1.66863 18.6007 2 18.6007H18C18.3314 18.6007 18.6 18.3322 18.6 18.001V7.756L1.4 7.742ZM6.66667 14.6186V16.2848H5V14.6186H6.66667ZM10.8333 14.6186V16.2848H9.16667V14.6186H10.8333ZM15 14.6186V16.2848H13.3333V14.6186H15ZM6.66667 10.6418V12.3079H5V10.6418H6.66667ZM10.8333 10.6418V12.3079H9.16667V10.6418H10.8333ZM15 10.6418V12.3079H13.3333V10.6418H15ZM4.973 3.408L2 3.40832C1.66863 3.40832 1.4 3.67681 1.4 4.00802V6.343L18.6 6.357V4.00802C18.6 3.67681 18.3314 3.40832 18 3.40832L15.29 3.408L15.2901 4.33697C15.2901 4.72338 14.9767 5.03662 14.5901 5.03662C14.2035 5.03662 13.8901 4.72338 13.8901 4.33697L13.89 3.408H6.373L6.37326 4.32848C6.37326 4.71489 6.05986 5.02813 5.67326 5.02813C5.28666 5.02813 4.97326 4.71489 4.97326 4.32848L4.973 3.408Z" fill="rgb(125 125 125)"/></g><defs><clipPath id="clip0_403_604"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>');
+            background-repeat: no-repeat;
+        }
+    }
+}
+/* Form Control - End */
+
+.group-box {
+    border-radius: 10px;
+    border: 1px solid #E7EEFF;
+    .switch-box {
+        border-bottom: 1px solid #E7EEFF;
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(space-between);
+        padding: 10px;
+        &:last-child {
+            border-bottom: none;
+        }
+        .text {
+            font-size: 14px;
+            color: #000;
+        }
+        .switch-btn {
+            .form-switch {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
 
 .bg-overly {
 	position: fixed; 
