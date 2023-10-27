@@ -223,6 +223,13 @@ img{
                 @include transition(0.3s, ease-in-out);
             }
         }
+        &:hover, &:focus, &:active {
+            svg {
+                path {
+                    stroke: $primary;
+                }
+            }
+        }
 	}
 	&.btn-primary{
 		color: $white !important;
@@ -276,6 +283,26 @@ img{
 	}
 }
 /* Button(With Arrow) - End */
+
+/* Alert */
+.alert {
+    @include border-radius(15px);
+    .alert-heading {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+    p {
+        color: #115C51;
+    }
+    &.alert-notification {
+        border: 1px solid #FFCB79;        
+        background: #FFEEE0;
+        .alert-heading {
+            color: #115C51;
+        }
+    }
+}
 
 /* Dropdown */
 .dropdown {
@@ -720,29 +747,26 @@ img{
         }
         thead {
             tr {
-                border: none;
-                &:first-child { 
-                    td {
-                        padding-top: 0;
-                    }
-                }
-                &:last-child { 
-                    td {
-                        padding-bottom: 0;
-                    }
-                }
+                border: none;               
                 th {
                     border: none;
                     font-size: 14px;
                     padding: 10px 5px;
                     vertical-align: middle;
+                    white-space: nowrap;
                     &:first-child {
                         padding-left: 20px;
+                        @media (max-width: 575px) {
+                            padding-left: 15px;
+                        }
                     }
                     &:last-child {
                         text-align: right;
                         padding-right: 20px;
                         width: 50px;
+                        @media (max-width: 575px) {
+                            padding-right: 15px;
+                        }
                     }
                     .dropdown {
                         .dropdown-toggle {
@@ -905,7 +929,7 @@ img{
     .card-body {
         padding: 15px 20px;
         overflow: hidden;
-        @include border-radius(0 0 15px 15px);
+        // @include border-radius(0 0 15px 15px);
         &.with-table {
             padding: 15px 0;
         }
@@ -932,7 +956,9 @@ img{
         .user-info {
             @include flexbox;
             @include align-items(center);
-            min-width: 200px;
+            @media (min-width: 767px) {
+                min-width: 200px;
+            }
             .avatar {
                 margin-right: 10px;
             }
