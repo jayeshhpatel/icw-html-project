@@ -57,6 +57,7 @@ a {
     color: $primary;
     text-decoration: none;
 	text-underline-offset: 4px;
+    @include transition(0.3s, ease-in-out);
     &:focus,
     &:hover {
         color: $primary;
@@ -118,6 +119,13 @@ img{
 }
 .text-green {
     color: #45CDAC !important;
+}
+.text-primary {
+    color: $primary !important;
+}
+
+strong {
+    font-weight: 600;
 }
 
 .mb-30 {
@@ -200,6 +208,17 @@ img{
 }
 /* Border Color - End */
 
+.btn-icon {
+    display: inline-block;
+    background-size: contain !important;
+    &.icon-gmail {
+        background: url(../images/icon-gmail.svg) no-repeat center center; width: 28px; height: 28px;
+    }
+    &.icon-linkedin {
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M23.375 0.5H2.125C1.62772 0.5 1.15081 0.697544 0.799175 1.04917C0.447544 1.40081 0.25 1.87772 0.25 2.375V23.625C0.25 24.1223 0.447544 24.5992 0.799175 24.9508C1.15081 25.3025 1.62772 25.5 2.125 25.5H23.375C23.8723 25.5 24.3492 25.3025 24.7008 24.9508C25.0525 24.5992 25.25 24.1223 25.25 23.625V2.375C25.25 1.87772 25.0525 1.40081 24.7008 1.04917C24.3492 0.697544 23.8723 0.5 23.375 0.5ZM7.75 21.75H4V10.5H7.75V21.75ZM5.875 8.3125C5.44523 8.30022 5.02861 8.16156 4.67719 7.91385C4.32577 7.66613 4.05514 7.32036 3.89912 6.91972C3.74309 6.51908 3.70859 6.08135 3.79992 5.66121C3.89126 5.24108 4.10437 4.85717 4.41264 4.55747C4.72091 4.25776 5.11067 4.05554 5.53321 3.97608C5.95575 3.89662 6.39233 3.94343 6.78842 4.11068C7.1845 4.27792 7.52252 4.55818 7.76024 4.91644C7.99795 5.27469 8.12483 5.69505 8.125 6.125C8.11513 6.71294 7.87292 7.27306 7.45131 7.68296C7.02971 8.09285 6.46298 8.31919 5.875 8.3125ZM21.5 21.75H17.75V15.825C17.75 14.05 17 13.4125 16.025 13.4125C15.7391 13.4315 15.4599 13.5069 15.2032 13.6341C14.9465 13.7614 14.7175 13.9382 14.5294 14.1542C14.3412 14.3702 14.1976 14.6213 14.1067 14.893C14.0159 15.1648 13.9796 15.4517 14 15.7375C13.9938 15.7957 13.9938 15.8543 14 15.9125V21.75H10.25V10.5H13.875V12.125C14.2407 11.5688 14.743 11.1157 15.334 10.8093C15.9249 10.5029 16.5847 10.3533 17.25 10.375C19.1875 10.375 21.45 11.45 21.45 14.95L21.5 21.75Z" fill="rgb(10 102 194)"/></svg>') no-repeat center center; width: 22px; height: 22px;
+    }
+}
+
 /* Button */
 .btn {
 	min-height: 38px;
@@ -239,6 +258,16 @@ img{
 			background-color: $white;
 			color: $primary !important;
 			border: 1px solid $primary;
+		}
+	}
+	&.btn-outline-gray{
+		color: $black !important;
+		border: 1px solid #E2E8F0;
+		background-color: transparent;
+		&:hover, &:focus, &:active{
+			background-color: #E2E8F0;
+			color: $black !important;
+			border: 1px solid #E2E8F0;
 		}
 	}
 }
@@ -1244,15 +1273,20 @@ img{
 
 /* Collapse Card */
 .collapse-card {
-    border-radius: 15px;
+    @include border-radius(15px);
     border: 1px solid #E7EEFF;
     background: #FFF;
     max-width: 760px;
+    overflow: hidden;
     .collapse-card-header {
         padding: 20px;
         @include flexbox;
         @include align-items(center);
         @include justify-content(space-between);
+        cursor: pointer;
+        overflow: hidden;
+        @include border-radius(15px 15px 0 0);
+        @include transition(0.3s, ease-in-out);
         .collapse-icon {
             border-radius: 22px;
             background: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="12" fill="rgb(221 221 221)"/><path d="M7 12.5H17" stroke="black" stroke-width="1.5" stroke-linecap="round"/></svg>') no-repeat center center;
@@ -1272,6 +1306,9 @@ img{
             font-size: 14px;
             font-weight: 500;
             color: $black;
+        }
+        &:hover, &:focus {
+            background: rgba(235,241,255,0.5);
         }
     }
     .collapse-card-body {
@@ -1352,7 +1389,7 @@ img{
 
 /* Form Control */
 .form-check {
-    font-size: 12px;
+    font-size: 14px;
     min-height: auto;   
     margin-bottom: 8px; 
     @include flexbox;
@@ -1362,7 +1399,7 @@ img{
         cursor: pointer;
         @include transition(0.3s, ease-in-out);
         @include inline-flex;
-        padding-left: 10px;
+        padding-left: 12px;
     }
     svg {
         width: 13px;
@@ -1388,8 +1425,8 @@ img{
         margin-right: 5px;
     }
     .form-check-input { 
-        width: 16px;
-        height: 16px;
+        width: 20px;
+        height: 20px;
         margin-top: 0px;
         margin-left: 0;
         border: 1px solid #EBF1FF;
@@ -1493,17 +1530,88 @@ img{
 }
 .form-group {
     margin-bottom: 20px;
+    position: relative;
     .form-label {
         font-size: 14px;
+        @media (max-width: 767px) {
+            font-size: 12px;
+        }
+    }
+    .form-text {
+        font-size: 12px;
+        color: #64748B;
+        display: block;
+        margin-top: 10px;
+    }
+    .error-msg {
+        font-size: 12px;
+        font-weight: 500;
+        color: #ED4F9D;
+        display: block;
+        margin-top: 5px;
+        padding-left: 25px;
+        background-image: url('data:image/svg+xml;utf8,<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.5C13.1421 16.5 16.5 13.1421 16.5 9C16.5 4.85786 13.1421 1.5 9 1.5C4.85786 1.5 1.5 4.85786 1.5 9C1.5 13.1421 4.85786 16.5 9 16.5Z" stroke="rgb(237 79 157)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 5.66699V9.00033" stroke="rgb(237 79 157)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12.333H9.00833" stroke="rgb(237 79 157)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-size: 18px;
+        line-height: 1.5;
+    }
+    &.error {
+        .form-control {
+            border-color: #ED4F9D;
+        }
+    }
+    .with-icon {
+        position: relative;
+        .form-control {
+            padding-left: 50px;
+        }
+    }
+    .input-icon {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        background-color: transparent;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain !important;  
+        position: absolute;
+        top: 14px;
+        left: 15px;    
+        &.right-icon {
+            right: 15px;
+            left: auto;
+        }      
+        &.icon-user {
+            background-image: url('data:image/svg+xml;utf8,<svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 9C9.20914 9 11 7.20914 11 5C11 2.79086 9.20914 1 7 1C4.79086 1 3 2.79086 3 5C3 7.20914 4.79086 9 7 9Z" stroke="rgb(100 116 139)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M1 19V17C1 15.9391 1.42143 14.9217 2.17157 14.1716C2.92172 13.4214 3.93913 13 5 13H9C10.0609 13 11.0783 13.4214 11.8284 14.1716C12.5786 14.9217 13 15.9391 13 17V19" stroke="rgb(100 116 139)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');            
+        }        
+        &.icon-phone {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="21" height="22" viewBox="0 0 21 22" fill="none"><path d="M3.35433 4H7.28308L8.5492 7.16575L6.51483 8.522C6.39503 8.60193 6.29681 8.7102 6.22888 8.83719C6.16096 8.96419 6.12543 9.10598 6.12545 9.25C6.12808 9.33225 6.12545 9.25088 6.12545 9.25088V9.26925C6.12597 9.30838 6.12772 9.34748 6.1307 9.3865C6.13595 9.45825 6.1447 9.55538 6.16133 9.67525C6.19545 9.9115 6.26108 10.237 6.38883 10.6203C6.64608 11.3903 7.15008 12.3869 8.13183 13.3686C9.11358 14.3504 10.1102 14.8544 10.8793 15.1116C11.2635 15.2394 11.5881 15.3041 11.8261 15.3391C11.9604 15.3579 12.0956 15.3696 12.2312 15.3741L12.2426 15.375H12.2496C12.2496 15.375 12.3476 15.3698 12.2505 15.375C12.4129 15.3749 12.5721 15.3296 12.7103 15.2441C12.8484 15.1587 12.9601 15.0364 13.0327 14.8911L13.619 13.7186L17.5005 14.3661V18.1461C15.6533 18.413 10.6641 18.6764 6.74408 14.7564C2.82408 10.8364 3.08658 5.84625 3.35433 4ZM7.93933 9.67525L9.52045 8.62175C9.85448 8.39895 10.1017 8.06807 10.2207 7.68459C10.3397 7.30112 10.3233 6.88839 10.1741 6.51563L8.90795 3.34988C8.77803 3.02517 8.55379 2.74684 8.26416 2.55079C7.97454 2.35475 7.63282 2.24998 7.28308 2.25H3.30883C2.51345 2.25 1.76533 2.80213 1.63495 3.66488C1.33745 5.62663 0.934078 11.4209 5.50683 15.9936C10.0796 20.5664 15.8738 20.1621 17.8356 19.8655C18.6983 19.7343 19.2505 18.987 19.2505 18.1916V14.3661C19.2505 13.9519 19.1036 13.551 18.8359 13.2349C18.5681 12.9188 18.1969 12.7079 17.7883 12.6398L13.9068 11.9931C13.5377 11.9315 13.1585 11.9899 12.8249 12.1596C12.4914 12.3294 12.221 12.6016 12.0536 12.9364L11.7508 13.5428C11.6438 13.5164 11.5378 13.4857 11.4332 13.4509C10.8907 13.2706 10.1373 12.8996 9.36908 12.1314C8.60083 11.3631 8.22983 10.6097 8.04958 10.0664C8.00654 9.93793 7.97003 9.80739 7.9402 9.67525H7.93933Z" fill="rgb(100 116 139)"/></svg>');            
+        }        
+        &.icon-email {
+            background-image: url('data:image/svg+xml;utf8,<svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 1H3C1.89543 1 1 1.89543 1 3V13C1 14.1046 1.89543 15 3 15H17C18.1046 15 19 14.1046 19 13V3C19 1.89543 18.1046 1 17 1Z" stroke="rgb(100 116 139)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M1 3L10 9L19 3" stroke="rgb(100 116 139)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');            
+        }        
+        &.icon-lock {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20" fill="none"><path d="M13 9H3C1.89543 9 1 9.89543 1 11V17C1 18.1046 1.89543 19 3 19H13C14.1046 19 15 18.1046 15 17V11C15 9.89543 14.1046 9 13 9Z" stroke="rgb(100 116 139)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 15C8.55228 15 9 14.5523 9 14C9 13.4477 8.55228 13 8 13C7.44772 13 7 13.4477 7 14C7 14.5523 7.44772 15 8 15Z" stroke="rgb(100 116 139)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 9V5C4 3.93913 4.42143 2.92172 5.17157 2.17157C5.92172 1.42143 6.93913 1 8 1C9.06087 1 10.0783 1.42143 10.8284 2.17157C11.5786 2.92172 12 3.93913 12 5V9" stroke="rgb(100 116 139)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');            
+        }        
+        &.icon-eye {
+            background-image: url('data:image/svg+xml;utf8,<svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 1L20 19" stroke="rgb(100 116 139)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.58445 8.58691C9.20917 8.96193 8.99823 9.47067 8.99805 10.0012C8.99786 10.5317 9.20844 11.0406 9.58345 11.4159C9.95847 11.7912 10.4672 12.0021 10.9977 12.0023C11.5283 12.0025 12.0372 11.7919 12.4125 11.4169" stroke="rgb(100 116 139)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.363 3.36506C9.22042 3.11978 10.1082 2.9969 11 3.00006C15 3.00006 18.333 5.33306 21 10.0001C20.222 11.3611 19.388 12.5241 18.497 13.4881M16.357 15.3491C14.726 16.4491 12.942 17.0001 11 17.0001C7 17.0001 3.667 14.6671 1 10.0001C2.369 7.60506 3.913 5.82506 5.632 4.65906" stroke="rgb(100 116 139)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');            
+        }        
     }
     .form-control {
-        border-radius: 5px;
+        border-radius: 10px;
         border: 1px solid #E7EEFF;
-        background: #F8F8F8;
-        padding: 0 10px;
-        height: 38px;    
-        font-size: 14px;   
+        background: $white;
+        padding: 0 15px;
+        height: 48px;    
+        font-size: 16px;
         @include transition(0.3s, ease-in-out); 
+        @media (max-width: 767px) {
+            font-size: 14px;
+        }
+        &::placeholder {
+            color: #94A3B8;
+        }
         &[type="date"]::-webkit-calendar-picker-indicator {
             background-image: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.67326 0C6.05986 0 6.37326 0.313244 6.37326 0.699649L6.373 2.009H13.89L13.8901 0.708141C13.8901 0.321736 14.2035 0.0084919 14.5901 0.0084919C14.9767 0.0084919 15.2901 0.321736 15.2901 0.708141L15.29 2.009L18 2.00902C19.1046 2.00902 20 2.904 20 4.00802V18.001C20 19.105 19.1046 20 18 20H2C0.89543 20 0 19.105 0 18.001V4.00802C0 2.904 0.89543 2.00902 2 2.00902L4.973 2.009L4.97326 0.699649C4.97326 0.313244 5.28666 0 5.67326 0ZM1.4 7.742V18.001C1.4 18.3322 1.66863 18.6007 2 18.6007H18C18.3314 18.6007 18.6 18.3322 18.6 18.001V7.756L1.4 7.742ZM6.66667 14.6186V16.2848H5V14.6186H6.66667ZM10.8333 14.6186V16.2848H9.16667V14.6186H10.8333ZM15 14.6186V16.2848H13.3333V14.6186H15ZM6.66667 10.6418V12.3079H5V10.6418H6.66667ZM10.8333 10.6418V12.3079H9.16667V10.6418H10.8333ZM15 10.6418V12.3079H13.3333V10.6418H15ZM4.973 3.408L2 3.40832C1.66863 3.40832 1.4 3.67681 1.4 4.00802V6.343L18.6 6.357V4.00802C18.6 3.67681 18.3314 3.40832 18 3.40832L15.29 3.408L15.2901 4.33697C15.2901 4.72338 14.9767 5.03662 14.5901 5.03662C14.2035 5.03662 13.8901 4.72338 13.8901 4.33697L13.89 3.408H6.373L6.37326 4.32848C6.37326 4.71489 6.05986 5.02813 5.67326 5.02813C5.28666 5.02813 4.97326 4.71489 4.97326 4.32848L4.973 3.408Z" fill="rgb(125 125 125)"/></svg>');
             background-repeat: no-repeat;
@@ -1514,6 +1622,63 @@ img{
         }
         &:hover,&:focus, &:active {
             border-color: $primary;
+            box-shadow: none;           
+        }
+    }
+    .form-select {
+        background-size: 11px;
+        border-radius: 10px;
+        border: 1px solid #E7EEFF;
+        background-color: $white;
+        padding: 0 15px;
+        height: 48px;    
+        font-size: 16px;
+        @include transition(0.3s, ease-in-out); 
+        @media (max-width: 767px) {
+            font-size: 14px;
+        }
+        &:hover,&:focus, &:active {
+            border-color: $primary;
+            box-shadow: none;           
+        }
+    }
+    .form-check {
+        @include align-items(flex-start);
+        .form-check-input {
+            margin-top: 3px;
+        }
+        label {
+            display: inline-block;
+            color: #64748B;
+            line-height: 1.5;
+        }
+        a {
+            color: #0F172A;
+            @include transition(0.3s, ease-in-out);
+            &:hover, &:focus {
+                color: $primary;
+                text-decoration: underline;
+            }
+        }
+    }
+    .input-otp-field {
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(space-between);
+        .form-control {
+            max-width: 64px;
+            margin-left: 5px;
+            margin-right: 5px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+        }
+    }
+    .btn {
+        height: 44px;
+        font-size: 18px;
+        @media (max-width: 767px) {
+            font-size: 16px;
         }
     }
 }
