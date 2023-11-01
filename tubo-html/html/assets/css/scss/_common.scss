@@ -100,9 +100,10 @@ img{
     background: #FFF;
     border: 1px solid transparent;
     @include box-shadow(0px 3.5px 5.5px 0px rgba(0, 0, 0, 0.02));
-    .svg {
+    svg {
         width: 24px;
         height: 24px;
+        flex: none;
     }
     @media (max-width: 767px) {
         width: 35px;
@@ -116,6 +117,9 @@ img{
 
 .text-red {
     color: #F20000 !important;
+}
+.text-yellow {
+    color: #FFBF00;
 }
 .text-green {
     color: #45CDAC !important;
@@ -168,7 +172,13 @@ strong {
     }
     svg {
         path {
-            stroke: $orange !important;
+            stroke: #D5870C !important;
+            &.fill-path {
+                path {
+                    fill: #D5870C !important;
+                    stroke: unset !important;
+                }
+            }
         }
     }
 }
@@ -181,16 +191,45 @@ strong {
         path {
             stroke: #90CC54 !important;
         }
+        &.fill-path {
+            path {
+                fill: #90CC54 !important;
+                stroke: unset !important;
+            }
+        }
     }
 }
 .bg-lightpurple {
-    background: #E4ECFD !important;
+    background: #ECE9FF !important;
     &.with-border {
-        border-color: #9DBDFF !important;
+        border-color: #A193F7 !important;
     }
     svg {
         path {
-            stroke: #9DBDFF !important;
+            stroke: #A193F7 !important;
+        }
+        &.fill-path {
+            path {
+                fill: #A193F7 !important;
+                stroke: unset !important;
+            }
+        }
+    }
+}
+.bg-lightblue {
+    background: #E9F0FF !important;
+    &.with-border {
+        border-color: #6798FF !important;
+    }
+    svg {
+        path {
+            stroke: #6798FF !important;
+        }
+        &.fill-path {
+            path {
+                fill: #6798FF !important;
+                stroke: unset !important;
+            }
         }
     }
 }
@@ -279,7 +318,7 @@ strong {
 	font-weight: 500;
 	position: relative;
 	z-index: 3;
-    font-size: 12px;
+    font-size: 14px;
 	text-decoration: none;
 	@include inline-flex;
 	@include align-items(center);
@@ -292,6 +331,12 @@ strong {
 		box-shadow: none !important;
 		text-decoration: underline;
 	}
+    &.btn-text-gray {
+        color: #9B9B9B;
+        &:hover, &:focus, &:active {
+            color: $primary;
+        }
+    }
 	&.with-icon {
 		&:after {
 			content: "";
@@ -812,12 +857,36 @@ strong {
                 }
             }
         }
+        &.freeze-row {
+            thead th {
+                vertical-align: baseline;
+                padding: 20px 10px;
+                position: sticky;
+                top: 0;
+                z-index: 1;
+                &:first-child {
+                    position: sticky;
+                    left: 0;
+                    z-index: 2;
+                }
+            }
+            tbody {
+                tr {
+                    td {
+                        &:first-child {
+                            position: sticky;
+                            left: 0;
+                        }
+                    }
+                }
+            }
+        }
         thead {
             tr {            
                 th {
                     border: none;
                     font-size: 14px;
-                    padding: 10px 5px;
+                    padding: 10px 10px;
                     vertical-align: middle;
                     white-space: nowrap;
                     &:first-child {
@@ -832,6 +901,13 @@ strong {
                         width: 50px;
                         @media (max-width: 575px) {
                             padding-right: 15px;
+                        }
+                    }
+                    .form-check {
+                        margin-bottom: 0;
+                        @include align-items(flex-start);
+                        .form-check-label {
+                            line-height: normal;
                         }
                     }
                     .dropdown {
@@ -859,7 +935,7 @@ strong {
                 td {
                     border: none;
                     font-size: 14px;
-                    padding: 10px 5px;
+                    padding: 10px 10px;
                     vertical-align: middle;
                     white-space: nowrap;
                     @include transition(0.3s, ease-in-out);
@@ -982,6 +1058,9 @@ strong {
             @media (max-width: 767px) {
                 font-size: 14px;
             }
+            &.font-lg {
+                font-size: 20px;
+            }
             span {
                 font-size: 14px;
                 font-weight: 400;
@@ -1037,6 +1116,18 @@ strong {
         // @include border-radius(0 0 15px 15px);
         &.with-table {
             padding: 15px 0;
+        }
+        &.empty-card {
+            min-height: 300px;
+            @include flexbox; 
+            @include align-items(center);
+            @include justify-content(center);
+            @media (max-width: 767px) {
+                min-height: 200px;
+                svg {
+                    height: 80px;
+                }
+            }
         }
         @media (max-width: 575px) {
             padding: 15px;
@@ -1154,6 +1245,62 @@ strong {
     .time {
         font-weight: 500;
         font-size: 24px;
+    }
+}
+
+.notification-inbox {
+    border-radius: 5px;
+    border: 1px solid transparent;
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(space-between);
+    padding: 10px 15px;
+    min-height: 60px;
+    &:not(:last-child) {
+        margin-bottom: 15px;
+    }
+    .inbox-details {
+        @include flexbox;
+        @include align-items(center);
+        @media (max-width: 767px) {
+            @include flex-wrap(wrap);
+        }
+        .user-info {
+            margin-right: 25px;
+            @media (max-width: 767px) {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+        .text {
+            color: #7C5252;
+        }
+    }
+    .action {
+        a {
+            margin-left: 20px;
+            svg {
+                path {
+                    fill: #5F5F5F !important;
+                    stroke: unset !important;
+                    @include transition(0.3s, ease-in-out)
+                }
+            }
+            &:hover, &:focus {
+                svg {
+                    path {
+                        fill: $primary !important;
+                    }
+                }
+                &.delete {
+                    svg {
+                        path {
+                            fill: #FF4F4F !important;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -1400,6 +1547,7 @@ strong {
         @include transition(0.3s, ease-in-out);
         @include inline-flex;
         padding-left: 12px;
+        line-height: 1;
     }
     svg {
         width: 13px;
@@ -1414,11 +1562,11 @@ strong {
         }
         svg {
             path {
-                stroke: $primary;
+                stroke: #006AFF;
             }
         }
         .form-check-input { 
-            border-color: $primary;
+            border-color: #006AFF;
         }
     }
     .icon, .sm-icon {
@@ -1429,22 +1577,24 @@ strong {
         height: 20px;
         margin-top: 0px;
         margin-left: 0;
-        border: 1px solid #EBF1FF;
+        border: 1px solid #D0D0D0;
         @include border-radius(2px);
         background-size: 10px;
         @include transition(0.3s, ease-in-out);
+        box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25) inset;
         &:focus {
             @include box-shadow(none);
         }
         &:checked[type=checkbox] {
-            background-image: url('data:image/svg+xml;utf8,<svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.25092 6.55774L9.99617 0.8125L10.88 1.69638L4.25092 8.32549L0.273438 4.34805L1.15732 3.46417L4.25092 6.55774Z" fill="rgba(255, 255, 255, 1)"/></svg>');
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.3733 0.756121C7.65507 0.940165 7.73429 1.31778 7.55025 1.59954L4.10122 6.87991C4.00375 7.02913 3.84583 7.12821 3.66906 7.15102C3.49228 7.17385 3.31437 7.11813 3.18221 6.99854L0.938823 4.9688C0.68926 4.74301 0.669993 4.35766 0.895788 4.1081C1.12158 3.85853 1.50694 3.83927 1.7565 4.06506L3.47094 5.61622L6.52988 0.933064C6.71392 0.651297 7.09153 0.572077 7.3733 0.756121Z" fill="white"/></svg>');
             background-repeat: no-repeat;
             background-position: center;
             background-size: 10px;                 
         }
         &:checked {
-            background: $primary;
-            border-color: $primary;
+            background: #006AFF;
+            border-color: #006AFF;
+            box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25) inset;
         }
     }
     &.right-checkbox {
@@ -1462,8 +1612,9 @@ strong {
         }
         .form-check-input {
             border: none;
+            @include box-shadow(none);
             &:checked[type=checkbox] {
-                background-image: url('data:image/svg+xml;utf8,<svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.25092 6.55774L9.99617 0.8125L10.88 1.69638L4.25092 8.32549L0.273438 4.34805L1.15732 3.46417L4.25092 6.55774Z" fill="rgba(17, 92, 81, 1)"/></svg>');
+                background-image: url('data:image/svg+xml;utf8,<svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.25092 6.55774L9.99617 0.8125L10.88 1.69638L4.25092 8.32549L0.273438 4.34805L1.15732 3.46417L4.25092 6.55774Z" fill="rgb(0 106 255)"/></svg>');
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: 13px;                 
@@ -1512,7 +1663,7 @@ strong {
             line-height: 1;
         }
         &:checked[type=checkbox] {
-            background: #448E4A url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 8 8"><circle r="3" fill="rgb(255 255 255)" /></svg>') no-repeat calc(100% - 1px) center;
+            background: #006AFF url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 8 8"><circle r="3" fill="rgb(255 255 255)" /></svg>') no-repeat calc(100% - 1px) center;
             background-size: 22px;       
             &::before {
                 opacity: 1;
@@ -1624,6 +1775,10 @@ strong {
             border-color: $primary;
             box-shadow: none;           
         }
+    }
+    textarea.form-control {
+        height: auto;
+        padding: 15px;
     }
     .form-select {
         background-size: 11px;
@@ -1783,11 +1938,20 @@ strong {
                                 transform: translateY(-50%);                                
                             }
                         }
+                        .form-check .form-check-input {
+                            width: 20px;
+                            height: 20px;
+                            @include border-radius(50%);
+                            background-size: 10px;
+                        }
                         .icon {
                             width: 34px;
                             height: 34px;
                             border-radius: 8px;
                             background: #F8FAFC;
+                            svg {
+                                width: 18px;
+                            }
                         }                        
                     }
                 }
