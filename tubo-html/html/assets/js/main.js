@@ -29,7 +29,7 @@ $('.toggleBtn').on('click', function(e) {
     if($(this).hasClass('btnView')){
         $(this).parents('.card').find('.input-box-block').slideUp();
         $(this).parents('.card').find('.result-box').slideDown();
-        $(this).html('Add new <span class="btn-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M7.9987 3.33337V12.6667M3.33203 8.00004H12.6654" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>');
+        $(this).html('Add New <span class="btn-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M7.9987 3.33337V12.6667M3.33203 8.00004H12.6654" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>');
         $(this).removeClass('btnView').addClass('addNew');
     } else if($(this).hasClass('addNew')){
         $(this).parents('.card').find('.input-box-block').slideDown();
