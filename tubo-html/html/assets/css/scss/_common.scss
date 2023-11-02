@@ -327,6 +327,9 @@ strong {
 	@include inline-flex;
 	@include align-items(center);
 	@include transition(0.3s, ease-in-out);
+    &.btn-sm-link {
+        font-size: 12px;
+    }
     svg {
         margin-right: 5px;
     }
@@ -996,7 +999,7 @@ strong {
                         @media (max-width: 992px) {
                             font-size: 12px;
                         }
-                        div {
+                        & > div {
                             padding-bottom: 5px;
                             &:last-child {
                                 padding-bottom: 0;
@@ -1008,8 +1011,6 @@ strong {
                         border-right: 1px solid #EAF0FF;
                     }
                     .action {
-                        @include opacity(0);
-                        visibility: hidden;
                         @include transition(0.3s, ease-in-out);
                         a:not(:first-child) {
                             margin-left: 10px;                            
@@ -1025,12 +1026,6 @@ strong {
                         }
                         .dropdown-menu {
                             right: 0;
-                        }
-                    }
-                    .form-group {
-                        .form-control {
-                            height: 25px;
-                            border-radius: 4px;
                         }
                     }
                     .form-check {
@@ -1859,6 +1854,15 @@ strong {
             border-color: $primary;
             box-shadow: none;           
         }
+        &.sm-form-control {
+            height: 25px;
+            border-radius: 4px;
+            font-size: 12px;
+            padding: 0 5px;
+            &[type="date"]::-webkit-calendar-picker-indicator { 
+                background-size: 10px;
+            }
+        }
     }
     textarea.form-control {
         height: auto;
@@ -1873,6 +1877,14 @@ strong {
         height: 48px;    
         font-size: 16px;
         @include transition(0.3s, ease-in-out); 
+        &.sm-form-select {
+            height: 25px;
+            border-radius: 4px;
+            font-size: 12px;
+            padding: 0 5px;
+            padding-right: 24px;
+            background-position: right 8px center;
+        }
         @media (max-width: 767px) {
             font-size: 14px;
         }
