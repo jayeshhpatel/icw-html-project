@@ -274,6 +274,10 @@ strong {
 		font-size: 13px;
 		padding: 5px 18px;
 	}
+    &.btn-sm {
+        min-height: 32px;
+        font-size: 13px;
+    }
 	&.with-icon {
 		svg {
             margin-left: 10px;
@@ -299,9 +303,9 @@ strong {
 			border: 1px solid $primary;
 		}
 	}
-	&.btn-outline-gray{
-		color: $black !important;
-		border: 1px solid #E2E8F0;
+	&.btn-outline-gray {
+		color: #A9A9A9 !important;
+		border: 1px solid #A9A9A9;
 		background-color: transparent;
 		&:hover, &:focus, &:active{
 			background-color: #E2E8F0;
@@ -375,6 +379,7 @@ strong {
     }
     p {
         font-size: 14px;
+        line-height: 1.5;
     }
     .btn-close {
         padding: 5px;
@@ -492,16 +497,16 @@ strong {
                 overflow-y: auto;
                 &::-webkit-scrollbar {
                     background-color: transparent;
-                    width: 2px;
-                    height: 2px;
+                    width: 5px;
+                    height: 5px;
                     border-radius: 15px;
                 }
                 &::-webkit-scrollbar-thumb {
-                    background-color: #EBF1FF;
+                    background-color: #DEDEDE;
                     border-radius: 15px;
                 }
                 &::-webkit-scrollbar-track {
-                    background-color: transparent;
+                    background-color: white;
                     border-radius: 15px;
                 }
                 &:hover {
@@ -723,6 +728,15 @@ strong {
         @media (max-width: 767px) {
             @include justify-content(center);
         }
+        &.light {
+            li {
+                a {
+                    &[aria-label='Previous'], &[aria-label='Next'] {                    
+                        background: $white;
+                    } 
+                }
+            }
+        }
         li {
             a {
                 border: none;
@@ -732,6 +746,7 @@ strong {
                 color: $black;
                 width: 28px;
                 height: 28px;
+                background: transparent;
                 @include inline-flex;
                 @include align-items(center);
                 @include justify-content(center);
@@ -812,16 +827,16 @@ strong {
     max-height: 400px;
     &::-webkit-scrollbar {
         background-color: transparent;
-        width: 2px;
-        height: 2px;
+        width: 5px;
+        height: 5px;
         border-radius: 15px;
     }
     &::-webkit-scrollbar-thumb {
-        background-color: #EBF1FF;
+        background-color: #DEDEDE;
         border-radius: 15px;
     }
     &::-webkit-scrollbar-track {
-        background-color: transparent;
+        background-color: $white;
         border-radius: 15px;
     }
     .table {
@@ -882,7 +897,6 @@ strong {
                 }    
             }
         }
-        
         &.table-striped {
             tbody { 
                 & > tr:nth-of-type(odd) {
@@ -898,7 +912,12 @@ strong {
             }
         }
         thead {
-            tr {            
+            tr {    
+                &.bg-gray {
+                    th {
+                        background: #f8f8f8;
+                    }
+                }        
                 th {
                     border: none;
                     font-size: 14px;
@@ -984,6 +1003,10 @@ strong {
                             }
                         }
                     }
+                    &.item-checkbox {
+                        width: 60px;
+                        border-right: 1px solid #EAF0FF;
+                    }
                     .action {
                         @include opacity(0);
                         visibility: hidden;
@@ -1002,6 +1025,12 @@ strong {
                         }
                         .dropdown-menu {
                             right: 0;
+                        }
+                    }
+                    .form-group {
+                        .form-control {
+                            height: 25px;
+                            border-radius: 4px;
                         }
                     }
                     .form-check {
@@ -1106,6 +1135,9 @@ strong {
             }
             &.font-lg {
                 font-size: 20px;
+                @media (max-width: 767px) {
+                    font-size: 16px;
+                }
             }
             span {
                 font-size: 14px;
@@ -1136,18 +1168,13 @@ strong {
                     margin-right: 0
                 }
             }
-        }
-        .btn {
-            font-size: 11px;
-            padding: 0px 15px;
-            min-height: 29px;
-        }
+        }        
         .dropdown {
             .dropdown-toggle {
                 @include border-radius(5px);
                 border: 1px solid #F3F3F3;
-                padding: 7px 10px;
-                font-size: 11px;
+                padding: 8px 10px;
+                font-size: 13px;
                 color: #898989;
                 margin-right: 0;
             }
@@ -1183,16 +1210,16 @@ strong {
         }
         &::-webkit-scrollbar {
             background-color: transparent;
-            width: 2px;
-            height: 2px;
+            width: 5px;
+            height: 5px;
             border-radius: 15px;
         }
         &::-webkit-scrollbar-thumb {
-            background-color: #EBF1FF;
+            background-color: #DEDEDE;
             border-radius: 15px;
         }
         &::-webkit-scrollbar-track {
-            background-color: transparent;
+            background-color: $white;
             border-radius: 15px;
         }
         
@@ -1814,6 +1841,9 @@ strong {
         @media (max-width: 767px) {
             font-size: 14px;
         }
+        &.bg-light {
+            background: #F8F8F8;
+        }
         &::placeholder {
             color: #94A3B8;
         }
@@ -2044,6 +2074,21 @@ strong {
                 margin-bottom: 0;
             }
         }
+    }
+}
+
+.page-action {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(space-between);
+    .dropdown .dropdown-toggle {
+        border-radius: 5px;
+        border: 1px solid #ABABAB;
+        background: $white;
+        padding: 7px 10px;
+        font-size: 11px;
+        color: #898989;
+        line-height: 1;
     }
 }
 
