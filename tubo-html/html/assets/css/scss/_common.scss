@@ -857,16 +857,32 @@ strong {
                 }
             }
         }
+        &.lg-padding {
+            thead {
+                tr {
+                    th {
+                        padding: 15px 10px;
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    td {
+                        padding: 15px 10px;
+                    }
+                }
+            }
+        }
         &.freeze-row {
             thead {
                 th {
-                   padding: 20px 10px;
                    vertical-align: baseline;
                    position: sticky;
                    top: 0px;
                 }    
             }
         }
+        
         &.table-striped {
             tbody { 
                 & > tr:nth-of-type(odd) {
@@ -925,7 +941,7 @@ strong {
                 border: none;
                 &:hover {
                     td {
-                        background: #f8f8f8 !important;
+                        background: rgba(235,241,255,0.7) !important;
                         .action {
                             @include opacity(1);
                             visibility: visible;
@@ -1365,6 +1381,11 @@ strong {
             .action {
                 @include border-radius(5px);
                 border: 1px solid #EBF1FF;  
+                cursor: pointer;
+                @include transition(0.3s, ease-in-out);
+                &:hover {
+                    border-color: $primary;
+                }
                 .arrow {
                     width: 8px;  
                     height: 8px;   
@@ -1574,7 +1595,7 @@ strong {
     padding: 0;
     label {
         cursor: pointer;
-        @include transition(0.3s, ease-in-out);
+        @include transition(0.1s, ease-in-out);
         @include inline-flex;
         padding-left: 12px;
         line-height: 1;
@@ -1583,7 +1604,7 @@ strong {
         width: 13px;
         height: 13px;
         path { 
-            @include transition(0.3s, ease-in-out);
+            @include transition(0.1s, ease-in-out);
         }
     }
     &:hover, &:focus {
@@ -1610,7 +1631,7 @@ strong {
         border: 1px solid #D0D0D0;
         @include border-radius(2px);
         background-size: 10px;
-        @include transition(0.2s, ease-in-out);
+        @include transition(0.1s, ease-in-out);
         box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25) inset;
         cursor: pointer;
         &:focus {
