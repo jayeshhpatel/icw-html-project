@@ -323,6 +323,16 @@ strong {
 			border: 1px solid #FF0000;
 		}
 	}
+	&.btn-outline-primary {
+		color: $primary !important;
+		border: 1px solid $primary;
+		background-color: transparent;
+		&:hover, &:focus, &:active{
+			background-color: $primary;
+			color: $white !important;
+			border: 1px solid $primary;
+		}
+	}
 }
 /* Button - End */
 
@@ -1041,7 +1051,7 @@ strong {
                     .user-add-dropdown {
                         .dropdown-toggle {
                             border: 1px dashed #98A2B3;
-                            width: 27px;
+                            width: 27px !important;
                             height: 27px;
                             flex: none;
                             border-radius: 50%;
@@ -1270,7 +1280,25 @@ strong {
                     margin-right: 0
                 }
             }
-        }        
+        }   
+        .input-field-block {
+            @include flexbox;
+            @include flex-wrap(wrap);   
+            margin-top: 10px;
+            .form-group {      
+                margin-top: 10px;
+                margin-bottom: 0;
+                margin-right: 10px;
+                .form-select, .form-control {
+                    height: 40px;          
+                    min-width: 220px;
+                }
+            }
+            .action {
+                margin-bottom: 0;
+                margin-top: 10px;
+            }
+        }     
         .dropdown {
             .dropdown-toggle {
                 @include border-radius(5px);
