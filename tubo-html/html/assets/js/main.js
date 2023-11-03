@@ -38,6 +38,3 @@ $('.toggleBtn').on('click', function(e) {
         $(this).removeClass('addNew').addClass('btnView');
     }
 });
-$('.btn-view').on('click', function(e) {
-   
-});
