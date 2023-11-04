@@ -38,3 +38,14 @@ $('.toggleBtn').on('click', function(e) {
         $(this).removeClass('addNew').addClass('btnView');
     }
 });
+
+$('.editable-btn').on('click', function(e) {      
+    if($(this).hasClass('save-btn')) {
+        console.log($(this).parents('.editable-block .info-block'));
+        $(this).parents('.editable-block .form-group').css('display','none');
+        $(this).parents('.editable-block').find('.info-block').css('display','flex');
+    } else if($(this).hasClass('edit-btn')) {        
+        $(this).parents('.editable-block .info-block').css('display','none');
+        $(this).parents('.editable-block').find('.form-group').css('display','flex');
+    }
+});

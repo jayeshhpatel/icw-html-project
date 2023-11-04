@@ -1047,20 +1047,32 @@ strong {
                         width: 60px;
                         border-right: 1px solid #EAF0FF;
                     }
-                    .edit-mode {
+                    .editable-block {
+                        .info-block {
+                            @include flexbox;
+                            @include align-items(center);
+                            @include justify-content(space-between);
+                            .editable-btn {
+                                cursor: pointer;
+                            }
+                        }
                         .form-group {
                             @include flexbox;
                             @include align-items(center);
                             margin-bottom: 0;
                             width: 100%;
                             position: relative;
-                            a {
+                            .editable-btn {
                                 position: absolute;
+                                cursor: pointer;
                                 right: 10px;
                                 display: inline-block;
                                 line-height: 0.7;
                                 top: 50%;
                                 @include transform(translateY(-50%));
+                                &.edit-btn {
+                                    right: 0;
+                                }
                             }
                         }
                         .action {
