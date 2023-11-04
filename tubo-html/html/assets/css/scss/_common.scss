@@ -266,6 +266,7 @@ strong {
 .btn-icon {
     display: inline-block;
     background-size: contain !important;
+    line-height: 1;
     &.icon-gmail {
         background: url(../images/icon-gmail.svg) no-repeat center center; width: 28px; height: 28px;
     }
@@ -380,7 +381,7 @@ strong {
             color: $primary;
         }
     }
-	&.with-icon {
+	&.with-icon-arrow {
 		&:after {
 			content: "";
 			display: block;
@@ -999,11 +1000,7 @@ strong {
                 border: none;
                 &:hover {
                     td {
-                        background: rgba(235,241,255,0.7) !important;
-                        .action {
-                            @include opacity(1);
-                            visibility: visible;
-                        }
+                        background: rgba(235,241,255,0.7) !important;                        
                     }
                 }
                 td {
@@ -1042,9 +1039,32 @@ strong {
                             }
                         }
                     }
+                    &.td-sm-width {
+                        width: 60px;
+                    }
                     &.item-checkbox {
                         width: 60px;
                         border-right: 1px solid #EAF0FF;
+                    }
+                    .edit-mode {
+                        .form-group {
+                            @include flexbox;
+                            @include align-items(center);
+                            margin-bottom: 0;
+                            width: 100%;
+                            position: relative;
+                            a {
+                                position: absolute;
+                                right: 10px;
+                                display: inline-block;
+                                line-height: 0.7;
+                                top: 50%;
+                                @include transform(translateY(-50%));
+                            }
+                        }
+                        .action {
+                            margin-left: 10px
+                        }
                     }
                     .action {
                         @include transition(0.3s, ease-in-out);
@@ -1247,8 +1267,7 @@ strong {
             padding: 15px;
         }
         .icon {            
-            margin-right: 15px;
-            
+            margin-right: 15px;            
             @media (max-width: 767px) {
                 margin-right: 8px;
                 svg {
@@ -1274,6 +1293,16 @@ strong {
                 font-size: 14px;
                 font-weight: 400;
                 display: inline-block;
+                &.sort-arrow {
+                    cursor: pointer;
+                    &:hover {
+                        svg {
+                            path {
+                                stroke: $primary;
+                            }
+                        }
+                    }
+                }
                 &:not(:last-child) {
                     margin-right: 20px;
                 }                
@@ -2070,10 +2099,10 @@ strong {
             box-shadow: none;           
         }
         &.sm-form-control {
-            height: 25px;
+            height: 30px;
             border-radius: 4px;
             font-size: 12px;
-            padding: 0 5px;
+            padding: 0 10px;
             &[type="date"]::-webkit-calendar-picker-indicator { 
                 background-size: 10px;
             }
@@ -2320,8 +2349,6 @@ strong {
         line-height: 1;
     }
 }
-
-
 
 .modal {
     .modal-dialog {
