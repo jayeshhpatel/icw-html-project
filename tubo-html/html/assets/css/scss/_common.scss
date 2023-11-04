@@ -157,6 +157,21 @@ strong {
         margin-top: 20px;
     }  
 }
+.border-radius-top {
+    @include border-radius(15px 15px 0 0);
+}
+.border-radius-top-left {
+    @include border-radius(15px 0 0 0);
+}
+.border-radius-top-right {
+    @include border-radius(0 15px 0 0);
+}
+.border-radius-bottom-left {
+    @include border-radius(0 0 0 15px);
+}
+.border-radius-bottom-right {
+    @include border-radius(0 0 15px 0);
+}
 
 .row.g-15 {
     margin-left: -15px;
@@ -881,7 +896,9 @@ strong {
         border-radius: 15px;
     }
     .table {
-        overflow: hidden;
+        .border-right {
+            border-right: 1px solid #EAF0FF !important;
+        }
         &.with-border {
             thead {
                 tr {                    
@@ -1000,9 +1017,36 @@ strong {
             tr {
                 border: none;
                 &:hover {
-                    td {
+                    td, th {
                         background: rgba(235,241,255,0.7) !important;                        
                     }
+                }
+                &:last-child {
+                    td {
+                        &:first-child {
+                            @include border-radius(0 0 0 15px);
+                        }
+                        &:last-child {
+                            @include border-radius(0 0 15px 0);
+                        }
+                    }
+                }
+                &.rounded-0 {
+                    td, th {
+                        &:first-child {
+                            @include border-radius(0);
+                        }
+                        &:last-child {
+                            @include border-radius(0);
+                        }
+                    }
+                }
+                th {
+                    @include transition(0.3s, ease-in-out);
+                    font-weight: 500;
+                    font-size: 16px;
+                    vertical-align: middle;
+                    padding-left: 20px;
                 }
                 td {
                     border: none;
@@ -1026,7 +1070,7 @@ strong {
                         }
                     }
                     &.col-checkbox {
-                        width: 50px;
+                        width: 60px;
                     }
                     &.type {
                         font-size: 13px;
@@ -1042,10 +1086,6 @@ strong {
                     }
                     &.td-sm-width {
                         width: 60px;
-                    }
-                    &.item-checkbox {
-                        width: 60px;
-                        border-right: 1px solid #EAF0FF;
                     }
                     .editable-block {
                         .info-block {
@@ -1267,7 +1307,6 @@ strong {
     background: $white;
     box-shadow: 0px 3.5px 5.5px 0px rgba(0, 0, 0, 0.02);
     border: 1px solid #E7EEFF;
-    overflow: hidden;
     .card-header {
         background: $white;
         padding: 20px;
@@ -1370,6 +1409,11 @@ strong {
                 font-size: 13px;
                 color: #898989;
                 margin-right: 0;
+                &.no-arrow {
+                    &::after {
+                        content: none;
+                    }
+                }
             }
             .dropdown-menu {               
                 min-width: 120px;  
@@ -1377,9 +1421,7 @@ strong {
         }
     }
     .card-body {
-        padding: 15px 20px;
-        overflow: hidden;
-        // @include border-radius(0 0 15px 15px);
+        padding: 15px 20px;       
         &.with-table {
             padding: 15px 0;
         }
@@ -1692,7 +1734,6 @@ strong {
         }
     }
 }
-
 
 /* Collapse Card */
 .collapse-card {
@@ -2218,7 +2259,7 @@ strong {
 }
 
 .group-box {
-    border-radius: 10px;
+    @include border-radius(15px);
     border: 1px solid #E7EEFF;
     .box-header {
         & > div {
@@ -2359,6 +2400,9 @@ strong {
 .modal {
     .modal-dialog {
         max-width: 400px;
+        &.mw-500 {
+            max-width: 500px;
+        }
         @media (max-width: 575px) {
             margin: 0 auto;
         }
@@ -2370,7 +2414,7 @@ strong {
             padding: 40px 20px 20px;
         }
         @media (max-width: 575px) {
-            margin: 0 15px;
+            margin: 15px;
         }
         .btn-close {
             width: 40px;
@@ -2413,6 +2457,52 @@ strong {
                     }
                 }
             }
+            .sort-info {
+                font-size: 14px;
+                color: #64748B;
+                margin: 20px 0;
+                a {
+                    font-weight: 700;
+                    &:hover, &:focus {
+                        color: $black;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.add-new-content {
+    @include flexbox;
+    @include align-items(center);
+    @include flex-direction(column);
+    @include justify-content(center);
+    height: 100%;
+    padding: 60px 30px;
+    svg {
+        path {
+            @include transition(0.3s, ease-in-out);
+        }
+    }
+    .text {
+        font-size: 24px;
+        font-weight: 500;
+        color: #115C51;
+        margin-top: 15px;
+        @include transition(0.3s, ease-in-out);
+        @media (max-width: 767px) {
+            font-size: 20px;
+        }
+    }
+    &:hover, &:focus {
+        svg {
+            path {
+                fill: $primary;
+            }
+        }
+        .text { 
+            color: $primary;
         }
     }
 }
