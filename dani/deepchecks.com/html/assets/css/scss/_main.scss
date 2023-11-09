@@ -7710,21 +7710,77 @@ body .icw-gallery-imgs {
         .pricing-inner-block{
             &::before {
                 @media (min-width:992px) { 
-                    width: 223.33px;
-                    right: 233.33px;
+                    width: 168px;
+                    right: 177px;
                 }
                 @media (min-width:1200px) { 
-                    width: 283.33px;
-                    right: 293.33px;
+                    width: 213px;
+                    right: 222px;
                 }
-                @media (min-width:1322px) { 
-                    width: 338.33px;
-                    right: 27.33%;
+                @media (min-width:1400px) { 
+                    width: 253.5px;
+                    right: 20.7%;
                 }
             }
+            
             .pricing-header-block{
-                -ms-grid-columns: 240px 1fr 1fr 1fr;
-                grid-template-columns: 240px 1fr 1fr 1fr;
+                -ms-grid-columns: 240px 1fr 1fr 1fr 1fr;
+                grid-template-columns: 240px 1fr 1fr 1fr 1fr;
+            }
+            &.three_column {
+                .pricing-header-block {
+                    -ms-grid-columns: 240px 1fr 1fr 1fr;
+                    grid-template-columns: 240px 1fr 1fr 1fr;
+                }
+                &::before {
+                    @media (min-width:992px) { 
+                        width: 223.33px;
+                        right: 233.33px;
+                    }
+                    @media (min-width:1200px) { 
+                        width: 283.33px;
+                        right: 293.33px;
+                    }
+                    @media (min-width:1322px) { 
+                        width: 338.33px;
+                        right: 27.33%;
+                    }
+                }
+                .pricing-body{
+                    .pricing-content{
+                        -ms-grid-columns: 240px 1fr 1fr 1fr;
+                        grid-template-columns: 240px 1fr 1fr 1fr;
+                        div{
+                            &:nth-child(4){
+                                color: #000;
+                                .yes-icon{
+                                    filter: none;
+                                }
+                                .no-icon{
+                                    filter: none;
+                                }
+                            }
+    
+                            &:nth-child(3){
+                                color: $white;
+                                .yes-icon{
+                                    filter: brightness(100);
+                                }
+                                .no-icon{
+                                    filter: brightness(100);
+                                    @include opacity(0.4);
+                                }
+                            }
+                        }
+                        &:hover{
+                            div{
+                                &:nth-child(2){
+                                    color: $purple;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         
             .pricing-card-header{
@@ -7747,10 +7803,10 @@ body .icw-gallery-imgs {
             
             .pricing-body{
                 .pricing-content{
-                    -ms-grid-columns: 240px 1fr 1fr 1fr;
-                    grid-template-columns: 240px 1fr 1fr 1fr;
+                    -ms-grid-columns: 240px 1fr 1fr 1fr 1fr;
+                    grid-template-columns: 240px 1fr 1fr 1fr 1fr;
                     div{
-                        &:nth-child(4){
+                        &:nth-child(3){
                             color: #000;
                             .yes-icon{
                                 filter: none;
@@ -7760,7 +7816,7 @@ body .icw-gallery-imgs {
                             }
                         }
 
-                        &:nth-child(3){
+                        &:nth-child(4){
                             color: $white;
                             .yes-icon{
                                 filter: brightness(100);
@@ -7773,7 +7829,7 @@ body .icw-gallery-imgs {
                     }
                     &:hover{
                         div{
-                            &:nth-child(2){
+                            &:nth-child(3){
                                 color: $purple;
                             }
                         }
