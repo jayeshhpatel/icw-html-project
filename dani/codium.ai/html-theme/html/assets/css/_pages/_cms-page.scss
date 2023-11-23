@@ -2283,6 +2283,93 @@
         }
     }
 }
+
+.ipad-barcode-section {
+    @include flex-direction(column);
+    @include justify-content(center);
+    padding: 100px 0;
+    background-image: url(../images/bg-ipad-form.png), url(../../upload/ipad-barcode-vector.png);
+    background-size: cover, 650px;
+    @media (max-width: 992px) {
+        background-size: cover, 450px;
+    }
+    .section-title {
+        .logos {
+            @include justify-content(center);
+        }
+        p {
+            color: rgba(#FFFFFF, 0.6);
+            @media (max-width: 992px) {
+                font-size: 18px;
+            }
+        }
+    }
+    .barcode-box-block {
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+        @include flex-wrap(wrap);
+        max-width: 835px;
+        margin: 0 auto; 
+        gap: 30px;
+        margin-top: 50px;
+        @media (max-width: 992px) {
+            margin-top: 30px;
+        }
+    }
+    .barcode-box {       
+        background-size: 100% 100%;
+        height: 100%;        
+        width: 256px;
+        position: relative;    
+        @include border-radius(27px);
+        background-image: url(../images/review-card-bg.png), linear-gradient(0deg, rgba(1, 1, 42, 0.40) 0%, rgba(1, 1, 42, 0.40) 100%), linear-gradient(106deg, rgba(255, 255, 255, 0.40) 3.04%, rgba(255, 255, 255, 0.00) 99.23%);
+        background-blend-mode: overlay, normal, normal;
+        backdrop-filter: blur(36px); 
+        @media (max-width: 992px) {
+            width: 200px;
+            @include border-radius(20px);
+        }
+        &::before {
+            display: block;
+            padding-top: 100%;
+            content: "";
+        }
+        .inner-block {
+            @include inline-flex;
+            @include align-items(center);
+            @include flex-direction(column);
+            @include justify-content(center);
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 35px 30px 30px;
+            @media (max-width: 992px) {
+                padding: 30px 20px 20px;
+            }
+        }
+        .img-block {
+            line-height: 0.7;
+            img {
+                max-width: 100px;
+            }
+        }
+        .text {
+            color: #FFF;
+            text-align: center;;
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 30px;
+            @media (max-width: 992px) {
+                font-size: 16px;
+                margin-top: 15px;
+            }
+        }
+    }
+}
+
 .our-product-section {
     .product-list {
         ul {
