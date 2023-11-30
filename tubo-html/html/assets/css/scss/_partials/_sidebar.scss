@@ -2,7 +2,7 @@
     position: fixed;
     top: 122px;
     left: 0;
-    width: 275px;
+    width: 310px;
     padding: 10px 20px 20px;
     z-index: 1040;
     height: 100%;
@@ -12,7 +12,7 @@
     
     @include transition(0.3s, ease-in-out);
     &.is-minimize {
-        width: 95px;
+        width: 106px;
         .sidebar-content-block {  
             background: $white;
         }
@@ -252,6 +252,33 @@
                 .accordion-menu-list {
                     li {
                         padding-left: 25px;
+                        .form-check.only-icon label {
+                            font-size: 12px;
+                            line-height: normal;
+                        }
+                        & > ul {
+                            margin-left: 23px;
+                            li {
+                                position: relative;
+                                padding-left: 10px;
+                                &::before {
+                                    content: '';
+                                    width: 3px;
+                                    height: 3px;
+                                    @include border-radius(50%);
+                                    display: block;
+                                    position: absolute;
+                                    top: calc(50% - 1px);
+                                    left: 0;
+                                    background: $black;
+                                }
+                                &:not(:last-child) {
+                                    .form-check { 
+                                        margin-bottom: 5px;
+                                    }
+                                }
+                            }
+                        }
                         a {
                             font-size: 12px;
                             padding: 0;
