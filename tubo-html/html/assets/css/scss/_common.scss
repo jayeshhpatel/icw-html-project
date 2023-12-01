@@ -1073,7 +1073,7 @@ strong {
                         }
                     }
                     &.col-checkbox {
-                        width: 60px;
+                        width: 50px;
                     }
                     &.type {
                         font-size: 13px;
@@ -1198,8 +1198,8 @@ strong {
                                     }
                                 }
                                 .form-check .form-check-input {
-                                    width: 20px !important;
-                                    height: 20px !important;
+                                    width: 16px !important;
+                                    height: 16px !important;
                                     @include border-radius(50% !important);
                                     &:checked[type=checkbox] {
                                         background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.3733 0.756121C7.65507 0.940165 7.73429 1.31778 7.55025 1.59954L4.10122 6.87991C4.00375 7.02913 3.84583 7.12821 3.66906 7.15102C3.49228 7.17385 3.31437 7.11813 3.18221 6.99854L0.938823 4.9688C0.68926 4.74301 0.669993 4.35766 0.895788 4.1081C1.12158 3.85853 1.50694 3.83927 1.7565 4.06506L3.47094 5.61622L6.52988 0.933064C6.71392 0.651297 7.09153 0.572077 7.3733 0.756121Z" fill="white"/></svg>');
@@ -1238,13 +1238,13 @@ strong {
                     .form-check {
                         margin-bottom: 0;
                         .form-check-input { 
-                            width: 20px;
-                            height: 20px;
+                            width: 16px;
+                            height: 16px;
                             margin-top: 0px;
                             margin-left: 0;
                             border: 1px solid #D0D0D0;
                             @include border-radius(2px);
-                            background-size: 12px;
+                            background-size: 10px;
                             @include transition(0.2s, ease-in-out);
                             box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25) inset;
                             cursor: pointer;
@@ -1255,7 +1255,7 @@ strong {
                                 background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.3733 0.756121C7.65507 0.940165 7.73429 1.31778 7.55025 1.59954L4.10122 6.87991C4.00375 7.02913 3.84583 7.12821 3.66906 7.15102C3.49228 7.17385 3.31437 7.11813 3.18221 6.99854L0.938823 4.9688C0.68926 4.74301 0.669993 4.35766 0.895788 4.1081C1.12158 3.85853 1.50694 3.83927 1.7565 4.06506L3.47094 5.61622L6.52988 0.933064C6.71392 0.651297 7.09153 0.572077 7.3733 0.756121Z" fill="rgb(0 106 255)"/></svg>');
                                 background-repeat: no-repeat;
                                 background-position: center;
-                                background-size: 12px;                 
+                                background-size: 10px;                 
                             }
                             &:checked {
                                 background: transparent;
@@ -2300,95 +2300,84 @@ strong {
         .box-title {
             font-size: 13px;
         }
-        .search-header {
-            @include flexbox;
-            @include align-items(center);
-            @media (max-width: 767px) {
-                @include justify-content(space-between);
-            }
-            @media (max-width: 575px) {
-                display: block;
-            }
-            .dropdown {
-                text-align: left;
-                .dropdown-toggle {
-                    max-width: 240px;
-                    background: $white;
-                    &::after {
-                        content: none;
-                    }
-                    @media (max-width: 575px) {
-                        max-width: 100%;
-                        width: 100%;
-                    }
-                }
-                .dropdown-menu {
-                    min-width: 280px;
-                    padding-bottom: 5px;
-                    li {
-                        &:not(:first-child) {
-                            padding: 5px 10px;
-                            .dropdown-item {
-                                border-radius: 8px;
-                                border: 1px solid #F5F6F7;
-                                @include justify-content(space-between);
-                            }
-                        }
-                        &.active {
-                            .dropdown-item {
-                                background: #F7F8FA;
-                            }
-                        }
-                    }
-                    .dropdown-item {
-                        .form-group {
-                            @include flexbox;
-                            position: relative;
-                            width: 100%;  
-                            input {
-                                height: 34px;
-                                border-radius: 5px;
-                            }                          
-                            span {
-                                position: absolute;
-                                right: 15px;
-                                top: 50%;
-                                transform: translateY(-50%);                                
-                            }
-                        }
-                        .form-check .form-check-input {
-                            width: 20px;
-                            height: 20px;
-                            @include border-radius(50%);
-                            background-size: 10px;
-                        }
-                        .icon {
-                            width: 34px;
-                            height: 34px;
-                            border-radius: 8px;
-                            background: #F8FAFC;
-                            svg {
-                                width: 18px;
-                            }
-                        }                        
-                    }
-                }
-            }
-            .tag-group {
-                margin-left: 90px;
-                @media (max-width: 767px) {
-                    margin-left: 30px;
-                }
-                @media (max-width: 575px) {
-                    margin-left: 0px;
-                    margin-top: 10px;
-                }
-            }
-        }
     }
     .box-body {
         border-radius: 0 0 10px 10px;
         overflow: hidden;
+        .dropdown {
+            text-align: left;
+            .dropdown-toggle {
+                max-width: 240px;
+                background: $white;
+                &::after {
+                    content: none;
+                }
+                @media (max-width: 575px) {
+                    max-width: 100%;
+                    width: 100%;
+                }
+            }
+            .dropdown-menu {
+                min-width: 280px;
+                padding-bottom: 5px;
+                li {
+                    &:not(:first-child) {
+                        padding: 5px 10px;
+                        .dropdown-item {
+                            border-radius: 8px;
+                            border: 1px solid #F5F6F7;
+                            @include justify-content(space-between);
+                        }
+                    }
+                    &.active {
+                        .dropdown-item {
+                            background: #F7F8FA;
+                        }
+                    }
+                }
+                .dropdown-item {
+                    .form-group {
+                        @include flexbox;
+                        position: relative;
+                        width: 100%;  
+                        input {
+                            height: 34px;
+                            border-radius: 5px;
+                        }                          
+                        span {
+                            position: absolute;
+                            right: 15px;
+                            top: 50%;
+                            transform: translateY(-50%);                                
+                        }
+                    }
+                    .form-check .form-check-input {
+                        width: 20px;
+                        height: 20px;
+                        @include border-radius(50%);
+                        background-size: 10px;
+                        &:checked {                            
+                            background: #006AFF url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.3733 0.756121C7.65507 0.940165 7.73429 1.31778 7.55025 1.59954L4.10122 6.87991C4.00375 7.02913 3.84583 7.12821 3.66906 7.15102C3.49228 7.17385 3.31437 7.11813 3.18221 6.99854L0.938823 4.9688C0.68926 4.74301 0.669993 4.35766 0.895788 4.1081C1.12158 3.85853 1.50694 3.83927 1.7565 4.06506L3.47094 5.61622L6.52988 0.933064C6.71392 0.651297 7.09153 0.572077 7.3733 0.756121Z" fill="white"/></svg>');
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            background-size: 10px; 
+                            border-color: #006AFF;
+                            -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.25) inset;
+                            box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.25) inset;
+                        }
+                    }
+                    .icon {
+                        width: 34px;
+                        height: 34px;
+                        border-radius: 8px;
+                        background: #F8FAFC;
+                        svg {
+                            width: 18px;
+                        }
+                    }                        
+                }
+            }
+        }
     }
     .switch-box {
         border-bottom: 1px solid #E7EEFF;
