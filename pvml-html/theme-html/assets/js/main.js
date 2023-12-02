@@ -118,16 +118,7 @@ if ($('.team-slider').length) {
             pagination: 'splide__pagination dark-pagination',
         },
         breakpoints: {
-            1200: {
-                perPage: 2,
-                autoWidth: true,
-            },
-            767: {
-                perPage: 2,
-                gap: 20,
-                autoWidth: true,
-            },
-            480: {
+            420: {
                 perPage: 1,
             },
         },
