@@ -956,7 +956,67 @@ h4, .h4 {
 	.design-by {
 		display: none;
 	}
-
+	.hs-form {
+		@include flexbox;
+		@include align-items(center);
+		@include border-radius(61px);
+		border: 1px solid #363C3E;
+		position: relative;
+		.hs-form-field {
+			width: 100%;			
+			& > label {
+				display: none;
+			}
+			.hs-input {
+				height: 56px;
+				width: 100%;
+				padding: 0 20px;
+				padding-right: 75px;
+				@include border-radius(61px);
+				background: transparent;
+				border: none;
+				color: $white;
+				@media (max-width: 992px) {
+					height: 45px;
+				}
+				&::placeholder {
+					color: #CCD5D6;
+				}
+			}
+		}
+		.hs-submit {
+			position: absolute;
+			top: 0;
+			right: 0;
+			.hs-button {
+				width: 56px;
+				height: 56px;
+				font-size: 0;
+				flex: none;
+				background: #3FE0D0;
+				@include border-radius(61px);
+				border: none;
+				background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3.33464 10.0005L16.668 10.0005M16.668 10.0005L11.668 5.00049M16.668 10.0005L11.668 15.0005" stroke="rgb(0 43 49)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+				background-size: 20px;
+				background-position: center;
+				background-repeat: no-repeat;
+				@include transition(0.3s, ease-in-out);
+				&:hover, &:focus {
+					background-position: calc(100% - 10px);
+				}
+				@media (max-width: 992px) {
+					width: 45px;
+					height: 45px;					
+				}
+			}
+		}
+		.hs-error-msgs {
+			position: absolute;
+			bottom: -20px;
+    		font-size: 12px;
+			color: #f36161;
+		}
+	}
 }
 
 .back-to-top {

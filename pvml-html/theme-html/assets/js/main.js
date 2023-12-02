@@ -110,15 +110,16 @@ if ($('.customer-review-slider').length) {
 }
 if ($('.team-slider').length) { 
     var splide = new Splide( '.team-slider', {
-        perPage: 4,
+        perPage: 2,
         perMove: 1,
+        arrows: false,
         gap: 30,
         classes: {
             pagination: 'splide__pagination dark-pagination',
         },
         breakpoints: {
             1200: {
-                perPage: 3,
+                perPage: 2,
                 autoWidth: true,
             },
             767: {
