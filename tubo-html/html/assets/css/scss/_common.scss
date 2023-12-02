@@ -622,8 +622,8 @@ strong {
                 .form-check {
                     margin-bottom: 0;
                     .form-check-input {
-                        width: 14px;
-                        height: 14px;
+                        width: 16px;
+                        height: 16px;
                         background-size: 8px;
                         @include border-radius(3px);
                     }
@@ -1073,7 +1073,7 @@ strong {
                         }
                     }
                     &.col-checkbox {
-                        width: 60px;
+                        width: 50px;
                     }
                     &.type {
                         font-size: 13px;
@@ -1198,8 +1198,8 @@ strong {
                                     }
                                 }
                                 .form-check .form-check-input {
-                                    width: 20px !important;
-                                    height: 20px !important;
+                                    width: 16px !important;
+                                    height: 16px !important;
                                     @include border-radius(50% !important);
                                     &:checked[type=checkbox] {
                                         background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.3733 0.756121C7.65507 0.940165 7.73429 1.31778 7.55025 1.59954L4.10122 6.87991C4.00375 7.02913 3.84583 7.12821 3.66906 7.15102C3.49228 7.17385 3.31437 7.11813 3.18221 6.99854L0.938823 4.9688C0.68926 4.74301 0.669993 4.35766 0.895788 4.1081C1.12158 3.85853 1.50694 3.83927 1.7565 4.06506L3.47094 5.61622L6.52988 0.933064C6.71392 0.651297 7.09153 0.572077 7.3733 0.756121Z" fill="white"/></svg>');
@@ -1238,13 +1238,13 @@ strong {
                     .form-check {
                         margin-bottom: 0;
                         .form-check-input { 
-                            width: 20px;
-                            height: 20px;
+                            width: 16px;
+                            height: 16px;
                             margin-top: 0px;
                             margin-left: 0;
                             border: 1px solid #D0D0D0;
                             @include border-radius(2px);
-                            background-size: 12px;
+                            background-size: 10px;
                             @include transition(0.2s, ease-in-out);
                             box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25) inset;
                             cursor: pointer;
@@ -1255,7 +1255,7 @@ strong {
                                 background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.3733 0.756121C7.65507 0.940165 7.73429 1.31778 7.55025 1.59954L4.10122 6.87991C4.00375 7.02913 3.84583 7.12821 3.66906 7.15102C3.49228 7.17385 3.31437 7.11813 3.18221 6.99854L0.938823 4.9688C0.68926 4.74301 0.669993 4.35766 0.895788 4.1081C1.12158 3.85853 1.50694 3.83927 1.7565 4.06506L3.47094 5.61622L6.52988 0.933064C6.71392 0.651297 7.09153 0.572077 7.3733 0.756121Z" fill="rgb(0 106 255)"/></svg>');
                                 background-repeat: no-repeat;
                                 background-position: center;
-                                background-size: 12px;                 
+                                background-size: 10px;                 
                             }
                             &:checked {
                                 background: transparent;
@@ -1384,6 +1384,11 @@ strong {
                 &:last-child {
                     margin-right: 0
                 }
+            }
+            .info-text {
+                font-size: 14px;
+                font-weight: 500;
+                max-width: 220px;
             }
         }   
         .input-field-block {
@@ -1521,6 +1526,63 @@ strong {
             }
         }
     }
+    &.card-sm {
+        border-color: transparent;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        .card-header {
+            background: #F9F9F9;
+            border-color: #E7EEFF;
+            color: #000;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 15px 20px;
+            @media (max-width: 767px) {
+                font-size: 15px;
+                padding: 10px 15px;
+            }
+        }
+        .card-body {
+            padding: 20px 20px 10px;
+            @media (max-width: 767px) {
+                padding: 15px 15px 5px;
+            }
+            .form-group-sm {
+                margin-bottom: 10px;
+                label {
+                    font-size: 14px;
+                    white-space: nowrap;
+                    min-width: 90px;
+                    margin-right: 10px;
+                    margin-bottom: 0;
+                }
+                .form-control {
+                    font-size: 14px;
+                    height: 30px;
+                    max-width: 80px;
+                }
+            }
+            .label {
+                font-size: 14px;
+                margin-bottom: 10px;
+                &:not(:last-child) {
+                    margin-right: 50px;
+                }
+                strong {
+                    min-width: 80px;
+                    margin-right: 10px;
+                    display: inline-block;
+                    &.mw-auto {
+                        min-width: auto;
+                    }
+                }
+                span {
+                    white-space: nowrap;
+                    display: inline-block
+                }
+            }
+        }
+    }
 }
 
 .status {
@@ -1630,6 +1692,7 @@ strong {
         .accordion-header {
             @include flexbox;
             @include align-items(center);
+            cursor: pointer;
             .accordion-title {
                 color: #4FCB8D;
                 font-size: 16px;
@@ -1790,60 +1853,7 @@ strong {
             color: $black;
             margin-bottom: 15px
         }
-        .card {
-            border-color: transparent;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            .card-header {
-                background: #F9F9F9;
-                border-color: #E7EEFF;
-                color: #000;
-                font-size: 16px;
-                font-weight: 500;
-                padding: 15px 20px;
-                @media (max-width: 767px) {
-                    font-size: 15px;
-                    padding: 10px 15px;
-                }
-            }
-            .card-body {
-                padding: 20px 20px 10px;
-                @media (max-width: 767px) {
-                    padding: 15px 15px 5px;
-                }
-                .form-group {
-                    margin-bottom: 10px;
-                    label {
-                        font-size: 14px;
-                        white-space: nowrap;
-                        min-width: 90px;
-                        margin-right: 10px;
-                        margin-bottom: 0;
-                    }
-                    .form-control {
-                        font-size: 14px;
-                        height: 30px;
-                        max-width: 80px;
-                    }
-                }
-                .label {
-                    font-size: 14px;
-                    margin-bottom: 10px;
-                    &:not(:last-child) {
-                        margin-right: 50px;
-                    }
-                    strong {
-                        min-width: 80px;
-                        margin-right: 10px;
-                        display: inline-block;
-                    }
-                    span {
-                        white-space: nowrap;
-                        display: inline-block
-                    }
-                }
-            }
-        }
+        
     }
 }
 /* Collapse Card - End */
@@ -1924,11 +1934,11 @@ strong {
         @include transition(0.1s, ease-in-out);
         @include inline-flex;
         padding-left: 12px;
-        line-height: 1;
+        padding-right: 5px;
     }
     svg {
-        width: 13px;
-        height: 13px;
+        width: 15px;
+        height: 15px;
         path { 
             @include transition(0.1s, ease-in-out);
         }
@@ -1936,23 +1946,18 @@ strong {
     &:hover, &:focus {
         label {
             color: $primary;
-        }
-        svg {
-            path {
-                stroke: #006AFF;
-            }
-        }
+        }       
         .form-check-input { 
             border-color: #006AFF;
         }
     }
     .icon, .sm-icon {
-        margin-right: 5px;
+        margin-right: 8px;
     }
     .form-check-input { 
-        width: 20px;
-        height: 20px;
-        margin-top: 0px;
+        width: 16px;
+        height: 16px;
+        margin-top: 0;
         margin-left: 0;
         border: 1px solid #D0D0D0;
         @include border-radius(2px);
@@ -2095,8 +2100,22 @@ strong {
     .with-icon {
         position: relative;
         .form-control {
-            padding-left: 50px;
+            padding-left: 45px;
         }
+    }
+    .mobile-input {
+        .tel-code {
+            position: absolute;
+            top: 50%;
+            left: 45px;
+            @include transform(translateY(-50%));
+            color: #64748B;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .form-control {
+            padding-left: 75px;
+        }  
     }
     .input-icon {
         display: inline-block;
@@ -2107,7 +2126,8 @@ strong {
         background-repeat: no-repeat;
         background-size: contain !important;  
         position: absolute;
-        top: 14px;
+        top: 50%;
+        @include transform(translateY(-50%));
         left: 15px;    
         &.right-icon {
             right: 15px;
@@ -2136,6 +2156,7 @@ strong {
         padding: 0 15px;
         height: 44px;    
         font-size: 16px;
+        color: $black;
         @include transition(0.3s, ease-in-out); 
         &.bg-light {
             background: #F8F8F8;
@@ -2175,16 +2196,20 @@ strong {
         border: 1px solid #E7EEFF;
         background-color: $white;
         padding: 0 15px;
-        height: 48px;    
+        height: 44px;    
+        color: $black;
         font-size: 16px;
         @include transition(0.3s, ease-in-out); 
         &.sm-form-select {
-            height: 25px;
+            height: 28px;
             border-radius: 4px;
             font-size: 12px;
-            padding: 0 5px;
-            padding-right: 24px;
-            background-position: right 8px center;
+            padding: 0 11px;
+            padding-right: 28px;
+            background-position: right 9px center;
+        }
+        &.mw-110 {
+            min-width: 110px;
         }
         &:hover,&:focus, &:active {
             border-color: $primary;
@@ -2270,96 +2295,89 @@ strong {
             padding: 20px;
             @media (max-width: 575px) {
                 padding: 15px;
-            }
+            }           
         }
-        .search-header {
-            @include flexbox;
-            @include align-items(center);
-            @media (max-width: 767px) {
-                @include justify-content(space-between);
-            }
-            @media (max-width: 575px) {
-                display: block;
-            }
-            .dropdown {
-                text-align: left;
-                .dropdown-toggle {
-                    max-width: 240px;
-                    &::after {
-                        content: none;
-                    }
-                    @media (max-width: 575px) {
-                        max-width: 100%;
-                        width: 100%;
-                    }
-                }
-                .dropdown-menu {
-                    min-width: 280px;
-                    padding-bottom: 5px;
-                    li {
-                        &:not(:first-child) {
-                            padding: 5px 10px;
-                            .dropdown-item {
-                                border-radius: 8px;
-                                border: 1px solid #F5F6F7;
-                                @include justify-content(space-between);
-                            }
-                        }
-                        &.active {
-                            .dropdown-item {
-                                background: #F7F8FA;
-                            }
-                        }
-                    }
-                    .dropdown-item {
-                        .form-group {
-                            @include flexbox;
-                            position: relative;
-                            width: 100%;  
-                            input {
-                                height: 34px;
-                                border-radius: 5px;
-                            }                          
-                            span {
-                                position: absolute;
-                                right: 15px;
-                                top: 50%;
-                                transform: translateY(-50%);                                
-                            }
-                        }
-                        .form-check .form-check-input {
-                            width: 20px;
-                            height: 20px;
-                            @include border-radius(50%);
-                            background-size: 10px;
-                        }
-                        .icon {
-                            width: 34px;
-                            height: 34px;
-                            border-radius: 8px;
-                            background: #F8FAFC;
-                            svg {
-                                width: 18px;
-                            }
-                        }                        
-                    }
-                }
-            }
-            .tag-group {
-                margin-left: 90px;
-                @media (max-width: 767px) {
-                    margin-left: 30px;
-                }
-                @media (max-width: 575px) {
-                    margin-left: 0px;
-                    margin-top: 10px;
-                }
-            }
+        .box-title {
+            font-size: 13px;
         }
     }
     .box-body {
         border-radius: 0 0 10px 10px;
         overflow: hidden;
+        .dropdown {
+            text-align: left;
+            .dropdown-toggle {
+                max-width: 240px;
+                background: $white;
+                &::after {
+                    content: none;
+                }
+                @media (max-width: 575px) {
+                    max-width: 100%;
+                    width: 100%;
+                }
+            }
+            .dropdown-menu {
+                min-width: 280px;
+                padding-bottom: 5px;
+                li {
+                    &:not(:first-child) {
+                        padding: 5px 10px;
+                        .dropdown-item {
+                            border-radius: 8px;
+                            border: 1px solid #F5F6F7;
+                            @include justify-content(space-between);
+                        }
+                    }
+                    &.active {
+                        .dropdown-item {
+                            background: #F7F8FA;
+                        }
+                    }
+                }
+                .dropdown-item {
+                    .form-group {
+                        @include flexbox;
+                        position: relative;
+                        width: 100%;  
+                        input {
+                            height: 34px;
+                            border-radius: 5px;
+                        }                          
+                        span {
+                            position: absolute;
+                            right: 15px;
+                            top: 50%;
+                            transform: translateY(-50%);                                
+                        }
+                    }
+                    .form-check .form-check-input {
+                        width: 20px;
+                        height: 20px;
+                        @include border-radius(50%);
+                        background-size: 10px;
+                        &:checked {                            
+                            background: #006AFF url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.3733 0.756121C7.65507 0.940165 7.73429 1.31778 7.55025 1.59954L4.10122 6.87991C4.00375 7.02913 3.84583 7.12821 3.66906 7.15102C3.49228 7.17385 3.31437 7.11813 3.18221 6.99854L0.938823 4.9688C0.68926 4.74301 0.669993 4.35766 0.895788 4.1081C1.12158 3.85853 1.50694 3.83927 1.7565 4.06506L3.47094 5.61622L6.52988 0.933064C6.71392 0.651297 7.09153 0.572077 7.3733 0.756121Z" fill="white"/></svg>');
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            background-size: 10px; 
+                            border-color: #006AFF;
+                            -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.25) inset;
+                            box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.25) inset;
+                        }
+                    }
+                    .icon {
+                        width: 34px;
+                        height: 34px;
+                        border-radius: 8px;
+                        background: #F8FAFC;
+                        svg {
+                            width: 18px;
+                        }
+                    }                        
+                }
+            }
+        }
     }
     .switch-box {
         border-bottom: 1px solid #E7EEFF;

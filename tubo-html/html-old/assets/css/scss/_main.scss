@@ -1,0 +1,155 @@
+.main-content-wrapper { 
+    @include transition(0.3s, ease-in-out); 
+    overflow: hidden;
+    &.is-expand {
+        .content-wrapper {
+            @media (min-width: 1200px) {
+                margin-left: 105px;
+            }
+        }
+    }  
+    .content-wrapper {  
+        margin-top: 132px; 
+        margin-left: 20px;
+        margin-right: 20px;
+        @include transition(0.3s, ease-in-out); 
+        @media (min-width: 1200px) {
+            margin-left: 275px;
+            margin-right: 20px;
+        }
+        @media (max-width: 767px) {
+            margin-top: 92px; 
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+        @media (max-width: 575px) {
+            margin-top: 80px; 
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+    }
+}
+
+.onboarding-main-wrapper {
+    min-height: 100vh;
+    background: $white;
+    .onboarding-left-block {
+        background: #D4ECC3;
+        padding: 60px;
+        min-height: 100vh;
+        height: 100%;
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+        @media (min-width: 768px) {
+            width: 50vw;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        @media (max-width: 767px) {
+            max-height: 300px;
+            min-height: unset;
+            padding: 40px 15px;
+        }
+    }
+    .form-content-block {
+        padding: 60px;
+        min-height: 100vh;
+        height: 100%;
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+        background: $white;
+        @media (max-width: 767px) {
+            min-height: auto;
+            padding: 40px 15px;
+        }
+        .content-wrapper {
+            max-width: 400px;
+            width: 100%;
+            margin: 0 auto;
+            .title {
+                font-size: 34px;
+                color: #105C50;
+                font-weight: 700;
+                margin-bottom: 50px;
+                @media (max-width: 992px) {
+                    font-size: 24px;
+                    margin-bottom: 30px;
+                }
+            }
+            .image-block {
+                margin-bottom: 25px;
+            }
+            .sort-info {
+                font-size: 14px;
+                color: #64748B;
+                margin: 20px 0;
+                a {
+                    font-weight: 700;
+                    &:hover, &:focus {
+                        color: $black;
+                        text-decoration: underline;
+                    }
+                }
+            }
+            .border-with-label {
+                font-size: 12px;
+                color: #64748B;
+                text-align: center;
+                position: relative;
+                z-index: 1;
+                &::before {
+                    content: '';
+                    width: 100%;
+                    height: 1px;
+                    background: #E2E8F0;
+                    display: block;
+                    position: absolute;
+                    top: calc(50% - 0.5px);
+                    z-index: -1;
+                }
+                span {                    
+                    padding: 0 15px;
+                    background: $white;
+                    display: inline-block;
+                }
+            }            
+            .login-text {
+                color: #000;
+                font-size: 14px;
+                a {
+                    font-weight: 700;
+                    display: inline-block;
+                    @include transition(0.3s, ease-in-out);
+                    &:hover, &:focus {
+                        text-decoration: underline;
+                        color: $black;
+                    }
+                }
+            }
+            .other-signup-btn {
+                @include flexbox;
+                @include align-items(center);
+                margin: 20px 0;
+                .btn {
+                    width: 100%;
+                    height: 48px;
+                    &:not(:last-child) {
+                        margin-right: 15px;
+                    }
+                }
+            }
+            .form-input {
+                border-radius: 12px;
+                border: 1px solid #E2E8F0;
+                @include flexbox;
+                @include align-items(center);
+                @include justify-content(space-between);
+                padding: 15px;
+                margin-bottom: 25px;
+            }
+        }
+    }
+}
