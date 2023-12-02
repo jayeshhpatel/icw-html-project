@@ -965,12 +965,33 @@ h4, .h4 {
 		.hs-form-field {
 			width: 100%;			
 			& > label {
-				display: none;
+				position: absolute;
+				color: #CCD5D6;
+				top: 17px;
+				left: 20px;
+				@include transition(0.3s, ease-in-out);
+			}
+			&.has-focus {
+				> label {
+					top: 5px;
+					font-size: 13px;
+				}
+			}
+			&.not-focused {
+				> label {
+					top: 17px;
+				}
+			}
+			&.has-value {
+				> label {
+					top: 5px;
+					font-size: 13px;
+				}
 			}
 			.hs-input {
 				height: 56px;
 				width: 100%;
-				padding: 0 20px;
+				padding: 18px 20px 0;
 				padding-right: 75px;
 				@include border-radius(61px);
 				background: transparent;
