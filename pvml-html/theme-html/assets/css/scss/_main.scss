@@ -454,9 +454,7 @@
 		border-top: none;
 		background: transparent;
 	 }
-	&.bg-purple {
-		border: 1px solid #A2A6FF;
-		background: #656BEA;
+	&.only-icon-title-card {
 		padding: 30px;
 		@media (max-width: 992px) {
 			padding: 20px;
@@ -467,18 +465,34 @@
 				margin-bottom: 20px;
 			}
 		}
-		.card-info {
-			color: $white;
+		h3 {
 			font-weight: 400;
 			font-size: 18px;
+			margin-bottom: 0;
+			&.font-lg {
+				font-size: 26px;
+			}
 			@media (max-width: 992px) {
 				font-size: 16px;
+				&.font-lg {
+					font-size: 20px;
+				}
 			}
+		}
+	}
+	&.bg-blue {
+		border: 1px solid #A2A6FF;
+		background: #5960F0;
+		h3 {
+			color: $white;
 		}
 	}
 	&.bg-purple {
 		border: 1px solid #A2A6FF;
 		background: #656BEA;
+		h3 {
+			color: $white;
+		}
 	}
 }
 
@@ -1622,6 +1636,10 @@ blockquote {
 
 // Team Block
 .team-item {
+	@media (max-width: 575px) {
+		min-width: 250px;
+		max-width: 200px;
+	}
 	.team-info {
 		.card-img {
 			@include border-radius(12px);
@@ -1679,11 +1697,18 @@ blockquote {
 	}
 }
 .expect-team-section {
+	overflow: hidden;
 	.team-slider {
 		cursor: grab;
+		padding-bottom: 30px;
+		@media (max-width: 767px) {
+			.splide__track {
+				overflow: visible;
+			} 
+		}
 	}
 	.splide__pagination {
-		bottom: -20px;
+		bottom: 0px;
 		z-index: 99;
 		&__page {
 			background: #3FE0D0;
