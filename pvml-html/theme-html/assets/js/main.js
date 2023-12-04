@@ -131,15 +131,32 @@ jQuery(document).ready(function($) {
             pagination: false,
             arrows: false,            
             gap: 40,       
-            autoWidth: true,
             breakpoints: {
                 992: {
                     perPage: 3,
                     arrows: true,
                 },
-                575: {
+                767: {
                     perPage: 2,
                     arrows: true,
+                    gap: 20, 
+                },
+            },
+        });
+        splide_founder.mount();
+    }
+    if ($('.blog-slider').length) { 
+        var splide_founder = new Splide( '.blog-slider', {
+            perPage: 3,
+            perMove: 1,
+            pagination: false,
+            arrows: false,            
+            gap: 30,     
+            breakpoints: {
+                767: {
+                    perPage: 1,
+                    arrows: true,
+                    gap: 20, 
                 },
             },
         });
