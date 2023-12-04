@@ -124,6 +124,27 @@ jQuery(document).ready(function($) {
         });
         splide_team.mount();
     }
+    if ($('.founder-slider').length) { 
+        var splide_founder = new Splide( '.founder-slider', {
+            perPage: 6,
+            perMove: 1,
+            pagination: false,
+            arrows: false,            
+            gap: 40,       
+            autoWidth: true,
+            breakpoints: {
+                992: {
+                    perPage: 3,
+                    arrows: true,
+                },
+                575: {
+                    perPage: 2,
+                    arrows: true,
+                },
+            },
+        });
+        splide_founder.mount();
+    }
 
     icw_cf7_labels();
 });

@@ -486,8 +486,16 @@
 	&.only-icon-card {
 		@include border-radius(12px);
 		border: 1px solid #E6EAEA;
+		@media (max-width: 575px) {
+			padding: 30px;
+			
+		}
 		.card-img {
 			margin-bottom: 0;
+			height: 100%;
+			@include flexbox;
+			@include align-items(center);
+			@include justify-content(center);
 			img {
 				max-width: 100%;
 			}
@@ -1735,4 +1743,42 @@ blockquote {
 .img-bottom-dot {
 	background-repeat: no-repeat;
 	background-position: left bottom;
+}
+
+// Founder Slider
+.founder-slider {
+	.splide__list {
+		@media (min-width: 992px) {
+			@include justify-content(center);
+		}
+		.splide__slide {
+			&:last-child {
+				@media (min-width: 992px) {
+					margin-right: 0 !important;
+				}
+			}
+		}
+	}
+}
+.founder-item {
+	@media (min-width: 992px) {
+		max-width: 160px;
+	}
+	.item-img {
+		background: #F5F8FB;
+		@include border-radius(12px);
+		overflow: hidden;
+		width: 80px;
+		height: 80px;
+		flex: none;
+		margin-bottom: 20px;
+	}
+	h3 {
+		font-size: 18px;
+		margin-bottom: 5px;
+	}
+	.info-text {
+		font-size: 13px;
+		color: #668083;
+	}
 }
