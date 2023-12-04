@@ -109,21 +109,18 @@ if ($('.customer-review-slider').length) {
     splide.mount();
 }
 if ($('.team-slider').length) { 
-    var splide = new Splide( '.team-slider', {
+    var splide_team = new Splide( '.team-slider', {
         perPage: 2,
         perMove: 1,
         arrows: false,
-        gap: 30,
-        classes: {
-            pagination: 'splide__pagination',
-        },
+        gap: 30,       
         breakpoints: {
-            420: {
+            480: {
                 perPage: 1,
             },
         },
-    });        
-    splide.mount();
+    });
+    splide_team.mount();
 }
 
 icw_cf7_labels();
