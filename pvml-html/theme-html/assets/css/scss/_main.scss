@@ -1795,5 +1795,76 @@ blockquote {
 
 // Blog Post Slider
 .post-item {
+	.post-img {
+		@include border-radius(20px);
+		overflow: hidden;
+		margin-bottom: 25px;
+		img {
+			@include transition(0.3s, ease-in-out);
+		}
+	}
+	.post-info {
+		@include flexbox;
+		@include flex-direction(column);
+		@include justify-content(center);
+		@include align-items(flex-start);
+		gap: 12px;
+		.category {
+			@include border-radius(27px);
+			background: #F5F8FB;
+			color: #7177F8;
+			font-size: 13px;
+			letter-spacing: -0.13px;
+			display: inline-block;
+			padding: 5px 12px;
+		}
+		h3 {
+			font-size: 22px;
+			margin-bottom: 0;
+			a {
+				color: $dark;
+				text-decoration: none;
+				@include transition(0.3s, ease-in-out);
+			}
+		}
+		.info-text {
+			color: rgba($dark, 0.6);
+			font-size: 16px;
+			display: none;
+		}
+		.time {
+			font-size: 13px;
+			color: rgba($dark, 0.6);
+		}
+	}
+	&:hover {
+		.post-img {
+			img {
+				@include transform(scale(1.1));
+			}
+		}
+		.post-info {
+			h3 {
+				a {
+					color: $secondary;
+				}
+			}
+		}
+	}
+}
 
+.blog-slider {
+	.splide__slide {
+		width: 350px;
+		&.is-active {
+			width: 550px !important;
+			.post-item {
+				.post-info {
+					.info-text {
+						display: block;
+					}
+				}
+			}
+		}
+	}
 }

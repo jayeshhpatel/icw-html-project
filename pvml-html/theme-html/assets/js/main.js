@@ -150,8 +150,9 @@ jQuery(document).ready(function($) {
             perPage: 3,
             perMove: 1,
             pagination: false,
-            arrows: false,            
+            arrows: true,            
             gap: 30,     
+            
             breakpoints: {
                 767: {
                     perPage: 1,
