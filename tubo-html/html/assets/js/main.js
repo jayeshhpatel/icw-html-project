@@ -23,6 +23,18 @@ jQuery(document).ready(function($) {
         }
     });
     
+    if ($('.collapse-card-body').length) {
+        $('.card-header').dblclick(function(){
+            $(this).find('.btn').removeClass('d-none');
+            $(this).parents('.card').find('.card-body .text-view').hide();
+            $(this).parents('.card').find('.card-body .input-view').show();
+        });
+        $('.card-header .btn').click(function(){
+            $(this).addClass('d-none');
+            $(this).parents('.card').find('.card-body .text-view').show();
+            $(this).parents('.card').find('.card-body .input-view').hide();
+        });
+    }
 
 })
 $('.toggleBtn').on('click', function(e) {
@@ -61,25 +73,3 @@ function toggle(checked) {
         window.location.href = "employer-use-app.html";
     }
 }
-
-$(document).ready(function() {
-    $('.collapse-card-body .card .card-header').on('dblclick', showMessage);
-  
-    function showMessage(event) {
-        var elem = $(event.target);
-        var changeSpan = elem.parents('.card').find('.card-body .label span');
-      
-        $(changeSpan).each(function() {
-            var Name = $(".label span", this).text();
-            console.log(Name);
-            var input = $('<input />', {
-                'type': 'text',
-                    'name': 'unique',
-                    'value': $(this).html()
-            });
-            $(this).parent().append(input);
-            $(this).remove();
-            input.focus();
-        })
-    }
-  });

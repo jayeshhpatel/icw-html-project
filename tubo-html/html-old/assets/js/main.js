@@ -49,3 +49,11 @@ $('.editable-btn').on('click', function(e) {
         $(this).parents('.editable-block').find('.form-group').css('display','flex');
     }
 });
+
+// $('.card-header').each(function() { 
+    //     $('.card-header').on('dblclick', function(event) {            
+    //         $(this).parents('.card').find('.card-body .form-group-sm .editable-span').each(function() {          
+    //             $(this).replaceWith($('<input type=text>').attr({ id: 'value', class: 'form-control sm-form-control', value: $(this).html() }));
+    //         });
+    //     }); 
+    // });
