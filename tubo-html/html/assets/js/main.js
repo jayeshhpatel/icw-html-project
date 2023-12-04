@@ -49,3 +49,37 @@ $('.editable-btn').on('click', function(e) {
         $(this).parents('.editable-block').find('.form-group').css('display','flex');
     }
 });
+
+$(".checkEmployer").change(function() {
+    toggle(this.checked);
+});
+
+function toggle(checked) {    
+    if (checked) {
+        window.location.href = "employer-signup.html";
+    } else {
+        window.location.href = "employer-use-app.html";
+    }
+}
+
+$(document).ready(function() {
+    $('.collapse-card-body .card .card-header').on('dblclick', showMessage);
+  
+    function showMessage(event) {
+        var elem = $(event.target);
+        var changeSpan = elem.parents('.card').find('.card-body .label span');
+      
+        $(changeSpan).each(function() {
+            var Name = $(".label span", this).text();
+            console.log(Name);
+            var input = $('<input />', {
+                'type': 'text',
+                    'name': 'unique',
+                    'value': $(this).html()
+            });
+            $(this).parent().append(input);
+            $(this).remove();
+            input.focus();
+        })
+    }
+  });
