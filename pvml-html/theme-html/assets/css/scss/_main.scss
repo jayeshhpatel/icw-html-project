@@ -1754,6 +1754,21 @@ blockquote {
 
 // Founder Slider
 .founder-slider {
+	@media (max-width: 992px) {
+		padding-bottom: 75px;
+		.splide__arrows {
+			.splide__arrow {
+				top: auto;
+				bottom: 0;
+				left: calc(50% + 5px);
+				right: auto;
+				&.splide__arrow--prev {
+					left: calc(50% - 55px);
+					right: auto;
+				}
+			}
+		}
+	}
 	.splide__list {
 		@media (min-width: 992px) {
 			@include justify-content(center);
@@ -1799,7 +1814,9 @@ blockquote {
 		@include border-radius(20px);
 		overflow: hidden;
 		margin-bottom: 25px;
+		@include transition(0.3s, ease-in-out);		
 		img {
+			@include border-radius(20px);
 			@include transition(0.3s, ease-in-out);
 		}
 	}
@@ -1821,6 +1838,9 @@ blockquote {
 		h3 {
 			font-size: 22px;
 			margin-bottom: 0;
+			@media (max-width: 767px) {
+				flex: 1 1 auto;
+			}
 			a {
 				color: $dark;
 				text-decoration: none;
@@ -1854,14 +1874,65 @@ blockquote {
 }
 
 .blog-slider {
+	@media (max-width: 767px) {
+		padding-bottom: 65px;
+		height: 100%;
+	}
+	.splide__arrows {
+		.splide__arrow {
+			top: -95px;
+			right: 0;
+			left: auto;
+			@media (max-width: 1400px) {
+				top: -90px;
+			}
+			@media (max-width: 992px) {
+				top: -100px;
+			}
+			@media (max-width: 767px) {
+				top: auto;
+				bottom: 0;
+				left: calc(50% + 5px);
+				right: auto;
+			}
+			&.splide__arrow--prev {
+				right: 58px;
+				@media (max-width: 767px) {
+					left: calc(50% - 55px);
+					right: auto;
+				}
+			}
+		}
+	}
+
 	.splide__slide {
-		width: 350px;
-		&.is-active {
-			width: 550px !important;
+		.post-item {
+			width: 350px;
+			@media (max-width: 1400px) {
+				width: 300px;
+			}
+			@media (max-width: 1200px) {
+				width: 250px;
+			}
+		}
+		&.is-active {			
 			.post-item {
+				width: 530px;
+				@media (max-width: 1400px) {
+					width: 450px;
+				}
+				@media (max-width: 1200px) {
+					width: 400px;
+				}
+				@media (max-width: 767px) {
+					width: 330px;
+				}
 				.post-info {
 					.info-text {
 						display: block;
+						@media (max-width: 767px) {
+							display: none;
+						}
 					}
 				}
 			}

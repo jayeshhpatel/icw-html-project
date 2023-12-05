@@ -1076,6 +1076,52 @@ h4, .h4 {
 	right: -300px !important;
 }
 
+// splide - Arrow 
+.splide .splide__arrow {
+	width: 50px;
+	height: 50px;
+	border: 2px solid #E6EAEA;
+	background: #fff;
+	opacity:1;
+	@include transform(unset);
+	@include transition(0.1s, ease-in-out);
+	svg {
+		path{
+			stroke: #99AAAD;
+		}
+	}
+
+	&:hover:not(:disabled), &:focus:not(:disabled) {
+		background: $secondary;
+		border-color: $secondary;
+		path{
+			stroke: #fff !important;
+		}
+	}
+
+	&:disabled {
+		opacity: 0.3 !important;
+	}
+}
+
+.icw-splide__pagination {
+	padding-bottom: 40px;
+	.splide__pagination {
+		bottom: 10px;
+		z-index: 9;
+		&__page {
+			background: $secondary;
+			height:8px;
+			width: 14px;
+			margin: 3px 6px;
+			border-radius:10px;
+			&.is-active {				
+				background: $primary;
+			}
+		}
+	}
+}
+
 .page404{ 
     padding: 250px 0px 150px; text-align: center;
     h1 {
@@ -1086,3 +1132,4 @@ h4, .h4 {
         margin-bottom: 30px;
     }
 }
+

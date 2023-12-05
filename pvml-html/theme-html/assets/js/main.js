@@ -146,22 +146,38 @@ jQuery(document).ready(function($) {
         splide_founder.mount();
     }
     if ($('.blog-slider').length) { 
-        var splide_founder = new Splide( '.blog-slider', {
+        var splide_blog = new Splide( '.blog-slider', {
             perPage: 3,
             perMove: 1,
             pagination: false,
             arrows: true,            
             gap: 30,     
-            
+            updateOnMove: true,
+            autoWidth: true,
             breakpoints: {
                 767: {
                     perPage: 1,
                     arrows: true,
-                    gap: 20, 
                 },
             },
         });
-        splide_founder.mount();
+        splide_blog.mount();
+    }
+    if ($('.workspace-slider').length) { 
+        var splide_workspace = new Splide( '.workspace-slider', {
+            pagination: false,
+            arrows: false,  
+        });
+        var bar = splide_workspace.root.querySelector( '.my-carousel-progress-bar' );
+        
+        // Updates the bar width whenever the carousel moves:
+        splide_workspace.on( 'mounted move', function () {
+            var end  = splide_workspace.Components.Controller.getEnd() + 1;
+            var rate = Math.min( ( splide_workspace.index + 1 ) / end, 1 );
+            bar.style.width = String( 100 * rate ) + '%';
+        } );
+  
+        splide_workspace.mount();
     }
 
     icw_cf7_labels();
