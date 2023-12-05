@@ -560,6 +560,32 @@
 			@include border-radius(8px);
 			text-align: center;
 		}
+		&.with-video {
+			position: relative;
+			&::before {
+				content: '';
+				width: 100%;
+				height: 100%;
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				@include border-radius(32px);
+				background: rgba($dark, 0.2);
+			}
+			.play-icon {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				@include border-radius(50%);
+				@include transition(0.3s, ease-in-out);
+				@include transform(translate(-50%, -50%) scale(1));
+				&:hover {
+					@include box-shadow(0px 5px 15px 0px rgba(0, 0, 0, 0.2));
+					@include transform(translate(-50%, -50%) scale(1.1));
+				}
+			}
+		}
 
 		@media (max-width:767px) {
 			margin-bottom: 30px;
@@ -1939,3 +1965,103 @@ blockquote {
 		}
 	}
 }
+
+// Workspace Slider
+.icw-slider-progress {
+	position: absolute;
+	top: 50%;
+	right: 15px;
+	width: 5px;
+	height: calc(100% - 60px);
+	max-height: 300px;
+	@include transform(translateY(-50%));
+	@include border-radius(60px);
+    background: #F4F7FA;
+	@media (max-width: 992px) {
+		right: 5px;
+	}
+	@media (max-width: 767px) {
+		top: auto;
+		bottom: 0;
+		left: 50%;
+		height: 5px;
+		max-width: 300px;
+		@include transform(translateX(-50%));
+		width: calc(100% - 60px);
+	}
+	@media (max-width: 767px) {
+		max-width: 270px;
+	}
+	.slide-count {
+		position: absolute;
+		left: 50%;
+		top: -30px;
+		font-size: 14px;
+		letter-spacing: -0.12px;
+		font-weight: 700;
+		@include transform(translateX(-50%));
+		&.end {
+			top: auto;
+			bottom: -30px;
+		}
+		@media (max-width: 767px) {
+			top: 50%;
+			left: -30px;
+			@include transform(translateY(-50%));
+			&.end {
+				top: 50%;
+				bottom: auto;
+				left: auto;
+				right: -30px;
+			}
+		}
+	}
+	.icw-slider-progress-bar {
+		background: linear-gradient(180deg, #7177F8 0%, rgba(113, 119, 248, 0.00) 100%);
+		width: 5px;
+		transition: height 400ms ease;
+		@include border-radius(60px);
+		height: 0;
+		@media (max-width: 767px) {
+			top: auto;
+			bottom: 0;
+			height: 5px;
+			width: 0;
+			background: linear-gradient(90deg, #7177F8 0%, rgba(113, 119, 248, 0.00) 100%);;
+		}
+	}
+}
+  
+.workspace-slider {
+	padding-right: 50px;
+	@media (max-width: 992px) {
+		padding-right: 30px;
+	}
+	@media (max-width: 767px) {
+		padding-right: 0;
+		padding-bottom: 30px;
+	}
+	.workspace-item {
+		.section-title {
+			max-width: 420px;
+		}
+		.card-image-block { 
+			@include border-radius(32px);
+			box-shadow: 10px 5px 15px 0px rgba(227, 227, 228, 0.4);
+			margin: 10px 40px 20px 0;
+			@media (max-width: 992px) {
+				margin: 10px 20px 20px 0;
+			}
+			@media (max-width: 767px) {
+				max-width: 100%;
+				margin: 40px 0 0;
+				box-shadow: none;
+			}
+			img {
+				@include border-radius(32px);
+				width: 100%;
+			}
+		}
+	}
+}
+  

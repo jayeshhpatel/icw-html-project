@@ -167,16 +167,33 @@ jQuery(document).ready(function($) {
         var splide_workspace = new Splide( '.workspace-slider', {
             pagination: false,
             arrows: false,  
+            gap: 20, 
         });
-        var bar = splide_workspace.root.querySelector( '.my-carousel-progress-bar' );
-        
+        var bar = splide_workspace.root.querySelector('.icw-slider-progress-bar');
         // Updates the bar width whenever the carousel moves:
-        splide_workspace.on( 'mounted move', function () {
-            var end  = splide_workspace.Components.Controller.getEnd() + 1;
-            var rate = Math.min( ( splide_workspace.index + 1 ) / end, 1 );
-            bar.style.width = String( 100 * rate ) + '%';
-        } );
-  
+        var window_width = window.innerWidth;
+        if (window_width > 767) {
+            splide_workspace.on( 'mounted move', function () {
+                var end  = splide_workspace.Components.Controller.getEnd() + 1;
+                var rate = Math.min( ( splide_workspace.index + 1 ) / end, 1 );
+            
+                bar.style.height = String( 100 * rate ) + '%'; console.log('here');
+            });
+        } else {
+            
+            splide_workspace.on( 'mounted move', function () {
+                var end  = splide_workspace.Components.Controller.getEnd() + 1;
+                var rate = Math.min( ( splide_workspace.index + 1 ) / end, 1 );
+            
+                bar.style.width = String( 100 * rate ) + '%'; console.log('there');
+            });
+                
+        }
+        window.addEventListener('resize', function(){
+            if (window_width < 767) { 
+                location.reload();
+            }
+        });
         splide_workspace.mount();
     }
 
