@@ -199,6 +199,16 @@ jQuery(document).ready(function($) {
         });
         splide_workspace.mount();
     }
+    if ($('.review-slider').length) { 
+        var splide_review = new Splide( '.review-slider', {
+            perPage: 1,
+            perMove: 1,
+            pagination: false,
+            arrows: true,            
+            gap: 30, 
+        });
+        splide_review.mount();
+    }
 
     icw_cf7_labels();
 });
