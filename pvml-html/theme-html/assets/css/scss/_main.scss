@@ -29,6 +29,10 @@
 	background-color: $secondary-dark !important;
 }
 
+.bg-gray {
+	background-color: #F5F8FB !important;
+}
+
 .bg-darktheme {
 	background-color: $dark !important;
 
@@ -45,7 +49,6 @@
 	background-color: $light !important;
 }
 
-
 .gradient-bg {
 	background: -o-linear-gradient(135deg, #5D64F1 0%, #3FE0D0 100%);
 	background: linear-gradient(135deg, #5D64F1 0%, #3FE0D0 100%);
@@ -53,6 +56,10 @@
 	* {
 		color: $white;
 	}
+}
+
+.border-bottom {
+	border-bottom: 1px solid rgba(#E6EAEA, 0.6) !important;
 }
 
 .main-content-wrapper {
@@ -473,12 +480,17 @@
 			font-size: 18px;
 			margin-bottom: 0;
 			&.font-lg {
-				font-size: 26px;
+				font-size: 24px;
 			}
 			@media (max-width: 992px) {
 				font-size: 16px;
 				&.font-lg {
 					font-size: 20px;
+				}
+			}
+			@media (max-width: 767px) {
+				&.font-lg {
+					font-size: 16px;
 				}
 			}
 		}
@@ -520,6 +532,24 @@
 		background: #656BEA;
 		h3 {
 			color: $white;
+		}
+	}
+	&.bg-lightgreen {
+		border: 1px solid #D3E4E3;
+		background: #F1FAF9;
+		padding: 50px;
+		@media (max-width: 992px) {
+			padding: 30px;
+		}
+		.card-img {
+			margin-bottom: 40px;
+			@media (max-width: 992px) {
+				margin-bottom: 30px;
+			}
+			img {
+				max-width: 100%;
+				max-height: 100px;
+			}
 		}
 	}
 }
@@ -717,7 +747,7 @@
 
 // FAQs
 .collapse-item {
-	padding: 20px 0;
+	padding: 30px 0 20px;
 	border-bottom: 1px solid #E6EAEA;
 
 	&:first-child {
@@ -727,12 +757,12 @@
 	&.is-open {
 		.collapse-title {
 			h3 {
-				color: $secondary;
+				color: $dark;
 				font-weight: 600;
 			}
 
 			&:after {
-				@include transform(rotate(40deg));
+				background: url(../images/icons/collapse-minus.svg) no-repeat center center;
 			}
 		}
 	}
@@ -769,7 +799,7 @@
 			-ms-flex: none;
 			flex: none;
 			margin-left: auto;
-			background: url(../images/icons/collapse.svg) no-repeat center center;
+			background: url(../images/icons/collapse-plus.svg) no-repeat center center;
 			background-size: contain;
 			@include transition(0.2s, ease-in-out);
 		}
@@ -778,7 +808,7 @@
 			font-size: 18px;
 			font-weight: 400;
 			margin-bottom: 0;
-
+			@include transition(0.2s, ease-in-out);
 			@media (max-width:767px) {
 				font-size: 16px;
 			}
@@ -786,12 +816,13 @@
 	}
 
 	.card-content {
-		color: $bodycolor;
+		color: rgba($dark, 0.6);
+		font-size: 16px;
 	}
 
 	.collapse-body {
 		margin-top: 12px;
-		padding-right: 40px;
+		padding-right: 50px;
 	}
 }
 
@@ -1777,6 +1808,10 @@ blockquote {
 	background-repeat: no-repeat;
 	background-position: left bottom;
 }
+.img-bottom-dot-right {
+	background-repeat: no-repeat;
+	background-position: right bottom;
+}
 
 // Founder Slider
 .founder-slider {
@@ -2132,5 +2167,31 @@ blockquote {
 .review-slider {
 	@media (max-width: 992px) {
 		padding-bottom: 60px;
+	}
+}
+
+.login-block {
+	@include border-radius(20px);
+	background: #FFF;
+	text-align: center;
+	padding: 40px;
+	height: 100%;
+	@include flexbox;
+	@include align-items(center);
+	@include flex-direction(column);
+	.logo-img {
+		max-width: 75px;
+		margin: 0 auto;
+		flex: 1 1 auto;
+	}
+	.info-text {
+		.label {
+			margin-bottom: 20px;
+			font-size: 22px;
+			color: #668083;
+		}
+		.btn {
+			margin-top: 12px;
+		}
 	}
 }
