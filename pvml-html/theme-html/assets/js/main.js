@@ -166,7 +166,10 @@ jQuery(document).ready(function($) {
     if ($('.workspace-slider').length) { 
         var splide_workspace = new Splide( '.workspace-slider', {
             pagination: false,
-            arrows: false,  
+            arrows: false, 
+            autoplay: true, 
+            type: 'loop',
+            lazyLoad: true,
             gap: 20, 
         });
         var bar = splide_workspace.root.querySelector('.icw-slider-progress-bar');
