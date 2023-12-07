@@ -244,9 +244,9 @@ function icw_cf7_labels() {
 //Since HubSpot forms are rendered after the DOM builds, you must trigger the manipulation after the window loads
 window.onload = function () {
    if(jQuery('.form-with-slider-labels').length) {
-       setTimeout(function(){
-       hubspot_labels(); 
-       }, 800);
+        setTimeout(function(){
+            hubspot_labels(); 
+        }, 800);
    }  
 }; 
 
