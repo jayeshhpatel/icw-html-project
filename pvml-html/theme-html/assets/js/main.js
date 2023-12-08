@@ -152,6 +152,7 @@ jQuery(document).ready(function($) {
             pagination: false,
             arrows: true,            
             gap: 30,     
+            type   : 'loop',
             updateOnMove: true,
             autoWidth: true,
             breakpoints: {

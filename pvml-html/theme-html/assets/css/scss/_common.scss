@@ -980,22 +980,34 @@ h4, .h4 {
 				top: 17px;
 				left: 20px;
 				@include transition(0.3s, ease-in-out);
+				@media (max-width: 992px) {
+					top: 12px;
+				}
 			}
 			&.has-focus {
 				> label {
 					top: 5px;
-					font-size: 13px;
+					font-size: 14px;
+					@media (max-width: 992px) {
+						top: 3px;
+					}
 				}
 			}
 			&.not-focused {
 				> label {
 					top: 17px;
+					@media (max-width: 992px) {
+						top: 12px;
+					}
 				}
 			}
 			&.has-value {
 				> label {
 					top: 5px;
-					font-size: 13px;
+					font-size: 14px;
+					@media (max-width: 992px) {
+						top: 3px;
+					}
 				}
 			}
 			.hs-input {
@@ -1228,6 +1240,107 @@ h4, .h4 {
 		}
 		.hs_error_rollup {
 			display: none;
+		}
+	}
+}
+
+.search-form-block {
+	max-width: 450px;
+	margin: 0 auto;
+	.hs-form {
+		@include flexbox;
+		@include align-items(center);
+		@include border-radius(61px);
+		border: 1px solid #124147;
+		background: #124147;
+		position: relative;
+		.hs-form-field {
+			width: 100%;			
+			& > label {
+				position: absolute;
+				color: #CCD5D6;
+				top: 18px;
+				left: 20px;
+				font-size: 14px;
+				@include transition(0.3s, ease-in-out);
+				@media (max-width: 992px) {
+					top: 12px;
+				}
+			}
+			&.has-focus {
+				> label {
+					top: 5px;
+					font-size: 14px;
+					@media (max-width: 992px) {
+						top: 3px;
+					}
+				}
+			}
+			&.not-focused {
+				> label {
+					top: 18px;
+					@media (max-width: 992px) {
+						top: 12px;
+					}
+				}
+			}
+			&.has-value {
+				> label {
+					top: 5px;
+					font-size: 14px;
+					@media (max-width: 992px) {
+						top: 3px;
+					}
+				}
+			}
+			.hs-input {
+				height: 56px;
+				width: 100%;
+				padding: 18px 20px 0;
+				padding-right: 75px;
+				@include border-radius(61px);
+				background: transparent;
+				border: none;
+				color: $white;
+				@media (max-width: 992px) {
+					height: 45px;
+				}
+				&::placeholder {
+					color: #CCD5D6;
+				}
+			}
+		}
+		.hs-submit {
+			position: absolute;
+			top: 0;
+			right: 0;
+			.hs-button {
+				width: 56px;
+				height: 56px;
+				font-size: 0;
+				flex: none;
+				background: #3FE0D0;
+				@include border-radius(61px);
+				border: none;
+				background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17.5 17.5002L14.5833 14.5836M16.6667 9.58358C16.6667 11.4622 15.9204 13.2639 14.592 14.5923C13.2636 15.9206 11.4619 16.6669 9.58333 16.6669C7.70472 16.6669 5.90304 15.9206 4.57466 14.5923C3.24628 13.2639 2.5 11.4622 2.5 9.58358C2.5 7.70496 3.24628 5.90329 4.57466 4.5749C5.90304 3.24652 7.70472 2.50024 9.58333 2.50024C11.4619 2.50024 13.2636 3.24652 14.592 4.5749C15.9204 5.90329 16.6667 7.70496 16.6667 9.58358Z" stroke="rgb(0 43 49)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+				background-size: 20px;
+				background-position: center;
+				background-repeat: no-repeat;
+				@include transition(0.3s, ease-in-out);
+				&:hover, &:focus {
+					background-position: calc(100% - 10px);
+				}
+				@media (max-width: 992px) {
+					width: 45px;
+					height: 45px;					
+				}
+			}
+		}
+		.hs-error-msgs {
+			position: absolute;
+			bottom: -20px;
+    		font-size: 12px;
+			color: #f36161;
 		}
 	}
 }
