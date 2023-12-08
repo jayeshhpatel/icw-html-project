@@ -2350,6 +2350,11 @@ blockquote {
 			top: 300px;	
 		}
 	}
+	@media (max-width: 767px) {
+		&::before, &::after {
+			content: none;
+		}
+	}
 }
 
 .error-404-section {	
@@ -2560,6 +2565,64 @@ blockquote {
 			@media (min-width: 767px) {
 				margin-top: 25px;
 			}
+		}
+	}
+}
+.contact-box {
+	background: #F1FAF9;
+	@include border-radius(16px);
+	padding: 50px;
+	@media (max-width: 767px) {
+		padding: 30px;
+	}
+	.content-with-icon {
+		@include flexbox;
+		@include align-items(center);
+		@include justify-content(space-between);
+		margin-bottom: 30px;		
+		.section-title {
+			h2 {
+				font-size: 28px;
+				margin-bottom: 10px;
+			}
+			.sort-info {
+				max-width: 270px;
+			}
+		}
+		.icon {
+			margin-left: 30px;
+			img {
+				max-height: 80px;
+				min-height: 80px;
+			}
+		}
+		@media (max-width: 767px) {
+			@include flex-direction(row-reverse);
+			@include justify-content(flex-end);
+			.icon {
+				margin-left: 0;
+				margin-right: 20px;
+				img {
+					max-height: 64px;
+					min-height: 64px;
+				}
+			}			
+		}
+	}
+	@media (max-width: 767px) {
+		.sort-info {
+			font-size: 18px;
+			color: rgba($dark, 0.6);
+			margin-bottom: 30px;
+		}
+	}
+	.email-text {
+		font-size: 28px;
+		font-weight: 400;
+		color: $primary;
+		@include transition(0.3s, ease-in-out);
+		&:hover, &:focus {
+			color: $secondary;
 		}
 	}
 }
