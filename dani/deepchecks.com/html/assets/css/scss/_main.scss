@@ -9545,6 +9545,7 @@ body .icw-gallery-imgs {
         }
     }
 }
+
 // LLM Evaluation Landing Page
 .llm-evaluation-lp-bg {
     background: url(../images/llm-evaluation-hero-bg.svg) no-repeat top center;
@@ -9774,8 +9775,29 @@ body .icw-gallery-imgs {
                 color: #7D7E8E;
                 font-weight: 500;
                 display: inline-block;
+                @include transition(0.3s, ease-in-out);
+                position: relative;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    z-index: -1;
+                    right: 0;
+                    bottom: -2px;
+                    background: $purple;
+                    width: 0;
+                    height: 1px;
+                    @include transition(0.3s, ease-in-out);
+                }
                 &:not(:last-child) {
                     margin-right: 50px;
+                }
+                &:hover, &:focus {
+                    color: $purple;
+                    &::after {
+                        width: 100%;
+                        right: auto;
+                        left: 0;
+                    }
                 }
                 @media (max-width:767px) {
                     display: block;
