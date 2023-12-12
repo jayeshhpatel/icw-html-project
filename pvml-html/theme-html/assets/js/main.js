@@ -212,6 +212,14 @@ jQuery(document).ready(function($) {
     }
 
     icw_cf7_labels();
+
+    $('.range-slider').on('change', function() {
+        let val = $(this).val();
+        $('.value').html(val);
+        var newValue = ((val - $(this).attr('min')) * 100) / ($(this).attr('max') - $(this).attr('min'))
+        var newPosition = 16 - newValue * 0.32;
+        $('.range-slider-block').css("--range-progress","calc("+ newValue +"% + ("+ newPosition +"px))"); 
+    });
 });
 
 function icw_cf7_labels() {

@@ -9700,7 +9700,8 @@ body .icw-gallery-imgs {
         }
         .z-index-form {
             z-index: 1;
-            position: relative;            
+            position: relative;  
+            min-height: 480px;          
             @media (min-width: 991px) {
                 margin: 0 30px;
             }
@@ -9714,6 +9715,9 @@ body .icw-gallery-imgs {
             @include flex-wrap(nowrap);
             overflow: hidden;
             overflow-x: auto;
+            @media (max-width: 1400px) {
+                @include justify-content(flex-start);
+            }
             @media (max-width: 767px) {
                 & > div {
                     width: auto;
