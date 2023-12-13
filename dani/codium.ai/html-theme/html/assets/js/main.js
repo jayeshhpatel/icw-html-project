@@ -587,11 +587,15 @@ jQuery(document).ready(function ($) {
     setTimeout(function () {
       $('.onLoadShowBtn').trigger("click");
     }, 5000);
-    // $(window).scroll(function(){
-    //   if ($(document).scrollTop() > 800 ) {
-    //     $('.onLoadShowBtn').one("click");
-    //   } 
-    // });
+    var flag = 0;
+    $(window).scroll(function(){      
+      if ($(document).scrollTop() > 800 ) {        
+        if(flag == 0){
+          $('#icwLoadModal').addClass("show");
+          flag = 1;
+        }
+      }       
+    });
   }
 });
 
