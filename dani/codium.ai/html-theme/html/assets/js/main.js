@@ -586,7 +586,7 @@ jQuery(document).ready(function ($) {
   if (jQuery('.onLoadShowBtn').length) {
     setTimeout(function () {
       $('.onLoadShowBtn').trigger("click");
-    }, 10000);
+    }, 5000);
     // $(window).scroll(function(){
     //   if ($(document).scrollTop() > 800 ) {
     //     $('.onLoadShowBtn').one("click");
