@@ -1,52 +1,61 @@
-.e404 {
-    padding: 180px 15px 300px;
+.e404{
+    padding: 12% 2rem 52vh;
     text-align: center;
-    background-image: url(../../upload/404-bg-img.png);
+    background-image: url(https://www.codium.ai/wp-content/uploads/2023/02/404-bg-codium.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: top;
-    @include mobile {
-        padding: 150px 15px 250px;
-        background-image: url(../../upload/404-bg-img-m.png);
+    @include mobile{
+        padding: 10em 2rem 48vh 2rem;
+        background-image: url(https://www.codium.ai/wp-content/uploads/2023/02/404-bg-codium-mobile.png);
     }
-    .e404-wrapper {   
-        .image-block {
-            svg {
-                max-width: 100%;
-                height: auto;
-                @media (max-width: 767px) {
-                    max-width: 80%;
+    .overlay{
+        background: radial-gradient(79.32% 87.62% at -6.48% 25.26%, #05E5AD 0%, rgba(5, 229, 173, 0.5) 48.35%, rgba(100, 71, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+        opacity: 0.4;
+        filter: blur(200px);
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 50%;
+    }
+    .container{
+        .e404-wrapper{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            width: 70rem;
+            padding: 8rem 6rem;
+            background: linear-gradient(0deg, rgba(1, 1, 42, 0.4), rgba(1, 1, 42, 0.4)), linear-gradient(105.87deg, rgba(255, 255, 255, 0.4) 3.04%, rgba(255, 255, 255, 0) 99.23%);
+            background-blend-mode: overlay, normal, normal;
+            box-shadow: inset -6px 6px 8px -6px #6447FF, inset 8px 8px 8px -8px rgba(100, 71, 255, 0.7), inset 2px 2px 9px -2px #FFFFFF, inset 0px -6px 2px -4px #6447FF, inset 0px 0px 0px 2px rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(40px);
+            border-radius: 40px;
+            margin: 0 auto;
+            gap:1em;
+            &:after{
+                content: "";
+            }
+            @include mobile{
+                width: 100%;
+                padding: 4em 2em;
+            }
+            h1{
+                font-weight: 700;
+                font-size: 4rem;
+                color: #9B8AFC;
+                @include mobile{
+                    font-size: 6vw;
                 }
             }
-        }
-        .section-title {
-            margin-top: 100px;
-            @media (max-width: 992px) {
-                margin-top: 70px;
-            }
-            @media (max-width: 767px) {
-                margin-top: 40px;
-            }
-        }     
-        h1 {
-            font-weight: 700;
-            font-size: 48px;
-            color: #ffffff;
-            @include mobile{
-                font-size: 6vw;
-            }
-        }
-        .sort-info {
-            font-size: 18px;
-            color: rgba(#ffffff, 0.6);
-        }
-        .action {
-            margin-top: 30px;
-            .btn {
-                padding: 19px 25px;
-                min-width: 260px;
-                @media (max-width: 767px) {
-                    min-width: 180px;
+            a.btn{
+                background-color: #321BB2;
+                border: 1px solid #321BB2;
+                &:hover{
+                    background-color: transparent;
                 }
             }
         }

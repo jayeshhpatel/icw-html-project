@@ -362,20 +362,21 @@ jQuery(document).ready(function ($) {
       },
     });
   }
-  var swiperFeaturesReview;
-  function swiperFeaturesReviewSlider() {
-      swiperFeaturesReview= new Swiper(".features--slider", {
-      grabCursor: true,
-      slidesPerView: "auto",
-      freeMode: true,
-      scrollbar: {
-        el: ".icw-swiper-scrollbar",
-        hide: true,
-      },
-    });
-    
-  }
+
   if($('.features--slider').length){
+    var swiperFeaturesReview;
+    function swiperFeaturesReviewSlider() {
+        swiperFeaturesReview= new Swiper(".features--slider", {
+        grabCursor: true,
+        slidesPerView: "auto",
+        freeMode: true,
+        scrollbar: {
+          el: ".icw-swiper-scrollbar",
+          hide: true,
+        },
+      });
+      
+    }
     if ($(window).width() < 1200) {
       swiperFeaturesReviewSlider();
     }
@@ -386,13 +387,24 @@ jQuery(document).ready(function ($) {
       } else {
         this.location.reload(false);
         swiperFeaturesReview.disable();
-        swiperFeaturesReview.destroy(true, true);
+        swiperFeaturesReview.destroy();
       }
     });
-  }
-    
 
-    if($('.reviewSlider').length){
+    /*
+    var swiperFeaturesReview = new Swiper(".features--slider", {
+      grabCursor: true,
+      slidesPerView: "auto",
+      freeMode: true,
+      scrollbar: {
+        el: ".icw-swiper-scrollbar",
+        hide: true,
+      },
+    });
+    */
+  }
+
+  if($('.reviewSlider').length){
     var swiper = new Swiper(".reviewSlider", {
       pagination: {
           el: ".icw-swiper-pagination",  
@@ -538,6 +550,25 @@ jQuery(document).ready(function ($) {
     let i = 0;
   }
 
+  if($('.feautre-code-slider').length){
+    function initCodeSwiper() {
+      var swiperCode = new Swiper(".feautre-code-slider", {
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        spaceBetween: 0,
+        loop: true,
+        effect: "fade",
+        autoplay: {
+          delay: 6000
+        },
+      });
+    }
+      // Initialize Swiper on page load
+    initCodeSwiper();
+  }
+
   /* scroll page to top */
   if (jQuery('.back-to-top').length) {
     jQuery(window).scroll(function() {
@@ -552,7 +583,16 @@ jQuery(document).ready(function ($) {
       jQuery('body,html').animate({scrollTop:0},50);
     });
   }
-
+  if (jQuery('.onLoadShowBtn').length) {
+    setTimeout(function () {
+      $('.onLoadShowBtn').trigger("click");
+    }, 10000);
+    // $(window).scroll(function(){
+    //   if ($(document).scrollTop() > 800 ) {
+    //     $('.onLoadShowBtn').one("click");
+    //   } 
+    // });
+  }
 });
 
 // hide on scroll down, reveal on up

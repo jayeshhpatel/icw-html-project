@@ -243,6 +243,17 @@
         }
     }
 
+    &.bg-video {
+        background:  #fff url(../images/video-bg.jpg) no-repeat center top; 
+        background-size: 100% 100%; 
+        position: relative; 
+    
+        @media(max-width: 767px) {
+            background: #fff url(../images/video-bg-m.jpg) no-repeat center top; 
+            background-size: 100% 100%;
+        } 
+    }
+
     &.section-title-left > .container > .section-title {
         text-align: left !important;
     }
@@ -458,7 +469,10 @@
     }
 }
 
-
+.only-video-block {
+    max-width: 860px;
+    margin: 0 auto;
+}
 
 .btn-tabs {
    
@@ -2109,75 +2123,7 @@
   }
 }
 
-.main-headline-video-section {
-    background: #fff url(../images/bg-video.png) no-repeat center center;
-    background-size: cover;
-    overflow: hidden;
-    position: relative;
-    
-    .only-video-block {
-        max-width: 860px;
-        margin: 0 auto;
-        position: relative;
-        @media (max-width: 992px) {
-            max-width: 650px;
-        }
-        @media (max-width: 767px) {
-            max-width: 550px;
-        }
-        &::before {
-            content: '';
-            background: url(../images/video-vector.png) no-repeat center center;
-            background-size: contain;
-            width: 100px;
-            height: 100px;
-            position: absolute;
-            top: 5%;
-            left: -18%;
-            z-index: -1;
-            @media (max-width: 1200px) {
-                left: -10%;
-            }
-            @media (max-width: 992px) {
-                top: -50px;
-                left: -8%;
-            }
-        }
-        &::after {
-            content: '';
-            background: url(../images/circle-img-1.png) no-repeat center center;
-            background-size: contain;
-            width: 120px;
-            height: 85px;
-            position: absolute;
-            bottom: 0;
-            right: -20%;
-            z-index: -1;
-            @media (max-width: 1200px) {
-                right: -10%;
-            }
-            @media (max-width: 992px) {
-                bottom: -10%;
-                right: -10%;
-            }
-            @media (max-width: 767px) {
-                bottom: -25%;
-                right: -10%;
-            }
-        }
-    }
-    .resource-thumbnail-video {
-        line-height: 0.7;        
-        .resource-thumbnail-block {
-            @include transition(0.3s, ease-in-out);
-            @include border-radius(15px);
-            @include transform(none);
-            &::before {
-                content: none;
-            }
-        }
-    }    
-}
+// ONEPAGE - iPad
 .ipad-form-section {    
     min-height: 100vh;
     @include flexbox;
@@ -2273,170 +2219,12 @@
         background: url(../images/ipad-form-bg.png) no-repeat top center;
         background-size: 100% 100%;
         max-width: 500px;
-        min-height: 595px;
         margin-left: auto;
         @media (max-width: 992px) {
             padding: 40px;
         }
         @media (max-width: 767px) {
            margin: 0 auto;
-        }
-    }
-}
-
-.ipad-barcode-section {
-    @include flex-direction(column);
-    @include justify-content(center);
-    padding: 100px 0;
-    background-image: url(../images/bg-ipad-form.png), url(../../upload/ipad-barcode-vector.png);
-    background-size: cover, 650px;
-    @media (max-width: 992px) {
-        background-size: cover, 450px;
-    }
-    .section-title {
-        .logos {
-            @include justify-content(center);
-        }
-        p {
-            color: rgba(#FFFFFF, 0.6);
-            @media (max-width: 992px) {
-                font-size: 18px;
-            }
-        }
-    }
-    .barcode-box-block {
-        @include flexbox;
-        @include align-items(center);
-        @include justify-content(center);
-        @include flex-wrap(wrap);
-        max-width: 835px;
-        margin: 0 auto; 
-        gap: 30px;
-        margin-top: 50px;
-        @media (max-width: 992px) {
-            margin-top: 30px;
-        }
-    }
-    .barcode-box {       
-        background-size: 100% 100%;
-        height: 100%;        
-        width: 256px;
-        position: relative;    
-        @include border-radius(27px);
-        background-image: url(../images/review-card-bg.png), linear-gradient(0deg, rgba(1, 1, 42, 0.40) 0%, rgba(1, 1, 42, 0.40) 100%), linear-gradient(106deg, rgba(255, 255, 255, 0.40) 3.04%, rgba(255, 255, 255, 0.00) 99.23%);
-        background-blend-mode: overlay, normal, normal;
-        backdrop-filter: blur(36px); 
-        @media (max-width: 992px) {
-            width: 200px;
-            @include border-radius(20px);
-        }
-        &::before {
-            display: block;
-            padding-top: 100%;
-            content: "";
-        }
-        .inner-block {
-            @include inline-flex;
-            @include align-items(center);
-            @include flex-direction(column);
-            @include justify-content(center);
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 35px 30px 30px;
-            @media (max-width: 992px) {
-                padding: 30px 20px 20px;
-            }
-        }
-        .img-block {
-            line-height: 0.7;
-            img {
-                max-width: 100px;
-            }
-        }
-        .text {
-            color: #FFF;
-            text-align: center;;
-            font-size: 24px;
-            font-weight: 700;
-            margin-top: 30px;
-            @media (max-width: 992px) {
-                font-size: 16px;
-                margin-top: 15px;
-            }
-        }
-    }
-}
-
-.our-product-section {
-    .product-list {
-        ul {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 72px 25px;
-            padding: 0;
-            margin: 0px;
-            @media (max-width: 1023px) {                
-                grid-template-columns: repeat(2, 1fr);
-                gap: 40px 30px;
-            }
-            @media (max-width: 600px) {
-                grid-template-columns: repeat(1, 1fr);
-                gap: 30px 20px;
-            }
-            .resources-card {
-                .resources-card-content {
-                    .card-image {
-                        overflow: hidden;
-                        position: relative;
-                        .coming-soon-label {
-                            background: #05E5AD;
-                            border-radius: 30px;
-                            font-size: 12px;
-                            font-weight: 700;
-                            color: #01012A;
-                            display: inline-block;
-                            z-index: 1;
-                            position: absolute;
-                            bottom: 10px;
-                            left: 10px;
-                            line-height: 1;
-                            padding: 5px 15px;
-                        }
-                    }
-                    .card-body {
-                        h3 {
-                            font-size: 36px;
-                            line-height: 1.2;
-                            @media (max-width: 1023px) {                
-                                font-size: 30px;
-                            }
-                            @media (max-width: 600px) {
-                               font-size: 22px;
-                            }
-                        }
-                        .excerpt {
-                            color: rgba(#01012A, 0.6);
-                            @media (max-width: 1023px) {                
-                                font-size: 16px;
-                            }
-                             @media (max-width: 600px) {
-                               font-size: 14px;
-                            }
-                        }
-                    }
-                    .resources-actions {
-                        margin-top: 10px; 
-                        .read-more {
-                            @media (max-width: 600px) {
-                                font-size: 14px;
-                            }
-                        }
-                    }
-                }
-            }
         }
     }
 }
