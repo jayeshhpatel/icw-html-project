@@ -2228,3 +2228,120 @@
         }
     }
 }
+.comparsion-page-header {
+    background: url(../images/circle-img-11.png) no-repeat left 35%;
+    background-size: 70px; 
+    position: relative;
+    padding: 160px 0 50px;
+    @media (max-width: 992px) {
+        padding: 100px 0 0px;
+    }
+    &::after {
+        content: '';
+        background: url(../images/circle-img-13.png) no-repeat center;
+        width: 130px;
+        height: 250px;
+        display: block;
+        background-size: contain;
+        position: absolute;
+        bottom: -100px;
+        right: 0px;
+    }
+}
+.two-content-section {
+    @media (max-width: 992px) {
+        .two-content-block {
+            gap: 30px;
+        }
+    }
+}
+.main-section.collapse-section {
+    background: #050433 url(../images/subscribe-bg.png) no-repeat 102% 18% !important;
+    background-size: 200px !important;
+    @media (max-width: 992px) {
+        background-size: 150px !important;
+        background-position: 102% 180px !important;
+    }
+    @media (max-width: 767px) {
+        background-position: 102% 220px !important;
+    }
+    @media (max-width: 575px) {
+        background-position: 102% 350px !important;
+    }
+}
+.collapse-section {
+    .section-title {
+        max-width: 850px;
+        margin: 0 auto 60px;
+        @media (max-width: 992px) {
+            margin-bottom: 50px !important;
+        }
+        .sort-info p{
+            color: rgba(#FFFFFF, 0.6);
+            font-size: 18px;
+        }
+    }
+    ul.faq {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        @include flexbox;
+        @include flex-direction(column);
+        gap: 20px;
+        > li {            
+            position: relative;
+            box-sizing: border-box;
+            color: #FFF;
+            background: rgba(#01012A, 0.7);
+            background-clip: padding-box;
+            border: 2px solid transparent;
+            @include border-radius(12px);
+            padding: 20px 25px;
+            @include mobile {
+                padding: 15px;
+            }
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: -1;
+                margin: -2px;
+                background: linear-gradient(23deg, rgba(1,1,42,0.4) 0%, rgba(99, 72, 254, 0.1) 100%),linear-gradient(103deg, rgba(255,255,255,0.25) 14.08%, rgba(255,255,255,0.1) 101.19%);               
+                background-blend-mode: overlay, normal, normal;
+                backdrop-filter: blur(35px);
+                @include border-radius(12px);
+            }
+            .question {
+                cursor: pointer;
+                @include flexbox;
+                @include align-items(center);
+                @include justify-content(space-between);
+                text-align: start;
+                h3 {
+                    color: #ffffff;
+                    font-size: 22px;
+                    font-weight: 400;       
+                }
+                .title-icon {
+                    width: 16px;
+                    height: 16px;
+                    flex: none;
+                    @include flexbox;
+                    @include align-items(center);
+                }
+            }
+          p {
+            display: none;
+            position: relative;
+            text-align: left;
+            font-size: 16px;
+            color: rgba(#FFFFFF, 0.6);
+            margin: 15px 0 0;
+            max-width: 570px;
+          }
+        }
+    }
+}
