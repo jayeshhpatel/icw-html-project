@@ -2228,6 +2228,8 @@
         }
     }
 }
+
+// Comparsion Page
 .comparsion-page-header {
     background: url(../images/circle-img-11.png) no-repeat left 35%;
     background-size: 70px; 
@@ -2248,13 +2250,70 @@
         right: 0px;
     }
 }
-.two-content-section {
-    @media (max-width: 992px) {
-        .two-content-block {
-            gap: 30px;
+.comparsion-page {
+    .section-title {
+        &.mw-920px {
+            max-width: 920px;
+            margin: 0 auto;
+        }
+        .sort-info {
+            p {
+                color: rgba(#01012A, 0.6);
+                font-size: 18px;
+            }
+        }
+    }
+    .two-content-section {
+        .section-title {
+            &.mr-100 {
+                margin-right: 100px;
+                @media (max-width: 992px) {
+                    margin-right: 0;
+                }
+            }
+            h3 {
+                font-size: 30px;
+            }
+            .sort-info {
+                p {
+                    color: rgba(#01012A, 0.6);
+                    font-size: 18px;
+                }
+            }
+        }
+        @media (max-width: 992px) {
+            .two-content-block {
+                gap: 30px;
+                grid-template-columns: repeat(2, 1fr) !important;
+                &.col-md-50 {
+                    grid-template-columns: repeat(1, 1fr) !important;
+                }
+            }
+        }
+        @media (max-width: 767px) {
+            .two-content-block {
+                gap: 30px;
+                grid-template-columns: repeat(1, 1fr) !important;
+            }
+        }
+    }
+    .bg-gradient {
+        background: linear-gradient(183deg, #C3B9FF -84.31%, rgba(200, 191, 255, 0.92) -66.55%, rgba(255, 255, 255, 0.00) 57.77%);
+        position: relative;
+        &::before {
+            content: '';
+            background: url(../images/circle-img-1.png) no-repeat center;
+            width: 130px;
+            height: 110px;
+            display: block;
+            background-size: contain;
+            position: absolute;
+            top: -60px;
+            left: -60px;
         }
     }
 }
+
 .main-section.collapse-section {
     background: #050433 url(../images/subscribe-bg.png) no-repeat 102% 18% !important;
     background-size: 200px !important;
@@ -2272,7 +2331,8 @@
 .collapse-section {
     .section-title {
         max-width: 850px;
-        margin: 0 auto 60px;
+        margin: 0 auto;
+        margin-bottom: 70px !important;
         @media (max-width: 992px) {
             margin-bottom: 50px !important;
         }
@@ -2288,6 +2348,9 @@
         @include flexbox;
         @include flex-direction(column);
         gap: 20px;
+        @include mobile {
+            gap: 15px;
+        }
         > li {            
             position: relative;
             box-sizing: border-box;
@@ -2323,7 +2386,10 @@
                 h3 {
                     color: #ffffff;
                     font-size: 22px;
-                    font-weight: 400;       
+                    font-weight: 400; 
+                    @include mobile {
+                        font-size: 18px;
+                    }     
                 }
                 .title-icon {
                     width: 16px;
@@ -2342,6 +2408,135 @@
             margin: 15px 0 0;
             max-width: 570px;
           }
+        }
+    }
+}
+.bg-gradient-content-section {
+    background: url(../images/bg-gradient-content-block.png) no-repeat center bottom;
+    background-size: 100% 100% !important;
+    padding: 180px 0;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    @media (max-width: 992px) {
+        padding: 120px 0;
+    }
+    @media (max-width: 767px) {
+        padding: 80px 0;
+        background: url(../images/bg-gradient-content-block-m.png) no-repeat left bottom;
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        top: 150px;
+        left: 115px;
+        width: 85px;
+        height: 85px;
+        display: block;
+        background: url(../images/circle-img-14.png) no-repeat center;
+        background-size: contain !important;
+        z-index: -1;
+        @media (max-width: 992px) {
+            top: 100px;
+            left: 75px;
+        }
+        @media (max-width: 767px) {
+            top: 40px;
+            left: -30px;
+            width: 60px;
+            height: 60px;
+        }
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 80px;
+        right: 90px;
+        width: 120px;
+        height: 85px;
+        display: block;
+        background: url(../images/circle-img-1.png) no-repeat center;
+        background-size: contain !important;
+        z-index: -1;
+        @media (max-width: 992px) {
+            bottom: 50px;
+            right: 50px;
+        }
+        @media (max-width: 767px) {
+            bottom: 30px;
+            right: -70px;
+        }
+    }
+    &.outside-vector {
+        &::before {
+            top: 50px;
+            left: -70px;
+            width: 185px;
+            height: 135px;
+            background: url(../images/circle-img-9.svg) no-repeat center;
+            @media (max-width: 992px) {
+                width: 100px;
+                height: 85px;
+                left: -50px;
+                top: 30px;
+            }
+        }
+        &::after {
+            bottom: 0px;
+            right: 0px;
+            width: 130px;
+            height: 155px;
+            background: url(../images/circle-img-15.png) no-repeat center;            
+            @media (max-width: 992px) {
+                width: 70px;
+                height: 85px;
+            }
+        }
+    }
+    .section-title {
+        max-width: 850px;
+        margin: 0 auto;
+        text-align: center;
+        .sort-info {
+            p {
+                color: rgba(#01012A, 0.6);
+                font-size: 18px;
+            }
+        }
+    }
+}
+.border-boxes-block {
+    display: grid;
+    grid-template-columns: repeat(2, calc(50% - 10px));
+    gap: 20px;
+    @media (max-width: 767px) {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 15px;
+    }
+    .border-box {
+        @include border-radius(12px);
+        border: 1px solid #EDEDED;
+        background: #FFF;
+        padding: 30px;
+        @media (max-width: 767px) {
+            padding: 20px;
+        }
+        h4 {
+            font-size: 22px;
+            color: #684BFE;
+            margin-bottom: 15px;
+            @media (max-width: 767px) {
+                font-size: 18px;
+            }
+        }
+        .sort-info {
+            p {
+                color: rgba(#01012A, 0.6);
+                font-size: 16px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
         }
     }
 }
