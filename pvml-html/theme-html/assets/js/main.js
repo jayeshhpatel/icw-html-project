@@ -213,14 +213,26 @@ jQuery(document).ready(function($) {
 
     icw_cf7_labels();
 
+    
+});
+if($('.range-slider').length) {
+    var val = $('.range-slider').val();
+    var newValue = ((val - $('.range-slider').attr('min')) * 100) / ($('.range-slider').attr('max') - $('.range-slider').attr('min'))
+    var newPosition = 16 - newValue * 0.32;
+    $('.range-slider-block').css("--range-progress","calc("+ newValue +"% + ("+ newPosition +"px))"); 
     $('.range-slider').on('change', function() {
         let val = $(this).val();
+        // let minval = $(this).attr('min');
+        // let maxval = $(this).attr('max');
         $('.value').html(val);
         var newValue = ((val - $(this).attr('min')) * 100) / ($(this).attr('max') - $(this).attr('min'))
         var newPosition = 16 - newValue * 0.32;
         $('.range-slider-block').css("--range-progress","calc("+ newValue +"% + ("+ newPosition +"px))"); 
+        // $('.range-slider-block').css("--min-value", minval); 
+        // $('.range-slider-block').css("--max-value", maxval); 
     });
-});
+}
+
 
 function icw_cf7_labels() {
     var input = $('.form-group:not(.form-group-fixed) .form-control');

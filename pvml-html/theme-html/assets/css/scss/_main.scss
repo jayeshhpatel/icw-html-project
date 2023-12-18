@@ -2650,7 +2650,8 @@ blockquote {
 	border: 1px solid rgba($white, 0.2);
 	@include border-radius(24px);
 	.calculator-header-block {
-		background: linear-gradient(91deg, #494EC9 0%, #7177F8 51.87%, #3FE0D0 99.77%);
+		background: url(../images/calculator-header-bg.svg) no-repeat bottom right, linear-gradient(91deg, #494EC9 0%, #7177F8 51.87%, #3FE0D0 99.77%);
+		background-size: contain;
 		@include border-radius(24px 24px 0 0);
 		@include box-shadow(0px 4px 8px 0px rgba(0, 0, 0, 0.08));		
 		border-bottom: none;
@@ -2658,6 +2659,11 @@ blockquote {
 		@include flexbox;
 		@include align-items(center);
 		@include justify-content(space-between);
+		@media (max-width: 767px) {
+			display: block;
+			padding: 40px 25px;
+			background: linear-gradient(91deg, #494EC9 0%, #7177F8 51.87%, #3FE0D0 99.77%);
+		}
 		.section-title {
 			h2 {
 				font-size: 32px;
@@ -2674,23 +2680,48 @@ blockquote {
 		background: linear-gradient(0deg, #171832 14.01%, rgba(23, 24, 50, 0.82) 80.96%);
 		box-shadow: 0px 16px 16px 0px rgba(61, 64, 134, 0.16), 0px 4px 8px 0px rgba(0, 0, 0, 0.16);
 		padding: 30px;
+		@media (max-width: 767px) {
+			padding: 40px 25px;
+		}
 		.result-boxes {
 			@include border-radius(16px);
 			border: 2px solid #444795;
 			background: rgba(113, 119, 248, 0.02);
 			padding: 25px;
 			color: $white;
+			height: 100%;
+			@include flexbox;
+			@include flex-direction(column);
+			min-height: 235px;
+			@media (max-width: 767px) {
+				min-height: 220px;
+			}
+			&.border-secondary {
+				border-color: #3FE0D0 !important;
+			}
+			&.border-red {
+				border-color: #F64141 !important;
+				color: #F64141;
+			}
 			.box-title {
-				margin-bottom: 10px;
+				margin-bottom: 20px;
+				font-size: 18px;
 			}	
 			.box-body {
+				flex: 1 1 auto;
+				@include flexbox;
+				@include justify-content(center);
+				@include flex-direction(column);
 				code {
 					color: $white;
 					border: none;
 					padding: 0;
 					font-family: "Gilroy",sans-serif;
-					font-size: 18px;
-					margin: 0;
+					font-size: 22px;
+					margin: 10px 0 0;
+					@media (max-width: 992px) {
+						font-size: 18px;
+					}
 					.text-green {
 						color: #3FE0D0;
 					}
@@ -2704,16 +2735,104 @@ blockquote {
 						color: #E0963F;
 					}
 				}
-				
+				.title {
+					font-size: 22px;
+					font-weight: 400;
+					margin-bottom: 15px;
+					@media (max-width: 992px) {
+						font-size: 18px;
+					}
+				}
+				.count-value {
+					font-size: 46px;
+					color: $primary;
+					line-height: normal;
+					font-weight: 700;
+					@media (max-width: 767px) {
+						font-size: 36px;
+					}
+				}
+				.error-msg {
+					font-size: 26px;
+					@media (max-width: 992px) {
+						font-size: 20px;
+					}
+				}
+				.grid-view-block {					
+					.grid-row {
+						@include flexbox;
+						@include align-items(center);
+						overflow-x: auto;
+						@media (max-width: 767px) {
+							display: block;
+						}
+						.grid-col {
+							width: 100%;
+							&:first-child {
+								div {
+									padding-left: 0;
+								}
+							}
+							&:not(:last-child) {
+								border-right: 1px solid rgba(255, 255, 255, 0.32);
+							}
+							@media (max-width: 767px) {								
+								margin-top: 14px;
+								&:first-child {
+									margin-top: 0;
+								}
+								&:not(:last-child) {
+									padding-bottom: 14px;
+									border-right: none;
+									border-bottom: 1px solid rgba(255, 255, 255, 0.32);
+								}
+							}
+							div {
+								padding: 8px 16px;
+								width: 100%;
+								white-space: nowrap;
+								font-family: 'Source Code Pro', monospace;
+								font-size: 18px;
+								font-weight: 600;
+								color: $white;
+								letter-spacing: -0.72px;
+								@media (max-width: 767px) {
+									padding: 0;
+								}
+								&.heading {
+									border-bottom: 1px solid rgba(255, 255, 255, 0.32);
+									font-size: 16px;
+									font-weight: 400;
+									color: rgba(255, 255, 255, 0.80);
+									letter-spacing: -0.64px;
+									@media (max-width: 767px) {
+										border-bottom: none;
+										margin-bottom: 2px;
+									}
+								}								
+							}
+						}
+					}
+				}
 			}	
 		}
 	}
 }
 .tab-block {
+	@media (max-width: 992px) {
+		margin-top: 30px;
+	}
 	.nav {
 		@include border-radius(20px);
 		background: #252750;
 		padding: 8px;
+		@include inline-flex;
+		@include flex-wrap(nowrap);
+		white-space: nowrap;
+		@media (max-width: 992px) {
+			padding: 6px;
+			@include border-radius(15px);
+		}
 		.nav-item {
 			.nav-link {
 				background: transparent;
@@ -2721,12 +2840,22 @@ blockquote {
 				color: $white;
 				@include border-radius(16px);
 				padding: 14px 25px;
+				@media (max-width: 992px) {
+					padding: 12px 15px;
+					font-size: 14px;
+					@include border-radius(12px);
+				}
 				svg {
 					margin-right: 12px;
 					width: 28px;
 					height: 28px;
 					flex: none;
 					filter: brightness(0) invert(1);
+					@media (max-width: 992px) {
+						width: 18px;
+						height: 18px;
+						margin-right: 9px;
+					}
 				}
 				&.active {
 					color: #171832;
@@ -2740,6 +2869,7 @@ blockquote {
 	}
 }
 .range-slider-block {
+	width: 100%;
 	.change-value {
 		border-radius: 61px;
 		border: 2px solid #2D3063;
@@ -2749,6 +2879,15 @@ blockquote {
 		@include inline-flex;
 		@include align-items(center);
 		@include justify-content(center);
+		label {
+			font-size: 22px;
+		}
+		@media (max-width: 767px) {
+			height: 48px;
+			label {
+				font-size: 18px;
+			}
+		}
 	}
 	.range-slider {
 		width: 100%;
@@ -2757,6 +2896,8 @@ blockquote {
 		background: #2D3063;
 		@include border-radius(100px);
 		@include transition(0.3s, ease-in-out);
+		position: relative;
+		height: 16px;
 		&::-webkit-slider-runnable-track {
 			@include border-radius(100px);
 			animate: 0.3s;
@@ -2764,6 +2905,7 @@ blockquote {
 			height: 16px;
 			cursor: pointer;
 			width: 100%;
+			@include transition(0.3s, ease-in-out);
 		}
 		&::-webkit-slider-thumb {
 			-webkit-appearance: none;
@@ -2774,6 +2916,33 @@ blockquote {
 			border: 4px solid #3FE0D0;
 			margin-top: -7px;
 			cursor: pointer;
+			@include transition(0.3s, ease-in-out);
+		}
+		&::before {
+			content: '0';
+			font-size: 22px;
+			color: rgba($white, .48);
+			position: absolute;
+			left: 0;
+			top: -35px;
+			line-height: normal;
+			@media (max-width: 767px) {
+				top: -30px;
+				font-size: 18px;
+			}
+		}
+		&::after {
+			content: '1K';
+			font-size: 22px;
+			color: rgba($white, .48);
+			position: absolute;
+			right: 0;
+			top: -35px;
+			line-height: normal;
+			@media (max-width: 767px) {
+				top: -30px;
+				font-size: 18px;
+			}
 		}
 	}
 }

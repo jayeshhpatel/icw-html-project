@@ -10,12 +10,15 @@
 
     <link rel='stylesheet' id='icw-main-css' href='assets/css/main.css' type='text/css' media='all' />
     <script type="text/javascript" src="assets/js/jquery.min.js" id="jquery-core-js"></script>
+    <link href="//fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+
     <link rel="shortcut icon" href="assets/images/favicon/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
     <link rel="manifest" href="assets/images/favicon/site.webmanifest">
     <link rel="mask-icon" href="assets/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+
     <meta name="apple-mobile-web-app-title" content="Immigration Chambers">
     <meta name="application-name" content="PVML">
     <meta name="msapplication-TileColor" content="#da532c">
@@ -266,7 +269,7 @@
                                 <div class="section-title">
                                     <h2>How does it work?</h2>
                                     <div class="sort-info">
-                                        <p>Calculate the <span class="text-primary">average salary</span> <br class="d-none d-xl-block">for all employees in 2023</p>
+                                        <p>Calculate the <span class="text-primary">average salary</span> <br class="d-none d-lg-block">for all employees in 2023</p>
                                     </div>
                                 </div>
                                 <div class="tab-block">
@@ -304,24 +307,94 @@
                                                 <div class="result-boxes">
                                                     <div class="box-title">Query sample size</div>
                                                     <div class="box-body">                                                        
-                                                        <div class="range-slider-block">
+                                                        <div class="range-slider-block text-center">
                                                             <div class="change-value">
-                                                                <label class="value" for="range">0</label>
+                                                                <label class="value" for="range">150</label>
                                                             </div>
-                                                            <input type="range" name="range" class="range-slider" id="range" min="0" max="100" value="0" />
+                                                            <input type="range" name="range" class="range-slider" id="range" min="0" max="1000" value="150" />
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="result-boxes"></div>
+                                                <div class="result-boxes">
+                                                    <div class="box-body">                                                        
+                                                        <div class="title">Average Salary without DP</div>
+                                                        <div class="count-value">62030.11</div>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="result-boxes"></div>
+                                                <div class="result-boxes border-secondary">
+                                                    <div class="box-body">                                                        
+                                                        <div class="title">Average Salary with DP</div>
+                                                        <div class="count-value">620<span class="text-secondary">39.52</span></div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="pills-highest-salary" role="tabpanel" aria-labelledby="pills-highest-salary-tab" tabindex="0">...</div>
+                                    <div class="tab-pane fade" id="pills-highest-salary" role="tabpanel" aria-labelledby="pills-highest-salary-tab" tabindex="0">
+                                        <div class="row g-4">
+                                            <div class="col-md-6">
+                                                <div class="result-boxes">
+                                                    <div class="box-title">Query</div>
+                                                    <div class="box-body">
+                                                        <code>
+                                                            <span class="text-green">SELECT</span> <span class="text-purple">EmployeeName, JobTitle, TotalPay</span> <br>
+                                                            <span class="text-green">FROM</span> Employees <br>
+                                                            <span class="text-green">ORDER BY</span> Salary DESC <br>
+                                                            <span class="text-green">LIMIT</span> <span class="text-pink">1</span>;
+                                                        </code>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="result-boxes">
+                                                    <div class="box-title">Query sample size</div>
+                                                    <div class="box-body">                                                        
+                                                        <div class="range-slider-block text-center">
+                                                            <div class="change-value">
+                                                                <label class="value" for="range">150</label>
+                                                            </div>
+                                                            <input type="range" name="range" class="range-slider" id="range" min="0" max="1000" value="150" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="result-boxes">
+                                                    <div class="box-title">Without DP</div>
+                                                    <div class="box-body">                                                        
+                                                        <div class="grid-view-block">
+                                                            <div class="grid-row">
+                                                                <div class="grid-col">
+                                                                    <div class="heading">Employee Name</div>
+                                                                    <div>Mary Johnson</div>
+                                                                </div>
+                                                                <div class="grid-col">
+                                                                    <div class="heading">Job Title</div>
+                                                                    <div>Senior Analyst </div>
+                                                                </div>
+                                                                <div class="grid-col">
+                                                                    <div class="heading">Total Pay</div>
+                                                                    <div>120100.00</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="result-boxes border-red">
+                                                    <div class="box-title">With DP</div>
+                                                    <div class="box-body">                                                        
+                                                        <div class="error-msg">Privacy violation</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>  

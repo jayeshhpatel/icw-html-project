@@ -255,8 +255,7 @@ jQuery(document).ready(function ($) {
     if ($(this).parents("li").hasClass("active")) {
       if (isMobile()) {
         toOpen.slideUp("fast");
-      } else {
-        $("li p").slideUp("fast");
+      } else {        
         toOpen.slideUp("fast");
       }
       $("li").removeClass("active");
@@ -267,10 +266,10 @@ jQuery(document).ready(function ($) {
       //$('ul.faq > li').removeClass('active');
       //$('ul.faq > li > .answer').slideUp(300);
       if (isMobile()) {
-        $("li > .answer").slideUp("fast");
+        $("ul.faq > li > .answer").slideUp("fast");
         toOpen.slideDown("fast");
       } else {
-        $("li > .answer").slideUp("fast");
+        $("ul.faq > li > .answer").slideUp("fast");
         toOpen.slideDown("fast");
       }
       $("li").removeClass("active");
