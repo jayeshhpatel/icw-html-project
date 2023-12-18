@@ -2435,21 +2435,26 @@
             }
         }
         &.style-2 {
-            @media (max-width: 420px) {
-                gap: 5px;
-            }
+            gap: 0;
             > li {
                 background: transparent;
                 @include border-radius(0);
                 border-bottom: 1px solid rgba(#FFFFFF, 0.15);
-                padding: 15px 0px 30px;
+                padding: 30px 0 0;
+                &:first-child {
+                    padding: 0;
+                }
                 @media (max-width: 420px) {
-                    padding: 15px 0px 20px;
+                    padding: 20px 0 0;
                 }
                 &::before {
                     content: none;
                 }
                 .question {
+                    padding-bottom: 30px;
+                    @media (max-width: 420px) {
+                        padding-bottom: 20px;
+                    }
                     h3 {
                         color: rgba(#fff, 0.5);
                     }
@@ -2458,11 +2463,16 @@
                         height: 12px;
                         opacity: 0;
                         visibility: hidden;
+                        margin-left: 15px;
                         @include transition(0.3s, ease-in-out);
+                        img {
+                            transform: scale(1) !important;
+                        }
                     }
                 }
                 .answer {
                     max-width: 100%;
+                    margin-top: 0;
                 }
                 &.active {
                     .question {
@@ -2595,12 +2605,11 @@
     }
     @media (max-width: 767px) {
         padding: 30px;  
-        margin-top: 25px;
         min-height: auto;
+        margin-bottom: 30px;
     }
     @media (max-width: 420px) {
         padding: 20px;  
-        margin-top: 20px;
     }
     &::before {
         content: "";
@@ -2625,8 +2634,10 @@
     .title {
         font-size: 32px;
         margin-bottom: 25px;
+        font-weight: 700;
+        line-height: normal;
         @media (max-width: 767px) {
-            font-size: 20px;
+            font-size: 18px;
             margin-bottom: 15px;
         }
     }
@@ -2771,7 +2782,6 @@
 }
 .features-section {
     .features-header-block {
-        display: block;
         grid-template-columns: 180px 1fr 1fr;
         gap: 15px;
         display: grid;
@@ -2783,22 +2793,19 @@
         }
         & :nth-child(2) {
             background-color: #F8F6FF;
-
         }
     }
-
     .features-card-header {
         padding: 30px 30px;
         border-bottom: 1px solid #E9E6FA;
-        text-align: center;
-        align-items: center;
+        text-align: center;        
         margin-bottom: -1px;
-        display: flex;
-        flex-direction: column;
-        border-radius: 18px 18px 0 0;
+        @include flexbox;
+        @include flex-direction(column);
+        @include align-items(center);
+        @include border-radius(18px 18px 0 0);
         img {
             width: 155px;
-
         }
         @media (max-width: 767px) {
             border-bottom: none;
@@ -2813,14 +2820,12 @@
             display: block;
             border: none;
             margin-bottom: 30px;
-        }
-    
+        }    
         .table-list {
             padding: 24px 30px;
             color: #01012A;
             text-align: right;
-            font-size: 20px;
-         
+            font-size: 20px;         
             @media (max-width: 767px) {
                 text-align: left;
                 font-size: 20px;
@@ -2830,61 +2835,51 @@
             img {
                 align-items: center;
             }
-            p{
+            p {
                 margin-bottom: 0px;
-            }
-    
-        }
-        
-    
+            }    
+        } 
         .table-detail-codium {
             background-color: #F8F6FF;
             padding: 24px 40px;
-            font-size: 18px;
-    
+            font-size: 18px;    
             @media (max-width: 767px) {
                 border-radius: 12px 12px 12px 12px;
                 margin-bottom: 10px;
                 padding: 24px 24px;
                 font-size: 14px;
-            }
-          
-            p{
+            }          
+            p {
                 color: #01012A99; 
                 margin-bottom: 0px;
-                strong{
+                strong {
                     color: #01012A;
                 }
             }
-        }
-    
+        }    
         .table-detail-github {
             background-color: #FAFAFA;
             padding: 24px 40px;
-            font-size: 18px;
-    
+            font-size: 18px;    
             @media (max-width: 767px) {
                 border-radius: 12px 12px 12px 12px;
                 padding: 24px 24px;
                 font-size: 14px;
-            }
-          
-            p{
+            }          
+            p {
                 color: #01012A99;
                 margin-bottom: 0px;
-                strong{
+                strong {
                     color: #01012A;
-                }
-                
-            }
-         
+                }                
+            }         
         }
-        .end-info{
+        .end-info {
             padding: 40px 40px;
             @media (max-width: 767px) {
                 padding: 24px 24px;
             }
-            p{
+            p {
                 padding-bottom: 24px;
                 @media (max-width: 767px) {
                     padding-bottom: 20px;
@@ -2903,7 +2898,5 @@
                 margin-bottom: 20px;
             }
         }
-    
-    
     }
 }
