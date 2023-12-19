@@ -1,0 +1,81 @@
+.alphabet-block{
+    border-radius: 45px;
+    line-height: 2;
+    overflow: hidden;
+    margin: 40px 0;
+}
+
+.alphabet {
+   @include flexbox;
+   @include justify-content(space-evenly);
+   @include align-items(flex-start);
+    margin: 0;
+    list-style: none;
+    text-transform: uppercase;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    &::-webkit-scrollbar { 
+        width: 2px; 
+        height: 2px; 
+    }
+    &::-webkit-scrollbar-track { 
+        background: #f2f2f2; 
+    }
+    &::-webkit-scrollbar-thumb { 
+        background: #dedede; 
+        @include border-radius(10px); 
+    }
+    &::-webkit-scrollbar-thumb:hover { 
+        background: #dedede;
+    }
+    @media (max-width:1440px) {
+        @include justify-content(flex-start);
+    }
+    li {
+        padding: 0 4px;
+        cursor: default;
+        -ms-flex-negative: 0;
+		flex-shrink: 0;
+		position: relative;
+        &.current span{
+            font-weight: 700;
+            color: #002B31; 
+            background: #65E6D9;
+        }
+        &:not(.active){
+            span{
+                cursor: default; color: #cccdd2; pointer-events: none;background-color: #F9F8FF;
+            }
+        }
+        span {
+            font-size: 16px;
+            font-weight: 400;
+            cursor: pointer;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            text-align: center;
+            border-radius: 100px;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            color: #684BFE;
+            -webkit-transition: background .2s ease,color .1s ease;
+            -o-transition: background .2s ease,color .1s ease;
+            transition: background .2s ease,color .1s ease;
+            background: #F3F1FF;
+            width: 32px;
+            height: 32px;
+            &:hover, &:focus {
+                color: #ffffff; background: #684BFE;
+            }
+        }
+    }
+
+}
