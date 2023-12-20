@@ -95,13 +95,6 @@ $('.is-show-all').on('click', function(e) {
    isHidden = !isHidden;
    // Update button text based on the boolean value
    $(this).find('.is-text').text(isHidden ? "View all" : "Hide all");
-   
-   if(isHidden){
-    var offset_target = $(this).parents('.main-section').offset().top;
-    $('html, body').animate({ 
-        scrollTop: offset_target
-    }, 50);
-   } 
 });
 /*
 if ($('.review-slider').length) { 
