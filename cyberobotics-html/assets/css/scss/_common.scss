@@ -154,7 +154,6 @@ img{
 	@include inline-flex;
 	@include align-items(center);
 	@include justify-content(center);	
-	line-height: 0.7;
 	@include border-radius(100px);
 	
 	@media (max-width:767px) {
@@ -168,6 +167,7 @@ img{
 		color: $white !important;
 		border: 1px solid $primary;
 		background-color:$primary;
+		@include box-shadow(0px -1px 15px 0px rgba(65, 171, 250, 0.45));
 		.icons {
 			@include transition(0.3s, ease-in-out);
 			svg {
@@ -181,7 +181,7 @@ img{
 			background-color: $white;
 			color: $primary !important;
 			border: 1px solid $primary;
-			@include box-shadow(0px -1px 15px 0px rgba(65, 171, 250, 0.45));
+			
 			.icons {				
 				svg {
 					path {
@@ -230,19 +230,16 @@ h2, .h2 {
 }
 
 h3, .h3 {
-	font-weight: 600;
+	font-weight: 700;
 	font-size: 24px;
 	margin-bottom: 20px;
 	@media (max-width: 992px) {
 		font-size: 20px;
     }
-	@media (max-width:991px) {
-		font-size: 18px;
-    }	
 }
 
 h4, .h4 {
-	font-weight: 600;
+	font-weight: 700;
 	font-size: 20px;
 	margin-bottom: 15px;
 	@media (max-width: 767px) {
@@ -251,7 +248,7 @@ h4, .h4 {
 }
 
 h5, .h5 {
-	font-weight: 600;
+	font-weight: 700;
 	font-size: 18px;
 	margin-bottom: 15px;
 	@media (max-width: 767px) {
@@ -259,18 +256,85 @@ h5, .h5 {
     }	
 }
 
-.form-control {
-	border-radius: 10px;
-	border: 1px solid #DCDDDE;
-	background: #FFF;
-	height: 56px;
-	font-size: 18px;
-	&::placeholder {
-		color: #ABABAB;
+.form-group {
+	margin-bottom: 20px;
+	.mw-350 {
+		max-width: 350px;
 	}
-}
-textarea.form-control {
-	height: auto;
+	&.with-icon {
+		& > div {
+			position: relative;
+		}
+		.icon {
+			position: absolute;
+			top: 50%;
+			left: 20px;
+			@include transform(translateY(-50%));
+			display: inline-block;
+			line-height: 0.7;
+			max-width: 20px;
+			svg {
+				max-width: 20px;
+			}
+		}
+		.form-control { 
+			padding-left: 50px;
+		}
+	}
+	.form-control {
+		@include border-radius(100px);
+		border: 1px solid #DCDDDE;
+		background: #FFF;
+		height: 52px;
+		font-size: 16px;
+		padding: 5px 20px;
+		&::placeholder { 
+			color: #AEAEAE;
+		}
+		@media (max-width: 767px) {
+			font-size: 14px;
+			height: 46px;
+		}
+	}
+	.form-select {
+		@include border-radius(100px);
+		border: 1px solid #DCDDDE;
+		background: $white;
+		background-image: url(../images/icons/arrow-down.svg);
+		background-repeat: no-repeat;
+		background-position: right 20px center;
+		background-size: 20px;
+		height: 52px;
+		font-size: 16px;
+		padding: 5px 20px;
+		padding-right: 50px;
+		&::placeholder { 
+			color: #AEAEAE;
+		}
+		@media (max-width: 767px) {
+			font-size: 14px;
+			height: 46px;
+		}
+	}
+	textarea.form-control {
+		height: auto;
+	}
+	.form-check {
+		margin-right: 0;
+		@include inline-flex;
+		padding-left: 0;
+		.form-check-input {
+			width: 18px;
+			height: 18px;
+			border-radius: 2px;
+			border: 0.5px solid #DCDCDC;
+			margin-left: 0;
+			margin-top: 2px;
+		}
+		.form-check-label {
+			padding-left: 10px;
+		}
+	}
 }
 
 .main-header {
@@ -298,6 +362,9 @@ textarea.form-control {
 		@media (max-width: 992px) {
 			padding: 10px 0; 
 		}
+	}
+	&.dark-header {
+		background: $darkblack;
 	}
 	body.logged-in.admin-bar & {
 		top: 32px;
@@ -570,7 +637,7 @@ textarea.form-control {
 					}
 					&:hover, &:focus {
 						color: $primary !important;
-						background: $lightlue;
+						background: $lightblue;
 					}
 				}
 				a:after {
@@ -590,7 +657,7 @@ textarea.form-control {
 				&.menu-item-has-children:focus {
 					> a {
 						color: $primary !important;
-						background: $lightlue;
+						background: $lightblue;
 					}
 				}
 
@@ -709,54 +776,22 @@ textarea.form-control {
 
 .main-footer {
 	background: #1E1E1E; 
-	padding: 60px 0;
+	padding: 40px 0;
 	color: $white;
 	@media (max-width: 767px) {
-		padding: 40px 0;
+		padding: 30px 0;
 	}
 	.footer-logo-block {
-		text-align: center;
 		.footer-logo {
-			margin-bottom: 40px;
+			margin-bottom: 30px;
 			display: inline-block;
-			img {
-				max-height: 120px;
-				width: auto;	
-				@media (max-width: 767px) {
-					max-height: 70px;
-				}
-			}
 		}
 	}
 
-
-	.footer-menu {
-		li {						
-			margin-bottom: 12px;
-			text-align: center;
-			a {
-				color: $white;
-				@include transition(0.3s, ease-in-out);
-				&:hover, &:focus {
-					color: $primary;
-					text-decoration: underline;
-				}
-			}
-			&.current-menu-item, &.current_page_parent {
-				& > a {
-					color: $primary;
-					text-decoration: underline;
-				}
-			}
-		}
-	}
-	
-	.address-block {
-		margin-top: 40px;
-		.address-text {
+	.copyright-block {
+		.copyright-text {
 			font-size: 16px;
 			color: $white;
-			text-align: center;
 			@media (max-width: 767px) {
 				font-size: 14px;
 			}

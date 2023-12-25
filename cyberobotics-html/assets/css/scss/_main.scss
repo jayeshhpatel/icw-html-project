@@ -28,17 +28,18 @@
 
 .main-section {
     position: relative;
-    padding-top: 100px;
-	padding-bottom: 100px;
-    // z-index: 1;
-    @media (max-width: 1350px) {
-		padding-top: 80px;
-		padding-bottom: 80px;
-    }
+    padding-top: 40px;
+	padding-bottom: 40px;   
 	@media (max-width: 767px) {
-		padding-top: 40px;
-		padding-bottom: 40px;
+		padding-top: 20px;
+		padding-bottom: 20px;
     }
+	&.pb-80 {
+		padding-bottom: 80px;
+		@media (max-width: 767px) {
+			padding-bottom: 40px;
+		}
+	}
 
 	&.bg-custom {
 		background-color:var(--gs-bg, #fff) !important;
@@ -46,15 +47,12 @@
 }
 
 .page-header {
-	background: linear-gradient(180deg, #262525 0%, #0B0B0B 100%);
+	background: var(--url), linear-gradient(180deg, #262525 0%, #0B0B0B 100%),;
 	background-repeat: no-repeat;
-	background-position: center bottom;
-	background-size: cover;
-	padding: 250px 0 120px;
+	background-position: right calc(100% - 30%);
+	background-size: contain;
+	padding: 200px 0 150px;
 	color: $white;
-	@media (max-width: 992px) {
-		padding: 200px 0 100px; 
-	}
 	
 	.page-header-title {
 		margin: 0;
@@ -286,13 +284,21 @@
 	@include flex-direction(column);
     @include transition(0.2s, ease-in-out);
 	padding: 30px;
+	@include border-radius(6px);
 
 	@media (max-width: 992px) {
         padding: 20px;
     }
-
+	.card-tag {
+		color: $darkblack;
+		font-size: 16px;
+		font-weight: 600;
+		letter-spacing: 0.8px;
+		text-transform: uppercase;
+		margin-bottom: 20px;
+	}
 	.card-img {
-		margin-bottom: 15px;
+		margin-bottom: 15px;		
 		img {
 			max-width: 225px;
 			@media (max-width: 992px) {
@@ -307,14 +313,11 @@
         flex: 1 1 auto;
         padding: 0;
 		z-index: 1;
-        h3 {
-            margin-bottom: 15px;
-			font-weight: 700;
-			font-size: 26px;
-			color: var(--title-color, $bodycolor);
-        }
-		.card-info{
-			color: #668083;
+		.email-form-block {
+			.mw-290 {
+				max-width: 290px;
+				margin: 0 auto;
+			}
 		}
     }
     .card-footer{
@@ -324,19 +327,25 @@
         background: transparent;
     }
 
-	&.with-bg {
-		background: var(--card-bg, #fff), var(--card-url) no-repeat center !important;
-		background-size: cover !important;
-		box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+	&.with-bg-gray {
+		background: #F8F8F8;
+		.card-img {
+			&.with-bg {
+				@include flexbox;
+				@include align-items(center);
+				@include justify-content(center);
+				@include border-radius(6px);
+				background: $white;
+				height: 100%;
+				@media (max-width: 767px) {
+					min-height: 230px;
+				}
+			}
+		}
 		.card-body {
-			text-align: center;
 			margin-bottom: 0;
 			h3 {
-				color: $white;
-				text-transform: uppercase;
-			}
-			.card-info {
-				color: $white;
+				color: $darkblack;
 			}
 		}
 	}
@@ -348,345 +357,201 @@
 	}
 }
 
-// Col Image + Text
-.image-content-block{
-	@media (min-width:1200px) {
-		.row-gap { 
-			margin-right: -4rem; 
-			margin-left: -4rem 
-		}
-		.row-gap > [class^="col"], 
-		.row-gap > [class*=" col"] { 
-			padding-right: 4rem; 
-			padding-left: 4rem 
-		}
-	}
-	.card-image-block {	
-		position: relative;		
-		@include border-radius(10px);	
-		@include box-shadow(4px 4px 4px 0px rgba(0, 0, 0, 0.25));
-		& + .content-info {
-			margin-top: 30px;
-		}
-		img {
-			@include border-radius(10px);
-			width: 100%;
-		}
-		@media (max-width:767px) {
-			margin-bottom: 30px;
-		}
-		&.right-image {
-			@media (min-width:768px) {
-				text-align: right;
-			}
-		}
-	}
-	.section-title {
-		margin: 0;
-	}
-}
-
-// Logos
-.trusted-logos-section {
-	padding-top: 70px;
-	padding-bottom: 70px;
-	overflow: hidden;
+.company-card {
+	position: relative;
+	@include border-radius(6px);
+	border: 1px solid #ECECEC;
+	background: #FFF;
+	@include box-shadow(0px 2px 4px 0px rgba(99, 117, 153, 0.15));
+	padding: 30px;
+	@include transition(0.2s, ease-in-out);
 	@media (max-width: 767px) {
-		padding-top: 40px;
-		padding-bottom: 40px;
-    }
-	// Slider
-	&.trusted-logo-slider-full {
-		& > .container {
-			max-width: inherit;
-		}
+		padding: 20px;
 	}
-	.logo-style-slider {
-		margin-right: -150px;
-		@media (max-width: 1400px) {
-			margin-right: -70px;
-		}
-		@media (max-width: 1200px) {
-			margin-right: -50px;
-		}
-		@media (max-width: 992px) {
-			margin-right: 0;
-		}
-		.splide__arrows { 
-			opacity: 0px; 
-			visibility: hidden;
-		}
-		&:hover {
-			.splide__arrows {
-				opacity: 1px; 
-				visibility: visible;
-			}	
-		}
-		.logo-item {
-			@include flexbox();
-			@include align-items(center);
-			@include justify-content(center);
-
-			img {
-				flex: none;
-				-webkit-box-flex: 1;
-				-ms-flex: 1 1 auto;
-				flex: 1 1 auto;
-				width: auto;
-				max-height: 75px;
-				aspect-ratio: 3/2;
-				object-fit: contain;
-				@media (max-width: 992px) {
-					max-height: 60px;
-				}
-			}
-		}
-	}
-}
-
-
-// Action Block
-.action-block {
-	margin-top: 50px;
-	@include flexbox;
-	@include justify-content(center);
-	@include flex-wrap(wrap);
-	gap: 15px;
-	@media (max-width:992px) {
-		margin-top: 30px;
-	}
-}
-
-// Review Slider
-.review-slider-section {		
-	.icw-splide-arrows {
-		display: none;
-		@media (max-width: 992px) {
-			@include flexbox;
-			@include justify-content(center);
-			margin-top: 25px;
-		}
-	}
-	.review-client {
+	.card-icon {
 		@include flexbox;
 		@include align-items(center);
-		.user-img {
-			overflow: hidden;
-			max-height: 40px;
-			min-width: 40px;
-			min-height: 40px;
-			margin-right: 15px;
-			img {
-				max-width: 100%;
-			}
-		}
-		.client-name {
-			text-align: left;			
-			@include inline-flex;
-			@include flex-direction(column);
-			color: $white;
-			font-size: 32px;
-			font-weight: 500;	
-			@media (max-width: 992px) {
-				font-size: 28px;
-			}	
-			@media (max-width: 767px) {
-				font-size: 20px;
-			}	
-		}
-	}
-}
-.review-item {
-	max-width: 1000px;
-	margin: 0 auto;
-	.review-text {
-		font-size: 32px;
-		color: $white;	
-		margin-bottom: 15px;
-		@media (max-width: 992px) {
-			font-size: 28px;
-		}	
+		margin-bottom: 30px;
 		@media (max-width: 767px) {
-			font-size: 20px;
-		}	
-	}
-}
-
-// Blog Post
-.post-wrapper {	
-	.row {
-		@media (max-width: 767px) {
-			@include flex-wrap(nowrap);
-			overflow: hidden;
-			overflow-x: auto;
-			margin: 0 12px;
-			& > .col {
-				max-width: 320px;
-			}
-		}
-	}
-	// Blog Post Item
-	.post-item {
-		@include flexbox;
-		@include flex-direction(column);
-		position: relative;
-		.post-img {
-			@include border-radius(10px);
-			overflow: hidden;
 			margin-bottom: 20px;
-			@include transition(0.3s, ease-in-out);	
-			position: relative;
-			box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
-			&::before {
-				content: '';
-				@include border-radius(10px);
-				position: absolute;
-				top: 0;
-				left: 0;
-				background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%);
-				width: 100%;
-				height: 100%;
-				z-index: 1;
+		}
+		.icon {
+			width: 86px;
+			height: 86px;
+			flex: none;
+			overflow: hidden;
+			@include border-radius(6px);
+			margin-right: 20px;
+			@media (max-width: 767px) {
+				width: 60px;
+				height: 60px;
 			}
 			img {
 				width: 100%;
-				@include border-radius(10px);
-				@include transition(0.3s, ease-in-out);
 			}
 		}
-		.post-info {
-			flex: 1 1 auto;
-
-			.post-title {
-				font-weight: 700;
-				font-size: 36px;
-				margin-bottom: 0;
-				@media (max-width: 992px) {
-					font-size: 28px;
-				}
+		.name-info {
+			h3 {
 				@media (max-width: 767px) {
-					flex: 1 1 auto;
+					margin-bottom: 15px;
 				}
 				a {
-					color: $bodycolor;
-					text-decoration: none;
-					@include transition(0.3s, ease-in-out);
+					color: $darkblack;
+					@include transition(0.2s, ease-in-out);
 				}
 			}
-			.post-info-text {
-				font-size: 16px;
+			.category {
+				padding: 6px 20px;
+				@include border-radius(100px);
+				background: #41ABFA;
+				color: $white;
+				font-size: 14px;
+				font-weight: 500;
+				display: inline-block;
 				@media (max-width: 767px) {
-					padding-bottom: 15px;
+					font-size: 12px;
 				}
 			}
-			.post-meta-time {
-				font-size: 13px;
-				color: rgba($bodycolor, 0.6);
-			}
-
 		}
-
-		&:hover {
-			.post-img {
-				img {
-					@include transform(scale(1.1));
+	}
+	.card-body {
+		.tag-block {
+			margin-top: 15px;
+			.tag {
+				@include border-radius(100px);
+				background: $lightblue;
+				display: inline-block;
+				padding: 6px 15px;
+				color: $primary;
+				font-size: 12px;
+				margin-top: 5px;
+				@include transition(0.2s, ease-in-out);
+			}
+			a.tag {				
+				&:hover {
+					background: $primary;
+					color: $white;
 				}
 			}
-			.post-info {
-				h3 {
-					a {
-						color: $primary;
+		}
+	}
+	&:hover, &:focus {
+		@include box-shadow(0px 5px 10px 0px rgba(99, 117, 153, 0.25));
+		.card-icon { 
+			h3 {
+				a {
+					color: $primary;
+				}
+			}
+		}
+	}
+}
+
+.filter-input-block {
+	margin-bottom: 50px;
+	@media (max-width: 767px) {
+		margin-bottom: 30px;
+	}
+	form {
+		@include flexbox;
+		@include align-items(center);
+		@include flex-wrap(wrap);
+		.form-group {
+			margin-bottom: 10px;
+			&:not(:last-child) {
+				margin-right: 10px;
+			}
+			@media (max-width: 767px) {
+				&:first-child {
+					max-width: 240px;
+				}
+			}		
+			@media (max-width: 420px) {
+				width: calc(50% - 5px);
+				&:first-child {
+					margin-right: 0;
+					max-width: 100%;
+					width: 100%;
+				}
+			}			
+			.form-select {
+				min-width: 185px;
+				width: 100%;
+				@media (max-width: 767px) {
+					min-width: 135px;
+				}
+			}
+		}
+	}
+}
+
+.company-header-section {
+	padding-top: 180px;
+	.header-block {
+		@include flexbox;
+		@include align-items(center);
+		@include justify-content(space-between);
+		.logo-block {
+			@include inline-flex;
+			@include align-items(center);
+			.logo-img {
+				border: 1px solid #D8D8D8;
+				@include inline-flex;
+				@include align-items(center);
+				@include justify-content(center);
+				@include border-radius(6px);
+				margin-right: 30px;
+				width: 120px;
+				height: 120px;
+				flex: none;
+				overflow: hidden;
+				img {
+					width: 100%;
+				}
+			}
+			.logo-info {
+				.name {
+					color: $darkblack;
+				}
+				.text {
+					font-size: 24px;
+				}
+			}
+		}
+		.action {
+			.btn {
+				height: 60px;
+				min-width: 175px;
+			}
+		}
+	}
+}
+.single-company-content-section {
+	.content-tab-header {
+		border-bottom: 1px solid #D9DDE9;
+		.nav {
+			margin-bottom: -3px;
+			gap: 30px;
+			.nav-item {
+				.nav-link {
+					font-size: 20px;
+					font-weight: 400;
+					color: $darkblack;
+					border-bottom: 5px solid transparent;
+					padding: 0 7px 10px;
+					&.active {
+						font-weight: 500;
+						border-bottom-color: $primary;
 					}
 				}
 			}
 		}
 	}
-}
-
-// FAQs
-.collapse-item {
-	padding: 30px 0;
-	border-bottom: 6px solid $primary;
-	@media (max-width:767px) {
-		padding: 20px 0;
-		border-width: 4px;
-	}
-	&.is-open {
-		.collapse-title{
-			h3 {
-				color: $primary;
-				font-weight: 700;
-			}
-			&:after {
-				@include transform(rotate(180deg));
-				filter: none;
-			}
-		}
-	}
-	&:hover, &:focus {
-		.collapse-title {
-			h3 {
-				color: $primary;
-			}
-			&:after {
-				filter: none;
-			}
-		}
-	}
-
-	.collapse-title {
-		@include flexbox();
-		@include align-items(center);
-		text-align: left;
-		cursor: pointer;
-		background-color: transparent;
-		border: none;
-		width: 100%;
-		padding: 0;
-		@include border-radius(4px);		
-		&:after {
-			content: "";
-			width: 14px;
-			height: 14px;
-			-webkit-box-flex: 0;
-			-ms-flex: none;
-			flex: none;
-			margin-left: auto;
-			margin-right: 20px;
-			background: url(../images/icons/arrow-down-secondary.svg) no-repeat center center;
-			background-size: contain;
-			@include transition(0.2s, ease-in-out);
-			filter: brightness(0);
-			@media (max-width:767px) {
-				margin-right: 0;
-			}
-		}
+	.single-content {
+		margin-top: 45px;
 		h3 {
-			font-size: 28px;
-			font-weight: 700;
-			margin-bottom: 0;
-			@media (max-width:767px) {
-				font-size: 20px;
-				padding-right: 50px;
-			}
+			color: #171717;
+			font-size: 20px;
 		}
-	}
-	.card-content {
-		a {
-			font-size: 16px;
-			text-decoration: underline;
-			text-underline-offset: 4px;
-			&.btn {
-				text-decoration: none;
-			}
-		}
-		.action {
-			margin-top: 30px;
-		}
-	}
-	.collapse-body {
-		margin-top: 12px;
-		padding-right: 40px;
-		
 	}
 }
