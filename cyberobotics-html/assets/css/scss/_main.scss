@@ -1,9 +1,6 @@
 .text-primary {
 	color: $primary !important;
 }
-.text-secondary {
-	color: $secondary !important;
-}
 
 
 .bg-white {
@@ -16,28 +13,10 @@
 	background-color: $gray !important;
 }
 .bg-darktheme {
-	background-color: $bodycolor !important;
+	background-color: $darkblack !important;
 	* {color: $white;}
 }
 
-.color-overlay {
-	position: relative;
-	z-index: 1;
-	overflow: hidden;
-	&::before {
-		content: '';
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		top: 0;
-		left: 0;		
-	}
-	&.overlay-yellow {
-		&::before {
-			background: rgba(227, 187, 0, 0.65);
-		}
-	}
-}
 
 .main-content-wrapper {
 	flex: 1 1 auto;
@@ -67,7 +46,7 @@
 }
 
 .page-header {
-	background: linear-gradient(0deg, rgba(0, 97, 170, 0.80) 0%, rgba(0, 97, 170, 0.80) 100%), var(--url);
+	background: linear-gradient(180deg, #262525 0%, #0B0B0B 100%);
 	background-repeat: no-repeat;
 	background-position: center bottom;
 	background-size: cover;
@@ -76,20 +55,10 @@
 	@media (max-width: 992px) {
 		padding: 200px 0 100px; 
 	}
-
-	&.mh-100 {
-		min-height: 100vh;
-		@include flexbox;
-		@include align-items(center);
-		padding: 275px 0 200px;
-		@media (max-width: 992px) {
-			padding: 200px 0 100px; 
-		}
-	}
+	
 	.page-header-title {
 		margin: 0;
 		max-width: 1000px;
-		font-family: $font-opensanscondensed;
 		&.text-center {
 			margin: 0 auto;
 		}
@@ -98,28 +67,10 @@
 		}
 	}
 
-	.tagline {
-		color: $secondary !important;
-		font-weight: 700;
-	}
 	h1 {
-		font-weight: 700;
+		font-weight: 500;
 		color: $white;
-		word-break: break-word;	
-
-		span {
-			position: relative;
-			background-image: linear-gradient(transparent calc(100% - 10px), #E3BE97 10px);
-			background-repeat: no-repeat;
-			background-size: 100% 88%;
-			transition: background-size .6s;
-			@media (max-width: 1440px) {
-				background-image: linear-gradient(transparent calc(100% - 8px), #E3BE97 8px);
-			}			
-			@media (max-width: 992px) {
-				background-image: linear-gradient(transparent calc(100% - 6px), #E3BE97 6px);
-			}			
-		}
+		word-break: break-word;		
 	}
 	.sort-info {
 		color: rgba($white, 0.6);
@@ -140,54 +91,13 @@
 		@media (max-width: 992px) {
 			margin-top: 30px;
 		}
-		&.with-arrow {
-			.btn {		
-				position: relative;
-				margin-top: 70px;	
-				@media (max-width: 992px) {
-					margin-top: 50px;	
-				}	
-				@media (max-width: 420px) {
-					margin-top: 0px;	
-				}	
-				&::before, &::after {
-					content: '';
-					position: absolute;
-					top: -130px;
-					height: 140px;
-					width: 70px;
-					display: block;
-					background-size: contain;
-					@media (max-width: 992px) {
-						top: -80px;
-						height: 80px;
-						width: 40px;
-					}
-					@media (max-width: 420px) {
-						content: none;
-					}
-				}
-				&:first-child{
-					&::before {
-						background: url(../images/arrow-left.png) no-repeat center;
-					}
-				}				
-				&:last-child{
-					&::before {
-						background: url(../images/arrow-right.png) no-repeat center;
-					}
-				}				
-			}
-		}
 		.btn {
 			margin-right: 40px;
-			min-width: 265px;
 			&:last-child {
 				margin-right: 0;
 			}
 			@media (max-width: 767px) {
-				margin-right: 15px;
-				min-width: 180px;
+				margin-right: 15px;				
 			}
 			@media (max-width: 420px) {
 				width: 100%;
@@ -202,9 +112,6 @@
 	& * :last-child {
         margin-bottom: 0px !important;
     }
-	.post-header-title {
-		
-	}
 
 	.back-action {
 		color: $white;
@@ -246,18 +153,6 @@
 			font-size: 14px;
 		}
 	}
-	.title-text {
-		font-family: $font-opensanscondensed;
-	}
-	.divider-line {
-		width: 120px;
-		height: 6px;
-		background: $secondary;
-		margin-bottom: 20px;
-		&.line-red {
-			background: $primary;
-		}
-	}
 	.sort-info {
 		color: $bodycolor;
 		margin-bottom: 30px;
@@ -291,23 +186,9 @@
 		display: inline-flex;
 		flex-wrap: wrap;
 		gap: 15px;
-		.btn {
-			// margin-right: 15px;
-			// &:last-child {
-			// 	margin-right: 0;
-			// 	@media (max-width: 767px) {
-			// 		margin-right: 0px;
-			// 		margin-bottom: 0px;
-			// 	}
-			// }
-			// @media (max-width: 767px) {
-			// 	margin-right: 0px;
-			// 	margin-bottom: 10px;
-			// }
-		}
 	}
 
-	ul{
+	ul {
 		margin-bottom: 20px;
 		&.ul-link {
 			li {
@@ -430,7 +311,6 @@
             margin-bottom: 15px;
 			font-weight: 700;
 			font-size: 26px;
-			font-family: $font-opensanscondensed;
 			color: var(--title-color, $bodycolor);
         }
 		.card-info{
@@ -453,7 +333,6 @@
 			margin-bottom: 0;
 			h3 {
 				color: $white;
-				font-family: $font-opensanscondensed;
 				text-transform: uppercase;
 			}
 			.card-info {
@@ -607,8 +486,7 @@
 			@include flex-direction(column);
 			color: $white;
 			font-size: 32px;
-			font-weight: 500;
-			font-family: $font-oswald;		
+			font-weight: 500;	
 			@media (max-width: 992px) {
 				font-size: 28px;
 			}	
@@ -625,7 +503,6 @@
 		font-size: 32px;
 		color: $white;	
 		margin-bottom: 15px;
-		font-family: $font-oswald;
 		@media (max-width: 992px) {
 			font-size: 28px;
 		}	
@@ -684,7 +561,6 @@
 				font-weight: 700;
 				font-size: 36px;
 				margin-bottom: 0;
-				font-family: $font-opensanscondensed;
 				@media (max-width: 992px) {
 					font-size: 28px;
 				}
@@ -719,7 +595,7 @@
 			.post-info {
 				h3 {
 					a {
-						color: $secondary;
+						color: $primary;
 					}
 				}
 			}
@@ -738,7 +614,7 @@
 	&.is-open {
 		.collapse-title{
 			h3 {
-				color: $secondary;
+				color: $primary;
 				font-weight: 700;
 			}
 			&:after {
@@ -750,7 +626,7 @@
 	&:hover, &:focus {
 		.collapse-title {
 			h3 {
-				color: $secondary;
+				color: $primary;
 			}
 			&:after {
 				filter: none;
@@ -788,7 +664,6 @@
 		h3 {
 			font-size: 28px;
 			font-weight: 700;
-			font-family: $font-opensanscondensed;
 			margin-bottom: 0;
 			@media (max-width:767px) {
 				font-size: 20px;

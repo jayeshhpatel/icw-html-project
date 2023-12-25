@@ -79,12 +79,12 @@ ul {
 }
 
 a {
-    color: $secondary;
+    color: $primary;
     text-decoration: none;
 	text-underline-offset: 4px;
     &:focus,
     &:hover {
-        color: $primary;
+        color: $black;
         // text-decoration: none;
     }
     &:focus-visible {
@@ -493,7 +493,7 @@ textarea.form-control {
 					}
 					&:hover, &:focus {
 						> a {
-							color: $secondary;
+							color: $primary;
 							&:before {
 								width: 50%; left: 0;
 							}
@@ -798,142 +798,5 @@ textarea.form-control {
 
 	@media (max-width:767px) {
 		display: none !important;
-	}
-}
-
-.left-right-vector {
-	position: relative;
-	overflow: hidden;
-	z-index: 1;
-	.left-dot-vector {
-		display: block;
-		background: url(../images/left-dots-vector.svg) no-repeat left bottom;
-		background-size: contain;
-		width: 300px;
-		height: 300px;
-		position: absolute;
-		bottom: -35px;
-		left: 0;
-		z-index: -1;
-		@media (max-width: 992px) {
-			width: 220px;
-			height: 220px;
-		}
-		@media (max-width: 767px) {
-			width: 120px;
-			height: 120px;
-			bottom: -15px;
-		}
-	}
-	.right-circle-line-vector {
-		display: block;
-		background: url(../images/right-circle-line-vector.svg) no-repeat right bottom;
-		background-size: contain;
-		width: 140px;
-		height: 400px;
-		position: absolute;
-		bottom: -130px;
-		right: 0;
-		z-index: -1;
-		@media (max-width: 992px) {
-			width: 100px;
-			height: 350px;
-			bottom: -80px;
-		}
-		@media (max-width: 767px) {
-			width: 70px;
-			height: 280px;
-			bottom: -80px;
-		}
-	}
-}
-
-.right-vector {
-	.right-circle-line-vector {
-		display: block;
-		background: url(../images/right-circle-line-vector2.svg) no-repeat right bottom;
-		background-size: contain;
-		width: 285px;
-		height: 580px;
-		position: absolute;
-		bottom: -130px;
-		right: 0;
-		z-index: -1;
-		@media (max-width: 1200px) {
-			width: 250px;
-			height: 400px;
-			bottom: -80px;
-		}
-		@media (max-width: 992px) {
-			width: 200px;
-			height: 300px;
-			bottom: -80px;
-		}
-	}
-}
-
-.right-dots-vector {
-	position: relative;
-	z-index: 1;
-	overflow: hidden;
-	.right-dot {
-		display: block;
-		background: url(../images/right-dots-vector.svg) no-repeat right bottom;
-		background-size: contain;
-		width: 250px;
-		height: 250px;
-		position: absolute;
-		bottom: -30px;
-		right: 0;
-		z-index: -1;
-		@media (max-width: 992px) {
-			width: 180px;
-			height: 180px;
-			bottom: -20px;
-		}
-	}
-}
-
-
-.icw-splide-arrows {
-	@include flexbox();
-	@include align-items(center);
-	gap: 10px;
-
-	.icw-splide-arrow {
-		width: 40px;
-		height: 40px;
-		border: 2px solid #E6EAEA;
-		background: #fff;
-		opacity:1;
-		@include transition(0.2s, ease-in-out);
-		@include border-radius(100px);
-		display: grid;
-		justify-content: center;
-		align-items: center;
-
-		svg {
-			height: 12px;
-			width: 12px;	
-			path{
-				fill: #99AAAD;
-			}
-		}
-		&.splide__arrow--prev svg {
-			-webkit-transform: scaleX(-1);
-			transform: scaleX(-1);
-		}
-	
-		&:hover:not(:disabled), &:focus:not(:disabled) {
-			background: $secondary;
-			border-color: #E6EAEA;
-			path{
-				fill: #fff !important;
-			}
-		}
-	
-		&:disabled {
-			opacity: 0.3 !important;
-		}
 	}
 }
