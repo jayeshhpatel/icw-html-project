@@ -380,14 +380,18 @@
 			height: 86px;
 			flex: none;
 			overflow: hidden;
-			@include border-radius(6px);
 			margin-right: 20px;
+			@include inline-flex;
+			@include align-items(center);
+			@include justify-content(center);
+			@include border-radius(6px);
 			@media (max-width: 767px) {
 				width: 60px;
 				height: 60px;
 			}
 			img {
 				width: 100%;
+				@include transition(0.2s, ease-in-out);
 			}
 		}
 		.name-info {
@@ -437,7 +441,7 @@
 	}
 	&:hover, &:focus {
 		@include box-shadow(0px 5px 10px 0px rgba(99, 117, 153, 0.25));
-		.card-icon { 
+		.card-icon {
 			h3 {
 				a {
 					color: $primary;
@@ -487,10 +491,16 @@
 
 .company-header-section {
 	padding-top: 180px;
+	@media (max-width: 767px) {
+		padding-top: 150px;
+	}
 	.header-block {
 		@include flexbox;
 		@include align-items(center);
 		@include justify-content(space-between);
+		@media (max-width: 767px) {
+			display: block;
+		}
 		.logo-block {
 			@include inline-flex;
 			@include align-items(center);
@@ -505,6 +515,11 @@
 				height: 120px;
 				flex: none;
 				overflow: hidden;
+				@media (max-width: 767px) {
+					width: 100px;
+					height: 100px;
+					margin-right: 20px;
+				}
 				img {
 					width: 100%;
 				}
@@ -512,13 +527,22 @@
 			.logo-info {
 				.name {
 					color: $darkblack;
+					@media (max-width: 767px) {
+						font-size: 36px;
+					}
 				}
 				.text {
 					font-size: 24px;
+					@media (max-width: 767px) {
+						font-size: 20px;
+					}
 				}
 			}
 		}
 		.action {
+			@media (max-width: 767px) {
+				margin-top: 30px;
+			}
 			.btn {
 				height: 60px;
 				min-width: 175px;
@@ -549,9 +573,96 @@
 	}
 	.single-content {
 		margin-top: 45px;
+		margin-bottom: 70px;
+		@media (min-width: 1200px) {
+			padding-right: 60px;
+		}
+		@media (max-width: 767px) {
+			margin-bottom: 0px;	
+		}
 		h3 {
 			color: #171717;
 			font-size: 20px;
+		}
+		p {
+			color: #595959;
+		}
+	}
+	.address-block {
+		@media (max-width: 767px) {
+			margin-bottom: 30px;	
+		}
+		.title {
+			color: #41ABFA;
+			font-size: 16px;
+			font-weight: 600;
+			@include inline-flex;
+			@include align-items(center);
+			gap: 10px;
+			margin-bottom: 20px;
+		}
+		.address-text {
+			color: #595959;
+			max-width: 280px;
+		}
+	}
+}
+.sidebar-widget {
+	margin-top: 40px;
+	
+	.divider {
+		width: 100%;
+		height: 1px;
+		background: #D9DDE9;
+		margin: 40px 0;
+	}
+	.companies-lists {
+		.title {
+			font-size: 20px;
+			color: $darkblack;
+			font-weight: 600;
+			margin-bottom: 30px;
+		}
+		.company-list {
+			li {
+				margin-bottom: 30px;
+				a {
+					@include flexbox;
+					@include align-items(center);
+					gap: 20px;
+					.logo-img {
+						@include border-radius(6px);
+						overflow: hidden;
+						width: 75px;
+						height: 75px;
+						flex: none;
+						img {
+							width: 100%;
+							@include transition(0.2s, ease-in-out);
+						}
+					}
+					.logo-info {
+						.name {
+							font-size: 20px;
+							font-weight: 600;
+							color: $darkblack;
+							margin-bottom: 5px;
+							@include transition(0.2s, ease-in-out);
+						}
+						.desc {
+							color: #595959;
+							font-size: 14px;
+						}
+					}
+					&:hover, &:focus {
+						.logo-info {
+							.name {
+								color: $primary;
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }
