@@ -64,39 +64,39 @@ jQuery(document).ready(function($) {
          $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).slideDown("fast");
       }
       return false;
-  });
+   });
 
-  /* scroll page to top */
-  if ($('.back-to-top').length) {
-    $(window).scroll(function() {
-       if($(this).scrollTop() > 200) {
-          $('.back-to-top').addClass('visible');	
-       } else {
-          $('.back-to-top').removeClass('visible');
-       }
-    });
-    $('.back-to-top').on('click', function(e){
-       e.preventDefault();
-       $('body,html').animate({scrollTop:0},50);
-    });
- }
+   /* scroll page to top */
+   if ($('.back-to-top').length) {
+      $(window).scroll(function() {
+         if($(this).scrollTop() > 200) {
+            $('.back-to-top').addClass('visible');	
+         } else {
+            $('.back-to-top').removeClass('visible');
+         }
+      });
+      $('.back-to-top').on('click', function(e){
+         e.preventDefault();
+         $('body,html').animate({scrollTop:0},50);
+      });
+   }
 
-// $('a[href*=#]:not([href=#])').on('click', function(e) {
-//     e.preventDefault();
-//     $('html, body').animate({ 
-//         scrollTop: $($(this).attr('href')).offset().top
-//     }, 50);
-// });
+   var isHidden = true;
+   $('.is-show-all').on('click', function(e) {
+      e.preventDefault();
+      $('.is-xs-none').toggleClass('is-show');
+      isHidden = !isHidden;
+      // Update button text based on the boolean value
+      $(this).find('.is-text').text(isHidden ? "View all" : "Hide all");
+   });
 
-var isHidden = true;
-$('.is-show-all').on('click', function(e) {
-   e.preventDefault();
-   $('.is-xs-none').toggleClass('is-show');
-   isHidden = !isHidden;
-   // Update button text based on the boolean value
-   $(this).find('.is-text').text(isHidden ? "View all" : "Hide all");
-});
-
-
+  
 
 });
+
+$(".dropdown-menu a").click(function() {
+   $(this).closest('.dropdown').find(".dropdown-menu a").removeClass('active');
+   $(this).addClass('active');
+   $(this).closest('.dropdown').find('.appended').remove();
+   $(this).closest('.dropdown').find('button .toggle-text').text($(this).text());
+}); 

@@ -643,8 +643,7 @@
 	@include flex-wrap(wrap);
 	@media (max-width: 767px) {
 		margin-bottom: 30px;
-	}	
-	
+	}		
 }
 
 
@@ -652,8 +651,9 @@
     position: relative;
 	margin-right: 10px;
 	margin-bottom: 10px;
-	@media (max-width: 420px) {
+	@media (max-width: 767px) {
 		width: 100%;
+		margin-right: 0;
 	}
     .search-input {
         position: relative;
@@ -733,7 +733,7 @@
             font-size: 18px;
             font-weight: 400;
             height: 100%;            
-            box-shadow: 41px 40px 80px rgba(63, 69, 82, 0.02), 27px 26px 46px rgba(63, 69, 82, 0.0151852), 16px 15px 25px rgba(63, 69, 82, 0.0121481), 8px 8px 13px rgba(63, 69, 82, 0.01), 3px 3px 6px rgba(63, 69, 82, 0.007), 0px 0px 3px rgba(63, 69, 82, 0.0048);
+			@include box-shadow(0px 2px 4px 0px rgba(99,117,153,0.15));
             .search-list {  
                 padding: 15px;
                 max-height: 325px;
@@ -789,7 +789,7 @@
             @include border-radius(5px);
             padding: 50px 30px 30px;
             height: 100%;
-            box-shadow: 41px 40px 80px rgba(63, 69, 82, 0.02), 27px 26px 46px rgba(63, 69, 82, 0.0151852), 16px 15px 25px rgba(63, 69, 82, 0.0121481), 8px 8px 13px rgba(63, 69, 82, 0.01), 3px 3px 6px rgba(63, 69, 82, 0.007), 0px 0px 3px rgba(63, 69, 82, 0.0048);
+            @include box-shadow(0px 2px 4px 0px rgba(99,117,153,0.15));
             @media (max-width:767px) {
                 text-align: center;
                 padding: 40px 20px;
@@ -812,11 +812,16 @@
 .tools-cat-nav {
 	@include flexbox;
 	@include align-items(center);
-	@include flex-wrap(wrap);
+	@media (max-width: 767px) {
+		width: 100%;
+	}
 	.dropdown {
 		margin-bottom: 10px;
 		&:not(:last-child) {
 			margin-right: 10px;
+		}
+		@media (max-width: 767px) {
+			width: calc(50% - 5px);
 		}
 		.dropdown-toggle {
 			border: 1px solid #DCDDDE;
@@ -829,6 +834,14 @@
 			min-width: 185px;
 			position: relative;
 			@include justify-content(space-between);
+			@media (max-width: 992px) {
+				min-width: 160px;
+			}
+			@media (max-width: 767px) {
+				height: 46px;
+				font-size: 14px;
+				width: 100%;
+			}
 			&::after {
 				background: url(../images/icons/arrow-down.svg) no-repeat center;
 				width: 18px;
@@ -848,7 +861,8 @@
 				a {
 					color: $darkblack;
 					font-size: 14px;
-					&:hover, &:focus {
+					padding: 7px 20px;
+					&:hover, &:focus, &.active {
 						background: $lightblue;
 						color: $primary;
 					}
