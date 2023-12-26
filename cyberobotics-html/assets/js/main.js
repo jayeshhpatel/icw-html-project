@@ -97,6 +97,5 @@ jQuery(document).ready(function($) {
 $(".dropdown-menu a").click(function() {
    $(this).closest('.dropdown').find(".dropdown-menu a").removeClass('active');
    $(this).addClass('active');
-   $(this).closest('.dropdown').find('.appended').remove();
    $(this).closest('.dropdown').find('button .toggle-text').text($(this).text());
 }); 
