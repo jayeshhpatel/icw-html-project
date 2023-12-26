@@ -169,6 +169,11 @@ img{
 			max-width: 150px;
 		}
 	}
+	@media (max-width:992px) {
+		font-size: 20px !important;
+		padding: 5px 20px;
+		min-height: 56px;
+	}
 	@media (max-width:767px) {
 		font-size: 16px !important;
 		padding: 5px 15px;
@@ -273,6 +278,32 @@ img{
 			background-color: $secondary;
 			color: $white !important;
 			border: 1px solid $secondary;
+		}
+	}
+	&.btn-blue{
+		color: $white !important;
+		border: 1px solid transparent;
+		background-color:$blue;
+		.icons {
+			@include transition(0.3s, ease-in-out);
+			svg {
+				path {
+					stroke: $white;
+					@include transition(0.3s, ease-in-out);
+				}
+			}
+		}
+		&:hover, &:focus, &:active{
+			background-color: $white;
+			color: $blue !important;
+			border: 1px solid $blue;
+			.icons {				
+				svg {
+					path {
+						stroke: $blue;
+					}
+				}
+			}
 		}
 	}
 }
@@ -1058,6 +1089,27 @@ textarea.form-control {
 	.right-circle-line-vector {
 		display: block;
 		background: url(../images/right-circle-line-vector.svg) no-repeat right bottom;
+		background-size: contain;
+		width: 140px;
+		height: 400px;
+		position: absolute;
+		bottom: -130px;
+		right: 0;
+		z-index: -1;
+		@media (max-width: 992px) {
+			width: 100px;
+			height: 350px;
+			bottom: -80px;
+		}
+		@media (max-width: 767px) {
+			width: 70px;
+			height: 280px;
+			bottom: -80px;
+		}
+	}
+	.bottom-right-circle-line-vector {
+		display: block;
+		background: url(../images/bottom-right-circle-line-vector.svg) no-repeat right bottom;
 		background-size: contain;
 		width: 140px;
 		height: 400px;
