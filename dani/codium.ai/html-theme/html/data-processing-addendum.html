@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <meta name="theme-color" content="#0f8ed6">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <title>Data Processing Addendum | CodiumAI</title>
+    <meta name="description" content="Introducing PR-Agent. The AI-assisted open-source tool for seamless pull request analysis and feedback." class="yoast-seo-meta-tag" />    
+    
+    <style type="text/css" id="cst_font_data">
+        @font-face {
+            font-family: "CentraNo1";
+            font-display: swap;
+            font-fallback: Serif;
+            font-weight: 400;
+            src: url(assets/css/fonts/CentraNo1-Book.woff2) format('woff2'), url(assets/css/fonts/CentraNo1-Book.woff) format('woff'), url(assets/css/fonts/CentraNo1-Book.eot) format('eot');
+        }
+
+        @font-face {
+            font-family: "CentraNo1";
+            font-display: swap;
+            font-fallback: Serif;
+            font-weight: 700;
+            src: url(assets/css/fonts/CentraNo1-Bold.woff2) format('woff2'), url(assets/css/fonts/CentraNo1-Bold.woff) format('woff'), url(assets/css/fonts/CentraNo1-Bold.eot) format('eot');
+        }
+    </style>
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" media="all">
+</head>
+
+<body class="privacy-policy page-template-default page page-id-3 page-parent logged-in admin-bar no-customize-support  is-dark">
+    <div class="popup-overlay"></div>
+    <header id="site-header" class="site-header main-navigation nav-down">
+        <div class="container container-100">
+            <div class="site-header--wrapper">
+                <div class="site-header--menu">
+                    <div class="header-flex">
+                        <div class="site-header--menu-logo">
+                            <div class="image-wrapper">
+                                <a href="https://www.codium.ai"><img src="https://www.codium.ai/wp-content/uploads/2023/01/codium-logo.svg" alt="CodiumAI" width="160px" height="29px"></a>
+                            </div>
+                        </div>
+                        <nav class="site-header--menu-nav desktop">
+                            <div class="menu-header-container">
+                                <ul id="main-menu" class="main-menu">
+                                    <li id="menu-item-2118" class="sub-menu-wider menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-2118"><a rel="PROCUCTS" href="https://www.codium.ai/products/ide-plugin/">Products</a></button>
+                                        <ul class="sub-menu" data-rel="PROCUCTS">
+                                            <li id="menu-item-2473" class="menu-item-btn menu-item menu-item-type-post_type menu-item-object-page menu-item-2473"><a href="https://www.codium.ai/products/ide-plugin/"><span><img src="https://www.codium.ai/wp-content/uploads/2023/05/ides.svg" alt="Integrity-Agent: IDE Plugin"> <span class="menu-name">Integrity-Agent: IDE Plugin</span></span></a></li>
+                                            <li id="menu-item-2470" class="menu-item-btn menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-2247 current_page_item menu-item-2470"><a href="https://www.codium.ai/products/git-plugin/" aria-current="page"><span><img src="https://www.codium.ai/wp-content/uploads/2023/04/icon-team.svg" alt="PR-Agent: Git Plugin"> <span class="menu-name">PR-Agent: Git Plugin</span></span></a></li>
+                                            <li id="menu-item-3855" class="menu-item-label menu-item menu-item-type-post_type menu-item-object-page menu-item-3855"><a href="https://www.codium.ai/products/coding-agent/"><span><img src="https://www.codium.ai/wp-content/uploads/2023/09/icon-menu-code-agents.svg" alt="Coding-Agent COMING SOON"> <span class="menu-name">Coding-Agent <span class="coming-soon-label">COMING SOON</span></span></span></a></li>
+                                            <li id="menu-item-4069" class="menu-item-label menu-item menu-item-type-post_type menu-item-object-page menu-item-4069"><a href="https://www.codium.ai/products/codiumai-api/"><span><img src="https://www.codium.ai/wp-content/uploads/2023/09/icon-code-agent.svg" alt="CodiumAI-API CONTACT US"> <span class="menu-name">CodiumAI-API <span class="coming-soon-label">CONTACT US</span></span></span></a></li>
+                                            <li id="menu-item-3854" class="menu-item-label menu-item menu-item-type-post_type menu-item-object-page menu-item-3854"><a href="https://www.codium.ai/products/alpha-codium/"><span><img src="https://www.codium.ai/wp-content/uploads/2023/09/icon-alpha-codium.svg" alt="Alpha-Codium STAY TUNED"> <span class="menu-name">Alpha-Codium <span class="coming-soon-label">STAY TUNED</span></span></span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li id="menu-item-3249" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3249"><a href="https://www.codium.ai/pricing/">Pricing</a></li>
+                                    <li id="menu-item-134" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-134"><a href="https://www.codium.ai/blog/">Blog</a></li>
+                                    <li id="menu-item-17" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-17"><a rel="ABOUT US" href="https://www.codium.ai/about/">About</a></button>
+                                        <ul class="sub-menu" data-rel="ABOUT US">
+                                            <li id="menu-item-1232" class="hash-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-1232"><a href="/about/#our-mission"><span><img src="https://www.codium.ai/wp-content/uploads/2023/04/icon-mission.svg" alt="Our Mission"> <span class="menu-name">Our Mission</span></span></a></li>
+                                            <li id="menu-item-1568" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1568"><a href="https://www.codium.ai/install/"><span><img src="https://www.codium.ai/wp-content/uploads/2023/05/ides.svg" alt="IDE Integrations"> <span class="menu-name">IDE Integrations</span></span></a></li>
+                                            <li id="menu-item-1233" class="hash-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-1233"><a href="/about/#about-team"><span><img src="https://www.codium.ai/wp-content/uploads/2023/04/icon-team.svg" alt="Meet the Team"> <span class="menu-name">Meet the Team</span></span></a></li>
+                                            <li id="menu-item-1234" class="hash-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-1234"><a href="/about/#backed-by"><span><img src="https://www.codium.ai/wp-content/uploads/2023/04/icon-backed-by.svg" alt="Backed by"> <span class="menu-name">Backed by</span></span></a></li>
+                                            <li id="menu-item-2224" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2224"><a href="https://www.codium.ai/resources/"><span><img src="https://www.codium.ai/wp-content/uploads/2023/07/icon-code.svg" alt="Useful Resources"> <span class="menu-name">Useful Resources</span></span></a></li>
+                                            <li id="menu-item-1235" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1235"><a href="https://www.codium.ai/careers/"><span><img src="https://www.codium.ai/wp-content/uploads/2023/04/icon-careers.svg" alt="Careers"> <span class="menu-name">Careers</span></span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li id="menu-item-16" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16"><a href="https://www.codium.ai/contact/">Contact</a></li>
+                                </ul>
+                            </div> 
+                        </nav>
+                    </div>
+                    <div class="site-header--menu-cta-right desktop">
+                        <div class="marketplace-download">
+                            <div class="marketplace-btn-group">
+                                <a href="https://marketplace.visualstudio.com/items?itemName=Codium.codium" class="marketplace-value" target="_blank" data-title="CodiumAI | VS Code Extension">
+                                    <strong class="badge">Code &amp; Test</strong><img src="assets/icons/visual-studio-icon.svg" alt="VS Code">
+                                    <strong class="download"><em class="icon-star"></em><span class="vs--download">130.2K</span></strong>
+                                </a>
+                                <span class="hline"><svg width="2" height="12" viewBox="0 0 2 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.09961 0V12" stroke="white"></path></svg></span>
+                                <a href="https://plugins.jetbrains.com/plugin/21206-codiumai--meaningful-tests-in-python-powered-by-testgpt" class="marketplace-value" target="_blank" data-title="CodiumAI | JetBrains Extension">
+                                    <img src="assets/icons/jetbrains-icon.svg" alt="JetBrains">
+                                    <strong class="download"><em class="icon-star"></em><span class="jetbrains--download">59.9K</span></strong>
+                                </a>
+                            </div>
+                            <a href="https://github.com/Codium-ai/pr-agent" class="marketplace-value" target="_blank" data-title="CodiumAI | PR-Agent"><strong class="badge">Merge</strong><svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.0099 0.529297C5.36875 0.529297 0 6.02927 0 12.8335C0 18.2725 3.43994 22.8765 8.21205 24.5059C8.80869 24.6284 9.02724 24.2412 9.02724 23.9155C9.02724 23.6302 9.00757 22.6525 9.00757 21.6337C5.6667 22.3672 4.97099 20.167 4.97099 20.167C4.43409 18.741 3.63858 18.3745 3.63858 18.3745C2.54511 17.6207 3.71823 17.6207 3.71823 17.6207C4.93117 17.7022 5.56763 18.8837 5.56763 18.8837C6.64118 20.7577 8.37111 20.2282 9.06706 19.9022C9.16638 19.1077 9.48473 18.5577 9.82275 18.2522C7.15817 17.967 4.35469 16.9077 4.35469 12.1815C4.35469 10.837 4.8316 9.73701 5.58729 8.88151C5.46807 8.57601 5.0504 7.31277 5.70677 5.62203C5.70677 5.62203 6.72083 5.29603 9.00732 6.88502C9.98625 6.61569 10.9958 6.47868 12.0099 6.47752C13.024 6.47752 14.0577 6.62027 15.0123 6.88502C17.299 5.29603 18.3131 5.62203 18.3131 5.62203C18.9695 7.31277 18.5515 8.57601 18.4323 8.88151C19.2079 9.73701 19.6652 10.837 19.6652 12.1815C19.6652 16.9077 16.8617 17.9465 14.1772 18.2522C14.6148 18.6392 14.9924 19.3725 14.9924 20.5337C14.9924 22.1837 14.9727 23.508 14.9727 23.9152C14.9727 24.2412 15.1915 24.6284 15.7879 24.5062C20.56 22.8762 23.9999 18.2725 23.9999 12.8335C24.0196 6.02927 18.6312 0.529297 12.0099 0.529297Z" fill="#1B1F23"></path></svg><strong class="download"><em class="icon-star"></em><span class="github--download">2.3K</span></strong></a> 
+                        </div>
+                        <a href="https://discord.gg/SgSxuQ65GF" target="_blank" class="btn btn-grey"><img src="https://www.codium.ai/wp-content/uploads/2023/01/discord.svg" width="20px" height="16px" alt="">JOIN OUR DISCORD</a>
+                    </div>
+                    <div class="mobile-menu-lines mobile-menu-trigger mobile">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+	<main id="main" role="main">
+		<div class="global-page">
+			<div class="container">
+				<div class="column w-col w-col-8">
+					<div class="rich-text-block-3 w-richtext">
+						<h3 class="wp-block-heading"><strong>CODIUM DATA PROCESSING ADDENDUM </strong></h3>
+						<p>(CONTROLLER-PROCESSOR)</p>
+						<p>&nbsp;</p>
+						<h4><strong>1. SCOPE</strong></h4>
+						<p><strong>a.</strong> Customer and the Service Provider are parties to the Agreement, as defined below, to which this Data Processing Addendum applies and constitutes a part thereof. If Service Provider processes personal data, or if Service Provider has access to personal data in the course of its performance of Service Provider's services under the Agreement (the "Services"), Service Provider shall comply with the terms and conditions of this Data Processing Addendum ("<strong>Data Processing Addendum</strong>" or "<strong>DPA</strong>"). </p>
+                        <p><strong>b.</strong> Service Provider shall qualify as the Data Processor, as this term is defined under Data Protection Laws (or as the Service Provider, if the CCPA applies, as such term is defined in the CCPA). Customer acknowledges and agrees that as the Controller (or as the Business, if the CCPA applies, as such term is defined in the CCPA), it is responsible for the legal basis of Processing hereunder, including obtaining any necessary consents in accordance with the requirements of Data Protection Laws.</p>
+                        <p><strong>c.</strong> All capitalized terms not defined herein shall have the meaning set forth in the Agreement.</p>
+                        <h4><strong>2. DEFINITIONS</strong></h4>
+                        <p>All capitalized terms not defined in this Data Processing Addendum have the meanings set forth in the Agreement.</p>
+                        <p><strong>a.</strong> "<strong>Agreement</strong>" means the agreement(s) and/or purchase order(s) between Customer and the Service Provider which involve Service Provider having access to or otherwise processing personal data;</p>
+                        <p><strong>b.</strong> "<strong>Approved Jurisdiction</strong>" means a member state of the European Economic Area ("<strong>EEA</strong>"), or other jurisdiction as may be approved as having adequate legal protections for data by the European Commission currently found here: <a href="http://ec.europa.eu/justice/data-protection/international-transfers /adequacy /index en.htm"><i>http://ec.europa.eu/justice/data-protection/international-transfers /adequacy /index en.htm</i></a>;</p>
+                        <p><strong>c.</strong> "<strong>Breach Incident</strong>" means a breach of security leading to the accidental or unlawful destruction, loss, alteration, unauthorized disclosure of, or access to, personal data transmitted, stored or otherwise processed;</p>
+                        <p><strong>d.</strong> "<strong>Customer</strong>" means that certain Customer whose details are set out in the Agreement with the Service Provider;</p>
+                        <p><strong>e.</strong> "<strong>Data Protection Laws</strong>" means any and/or all applicable domestic and foreign laws, rules, directives and regulations, on any local, provincial, state or federal or national level, pertaining to data privacy, data security and/or the protection of personal data, including the Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data ("<strong>GDPR</strong>"), and the Privacy and Electronic Communications Directive 2002/58/EC (and local implementing laws) concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications), the California Consumer Privacy Act, Cal. Civ. Code § 1798.100 et seq. as amended by the California Privacy Rights Act of 2020 and the regulation enacted thereunder ("<strong>CCPA</strong>"), and any amendments or replacements to aforementioned;</p>
+                        <p><strong>f.</strong> "<strong>Standard Contractual Clauses</strong>" the standard contractual clauses for the transfer of personal data to third countries adopted by Commission Implementing Decision (EU) 2021/914 of 4 June 2021 pursuant to Regulation (EU) 2016/679 of the European Parliament and of the Council pursuant to GDPR art. 46;</p>
+                        <p><strong>g.</strong> "<strong>Service Provider</strong>" means Codium Ltd. or CodiumAI, Inc., as set out in the Agreement;</p>
+                        <p><strong>h.</strong> The terms "<strong>data subject</strong>", "<strong>personal data</strong>", "<strong>process</strong>", "<strong>processing</strong>" and "<strong>Special Categories of Data</strong>" herein shall have the meaning ascribed to them in the GDPR. Where applicable, a data subject shall be deemed a "consumer" as this term is defined under the CCPA.</p>
+                        <h4><strong>3. DATA PROTECTION AND PRIVACY</strong></h4>
+                        <p><strong>a.</strong> If Service Provider has access to or otherwise processes personal data, then Service Provider shall:
+                        <p style="padding-left: 18px;"><strong>i.</strong> only process the personal data in accordance with Customer's documented instructions and on its behalf, and in accordance with the Agreement and this Data Processing Addendum, including such processing as required for regulatory compliance purposes in connection with the Services.</p>
+                        <p style="padding-left: 18px;"><strong>ii.</strong> take reasonable steps to ensure the reliability of its staff and any other person acting under its supervision who may come into contact with, or otherwise have access to and process, personal data; ensure persons authorized to process the personal data have committed themselves to confidentiality or are under an appropriate statutory obligation of confidentiality; and ensure that such personnel are aware of their responsibilities under this Data Processing Addendum and any Data Protection Laws (or Service Provider’s own written binding policies are at least as restrictive as this Data Processing Addendum);</p>
+                        <p style="padding-left: 18px;"><strong>iii.</strong> assist Customer as needed to cooperate with and respond to requests from supervisor authorities, data subjects, customers, or others to provide information (including details of the services provided by Service Provider) related to Service Provider’s processing of personal data;
+                        <p style="padding-left: 18px;"><strong>iv.</strong> notify the Customer without undue delay, and no later than seventy two (72) hours, after becoming aware of a Breach Incident;</p>
+                        <p style="padding-left: 18px;"><strong>v.</strong> provide full, reasonable cooperation and assistance to Customer in:</p>
+                        <p style="padding-left: 36px;"><strong>a.</strong> allowing data subjects to exercise their rights under the Data Protection Laws, including (without limitation) the right of access, right to rectification, restriction of processing, erasure (“right to be forgotten”), data portability, object to the processing, or the right not to be subject to an automated individual decision making, subject to Service Provider's and Customer's regulatory retention obligations in connection with the Services;</p>
+                        <p style="padding-left: 36px;"><strong>b.</strong> ensuring compliance with any notification obligations of personal data breach to the supervisory authority and communication obligations to data subjects, as required under Data Protection Laws;</p>
+                        <p style="padding-left: 36px;"><strong>c.</strong> Ensuring compliance with its obligation to carry out data protection impact assessments with respect to the processing of personal data, and with its prior consultation with the supervisory authority obligation (as applicable).</p>
+                        <p style="padding-left: 18px;"><strong>vi.</strong> only process or use personal data on its systems or facilities to the extent necessary to perform its obligations under the Agreement;</p>
+                        <p style="padding-left: 18px;"><strong>vii.</strong> as required under Data Protection Laws, maintain accurate written records of any and all the Processing activities of any personal data carried out under the Agreement (including the categories of Processing carried out and, where applicable, the transfers of personal data), and shall make such records available to the applicable supervisory authority on request;</p>
+                        <p style="padding-left: 18px;"><strong>viii.</strong> make all reasonable efforts to ensure that personal data are accurate and up to date at all times while in its custody or under its control, to the extent Service Provider has the ability to do so;</p>
+                        <p style="padding-left: 18px;"><strong>ix.</strong> not lease, sell or otherwise derive commercial benefit from personal data, unless otherwise permitted under the CCPA (if applicable) or as may otherwise be permitted for data processors under the Data Protection Laws, including under a comparable exemption from “sale” in the CCPA (as applicable);</p>
+                        <p style="padding-left: 18px;"><strong>x.</strong> promptly notify Customer of any investigation, litigation, arbitrated matter or other dispute relating to Service Provider’s information security or privacy practices as it relates to the processing of personal data;
+                        <p style="padding-left: 18px;"><strong>xi.</strong> promptly notify Customer in writing and provide Customer an opportunity to intervene in any judicial or administrative process if Service Provider is required by law, court order, warrant, subpoena, or other legal or judicial process to disclose any personal data to any person other than Customer; </p>
+                        <p style="padding-left: 18px;"><strong>xii.</strong> except as required to comply with regulatory obligations in connection with the Services, upon termination of the Agreement, or upon Customer's written request at any time during the term of the Agreement, Service Provider shall cease to process any personal data received from Customer, and within a reasonable period will at the request of Customer: (1) return the personal data; or (2) securely and completely destroy or erase all personal data in its possession or control (including any copies thereof), unless and solely to the extent the foregoing conflicts with any applicable laws. At Customer’s request, Service Provider shall certify to Customer that it has fully complied with this clause.</p>
+                        <h4><strong>4. SUBCONTRACTING</strong></h4>
+                        <p><strong>a.</strong> Service Provider may subcontract its obligations under this Data Processing Addendum to another person or entity ("Contractor(s)"), as stated in <strong>Exhibit A</strong> attached hereto, provided that Service Provider shall inform the Customer of any intended changes concerning the addition/replacement of other processors at least 30 days prior to such change, and the Customer may notify Service Provider that it objects to such change and terminate the Agreement by written notice to the Customer. </p>
+                        <p><strong>b.</strong> Service Provider will execute a written agreement with such approved Contractor containing equivalent terms to this Data Processing Addendum.</p>
+                        <p><strong>c.</strong> Service Provider shall have a written security policy that provides guidance to its Contractors to ensure the security, confidentiality and integrity of personal data and systems maintained or processed by Service Provider.
+                        <p><strong>d.</strong> Customer may require Service Provider to provide Customer with full details of the proposed Contractor’s involvement including but not limited to the identity of the Contractor, its data security record, the location of its processing facilities and a description of the access to personal data proposed.</p>
+                        <p><strong>e.</strong> Service Provider shall be responsible for the acts or omissions of Contractors to the same extent it is responsible for its own actions or omissions under this Data Processing Addendum.</p>
+                        <h4><strong>5. THE TRANSFER OF PERSONAL DATA</strong></h4>
+                        <p><strong>a.</strong>	Personal data may be transferred from the EEA, Switzerland and the United Kingdom (“<strong>UK</strong>“) to countries that offer an adequate level of data protection under or pursuant to the adequacy decisions published by the relevant data protection authorities of the EEA, the European Union, the Member States or the European Commission, Switzerland, and/or the UK as relevant (“<strong>Adequacy Decisions</strong>“), as applicable, without any further safeguard being necessary.</p>
+                        <p><strong>b.</strong>	If the Processing of Personal Data by Processor includes a transfer (either directly or via onward transfer):</p>
+                        <p style="padding-left: 18px;"><strong>i.</strong>	from the EEA or Switzerland to other countries which have not been subject to a relevant Adequacy Decision, and such transfers are not performed through an alternative recognized compliance mechanism as may be adopted by Processor for the lawful transfer of personal data (as defined in the GDPR) outside the EEA or Switzerland (“<strong>EEA Transfer</strong>“), the terms set forth in Part 1 of Exhibit C (EEA Cross Border Transfers) shall apply.</p>
+                        <p style="padding-left: 18px;"><strong>ii.</strong> from the UK to other countries which have not been subject to a relevant Adequacy Decision, and such transfers are not performed through an alternative recognized compliance mechanism as may be adopted by Processor for the lawful transfer of personal data (as defined in the UK GDPR) outside the EEA or UK (“<strong>UK Transfer</strong>“), the terms set forth in Part 2 of Exhibit C (UK Cross Border Transfers) shall apply.</p>
+                        <p style="padding-left: 18px;"><strong>iii.</strong> the terms set forth in Part 3 of Exhibit C (Additional Safeguards) shall apply to an EEA Transfer and a UK Transfer.</p>
+                        <h4><strong>6. SECURITY STANDARDS</strong></h4>
+                        <p>a. Service Provider shall implement and maintain commercially reasonable and appropriate physical, technical and organizational security measures to protect personal data against accidental or unlawful destruction; accidental loss, alteration, unauthorized disclosure or access to personal data transmitted, stored or otherwise processed; all other unlawful forms of processing; including (as appropriate): (i) the pseudonymization and encryption of personal data; (ii) the ability to ensure the ongoing confidentiality, integrity, availability and resilience of processing systems and services; (iii) the ability to restore the availability and access to personal data in a timely manner in the event of a physical or technical incident; and (iv) a process for regularly assessing and evaluating the effectiveness of technical and organizational measures for ensuring the security of the processing</p>
+                        <p>b. To the extent that Service Provider processes Special Categories of Data, the security measures referred to in this Data Processing Addendum shall also include, at a minimum (i) routine risk assessments of Service Provider’s information security program, (ii) regular monitoring to measure and confirm the effectiveness of the information security program’s key controls, systems, and procedures, and (iii) encryption of Special Categories of Data while “at rest” and during transmission (whether sent by e-mail, fax, or otherwise), and storage (including when stored on mobile devices, such as a portable computer, flash drive, PDA, or cellular telephone).</p>
+                        <h4><strong>7. GENERAL</strong></h4>
+                        <p><strong>a.</strong> If any of the Data Protection Laws are superseded by new or modified Data Protection Laws (including any decisions or interpretations by a relevant court or governmental authority relating thereto), the new or modified Data Protection Laws shall be deemed to be incorporated into this Data Processing Addendum, and Service Provider will promptly begin complying with such Data Protection Laws.</p>
+                        <p><strong>b.</strong> Any ambiguity in this Data Processing Addendum shall be resolved to permit Customer to comply with all Data Protection Laws. In the event and to the extent that the Data Protection Laws impose stricter obligations on the Service Provider than under this Data Processing Addendum, the Data Protection Laws shall prevail.</p>
+                        <p><strong>c.</strong> If this Data Processing Addendum does not specifically address a particular data security or privacy standard or obligation, Service Provider will use appropriate, generally accepted practices to protect the confidentiality, security, privacy, integrity, availability, and accuracy of personal data.</p>
+                        <p><strong>d.</strong> Service Provider agrees that, in the event of a breach of this Data Processing Addendum, neither Customer nor any relevant Customer's customer will have an adequate remedy in damages and therefore either Customer or an affected customer shall be entitled to seek injunctive or equitable relief to immediately cease or prevent the use or disclosure of personal data not contemplated by the Agreement and to enforce the terms of this Data Processing Addendum or ensure compliance with all Data Protection Laws.</p>
+                        <p><strong>e.</strong> If Service Provider is unable to provide the level of protection as required herein, Service Provider shall immediately notify Customer and cease processing. Any non-compliance with the requirements herein shall be deemed a material breach of the Agreement and Customer shall have the right to terminate the Agreement immediately without penalty.</p>
+                        <p><strong>f.</strong> Customer, shall have the right to: (a) require from Service Provider all information necessary to, and (b) conduct its own audit and/or inspections of Service Provider in order to: demonstrate compliance with the Data Processing Addendum. Such audit and/or inspection shall be conducted with reasonable advanced notice to Service Provider, at Customer's expense, no more than once a year, and during normal business hours to reasonably limit any disruption to Service Provider’s business.</p>
+                        <p><strong>g.</strong> Notwithstanding anything to the contrary, with effect from 25 May 2018, Service Provider will process personal data in accordance with the GDPR requirements directly applicable to its activities.</p>
+                        <h4 style="text-align: center;"><strong>EXHIBIT A</strong><br><br><strong>List of Sub Processors</strong></h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>NAME OF SUB-PROCESSOR</th>
+                                    <th>LOCATION</th>
+                                    <th>PROCESSING ACTIVITIES </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Google Cloud Platform</td>
+                                    <td>U.S.</td>
+                                    <td>SaaS Services hosting provider serving as the backbone of our infrastructure for several of our products and Services. GCP may have access to all Customer Data. However, as a general principle, GCP will not access any Customer instances of our Services except in limited cases such as to investigate service issues.</td>
+                                </tr>
+                                <tr>
+                                    <td>Amazon Web Services, Inc. and Amazon Web Services EMEA SARL</td>
+                                    <td>U.S., EU or Australia at Customer’s election</td>
+                                    <td>SaaS Services hosting provider serving as the backbone of our infrastructure for several of our products and Services. AWS may have access to all Customer Data. However, as a general principle, AWS will not access any Customer instances of our Services except in limited cases such as to investigate service issues.</td>
+                                </tr>
+                                <tr>
+                                    <td>Slack</td>
+                                    <td>United States</td>
+                                    <td>Slack is one of Codium’s key internal communications systems. Codium team members use Slack to facilitate service provision and provide customer support expeditiously. Team members may include Customer Data and personal data in internal conversations to optimize service provision.</td>
+                                </tr>
+                                <tr>
+                                    <td>Google Workspace</td>
+                                    <td>U.S.</td>
+                                    <td>Communication tool for all employees within the organization. Overall, Gmail serves as our organization’s primary internal email subprocessor, fostering efficient communication and collaboration while maintaining a high level of security and data privacy. Codium also uses Google Drive and other products in the Workspace suite to facilitate collaboration and information sharing internally and with customers.</td>
+                                </tr>
+                            </tbody>
+                        </table>   
+                        <h4 style="text-align: center;"><strong>EXHIBIT B - DETAILS OF PROCESSING</strong></h4>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<style>
+			.global-page .container {
+				padding: 10% 2rem 55rem;
+			}
+
+			.global-page .container h4 {
+				font-size: 2rem;
+			}
+
+			li {
+				color: #fff;
+			}
+
+			@media only screen and (max-width:1023px) {
+				.global-page .container {
+					padding: 25% 2rem 40vh;
+				}
+			}
+		</style>
+	</main>
+	<footer id="site-footer" class="site-footer">
+        <div class="ellipse">
+            <div class="overlay"></div>
+            <div class="ellipse-inner">
+                <div class="container">
+                    <div class="site-footer--grid">
+                        <div class="footer-menu1">
+                            <h3 class="footer-menu-title">CODIUM.AI</h3>
+                            <nav>
+                                <div class="menu-footer-codium-ai-container">
+                                    <ul id="menu-footer-codium-ai" class="footer-menu">
+                                        <li class="menu-item menu-item-type-post_type"><a href="https://www.codium.ai/product/">IDE Extension</a></li>
+                                        <li class="menu-item menu-item-type-post_type"><a href="https://www.codium.ai/pr-agent/">PR-Agent</a></li>
+                                        <li class="hash-menu menu-item menu-item-type-custom"><a href="/#community">Community</a></li>
+                                        <li class="menu-item menu-item-type-post_type"><a href="https://www.codium.ai/resources/">Useful Resources</a></li>
+                                        <li class="menu-item menu-item-type-post_type"><a href="https://www.codium.ai/software-development-tips/">Developer Tips</a></li>
+                                        <li class="menu-item menu-item-type-post_type"><a href="https://www.codium.ai/developers-hub/">Developer’s Hub</a></li>
+                                        <li class="menu-item menu-item-type-post_type"><a href="https://www.codium.ai/codiumai-vs-chatgpt-4/">CodiumAI vs. ChatGPT 4</a></li>
+                                        <li class="menu-item menu-item-type-custom"><a target="_blank" rel="noopener" href="https://trust.codium.ai">Trust Center</a></li>
+                                        <li class="hash-menu menu-item menu-item-type-custom"><a href="/#faq">FAQs</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="footer-menu2">
+                            <h3 class="footer-menu-title">Product</h3>
+                            <nav>
+                                <div class="menu-footer-product-container">
+                                    <ul id="menu-footer-product" class="footer-menu">
+                                        <li class="menu-item menu-item-type-custom"><a href="/blog/tests-are-not-enough-why-code-integrity-matters/">Why Code Integrity?</a></li>
+                                        <li class="hash-menu menu-item menu-item-type-custom"><a href="/#home-sec">Security</a></li>
+                                        <li class="hash-menu menu-item menu-item-type-custom"><a href="/#home-bug">Report an issue</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="footer-menu3">
+                            <h3 class="footer-menu-title">About</h3>
+                            <nav>
+                                <div class="menu-footer-about-container">
+                                    <ul id="menu-footer-about" class="footer-menu">
+                                        <li class="menu-item menu-item-type-custom"><a href="/about/#our-mission">Our mission</a></li>
+                                        <li class="menu-item menu-item-type-post_type"><a href="https://www.codium.ai/install/">IDE Integrations</a></li>
+                                        <li class="hash-menu menu-item menu-item-type-custom"><a href="/about/#about-team">Meet the team</a></li>
+                                        <li class="hash-menu menu-item menu-item-type-custom"><a href="/about/#backed-by">Backed by</a></li>
+                                        <li class="menu-item menu-item-type-post_type"><a href="https://www.codium.ai/careers/">Careers</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="footer-menu4">
+                            <h3 class="footer-menu-title">Navigation</h3>
+                            <nav>
+                                <div class="menu-footer-about-container">
+                                    <ul class="footer-menu">
+                                        <li><a href="https://www.codium.ai/blog">Blog</a></li>
+                                        <li><a href="https://www.codium.ai/glossary">Glossary</a></li>
+                                        <li><a href="https://www.codium.ai/contact">Contact</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="footer-social">
+                                <a href="https://github.com/Codium-ai" target="_blank" data-title="GitHub"><svg style="--icon-hover-color:#000" xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.0099 0.529297C5.36875 0.529297 0 6.02927 0 12.8335C0 18.2725 3.43994 22.8765 8.21205 24.5059C8.80869 24.6284 9.02724 24.2412 9.02724 23.9155C9.02724 23.6302 9.00757 22.6525 9.00757 21.6337C5.6667 22.3672 4.97099 20.167 4.97099 20.167C4.43409 18.741 3.63858 18.3745 3.63858 18.3745C2.54511 17.6207 3.71823 17.6207 3.71823 17.6207C4.93117 17.7022 5.56763 18.8837 5.56763 18.8837C6.64118 20.7577 8.37111 20.2282 9.06706 19.9022C9.16638 19.1077 9.48473 18.5577 9.82275 18.2522C7.15817 17.967 4.35469 16.9077 4.35469 12.1815C4.35469 10.837 4.8316 9.73701 5.58729 8.88151C5.46807 8.57601 5.0504 7.31277 5.70677 5.62203C5.70677 5.62203 6.72083 5.29603 9.00732 6.88502C9.98625 6.61569 10.9958 6.47868 12.0099 6.47752C13.024 6.47752 14.0577 6.62027 15.0123 6.88502C17.299 5.29603 18.3131 5.62203 18.3131 5.62203C18.9695 7.31277 18.5515 8.57601 18.4323 8.88151C19.2079 9.73701 19.6652 10.837 19.6652 12.1815C19.6652 16.9077 16.8617 17.9465 14.1772 18.2522C14.6148 18.6392 14.9924 19.3725 14.9924 20.5337C14.9924 22.1837 14.9727 23.508 14.9727 23.9152C14.9727 24.2412 15.1915 24.6284 15.7879 24.5062C20.56 22.8762 23.9999 18.2725 23.9999 12.8335C24.0196 6.02927 18.6312 0.529297 12.0099 0.529297Z" fill="#A0A0B8"></path></svg></a>
+                                <a href="https://discord.gg/SgSxuQ65GF" t="" arget="_blank" data-title="Discord"><svg style="--icon-hover-color:#5865f2" xmlns="http://www.w3.org/2000/svg" width="27" height="21" viewBox="0 0 27 21" fill="none"><path d="M22.8716 1.99614C21.0976 1.18254 19.2249 0.605343 17.3013 0.279297C17.038 0.750712 16.7999 1.23574 16.5877 1.73234C14.5387 1.42301 12.4549 1.42301 10.4058 1.73234C10.1936 1.23579 9.95539 0.750769 9.69227 0.279297C7.76737 0.608097 5.89343 1.18666 4.11772 2.00039C0.592475 7.22538 -0.363163 12.3206 0.114656 17.3435C2.17913 18.8715 4.48986 20.0336 6.9464 20.7793C7.49954 20.034 7.989 19.2434 8.40959 18.4157C7.61075 18.1168 6.83972 17.7481 6.10544 17.3137C6.29869 17.1733 6.4877 17.0286 6.67033 16.8882C8.80692 17.8948 11.1389 18.4167 13.5 18.4167C15.861 18.4167 18.193 17.8948 20.3296 16.8882C20.5143 17.0393 20.7033 17.1839 20.8945 17.3137C20.1588 17.7488 19.3863 18.1182 18.5861 18.4178C19.0061 19.2451 19.4956 20.0351 20.0493 20.7793C22.5079 20.0366 24.8204 18.8751 26.8852 17.3456C27.4459 11.5207 25.9275 6.47227 22.8716 1.99614ZM9.01483 14.2544C7.68331 14.2544 6.58326 13.0439 6.58326 11.5547C6.58326 10.0655 7.64508 8.84436 9.01058 8.84436C10.3761 8.84436 11.4676 10.0655 11.4443 11.5547C11.4209 13.0439 10.3718 14.2544 9.01483 14.2544ZM17.9851 14.2544C16.6514 14.2544 15.5556 13.0439 15.5556 11.5547C15.5556 10.0655 16.6175 8.84436 17.9851 8.84436C19.3527 8.84436 20.4358 10.0655 20.4124 11.5547C20.389 13.0439 19.3421 14.2544 17.9851 14.2544Z" fill="#A0A0B8"></path></svg></a>
+                                <a href="https://www.youtube.com/@Codium-AI" target="_blank" data-title="YouTube"><svg style="--icon-hover-color:#FF0000" xmlns="http://www.w3.org/2000/svg" width="33" height="24" viewBox="0 0 33 24" fill="none"><path d="M25.7079 0.85498H7.29215C3.67902 0.85498 0.75 3.784 0.75 7.39713V16.603C0.75 20.2162 3.67902 23.1452 7.29215 23.1452H25.7079C29.321 23.1452 32.25 20.2162 32.25 16.603V7.39713C32.25 3.784 29.321 0.85498 25.7079 0.85498ZM21.2834 12.448L12.6698 16.5562C12.4403 16.6656 12.1752 16.4983 12.1752 16.244V7.77089C12.1752 7.51301 12.4473 7.34588 12.6773 7.46245L21.2909 11.8274C21.547 11.9572 21.5426 12.3244 21.2834 12.448Z" fill="#A0A0B8"></path></svg></a>
+                                <a href="https://www.linkedin.com/company/codiumai" target="_blank" data-title="LinkedIn"><svg style="--icon-hover-color:#0072b1" xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><path d="M19 0.529297H5C2.239 0.529297 0 2.7683 0 5.5293V19.5293C0 22.2903 2.239 24.5293 5 24.5293H19C21.762 24.5293 24 22.2903 24 19.5293V5.5293C24 2.7683 21.762 0.529297 19 0.529297ZM8 19.5293H5V8.5293H8V19.5293ZM6.5 7.2613C5.534 7.2613 4.75 6.4713 4.75 5.4973C4.75 4.5233 5.534 3.7333 6.5 3.7333C7.466 3.7333 8.25 4.5233 8.25 5.4973C8.25 6.4713 7.467 7.2613 6.5 7.2613ZM20 19.5293H17V13.9253C17 10.5573 13 10.8123 13 13.9253V19.5293H10V8.5293H13V10.2943C14.396 7.7083 20 7.5173 20 12.7703V19.5293Z" fill="#A0A0B8"></path></svg></a>
+                                <a href="https://twitter.com/CodiumAI" target="_blank" data-title="Twitter"><svg style="--icon-hover-color:#00acee" xmlns="http://www.w3.org/2000/svg" width="26" height="22" viewBox="0 0 26 22" fill="none"><path d="M8.01924 21.0293C17.6419 21.0293 22.9051 12.9493 22.9051 5.94231C22.9051 5.71281 22.9051 5.48435 22.8898 5.25692C23.9137 4.5063 24.7976 3.5769 25.5 2.51223C24.5452 2.94125 23.5323 3.22247 22.4951 3.34649C23.5873 2.68389 24.4047 1.6416 24.7952 0.413657C23.7682 1.03135 22.6447 1.46663 21.473 1.70071C20.6842 0.850619 19.641 0.287709 18.5047 0.0990908C17.3684 -0.0895277 16.2025 0.106661 15.1873 0.657298C14.1722 1.20794 13.3644 2.08232 12.8889 3.14515C12.4135 4.20798 12.2969 5.39999 12.5572 6.53674C10.4772 6.43099 8.44237 5.88312 6.5848 4.9287C4.72723 3.97427 3.08844 2.63463 1.7748 0.996708C1.10577 2.16401 0.900864 3.54587 1.20179 4.86092C1.50272 6.17596 2.28686 7.32533 3.39456 8.075C2.56193 8.05027 1.74744 7.82262 1.02 7.41131V7.47851C1.02033 8.70273 1.43847 9.88915 2.20349 10.8365C2.96851 11.7839 4.03331 12.4339 5.2173 12.6764C4.44707 12.8893 3.63893 12.9204 2.85498 12.7673C3.18943 13.8208 3.84033 14.7421 4.71669 15.4023C5.59305 16.0625 6.65107 16.4287 7.74282 16.4497C6.65809 17.3138 5.4159 17.9527 4.0873 18.3298C2.75871 18.707 1.36979 18.8149 0 18.6475C2.39257 20.2035 5.17642 21.0289 8.01924 21.0252" fill="#A0A0B8"></path></svg></a>
+                                <a href="https://www.instagram.com/codiumai/" target="_blank" data-title="Instagram"><svg style="--icon-hover-color:#d62976" width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.74422 3.10039C4.72989 3.10039 3.09844 4.73258 3.09844 6.74617V16.2546C3.09844 18.2689 4.73062 19.9004 6.74422 19.9004H16.2527C18.2671 19.9004 19.8984 18.268 19.8984 16.2557V6.74617C19.8984 4.73168 18.2661 3.10039 16.2537 3.10039H6.74422ZM0.898438 6.74617C0.898438 3.51787 3.51454 0.900391 6.74422 0.900391H16.2537C19.4811 0.900391 22.0984 3.51665 22.0984 6.74617V16.2557C22.0984 19.4831 19.4822 22.1004 16.2527 22.1004H6.74422C3.51592 22.1004 0.898438 19.4843 0.898438 16.2546V6.74617Z" fill="#A0A0B8"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M16.7154 4.81839L16.7213 4.81836C17.5208 4.81838 18.1825 5.46617 18.1781 6.28104L17.4656 6.27723C17.4656 6.27654 17.4656 6.27584 17.4656 6.27515H18.1781C18.1781 7.079 17.5263 7.73088 16.7224 7.73088C15.9228 7.73088 15.2656 7.08324 15.2656 6.27515C15.2656 5.47018 15.9173 4.82268 16.7154 4.81839ZM15.9781 6.27515C15.9791 6.69243 16.3185 7.01838 16.7213 7.01838V5.91838L16.7273 7.01836C17.132 7.01618 17.4645 6.68856 17.4656 6.27723L17.0781 6.27515H17.4656C17.4656 5.85973 17.1293 5.53088 16.7224 5.53088C16.7221 5.53088 16.7217 5.53088 16.7213 5.53088C16.7207 5.53088 16.72 5.53088 16.7193 5.53088C16.3115 5.53256 15.9813 5.86185 15.9781 6.26927C15.9781 6.27123 15.9781 6.27319 15.9781 6.27515ZM15.9781 6.26927L15.9781 6.27515C15.9781 6.27319 15.9781 6.27123 15.9781 6.26927Z" fill="#A0A0B8"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M13.4108 9.59042C12.3563 8.536 10.6468 8.536 9.59238 9.59042C8.53796 10.6448 8.53796 12.3544 9.59238 13.4088C10.6468 14.4632 12.3563 14.4632 13.4108 13.4088C14.4652 12.3544 14.4652 10.6448 13.4108 9.59042ZM8.03674 8.03479C9.95031 6.12122 13.0528 6.12122 14.9664 8.03479C16.88 9.94836 16.88 13.0509 14.9664 14.9644C13.0528 16.878 9.95031 16.878 8.03674 14.9644C6.12317 13.0509 6.12317 9.94836 8.03674 8.03479Z" fill="#A0A0B8"></path></svg></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-software-block">
+                        <div class="footer-item">
+                            <span class="title-text">Available now on</span>
+                            <div class="footer-software">
+                                <a href="https://marketplace.visualstudio.com/items?itemName=Codium.codium" target="_blank" data-title="Visual Studio"><img src="upload/visual-studio-icon.svg" alt="Visual Studio"></a>
+                                <a href="https://plugins.jetbrains.com/plugin/21206-codiumai--meaningful-tests-powered-by-testgpt-1-and-gpt-3-5-4" target="_blank" data-title="WebStorm"><img src="upload/webstorm-icon.svg" alt="WebStorm"></a>
+                                <a href="https://plugins.jetbrains.com/plugin/21206-codiumai--meaningful-tests-powered-by-testgpt-1-and-gpt-3-5-4" target="_blank" data-title="IntelliJ IDEA"><img src="upload/intellij-idea-icon.svg" alt="IntelliJ IDEA"></a>
+                                <a href="https://plugins.jetbrains.com/plugin/21206-codiumai--meaningful-tests-powered-by-testgpt-1-and-gpt-3-5-4" target="_blank" data-title="CLion"><img src="upload/Clion-logo-32.svg" alt="CLion"></a>
+                                <a href="https://plugins.jetbrains.com/plugin/21206-codiumai--meaningful-tests-powered-by-testgpt-1-and-gpt-3-5-4" target="_blank" data-title="PyCharm"><img src="upload/pycharm-icon.svg" alt="PyCharm"></a>
+                                <a href="https://plugins.jetbrains.com/plugin/21206-codiumai--meaningful-tests-powered-by-testgpt-1-and-gpt-3-5-4" target="_blank" data-title="JetBrains"><img src="upload/jetbrains-logo.svg" alt="JetBrains"></a>
+                                <span data-title="GO (23' Q3) - Coming soon!"><img src="upload/icon-go.svg" alt="GO (23' Q3) - Coming soon!"></span>
+                            </div>
+                        </div>
+                        <div class="footer-item">
+                            <span class="title-text">We support the following languages</span>
+                            <div class="footer-software">
+                                <span data-title="Python"><img src="upload/python-icon.svg" alt="Python"></span>
+                                <span data-title="JavaScript"><img src="upload/javascript-icon.svg" alt="JavaScript"></span>
+                                <span data-title="TypeScript"><img src="upload/typescript-icon.svg" alt="TypeScript"></span>
+                                <span data-title="Java - Coming soon!"><img src="upload/icon-java.svg" alt="Java - Coming soon!"></span>
+                                <span data-title="Kotlin - Coming soon!"><img src="upload/icon-q3.svg" alt="Kotlin - Coming soon!"></span>
+                                <span data-title="Go Programming - Coming soon!"><img src="upload/icon-go-programming-light.png" alt="Go Programming - Coming soon!"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-software-block footer-software-blockBottom">
+                        <div class="footer-item">
+                            <div class="site-footer--content">
+                                <div class="footer-copyright">
+                                    <p>@<script> var CurrentYear = new Date().getFullYear(); document.write(CurrentYear); </script>2023 CodiumAI All. Rights Reserved.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-item">
+                            <div class="site-footer--content">
+                                <div class="footer-menu">
+                                    <a href="https://www.codium.ai/terms">Terms of Use</a>
+                                    <a href="https://www.codium.ai/privacy-policy">Privacy Policy</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="mobile-menu-wrapper">
+        <div class="mobile-header-flex">
+            <div class="mobile-menu-trigger">×</div>
+            <div class="mobile-header-logo">
+                <a href="https://www.codium.ai"><img src="upload/codium-mobile-logo.svg" alt="CodiumAI"></a>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="menu-header-container">
+                <ul id="menu-header" class="menu">
+                    <li class="menu-item menu-item-type-post_type menu-item-has-children">
+                        <a rel="PROCUCTS" href="https://www.codium.ai/product/">Products</a></button>
+                        <ul class="sub-menu" data-rel="PROCUCTS">
+                            <li class="menu-item menu-item-type-post_type">
+                                <a href="https://www.codium.ai/product/"><span><img src="upload/ides.svg" alt="IDE Extension"> IDE Extension</span></a>
+                            </li>
+                            <li class="menu-item menu-item-type-post_type">
+                                <a href="https://www.codium.ai/pr-agent/"><span><img src="upload/icon-team.svg" alt="PR-Agent"> PR-Agent</span></a>
+                            </li>
+                            <li class="menu-item menu-item-type-post_type coming-soon">
+                                <a href="https://www.codium.ai/pr-agent/"><span><img src="upload/icon-code-agent.svg" alt="Code-Agent" /> Code-Agent</span><span class="coming-soon-label">COMING SOON</span></a>
+                            </li>
+                            <li class="menu-item menu-item-type-post_type coming-soon">
+                                <a href="https://www.codium.ai/pr-agent/"><span><img src="upload/icon-integrity-api.svg" alt="Integrity API" /> Integrity API</span><span class="coming-soon-label">COMING SOON</span></a>
+                            </li>
+                            <li class="menu-item menu-item-type-post_type coming-soon">
+                                <a href="https://www.codium.ai/pr-agent/"><span><img src="upload/icon-alpha-codium.svg" alt="Alpha Codium" /> Alpha Codium</span><span class="coming-soon-label">COMING SOON</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item menu-item-type-post_type"><a href="https://www.codium.ai/pricing/">Pricing</a></li>
+                    <li class="menu-item menu-item-type-post_type"><a href="https://www.codium.ai/blog/">Blog</a></li>
+                    <li class="menu-item menu-item-type-post_type menu-item-has-children">
+                        <a rel="ABOUT US" href="https://www.codium.ai/about/">About</a></button>
+                        <ul class="sub-menu" data-rel="ABOUT US">
+                            <li class="hash-menu menu-item menu-item-type-custom"><a href="/about/#our-mission"><span><img src="upload/icon-mission.svg" alt="Our Mission"> Our Mission</span></a></li>
+                            <li class="menu-item menu-item-type-post_type"><a href="https://www.codium.ai/install/"><span><img src="upload/ides.svg" alt="IDE Integrations"> IDE Integrations</span></a></li>
+                            <li class="hash-menu menu-item menu-item-type-custom"><a href="/about/#about-team"><span><img src="upload/icon-team.svg" alt="Meet the Team"> Meet the Team</span></a></li>
+                            <li class="hash-menu menu-item menu-item-type-custom"><a href="/about/#backed-by"><span><img src="upload/icon-backed-by.svg" alt="Backed by"> Backed by</span></a></li>
+                            <li class="menu-item menu-item-type-post_type"><a href="https://www.codium.ai/resources/"><span><img src="upload/icon-code.svg" alt="Useful Resources"> Useful Resources</span></a></li>
+                            <li class="menu-item menu-item-type-post_type"><a href="https://www.codium.ai/careers/"><span><img src="upload/icon-careers.svg" alt="Careers"> Careers</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item menu-item-type-post_type"><a href="https://www.codium.ai/contact/">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="marketplace-download">
+            <a href="https://marketplace.visualstudio.com/items?itemName=Codium.codium" class="marketplace-value" target="_blank" data-title="CodiumAI | VS Code Extension">
+                <img src="assets/icons/visual-studio-icon.svg" alt="VS Code"><strong class="download"><em class="icon-star"></em><span class="vs--download">112.8K</span></strong>
+            </a>
+            <a href="https://plugins.jetbrains.com/plugin/21206-codiumai--meaningful-tests-in-python-powered-by-testgpt" class="marketplace-value" target="_blank" data-title="CodiumAI | JetBrains Extension">
+                <img src="assets/icons/jetbrains-icon.svg" alt="JetBrains"><strong class="download"><em class="icon-star"></em><span class="jetbrains--download">43.5K</span></strong>
+            </a>
+            <a href="https://github.com/Codium-ai/pr-agent" class="marketplace-value" target="_blank" data-title="CodiumAI | PR-Agent">
+                <strong class="badge">NEW</strong><svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.0099 0.529297C5.36875 0.529297 0 6.02927 0 12.8335C0 18.2725 3.43994 22.8765 8.21205 24.5059C8.80869 24.6284 9.02724 24.2412 9.02724 23.9155C9.02724 23.6302 9.00757 22.6525 9.00757 21.6337C5.6667 22.3672 4.97099 20.167 4.97099 20.167C4.43409 18.741 3.63858 18.3745 3.63858 18.3745C2.54511 17.6207 3.71823 17.6207 3.71823 17.6207C4.93117 17.7022 5.56763 18.8837 5.56763 18.8837C6.64118 20.7577 8.37111 20.2282 9.06706 19.9022C9.16638 19.1077 9.48473 18.5577 9.82275 18.2522C7.15817 17.967 4.35469 16.9077 4.35469 12.1815C4.35469 10.837 4.8316 9.73701 5.58729 8.88151C5.46807 8.57601 5.0504 7.31277 5.70677 5.62203C5.70677 5.62203 6.72083 5.29603 9.00732 6.88502C9.98625 6.61569 10.9958 6.47868 12.0099 6.47752C13.024 6.47752 14.0577 6.62027 15.0123 6.88502C17.299 5.29603 18.3131 5.62203 18.3131 5.62203C18.9695 7.31277 18.5515 8.57601 18.4323 8.88151C19.2079 9.73701 19.6652 10.837 19.6652 12.1815C19.6652 16.9077 16.8617 17.9465 14.1772 18.2522C14.6148 18.6392 14.9924 19.3725 14.9924 20.5337C14.9924 22.1837 14.9727 23.508 14.9727 23.9152C14.9727 24.2412 15.1915 24.6284 15.7879 24.5062C20.56 22.8762 23.9999 18.2725 23.9999 12.8335C24.0196 6.02927 18.6312 0.529297 12.0099 0.529297Z" fill="#1B1F23"></path></svg><strong class="download"><em class="icon-star"></em><span class="github--download">2.0K</span></strong>
+            x</a>
+        </div>
+        <div class="mobile-header-cta"><a href="https://discord.gg/SgSxuQ65GF" target="_blank" class="btn btn-grey"><img src="upload/discord.svg" alt="Discord"> JOIN OUR DISCORD</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script> -->
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
