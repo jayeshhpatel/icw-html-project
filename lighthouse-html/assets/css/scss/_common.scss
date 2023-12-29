@@ -509,18 +509,31 @@ textarea.form-control {
 			&:first-child {
 				margin-top: 0;
 			}
-			&.field_sublabel_below {
-				margin-top: 5px;
+			&--type-captcha {
+				margin-top: 0px;
+			}
+			&--type-select {
+				margin-top: 0px;
 			}
 			&.formheading {
 				margin-top: 25px;
-				margin-bottom: 20px;
+				margin-bottom: 0px;
+				padding: 0;
+				border: 0;
+				&::after {
+					content: '';
+					width: 120px;
+					height: 6px;
+					background: $secondary;
+					margin-top: 10px;
+					display: inline-block;
+				}
 			}
 			h4 {
 				font-size: 14px;
 				font-weight: 600;
 				text-align: left !important;
-				margin-bottom: 0px;
+				margin-bottom: 5px;
 			}
 			h2 {
 				font-weight: 700;
@@ -539,11 +552,16 @@ textarea.form-control {
 				&--type-sub {
 					margin: 0 !important;
 					margin-top: 3px !important;
+					position: absolute;
+					top: 0px;
+					right: 30px;
+					font-size: 12px;
 				}
 			}
 			
 			.gform-grid-col {
 				padding-top: 0 !important;
+				position: relative;
 			}
 			.gform-grid-row {
 				margin-top: 0px !important;
@@ -553,10 +571,10 @@ textarea.form-control {
 				border: 2px solid $secondary;
 				background: #FFF;
 				height: 48px;
-				font-size: 18px !important;
+				font-size: 16px !important;
 				padding: 0 20px !important;
 				@media (max-width: 767px) {
-					font-size: 16px !important;
+					font-size: 14px !important;
 					padding: 0 15px !important;
 				}
 			}
@@ -583,10 +601,10 @@ textarea.form-control {
 				margin-bottom: 10px;
 			}
 			.gform_button_select_files {
-				min-height: 50px;
-				padding: 5px 40px 5px 20px;
+				min-height: 40px;
+				padding: 5px 30px 5px 15px;
 				font-weight: 700;
-				font-size: 20px !important;
+				font-size: 14px !important;
 				font-family: $font-opensanscondensed;
 				text-transform: uppercase;
 				@include transition(0.2s, ease-in-out);
@@ -600,12 +618,11 @@ textarea.form-control {
 				background-color:$primary;
 				background-image: url(../images/icons/next-white.svg);
 				background-repeat: no-repeat;
-				background-size: 8px;
-				background-position: calc(100% - 20px) center;
+				background-size: 5px;
+				background-position: calc(100% - 15px) center;
 				@media (max-width: 767px) {
-					padding: 5px 35px 5px 15px;
-					font-size: 18px !important;
-					background-position: calc(100% - 15px) center;
+					padding: 5px 20px 5px 10px;
+					background-position: calc(100% - 10px) center;
 				}
 				&:hover, &:focus, &:active{
 					background-color: $white;
