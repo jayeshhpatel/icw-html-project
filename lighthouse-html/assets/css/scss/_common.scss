@@ -1222,7 +1222,24 @@ textarea.form-control {
 	}
 }
 
-.gform_wrapper {
+body #main-content .gform_wrapper {
+
+	.gform_heading {
+		h2,h3, .gform_title {
+			font-weight: 700;
+			font-size: 24px;
+			font-family: $font-opensanscondensed;
+
+			&::after {
+				content: '';
+				width: 120px;
+				height: 6px;
+				background: $secondary;
+				margin-top: 10px;
+				display: block;
+			}
+		}
+	}
 	.gform-body {	
 		.gfield {
 			&:first-child {
@@ -1254,7 +1271,7 @@ textarea.form-control {
 				text-align: left !important;
 				margin-bottom: 5px;
 			}
-			h2 {
+			h2,h3 {
 				font-weight: 700;
 				font-size: 24px;
 				font-family: $font-opensanscondensed;
@@ -1343,6 +1360,15 @@ textarea.form-control {
 					}
 				}
 			}
+			.gform-ul-reset {
+				padding: 0;
+				.gfield_validation_message {
+					padding-top: 10px;
+					font-size: 13px;
+					color: $primary;
+					margin-bottom: 5px;
+				}
+			}
 			.gform_drop_area {
 				border-radius: 10px;
 				border: 2px dashed $secondary;
@@ -1425,6 +1451,33 @@ textarea.form-control {
 				background-image: url(../images/icons/next-secondary.svg);
 				background-position: calc(100% - 15px) center;
 			}
+		}
+	}
+
+	&.gform_legacy_markup_wrapper li.gfield.gfield_error, 
+	&.gform_legacy_markup_wrapper li.gfield.gfield_error.gfield_contains_required.gfield_creditcard_warning {
+		background-color: transparent !important;
+		border: none !important;
+		box-sizing: border-box;
+		margin:0px !important;
+		padding: 0px !important;
+	}
+
+	&.gform_legacy_markup_wrapper .validation_message {
+		color: #e90000;
+		font-weight: 700;
+		letter-spacing: normal;
+		font-size: 11px;
+		padding: 0px !important;
+	}
+
+	&.gform_legacy_markup_wrapper div.validation_error {
+		border: 1px solid #e90000 !important;
+		border-radius: 45px !important;
+		color: #fff !important;
+		background: #e90000 !important;
+		&>h2 {
+			color: #fff !important;
 		}
 	}
 }

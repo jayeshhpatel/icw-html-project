@@ -1,16 +1,69 @@
-body.post-type-archive-glossary,
+html body.post-type-archive-glossary,
 body.single-glossary {
-    .mainMenu {
-        li.current_page_parent:not(.menu-item-object-glossary) {
-            > a {
-                color: #99AAAD;
-                &:hover, &:focus {
-                    color: $primary;
+       
+        @media (min-width:992px) {
+        .mainMenu {
+            & > li.current_page_parent:not(.menu-item-object-glossary) {
+                > a {
+                    color: #99AAAD;
+                    &:hover, &:focus {
+                        color: $primary;
+                    }
+                }
+            }
+            & > li.menu-item-object-glossary > a {
+                color: $primary;
+            }
+            .sub-menu {
+                & > li.current_page_parent:not(.menu-item-object-glossary) {
+                    > a {
+                        color: #002B31 !important;
+                        background: transparent;
+                        &:hover, &:focus {
+                            color: $primary;
+                            background: $light-dark;
+                        }
+                    }
+                }
+                & > li.menu-item-object-glossary > a {
+                    color: $primary !important;
+                    background: $light-dark;
                 }
             }
         }
-        li.menu-item-object-glossary > a {
-            color: $primary;
+        }
+
+        @media (max-width:992px) {
+        .mainMenu {
+            & > li.current_page_parent:not(.menu-item-object-glossary) {
+                > a {
+                    color: #fff;
+                    &:hover, &:focus {
+                        color: $primary;
+                    }
+                }
+            }
+            & > li.current-menu-parent {
+                > a {
+                    color: $primary !important;  
+                }
+            }
+            & > li.menu-item-object-glossary > a {
+                color: $primary;
+            }
+            .sub-menu {
+                & > li.current_page_parent:not(.menu-item-object-glossary) {
+                    > a {
+                        color: #fff !important;
+                        &:hover, &:focus {
+                            color: $primary;
+                        }
+                    }
+                }
+                & > li.menu-item-object-glossary > a {
+                    color: $primary !important;
+                }
+            }
         }
     }
     .main-footer .footer-menu {
@@ -178,7 +231,7 @@ body.single-glossary {
             &::-webkit-scrollbar-thumb:hover { background: #3FE0D0;}
             li {
                 padding-top: 10px; line-height: normal; 
-                &:first-child {padding-top: 5px !important;}
+                &:first-child {padding-top: 10px !important;}
                 a {color: #002B31; line-height: 1.2; font-size: 18px; display: inline-block; padding-bottom: 5px;
                     &:hover, &:focus { color: #3FE0D0; text-decoration: underline;}
                 }
@@ -198,7 +251,7 @@ body.single-glossary {
 .result-status {
 	display: -webkit-box; display: -ms-flexbox; display: flex;
 	-webkit-box-align: center; -ms-flex-align: center; align-items: center;
-	min-height: 40px; margin-bottom: 40px;
+	margin-bottom: 40px;
     .btn {
         margin-left: auto; 
     }
