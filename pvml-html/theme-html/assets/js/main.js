@@ -184,7 +184,43 @@ if ($('.play-iframe').length){
     });
 }
 
+$('.link-hash').on('click', function(e) {
+    e.preventDefault();
+    $('html, body').animate({ 
+        scrollTop: $($(this).attr('href')).offset().top -90
+    }, 50);
+    return false;
 });
+
+});
+
+if ($('.video-player-lists').length){
+    if ($(window).width() > 767) {
+        var figure = jQuery(".video-player-lists .row").hover( hoverVideo, hideVideo );
+        
+        function hoverVideo(e) { 
+            jQuery('video', this).get(0).play(); 
+            jQuery('.play-icon', this).addClass('d-none');
+        }
+        function hideVideo(e) { 
+            jQuery('video', this).get(0).pause(); 
+            jQuery('.play-icon', this).removeClass('d-none');
+        }
+    }
+    else {
+        
+        setTimeout(function(){
+            var video_autoplay = jQuery(".video-player-lists .row").click( hoverVideo );
+            $(video_autoplay).trigger('click');
+            function hoverVideo(e) { 
+                jQuery('video', this).get(0).play(); 
+                jQuery('.play-icon', this).addClass('d-none');
+            }
+
+            $(".play-icon").addClass('d-none');
+        }, 1000);
+    }
+}
 
 //Since HubSpot forms are rendered after the DOM builds, you must trigger the manipulation after the window loads
 window.onload = function () {
@@ -242,17 +278,17 @@ function hubspot_labels() {
            }
          });
        jQuery(".form-with-slider-labels .hs-input").val();
+       jQuery(".form-with-slider-labels .hs-input[name=firstname], .form-with-slider-labels .hs-input[name=lastname]").attr( 'pattern', '[A-Za-z]' );
    // }, 500);
 
-   jQuery('.form-with-slider-labels .hs-input[name=\"firstname\"]').keydown(function (e) {
-       if (e.ctrlKey || e.altKey) {
-          e.preventDefault();
-      } else {
-          var key = e.keyCode;
-          if (!((key == 9) || (key == 8) || (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90) || (key >= 186 && key <= 222) )) {
-           // if (!((key == 9) || (key == 8) || (key == 32) || (e.shiftKey && key >= 48 && key <= 57)||(key >= 65 && key <= 90) || (key >= 186 && key <= 222))) { 
-          e.preventDefault();
-          }
-      }
-    });
+   jQuery('.form-with-slider-labels .hs-input[name=\"firstname\"], .form-with-slider-labels .hs-input[name=\"lastname\"]').keydown(function (e) {
+    if (e.ctrlKey || e.altKey) {
+       e.preventDefault();
+    } else {
+       var key = e.keyCode;
+       if (!((key == 9) || (key == 8) || (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
+           e.preventDefault();
+       }
+   }
+ });
 }

@@ -100,7 +100,8 @@
 	&.is-shape-lt-blue, 
 	&.is-shape-lt-primary,
 	&.is-shape-lb-blue,
-	&.is-shape-lb-primary
+	&.is-shape-lb-primary,
+	&.is-shape-tl-h-primary
 	{
 		&::before {
 			content: '';
@@ -120,7 +121,7 @@
 	&.is-shape-lt-primary::before	{background: url(../images/shape/shape-left-primary.svg) center left no-repeat; top: 10%;}
 	&.is-shape-lb-blue::before		{background: url(../images/shape/shape-left-blue.svg) center left no-repeat; bottom: 10%;}
 	&.is-shape-lb-primary::before	{background: url(../images/shape/shape-left-primary.svg) center left no-repeat; bottom: 10%;}
-
+	&.is-shape-tl-h-primary::before 	{background: url(../images/shape/is-shape-tl-h-primary.svg) top left no-repeat; top: 0;}
 	&.is-shape-rt-blue,
 	&.is-shape-rt-primary,
 	&.is-shape-rb-blue,
@@ -174,7 +175,7 @@
 	&.is-shape-rb-h-light::before 	{background: url(../images/shape/is-shape-br-h-light.svg) bottom right no-repeat; right: 0px;}
 	&.is-shape-rb-h-primary::before	{background: url(../images/shape/is-shape-br-h-primary.svg) bottom right no-repeat; right: 0px;}
 	&.is-shape-rb-h-blue::before	{background: url(../images/shape/is-shape-br-h-blue.svg) bottom right no-repeat; right: 0px;}
-
+	
 	// // #1
 	&.is-shape-lt-dot-light,
 	&.is-shape-lb-dot-light
@@ -204,6 +205,7 @@
 			}
 		}
 	}
+	
 	&.is-shape-lt-dot-light::before 	{background: url(../images/shape/shape-left-dot-light.svg) top left no-repeat; left: 0px; top: 10%;}
 	&.is-shape-lb-dot-light::before	{background: url(../images/shape/shape-left-dot-light.svg) top left no-repeat; left: 0px; bottom: 10%;}
 	&.is-shape-rt-dot-primary::after 	{background: url(../images/shape/shape-right-dot-primary.svg) top right no-repeat; right: 0px; top: 10%;}
@@ -3980,6 +3982,54 @@ blockquote {
 					}
 				}
 			}
+		}
+	}
+}
+
+.video-player-lists {
+	.video-bg-overly {
+		@include border-radius(32px);
+		padding-top: 10%;
+		padding-left: 10%;
+		position: relative;
+		&::after {
+			content: '';
+			top: 0;
+			left: 0;
+			@include border-radius(32px);
+			opacity: 0.1;
+			background: #002B31;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	
+	.play-icon {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 56px;
+		height: 56px;
+		flex: none;
+		@include border-radius(50%);
+		@include transition(0.3s, ease-in-out);
+		@include transform(translate(-50%, -50%) scale(1));
+		z-index: 2;
+		&:hover {
+			@include box-shadow(0px 5px 15px 0px rgba(0, 0, 0, 0.2));
+			@include transform(translate(-50%, -50%) scale(1.1));
+		}
+	}
+	.hover-video-player {
+		position: relative;
+		
+		
+		video {
+			border-bottom-right-radius: 32px;
+		}
+		&.ratio-4x3 {
+			--bs-aspect-ratio: 67%;
 		}
 	}
 }
