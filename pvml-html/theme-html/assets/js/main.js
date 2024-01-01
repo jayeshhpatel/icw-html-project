@@ -207,8 +207,7 @@ if ($('.video-player-lists').length){
             jQuery('.play-icon', this).removeClass('d-none');
         }
     }
-    else {
-        
+    else {        
         setTimeout(function(){
             var video_autoplay = jQuery(".video-player-lists .row").click( hoverVideo );
             $(video_autoplay).trigger('click');
