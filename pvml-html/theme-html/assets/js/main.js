@@ -194,32 +194,32 @@ $('.link-hash').on('click', function(e) {
 
 });
 
-if ($('.video-player-lists').length){
-    if ($(window).width() > 767) {
-        var figure = jQuery(".video-player-lists .row").hover( hoverVideo, hideVideo );
+// if ($('.video-player-lists').length){
+//     if ($(window).width() > 767) {
+//         var figure = jQuery(".video-player-lists .row").hover( hoverVideo, hideVideo );
         
-        function hoverVideo(e) { 
-            jQuery('video', this).get(0).play(); 
-            jQuery('.play-icon', this).addClass('d-none');
-        }
-        function hideVideo(e) { 
-            jQuery('video', this).get(0).pause(); 
-            jQuery('.play-icon', this).removeClass('d-none');
-        }
-    }
-    else {        
-        setTimeout(function(){
-            var video_autoplay = jQuery(".video-player-lists .row").click( hoverVideo );
-            $(video_autoplay).trigger('click');
-            function hoverVideo(e) { 
-                jQuery('video', this).get(0).play(); 
-                jQuery('.play-icon', this).addClass('d-none');
-            }
+//         function hoverVideo(e) { 
+//             jQuery('video', this).get(0).play(); 
+//             jQuery('.play-icon', this).addClass('d-none');
+//         }
+//         function hideVideo(e) { 
+//             jQuery('video', this).get(0).pause(); 
+//             jQuery('.play-icon', this).removeClass('d-none');
+//         }
+//     }
+//     else {        
+//         setTimeout(function(){
+//             var video_autoplay = jQuery(".video-player-lists .row").click( hoverVideo );
+//             $(video_autoplay).trigger('click');
+//             function hoverVideo(e) { 
+//                 jQuery('video', this).get(0).play(); 
+//                 jQuery('.play-icon', this).addClass('d-none');
+//             }
 
-            $(".play-icon").addClass('d-none');
-        }, 1000);
-    }
-}
+//             $(".play-icon").addClass('d-none');
+//         }, 1000);
+//     }
+// }
 
 //Since HubSpot forms are rendered after the DOM builds, you must trigger the manipulation after the window loads
 window.onload = function () {

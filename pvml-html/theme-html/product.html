@@ -1826,6 +1826,69 @@
             $("#"+tab_id).addClass('active');
         })
     </script>
+    <script>
+        function isMobileView() {
+          return window.innerWidth <= 767; // You can adjust the value as needed
+        }
+        // Function for mouseover event
+        function onMouseOver(container) {
+            const video_player = container.querySelector("video");
+            video_player.play();
+            video_player.parentNode.parentNode.querySelector('.play-icon').classList.add("d-none");
+        }
+        // Function for mouseleave event
+        function onMouseLeave(container) {
+            const video_player = container.querySelector("video");
+            video_player.pause();
+            video_player.parentNode.parentNode.querySelector('.play-icon').classList.remove("d-none");
+        }
+        
+        // Function to start the animation (for mobile)
+        function startAnimation(entry) {
+            const video_player = entry.target.querySelector("video");
+            if (video_player) {
+                // player.setDirection(1);
+                video_player.play();
+            }
+        }
+        // Intersection Observer for mobile view
+        function setupIntersectionObserver() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.4
+            };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startAnimation(entry);
+                    }
+                });
+            }, observerOptions);
+        
+          const videoPlayerContainers = document.querySelectorAll(".video-player-lists .row");
+          videoPlayerContainers.forEach(container => {
+            observer.observe(container);
+            container.querySelector('.play-icon').classList.add("d-none");
+          });
+        }
+        // Setup event listeners based on view
+        function setupEventListeners() {
+          const videoPlayerContainers = document.querySelectorAll(".video-player-lists .row");
+          if (isMobileView()) {
+            setupIntersectionObserver();
+          } else {
+            videoPlayerContainers.forEach(videoContainer => {
+              videoContainer.addEventListener("mouseover", () => onMouseOver(videoContainer));
+              videoContainer.addEventListener("mouseleave", () => onMouseLeave(videoContainer));
+            });
+          }
+        }
+        // Initialize the setup
+        setupEventListeners();
+        // Optional: Re-check on window resize
+        window.addEventListener('resize', setupEventListeners);
+    </script>
 </body>
 
 </html>
