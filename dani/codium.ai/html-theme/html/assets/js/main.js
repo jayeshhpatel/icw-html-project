@@ -251,31 +251,38 @@ jQuery(document).ready(function ($) {
   });
 
   $("ul.faq > li > .question").on("click", function () {
-    let toOpen = $(this).siblings(".answer");
+    let toOpen = $(this).siblings("p");
+    let img_src = $(this).data('src');
     if ($(this).parents("li").hasClass("active")) {
       if (isMobile()) {
         toOpen.slideUp("fast");
-      } else {        
+      } else {
+        $("ul.faq > li > .answer").slideUp("fast");
         toOpen.slideUp("fast");
+        $('.question').parents(".two-content-block").find(".right-content-block img").attr("src","https://www.codium.ai/wp-content/uploads/2023/12/img-10-ai-coding-tools-2025.png");
       }
-      $("li").removeClass("active");
-      $("li").find(".title-icon img").css("transform", "scale(1)");
+      
       $(this).parents("li").removeClass("active");
-      $(this).find(".title-icon img").css("transform", "scale(1)");
+      $(this).find(".title-icon img").css("transform", "scale(1)");     
     } else {
       //$('ul.faq > li').removeClass('active');
       //$('ul.faq > li > .answer').slideUp(300);
       if (isMobile()) {
-        $("ul.faq > li > .answer").slideUp("fast");
         toOpen.slideDown("fast");
       } else {
         $("ul.faq > li > .answer").slideUp("fast");
+        $("ul.faq > li").removeClass("active");
         toOpen.slideDown("fast");
       }
-      $("li").removeClass("active");
-      $("li").find(".title-icon img").css("transform", "scale(1)");
+      console.log(img_src);
       $(this).parents("li").addClass("active");
       $(this).find(".title-icon img").css("transform", "scale(-1)");
+      
+      if (img_src != '' && img_src != undefined) {
+        $(this).parents(".two-content-block").find(".right-content-block img").attr("src",img_src);
+      } else {
+        $('.question').parents(".two-content-block").find(".right-content-block img").attr("src","https://www.codium.ai/wp-content/uploads/2023/12/img-10-ai-coding-tools-2025.png");
+      }
     }
   });
 
@@ -589,20 +596,7 @@ jQuery(document).ready(function ($) {
       jQuery('body,html').animate({scrollTop:0},50);
     });
   }
-  if (jQuery('.onLoadShowBtn').length) {
-    setTimeout(function () {
-      $('.onLoadShowBtn').trigger("click");
-    }, 5000);
-    var flag = 0;
-    $(window).scroll(function(){      
-      if ($(document).scrollTop() > 800 ) {        
-        if(flag == 0){
-          $('#icwLoadModal').addClass("show");
-          flag = 1;
-        }
-      }       
-    });
-  }
+
 });
 
 // hide on scroll down, reveal on up
@@ -675,16 +669,4 @@ icwModelAction.forEach(icwAction => {
     //     }
     // });
 });
-}
-
-if (jQuery('.tab-nav').length) {
-  jQuery('.tab-nav ul li').click(function(){
-    var tab_id = jQuery(this).attr('data-id');
-
-    jQuery('.tab-nav ul li').removeClass('active');
-    jQuery('.tab-content-box .content').removeClass('active');
-
-    jQuery(this).addClass('active');
-    jQuery("#"+tab_id).addClass('active');
-  })
 }
