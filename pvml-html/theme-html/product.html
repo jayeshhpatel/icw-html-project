@@ -1827,24 +1827,24 @@
         })
     </script>
     <script>
-        function isMobileView() {
+        function isMobileVideoView() {
           return window.innerWidth <= 767; // You can adjust the value as needed
         }
         // Function for mouseover event
-        function onMouseOver(container) {
+        function onVideoMouseOver(container) {
             const video_player = container.querySelector("video");
             video_player.play();
             video_player.parentNode.parentNode.querySelector('.play-icon').classList.add("d-none");
         }
         // Function for mouseleave event
-        function onMouseLeave(container) {
+        function onVideoMouseLeave(container) {
             const video_player = container.querySelector("video");
             video_player.pause();
             video_player.parentNode.parentNode.querySelector('.play-icon').classList.remove("d-none");
         }
         
         // Function to start the animation (for mobile)
-        function startAnimation(entry) {
+        function startVideoPlay(entry) {
             const video_player = entry.target.querySelector("video");
             if (video_player) {
                 // player.setDirection(1);
@@ -1852,7 +1852,7 @@
             }
         }
         // Intersection Observer for mobile view
-        function setupIntersectionObserver() {
+        function setupVideoIntersectionObserver() {
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
@@ -1861,7 +1861,7 @@
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        startAnimation(entry);
+                        startVideoPlay(entry);
                     }
                 });
             }, observerOptions);
@@ -1873,21 +1873,21 @@
           });
         }
         // Setup event listeners based on view
-        function setupEventListeners() {
+        function setupVideoEventListeners() {
           const videoPlayerContainers = document.querySelectorAll(".video-player-lists .row");
-          if (isMobileView()) {
-            setupIntersectionObserver();
+          if (isMobileVideoView()) {
+            setupVideoIntersectionObserver();
           } else {
             videoPlayerContainers.forEach(videoContainer => {
-              videoContainer.addEventListener("mouseover", () => onMouseOver(videoContainer));
-              videoContainer.addEventListener("mouseleave", () => onMouseLeave(videoContainer));
+              videoContainer.addEventListener("mouseover", () => onVideoMouseOver(videoContainer));
+              videoContainer.addEventListener("mouseleave", () => onVideoMouseLeave(videoContainer));
             });
           }
         }
         // Initialize the setup
-        setupEventListeners();
+        setupVideoEventListeners();
         // Optional: Re-check on window resize
-        window.addEventListener('resize', setupEventListeners);
+        window.addEventListener('resize', setupVideoEventListeners);
     </script>
 </body>
 
