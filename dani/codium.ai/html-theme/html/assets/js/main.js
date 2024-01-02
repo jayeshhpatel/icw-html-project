@@ -252,14 +252,12 @@ jQuery(document).ready(function ($) {
 
   $("ul.faq > li > .question").on("click", function () {
     let toOpen = $(this).siblings("p");
-    let img_src = $(this).data('src');
     if ($(this).parents("li").hasClass("active")) {
       if (isMobile()) {
         toOpen.slideUp("fast");
       } else {
         $("ul.faq > li > .answer").slideUp("fast");
         toOpen.slideUp("fast");
-        $('.question').parents(".two-content-block").find(".right-content-block img").attr("src","https://www.codium.ai/wp-content/uploads/2023/12/img-10-ai-coding-tools-2025.png");
       }
       
       $(this).parents("li").removeClass("active");
@@ -274,15 +272,9 @@ jQuery(document).ready(function ($) {
         $("ul.faq > li").removeClass("active");
         toOpen.slideDown("fast");
       }
-      console.log(img_src);
       $(this).parents("li").addClass("active");
       $(this).find(".title-icon img").css("transform", "scale(-1)");
       
-      if (img_src != '' && img_src != undefined) {
-        $(this).parents(".two-content-block").find(".right-content-block img").attr("src",img_src);
-      } else {
-        $('.question').parents(".two-content-block").find(".right-content-block img").attr("src","https://www.codium.ai/wp-content/uploads/2023/12/img-10-ai-coding-tools-2025.png");
-      }
     }
   });
 
