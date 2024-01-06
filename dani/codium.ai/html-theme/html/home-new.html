@@ -354,9 +354,16 @@
                     </div>
                 </div>
                 <script>
-                    jQuery(document).ready(function () {
-                        jQuery(".play-video").click(function () {
-                            jQuery(".icon-play").hide();
+                    jQuery(document).ready(function () {                       
+                        jQuery('.video-block').on('click', 'video', function(){
+                            if(jQuery(this).get(0).paused)
+                            {
+                                jQuery(".icon-play").hide();
+                            }
+                            else
+                            {
+                                jQuery(".icon-play").show();
+                            }
                         });
                     });
                 </script>
