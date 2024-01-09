@@ -1241,22 +1241,6 @@
             display: inline-block; 
             width: 24px; height: 24px;
         }
-        &.three-logo-col-table {
-            .table-header {
-                grid-template-columns: 1fr auto;
-                .col-inner-grid {
-                    grid-template-columns: 190px 190px 190px; 
-                }
-            }
-            .table-body {
-                .table-row {
-                    grid-template-columns: 1fr auto;
-                    .col-inner-grid {
-                        grid-template-columns: 190px 190px 190px; 
-                    }
-                }
-            }
-        }
         .table-header {
             display: grid; 
             grid-template-columns: 290px auto; 
@@ -1314,18 +1298,6 @@
                     padding: 20px 25px 20px 40px;
                     @media (max-width: 992px) {
                         padding: 15px;
-                    }
-                }
-                .col-github, .col-bitbucket, .col-gitlab {
-                    background: #F8F6FF;
-                    border-radius: 20px 20px 0px 0px; 
-                    padding: 35px 25px 65px; 
-                    text-align: center; 
-                    display: flex; 
-                    align-items: center; 
-                    justify-content: center;
-                    @media (max-width: 992px) {
-                        padding: 25px 15px 45px;
                     }
                 }
             }
@@ -1400,7 +1372,7 @@
                 .col-inner-grid {
                     display: grid; 
                     grid-template-columns: 190px 190px auto; 
-                    grid-gap: 7px; align-items: stretch;                     
+                    grid-gap: 7px; align-items: stretch; 
                     @media (min-width: 768px) {
                         display: grid !important; 
                     } 
@@ -1484,34 +1456,6 @@
                         padding: 20px 25px 20px 40px;
                         @media (max-width: 992px) {
                             padding: 15px;
-                        }
-                    }
-                    .col-github, .col-bitbucket, .col-gitlab {
-                        background: #F8F6FF; 
-                        text-align: center; 
-                        padding: 20px; 
-                        display: flex; 
-                        align-items: center; 
-                        justify-content: center; 
-                        font-weight: 700; 
-                        font-size: 14px;
-                        @media (max-width: 992px) {
-                            padding: 15px;
-                        }
-                        @media (max-width: 767px) {
-                            flex-direction: column;
-                            border-radius: 12px;
-                            -webkit-border-radius: 12px;
-                            -moz-border-radius: 12px;
-                            -ms-border-radius: 12px;
-                            -o-border-radius: 12px;
-                        }
-                        .img {
-                            display: none;
-                            @media (max-width: 767px) {
-                                display: block;
-                                margin-bottom: 12px;
-                            }
                         }
                     }
                 }
@@ -2281,134 +2225,6 @@
         }
         @media (max-width: 767px) {
            margin: 0 auto;
-        }
-    }
-}
-
-.logo {
-    display: inline-block;
-    background-size: contain !important;
-    width: 64px;
-    height: 64px;
-    flex: none;
-    &.logo-github {
-        background: url(../icons/icon-github.svg) no-repeat center center;
-    }
-    &.logo-bitbucket {
-        background: url(../icons/icon-bitbucket.svg) no-repeat center center;
-    }
-    &.logo-gitlab {
-        background: url(../icons/icon-gitlab.svg) no-repeat center center;
-    }
-}
-
-.grid-swiper-slider {   
-    .two-content-block {
-        padding-left: 50px;
-        background: #ffffff;
-        grid-template-columns: 48% 52% !important;
-        grid-gap: 0;
-        @media (max-width: 992px) {
-            grid-template-columns: 100% !important;
-            grid-gap: 20px;
-            text-align: center;
-            padding-left: 0;
-            padding-bottom: 25px;
-        }
-        .left-content-block {
-            padding-right: 12%; 
-            @media (max-width: 992px) {
-                padding-right: 0;
-            }           
-        }
-        .icon-img {
-            margin-bottom: 25px;
-        }
-        h3 {
-            margin-bottom: 25px;
-            line-height: 1.2;
-            @media (max-width: 1023px) {
-                font-size: 26px;
-            }
-        }
-        p {
-            @media (max-width: 1023px) {
-                font-size: 18px;
-            }
-        }
-    } 
-    &.is-right {
-        .two-content-block {
-            grid-template-columns: 52% 48% !important;
-            padding-right: 50px;
-            padding-left: 0;
-            @media (max-width: 992px) {
-                grid-template-columns: 100% !important;
-                padding-right: 0;
-            }
-            .left-content-block {
-                padding-right: 0px;
-                @media (max-width: 992px) {
-                    order: 2;
-                }
-            }
-            .right-content-block {
-                padding-left: 12%;
-                @media (max-width: 992px) {
-                    padding-left: 0;
-                }   
-            }
-        } 
-        .swiper-pagination {
-            left: auto !important;
-            right: 0 !important;
-            @media (max-width: 992px) {
-                left: auto !important;
-                right: auto !important;
-            }
-        }
-    }
-    .swiper-slide {
-        opacity: 0 !important;
-        &.swiper-slide-active {
-            opacity: 1 !important;
-        }
-    }
-    
-    .swiper-pagination {
-        @include flexbox;
-        @include flex-direction(column);
-        width: auto !important;
-        top: 50%;
-        bottom: auto !important;
-        @include transform(translateY(-50%)) ;
-        @media (max-width: 992px) {
-            @include flex-direction(row);
-            top: auto;
-            right: auto !important;
-            bottom: 0 !important;
-            width: 100% !important;
-            @include transform(unset);
-            @include justify-content(center);
-        }
-        .swiper-pagination-bullet {
-            width: 15px;
-            height: 15px;
-            margin: 5px 0 !important;
-            background: #05e5ad;
-            opacity: 1;
-            @include transition(0.3s, ease-in-out);
-            @media (max-width: 992px) { 
-                width: 10px;
-                height: 10px;               
-                margin: 0 3px !important;
-            }
-            &:hover, &:focus {
-                opacity: 0.7;
-            }
-            &.swiper-pagination-bullet-active {
-                background: #684bfe;
-            }
         }
     }
 }
