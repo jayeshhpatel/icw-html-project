@@ -56,12 +56,17 @@ jQuery(document).ready(function($) {
    $(".collapse-item .collapse-title").click(function () {
       if ($(this).closest(".collapse-item").hasClass("is-open")) {
          $(this).closest(".collapse-item").stop(true,true).removeClass("is-open");
-         $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).slideUp("fast");
+         $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).hide("fast");
       } else {
          $(".collapse-item").removeClass("is-open");
-         $(".collapse-item").find(".collapse-body").stop(true,true).slideUp();
+         $(".collapse-item").find(".collapse-body").stop(true,true).hide();
          $(this).closest(".collapse-item").stop(true,true).addClass("is-open");
          $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).slideDown("fast");
+
+         var collapsetop = $(this);
+            $('html,body').animate({
+            scrollTop: collapsetop.offset().top-85
+        }, 10);
       }
       return false;
   });
@@ -103,28 +108,6 @@ $('.is-show-all').on('click', function(e) {
     }, 50);
    } 
 });
-/*
-if ($('.review-slider').length) { 
-    var splide_review = new Splide( '.review-slider', {
-        perPage: 1,
-        perMove: 1,
-        pagination: false,
-        arrows: false,           
-        gap: 30, 
-      //   type   : 'loop',
-    });
-    splide_review.mount();
-
-    //attach events to custom buttons
-    reviewNext.addEventListener('click', e => {
-        splide_review.go('+1')
-    })
-
-    reviewPrev.addEventListener('click', e => {
-        splide_review.go('-1')
-    })
-}
-*/
 if ($('.founder-slider').length) { 
    var splide_founder = new Splide( '.founder-slider', {
        perPage: 6,
@@ -184,6 +167,24 @@ if ($('.play-iframe').length){
     });
 }
 
+if ($('.is-play-icon').length){
+    $('.video-player-block').each(function() {
+        var $videoBlock = $(this);
+        var $video = $videoBlock.find('video');
+        var $playIcon = $videoBlock.find('.is-play-icon');
+
+        $playIcon.click(function() {
+            if ($video.get(0).paused) {
+                $video.get(0).play();
+                $playIcon.hide();
+            } else {
+                $video.get(0).pause();
+                $playIcon.show();
+            }
+        });
+    });
+}
+
 $('.link-hash').on('click', function(e) {
     e.preventDefault();
     $('html, body').animate({ 
@@ -192,34 +193,22 @@ $('.link-hash').on('click', function(e) {
     return false;
 });
 
+$(".is-lottie-hover").hover(
+    function() {
+        // On hover, play the lottie-player animation
+        const lottiePlayer = $(this).find("lottie-player")[0];
+        lottiePlayer.setDirection(1);
+        lottiePlayer.play();
+    },
+    function() {
+        // On hover out, stop the lottie-player animation
+        const lottiePlayer = $(this).find("lottie-player")[0];
+        lottiePlayer.setDirection(-1);
+        lottiePlayer.play();
+    }
+);
+
 });
-
-// if ($('.video-player-lists').length){
-//     if ($(window).width() > 767) {
-//         var figure = jQuery(".video-player-lists .row").hover( hoverVideo, hideVideo );
-        
-//         function hoverVideo(e) { 
-//             jQuery('video', this).get(0).play(); 
-//             jQuery('.play-icon', this).addClass('d-none');
-//         }
-//         function hideVideo(e) { 
-//             jQuery('video', this).get(0).pause(); 
-//             jQuery('.play-icon', this).removeClass('d-none');
-//         }
-//     }
-//     else {        
-//         setTimeout(function(){
-//             var video_autoplay = jQuery(".video-player-lists .row").click( hoverVideo );
-//             $(video_autoplay).trigger('click');
-//             function hoverVideo(e) { 
-//                 jQuery('video', this).get(0).play(); 
-//                 jQuery('.play-icon', this).addClass('d-none');
-//             }
-
-//             $(".play-icon").addClass('d-none');
-//         }, 1000);
-//     }
-// }
 
 //Since HubSpot forms are rendered after the DOM builds, you must trigger the manipulation after the window loads
 window.onload = function () {
