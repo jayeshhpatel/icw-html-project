@@ -11,7 +11,8 @@
     position: relative;
     padding: 18rem 5% 8%;
     @include mobile {
-      padding: 15rem 5% 45%;
+      // padding: 15rem 5% 45%;
+      padding: 15rem 5% 50px;
     }
     .overlay-hero {
       background-image: url(https://www.codium.ai/wp-content/uploads/2023/03/hero-home-gradient.svg);
@@ -2416,7 +2417,7 @@
   margin: 0;
   vertical-align: top;
 
-  .word {
+  .word, .word2 {
     position: absolute;
     display: flex;
     opacity: 0;
@@ -2503,7 +2504,9 @@
   }
   }
   .two-content-block {
-      @include align-items(center);
+      &.align-items-center{
+        @include align-items(center);
+      }
       &.pt-100 {
           padding-top: 100px;
           @media (max-width: 767px) {
@@ -2559,88 +2562,161 @@
               @include flexbox;
           }
       }
+
+      & > :last-child {
+          margin-bottom: 0px !important;
+      }
   }
   .logo-btn-group {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-gap: 25px;
       @include justify-content(center);
+      max-width: 500px;
+
       @media (max-width: 992px) {
-      max-width: 600px;
       margin: 0 auto;
       }
       @media (max-width: 767px) {
           grid-gap: 15px;
+          margin: 0 50px;
       }
-      .btn-square {
-        flex: none;            
-        @include border-radius(40px);
-        @include transition(0.1s, ease-in-out);
+
+      .btn-square-json {
+        flex: none;   
+        @include transition(0.2s, ease-in-out);
         @include transform(scale(1)); 
-        background: #05E5AD;
         backdrop-filter: blur(40px);
         position: relative;
         width: 100%;
-        height: 0;
-        padding-top: 100%;
         will-change: transform;
 
-        @media (max-width: 767px) {
-            @include border-radius(25px);                
-        }
-        @media (max-width: 420px) {
-            @include border-radius(15px);
-            font-size: 14px;
-        }
-        .btn-info {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          @include transform(translate(-50%, -50%));
-          @include flexbox;
-          @include align-items(center);
-          @include justify-content(center);
-          @include flex-direction(column);
-        }
-        .icons {
-          margin-bottom: 10px;
-          @media (max-width: 1200px) {
-            margin-bottom: 8px;
-            svg {
-                width: 40px;
-                height: 40px;
-            }
-          }
-          @media (max-width: 992px) {
-            margin-bottom: 8px;
-            svg {
-                width: 60px;
-                height: 60px;
-            }
-          }
-          @media (max-width: 575px) {
-              svg {
-                  width: 34px;
-                  height: 34px;
-              }
-          }
-        }
-        .text {
-            font-size: 16px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #01012A;
-            @media (max-width: 767px) {
-                font-size: 14px;
-            }
-            @media (max-width: 575px) {
-                font-size: 12px;
-            }
-        }
         &:hover, &:focus {
-            background: #00b982;
-            @include transform(scale(1.02));  
+          opacity: 0.8;
+          @include transform(scale(1.02));  
         }
       }
+  }
+}
+
+.home-cta-block {
+
+}
+.cta-card {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 30px 1fr 30px 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+
+  @media (max-width:767px) {
+    grid-gap: 20px;
+   grid-template-columns: 1fr;
+  }
+
+  .cta-box {
+    position: relative;
+    box-sizing: border-box;
+    color: #FFF;
+    background: rgba(#16163F, 0.7);
+    background-clip: padding-box;
+    @include border-radius(12px);
+    padding: 40px;
+
+    // border: 10px solid;
+    // border-image-slice: 1;
+    // border-width: 5px;
+    // border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
+
+    background: url(../images/card-bg3.png) no-repeat center center;
+    background-size: 100% 100%;
+    text-align:center;
+
+    .cta-box-img {
+      padding: 30px 20px 50px;
+      @include flexbox();
+      @include align-items(center);
+      @include justify-content(center);
+      gap: 30px;
+
+      @media (max-width:767px) {
+        padding: 20px 20px 25px;
+        gap: 15px;
+      }
+    }
+    .btn-cta {
+      display: inline-flex;
+      min-width: 160px;
+      text-align: center;
+      justify-content: center;
+      backdrop-filter:none;
+      @include transition(0.2s, ease-in-out);
+
+      &:hover, &:focus {
+        color: #fff;
+        background-color: #684BFE;
+        background: #684BFE;
+        border-color: #684BFE;
+      }
+    }
+  }
+}
+.cta-logo-block {
+  position:relative;
+  background:radial-gradient(circle at 100% 100%,#01012a 0,#01012a 22px,transparent 22px) 0 0/24px 24px no-repeat,radial-gradient(circle at 0 100%,#01012a 0,#01012a 22px,transparent 22px) 100% 0/24px 24px no-repeat,radial-gradient(circle at 100% 0,#01012a 0,#01012a 22px,transparent 22px) 0 100%/24px 24px no-repeat,radial-gradient(circle at 0 0,#01012a 0,#01012a 22px,transparent 22px) 100% 100%/24px 24px no-repeat,linear-gradient(#01012a,#01012a) 50% 50%/calc(100% - 4px) calc(100% - 48px) no-repeat,linear-gradient(#01012a,#01012a) 50% 50%/calc(100% - 48px) calc(100% - 4px) no-repeat,repeating-linear-gradient(241deg,#bfb5f6 0,rgba(50,50,83,.37) 25%,#7c6ce5 52%,#413d74 85%,#695aca 100%);
+  @include border-radius(24px);
+  padding: 40px 35px;
+  -webkit-box-sizing:content-box;
+  box-sizing:content-box;
+  text-align:left;
+  -webkit-backdrop-filter:blur(36px);
+  backdrop-filter:blur(36px);
+  @include flexbox;
+  gap: 35px;
+  @include align-items(center);
+  @include justify-content(center);
+  max-width: 710px;
+  margin: 0 auto;
+  @media (max-width: 575px) {
+    @include flex-direction(column);
+    gap: 20px;
+    padding: 25px;
+  }
+  h2 {
+    font-size: 32px;
+    @media (max-width: 767px) {
+      font-size: 26px;
+    }
+  }
+  .sm-text {
+    font-size: 18px;
+    color: rgba(#ffffff, 0.6);
+  }
+  .cta-logo-images {
+    @include flexbox;
+    gap: 35px;
+    @include align-items(center);
+    @media (max-width: 767px) {
+      gap: 20px;
+    }
+    .cta-logo {
+      @include transition(0.3s, ease-in-out);
+      @include inline-flex;
+      @include align-items(center);
+      @include justify-content(center);
+      img {
+        max-height: 40px;
+        min-height: 40px;
+        min-width: 100%;
+        @media (max-width: 767px) {
+          max-height: 30px;
+          min-height: 30px;
+        }
+      }
+      &:hover, &:focus {
+        @include transform(scale(1.15));
+        opacity: 0.8;
+      }
+    }
   }
 }

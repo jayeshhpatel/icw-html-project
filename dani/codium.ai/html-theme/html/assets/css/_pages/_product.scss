@@ -1206,6 +1206,102 @@ body .row-grid-features {
   }
 }
 
+.cta-flex-card-block {
+  @include flexbox();
+  @include align-items(center);
+  @include justify-content(center);
+  @include flex-wrap(wrap);
+  gap: 25px;
+  max-width: 1080px;
+  margin: 0 auto;
+
+  @media (max-width:600px) {
+    @include flex-direction(column);
+  }
+
+  .info-card{
+    min-width: 260px;
+    padding:35px 50px;
+    display: block;
+    flex: 1 0 130px;
+
+    @include flexbox();
+    @include align-items(center);
+    // @include justify-content(center);
+    gap: 40px;
+    
+    background: url(../images/card-bg2.png) no-repeat center center;
+    background-size: 100% 100%;
+    text-align:center;
+
+    @media (max-width:600px) {
+      width: 100%;
+    }
+
+    .card-icon{
+      display: inline-block;
+      border-radius: 80px;
+      @include transition(0.2s, ease-in-out);
+
+      height: 54px;
+        img {
+          max-width: 54px; vertical-align:bottom;
+        }
+
+      &.pink {
+        box-shadow:-13px -10px 70px rgba(255, 107, 156, 0.45), -2.5px 4px 32px rgba(242, 136, 210, 0.57), inset 13px 13px 20px -6px #FF6B9C, inset 2px -6px 6px #C988FD;
+      }
+      &.green {
+        box-shadow:0px 0px 11px #05E5AD, -2.5px 4px 39px rgba(97, 238, 247, 0.33), inset 2.5px -6.06111px 6px rgba(5, 229, 173, 0.7);
+      }
+      &.blue {
+        box-shadow:-2px 4px 36px #7E5DFC, 0px 0px 11px #684BFE, inset 2.5px -6px 6px rgba(255, 107, 156, 0.5);
+      }
+      &.purple {
+        box-shadow:-13px -10px 70px rgba(255, 107, 156, 0.45), -2.5px 4px 32px #5C40F9, inset 13px 13px 20px -6px #FF6B9C, inset 2.5px -6px 6px rgba(5, 229, 173, 0.7);
+      }
+      &.red {
+        box-shadow:-13px -10px 70px rgba(255, 107, 156, 0.45), -2.5px 4px 32px rgba(242, 136, 210, 0.57), inset 13px 13px 20px -6px #FF6B9C, inset 2px -6px 6px #C988FD;
+      }
+    }
+    .card-content{
+      h3{
+        color:#fff;
+        font-size:18px;
+        font-weight:bold;
+        line-height:1.4;
+      }
+    }
+
+    &:hover, &:focus {
+      .card-icon {
+        @include transform(scale(1.15));
+      }
+    }
+  }
+  a.info-card {
+    @include transition(0.2s, ease-in-out);
+    &:hover, &:focus {
+      @include opacity(0.8);
+    }
+  }
+
+  &.cta-flex-card-block-4 {
+    .info-card {
+      min-width: 220px;
+      padding:35px;
+      gap: 30px;
+
+      @media (max-width: 992px) and (min-width: 768px) {
+        min-width: 320px;
+      }
+      @media (max-width: 767px) {
+        min-width: 250px;
+      }
+    }
+  }
+}
+
 .product-vision {
   background-image: url("/wp-content/uploads/2023/06/Untitled-1-e1685694856780.png");
   padding: 17.6rem 2rem 13.9rem 2rem;

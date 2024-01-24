@@ -24,12 +24,6 @@
     }
 }
 
-.darkbg {
-    background-color: #01012A !important;
-    * {
-        color: #fff !important;
-    }
-}
 .cms-page-header.comparsion-page-vector {
     background-image: url(../images/circle-img-17.png), url(../images/half-circle-vector.png) !important;
     background-size: 320px, 93px;
@@ -39,7 +33,7 @@
     padding-bottom: 100px;
     overflow: unset;
     z-index: 2;
-    &::after, &::before {
+    &::before, &::after {
         content: none;
     }
     @media (max-width: 1200px) {
@@ -105,7 +99,7 @@
         }
     }
 }
-.main-section.comparsion-left-vector {
+body .main-section.comparsion-left-vector {
     background-image: url(../images/circle-img-12.png);
     background-position: -9% top;
     background-repeat: no-repeat;
@@ -119,7 +113,6 @@
         background-position: -15% top;
     }
 }
-
 .comparsion-page {
     .section-title {
         &.mw-920 {
@@ -893,6 +886,161 @@
                 margin: auto;
                 margin-bottom: 20px;
             }
+        }
+    }
+}
+
+// Codium Alpha
+.bg-gradient-section{
+    background: #ffffff url(../images/bg-gradient-section.png) center center no-repeat;
+    position: relative;
+    z-index: 1;
+    background-size: cover;
+
+    @media (max-width:767px) {
+        background: #ffffff;
+    }
+
+    .two-content-block  {
+        @media (max-width: 992px){
+            gap: 0px;
+        }
+
+        p{
+            color: #67677e;
+        }
+    } 
+    .section-title{
+        h2{
+            color: #000000; 
+            text-align: left;
+        }
+    }
+}
+
+.icon-info-box-block{
+    padding: 50px 0px;
+
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    grid-gap: 25px; 
+    &.four-grid-box {
+        grid-template-columns: repeat(4, 1fr); 
+    }
+    @media (max-width: 767px) {
+        grid-template-columns: repeat(1, 1fr); 
+    }
+
+
+    .icon-info-card{
+        min-width: 210px;
+        padding:50px 20px 40px;
+        display: block;
+        @media only screen and (min-width: 1024px) and (max-width: 1440px) {
+            min-width: 170px;
+            padding:30px 20px 30px;
+        }
+        @include mobile {
+            padding:30px 15px 30px;
+        }
+        background: url(../images/alpha-card-bg.png) no-repeat center center;
+        background-size: 100% 100%;
+        text-align:center;
+        .card-icon{
+            display: inline-block;
+            border-radius: 80px;
+            height: 82px;
+            margin-bottom:24px;
+            // box-shadow:var(--box-shadow);
+            @include transition(0.2s, ease-in-out);
+
+            @media only screen and (min-width: 1024px) and (max-width: 1440px) {
+            border-radius: 60;
+            height: 62px;
+            img {
+                max-width: 60px;
+            }
+            }
+            @include mobile {
+            border-radius: 60;
+            height: 62px;
+            img {
+                max-width: 60px;
+            }
+            }
+
+            &.pink {
+            box-shadow:-13px -10px 70px rgba(255, 107, 156, 0.45), -2.5px 4px 32px rgba(242, 136, 210, 0.57), inset 13px 13px 20px -6px #FF6B9C, inset 2px -6px 6px #C988FD;
+            }
+            &.green {
+            box-shadow:0px 0px 11px #05E5AD, -2.5px 4px 39px rgba(97, 238, 247, 0.33), inset 2.5px -6.06111px 6px rgba(5, 229, 173, 0.7);
+            }
+            &.blue {
+            box-shadow:-2px 4px 36px #7E5DFC, 0px 0px 11px #684BFE, inset 2.5px -6px 6px rgba(255, 107, 156, 0.5);
+            }
+            &.purple {
+            box-shadow:-13px -10px 70px rgba(255, 107, 156, 0.45), -2.5px 4px 32px #5C40F9, inset 13px 13px 20px -6px #FF6B9C, inset 2.5px -6px 6px rgba(5, 229, 173, 0.7);
+            }
+            &.red {
+            box-shadow:-13px -10px 70px rgba(255, 107, 156, 0.45), -2.5px 4px 32px rgba(242, 136, 210, 0.57), inset 13px 13px 20px -6px #FF6B9C, inset 2px -6px 6px #C988FD;
+            }
+        }
+        .card-content{
+            h3{
+            color:#fff;
+            font-size:18px;
+            font-weight:bold;
+            line-height:1.4;
+            }
+        }
+
+        &:hover, &:focus {
+            .card-icon {
+            @include transform(scale(1.15));
+            }
+        }
+    }
+    a.icon-info-card {
+    @include transition(0.2s, ease-in-out);
+    &:hover, &:focus {
+        @include opacity(0.8);
+    }
+    }
+}  
+
+.sub-img-block {
+    position: relative;
+    img {
+        width: 100%;
+    }
+    .small-img {
+        position: absolute;
+        left: -10%;
+        bottom: -10%;
+        display: inline-block;
+        img {
+            max-width: 180px;
+        }
+
+        @media only screen and (min-width: 1024px) and (max-width: 1280px) {
+            left: -5%;
+            bottom: -15%;
+        }
+
+        @media (max-width: 1024px) {
+            left: 50%;
+            bottom: -10%;
+            margin-left: -55px;
+            img {
+                max-width: 110px;
+            }
+        }
+    }
+    a.small-img {
+        @include transition(0.2s, ease-in-out);
+        @include transform(scale(1));
+        &:hover, &:focus {
+            @include transform(scale(1.05));
         }
     }
 }
