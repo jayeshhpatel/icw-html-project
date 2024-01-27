@@ -2720,3 +2720,55 @@
     }
   }
 }
+.rotated-animation-image{
+  width: 70px;
+  height: 70px;
+  flex: none;
+  border-radius: 50%;
+  display: inline-block;
+  background: #5C40F9 url(../images/gradient-circle-img.png) no-repeat center center;
+  box-shadow: 3.147px -7.342px 8.391px 0px rgba(255, 107, 156, 0.50) inset, -25.174px 16.783px 25.174px -8.391px #05E5AD inset;
+  filter: drop-shadow(0px 0px 13.481px #684BFE) drop-shadow(16.783px -12.587px 83.913px #05E5AD) drop-shadow(-3.147px 5.245px 38.789px rgba(255, 107, 156, 0.70));
+  animation: rotatedCircle 5s linear infinite;
+  position: absolute;
+  top: 30px;
+  right: -150px;
+  z-index: -1;
+  @media (max-width: 1400px) {
+    top: -100px;
+    right: -10px;
+  }
+  @media (max-width: 992px) {
+    width: 50px;
+    height: 50px;
+  }
+  @media (max-width: 767px) {
+    top: -50px;
+    width: 40px;
+    height: 40px;
+  }
+}
+@keyframes rotatedCircle {
+  0%{
+    @include transform(rotate(0deg));
+  }
+  100%{
+    @include transform(rotate(360deg));
+  }
+}
+@-webkit-keyframes rotatedCircle {
+  0%{
+    @include transform(rotate(0deg));
+  }
+  100%{
+    @include transform(rotate(360deg));
+  }
+}
+@-moz-keyframes rotatedCircle {
+  0%{
+    @include transform(rotate(0deg));
+  }
+  100%{
+    @include transform(rotate(360deg));
+  }
+}
