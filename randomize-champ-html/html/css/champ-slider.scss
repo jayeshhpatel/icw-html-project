@@ -11,16 +11,25 @@ body {
         margin: 0 auto;
     }
     .filter-action {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
         display: flex;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        -ms-align-items: center;
+        -ms-flex-align: center;
         align-items: center;
         gap: 16px 24px;
         margin-bottom: 16px;
         @media (max-width: 575px) {
-            flex-wrap: wrap;
             gap: 10px;
         }
         .filter-action-btn {
             border-radius: 8px;
+            -moz-border-radius: 8px;
+            -webkit-border-radius: 8px;
             color: #ffffff;
             background: #6815FF;
             border: 1px solid #6815FF;
@@ -29,6 +38,9 @@ body {
             text-transform: uppercase;
             font-family: 'Montserrat', sans-serif;
             padding: 10px 35px;
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+            -o-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out;
             cursor: pointer;
             @media (max-width: 767px) {
@@ -63,6 +75,8 @@ body {
             position: relative;
             .dropdown-toggle {
                 border-radius: 8px;
+                -moz-border-radius: 8px;
+                -webkit-border-radius: 8px;
                 border: 1px solid rgba(0, 0, 0, 0.10);
                 background-color: #F8F8F8;
                 background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="5" viewBox="0 0 8 5" fill="none"><rect width="5.65669" height="1.41417" rx="0.707086" transform="matrix(-0.707104 0.707109 -0.707104 -0.707109 8 1)" fill="black"/><rect width="5.65669" height="1.41417" rx="0.707086" transform="matrix(-0.707104 -0.707109 0.707105 -0.707109 4 5)" fill="black"/></svg>');
@@ -70,7 +84,15 @@ body {
                 background-repeat: no-repeat;
                 background-position: calc(100% - 24px) center;
                 padding: 10px 24px;
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
                 display: flex;
+                -webkit-align-items: center;
+                -moz-align-items: center;
+                -ms-align-items: center;
+                -ms-flex-align: center;
                 align-items: center;
                 gap: 8px;
                 color: #000;
@@ -80,6 +102,9 @@ body {
                 line-height: 0.7;
                 cursor: pointer;
                 position: relative;
+                -webkit-transition: all 0.3s ease-in-out;
+                -moz-transition: all 0.3s ease-in-out;
+                -o-transition: all 0.3s ease-in-out;
                 transition: all 0.3s ease-in-out;
                 @media (max-width: 767px) {
                     font-size: 14px;
@@ -91,6 +116,8 @@ body {
                     height: 16px;
                     flex: none;
                     border-radius: 50%;
+                    -moz-border-radius: 50%;
+                    -webkit-border-radius: 50%;
                     border: 1px solid #6815FF;
                     &.selected {
                         background: #6815FF;
@@ -116,6 +143,8 @@ body {
             }
             .dropdown-menu {
                 border-radius: 8px;
+                -moz-border-radius: 8px;
+                -webkit-border-radius: 8px;
                 background: #DFDFDF;
                 width: 100%;
                 position: absolute;
@@ -132,39 +161,57 @@ body {
                         padding: 8px 0;
                     }
                     li {
-                        a {
+                        label {
                             padding: 10px 24px;
+                            display: -webkit-box;
+                            display: -moz-box;
+                            display: -ms-flexbox;
+                            display: -webkit-flex;
                             display: flex;
+                            -webkit-justify-content: space-between;
+                            -moz-justify-content: space-between;
+                            -ms-justify-content: space-between;
+                            justify-content: space-between;
+                            -ms-flex-pack: space-between;
+                            -webkit-align-items: center;
+                            -moz-align-items: center;
+                            -ms-align-items: center;
+                            -ms-flex-align: center;
                             align-items: center;
                             font-size: 16px;
                             color: #000000;
                             font-weight: 500;
                             text-transform: uppercase;
                             text-decoration: none;
+                            -webkit-transition: all 0.3s ease-in-out;
+                            -moz-transition: all 0.3s ease-in-out;
+                            -o-transition: all 0.3s ease-in-out;
                             transition: all 0.3s ease-in-out;
+                            cursor: pointer;
                             @media (max-width: 767px) {
                                 font-size: 14px;
                                 padding: 8px 15px;
                             }
-                            .filter-input-icon {
+                            &:hover, &:focus {
+                                color: #6815FF;
+                                background: rgba(198, 198, 198, 0.30);
+                            }
+                            .filter-checkbox {
+                                margin: 0;
                                 width: 16px;
                                 height: 16px;
                                 flex: none;
                                 border-radius: 50%;
+                                -moz-border-radius: 50%;
+                                -webkit-border-radius: 50%;
                                 border: 1px solid #000;
-                                margin-left: auto;
-                                @media (max-width: 767px) {
-                                    width: 12px;
-                                    height: 12px;
-                                }
-                            }
-                            &:hover, &:focus {
-                                color: #6815FF;
-                            }
-                        }
-                        &.selected {
-                            a {
-                                .filter-input-icon { 
+                                -webkit-appearance: none;
+                                appearance: none;
+                                -webkit-transition: all 0.3s ease-in-out;
+                                -moz-transition: all 0.3s ease-in-out;
+                                -o-transition: all 0.3s ease-in-out;
+                                transition: all 0.3s ease-in-out;
+                                &:checked {
                                     background: #000000;
                                 }
                             }
@@ -184,6 +231,8 @@ body {
     }
     .filter-slider-block {
         border-radius: 24px;
+        -moz-border-radius: 24px;
+        -webkit-border-radius: 24px;
         background: #F8F8F8;
         padding: 65px 23px;
         @media (max-width: 767px) {
@@ -191,8 +240,13 @@ body {
         }
         .filter-slide-box {
             border-radius: 8px;
+            -moz-border-radius: 8px;
+            -webkit-border-radius: 8px;
             border: 4px solid #C6C6C6;
             padding: 10px;
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+            -o-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out;
             @media (max-width: 1200px) {
                 border-width: 3px;
@@ -204,8 +258,13 @@ body {
             }
             .inner-content {
                 border-radius: 8px;
+                -moz-border-radius: 8px;
+                -webkit-border-radius: 8px;
                 background: #C6C6C6;
                 position: relative;
+                -webkit-transition: all 0.3s ease-in-out;
+                -moz-transition: all 0.3s ease-in-out;
+                -o-transition: all 0.3s ease-in-out;
                 transition: all 0.3s ease-in-out;
                 &::before {
                     content: '';
@@ -217,10 +276,15 @@ body {
                     height: 260px;
                     border-radius: 0 0 8px 8px;
                     background: linear-gradient(0deg, #C6C6C6 0%, rgba(198, 198, 198, 0.00) 96.35%);
+                    -webkit-transition: all 0.3s ease-in-out;
+                    -moz-transition: all 0.3s ease-in-out;
+                    -o-transition: all 0.3s ease-in-out;
                     transition: all 0.3s ease-in-out;
                 }
                 .slide-img {
                     border-radius: 8px;
+                    -moz-border-radius: 8px;
+                    -webkit-border-radius: 8px;
                     overflow: hidden;
                     img {
                         width: 100%;
@@ -230,9 +294,15 @@ body {
                     position: absolute;
                     top: 50%;
                     left: 50%;
+                    -moz-transform: translate(-50%, -50%);  
+                    -webkit-transform: translate(-50%, -50%);  
+                    -o-transform: translate(-50%, -50%);  
+                    -ms-transform: translate(-50%, -50%); 
                     transform: translate(-50%, -50%);
                     .action {
                         border-radius: 8px;
+                        -moz-border-radius: 8px;
+                        -webkit-border-radius: 8px;
                         background: rgba(0, 0, 0, 0.20);
                         border: 1px solid rgba(0, 0, 0, 0.1);
                         backdrop-filter: blur(10px);
@@ -244,8 +314,14 @@ body {
                         color: #ffffff;
                         text-transform: uppercase;
                         text-decoration: none;
+                        -moz-opacity: 0;
+                        -khtml-opacity: 0;
+                        -webkit-opacity: 0;
                         opacity: 0;
                         visibility: hidden;
+                        -webkit-transition: all 0.3s ease-in-out;
+                        -moz-transition: all 0.3s ease-in-out;
+                        -o-transition: all 0.3s ease-in-out;
                         transition: all 0.3s ease-in-out;
                         @media (max-width: 767px) {
                             font-size: 14px;
@@ -254,6 +330,10 @@ body {
                         &:hover, &:focus {
                             color: #97F123;
                             .icon svg {
+                                -moz-transform: scale(1.1);  
+                                -webkit-transform: scale(1.1);  
+                                -o-transform: scale(1.1);  
+                                -ms-transform: scale(1.1); 
                                 transform: scale(1.1);
                             }
                         }
@@ -261,6 +341,9 @@ body {
                             display: block;                          
                             svg {
                                 width: 14px;
+                                -webkit-transition: all 0.3s ease-in-out;
+                                -moz-transition: all 0.3s ease-in-out;
+                                -o-transition: all 0.3s ease-in-out;
                                 transition: all 0.3s ease-in-out;  
                                 @media (max-width: 767px) {
                                     width: 12px;
@@ -283,6 +366,9 @@ body {
                         color: #000;
                         margin: 0 0 8px;
                         line-height: 1;
+                        -webkit-transition: all 0.3s ease-in-out;
+                        -moz-transition: all 0.3s ease-in-out;
+                        -o-transition: all 0.3s ease-in-out;
                         transition: all 0.3s ease-in-out;
                         @media (max-width: 1440px) {
                             font-size: 26px;
@@ -314,6 +400,9 @@ body {
                     }
                     .slide-action {
                         .action {
+                            -moz-opacity: 1;
+                            -khtml-opacity: 1;
+                            -webkit-opacity: 1;
                             opacity: 1;
                             visibility: visible;
                         }
