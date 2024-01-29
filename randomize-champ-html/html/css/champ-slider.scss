@@ -78,11 +78,7 @@ body {
                 -moz-border-radius: 8px;
                 -webkit-border-radius: 8px;
                 border: 1px solid rgba(0, 0, 0, 0.10);
-                background-color: #F8F8F8;
-                background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="5" viewBox="0 0 8 5" fill="none"><rect width="5.65669" height="1.41417" rx="0.707086" transform="matrix(-0.707104 0.707109 -0.707104 -0.707109 8 1)" fill="black"/><rect width="5.65669" height="1.41417" rx="0.707086" transform="matrix(-0.707104 -0.707109 0.707105 -0.707109 4 5)" fill="black"/></svg>');
-                background-size: 8px;
-                background-repeat: no-repeat;
-                background-position: calc(100% - 24px) center;
+                background-color: #F8F8F8;  
                 padding: 10px 24px;
                 display: -webkit-box;
                 display: -moz-box;
@@ -100,7 +96,6 @@ body {
                 font-weight: 500;
                 text-transform: uppercase;
                 line-height: 0.7;
-                cursor: pointer;
                 position: relative;
                 -webkit-transition: all 0.3s ease-in-out;
                 -moz-transition: all 0.3s ease-in-out;
@@ -111,20 +106,27 @@ body {
                     padding: 12px 15px;
                     background-position: calc(100% - 15px) center;                    
                 }
-                .dropdown-filter-input-icon {
-                    width: 16px;
-                    height: 16px;
-                    flex: none;
-                    border-radius: 50%;
-                    -moz-border-radius: 50%;
-                    -webkit-border-radius: 50%;
-                    border: 1px solid #6815FF;
-                    &.selected {
+                label {
+                    z-index: 15;
+                    .dropdown-filter-checkbox {
+                        margin: 0;
+                        width: 16px;
+                        height: 16px;
+                        flex: none;
+                        border-radius: 50%;
+                        -moz-border-radius: 50%;
+                        -webkit-border-radius: 50%;
+                        border: 1px solid #6815FF;
+                        -webkit-appearance: none;
+                        appearance: none;
+                        -webkit-transition: all 0.2s ease-in-out;
+                        -moz-transition: all 0.2s ease-in-out;
+                        -o-transition: all 0.2s ease-in-out;
+                        transition: all 0.2s ease-in-out;
+                        cursor: pointer;
+                    &:checked {
                         background: #6815FF;
                     }
-                    @media (max-width: 767px) {
-                        width: 12px;
-                        height: 12px;
                     }
                 }
                 .icon {
@@ -136,6 +138,20 @@ body {
                             height: 14px;
                         }
                     }
+                }
+                .arrow-icon {
+                    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="5" viewBox="0 0 8 5" fill="none"><rect width="5.65669" height="1.41417" rx="0.707086" transform="matrix(-0.707104 0.707109 -0.707104 -0.707109 8 1)" fill="black"/><rect width="5.65669" height="1.41417" rx="0.707086" transform="matrix(-0.707104 -0.707109 0.707105 -0.707109 4 5)" fill="black"/></svg>');
+                    background-size: 8px;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    width: 8px;
+                    height: 8px;
+                    display: inline-block;
+                    margin-left: auto;                        
+                    -webkit-transition: all 0.2s ease-in-out;
+                    -moz-transition: all 0.2s ease-in-out;
+                    -o-transition: all 0.2s ease-in-out;
+                    transition: all 0.2s ease-in-out;
                 }
                 &:hover, &:focus {
                     border-color: #c5c5c5;
@@ -207,10 +223,10 @@ body {
                                 border: 1px solid #000;
                                 -webkit-appearance: none;
                                 appearance: none;
-                                -webkit-transition: all 0.3s ease-in-out;
-                                -moz-transition: all 0.3s ease-in-out;
-                                -o-transition: all 0.3s ease-in-out;
-                                transition: all 0.3s ease-in-out;
+                                -webkit-transition: all 0.2s ease-in-out;
+                                -moz-transition: all 0.2s ease-in-out;
+                                -o-transition: all 0.2s ease-in-out;
+                                transition: all 0.2s ease-in-out;
                                 &:checked {
                                     background: #000000;
                                 }
@@ -222,6 +238,13 @@ body {
             &.dropdown-open {
                 .dropdown-toggle {                    
                     z-index: 12;
+                    .arrow-icon {
+                        -moz-transform: rotate(180deg);  
+                        -webkit-transform: rotate(180deg);  
+                        -o-transform: rotate(180deg);  
+                        -ms-transform: rotate(180deg); 
+                        transform: rotate(180deg);
+                    }
                 }
                 .dropdown-menu.dropdown-active {
                   display: block;
