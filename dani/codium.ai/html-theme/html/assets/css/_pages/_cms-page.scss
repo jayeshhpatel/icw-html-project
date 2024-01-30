@@ -2506,6 +2506,77 @@
     }
 }
 
+.onepage-ipad-form-section {
+    position: relative;
+
+    .container {
+        position: relative;
+        z-index: 2;
+    }
+
+    &::before {
+        content: '';
+        background: url(../images/left-glow-circle-img.png) no-repeat left center;
+        background-size: contain;
+        width: 142px;
+        height: 292px;
+        display: inline-block;
+        position: absolute;
+        bottom: 15px;
+        left: 0px;
+        z-index: 1;
+        @media (max-width: 1400px) {
+            width: 100px;
+        }
+        // @media (max-width: 767px) {
+        //     display: none;
+        // }
+    }
+    &::after {
+        content: '';
+        background: url(../images/right-big-circle-img.png) no-repeat right top;
+        background-size: contain;
+        height: 293px;
+        width: 271px;
+        display: inline-block;
+        position: absolute;
+        top: 10%;
+        right: 0px;
+        z-index: 1;
+        @media (max-width: 1400px) {
+            width: 200px;
+        }
+        @media (max-width: 992px) {
+            width: 90px !important;
+        }
+    } 
+}
+
+.before-circle-shape {
+    position: relative;
+    &::before {
+        content: '';
+        background: url(../images/circle-img-1.png) no-repeat left center;
+        background-size: contain;
+        height: 153px; 
+        width: 201px;
+        display: inline-block;
+        position: absolute;
+        top: 45%;
+        left: -25%;
+        z-index: -1;
+        @media (max-width: 1400px) {
+            width: 130px;
+            left: -10%;
+        }
+
+        @media (max-width: 1400px) {
+            left: -15px;
+            top: 5%;
+        }
+    }
+}
+
 
 // NDC London Page
 .ndc-london-page {
@@ -2649,7 +2720,7 @@
         @include flexbox;
         gap: 25px;
         .team-user {
-            background: url(../../upload/team-user-bg.png) no-repeat top center;
+            background: url(../images/team-user-bg.png) no-repeat top center;
             background-size: contain;
             padding: 10px;
             .img-block {
@@ -2750,6 +2821,11 @@
                 }
             }
         }
+        a.gradient-box {
+            &:hover, &:focus {
+                .btn-green {background: #00bd85;}
+            }
+        }
     }
     .info-card-block {
         @include flexbox;
@@ -2795,6 +2871,12 @@
                 }
             }
         }
+        a.info-card { 
+            text-underline-offset: 4px;
+            &:hover, &:focus {
+                text-decoration: underline;
+            }
+        }
     }
 }
 .email-form {
@@ -2806,6 +2888,7 @@
         @media (max-width: 767px) {
             @include align-items(center);
             @include flex-direction(column);
+            gap: 15px;
         }
         .hs-form-field {
             max-width: 270px;
@@ -2827,6 +2910,8 @@
                 @include border-radius(8px);
                 border: 2px solid #B6A9FB;
                 background: #01012A;
+                color: #fff;
+                padding: 10px;
                 @media (max-width: 767px) {
                     height: 50px;
                 }
@@ -2855,6 +2940,10 @@
             @media (max-width: 767px) {
                 padding-top: 0;
             }
+            @media (max-width: 575px) {
+                width: 100%;
+                .actions {width: 100%;}
+            }
             .hs-button {
                 border: 1px solid #05E5AD;
                 background-color: #05E5AD;
@@ -2874,6 +2963,7 @@
                 @media (max-width: 575px) {
                     font-size: 13px;
                     padding: 15px;
+                    width: 100%;
                 }
             }
         }

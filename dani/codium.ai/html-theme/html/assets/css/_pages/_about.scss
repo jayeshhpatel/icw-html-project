@@ -3,10 +3,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
-    padding: 11% 5%;
+    padding: 200px 5% 150px;
     @include mobile{
-        padding: 15rem 2rem 100%;
-        background-image: url(https://www.codium.ai/wp-content/uploads/2023/02/about-hero-bg-mobile.png);
+        padding: 150px 2rem 200px;
+        background-image: url(../images/about-hero-bg-mobile.png);
     }
     .container-100{
         position: relative;
@@ -23,10 +23,10 @@
         }
     }
     &--title{
-        font-size: 3.8vw;
+        font-size: 56px;
         width: 33vw;
         @include mobile{
-            font-size: 9vw;
+            font-size: 32px;
             width: 100%;
         }
     }
@@ -98,12 +98,28 @@
 }
 
 .about-team{
-    padding: 6em 2rem;
-    background: linear-gradient(180deg, #C1B6FF 0%, rgba(255, 255, 255, 0) 50%), #F3F1EE;
+    padding: 120px 2rem;
+    background: url(../images/meet-team-bg.png) no-repeat bottom right, linear-gradient(176deg, #C1B6FF 3.11%, rgba(255, 255, 255, 0.00) 68.95%), #FFF;
     text-align: center;
     @include mobile{
-        padding: 4em 2rem;
+        padding: 60px 2rem;
+        background: linear-gradient(176deg, #C1B6FF 3.11%, rgba(255, 255, 255, 0.00) 68.95%), #FFF;
     }
+    &::before {
+        content: '';
+        background: url(../images/circle-img-8.webp) no-repeat center left;
+        background-size: contain;
+        position: absolute;
+        top: 500px;
+        left: 10px;
+        display: block;
+        width: 120px;
+        height: 120px;
+        filter: blur(6px);
+        @include mobile{
+            content: none;
+        }
+    } 
     // .container{
     //     @media only screen and (min-width: 1441px) and (max-width: 1920px) {
     //         width: 100%;
@@ -116,55 +132,91 @@
         @include mobile{
             gap: 3em;
         }
-        .team-title{
-            color: #5C40F9;
-            font-weight: 400;
-            font-size: 5.6rem;
+        .team-title {
+            color: #01012A;
+            font-weight: 700;
+            font-size: 40px;
             @include mobile{
-                font-size: 10vw;
+                font-size: 32px;
             }
         }
         .image-wrapper{
             position: relative;
-            // padding-top: 50%;
-            img{
-                // position: absolute;
-                // top: 0;
-                // right: 0;
-                // left: 0;
-                // bottom: 0;
-                // width: 100%;
-                // height: 100%;
-                // object-fit: cover;
-                border-radius: 16px;
+            max-width: 950px;
+            margin: 0 auto;
+            img {
+                @include border-radius(24px);
+                @include mobile{
+                    @include border-radius(8px);
+                }
+            }
+            .image-vector {
+                position: absolute;
+                bottom: -40px;
+                left: -90px;
+                background-image: url(../images/circle-img-6.svg);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+                width: 170px;
+                height: 120px;
+                @include mobile{
+                    width: 80px;
+                    height: 90px;
+                    bottom: -30px;
+                    left: -40px;
+                }
             }
         }
     }
     &--content{
         &-grid{
             display: flex;
-            justify-content: space-around;
-            @include mobile{
-                flex-direction: column;
-                gap: 6rem;
-                align-items: center;
+            justify-content: center;
+            @include mobile {
+                gap: 0;
+            }
+            .team-card {
+                width: 50%;
+                border-right: 1px solid #E6E6E6;
+                @include mobile{
+                    border-right: none;
+                }
+                &:last-child {
+                    border-right: none;
+                }
             }
         }
     }
 }
 
 .about-backed{
-    padding: 6em 2rem 24em;
+    padding: 150px 2rem 24em;
     text-align: center;
+    background: url(../images/backed-by-bg.png) no-repeat center center;
+    &::before {
+        content: '';
+        background: url(../images/backed-by-vector.png) no-repeat center right;
+        background-size: contain;
+        position: absolute;
+        top: 350px;
+        right: 0;
+        display: block;
+        width: 120px;
+        height: 230px;
+        @include mobile{
+            content: none;
+        }
+    } 
     @include mobile{
-        padding: 4em 2rem 8em;
+        padding: 70px 2rem 10em;
     }
     &--wrapper{
         display: flex;
         flex-direction: column;
-        gap: 6rem;
+        gap: 48px;
         @include mobile{
-            gap: 4rem;
+            gap: 20px;
         }
         h2{
             display: flex;
@@ -186,6 +238,14 @@
             }
         }
     }
+    .sm-title {
+        font-size: 26px;
+        letter-spacing: -0.26px;
+        margin: 0;
+        @include mobile{
+            font-size: 20px;
+        }
+    }
     .angels{
         &--content{
             display: flex;
@@ -196,8 +256,11 @@
                 grid-template-columns: repeat(4,1fr);
                 gap: 9vw;
                 @include mobile{
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 2rem;
+                }
+                @media (max-width: 375px) {
                     grid-template-columns: repeat(1, 1fr);
-                    gap: 4rem;
                 }
                 .angelcard:nth-child(n+9){
                     display:none;
@@ -226,7 +289,6 @@
     padding: 0% 0 40%;
     @include mobile{
         padding: 6em 2rem 25vh;
-        margin: 6em 0;
     }
     .overlay{
         background: radial-gradient(
@@ -281,28 +343,194 @@
         justify-content: center;
         text-align: center;
         width: 78rem;
-        padding: 8rem 11rem;
-        background: linear-gradient(0deg, rgba(1, 1, 42, 0.4), rgba(1, 1, 42, 0.4)), linear-gradient(105.87deg, rgba(255, 255, 255, 0.4) 3.04%, rgba(255, 255, 255, 0) 99.23%);
-        background-blend-mode: overlay, normal, normal;
-        box-shadow: inset -6px 6px 8px -6px #6447FF, inset 8px 8px 8px -8px rgba(100, 71, 255, 0.7), inset 2px 2px 9px -2px #FFFFFF, inset 0px -6px 2px -4px #6447FF, inset 0px 0px 0px 2px rgba(255, 255, 255, 0.5);
-        backdrop-filter: blur(40px);
-        border-radius: 40px;
+        padding: 80px 110px;
+        background: linear-gradient(0deg, rgba(1, 1, 42, 0.40) 0%, rgba(1, 1, 42, 0.40) 100%), linear-gradient(106deg, rgba(255, 255, 255, 0.40) 3.04%, rgba(255, 255, 255, 0.00) 99.23%);
+        -webkit-backdrop-filter: blur(36px);
+        backdrop-filter: blur(36px);
+        border-radius: 24px;
         margin: 0 auto;
+        position: relative;
+        z-index: 1;
+        &::before {
+            content: '';
+            inset: 0;
+            background: radial-gradient(circle at 100% 100%,#01012a 0,#01012a 22px,transparent 22px) 0 0/24px 24px no-repeat,radial-gradient(circle at 0 100%,#01012a 0,#01012a 22px,transparent 22px) 100% 0/24px 24px no-repeat,radial-gradient(circle at 100% 0,#01012a 0,#01012a 22px,transparent 22px) 0 100%/24px 24px no-repeat,radial-gradient(circle at 0 0,#01012a 0,#01012a 22px,transparent 22px) 100% 100%/24px 24px no-repeat,linear-gradient(#01012a,#01012a) 50% 50%/calc(100% - 4px) calc(100% - 48px) no-repeat,linear-gradient(#01012a,#01012a) 50% 50%/calc(100% - 48px) calc(100% - 4px) no-repeat,repeating-linear-gradient(241deg,#bfb5f6 0,rgba(50,50,83,.37) 25%,#7c6ce5 52%,#413d74 85%,#695aca 100%);
+            @include border-radius(24px);                
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+            -webkit-backdrop-filter: blur(36px);
+            backdrop-filter: blur(36px);
+            opacity: 0.4;
+            position: absolute;
+            z-index: -1;
+        }
+        &::after {  
+            content: '';
+            background: url(../images/working-vector.png) no-repeat center;
+            background-size: contain;
+            width: 230px;
+            height: 230px;
+            display: block;
+            position: absolute;
+            top: -70px;
+            left: -100px;
+            z-index: -1;
+            @include mobile{
+                width: 130px;
+                height: 130px;
+                top: -30px;
+                left: -50px;
+            }
+        }
         @include mobile{
             width: 100%;
-            padding: 4em 2em;
+            padding: 60px 40px;
+        }
+        @media (max-width: 375px) {
+            padding: 20px;
         }
         .gradient-text{
             padding: 0 0 0.4rem;
         }
-        a{
+        a {
             color: $green;
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 1rem;
             margin-top: 2em;
             img{
                 transform: rotate(-90deg);
+            }
+        }
+    }
+}
+
+.our-mission {
+    background: #02022C url(../images/out-mission-bg.png) no-repeat right bottom;
+    padding: 150px 20px;
+    position: relative;
+    overflow: hidden;
+    @include mobile{
+        padding: 70px 20px;
+    }
+    &::before {
+        content: '';
+        background: url(../images/circle-img-11.png) no-repeat center left;
+        background-size: contain;
+        position: absolute;
+        top: 400px;
+        left: 0;
+        display: block;
+        width: 180px;
+        height: 120px;
+        @include mobile{
+            top: 600px;
+        }
+    } 
+    &::after {
+        content: '';
+        background: url(../images/circle-img-18.png) no-repeat center right;
+        background-size: contain;
+        position: absolute;
+        top: 200px;
+        right: -50px;
+        display: block;
+        width: 240px;
+        height: 220px;
+        @include mobile{
+            top: 270px;
+            width: 150px;
+            height: 150px;
+        }
+    } 
+    .section-title {
+        .sort-info {
+            max-width: 740px; 
+            margin: 0 auto;
+            p {
+                color: rgba(255, 255, 255, 0.6);
+                font-size: 18px;
+            }
+        }
+    }
+}
+.gradient-border-box-block {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    @include mobile{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .gradient-border-box {
+        position: relative;
+        flex: 1 1 auto;
+        padding: 60px 40px; 
+        background: linear-gradient(0deg, rgba(1, 1, 42, 0.40) 0%, rgba(1, 1, 42, 0.40) 100%), linear-gradient(103deg, rgba(255, 255, 255, 0.15) 14.08%, rgba(255, 255, 255, 0.00) 101.19%);
+        @include border-radius(24px);   
+        text-align: center;
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+        @include flex-direction(column);
+        z-index: 1;
+        @include mobile{
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        &::before {
+            content: '';
+            inset: 0;
+            background: radial-gradient(circle at 100% 100%,#01012a 0,#01012a 22px,transparent 22px) 0 0/24px 24px no-repeat,radial-gradient(circle at 0 100%,#01012a 0,#01012a 22px,transparent 22px) 100% 0/24px 24px no-repeat,radial-gradient(circle at 100% 0,#01012a 0,#01012a 22px,transparent 22px) 0 100%/24px 24px no-repeat,radial-gradient(circle at 0 0,#01012a 0,#01012a 22px,transparent 22px) 100% 100%/24px 24px no-repeat,linear-gradient(#01012a,#01012a) 50% 50%/calc(100% - 4px) calc(100% - 48px) no-repeat,linear-gradient(#01012a,#01012a) 50% 50%/calc(100% - 48px) calc(100% - 4px) no-repeat,repeating-linear-gradient(241deg,#bfb5f6 0,rgba(50,50,83,.37) 25%,#7c6ce5 52%,#413d74 85%,#695aca 100%);
+            @include border-radius(24px);                
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+            -webkit-backdrop-filter: blur(36px);
+            backdrop-filter: blur(36px);
+            opacity: 0.65;
+            position: absolute;
+            z-index: -1;
+        }
+        .box-icon {
+            width: 75px;
+            height: 75px;
+            flex: none;
+            @include border-radius(50%);
+            position: relative;
+            img {
+                width: 75px;
+                height: 75px;
+                flex: none;
+            }
+            &::before {
+                content: '';
+                width: 73px;
+                height: 73px;
+                flex: none;
+                @include border-radius(50%);
+                position: absolute;
+                top: 2px;
+                left: 1px;
+                z-index: -1;
+            }
+            &.pink {
+                &::before {
+                    box-shadow: -10px -8px 70px rgba(255,107,156,0.65), -2.5px 4px 32px rgba(242,136,210,0.57), inset 13px 13px 20px -6px #FF6B9C, inset 2px -6px 6px #C988FD;
+                }
+            }
+            &.green {
+                &::before {
+                    box-shadow: -5px -5px 80px #05E5AD, -2.5px 4px 39px rgba(97,238,247,0.33), inset 2.5px -6.06111px 6px rgba(5,229,173,0.7);
+                }
+            }
+        }
+        .box-content {
+            margin-top: 20px;
+            h3 {
+                font-size: 20px;
+                font-weight: 700;
+                color: #ffffff;
             }
         }
     }
