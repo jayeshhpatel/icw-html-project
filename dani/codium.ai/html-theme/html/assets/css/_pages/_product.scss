@@ -1204,6 +1204,64 @@ body .row-grid-features {
       margin-right: -0px;
     } 
   }
+  .feature-boxes-block {
+    .feature-grid-box {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      @media (max-width: 1200px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      @media (max-width: 767px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (max-width: 575px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+      .info-card {
+        @include flexbox;
+        @include align-items(center);
+        padding: 20px 20px;
+        background: linear-gradient(0deg, rgba(1, 1, 42, 0.40) 0%, rgba(1, 1, 42, 0.40) 100%), linear-gradient(106deg, rgba(255, 255, 255, 0.40) 3.04%, rgba(255, 255, 255, 0.00) 99.23%);
+        border-radius: 24px;
+        position: relative;
+        z-index: 1;
+        margin-bottom: 0;
+        &::before {
+          content: '';
+          inset: 0;
+          background: radial-gradient(circle at 100% 100%,#01012a 0,#01012a 22px,transparent 22px) 0 0/24px 24px no-repeat,radial-gradient(circle at 0 100%,#01012a 0,#01012a 22px,transparent 22px) 100% 0/24px 24px no-repeat,radial-gradient(circle at 100% 0,#01012a 0,#01012a 22px,transparent 22px) 0 100%/24px 24px no-repeat,radial-gradient(circle at 0 0,#01012a 0,#01012a 22px,transparent 22px) 100% 100%/24px 24px no-repeat,linear-gradient(#01012a,#01012a) 50% 50%/calc(100% - 4px) calc(100% - 48px) no-repeat,linear-gradient(#01012a,#01012a) 50% 50%/calc(100% - 48px) calc(100% - 4px) no-repeat,repeating-linear-gradient(241deg,#bfb5f6 0,rgba(50,50,83,.37) 25%,#7c6ce5 52%,#413d74 85%,#695aca 100%);
+          @include border-radius(24px);                
+          -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+          -webkit-backdrop-filter: blur(36px);
+          backdrop-filter: blur(36px);
+          opacity: 0.75;
+          position: absolute;
+          z-index: -1;
+        }
+        div {
+          line-height: 0.7;
+        }
+        .card-icon {
+          margin-bottom: 0;
+          margin-right: 15px;
+          width: 60px;
+          height: 60px;
+          flex: none;
+          img {
+            max-width: 60px;
+          }
+        }
+        .card-content {
+          h3 {
+            word-break: break-word;
+            text-align: left
+          }
+        }
+      }
+    }
+  }
 }
 
 .cta-flex-card-block {
