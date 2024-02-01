@@ -1412,16 +1412,20 @@ img {
         background: #303245;
         text-align: center;
         padding: 8px 0;
+        overflow-x: hidden;
         & + .header-nav-wrap {
             top: 37px; 
             @media (max-width:767px) {
-                top: 46px;
+                top: 30px;
             }
         }
         .note-text{
             font-weight: 700;
             font-size: 14px; 
             color: $white;
+            white-space: nowrap;
+            padding-right: 15px;
+            animation: marquee-scroll 20s linear infinite;
             span {
                 display: inline-block;
                 font-weight: 300;
@@ -1471,19 +1475,18 @@ img {
         right: 0;
         z-index: 10;
         @include transition(0.3s, ease-in-out);
-        background: rgba(255, 255, 255, 0.01);
-        backdrop-filter: blur(50px);
+        
 
         body:not(.home) & {
             background-color: $white;
         }
 
         &.fixed-header {
-            @include box-shadow(0 2px 4px rgba(0,0,0,.1));
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(50px);
             top: 0;
             background-position: top left;
             z-index: 10;
-            background-color: $white;
             .navbar{
                 padding-top: 5px;
                 padding-bottom: 5px;
@@ -1766,11 +1769,11 @@ img {
         .header-nav-wrap{
             &.fixed-header{
                 .menu-list{
-                    min-height: calc(100vh - 91px);
-                    margin-top: 91px;
+                    min-height: calc(100vh - 56px);
+                    margin-top: 56px;
                     @media (max-width:767px) {
-                        min-height: calc(100vh - 85px);
-                        margin-top: 85px;  
+                        min-height: calc(100vh - 56px);
+                        margin-top: 56px;  
                     }
                 }
             }
