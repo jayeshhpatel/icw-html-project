@@ -148,18 +148,18 @@
                 <h2>Benefits Unveiled by the /review Command</h2>
                 <ul class="number-list">
                     <li><strong>Efficient Evaluation:</strong> Automates the assessment process, enabling reviewers to concentrate on pivotal aspects, saving time and expediting reviews.</li>
-                    <li><strong>Elevated Code Integrity:</strong> Receive specific code recommendations to enrich your PR's caliber and functionality, empowering developers to refine their codebase.</li>
-                    <li><strong>Custom Labels and Compliance Assurance:</strong> Seamlessly integrate custom labels based on code alterations and effortlessly ensure adherence to SOC2 compliance.</li>
+                    <li><strong>Elevated Code Integrity:</strong> Identifies potential security vulnerabilities and advocates for pertinent test additions, fortifying the resilience of your codebase</li>
+                    <li><strong>Enhanced Collaboration:</strong> Encourages transparent communication between contributors and reviewers, streamlining the review process for increased efficacy.</li>
                 </ul>
                 <h2>Initiating the "/review" Journey</h2>
                 <ul class="check-list">
                     <li>Trigger '/review' manually by commenting on your PR, stimulating the tool to conduct automatic analysis and generate feedback. <br><br>For example:
                         <img src="upload/review-content-img1.jpg" alt="Review">
                     </li>
-                    <li>ailor the '/review' tool through the 'pr_reviewer' section in the <a href="#">configuration file</a>, fine-tuning it to suit your unique review requisites and preferences.</li>
+                    <li>Tailor the '/review' tool through the 'pr_reviewer' section in the <a href="https://github.com/Codium-ai/pr-agent/blob/main/pr_agent/settings/configuration.toml#L19" target="_blank">configuration file</a>, fine-tuning it to suit your unique review requisites and preferences.</li>
                 </ul>
                 <h2>What it Covers</h2>
-                <p>The /review command in CodiumAI PR-Agent covers essential aspects of PR assessments, including:</p>
+                <p>The <code>/review</code> command in CodiumAI PR-Agent covers essential aspects of PR assessments, including:</p>
                 <ul class="number-list">
                     <li><strong>Focused Review:</strong> Evaluate if the PR addresses a specific task or change.</li>
                     <li><strong>Testing Coverage:</strong> Checks for the inclusion of necessary tests in the PR.</li>
@@ -172,8 +172,8 @@
                 </ul>
                 <h2>The Output Structure</h2>
                 <img src="upload/review-content-img2.jpg" alt="Review">
-                <h2>Customizing Your Review Experience</h2>
-                <p>The /review tool can also be triggered automatically every time a new PR is opened, an existing PR is reopened, a PR is moved from Draft to Open, and when a review is requested. It can be automated using GitHub App or GitHub Actions. </p>
+                <h2>Automating the /review Command</h2>
+                <p>The /review tool can also be triggered automatically every time a new PR is opened, an existing PR is reopened, a PR is moved from <strong>Draft</strong> to <strong>Open</strong>, and when a review is requested. It can be automated using GitHub App or GitHub Actions.</p>
                 <h2>Customizing Your Review Experience</h2>
                 <ul class="check-list">
                     <li>Customize the behavior of the '/review -i' tool for incremental assessments, controlling thresholds for new comments based on commit count and time elapsed since the last review.</li>
@@ -192,57 +192,28 @@
                             <h3>How does the '/review' command benefit the PR review process?</h3>
                             <div class="title-icon"><img src="upload/arrow-qa.svg" alt="Q"></div>
                         </div>
-                        <p class="answer">Yes, we support almost any programming language.</p>
+                        <p class="answer">The '/review' command streamlines PR reviews by automating analysis, generating structured feedback, and categorizing code changes. It saves time, ensures code quality, and facilitates transparent communication between contributors and reviewers.</p>
                     </li>
                     <li class>
                         <div class="question">
                             <h3>Can I customize the behavior of the '/review' tool to suit my project's needs?</h3>
                             <div class="title-icon"><img src="upload/arrow-qa.svg" alt="Q"></div>
                         </div>
-                        <p class="answer">Using the agent is <b>free</b> for individual developers.</p>
+                        <p class="answer">Yes, definitely! You can customize the '/review' tool through configuration options. Tailor sections like focused PR assessment, code suggestions, security checks, and more to align with your project's specific review requirements.</p>
                     </li>
                     <li class>
                         <div class="question">
                             <h3>Does the '/review' command support incremental assessments for iterative PR updates?</h3>
                             <div class="title-icon"><img src="upload/arrow-qa.svg" alt="Q"></div>
                         </div>
-                        <p class="answer">Yes, in keeping with CodiumAI's commitment to open-source development, pr-agent is open-source and available on <u><a href="https://github.com/Codium-ai/pr-agent" target="_blank">GitHub</a></u>.</p>
+                        <p class="answer">Absolutely! The '/review -i' mode facilitates incremental reviews focusing solely on changes since the last review. Configurable thresholds control when new review comments are generated, offering a streamlined approach for iterative PR updates.</p>
                     </li>
                     <li class>
                         <div class="question">
                             <h3>Can we automate the '/review' command for every new pull request?</h3>
                             <div class="title-icon"><img src="upload/arrow-qa.svg" alt="Q"></div>
                         </div>
-                        <p class="answer">CodiumAI’s pr-agent is already available, just follow the instructions in the README section on the <u><a href="https://github.com/Codium-ai/pr-agent#readme" target="_blank">github repository</a></u> and supercharge your pull-requests</p>
-                    </li>
-                    <li class>
-                        <div class="question">
-                            <h3>Do you store my code?</h3>
-                            <div class="title-icon"><img src="upload/arrow-qa.svg" alt="Q"></div>
-                        </div>
-                        <p class="answer">If you’re deploying the agent by installing pr-agent to your repo, we don’t have any access to your code. If you’re using the 'mention' invocation demo, we use your code to generate the PR review, but we do not store it.</p>
-                    </li>
-                    <li class>
-                        <div class="question">
-                            <h3>Will you train your AI model with my code?</h3>
-                            <div class="title-icon"><img src="upload/arrow-qa.svg" alt="Q"></div>
-                        </div>
-                        <p class="answer">If you’re deploying the agent by installing pr-agent to your repo, we don’t have any access to your code. If you’re using the 'mention' invocation demo, we use your code to generate the PR review, but we do not store it or train our models with your code.
-                        </p>
-                    </li>
-                    <li class>
-                        <div class="question">
-                            <h3>What is the relationship between the pr-agent and CodiumAI's IDE plugin?</h3>
-                            <div class="title-icon"><img src="upload/arrow-qa.svg" alt="Q"></div>
-                        </div>
-                        <p class="answer">The pr-agent and IDE plugin work together in harmony to ensure high-integrity code. The IDE plugin assists developers as they write code, while the pr-agent provides analysis and feedback on pull requests. Our upcoming PrePR feature will allow developers to prepare their PR while developing in the IDE, stay tuned!</p>
-                    </li>
-                    <li class>
-                        <div class="question">
-                            <h3>What’s coming up next?</h3>
-                            <div class="title-icon"><img src="upload/arrow-qa.svg" alt="Q"></div>
-                        </div>
-                        <p class="answer">In the future, the CodiumAI will not only suggest recommendations but also provide the actual code modifications needed to satisfy the recommendations. For example, if currently, the CodiumAI’s-Agent suggests adding tests for the code changes, in the near future, it will also generate the needed tests for you.</p>
+                        <p class="answer">Yes, you can automate the execution of the '/review' command for every new pull request by setting up triggers using GitHub Apps or GitHub Actions. These triggers enable the tool to automatically analyze and provide feedback whenever a new PR is opened, ensuring consistent and prompt assessments without manual intervention.</p>
                     </li>
                 </ul>
                 <div class="more-qa-btn">
