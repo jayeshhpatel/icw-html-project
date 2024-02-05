@@ -238,8 +238,16 @@ jQuery(document).ready(function($) {
             slidesToScroll: 1,
             responsive: [
                 {
-                    breakpoint: 768,
+                    breakpoint: 1200,                    
                     settings: {
+                        slidesToShow: 2,
+                    }
+                },
+                {
+                    breakpoint: 767,                    
+                    settings: {
+                        slidesToShow: 1,
+                        variableWidth: true,
                         arrows: false,
                     }
                 }
