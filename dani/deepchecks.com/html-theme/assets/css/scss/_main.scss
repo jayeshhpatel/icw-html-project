@@ -9177,9 +9177,6 @@ body .icw-gallery-imgs {
     }
     .main-title,
     .image-block {
-        img {
-            width: 100%;
-        }
         @media (max-width:767px) {
             text-align: center !important;
         }
@@ -9188,6 +9185,8 @@ body .icw-gallery-imgs {
         position: relative;
         img {
             width: 100%;
+            max-width: 970px;
+            margin: 0 auto;
         }
         .image-block {
             @media (max-width:575px) {
@@ -9400,22 +9399,37 @@ body .icw-gallery-imgs {
 }
 
 .progress-grid-slider-block {
+    margin-top: 50px;
     .progress-grid-slider {
+        margin-top: 30px;
         .slick-list{
             @include border-radius(30px);   
+            margin-left: -15px;
+            margin-right: -15px;
             // @include flexbox;
             overflow: unset;
             @media (max-width:575px) {
-                @include border-radius(0);
-                margin-left: -15px;
-                margin-right: -15px;
+                @include border-radius(0);                
+            }
+        }
+        .slick-track {
+            @include flexbox;
+            .slick-slide {
+                height: inherit;
+                padding: 15px 15px 30px;
+                &.slick-current {
+                    .features-card {
+                        @include box-shadow(0px 15px 40px -15px rgba(123, 140, 149, 0.45));
+                    }
+                }
             }
         }
         .slick-arrow {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             z-index: 1;
             @include transition(0.3s, ease-in-out);
+            top: -160px;
             @media (max-width:991px) {
                 width: 30px;
                 height: 30px;
@@ -9433,28 +9447,23 @@ body .icw-gallery-imgs {
                 bottom: 0;
                 width: 100%;
                 height: 100%;
-                background: url("data:image/svg+xml; utf8,<svg width='36' height='36' viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M18 12L12 18M12 18L18 24M12 18H24M33 18C33 26.2843 26.2843 33 18 33C9.71573 33 3 26.2843 3 18C3 9.71573 9.71573 3 18 3C26.2843 3 33 9.71573 33 18Z' stroke='#9D60FB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat center center;
+                background: url("data:image/svg+xml; utf8,<svg width='36' height='36' viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M18 12L12 18M12 18L18 24M12 18H24M33 18C33 26.2843 26.2843 33 18 33C9.71573 33 3 26.2843 3 18C3 9.71573 9.71573 3 18 3C26.2843 3 33 9.71573 33 18Z' stroke='rgb(157 96 251)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat center center;
                 background-size: contain;
 
             }
 
             &.slick-prev {
-                left: -50px;
-                &::before {
-                    @include transform(rotate(180deg));
-                }
-                @media (min-width:1699px) {
-                    left: -70px;
-                }
+                left: auto;
+                right: 50px; 
                 @media (max-width:991px) {
                     left: -35px;
                 }
             }
 
             &.slick-next {
-                right: -50px;
-                @media (min-width:1699px) {
-                    right: -70px;
+                right: 0px;
+                &::before {
+                    @include transform(rotate(180deg));
                 }
                 @media (max-width:991px) {
                     right: -35px;
@@ -9463,26 +9472,33 @@ body .icw-gallery-imgs {
         }
     }
     .progress-bar-block {
-        margin-bottom: 50px;
-        @include flexbox();
+        .progress {
+            display: block;
+            width: 100%;
+            height: 10px;
+            border-radius: 10px;
+            overflow: hidden;            
+            background-color: #EAE9F3;
+            background-image: linear-gradient(to right, #9D60FB, #9D60FB);
+            background-repeat: no-repeat;
+            background-size: 16.66% 100%;
+            
+            transition: background-size .4s ease-in-out;
+        }
+    }
+    .slide-labels {
+        @include flexbox;
         @include align-items(center);
         @include justify-content(space-between);
-        @media (max-width:991px) {
-            margin-bottom: 30px;
-        }
-        .item{
-            width: 100%;
-            cursor: pointer;
-        }
-        .progressBar {
-            width: 100%;
-            height: 8px;
-            background-color: #E8E9EB;
+        margin-top: 20px;
+        span {
             display: block;
-            .inProgress {
-                background-color: $purple;
-                width: 0%;
-                height: 8px;
+            font-size: 16px;
+            color: #000000;
+            font-weight: 600;
+            cursor: pointer;
+            &.active {
+                color: #9D60FB;
             }
         }
     }
@@ -9493,13 +9509,20 @@ body .icw-gallery-imgs {
     @include box-shadow(0px 15px 50px -20px rgba(123, 140, 149, 0.25));
     @include border-radius(30px);
     padding: 8px;
-    margin: 15px 15px 30px;
     @include transition(0.3s, ease-in-out);
+    max-width: 470px;
+    @include flexbox;
+    @include flex-direction(column);
+    height: 100%;
     &:hover, &:focus {
         @include box-shadow(0px 15px 40px -15px rgba(123, 140, 149, 0.45));
     }
     .features-info {
         padding: 25px;
+        @include flexbox;
+        @include flex-direction(column);
+        @include align-items(flex-start);
+        height: 100%;
         h3 {
             font-size: 24px;
             font-weight: 600;
@@ -9508,6 +9531,7 @@ body .icw-gallery-imgs {
         .sort-info {
             font-size: 18px;
             font-weight: 500;
+            flex: 1 1 auto;
         }
         .btn-line-arrow {
             margin-top: 20px;

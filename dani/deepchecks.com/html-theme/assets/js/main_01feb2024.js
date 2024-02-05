@@ -227,50 +227,6 @@ jQuery(document).ready(function($) {
 
     }
 
-    if($('.progress-grid-slider').length) {
-        $('.progress-grid-slider').slick({
-            infinite: false,
-            dots: false,
-            autoplay: false,
-            speed: 800,
-            arrows: true,
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            responsive: [
-                {
-                    breakpoint: 768,
-                    settings: {
-                        arrows: false,
-                    }
-                }
-            ]
-        });
-        
-        var $slider = $('.progress-grid-slider');
-        var $progressBar = $('.progress');        
-       
-        $slider.on('beforeChange', function(event, slick, currentSlide, nextSlide) {   
-            var calc = ( (nextSlide) / (slick.slideCount) ) * 100;
-            
-            $progressBar.css('background-size', calc + '% 100%').attr('aria-valuenow', calc );
-            var currentLabel =  (nextSlide ? nextSlide : 0);
-            $('.slide-labels span').removeClass('active');
-            $('.slide-labels span[data-slide = "'+ currentLabel +'"]').addClass('active');
-            
-        });
-        
-        $('.slide-labels span').click(function(e) {
-            e.preventDefault();
-            var slideno = $(this).data('slide');
-            $('.slide-labels span').removeClass('active');
-            $(this).addClass('active');
-            $('.progress-grid-slider').slick('slickGoTo', slideno);
-            $
-        });
-
-       
-    } 
-
     if($('.progress-tab-slider').length) {
         $('.progress-tab-slider').slick({
             infinite: true,
@@ -283,7 +239,7 @@ jQuery(document).ready(function($) {
             accessibility: false
         });
         
-        var percentTimej;
+    var percentTimej;
         var tickj;
         var timej = .1;
         var progressBarIndexj = 0;
@@ -302,7 +258,8 @@ jQuery(document).ready(function($) {
             $('.progress-tab-slider-section .item-code').slideUp();
         }
 
-        function intervalj() {            
+        function intervalj() {
+            
             if (($('.progress-tab-slider .slick-track div[data-slick-index="' + progressBarIndexj + '"]').attr("aria-hidden")) === "true") {
                 progressBarIndexj = $('.progress-tab-slider .slick-track div[aria-hidden="false"]').data("slickIndex");
                 startProgressbarj();
