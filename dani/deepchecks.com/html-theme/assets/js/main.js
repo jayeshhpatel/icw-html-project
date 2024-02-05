@@ -227,8 +227,8 @@ jQuery(document).ready(function($) {
 
     }
 
-    if($('.progress-gird-slider').length) {
-        $('.progress-gird-slider').slick({
+    if($('.progress-grid-slider').length) {
+        $('.progress-grid-slider').slick({
             infinite: true,
             dots: false,
             autoplay: false,
@@ -246,7 +246,7 @@ jQuery(document).ready(function($) {
             ]
         });
         
-    var percentTime;
+        var percentTime;
         var tick;
         var time = .1;
         var progressBarIndex = 0;
@@ -272,7 +272,7 @@ jQuery(document).ready(function($) {
                     width: percentTime + "%"
                 });
                 if (percentTime >= 100) {
-                    $('.progress-grid-slider-block .single-item').slick('slickNext');
+                    $('.progress-grid-slider-block .grid-item').slick('slickNext');
                     progressBarIndex++;
                     if (progressBarIndex > 2) {
                         progressBarIndex = 0;
@@ -293,7 +293,7 @@ jQuery(document).ready(function($) {
         $('.progress-grid-slider-block .progress-bar-block .item').click(function () {
             clearInterval(tick);
             var goToThisIndex = $(this).find("span").data("slickIndex");
-            $('.progress-grid-slider-block .single-item').slick('slickGoTo', goToThisIndex, false);
+            $('.progress-grid-slider-block .grid-item').slick('slickGoTo', goToThisIndex, false);
             startProgressbar();
         });
 

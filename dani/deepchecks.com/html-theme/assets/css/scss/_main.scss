@@ -1653,6 +1653,7 @@ img {
             @include flexbox();
             @include align-items(center);            
             @include box-shadow(0px 6px 30px rgba(75, 83, 98, 0.12));
+            @include transition(0.3s, ease-in-out);
         }
         &:hover {
             .btn-icon {
@@ -2253,6 +2254,7 @@ img {
     @media (max-width:767px) {
         padding: 50px 0 0px;
         background: url(../images/hero-bg-m.png) no-repeat top center;
+        background-size: 100% 100%;
     }
     .main-title {
         .tag-line {
@@ -2985,7 +2987,7 @@ img {
 
 // logo slider 
 .logo-slider-section {
-    padding: 50px 0 !important;
+    padding: 50px 0;
     .action-btn {
         margin-top: 50px;
         text-align: center;
@@ -7564,8 +7566,7 @@ body .icw-gallery-imgs {
         background: url(../images/hero-bg-m.png) no-repeat top center;
     }
     .outside-right {
-        left: 50%;
-        @include transform(translateX(-50%))
+        right: -10%;
     }
     .main-title{
         @media (min-width:768px) {
@@ -9399,23 +9400,15 @@ body .icw-gallery-imgs {
 }
 
 .progress-grid-slider-block {
-    .progress-slider {
+    .progress-grid-slider {
         .slick-list{
-            @include border-radius(20px);   
-            box-shadow: 0px 8px 50px rgba(114, 118, 133, 0.25);
+            @include border-radius(30px);   
+            // @include flexbox;
+            overflow: unset;
             @media (max-width:575px) {
                 @include border-radius(0);
                 margin-left: -15px;
                 margin-right: -15px;
-            }
-        }
-        .slider-image {
-            @include border-radius(20px);
-            @media (max-width:575px) {
-                @include border-radius(0);
-            }
-            img {
-                width: 100%;
             }
         }
         .slick-arrow {
@@ -9440,7 +9433,7 @@ body .icw-gallery-imgs {
                 bottom: 0;
                 width: 100%;
                 height: 100%;
-                background: url("data:image/svg+xml; utf8,<svg width='30' height='52' viewBox='0 0 30 52' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M3.33203 2.66602L26.6654 25.9994L3.33203 49.3327' stroke='rgb(222 223 224)' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat center center;
+                background: url("data:image/svg+xml; utf8,<svg width='36' height='36' viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M18 12L12 18M12 18L18 24M12 18H24M33 18C33 26.2843 26.2843 33 18 33C9.71573 33 3 26.2843 3 18C3 9.71573 9.71573 3 18 3C26.2843 3 33 9.71573 33 18Z' stroke='#9D60FB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat center center;
                 background-size: contain;
 
             }
@@ -9474,19 +9467,15 @@ body .icw-gallery-imgs {
         @include flexbox();
         @include align-items(center);
         @include justify-content(space-between);
-        margin-left: -10px;
-        margin-right: -10px;
         @media (max-width:991px) {
             margin-bottom: 30px;
         }
         .item{
             width: 100%;
-            margin: 0 10px;
             cursor: pointer;
         }
         .progressBar {
             width: 100%;
-            @include border-radius(10px);
             height: 8px;
             background-color: #E8E9EB;
             display: block;
@@ -9494,17 +9483,39 @@ body .icw-gallery-imgs {
                 background-color: $purple;
                 width: 0%;
                 height: 8px;
-                @include border-radius(10px);
             }
         }
     }
 }
-.component-content {
-    text-align: center;
-    .component-info {
+.features-card {
+    text-align: left;
+    background: $white;
+    @include box-shadow(0px 15px 50px -20px rgba(123, 140, 149, 0.25));
+    @include border-radius(30px);
+    padding: 8px;
+    margin: 15px 15px 30px;
+    @include transition(0.3s, ease-in-out);
+    &:hover, &:focus {
+        @include box-shadow(0px 15px 40px -15px rgba(123, 140, 149, 0.45));
+    }
+    .features-info {
+        padding: 25px;
         h3 {
-
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
         }
+        .sort-info {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .btn-line-arrow {
+            margin-top: 20px;
+            display: inline-block;
+        }
+    }
+    .features-img {
+        @include border-radius(0px 0px 22px 22px);
     }
 }
 
