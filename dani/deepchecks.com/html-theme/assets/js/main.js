@@ -236,12 +236,12 @@ jQuery(document).ready(function($) {
             arrows: true,
             slidesToShow: 3,
             slidesToScroll: 1,
-            asNavFor: '.slide-labels',
+            variableWidth: true,
             responsive: [
                 {
                     breakpoint: 1200,                    
                     settings: {
-                        slidesToShow: 2,
+                        slidesToShow: 3,
                     }
                 },
                 {
@@ -254,6 +254,7 @@ jQuery(document).ready(function($) {
                 }
             ]
         });
+        /*
         $('.slide-labels').slick({
             slidesToShow: 6,
             slidesToScroll: 1,
@@ -263,6 +264,14 @@ jQuery(document).ready(function($) {
             infinite: false,
             focusOnSelect: true,
             variableWidth: true
+        });
+        */
+        $('a[data-slide]').click(function(e) {
+            e.preventDefault();
+            var slideno = $(this).data('slide');
+            $('a[data-slide]').removeClass('active');
+            $(this).addClass('active');
+            $('.progress-grid-slider').slick('slickGoTo', slideno - 1);
         });
         
         function barAndCounter(index = 0) {

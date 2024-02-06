@@ -868,7 +868,7 @@ img {
     }
 }
 
-@media (min-width: 1320px) {
+@media (min-width: 1441px) {
     .container, .container-lg, .container-md, .container-sm, .container-xl {
         max-width: 1305px;
     }
@@ -1338,18 +1338,30 @@ img {
     }
     
     h1, .h1-title {
-        font-size: 72px;
+        font-size: 56px;
         font-weight: 800;
         margin-bottom: 20px;
         letter-spacing: -0.02em;
         @media (max-width:1200px) {
-            font-size: 56px;
+            font-size: 48px;
         }
         @media (max-width:767px) {
             font-size: 36px;
         }
         @media (max-width:375px) {
             font-size: 30px;
+        }
+        &.h1-lg {
+            font-size: 72px;
+            @media (max-width:1200px) {
+                font-size: 56px;
+            }
+            @media (max-width:767px) {
+                font-size: 36px;
+            }
+            @media (max-width:375px) {
+                font-size: 30px;
+            }
         }
     }
     h2, .h2-title {
@@ -1400,7 +1412,8 @@ img {
         font-weight: 800;
         font-size: 20px;
         color: $purple;
-        margin-bottom: 15px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
         display: block;
     }
     ul {  
@@ -3158,7 +3171,7 @@ img {
         padding: 40px 0;
     }
     .btn {
-        margin-top: 35px;
+        margin-top: 30px;
     }
     .inner-content{
         @include border-radius(50px);
@@ -3168,6 +3181,13 @@ img {
         position: relative;
         overflow: hidden;
         z-index: 1;
+        h2 {
+            margin-bottom: 30px;
+        }
+        .sub-title {
+            color: #ffffff;
+            font-weight: 500;
+        }
     }
     .slack-logo{
         max-width: 330px;
@@ -3535,14 +3555,14 @@ img {
     }
     .card {
         background: #FFFFFF;
-        box-shadow: 41.886px 40.1194px 80px rgba(63, 69, 82, 0.02), 27.1483px 26.0033px 46.8519px rgba(63, 69, 82, 0.0151852), 16.1339px 15.4534px 25.4815px rgba(63, 69, 82, 0.0121481), 8.3772px 8.02387px 13px rgba(63, 69, 82, 0.01), 3.41293px 3.26899px 6.51852px rgba(63, 69, 82, 0.00785185), 0.775666px 0.742951px 3.14815px rgba(63, 69, 82, 0.00481481);
+        box-shadow: 0 0 10px rgba(0,0,0,0.08);
         @include border-radius(30px);
         border: none;
         @include transition(0.3s, ease-in-out);
 
         &:hover, &:focus {
-            @include box-shadow(0 0 20px rgba(157,96,251,0.30));
-            @include transform (translateY(-10px));
+            @include box-shadow(0px 4px 30px -10px rgba(115,130,148,0.55));
+            // @include transform (translateY(-10px));
         }
 
         .card-body {
@@ -4506,7 +4526,7 @@ body {
         @include transition(0.3s, ease-in-out);
         position: relative;
         &:hover, &:focus {
-            @include box-shadow(0px 4px 30px -10px rgba(115, 130, 148, 0.35));
+            @include box-shadow(0px 4px 30px -10px rgba(115, 130, 148, 0.55));
         }
 
         .post-thumb-img {
@@ -4611,7 +4631,7 @@ body {
     }
 
     &:hover, &:focus {
-        @include box-shadow(0px 4px 30px -10px rgba(115, 130, 148, 0.35));
+        @include box-shadow(0px 4px 30px -10px rgba(115, 130, 148, 0.55));
         // @include transform (translateY(-10px));
     }
 
@@ -7082,12 +7102,24 @@ body .icw-gallery-imgs {
         }
     }
 }
+.half-bg-gray {
+    background: #F4F5F7 !important;
+    position: relative;
+    z-index: 1;
+    &::after {
+        content: '';
+        background: $white;
+        width: 100%;
+        height: 50%;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+    }
+}
 .img-content-section{
     position: relative;
-    padding: 100px 0;
-    @media (max-width:991px) {
-        padding:50px 0;
-    }
     @media (max-width:991px) {
         background-color: #F4F5F7;
         margin-bottom: 150px;
@@ -7760,7 +7792,7 @@ body .icw-gallery-imgs {
 .service-section{
     z-index: 1;
     position: relative;
-    padding: 100px 0;
+    // padding: 100px 0;
     &.bg-shape-2{
         &::before{
             display: none;
@@ -7769,20 +7801,20 @@ body .icw-gallery-imgs {
     .main-title {
         margin-bottom: 50px;
         text-align: center;
-        @media (min-width: 1200px){
-            h2{
-                font-size: 40px;
-            }
-        }
-        @media (max-width:767px) {
-            margin-bottom: 30px;
-            h2{
-                font-size: 24px;
-            }
-            br{
-                display: none;
-            }
-        }
+        // @media (min-width: 1200px){
+        //     h2{
+        //         font-size: 40px;
+        //     }
+        // }
+        // @media (max-width:767px) {
+        //     margin-bottom: 30px;
+        //     h2{
+        //         font-size: 24px;
+        //     }
+        //     br{
+        //         display: none;
+        //     }
+        // }
         .sort-info {
             margin-top: 25px;
             &.mw-970 {
@@ -7791,9 +7823,9 @@ body .icw-gallery-imgs {
             }
         }
     }
-    @media (max-width:991px) {
-        padding: 50px 0;
-    }
+    // @media (max-width:991px) {
+    //     padding: 50px 0;
+    // }
     .col-md-6{
         @media(max-width:767px){
             margin-bottom: 40px;
@@ -7814,7 +7846,7 @@ body .icw-gallery-imgs {
             }
         }
         img{
-            max-height: 85px;
+            max-height: 100px;
         }
         @media (max-width:767px) {
             margin-bottom: 15px;
@@ -7822,14 +7854,14 @@ body .icw-gallery-imgs {
     }
     h3{
         font-size: 24px;
-        font-weight: 600;
+        font-weight: 800;
         margin-bottom: 20px;
-        @media (min-width:992px) {
-            min-height: 60px;
-            &.title-h-auto {
-                min-height: inherit; 
-            }
-        }
+        // @media (min-width:992px) {
+        //     min-height: 60px;
+        //     &.title-h-auto {
+        //         min-height: inherit; 
+        //     }
+        // }
         @media (max-width:767px) {
             font-size: 20px;
             margin-bottom: 15px;
@@ -7845,6 +7877,11 @@ body .icw-gallery-imgs {
             color: $bodyfontcolor;
             font-family: 'Inter', sans-serif;
         }
+    }
+    .sort-info {        
+        font-size: 20px;
+        font-weight: 500;
+        color: #303245;
     }
 }
 
@@ -9509,6 +9546,7 @@ body .icw-gallery-imgs {
             .slick-slide {
                 height: inherit;
                 padding: 15px 15px 30px;
+                max-width: 470px;
                 @media (max-width:767px) {
                     padding: 5px 5px 15px;
                 }
@@ -9585,25 +9623,24 @@ body .icw-gallery-imgs {
         }
     }
     .slide-labels {
-       
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
         margin-top: 20px;
         width: 100%;
         @media (max-width:991px) {
            overflow: hidden;
            overflow-x: auto;
         }
-        .slick-list {
-            width: 100%;
-        }
-        .slick-track {
-            left: 0 !important;
-            width: 100% !important;
-            @include flexbox;
-            @include align-items(center);
-            @include justify-content(space-between);
-            @include transform(unset !important);
-            overflow-x: auto;
-        }
+        // .slick-list {
+        //     width: 100%;
+        // }
+        // .slick-track {
+        //     left: 0 !important;
+        //     width: 100% !important;
+            
+        //     @include transform(unset !important);
+        //     overflow-x: auto;
+        // }
         .slide-label {
             display: block;
             font-size: 16px;
@@ -9618,7 +9655,7 @@ body .icw-gallery-imgs {
             &:last-child {
                 margin-right: 0;
             }
-            &.slick-current {
+            &.active, &:hover, &:focus {
                 color: #9D60FB;
             }
         }
@@ -9639,6 +9676,9 @@ body .icw-gallery-imgs {
     &:hover, &:focus {
         @include box-shadow(0px 15px 40px -15px rgba(123, 140, 149, 0.45));
     }
+    @media (max-width: 1200px) {
+        max-width: 380px;
+    }
     @media (max-width:767px) {
         border: 1px solid #E8E8E8;
         padding: 0;
@@ -9647,7 +9687,7 @@ body .icw-gallery-imgs {
         @include border-radius(20px);
     }
     .features-info {
-        padding: 25px;
+        padding: 25px 18px;
         @include flexbox;
         @include flex-direction(column);
         @include align-items(flex-start);
