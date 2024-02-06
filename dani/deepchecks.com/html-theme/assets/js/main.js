@@ -174,7 +174,7 @@ jQuery(document).ready(function($) {
             ]
         });
         
-    var percentTime;
+        var percentTime;
         var tick;
         var time = .1;
         var progressBarIndex = 0;
@@ -236,6 +236,7 @@ jQuery(document).ready(function($) {
             arrows: true,
             slidesToShow: 3,
             slidesToScroll: 1,
+            asNavFor: '.slide-labels',
             responsive: [
                 {
                     breakpoint: 1200,                    
@@ -253,29 +254,42 @@ jQuery(document).ready(function($) {
                 }
             ]
         });
-        
-        var $slider = $('.progress-grid-slider');
-        var $progressBar = $('.progress');        
-       
-        $slider.on('beforeChange', function(event, slick, currentSlide, nextSlide) {   
-            var calc = ( (nextSlide) / (slick.slideCount) ) * 100;
-            
-            $progressBar.css('background-size', calc + '% 100%').attr('aria-valuenow', calc );
-            var currentLabel =  (nextSlide ? nextSlide : 0);
-            $('.slide-labels span').removeClass('active');
-            $('.slide-labels span[data-slide = "'+ currentLabel +'"]').addClass('active');
-            
+        $('.slide-labels').slick({
+            slidesToShow: 6,
+            slidesToScroll: 1,
+            asNavFor: '.progress-grid-slider',
+            dots: false,
+            arrows: false,
+            infinite: false,
+            focusOnSelect: true,
+            variableWidth: true
         });
         
-        $('.slide-labels span').click(function(e) {
-            e.preventDefault();
-            var slideno = $(this).data('slide');
-            $('.slide-labels span').removeClass('active');
-            $(this).addClass('active');
-            $('.progress-grid-slider').slick('slickGoTo', slideno);
-            $
+        function barAndCounter(index = 0) {
+            //bar
+            var progressBar = $('.progress-bar__inner');
+            var itemWidth = 100 / $('.slide-labels .slide-label').length;           
+            var progress = (index + 1) * itemWidth;
+            progressBar.css('width', progress + '%');
+           
+        }
+        // Will be triggered on page load
+        barAndCounter();
+        // Will be triggered on slider click
+        $('.slide-labels .slide-label').on('click', function() {
+            var index = $(this).index();
+            barAndCounter(index);
         });
-
+        var currentSlide = 0;
+        var numSlides = $('.slide-content').length;
+        $('.slick-prev').on('click', function() {
+            currentSlide = (currentSlide - 1 + numSlides) % numSlides;
+            barAndCounter(currentSlide);
+        });
+        $('.slick-next').on('click', function() {
+            currentSlide = (currentSlide + 1) % numSlides;
+            barAndCounter(currentSlide);
+        });
        
     } 
 
