@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>LLM Evaluation | Deepchecks</title>
+        <meta name="theme-color" content="#1e0052">
+        <meta charset="utf-8">
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name='robots' content='noindex, nofollow' />
+        <meta name="description" content="Continuous validation for LLMs &amp; AI. Validate and monitor your data and models during training, production and new version releases." class="yoast-seo-meta-tag" />
+    
+        <link rel='stylesheet' id='style-main-css' href='assets/css/main.css' type='text/css' media='screen' />        
+        <script type="text/javascript" src="assets/js/jquery.min.js" id="jquery-core-js"></script>
+        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script> 
+        <link href="//cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+
+        <link rel="icon" href="assets/favicons/favicon.png" sizes="32x32">
+        <link rel="icon" href="assets/favicons/apple-touch-icon.png" sizes="192x192">
+        <link rel="shortcut icon" href="assets/favicons/favicon.ico">
+        <link rel="icon" href="upload/cropped-favicon-150x150.png" sizes="32x32" />
+        <link rel="icon" href="upload/cropped-favicon-300x300.png" sizes="192x192" />
+        <link rel="apple-touch-icon" href="upload/cropped-favicon-300x300.png" />
+        <meta name="msapplication-TileImage" content="upload/cropped-favicon-300x300.png" />    
+    </head>
+    <body>
+        <main class="main-content-wrapper">
+            <section class="html-section">
+                <div class="container">
+                    <style>
+                        .my-slider-progress {
+  background: #ccc;
+}
+.splide__slide--clone {
+    visibility: hidden;
+}
+.splide__slide--clone.visible {
+    visibility: visible;
+}
+.splide__track {
+    overflow: unset;
+}
+
+.my-slider-progress-bar {
+  background: greenyellow;
+  height: 8px;
+  transition: width 400ms ease;
+  width: 0;
+}
+                       .thumbnails {
+  display: flex;
+  margin: 1rem auto 0;
+  padding: 0;
+  justify-content: center;
+}
+
+
+.thumbnail {
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  list-style: none;
+  margin: 0 0.2rem;
+  cursor: pointer;
+}
+
+
+.thumbnail img {
+  width: 100%;
+  height: auto;
+}
+                      </style>
+                      
+                      <section id="main-carousel" class="splide" aria-label="My Awesome Gallery">
+                         <!-- Add the progress bar element -->
+                         <div class="my-slider-progress">
+                            <div class="my-slider-progress-bar"></div>
+                          </div>
+                          <ul id="thumbnails" class="thumbnails">
+                            <li class="thumbnail">
+                                <img src="upload/blogpost-img1.jpg" alt="">
+                            </li>
+                            <li class="thumbnail">
+                                <img src="upload/blogpost-img2.jpg" alt="">
+                            </li>
+                            <li class="thumbnail">
+                                <img src="upload/blogpost-img3.jpg" alt="">
+                            </li>
+                            <li class="thumbnail">
+                                <img src="upload/event-img1.png" alt="">
+                            </li>
+                            <li class="thumbnail">
+                                <img src="upload/event-img2.png" alt="">
+                            </li>
+                            <li class="thumbnail">
+                                <img src="upload/event-img3.png" alt="">
+                            </li>
+                          </ul>
+                           
+                        <div class="splide__track">
+                          <ul class="splide__list">
+                            <li class="splide__slide">
+                              <img src="upload/blogpost-img1.jpg" alt="">
+                            </li>
+                            <li class="splide__slide">
+                              <img src="upload/blogpost-img2.jpg" alt="">
+                            </li>
+                            <li class="splide__slide">
+                              <img src="upload/blogpost-img3.jpg" alt="">
+                            </li>
+                            <li class="splide__slide">
+                              <img src="upload/event-img1.png" alt="">
+                            </li>
+                            <li class="splide__slide">
+                              <img src="upload/event-img2.png" alt="">
+                            </li>
+                            <li class="splide__slide">
+                              <img src="upload/event-img3.png" alt="">
+                            </li>
+                          </ul>
+                        </div>
+                      </section>
+                      
+                      
+                      </div>
+                      
+                     
+                </div>
+            </section>
+        </main>
+        <script type="text/javascript" src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+        <script>
+            var splide = new Splide( '.splide', {
+                perPage: 3,
+                perMove: 1,
+                type   : 'loop',
+                "trimSpace": false,
+                "updateOnMove": true,
+            } );
+
+            var thumbnails = document.getElementsByClassName( 'thumbnail' );
+            var current;
+
+            for ( var i = 0; i < thumbnails.length; i++ ) {
+                initThumbnail( thumbnails[ i ], i );
+            }
+            function initThumbnail( thumbnail, index ) {
+                thumbnail.addEventListener( 'click', function () {
+                    splide.go( index );
+                } );
+            }
+            var bar    = splide.root.querySelector( '.my-slider-progress-bar' );
+
+            // Updates the bar width whenever the carousel moves:
+            splide.on( 'mounted move', function () {
+                var cloneslide = document.getElementsByClassName('splide__slide--clone');
+                console.log(cloneslide);
+                // cloneslide.classList.add( 'someClass' );
+            } );
+            
+            splide.on( 'mounted move', function () {
+                var thumbnail = thumbnails[ splide.index ];
+                if ( thumbnail ) {
+                    if ( current ) {
+                    current.classList.remove( 'is-active' );
+                    }
+                    thumbnail.classList.add( 'is-active' );
+                    current = thumbnail;
+                }
+                var end  = splide.Components.Controller.getEnd() + 1;
+                var rate = Math.min( ( splide.index + 1 ) / end, 1 );
+                bar.style.width = String( 100 * rate ) + '%';
+                
+            } );
+
+
+            splide.mount();
+            
+            
+            
+          </script>
+    </body>
+</html>

@@ -229,14 +229,13 @@ jQuery(document).ready(function($) {
 
     if($('.progress-grid-slider').length) {
         $('.progress-grid-slider').slick({
-            infinite: false,
+            infinite: true,
             dots: false,
-            autoplay: false,
+            autoplay: true,
             speed: 800,
             arrows: true,
             slidesToShow: 3,
             slidesToScroll: 1,
-            touchMove: false,
             variableWidth: true,
             responsive: [
                 {
@@ -255,43 +254,61 @@ jQuery(document).ready(function($) {
                 }
             ]
         });
-        $('a.slide-label').click(function(e) {
-            e.preventDefault();
-            var slideno = $(this).data('slide');
-            $('a.slide-label').removeClass('active');
-            $(this).addClass('active');
-            $('.progress-grid-slider').slick('slickGoTo', slideno);
-            barAndCounter(slideno);
-        });
         
-        function barAndCounter(index = 0) {
-            //bar
-            var progressBar = $('.progress-bar__inner');
-            var itemWidth = 100 / $('.slide-labels .slide-label').length;           
-            var progress = (index + 1) * itemWidth;
-            progressBar.css('width', progress + '%');
-           
+        var percentTime;
+        var tick;
+        var time = .1;
+        var progressBarIndex = 0;
+
+        $('.progress-grid-slider-block .progress-bar-block .progressBar').each(function(index) {
+            var progress = "<div class='inProgress inProgress" + index + "'></div>";
+            $(this).html(progress);
+            $('.slide-label').removeClass('active');
+            $('.slide-label[data-slide="'+ index +'"]').addClass('active');
+        });
+
+        function startProgressbar() {
+            resetProgressbar();
+            percentTime = 0;
+            tick = setInterval(interval, 1);
         }
-        // Will be triggered on page load
-        barAndCounter();    
-       
-        var currentSlide = 0;
-        var numSlides = $('.slide-content').length;
-        $('.slick-prev').on('click', function() {
-            currentSlide = (currentSlide - 1 + numSlides) % numSlides;
-            console.log(currentSlide);
-            $('a.slide-label').removeClass('active');
-            $('a[data-slide="'+ currentSlide +'"]').addClass('active');
-            barAndCounter(currentSlide);
-        });
-        $('.slick-next').on('click', function() {
-            currentSlide = (currentSlide + 1) % numSlides;
-            console.log(currentSlide);
-            $('a.slide-label').removeClass('active');
-            $('a[data-slide="'+ currentSlide +'"]').addClass('active');
-            barAndCounter(currentSlide);
-        });
-       
+
+        function interval() {
+            if (($('.progress-grid-slider-block .slick-track div[data-slick-index="' + progressBarIndex + '"]').attr("aria-hidden")) === "true") {
+                progressBarIndex = $('.progress-grid-slider-block .slick-track div[aria-hidden="false"]').data("slickIndex");
+                startProgressbar();
+            } else {
+                percentTime += 1 / (time + 5);
+                $('.progress-grid-slider-block .inProgress' + progressBarIndex).css({
+                    width: percentTime + "%"
+                });
+                $('.slide-label').removeClass('active');
+                $('.slide-label[data-slide="'+ progressBarIndex +'"]').addClass('active');
+                if (percentTime >= 100) {
+                    $('.progress-grid-slider-block .single-item').slick('slickNext');
+                    progressBarIndex++;
+                    if (progressBarIndex > 2) {
+                        progressBarIndex = 0;
+                    }
+                    startProgressbar();
+                }
+            }
+        }
+
+        function resetProgressbar() {
+            $('.progress-grid-slider-block .inProgress').css({
+                width: 0 + '%'
+            });
+            clearInterval(tick);
+        }
+        startProgressbar();
+
+        $('.progress-grid-slider-block .progress-bar-block .item').click(function () {
+            clearInterval(tick);
+            var goToThisIndex = $(this).find("span").data("slickIndex");
+            $('.progress-grid-slider-block .progress-grid-slider').slick('slickGoTo', goToThisIndex, false);
+            startProgressbar();
+        }); 
     } 
 
     if($('.progress-tab-slider').length) {

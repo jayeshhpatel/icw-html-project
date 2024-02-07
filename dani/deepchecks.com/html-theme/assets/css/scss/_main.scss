@@ -9530,12 +9530,10 @@ body .icw-gallery-imgs {
         }        
     }
 }
-
 .progress-grid-slider-block {
-    margin-top: 50px;
     .progress-grid-slider {
         margin-top: 30px;
-        .slick-list{
+        .slick-list {
             @include border-radius(30px);   
             margin-left: -15px;
             margin-right: -15px;
@@ -9590,6 +9588,10 @@ body .icw-gallery-imgs {
 
             }
 
+            &.slick-disabled {
+                pointer-events: none;
+            }
+
             &.slick-prev {
                 left: auto;
                 right: 50px; 
@@ -9610,41 +9612,44 @@ body .icw-gallery-imgs {
         }
     }
     .progress-bar-block {
-        .progress {
+        margin-top: 50px;
+        @include flexbox();
+        @include align-items(center);
+        @include justify-content(space-between);
+        @include border-radius(10px);
+        background-color: #E8E9EB;
+        @media (max-width:991px) {
+            margin-bottom: 30px;
+        }
+        .item{
             width: 100%;
-            height: 8px;
-            background: #EAE9F3;
-            position: relative;
+            margin: 0 4px;
+            cursor: pointer;
+            &:first-child {
+                margin-left: 0;
+            }
+            &:last-child {
+                margin-right: 0;
+            }
         }
-        .progress-bar__inner {
-            background: #9D60FB;
-            position: absolute;
+        .progressBar {
+            width: 100%;
+            @include border-radius(10px);
             height: 8px;
-            top: 0;
-            left: 0;
-            width: 0;
-            transition: width 0.3s ease;
-        }
+            background-color: #E8E9EB;
+            display: block;
+            .inProgress {
+                background-color: $purple;
+                width: 0%;
+                height: 8px;
+                @include border-radius(10px);
+            }
+        }        
     }
-    .slide-labels {
+    .slide-labels {      
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         margin-top: 20px;
-        width: 100%;
-        @media (max-width:991px) {
-           overflow: hidden;
-           overflow-x: auto;
-        }
-        // .slick-list {
-        //     width: 100%;
-        // }
-        // .slick-track {
-        //     left: 0 !important;
-        //     width: 100% !important;
-            
-        //     @include transform(unset !important);
-        //     overflow-x: auto;
-        // }
         .slide-label {
             display: block;
             font-size: 16px;
@@ -9665,6 +9670,7 @@ body .icw-gallery-imgs {
         }
     }
 }
+
 .features-card {
     text-align: left;
     background: $white;
