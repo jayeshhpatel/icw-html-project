@@ -227,65 +227,47 @@ jQuery(document).ready(function($) {
 
     }
 
-    if($('.progress-grid-slider').length) {
-        $('.progress-grid-slider').slick({
+    if($('.progress-grid-slider-block').length) {
+        $(".progress-grid-slider").slick({
             infinite: true,
+            arrows: false,
             dots: false,
-            autoplay: true,
+            autoplay: false,
             speed: 800,
-            arrows: true,
             slidesToShow: 3,
             slidesToScroll: 1,
-            variableWidth: true,
-            responsive: [
-                {
-                    breakpoint: 1200,                    
-                    settings: {
-                        slidesToShow: 3,
-                    }
-                },
-                {
-                    breakpoint: 767,                    
-                    settings: {
-                        slidesToShow: 1,
-                        variableWidth: true,
-                        arrows: false,
-                    }
-                }
-            ]
         });
-        
+    
+        //ticking machine
         var percentTime;
         var tick;
-        var time = .1;
+        var time = 1;
         var progressBarIndex = 0;
 
-        $('.progress-grid-slider-block .progress-bar-block .progressBar').each(function(index) {
+        $('.slider-progressbar-block .progressBar').each(function(index) {
             var progress = "<div class='inProgress inProgress" + index + "'></div>";
             $(this).html(progress);
-            $('.slide-label').removeClass('active');
-            $('.slide-label[data-slide="'+ index +'"]').addClass('active');
         });
 
         function startProgressbar() {
             resetProgressbar();
             percentTime = 0;
-            tick = setInterval(interval, 1);
+            tick = setInterval(interval, 10);
         }
 
         function interval() {
-            if (($('.progress-grid-slider-block .slick-track div[data-slick-index="' + progressBarIndex + '"]').attr("aria-hidden")) === "true") {
-                progressBarIndex = $('.progress-grid-slider-block .slick-track div[aria-hidden="false"]').data("slickIndex");
+            if (($('.progress-grid-slider .slick-track div[data-slick-index="' + progressBarIndex + '"]').attr("aria-hidden")) === "true") {
+                progressBarIndex = $('.progress-grid-slider .slick-track div[aria-hidden="false"]').data("slickIndex");
                 startProgressbar();
             } else {
                 percentTime += 1 / (time + 5);
-                $('.progress-grid-slider-block .inProgress' + progressBarIndex).css({
+                $('.inProgress' + progressBarIndex).css({
                     width: percentTime + "%"
                 });
                 $('.slide-label').removeClass('active');
-                $('.slide-label[data-slide="'+ progressBarIndex +'"]').addClass('active');
+                $('.slider-progressbar-block .progressBar[data-slick-index="'+ progressBarIndex +'"]').parent('div').find('.slide-label').addClass('active');
                 if (percentTime >= 100) {
-                    $('.progress-grid-slider-block .single-item').slick('slickNext');
+                    $('.single-item').slick('slickNext');
                     progressBarIndex++;
                     if (progressBarIndex > 2) {
                         progressBarIndex = 0;
@@ -296,20 +278,21 @@ jQuery(document).ready(function($) {
         }
 
         function resetProgressbar() {
-            $('.progress-grid-slider-block .inProgress').css({
+            $('.inProgress').css({
                 width: 0 + '%'
             });
             clearInterval(tick);
         }
         startProgressbar();
+        // End ticking machine
 
-        $('.progress-grid-slider-block .progress-bar-block .item').click(function () {
+        $('.slider-progressbar-block div').click(function () {
             clearInterval(tick);
             var goToThisIndex = $(this).find("span").data("slickIndex");
-            $('.progress-grid-slider-block .progress-grid-slider').slick('slickGoTo', goToThisIndex, false);
+            $('.single-item').slick('slickGoTo', goToThisIndex, false);
             startProgressbar();
-        }); 
-    } 
+        });
+    }
 
     if($('.progress-tab-slider').length) {
         $('.progress-tab-slider').slick({
