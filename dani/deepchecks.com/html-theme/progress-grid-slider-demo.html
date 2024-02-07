@@ -151,11 +151,22 @@
             }
             var bar    = splide.root.querySelector( '.my-slider-progress-bar' );
 
+
+
+            showReferences();
+            function showReferences() {
+                var i;
+                var References = document.getElementsByClassName("splide__slide--clone");
+                
+                for (i = 0; i < References.length; i++) {
+                    References[i].classList.add('visible');
+                }
+                
+            }
             // Updates the bar width whenever the carousel moves:
-            splide.on( 'mounted move', function () {
-                var cloneslide = document.getElementsByClassName('splide__slide--clone');
-                console.log(cloneslide);
-                // cloneslide.classList.add( 'someClass' );
+            splide.on( 'moved', function () {
+                showReferences();
+                console.log(splide.index);
             } );
             
             splide.on( 'mounted move', function () {
