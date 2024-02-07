@@ -236,6 +236,7 @@ jQuery(document).ready(function($) {
             arrows: true,
             slidesToShow: 3,
             slidesToScroll: 1,
+            touchMove: false,
             variableWidth: true,
             responsive: [
                 {
@@ -254,24 +255,13 @@ jQuery(document).ready(function($) {
                 }
             ]
         });
-        /*
-        $('.slide-labels').slick({
-            slidesToShow: 6,
-            slidesToScroll: 1,
-            asNavFor: '.progress-grid-slider',
-            dots: false,
-            arrows: false,
-            infinite: false,
-            focusOnSelect: true,
-            variableWidth: true
-        });
-        */
-        $('a[data-slide]').click(function(e) {
+        $('a.slide-label').click(function(e) {
             e.preventDefault();
             var slideno = $(this).data('slide');
-            $('a[data-slide]').removeClass('active');
+            $('a.slide-label').removeClass('active');
             $(this).addClass('active');
-            $('.progress-grid-slider').slick('slickGoTo', slideno - 1);
+            $('.progress-grid-slider').slick('slickGoTo', slideno);
+            barAndCounter(slideno);
         });
         
         function barAndCounter(index = 0) {
@@ -283,20 +273,22 @@ jQuery(document).ready(function($) {
            
         }
         // Will be triggered on page load
-        barAndCounter();
-        // Will be triggered on slider click
-        $('.slide-labels .slide-label').on('click', function() {
-            var index = $(this).index();
-            barAndCounter(index);
-        });
+        barAndCounter();    
+       
         var currentSlide = 0;
         var numSlides = $('.slide-content').length;
         $('.slick-prev').on('click', function() {
             currentSlide = (currentSlide - 1 + numSlides) % numSlides;
+            console.log(currentSlide);
+            $('a.slide-label').removeClass('active');
+            $('a[data-slide="'+ currentSlide +'"]').addClass('active');
             barAndCounter(currentSlide);
         });
         $('.slick-next').on('click', function() {
             currentSlide = (currentSlide + 1) % numSlides;
+            console.log(currentSlide);
+            $('a.slide-label').removeClass('active');
+            $('a[data-slide="'+ currentSlide +'"]').addClass('active');
             barAndCounter(currentSlide);
         });
        
