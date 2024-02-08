@@ -234,10 +234,11 @@ jQuery(document).ready(function($) {
             dots: true,
             appendDots: $('.slider-progressbar-dots'),
             autoplay: true,
-            autoplaySpeed: 5000,
+            autoplaySpeed: 3000,
             slidesToShow: 3,
             slidesToScroll: 1,
             swipeToSlide: true,
+            draggable: false,
             responsive: [
                 {
                     breakpoint: 992,                    
@@ -250,6 +251,7 @@ jQuery(document).ready(function($) {
                     settings: {
                         slidesToShow: 1,
                         variableWidth: true,
+                        draggable: true,
                         arrows: false,
                     }
                 }
