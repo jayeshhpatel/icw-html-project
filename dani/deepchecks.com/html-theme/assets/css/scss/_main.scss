@@ -262,7 +262,7 @@ a {
     .btn-icon {
         max-width: 18px; 
         max-height: 18px; 
-        overflow: hidden; 
+        overflow: hidden;         
     }
     &:focus-visible {
         outline: 3px solid #f0ab2e !important;
@@ -271,12 +271,18 @@ a {
     
     &.btn-svg {
         .btn-icon {
-            max-width: 20px; 
-            max-height: 20px; 
+            max-width: 18px; 
+            max-height: 18px; 
             overflow: hidden; 
             margin-left: 10px; 
             @include flexbox(); 
             @include transition(0.3s, ease-in-out);
+            &.btn-arrow-right {
+                width: 18px; 
+                height: 18px; 
+                background-size: contain;
+                background: url('data:image/svg+xml; utf8,<svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.83325 6H15.1666M15.1666 6L10.1666 1M15.1666 6L10.1666 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center;
+            }
         }
 
         &:focus, &:hover {
@@ -2836,6 +2842,7 @@ img {
     overflow: hidden;
     @media (max-width: 991px) {
         padding: 30px 0;
+        overflow: visible;
     }
     &.bg-wave{
         background-position: center 40%;
@@ -3062,7 +3069,11 @@ img {
             }
         }
     }
-
+    &.bg-gray-slider {
+        background: #F4F5F7;
+        padding: 30px 40px;
+        @include border-radius(30px);
+    }
     @media only screen and (min-width: 991px) and (max-width: 1240px) {
         padding: 30px 20px;
         .logo-item {
@@ -9603,11 +9614,13 @@ body .icw-gallery-imgs {
     .progress-grid-slider {        
         margin: 40px 0 0;
         @media (max-width:767px) {
-            margin: 20px -10px 0;
+            margin: 20px 8px 0;
         }
         .slick-list {
             @include border-radius(30px);  
-            margin: 0 -15px;
+            @media (max-width: 992px) {
+                margin: 0 -15px;
+            }
         }
         .slick-track {
             @include flexbox;
@@ -9618,7 +9631,7 @@ body .icw-gallery-imgs {
             height: 36px;
             z-index: 1;
             @include transition(0.3s, ease-in-out);
-            top: -170px;
+            top: -160px;
             @media (max-width:991px) {
                 width: 30px;
                 height: 30px;
