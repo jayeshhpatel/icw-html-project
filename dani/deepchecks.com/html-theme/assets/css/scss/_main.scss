@@ -192,6 +192,9 @@ a {
         margin: 0px 30px 10px 0px;
         color: $purple;
         @include transition(0.2s, ease-in-out);
+        @media (max-width: 767px) {
+            font-size: 16px;
+        }
         &::before {
             content: "";
             position: absolute;
@@ -9519,65 +9522,156 @@ body .icw-gallery-imgs {
 .progress-grid-slider-block {
     .slider-progressbar-block {
         position: relative;
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        padding-top: 50px;
-        div {
-            display: block;  
-            cursor: pointer;
-            &:first-child {
-                span.progressBar {
+        margin-top: 40px;
+        margin-bottom: 20px;        
+        overflow: hidden;
+        overflow: auto;
+        .slick-dots {
+            position: absolute;
+            top: 0;
+            margin: 0;
+            width: 100%;
+            @include border-radius(20px);
+            @media (max-width: 767px) {
+                width: 750px;             
+             }
+            li {
+                width: 100%;
+                background: #EAE9F3;
+                margin: 0;
+                &:first-child {
                     @include border-radius(20px 0 0 20px);
                 }
-            }
-            &:last-child {
-                margin-right: 0;
-                span.progressBar {
+                &:last-child {
                     @include border-radius(0 20px 20px 0);
                 }
-            }
-            span.progressBar {
-                width: 100%;
-                height: 8px;
-                background: #EAE9F3;
-                display: block;
-                .inProgress {
-                    background: #9D60FB;
+                button {
                     width: 0%;
                     height: 8px;
+                    border: none;
                     @include border-radius(20px);
+                    background: #EAE9F3;                    
                 }
+                &.slick-active {
+                    button {
+                        background: #9D60FB;
+                        animation-name: progress;
+                        animation-timing-function: linear;
+                        animation-duration: 5500ms;
+                        animation-delay:0;
+                    }
+                }
+               
             }
-            .slide-label {
-                font-size: 16px;
-                color: #000000;
-                font-weight: 600;
-                margin-top: 20px;
-                display: block;
-                &.active, &:hover, &:focus {
-                    color: #9D60FB;
-                }
+        }    
+    }
+    .slide-labels {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        @media (max-width: 767px) {
+           width: 750px;             
+        }
+        .slide-label {
+            font-size: 16px;
+            color: #000000;
+            font-weight: 600;
+            margin-top: 20px;
+            display: block;
+            white-space: nowrap;
+            padding: 0 10px;
+            @media (max-width: 992px) {
+                font-size: 14px;    
+                padding: 0 5px;                
+            }
+            &:first-child {
+                padding-left: 0;
+            }
+            &:last-child {
+                padding-right: 0;
+            }
+            &.active, &:hover, &:focus {
+                color: #9D60FB;
             }
         }
     }
     .progress-grid-slider {        
         margin: 40px -15px 0;
+        @media (max-width:767px) {
+            margin: 20px -10px 0;
+        }
         .slick-track {
             @include flexbox;
+        }           
+            
+        .slick-arrow {
+            width: 36px;
+            height: 36px;
+            z-index: 1;
+            @include transition(0.3s, ease-in-out);
+            top: -170px;
+            @media (max-width:991px) {
+                width: 30px;
+                height: 30px;
+                top: -225px;
+            }
+            &:hover,
+            &:focus {
+                filter: brightness(0);
+            }
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
+                background: url("data:image/svg+xml; utf8,<svg width='36' height='36' viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M18 12L12 18M12 18L18 24M12 18H24M33 18C33 26.2843 26.2843 33 18 33C9.71573 33 3 26.2843 3 18C3 9.71573 9.71573 3 18 3C26.2843 3 33 9.71573 33 18Z' stroke='rgb(157 96 251)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat center center;
+                background-size: contain;
+            }
+
+            &.slick-disabled {
+                pointer-events: none;
+            }
+
+            &.slick-prev {
+                left: auto;
+                right: 50px; 
+                @media (max-width:991px) {
+                    right: 40px;
+                }
+            }
+
+            &.slick-next {
+                right: 0px;
+                &::before {
+                    @include transform(rotate(180deg));
+                }
+                @media (max-width:991px) {
+                   
+                }
+            }
         }
         .slick-slide {
             height: inherit;
             padding: 15px 15px 30px;
-            max-width: 470px;
+            // max-width: 470px;
             &.slick-current {
                 .features-card {
                     @include box-shadow(0px 10px 30px -20px rgba(123, 140, 149, 0.9));
                 }
             }
+            @media (max-width: 767px) {
+                padding: 15px 8px 30px;                    
+            }
         }
     }
 }
-
+@keyframes progress {
+    from { width: 0px;}
+    to {width: 100%;}
+  }
 .features-card {
     text-align: left;
     background: $white;
@@ -9617,7 +9711,7 @@ body .icw-gallery-imgs {
             font-weight: 600;
             margin-bottom: 10px;
             @media (max-width:767px) {
-                font-size: 22px;
+                font-size: 16px;
             }
         }
         .sort-info {
@@ -9625,12 +9719,16 @@ body .icw-gallery-imgs {
             font-weight: 500;
             flex: 1 1 auto;
             @media (max-width:767px) {
-                font-size: 16px;
+                font-size: 14px;
             }
         }
         .btn-line-arrow {
             margin-top: 20px;
             display: inline-block;
+            @media (max-width:767px) {
+                margin-top: 10px;
+                font-size: 14px;
+            }
         }
     }
     .features-img {

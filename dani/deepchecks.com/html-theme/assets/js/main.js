@@ -230,68 +230,42 @@ jQuery(document).ready(function($) {
     if($('.progress-grid-slider-block').length) {
         $(".progress-grid-slider").slick({
             infinite: true,
-            arrows: false,
-            dots: false,
-            autoplay: false,
-            speed: 800,
+            arrows: true,
+            dots: true,
+            appendDots: $('.slider-progressbar-dots'),
+            autoplay: true,
+            autoplaySpeed: 5000,
             slidesToShow: 3,
             slidesToScroll: 1,
-        });
-    
-        //ticking machine
-        var percentTime;
-        var tick;
-        var time = 1;
-        var progressBarIndex = 0;
-
-        $('.slider-progressbar-block .progressBar').each(function(index) {
-            var progress = "<div class='inProgress inProgress" + index + "'></div>";
-            $(this).html(progress);
-        });
-
-        function startProgressbar() {
-            resetProgressbar();
-            percentTime = 0;
-            tick = setInterval(interval, 10);
-        }
-
-        function interval() {
-            if (($('.progress-grid-slider .slick-track div[data-slick-index="' + progressBarIndex + '"]').attr("aria-hidden")) === "true") {
-                progressBarIndex = $('.progress-grid-slider .slick-track div[aria-hidden="false"]').data("slickIndex");
-                startProgressbar();
-            } else {
-                percentTime += 1 / (time + 5);
-                $('.inProgress' + progressBarIndex).css({
-                    width: percentTime + "%"
-                });
-                $('.slide-label').removeClass('active');
-                $('.slider-progressbar-block .progressBar[data-slick-index="'+ progressBarIndex +'"]').parent('div').find('.slide-label').addClass('active');
-                if (percentTime >= 100) {
-                    $('.single-item').slick('slickNext');
-                    progressBarIndex++;
-                    if (progressBarIndex > 2) {
-                        progressBarIndex = 0;
+            swipeToSlide: true,
+            responsive: [
+                {
+                    breakpoint: 992,                    
+                    settings: {
+                        slidesToShow: 2,
                     }
-                    startProgressbar();
+                },
+                {
+                    breakpoint: 767,                    
+                    settings: {
+                        slidesToShow: 1,
+                        variableWidth: true,
+                        arrows: false,
+                    }
                 }
-            }
-        }
-
-        function resetProgressbar() {
-            $('.inProgress').css({
-                width: 0 + '%'
-            });
-            clearInterval(tick);
-        }
-        startProgressbar();
-        // End ticking machine
-
-        $('.slider-progressbar-block div').click(function () {
-            clearInterval(tick);
-            var goToThisIndex = $(this).find("span").data("slickIndex");
-            $('.single-item').slick('slickGoTo', goToThisIndex, false);
-            startProgressbar();
+            ]
         });
+        $('a.slide-label').click(function(e) {
+            e.preventDefault();
+            var slideno = $(this).data('slide');
+            $('a.slide-label').removeClass('active');
+            $(this).addClass('active');
+            $('.progress-grid-slider').slick('slickGoTo', slideno);
+        });
+        $('.progress-grid-slider').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+            $('a.slide-label').removeClass('active');
+            $('a.slide-label[data-slide="'+ nextSlide +'"]').addClass('active');
+        }); 
     }
 
     if($('.progress-tab-slider').length) {
