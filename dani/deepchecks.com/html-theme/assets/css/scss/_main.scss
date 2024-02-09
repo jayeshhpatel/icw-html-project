@@ -345,6 +345,53 @@ a {
     // }
 }
 
+.btn-primary-gradient{
+    color: $white !important;
+    background:linear-gradient(236.27deg, #C960FB 0%, #9D60FB 98.28%);
+    border:1px solid transparent;
+    min-height: 56px;
+    padding: 0 25px;
+    font-weight: 700;
+    font-size: 18px;
+    min-width: 126px;
+    @include transition(0.3s, ease-in-out);
+    @include border-radius(15px);
+    @include inline-flex;
+    @include align-items(center);
+    @include justify-content(center);
+    img{
+        margin-right: 8px; margin-bottom: 0px !important; margin-top: 0px;
+    }
+    &:after{
+        display: none;
+    }
+    &:hover, &:focus, &:active,
+    &:not(:disabled):not(.disabled).active, 
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active:focus, 
+    &:not(:disabled):not(.disabled):active:focus {
+        background: linear-gradient(236.27deg, #C960FB 0%, #9D60FB 98.28%) !important;
+        color: $white !important;
+        border-color: transparent !important;
+        box-shadow: 0px 4px 20px rgba(147, 86, 241, 0.5) !important;
+    }
+    @media (max-width:991px) {
+        // min-height: 40px;
+    }
+    @media (max-width:575px) {
+        min-width: 100%;
+        padding: 0 12px;
+    }
+
+    // &.btn-svg {
+    //     &:focus, &:hover {
+    //         .btn-icon {
+    //             filter: brightness(0) contrast(1) invert(1);
+    //         }
+    //     }
+    // }
+}
+
 .btn-primary-outline{
     color: $purple !important;
     background-color:transparent;
@@ -2393,6 +2440,18 @@ img {
                 font-size: 24px;
                 padding: 12px 24px;
                 @include border-radius(10px);
+            }
+        }
+        .btn-primary-gradient {
+            font-size: 28px;
+            @include border-radius(20px);
+            margin-bottom: 12px;
+            @media (max-width:767px) {
+                font-size: 24px;
+                min-width: auto;
+                padding: 0 25px;
+                @include border-radius(10px);
+                min-height: 48px;
             }
         }
     }
