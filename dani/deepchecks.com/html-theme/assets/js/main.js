@@ -174,7 +174,7 @@ jQuery(document).ready(function($) {
             ]
         });
         
-        var percentTime;
+    var percentTime;
         var tick;
         var time = .1;
         var progressBarIndex = 0;
@@ -282,7 +282,7 @@ jQuery(document).ready(function($) {
             accessibility: false
         });
         
-        var percentTimej;
+    var percentTimej;
         var tickj;
         var timej = .1;
         var progressBarIndexj = 0;
@@ -301,7 +301,8 @@ jQuery(document).ready(function($) {
             $('.progress-tab-slider-section .item-code').slideUp();
         }
 
-        function intervalj() {            
+        function intervalj() {
+            
             if (($('.progress-tab-slider .slick-track div[data-slick-index="' + progressBarIndexj + '"]').attr("aria-hidden")) === "true") {
                 progressBarIndexj = $('.progress-tab-slider .slick-track div[aria-hidden="false"]').data("slickIndex");
                 startProgressbarj();
