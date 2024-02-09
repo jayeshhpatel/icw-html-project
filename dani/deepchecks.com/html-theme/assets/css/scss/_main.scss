@@ -274,12 +274,18 @@ a {
     
     &.btn-svg {
         .btn-icon {
-            max-width: 20px; 
-            max-height: 20px; 
+            max-width: 18px; 
+            max-height: 18px; 
             overflow: hidden; 
             margin-left: 10px; 
             @include flexbox(); 
             @include transition(0.3s, ease-in-out);
+            &.btn-arrow-right {
+                width: 18px; 
+                height: 18px; 
+                background-size: contain;
+                background: url('data:image/svg+xml; utf8,<svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.83325 6H15.1666M15.1666 6L10.1666 1M15.1666 6L10.1666 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center;
+            }
         }
 
         &:focus, &:hover {
@@ -1403,7 +1409,7 @@ img {
             color: $white;
             white-space: nowrap;
             padding-right: 15px;
-            span {
+            .line {
                 display: inline-block;
                 font-weight: 300;
                 color: rgba($white, 0.4);
@@ -1414,7 +1420,7 @@ img {
                 position: relative;
                 color: $white;
                 @include transition(0.3s, ease-in-out);
-                .text {
+                .text, .text-nowrap {
                     padding: 0;
                     display: inline-block;
                     z-index: 1;
@@ -1441,7 +1447,7 @@ img {
                     @include transition(0.3s, ease-in-out);
                 }
                 &:hover, &:focus {
-                    .text {
+                    .text, .text-nowrap {
                         &:after {
                             width: 100%;
                             right: auto;
@@ -2376,7 +2382,8 @@ img {
             font-size: 28px;
             color: $white;
             font-weight: 700;
-            padding: 12px 32px;
+            line-height: 1;
+            padding: 15px 32px;
             display: inline-block;
             margin-bottom: 12px;
             @media (max-width:1200px) {
@@ -2384,7 +2391,8 @@ img {
             }
             @media (max-width:767px) {
                 font-size: 24px;
-                padding: 10px 24px;
+                padding: 12px 24px;
+                @include border-radius(10px);
             }
         }
     }
@@ -7784,6 +7792,12 @@ body .icw-gallery-imgs {
         background: url(../images/hero-bg-m.png) no-repeat top center;
         background-size: 100% 100%;
     }
+    &.with-lg-padding {
+        padding-bottom: 400px;
+        & + .html-section {
+            margin-top: -400px;
+        } 
+    }
     .outside-right {
         align-self: flex-start;
        .image-block {
@@ -9924,7 +9938,7 @@ body .icw-gallery-imgs {
             }
         }
         .sort-info {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 500;
             flex: 1 1 auto;
             @media (max-width:767px) {
@@ -9982,7 +9996,9 @@ body .icw-gallery-imgs {
             grid-template-columns: 8px auto;
             grid-gap: 25px;
             margin-bottom: 30px;
-
+            &.mw-500 {
+                max-width: 500px;
+            }
             &:hover{
                 .card-progress {
                     h3 {
@@ -10034,6 +10050,8 @@ body .icw-gallery-imgs {
                 position: relative;
                 margin: 0px; padding: 0px;
                 margin-right:15px;
+                font-size: 24px;
+                font-weight: 700;
                 @media (max-width:575px) {
                     font-size: 20px;
                     margin-right:0px;
@@ -10057,8 +10075,8 @@ body .icw-gallery-imgs {
             .sort-info {
                 padding-top: 20px;
                 margin-bottom: 25px;
-                max-width: 297px;
-
+                max-width: 450px;
+                font-weight: 500;
                 @media (max-width:767px) {
                     br {display: none;}
                 }
