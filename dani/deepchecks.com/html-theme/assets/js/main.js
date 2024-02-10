@@ -377,6 +377,18 @@ jQuery(document).ready(function($) {
         });
     }
 
+    if($('.text-vertical-slider').length) {
+        $('.text-vertical-slider').slick({
+            infinite: true,
+            vertical: true,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            centerMode: true,
+        });
+    }
+
     $('#dp-newsletter-form').submit(function(e){
 		e.preventDefault();
 		var fields = [
