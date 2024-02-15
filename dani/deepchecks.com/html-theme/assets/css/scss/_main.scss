@@ -9914,10 +9914,10 @@ body .icw-gallery-imgs {
         // grid-template-columns: repeat(6, 1fr);
         @media (max-width: 767px) {
         //    width: 775px;     
-           padding-bottom: 0px;       
-           @include flexbox;
-           @include align-items(center);
-           position: relative;
+            padding-bottom: 0px;       
+            @include flexbox;
+            @include align-items(center);
+            position: relative;
             &::before {
                 content: '';
                 width: 100%;
@@ -9932,19 +9932,20 @@ body .icw-gallery-imgs {
             }      
         }
         .slick-list {
-            @media (min-width: 767px) {
+            @media (max-width: 767px) {
                 margin-left: -12px;
             }
         }
         .slick-track{
             @include flexbox;
-            @include justify-content(space-between);
-            width: 100% !important;
+            width: 100% !important;           
             @media (min-width: 767px) {
+                display: grid;
+                grid-template-columns: repeat(6, 1fr);
                 @include transform(unset !important);
-            }
-            @media (max-width: 767px) {
-                margin-left: -12px;
+                &::before {
+                    content: none;
+                }
             }
         }
         .slide-label {
