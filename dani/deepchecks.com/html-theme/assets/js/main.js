@@ -407,8 +407,10 @@ jQuery(document).ready(function($) {
             slidesToShow: 3,
             slidesToScroll: 1,
             autoplay: true,
-            autoplaySpeed: 2000,
+            autoplaySpeed: 1500,
             centerMode: true,
+            pauseOnHover: false,
+            pauseOnFocus: false,
         });
     }
 
@@ -492,6 +494,24 @@ jQuery(document).ready(function($) {
         // console.log(stop);
         $('html, body').animate({scrollTop: stop + 'px'}, delay);
       });
+    }
+
+    if ($('.is-hover-play').length){
+        $('.is-hover-play').each(function() {
+            var lottieAnimation = $(this)[0]; // Get the DOM element
+    
+            // Pause the animation initially
+            lottieAnimation.pause();
+    
+            // Play animation on hover
+            $(this).hover(function() {
+                lottieAnimation.setDirection(1); // Set forward direction
+                lottieAnimation.play(); // Play the animation
+            }, function() {
+                lottieAnimation.setDirection(-1); // Set reverse direction
+                lottieAnimation.play(); // Pause the animation
+            });
+        });
     }
 });
 
