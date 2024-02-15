@@ -271,7 +271,7 @@ jQuery(document).ready(function($) {
                 {
                     breakpoint: 767,                    
                     settings: {
-                        slidesToShow: 5,
+                        slidesToShow: 3,
                         variableWidth: true,
                         draggable: true,
                         arrows: false,
