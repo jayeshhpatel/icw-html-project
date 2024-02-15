@@ -4668,8 +4668,14 @@ body {
         margin: 0 -15px;
         .blog-item {
             padding: 0 15px 15px;
-            @media (max-width:767px) {
-                padding: 0 8px 15px;
+            @media (max-width: 992px) {
+                padding: 0 8px 15px;  
+                &:first-child {
+                    padding-left: 15px
+                }  
+                &:last-child {
+                    padding-right: 15px
+                }  
             }
         }
 
@@ -4724,7 +4730,9 @@ body {
         
         .blog-post-inner {
             padding: 24px;
-            
+            @media (max-width:767px) {
+                padding: 20px 15px;  
+            }
             .post-date {
                 font-size: 14px; color: #545770;
                 padding-bottom: 12px;
@@ -4776,18 +4784,21 @@ body {
     margin: 0 -15px;
         .blog-item {
             padding: 0 15px 15px;
+            @media (max-width: 992px) {
+                padding: 0 8px 15px;  
+                &:first-child {
+                    padding-left: 15px
+                }  
+                &:last-child {
+                    padding-right: 15px
+                }  
+            }
         }
 
         .slick-track{
             @include flexbox();
             .slick-slide{
                 height: inherit !important;
-
-                max-width: calc(33.33% - 30px);
-                flex: 0 0 calc(33.33% - 30px);
-                margin-left: 15px;
-                margin-right: 15px;
-                margin-bottom: 15px;
             }
         }
         .blog-post{
@@ -4843,10 +4854,7 @@ body {
     }
 }
 .blog-post {
-	max-width: calc(33.33% - 30px);
-	flex: 0 0 calc(33.33% - 30px);
-	margin-left: 15px;
-	margin-right: 15px;
+	padding: 0 15px 15px;
 	margin-bottom: 50px;
 	background: #FFFFFF;
     @include border-radius(30px);
@@ -4854,16 +4862,15 @@ body {
     position: relative;
     // @include box-shadow(0 0 10px rgba(0,0,0,0.08));
 
-    @media (max-width: 991px) {
-        max-width: calc(50% - 20px);
-        flex: 0 0 calc(50% - 20px);
-        margin-left: 10px;
-	    margin-right: 10px;
-        margin-bottom: 20px;
-    }
-    @media (max-width: 575px) {
-        max-width: calc(100% - 20px);
-        flex: 0 0 calc(100% - 20px);
+    @media (max-width: 991px) { 
+        margin-bottom: 20px; 
+        padding: 0 8px 15px;  
+        &:first-child {
+            padding-left: 15px
+        }  
+        &:last-child {
+            padding-right: 15px
+        }  
     }
 
     &:hover, &:focus {
@@ -4873,6 +4880,9 @@ body {
 
     .blog-post-inner {
         padding: 1.5rem;
+        @media (max-width:767px) {
+            padding: 20px 15px;  
+        }
     }
 
     a.post-thumb-img {
@@ -7922,7 +7932,7 @@ body .icw-gallery-imgs {
                 width: 100%;
             }
         }
-        @media (max-width:992px) {
+        @media (max-width:767px) {
             .image-block {
                 width: 100vw;
             }
