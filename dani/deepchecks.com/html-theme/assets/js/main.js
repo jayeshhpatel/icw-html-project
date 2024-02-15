@@ -239,6 +239,7 @@ jQuery(document).ready(function($) {
             slidesToScroll: 1,
             swipeToSlide: true,
             draggable: false,
+            asNavFor: '.slide-labels',
             responsive: [
                 {
                     breakpoint: 992,                    
@@ -257,6 +258,28 @@ jQuery(document).ready(function($) {
                 }
             ]
         });
+        $('.slide-labels').slick({
+            slidesToShow: 6,
+            slidesToScroll: 1,
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            variableWidth: true,
+            asNavFor: '.progress-grid-slider',
+            dots: false,
+            responsive: [
+                {
+                    breakpoint: 767,                    
+                    settings: {
+                        slidesToShow: 5,
+                        variableWidth: true,
+                        draggable: true,
+                        arrows: false,
+                    }
+                }
+            ]
+        });
+        
         $('a.slide-label').click(function(e) {
             e.preventDefault();
             var slideno = $(this).data('slide');

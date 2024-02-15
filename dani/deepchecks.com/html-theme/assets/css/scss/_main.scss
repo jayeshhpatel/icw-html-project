@@ -9867,8 +9867,8 @@ body .icw-gallery-imgs {
         position: relative;
         margin-top: 40px;
         margin-bottom: 20px;        
-        overflow: hidden;
-        overflow: auto;
+        // overflow: hidden;
+        // overflow: auto;
         .slick-dots {
             position: absolute;
             top: 0;
@@ -9876,7 +9876,7 @@ body .icw-gallery-imgs {
             width: 100%;
             @include border-radius(20px);
             @media (max-width: 767px) {
-                width: 775px;             
+                // width: 775px;             
              }
             li {
                 width: 100%;
@@ -9909,13 +9909,24 @@ body .icw-gallery-imgs {
         }    
     }
     .slide-labels {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
+        // display: grid;
+        // grid-template-columns: repeat(6, 1fr);
         @media (max-width: 767px) {
-           width: 775px;     
+        //    width: 775px;     
            padding-bottom: 10px;       
            @include flexbox;
            @include align-items(center);
+        }
+        .slick-track{
+            @include flexbox;
+            @media (min-width: 767px) {
+                @include transform(unset !important);
+            }
+            @include justify-content(space-between);
+            width: 100% !important;
+            &::before {
+                content: none;
+            }
         }
         .slide-label {
             font-size: 16px;
@@ -9946,11 +9957,11 @@ body .icw-gallery-imgs {
     .progress-grid-slider {        
         margin: 40px 0 0;
         @media (max-width:767px) {
-            margin: 20px -10px 0;
+            margin: 20px 0px 0;
         }
         .slick-list {
             @include border-radius(30px);  
-            margin: 0 -15px;
+            margin: 0 -10px;
         }
         .slick-track {
             @include flexbox;
