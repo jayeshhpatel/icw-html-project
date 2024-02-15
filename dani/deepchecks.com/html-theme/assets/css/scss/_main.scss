@@ -4668,6 +4668,9 @@ body {
         margin: 0 -15px;
         .blog-item {
             padding: 0 15px 15px;
+            @media (max-width:767px) {
+                padding: 0 8px 15px;
+            }
         }
 
         .slick-track{
@@ -4763,7 +4766,7 @@ body {
 .post-slider {
     @media (max-width:767px) {
         div.slick-list {
-            padding:0 50px 0 0;
+            padding:0 30px 0 0;
           }
     }  
     
@@ -9748,6 +9751,11 @@ body .icw-gallery-imgs {
 
 .progress-slider-block {
     .progress-slider {
+        @media (max-width:991px) and (min-width: 767px) {
+            & + .btn {
+                margin-top: 30px;
+            }
+        }
         .slick-list{
             @include border-radius(20px);   
             box-shadow: 0px 8px 50px rgba(114, 118, 133, 0.25);
@@ -9772,8 +9780,12 @@ body .icw-gallery-imgs {
             z-index: 1;
             @include transition(0.3s, ease-in-out);
             @media (max-width:991px) {
-                width: 30px;
-                height: 30px;
+                width: 35px;
+                height: 35px;
+                top: auto;
+                bottom: -70px;
+                border: 2px solid rgba(222, 223, 224, 1);
+                border-radius: 10px;
             }
             &:hover,
             &:focus {
@@ -9790,7 +9802,9 @@ body .icw-gallery-imgs {
                 height: 100%;
                 background: url("data:image/svg+xml; utf8,<svg width='30' height='52' viewBox='0 0 30 52' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M3.33203 2.66602L26.6654 25.9994L3.33203 49.3327' stroke='rgb(222 223 224)' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat center center;
                 background-size: contain;
-
+                @media (max-width:991px) {
+                    background-size: 11px;
+                }
             }
 
             &.slick-prev {
@@ -9802,7 +9816,7 @@ body .icw-gallery-imgs {
                     left: -70px;
                 }
                 @media (max-width:991px) {
-                    left: -35px;
+                    left: 44%;
                 }
             }
 
@@ -9812,7 +9826,7 @@ body .icw-gallery-imgs {
                     right: -70px;
                 }
                 @media (max-width:991px) {
-                    right: -35px;
+                    right: 44%;
                 }
             }
         }
@@ -10244,7 +10258,7 @@ body .icw-gallery-imgs {
 }
 
 .text-slider-block {
-    padding: 35px 0;
+    padding: 15px 0;
     .sort-info {
         font-size: 20px;
         font-weight: 500;
@@ -10264,18 +10278,18 @@ body .icw-gallery-imgs {
             margin-top: 30px;
         }
         .slide-text {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 700;
             color: rgba(#303245, 0.4);
             line-height: 1;
-            padding: 8px 0;
+            padding: 4px 0;
             @include transition(0.3s, ease-in-out);
             &.slick-current {
                 color: #303245;
             }
             @media (max-width: 767px) {
                 text-align: center;
-                font-size: 28px;
+                font-size: 24px;
             }
         }
     }
