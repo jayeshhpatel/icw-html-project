@@ -633,7 +633,7 @@
                             data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-with-slider-labels" id="hubspotFormContainer"></div>
+                        <div class="form-with-slider-labels" id="llmEvalutionForm"></div>
                     </div>
                 </div>
             </div>
@@ -647,13 +647,11 @@
         <script type="text/javascript" src="assets/js/main.js"></script>      
         <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var formContainer = document.getElementById('hubspotFormContainer');
-        
-            // Function to initialize HubSpot form
+            var formContainer = document.getElementById('llmEvalutionForm');
             function initializeHubSpotForm() {
               if (typeof hbspt !== 'undefined') {
                 hbspt.forms.create({
-                    target: '#hubspotFormContainer',
+                    target: '#llmEvalutionForm',
                     css: '', 
                     region: "na1", 
                     portalId: "8338627", 
@@ -667,16 +665,11 @@
               }
             }
         
-            // Initialize HubSpot form
             initializeHubSpotForm();
-        
-            // Reinitialize HubSpot form on modal show
             $('#popup-llm').on('hidden.bs.modal', function () {
-              // Destroy existing form instance
               if (typeof hbspt !== 'undefined' && typeof hbspt.forms !== 'undefined' && typeof hbspt.forms[0] !== 'undefined') {
                 hbspt.forms[0].destroy();
               }
-              // Initialize the form again
               initializeHubSpotForm();
             });
           });
