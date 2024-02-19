@@ -633,29 +633,53 @@
                             data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-with-slider-labels">
-                            <script>
-                                hbspt.forms.create({ 
-                                    css: '', 
-                                    region: "na1", 
-                                    portalId: "8338627", 
-                                    formId: "f7da1fc3-958c-444a-b11a-2ed8f1b716a3", 
-                                    css: " ", 
-                                    redirectUrl: "/thank-you/#llm-evaluation", 
-                                    locale: "en", 
-                                    translations: { 
-                                        en: { submitText: "Submit" } }, onFormReady: function ($form, ctx) { hubspot_labels(); } });</script>
-                        </div>
+                        <div class="form-with-slider-labels" id="hubspotFormContainer"></div>
                     </div>
                 </div>
             </div>
         </div>
        
-<style>@media (min-width: 768px) {body #popup-llm .modal-title small {font-size: 14px;}}@media (max-width: 1199px) {body #popup-llm .modal-title small {font-size: 12px;}}@media (max-width: 767px) {body #popup-llm .modal-title small {font-size: 8px;}}</style>
+        <style>@media (min-width: 768px) {body #popup-llm .modal-title small {font-size: 14px;}}@media (max-width: 1199px) {body #popup-llm .modal-title small {font-size: 12px;}}@media (max-width: 767px) {body #popup-llm .modal-title small {font-size: 8px;}}</style>
         <a href="#top" class="back-to-top"><em class="icon-arrow-up"></em></a>
         <script type="text/javascript" src="assets/js/bootstrap.bundle.min.js"></script>
-        <script type="text/javascript" src="assets/js/all-jquery.js"></script>       
+        <script type="text/javascript" src="assets/js/all-jquery.js"></script>   
+        <script type="text/javascript" src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" id="icw-lottie-js"></script>    
         <script type="text/javascript" src="assets/js/main.js"></script>      
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var formContainer = document.getElementById('hubspotFormContainer');
         
+            // Function to initialize HubSpot form
+            function initializeHubSpotForm() {
+              if (typeof hbspt !== 'undefined') {
+                hbspt.forms.create({
+                    target: '#hubspotFormContainer',
+                    css: '', 
+                    region: "na1", 
+                    portalId: "8338627", 
+                    formId: "f7da1fc3-958c-444a-b11a-2ed8f1b716a3", 
+                    css: " ", 
+                    redirectUrl: "/thank-you/#llm-evaluation", 
+                    locale: "en", 
+                    translations: { 
+                    en: { submitText: "Submit" } }, onFormReady: function ($form, ctx) { hubspot_labels(); }
+                });
+              }
+            }
+        
+            // Initialize HubSpot form
+            initializeHubSpotForm();
+        
+            // Reinitialize HubSpot form on modal show
+            $('#popup-llm').on('hidden.bs.modal', function () {
+              // Destroy existing form instance
+              if (typeof hbspt !== 'undefined' && typeof hbspt.forms !== 'undefined' && typeof hbspt.forms[0] !== 'undefined') {
+                hbspt.forms[0].destroy();
+              }
+              // Initialize the form again
+              initializeHubSpotForm();
+            });
+          });
+        </script>
     </body>
 </html>
