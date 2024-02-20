@@ -4,7 +4,7 @@ jQuery(document).ready(function($) {
         $("body").tooltip({ selector: '[data-bs-toggle=tooltip]' });
     }
     $('[data-toggle="popover"]').popover();
-    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip({ boundary: 'window' });
 
     if ($('.collapse').length) {
         $('.collapse').collapse();
@@ -463,9 +463,9 @@ jQuery(document).ready(function($) {
         $('.play-iframe').click(function(ev){	
             videourl = $(this).data('videosrc')+"?api=1&autoplay=1&muted=1&rel=0&enablejsapi=1";
             if($(this).data('ext') == 'mp4'){
-                video = '<div class="video-wrap"><video class="embed-responsive-item" controls autoplay controlsList="nodownload" oncontextmenu="return false;"><source src="'+videourl+'" type="video/mp4"></video></div>';
+                video = '<div class="video-wrap"><video class="embed-responsive-item" controls autoplay playsinline controlsList="nodownload" oncontextmenu="return false;"><source src="'+videourl+'" type="video/mp4"></video></div>';
             } else {
-                video = '<div class="video-wrap"><iframe class="embed-responsive-item play-in_iframe" src="'+videourl+'" controls="0" scrolling="no" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen autoplay></iframe></div>';
+                video = '<div class="video-wrap"><iframe class="embed-responsive-item play-in_iframe" allow="autoplay" src="'+videourl+'" controls="0" scrolling="no" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" allowfullscreen></iframe></div>';
             }
             
             $(this).parents('.play-video-block').html(video);
@@ -721,3 +721,18 @@ allClipboardBtnArray.forEach(function(elm, indx) {
         resetTooltip(e)
     });
 });
+
+
+window.addEventListener('DOMContentLoaded', () => {
+    const mainHeader = document.querySelector('.main-header');
+    if (mainHeader) {
+        updateHeaderHeight(mainHeader); // Call the function to set initial header height
+        window.addEventListener('resize', () => updateHeaderHeight(mainHeader));
+        window.addEventListener('orientationchange', () => updateHeaderHeight(mainHeader));
+    }
+});
+function updateHeaderHeight(header) {
+    const innerHeight = header.clientHeight;
+    header.style.setProperty('--header-h', `${innerHeight}px`);
+    header.style.setProperty('--vh', `${window.innerHeight/100}px`);
+}
