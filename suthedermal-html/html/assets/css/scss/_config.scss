@@ -1,75 +1,66 @@
-@font-face {
-	font-family: 'Open Sans Condensed Bold';
-	src: url('../fonts/OpenSans-CondBold-webfont.woff') format('woff');
-	font-weight: 700;
-}
+
 
 /* Variables */
-$bodyfont     : 'Open Sans', sans-serif;
-$bodyfontsize : calc(14px + (16 - 14) * ((100vw - 320px) / (1900 - 320)));
-$bodycolor	  : #1E1E1E;
-$bodybg       : #ffffff;
-
-$white		  : #ffffff;
-$black		  : #000000;
-$darkblack    : #291F1E;
-$gray         : #FCFCFC;
-
-$primary      : #F8333C;
-$secondary    : #E3BB00;
-$blue         : #0061AA;
-$green        : #5BC0BE;
-$dark         : #291F1E;
-
-$font-oswald: 'Oswald', sans-serif;
-$font-opensanscondensed: 'Open Sans Condensed Bold';
+$bodyfont: "mozaic-geo-variable",sans-serif;
+$bodyfontsize: 20px;
+$bodyfontcolor: #2B2829;
+$bodybg: #F8F2ED;
+$darkBlack: #2B2829;
+$white: #ffffff;
+$black: #000000;
+$primary:#62BFFA;
+$secondary:#FF5939;
+$error:#f44336;
 
 /* Mixins */
-@mixin appearance($value) {
-    -webkit-appearance: $value; 
-    -moz-appearance: $value; 
-    appearance: $value;
-}
 @mixin border-radius($radius) {
     border-radius: $radius;
     -moz-border-radius: $radius;
     -webkit-border-radius: $radius;
 }
-@mixin box-shadow ($box-shadow){
-    -moz-box-shadow:$box-shadow;
-    -webkit-box-shadow:$box-shadow;
-    box-shadow:$box-shadow;
+@mixin box-shadow($box-shadow) {
+    -moz-box-shadow: $box-shadow;
+    -webkit-box-shadow: $box-shadow;
+    box-shadow: $box-shadow;
 }
-@mixin box-shadow-all ($bs-t, $bs-r, $bs-b, $bs-l, $box-shadow-all-color){
+@mixin box-shadow-all($bs-t, $bs-r, $bs-b, $bs-l, $box-shadow-all-color) {
     box-shadow: $bs-t $bs-r $bs-b $bs-l $box-shadow-all-color;
     -webkit-box-shadow: $bs-t $bs-r $bs-b $bs-l $box-shadow-all-color;
     -moz-box-shadow: $bs-t $bs-r $bs-b $bs-l $box-shadow-all-color;
     -o-box-shadow: $bs-t $bs-r $bs-b $bs-l $box-shadow-all-color;
 }
-@mixin box-shadow-value ($bs-t, $bs-r, $bs-b){
-    box-shadow: $bs-t, $bs-r, $bs-b;
-    -webkit-box-shadow: $bs-t, $bs-r, $bs-b;
-    -moz-box-shadow: $bs-t, $bs-r, $bs-b;
-    -o-box-shadow: $bs-t, $bs-r, $bs-b;
-}
+
 @mixin transition($duration, $ease) {
     -webkit-transition: all $duration $ease;
     -moz-transition: all $duration $ease;
     -o-transition: all $duration $ease;
     transition: all $duration $ease;
 }
-@mixin transition-all($all, $visibility, $z-index) {
-    -webkit-transition: $all $visibility $z-index;
-    -moz-transition: $all $visibility $z-index;
-    -o-transition: $all $visibility $z-index;
-    transition: $all $visibility $z-index;
-    -ms-transition: $all $visibility $z-index;
+@mixin transitionValue($value, $duration, $ease) {
+    -webkit-transition: $value $duration $ease;
+    -moz-transition: $value $duration $ease;
+    -o-transition: $value $duration $ease;
+    transition: $value $duration $ease;
 }
 @mixin opacity($value) {
     -moz-opacity: $value;
     -khtml-opacity: $value;
     -webkit-opacity: $value;
     opacity: $value;
+}
+@mixin transform($value) {
+    -moz-transform: $value;
+    -webkit-transform: $value;
+    -o-transform: $value;
+    -ms-transform: $value;
+    transform: $value;
+}
+
+@mixin filter($value) {
+    -webkit-filter: $value;
+    -moz-filter: $value;
+    -o-filter: $value;
+    filter: $value;
 }
 
 /* display: flex */
@@ -121,16 +112,13 @@ $font-opensanscondensed: 'Open Sans Condensed Bold';
 }
 // Display Order
 @mixin order($val) {
-    -webkit-box-ordinal-group: $val;  
-    -moz-box-ordinal-group: $val;     
-    -ms-flex-order: $val;     
-    -webkit-order: $val;  
+    -webkit-box-ordinal-group: $val;
+    -moz-box-ordinal-group: $val;
+    -ms-flex-order: $val;
+    -webkit-order: $val;
     order: $val;
 }
-@mixin transform($value) {
-    -moz-transform: $value;  
-    -webkit-transform: $value;  
-    -o-transform: $value;  
-    -ms-transform: $value; 
-    transform: $value;
-}
+
+/** Operation **/
+/* Parametric Mixins */
+/** Guarded Mixins **/
