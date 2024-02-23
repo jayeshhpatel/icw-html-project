@@ -1025,6 +1025,26 @@
 	@media (max-width: 992px) {
 		padding: 200px 0 40px; 
 	}
+	&.with-curve-shape {
+		position: relative;
+		padding: 200px 0 180px;
+		// background-color: #3381bb;
+		background-image: url(../images/img-hero-curve.svg);
+		background-size: cover;
+			background-repeat: no-repeat;
+			background-position: bottom center;
+		@media (max-width: 1440px) {
+			padding: 170px 0 180px; 
+		}
+		@media (max-width: 992px) {
+			padding: 120px 0 100px; 
+			background-position: bottom left;
+		}
+		.page-header-title {
+			z-index: 3;
+			position: relative;
+		}
+	}
 	h1.post-title {
 		font-weight: 700;
 		word-break: break-word;	
@@ -1794,17 +1814,19 @@ blockquote {
 
 .salary-guide-block {
 	.with-red-square {
-		padding-right: 70px;
-		position: relative;
-		&::after {
-			content: '';
-			background: $primary;
-			height: 80%;
-			width: 50px;
-			display: block;
-			position: absolute;
-			bottom: -20px;
-			right: 0;
+		position: relative;		
+		.sort-info {
+			border-right: 50px solid $primary;
+			padding-right: 20px;
+			@media (max-width: 575px) {
+				border-width: 30px;
+			}
+		}
+	}
+	.section-title {
+		.title-text {
+			font-size: 24px;
+			text-transform: unset;
 		}
 	}
 	.card-image-block {
@@ -1823,7 +1845,7 @@ blockquote {
 		@include align-items(stretch);
 		.square-block {
 			background: $blue;
-			width: 60px;
+			width: 50px;
 			margin-right: 20px;
 			height: 70px;
 			margin-top: 10px;
@@ -1878,6 +1900,16 @@ blockquote {
 				line-height: 1.2;
 				margin-bottom: 20px;
 			}
+			.btn {
+				padding: 5px 15px;
+				font-size: 20px !important;
+				.icons {
+					svg {
+						height: 15px;
+    					width: 8px;
+					}
+				}
+			}
 		}
 	}
 	&.style-blue {
@@ -1887,6 +1919,12 @@ blockquote {
 			}
 			.square-block {
 				background-color: $blue;
+			}
+		}
+		.table-cta-block {
+			background-color: $blue;
+			.image-overlay-text {	
+				background-color: rgba($blue, 0.5);		
 			}
 		}
 		.table-block {
@@ -1918,6 +1956,12 @@ blockquote {
 				background-color: $primary;
 			}
 		}
+		.table-cta-block {
+			background-color: $primary;
+			.image-overlay-text {	
+				background-color: rgba($primary, 0.5);		
+			}
+		}
 		.table-block {
 			table {
 				tbody {
@@ -1945,6 +1989,12 @@ blockquote {
 			}
 			.square-block {
 				background-color: $green;
+			}
+		}
+		.table-cta-block {
+			background-color: $green;
+			.image-overlay-text {	
+				background-color: rgba($green, 0.5);		
 			}
 		}
 		.table-block {
