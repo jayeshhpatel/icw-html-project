@@ -4054,17 +4054,21 @@ blockquote {
 	.feature-tabs {
 		@include flexbox;
 		@include align-items(center);
+		@include flex-wrap(nowrap);
 		margin: 0 -15px 50px;
 		border-bottom: 0;
 		overflow: hidden;
 		overflow-x: auto;
-		.info-card {
+		.info-card {			
 			width: 100%;
 			max-width: calc(25% - 30px);
+			margin: 15px;
 			text-align: center;
 			background-color: var(--bg, #fff);
 			@include transition(0.3s, ease-in-out);
-			margin: 0 15px;
+			@media (max-width: 992px) {
+				min-width: 180px;
+			}
 			&.active {
 				background-color: #7177F8;
 				h3 {
@@ -4075,10 +4079,17 @@ blockquote {
 				img {
 					max-width: 100px;
 					height: 100px;
+					@media (max-width: 992px) {
+						max-width: 80px;
+						height: 80px;
+					}
 				}
 			}
 			h3 {
 				font-size: 22px;
+				@media (max-width: 992px) {
+					font-size: 18px;
+				}
 			}
 		}
 	}
