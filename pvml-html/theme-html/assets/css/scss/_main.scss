@@ -868,6 +868,12 @@
 		@include justify-content(center);
 		@include justify-content(space-between);
 
+		@media (min-width: 1350px) {
+			&.bg-right-wave-big {
+				background: #5960F0 url(../images/bg-right-wave-big.svg) right bottom no-repeat;
+			}
+		}
+
 		@media (max-width: 1350px) {
 			padding: 50px 40px;
 		}
@@ -2036,6 +2042,16 @@
 		animation: moveUpDownSlow 10s ease-out infinite;
             animation-direction: reverse;
 	}
+
+	&.hero-vh-section-before-lb {
+		@media (min-width: 768px) {
+			&::before {
+				top: auto;
+				bottom: 40px;
+			}
+		}
+	}
+	
 	&::after {
 		background: linear-gradient(91deg, #7177F8 -0.15%, #9FBEF1 104.98%);
 		width: 60px;
@@ -2271,6 +2287,26 @@
 
 			video {
 				// pointer-events: none;
+			}
+
+			.with-zoom {
+				width: 28px;
+				height: 28px;
+				position: absolute;
+				top: auto;
+				left: auto;
+				bottom: 15px;
+				right: 15px;
+				z-index: 9;
+				border-radius: 6px;
+				padding: 5px;
+				@include flexbox();
+				@include align-items(center);
+				@include justify-content(center);
+
+				background: rgba($white, .60);
+				-webkit-backdrop-filter: blur(10px);
+				backdrop-filter: blur(10px);
 			}
 		}
 
@@ -2808,6 +2844,10 @@
 		overflow: hidden;
 		padding: 0px;
 		margin: 0px;
+
+		&.ratio-4x2 {
+			--bs-aspect-ratio:50%;
+		}
 	}
 
 	.is-shape-lt {
@@ -4010,3 +4050,36 @@ blockquote {
 	
 }
 
+.tab-feature-section {
+	.feature-tabs {
+		@include flexbox;
+		@include align-items(center);
+		margin: 0 -15px 50px;
+		border-bottom: 0;
+		overflow: hidden;
+		overflow-x: auto;
+		.info-card {
+			width: 100%;
+			max-width: calc(25% - 30px);
+			text-align: center;
+			background-color: var(--bg, #fff);
+			@include transition(0.3s, ease-in-out);
+			margin: 0 15px;
+			&.active {
+				background-color: #7177F8;
+				h3 {
+					color: $white;
+				}
+			}
+			.card-img {
+				img {
+					max-width: 100px;
+					height: 100px;
+				}
+			}
+			h3 {
+				font-size: 22px;
+			}
+		}
+	}
+}

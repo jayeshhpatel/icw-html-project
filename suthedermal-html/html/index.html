@@ -87,13 +87,13 @@
                 </div>
             </section>            
             <section class="dark-top-wave-shape"></section>
-            <section class="main-section bg-dark pb-0">                
+            <section class="main-section product-device-section bg-dark pb-0">                
                 <div class="container">
                     <div class="row align-items-center">
-                        <div class="col-md-8">
+                        <div class="col-lg-7 col-xl-8">
                             <div class="row g-5">
                                 <div class="col-sm-6">
-                                    <div class="info-card" style="--color: #62BFFA;">
+                                    <div class="info-card" data-id="digivibe-motor" style="--color: #62BFFA;">
                                         <div class="card-img">
                                             <img src="upload/icon-digivibe-motor.svg" alt="DigiVibe Motor">                                 
                                         </div>
@@ -104,7 +104,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="info-card" style="--color: #FBC734;">
+                                    <div class="info-card" data-id="solo-stand" style="--color: #FBC734;">
                                         <div class="card-img">
                                             <img src="upload/icon-solo-stand.svg" alt="Solo Stand">                                 
                                         </div>
@@ -115,7 +115,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="info-card" style="--color: #FA503A;">
+                                    <div class="info-card" data-id="lancing-device" style="--color: #FA503A;">
                                         <div class="card-img">
                                             <img src="upload/icon-lancing-device.svg" alt="Lancing Device">                                 
                                         </div>
@@ -126,7 +126,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="info-card" style="--color: #62BFFA;">
+                                    <div class="info-card" data-id="sonictips" style="--color: #62BFFA;">
                                         <div class="card-img">
                                             <img src="upload/icon-sonictips.svg" alt="SonicTips">                                 
                                         </div>
@@ -138,16 +138,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-lg-5 col-xl-4">
                             <div class="image-block text-center text-md-start">
                                 <img src="upload/img-lancing-dgv-device.png" alt="Lancing & DGV Device">
+                                <div class="product-device">
+                                    <span id="digivibe-motor" style="--bg: #62BFFA;"></span>
+                                    <span id="solo-stand" style="--bg: #FBC734;"></span>
+                                    <span id="lancing-device" style="--bg: #FA503A;"></span>
+                                    <span id="sonictips" style="--bg: #62BFFA;"></span>
+                                </div>
                             </div>
                         </div>
                     </div>                    
                 </div>
             </section>
             <section class="main-section testimonials-slider-section bg-dark overflow-hidden">
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row">
                         <div class="col-12">
                             <div class="section-title">
@@ -296,7 +302,7 @@
         <script type="text/javascript" src="assets/js/splide.min.js" id="icw-lottie-js"></script>
         <script src="assets/js/main.js"></script>
         <script>
-            var splide = new Splide( '.testimonials-splide', {
+            var testimonialSplide = new Splide( '.testimonials-splide', {
                 pagination: false,
                 arrows: false,
                 perPage: 3,
@@ -311,35 +317,20 @@
                         autoWidth: true,
                     },
                 }
-            } );
-
-            var thumbnails = document.getElementsByClassName( 'thumbnail' );
-            var current;
-
-            for ( var i = 0; i < thumbnails.length; i++ ) {
-                initThumbnail( thumbnails[ i ], i );
-            }
-
-            function initThumbnail( thumbnail, index ) {
-                thumbnail.addEventListener( 'click', function () {
-                    splide.go( index );
-                } );
-            }
-
-            splide.on( 'mounted move', function () {
-                var thumbnail = thumbnails[ splide.index ];
-
-                if ( thumbnail ) {
-                    if ( current ) {
-                    current.classList.remove( 'is-active' );
-                    }
-
-                    thumbnail.classList.add( 'is-active' );
-                    current = thumbnail;
+            });
+            testimonialSplide.mount();
+            $(".product-device span").on({
+                mouseenter: function () {
+                    var id = $(this).attr('id');
+                    console.log(id);
+                    $('.info-card[data-id='+ id +']').addClass('on-hover');
+                    $('.info-card').addClass('leave-hover');
+                },
+                mouseleave: function () {
+                    $('.info-card').removeClass('on-hover');
+                    $('.info-card').removeClass('leave-hover');
                 }
-            } );
-
-            splide.mount();
+            });
         </script>
     </body>
 </html>
