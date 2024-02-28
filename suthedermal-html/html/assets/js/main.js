@@ -27,4 +27,37 @@ jQuery(document).ready(function($) {
             }
         });
     }
+    if ($('.testimonials-splide').length) {
+        var testimonialSplide = new Splide( '.testimonials-splide', {
+            pagination: false,
+            arrows: false,
+            perPage: 3,
+            perMove: 1,
+            type    : 'loop',
+            breakpoints: {
+                992: {
+                    perPage: 2,
+                },
+                575: {
+                    perPage: 1,
+                    autoWidth: true,
+                },
+            }
+        });
+        testimonialSplide.mount();
+    }
+    if ($('.product-device').length) { 
+        $(".product-device span").on({
+            mouseenter: function () {
+                var id = $(this).attr('id');
+                console.log(id);
+                $('.info-card[data-id='+ id +']').addClass('on-hover');
+                $('.info-card').addClass('leave-hover');
+            },
+            mouseleave: function () {
+                $('.info-card').removeClass('on-hover');
+                $('.info-card').removeClass('leave-hover');
+            }
+        });
+    }
 });
