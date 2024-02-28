@@ -40,7 +40,6 @@ jQuery(document).ready(function($) {
                 },
                 575: {
                     perPage: 1,
-                    autoWidth: true,
                 },
             }
         });
