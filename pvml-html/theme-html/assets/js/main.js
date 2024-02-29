@@ -311,11 +311,14 @@ function splideSlider(slideID) {
         rewind: true,
         gap: 20,
         snap: true,
+        autoplay: true,
         type: 'fade',
         pauseOnHover: false,
         pauseOnFocus: false,
+        resetProgress: true,
     });
     // Listen to the 'mounted' event to get the slider instance
+    
     splide_workspace_title_img.on('mounted', function () {
         // Get all video elements within the slider
         var fullvideos = document.querySelectorAll('#'+slideID+'video');
