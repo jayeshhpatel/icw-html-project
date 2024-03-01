@@ -118,10 +118,10 @@
                     </div>
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="flexible-tab-pane" role="tabpanel" aria-labelledby="flexible" tabindex="0">
-                            <div id="flexible-splide" class="splide full-slider icw-splide__pagination" data-splide='{"autoplay":"true","pagination":true,"interval":34000}'>
+                            <div id="flexible-splide" class="splide full-slider icw-splide__pagination" data-splide='{"autoplay":"true","pagination":true,"interval":15000}'>
                                 <div class="splide__track">
                                     <ul class="splide__list">
-                                        <li class="splide__slide" data-splide-interval="15000">
+                                        <li class="splide__slide" data-splide-interval="12000">
                                             <div class="workspace-item">
                                                 <div class="row align-items-center">
                                                     <div class="col-md-5">
@@ -190,7 +190,7 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="splide__slide" data-splide-interval="1500">
+                                        <li class="splide__slide" data-splide-interval="6000">
                                             <div class="workspace-item">
                                                 <div class="row align-items-center">
                                                     <div class="col-md-5">
@@ -229,7 +229,7 @@
                             <div id="manageable-splide" class="splide full-slider icw-splide__pagination" data-splide='{"autoplay":"true","pagination":true,"interval":34000}'>
                                 <div class="splide__track">
                                     <ul class="splide__list">
-                                        <li class="splide__slide" data-splide-interval="1500">
+                                        <li class="splide__slide" data-splide-interval="34000">
                                             <div class="workspace-item">
                                                 <div class="row align-items-center">
                                                     <div class="col-md-5">
@@ -252,7 +252,7 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="splide__slide" data-splide-interval="1000">
+                                        <li class="splide__slide" data-splide-interval="19000">
                                             <div class="workspace-item">
                                                 <div class="row align-items-center">
                                                     <div class="col-md-5">
@@ -626,28 +626,31 @@
             </div>
         </footer>
         <a href="#top" class="back-to-top"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11.62 11.62" fill="#002B31"><path d="M0 5.81l1 1 4.08-4.03v8.84h1.45V2.78l4.05 4.06 1-1L5.81 0z" /></svg></a>
-        <script type="text/javascript" src="assets/js/bootstrap.bundle.min.js" id="icw-bootstrap-bundle-js"></script>    
-        <script type="text/javascript" src="assets/js/splide.min.js" id="icw-splide-js"></script>
+        <script type="text/javascript" src="assets/js/bootstrap.bundle.min.js" id="icw-bootstrap-bundle-js"></script> 
         <script type="text/javascript" src="assets/js/main.js" id="icw-main-js"></script>    
         
-        <script>                  
-                    
+        <script>   
             if (jQuery("#flexible-splide").length > 0) {
                 var sliderID = 'flexible-splide';
                 splideSlider(sliderID);
             }
-            // if (jQuery("#manageable-splide").length > 0) {
-            //     var sliderID = 'manageable-splide';
-            //     splideSlider(sliderID);
-            // }
-            // if (jQuery("#secure-splide").length > 0) {
-            //     var sliderID = 'secure-splide';
-            //     splideSlider(sliderID);
-            // }
-            // if (jQuery("#ai-splide").length > 0) {
-            //     var sliderID = 'ai-splide';
-            //     splideSlider(sliderID);
-            // }
+            if (jQuery("#manageable-splide").length > 0) {
+                var sliderID = 'manageable-splide';
+                splideSlider(sliderID);
+            }
+            if (jQuery("#secure-splide").length > 0) {
+                var sliderID = 'secure-splide';
+                splideSlider(sliderID);
+            }
+            if (jQuery("#ai-splide").length > 0) {
+                var sliderID = 'ai-splide';
+                splideSlider(sliderID);
+            }
+            jQuery('.feature-tabs .feature-tab').on('click', function(){
+                var id = jQuery(this).attr('id');
+                splide.destroy()
+                splideSlider(id + '-splide');
+            });
         </script>
     </body>
 

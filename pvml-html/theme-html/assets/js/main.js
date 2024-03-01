@@ -317,12 +317,11 @@ function splideSlider(slideID) {
         pauseOnFocus: false,
         resetProgress: true,
     });
-    // Listen to the 'mounted' event to get the slider instance
-    
+
+    // Listen to the 'mounted' event to get the slider instance  
     splide_workspace_title_img.on('mounted', function () {
         // Get all video elements within the slider
         var fullvideos = document.querySelectorAll('#'+slideID+'video');
-
         // Listen to the 'moved' event to play/pause fullvideos on slide change
         splide_workspace_title_img.on('moved', function (newIndex) {
             var currentSlideNumber = newIndex + 1;
@@ -334,7 +333,6 @@ function splideSlider(slideID) {
                     element.textContent = formatSlideNumber(currentSlideNumber);
                 }
             });
-
             // Pause all fullvideos
             if (fullvideos && fullvideos.length > 0) {
                 fullvideos.forEach(function (video, index) {
@@ -348,10 +346,25 @@ function splideSlider(slideID) {
             }
         });
     });
+
     splide_workspace_title_img.mount();
-    
     // Format slide number with leading zeros
     function formatSlideNumber(number) {
         return number < 10 ? '0' + number : number.toString();
+    }
+}
+function destroySplideForOtherTabs(currentTabId) {
+    var tabContents = document.getElementsByClassName("tab-pane");
+    for (var i = 0; i < tabContents.length; i++) {
+        var tabId = tabContents[i].id;
+        // if (tabId !== currentTabId) {
+            var splideContainer = document.querySelector('#' + tabId + '-pane .full-slider');
+            if (splideContainer) {
+                var splideInstance = splideContainer.Splide;
+                if (splideInstance) {
+                    splideInstance.destroy();
+                }
+            }
+        // }
     }
 }
