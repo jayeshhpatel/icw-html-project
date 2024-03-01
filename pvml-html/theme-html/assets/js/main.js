@@ -326,9 +326,10 @@ function splideSlider(slideID) {
         splide_workspace_title_img.on('moved', function (newIndex) {
             var currentSlideNumber = newIndex + 1;
             // Select all elements with the class 'splide_current'
-            var elementsWithSplideCurrent = document.querySelectorAll('.splide_current');
+            var elementsWithSplideCurrent = document.querySelectorAll('#'+slideID+' .splide_current');
             // Update the content of each selected element
             elementsWithSplideCurrent.forEach(function (element) {
+                console.log(element);
                 if (element) {
                     element.textContent = formatSlideNumber(currentSlideNumber);
                 }
@@ -344,6 +345,7 @@ function splideSlider(slideID) {
                 // Play the video in the current slide
                 fullvideos[newIndex].play();
             }
+           
         });
     });
 
@@ -351,20 +353,5 @@ function splideSlider(slideID) {
     // Format slide number with leading zeros
     function formatSlideNumber(number) {
         return number < 10 ? '0' + number : number.toString();
-    }
-}
-function destroySplideForOtherTabs(currentTabId) {
-    var tabContents = document.getElementsByClassName("tab-pane");
-    for (var i = 0; i < tabContents.length; i++) {
-        var tabId = tabContents[i].id;
-        // if (tabId !== currentTabId) {
-            var splideContainer = document.querySelector('#' + tabId + '-pane .full-slider');
-            if (splideContainer) {
-                var splideInstance = splideContainer.Splide;
-                if (splideInstance) {
-                    splideInstance.destroy();
-                }
-            }
-        // }
     }
 }
