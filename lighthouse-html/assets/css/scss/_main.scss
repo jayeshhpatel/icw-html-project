@@ -2058,18 +2058,31 @@ blockquote {
 }
 .full-bg-title-section {
 	.section-title {
-		padding: 15px 50px 15px 70px;
-		@media (max-width: 992px) {
-			padding: 15px 50px 15px 50px;
-		}
+		padding: 15px  0px;
 		@media (max-width: 575px) {
-			padding: 10px 20px 10px 20px;
+			padding: 10px 0px;
 		}
 		&.with-bg {
 			background: var(--bg, #5bc0be);
 			h2 {
 				color: $white;
 				font-size: 28px;
+				display: grid;
+				grid-template-columns: 50px auto;
+				gap: 20px;
+				@media (max-width: 992px) {
+					grid-template-columns: 40px auto;
+					gap: 10px;
+				}
+				@media (max-width: 575px) {
+					gap: 0px;
+				}
+				span {
+					display: inline-block;
+					&:first-child {
+						text-align: center;
+					}
+				}
 				@media (max-width: 992px) {
 					font-size: 24px;
 				}
