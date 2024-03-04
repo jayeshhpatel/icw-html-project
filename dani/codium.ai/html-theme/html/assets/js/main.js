@@ -61,29 +61,30 @@ jQuery(document).ready(function ($) {
   let SwiperTop = new Swiper(".swiper--top", {
     spaceBetween: 0,
     centeredSlides: true,
-    speed: 2000,
+    speed: 5000,
     autoplay: {
       delay: 1,
     },
     loop: true,
     allowTouchMove: true,
     disableOnInteraction: true,
-    breakpoints: {
-      1023: {
-        slidesPerView: 6,
-      },
-      767: {
-        slidesPerView: 4,
-      },
-      200: {
-        slidesPerView: 2,
-      },
-    },
+    slidesPerView: 'auto',
+    // breakpoints: {
+    //   1023: {
+    //     slidesPerView: 6,
+    //   },
+    //   767: {
+    //     slidesPerView: 4,
+    //   },
+    //   200: {
+    //     slidesPerView: 2,
+    //   },
+    // },
   });
   let SwiperStrip = new Swiper(".swiper--strip", {
     spaceBetween: 0,
     centeredSlides: true,
-    speed: 3000,
+    speed: 5000,
     autoplay: {
       delay: 1,
       disableOnInteraction: false,
@@ -91,17 +92,18 @@ jQuery(document).ready(function ($) {
     },
     loop: true,
     allowTouchMove: false,
-    breakpoints: {
-      1023: {
-        slidesPerView: 6,
-      },
-      767: {
-        slidesPerView: 5,
-      },
-      200: {
-        slidesPerView: 3,
-      },
-    },
+    slidesPerView: 'auto',
+    // breakpoints: {
+    //   1023: {
+    //     slidesPerView: 6,
+    //   },
+    //   767: {
+    //     slidesPerView: 5,
+    //   },
+    //   200: {
+    //     slidesPerView: 3,
+    //   },
+    // },
   });
   $(".swiper--strip .swiper-container").each(function (elem, target) {
     var swp = target.swiper;
@@ -259,9 +261,8 @@ jQuery(document).ready(function ($) {
         $("ul.faq > li > .answer").slideUp("fast");
         toOpen.slideUp("fast");
       }
-      
       $(this).parents("li").removeClass("active");
-      $(this).find(".title-icon img").css("transform", "scale(1)");     
+      $(this).find(".title-icon img").css("transform", "scale(1)");
     } else {
       //$('ul.faq > li').removeClass('active');
       //$('ul.faq > li > .answer').slideUp(300);
@@ -274,7 +275,6 @@ jQuery(document).ready(function ($) {
       }
       $(this).parents("li").addClass("active");
       $(this).find(".title-icon img").css("transform", "scale(-1)");
-      
     }
   });
 
@@ -464,95 +464,84 @@ jQuery(document).ready(function ($) {
     });
   */
 
-  var swiperLottie = new Swiper(".lottie-section-product", {
-    //direction: "vertical",
-    spaceBetween: 20,
-    loop: true,
-    // effect: "fade",
-    speed: 0,
-    // fadeEffect: {
-    //   crossFade: true,
-    // },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    on: {
-      activeIndexChange: function () {
-        if (this.activeIndex > 3) {
-          this.el
-            .querySelectorAll(".swiper-slide")
-            [this.activeIndex].classList.add("show-op");
-          setTimeout(() => {
+    var swiperLottie = new Swiper(".lottie-section-product", {
+      autoplay: {
+        delay: 6000
+      },
+      spaceBetween: 20,
+      
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      on: {
+        activeIndexChange: function () {
+          if (this.activeIndex >= 3) {
             this.el
               .querySelectorAll(".swiper-slide")
-              [this.activeIndex].classList.remove("show-op");
-          }, 3000);
-        }
-      },
-    },
-    breakpoints: {
-      1200: {
-        spaceBetween: 220,
-      },
-      767: {
-        spaceBetween: 20,
-      },
-      200: {
-        spaceBetween: 20,
-      },
-    },
-  });
-
-  let start = false;
-  const player = document.querySelectorAll("lottie-player");
-    if ($("lottie-player").length) {
-      $(window).on(
-        "resize scroll",
-        throttle(function () {
-          if ($("lottie-player").isInViewport()) {
-            if ($("lottie-player").data("played") == "false") {
-              player[swiperLottie.activeIndex].play();
-
-              $("lottie-player").data("played", "true");
-            }
-            // console.log(document.querySelector("lottie-player"));
-            // if (!start) {
-            //   setInterval(() => {
-            //     if (start) {
-            //       swiperLottie.slideNext();
-            //       player[0].seek(0);
-            //       player[0].play();
-            //       i++;
-            //     }
-            //   }, 4000);
-            // }
-            start = true;
-          } else {
-            $("lottie-player").data("played", "false");
+              [this.activeIndex].classList.add("show-op");
+            setTimeout(() => {
+              this.el
+                .querySelectorAll(".swiper-slide")
+                [this.activeIndex].classList.remove("show-op");
+            }, 1000);
           }
-        }, 500)
-      );
-    }
-
-    swiperLottie.on("slideChange", function () {
+        },
+      },
+      breakpoints: {
+        1200: {
+          spaceBetween: 220,
+        },
+        767: {
+          spaceBetween: 20,
+        },
+        200: {
+          spaceBetween: 20,
+        },
+      },
+    });
+  
+    let start = false;
+    const player = document.querySelectorAll("lottie-player");
+      if ($("lottie-player").length) {
+        $(window).on(
+          "resize scroll",
+          throttle(function () {
+            if ($("lottie-player").isInViewport()) {
+              if ($("lottie-player").data("played") == "false") {
+                player[swiperLottie.activeIndex].play();
+  
+                $("lottie-player").data("played", "true");
+              }
+              start = true;
+            } else {
+              $("lottie-player").data("played", "false");
+            }
+          }, 500)
+        );
+      }
+  
+      swiperLottie.on("slideChange", function () {
+        var activeIndex = swiperLottie.realIndex;
+        if (player[activeIndex]) {
+          player[activeIndex].seek(0);
+          player[activeIndex].play();
+        }
+      });
+  
       player.forEach((ply) => {
-        ply.stop();
+        ply.addEventListener("complete", () => {
+          setTimeout(() => {
+            // if (swiperLottie && player[swiperLottie.activeIndex]) {
+              swiperLottie.slideNext();
+              player[swiperLottie.realIndex].seek(0);
+              player[swiperLottie.realIndex].play();
+            // }
+          }, 0);
+        });
       });
-      player[swiperLottie.activeIndex].seek(0);
-      player[swiperLottie.activeIndex].play();
-    });
-
-    player.forEach((ply) => {
-      ply.addEventListener("complete", () => {
-        setTimeout(() => {
-          swiperLottie.slideNext();
-          player[swiperLottie.activeIndex].seek(0);
-          player[swiperLottie.activeIndex].play();
-        }, 0);
-      });
-    });
-    let i = 0;
+      let i = 0;
   }
 
   if($('.feautre-code-slider').length){
@@ -586,6 +575,26 @@ jQuery(document).ready(function ($) {
     jQuery('.back-to-top').on('click', function(e){
       e.preventDefault();
       jQuery('body,html').animate({scrollTop:0},50);
+    });
+  }
+
+  if (jQuery('.grid-swiper-slider').length) {
+    new Swiper('.grid-swiper-slider', {
+      loop: true,
+      slidesPerView: 1,
+      paginationClickable: true,
+      spaceBetween: 20,
+      effect: "fade",
+      hashNavigation: {
+        watchState: true,
+      },
+      pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+      },
+      autoplay: {
+          delay: 10000,
+      },
     });
   }
 

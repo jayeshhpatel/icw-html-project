@@ -1,12 +1,13 @@
 .about-hero{
-    background-image: url(https://www.codium.ai/wp-content/uploads/2023/03/hero-about.png);
+    background-image: url(/wp-content/uploads/2023/03/hero-about.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
     padding: 200px 5% 150px;
     @include mobile{
-        padding: 150px 2rem 200px;
-        background-image: url(../images/about-hero-bg-mobile.png);
+        min-height: 100vh;
+        padding: 150px 2rem 300px;
+        background-image: url(/wp-content/uploads/2023/02/about-hero-bg-mobile.png);
     }
     .container-100{
         position: relative;
@@ -23,10 +24,10 @@
         }
     }
     &--title{
-        font-size: 56px;
+        font-size: 3.8vw;
         width: 33vw;
         @include mobile{
-            font-size: 32px;
+            font-size: 9vw;
             width: 100%;
         }
     }
@@ -34,41 +35,41 @@
 
 .about-info{
     text-align: center;
-    padding: 10rem 2rem 6rem;
+    padding: 100px 20px;
     @include mobile{
-        padding: 4rem 2rem;
+        padding: 50px 20px;
     }
     p{
-        margin-bottom: 8rem;
+        margin-bottom: 15px;
         @include mobile{
             margin: 0;
         }
     }
     .text-bigger{
-        width: 105rem;
-        margin: 0 auto 8rem;
+        max-width: 1050px;
+        width: 100%;
+        margin: 0 auto 40px;
         p{
             margin:0;
         }
-        @media only screen and (min-width: 1024px) and (max-width: 1140px) {
-            width: 100%;
-        }
-        @include mobile{
-            width: 100%;
-        }
     }
     &--content{
-        padding: 6em 0;
+        padding: 100px 0 0;
         display: grid;
         gap: 7vw;
         grid-template-columns: repeat(3,1fr);
         justify-content: space-between;
-        @include mobile{
-            padding: 6em 5em 3em;
-            flex-direction: column;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 17vw;
+
+        @media (max-width: 767px) { 
+            padding: 50px 0 0;
+            gap: 5vw;
         }
+        // @include mobile{
+        //     padding: 6em 5em 3em;
+        //     flex-direction: column;
+        //     grid-template-columns: repeat(1, 1fr);
+        //     gap: 17vw;
+        // }
         .content-box-icon{
             display: flex;
             flex-direction: column;
@@ -76,10 +77,13 @@
             @include mobile{
                 gap: 3rem;
             }
+            p {
+                margin: 0px;
+            }
             .image-wrapper{
                 position: relative;
-                padding-top: 40%;
-                @include mobile{
+                padding-top: 110px;
+                @media (max-width: 767px) {
                     padding-top: 50%;
                 }
                 img{
@@ -98,11 +102,11 @@
 }
 
 .about-team{
-    padding: 120px 2rem;
+    padding: 100px 2rem;
     background: url(../images/meet-team-bg.png) no-repeat bottom right, linear-gradient(176deg, #C1B6FF 3.11%, rgba(255, 255, 255, 0.00) 68.95%), #FFF;
     text-align: center;
-    @include mobile{
-        padding: 60px 2rem;
+    @media (max-width: 767px) {
+        padding: 50px 2rem;
         background: linear-gradient(176deg, #C1B6FF 3.11%, rgba(255, 255, 255, 0.00) 68.95%), #FFF;
     }
     &::before {
@@ -128,15 +132,12 @@
     &--wrapper{
         display: flex;
         flex-direction: column;
-        gap: 4em;
-        @include mobile{
-            gap: 3em;
-        }
+        gap: 40px;
         .team-title {
             color: #01012A;
             font-weight: 700;
             font-size: 40px;
-            @include mobile{
+            @media (max-width: 767px) {
                 font-size: 32px;
             }
         }
@@ -146,7 +147,7 @@
             margin: 0 auto;
             img {
                 @include border-radius(24px);
-                @include mobile{
+                @media (max-width: 767px) {
                     @include border-radius(8px);
                 }
             }
@@ -160,7 +161,7 @@
                 background-size: contain;
                 width: 170px;
                 height: 120px;
-                @include mobile{
+                @media (max-width: 767px) {
                     width: 80px;
                     height: 90px;
                     bottom: -30px;
@@ -170,16 +171,24 @@
         }
     }
     &--content{
+        @media (min-width: 768px) {
+            padding-top: 50px;
+            max-width: 1020px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
         &-grid{
             display: flex;
             justify-content: center;
-            @include mobile {
-                gap: 0;
+            gap: 0px;
+            @media (max-width: 767px) {
+                gap: 20px;
             }
             .team-card {
                 width: 50%;
                 border-right: 1px solid #E6E6E6;
-                @include mobile{
+                @media (max-width: 767px) {
                     border-right: none;
                 }
                 &:last-child {
@@ -191,9 +200,13 @@
 }
 
 .about-backed{
-    padding: 150px 2rem 24em;
+    padding: 100px 2rem 24em;
     text-align: center;
     background: url(../images/backed-by-bg.png) no-repeat center center;
+    @media (max-width: 767px) {
+        padding: 50px 2rem 10em;
+    }
+
     &::before {
         content: '';
         background: url(../images/backed-by-vector.png) no-repeat center right;
@@ -208,33 +221,28 @@
             content: none;
         }
     } 
-    @include mobile{
-        padding: 70px 2rem 10em;
-    }
+    
     &--wrapper{
         display: flex;
         flex-direction: column;
-        gap: 48px;
-        @include mobile{
+        gap: 40px;
+        @media (max-width: 767px) {
             gap: 20px;
         }
         h2{
-            display: flex;
+            display: inline-flex;
             margin: 0 auto;
         }
         .vcs-container{
-            display: flex;
+            display: inline-flex;
             justify-content: center;
-            gap: 8vw;
+            gap: 20px;
             align-items: center;
-            @include mobile{
-                gap:2em
+            flex-wrap: nowrap;
+            .vcs-logo {
             }
             img{
-                width: 26%;
-                @include mobile{
-                    width: 40%;
-                }
+                width: 100%;
             }
         }
     }
@@ -242,7 +250,7 @@
         font-size: 26px;
         letter-spacing: -0.26px;
         margin: 0;
-        @include mobile{
+        @media (max-width: 767px) {
             font-size: 20px;
         }
     }
@@ -250,17 +258,17 @@
         &--content{
             display: flex;
             flex-direction: column;
-            gap: 8rem;
+            gap: 40px;
             &-grid{
                 display: grid;
                 grid-template-columns: repeat(4,1fr);
-                gap: 9vw;
+                gap: 100px 50px;
                 @include mobile{
                     grid-template-columns: repeat(2, 1fr);
-                    gap: 2rem;
                 }
                 @media (max-width: 375px) {
                     grid-template-columns: repeat(1, 1fr);
+                    gap: 70px 20px;
                 }
                 .angelcard:nth-child(n+9){
                     display:none;
@@ -269,10 +277,15 @@
             .more-angels-btn{
                 display: flex;
                 justify-content: center;
+                margin-top: 30px;
                 a{
                     color: $green;
                     display: flex;
                     gap: 1rem;
+
+                    &:hover, &:focus {
+                        opacity: 0.8;
+                    }
                 }
                 a.close-angels{
                     img{
@@ -287,7 +300,7 @@
 .about-working{
     position: relative;
     padding: 0% 0 40%;
-    @include mobile{
+    @media (max-width: 767px) {
         padding: 6em 2rem 25vh;
         margin: 0 0 6em;
     }
@@ -407,13 +420,14 @@
     }
 }
 
+// New Sctions @ Jan 2024
 .our-mission {
-    background: #02022C url(../images/out-mission-bg.png) no-repeat right bottom;
-    padding: 150px 20px;
+    background: #02022C url(../images/glow-bg.svg) no-repeat right bottom;
+    padding: 100px 20px;
     position: relative;
     overflow: hidden;
-    @include mobile{
-        padding: 70px 20px;
+    @media (max-width: 767px) {
+        padding: 50px 20px;
     }
     &::before {
         content: '';
@@ -460,8 +474,9 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    @include mobile{
+    @media (max-width: 767px) { 
         grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
     }
     .gradient-border-box {
         position: relative;
@@ -475,10 +490,15 @@
         @include justify-content(center);
         @include flex-direction(column);
         z-index: 1;
-        @include mobile{
+
+        @media (max-width: 1024px) { 
+            padding: 40px 20px; 
+        }
+        @media (max-width: 767px) { 
             width: 100%;
             max-width: 400px;
             margin: 0 auto;
+            padding: 40px 20px; 
         }
         &::before {
             content: '';

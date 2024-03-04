@@ -12,7 +12,7 @@
     padding: 18rem 5% 8%;
     @include mobile {
       // padding: 15rem 5% 45%;
-      padding: 15rem 5% 50px;
+      padding: 15rem 15px 50px;
     }
     .overlay-hero {
       background-image: url(https://www.codium.ai/wp-content/uploads/2023/03/hero-home-gradient.svg);
@@ -421,8 +421,9 @@
         transition-timing-function: linear;
         .swiper-slide {
           align-self: center;
+          width: max-content !important;
           img{
-            padding: 0 4rem;
+            padding: 0 5rem; vertical-align: bottom;
           }
         }
       }
@@ -458,8 +459,9 @@
         transition-timing-function: linear;
         .swiper-slide {
           align-self: center;
+          width: max-content !important;
           img{
-            padding: 0 2rem;
+            padding: 0 5rem; vertical-align: bottom;
           }
         }
       }
@@ -2485,7 +2487,8 @@
   }
   &::after {
       content: '';
-      background-image: url(../images/circle-img-8.webp), url(../images/circle-img-1.png);
+      //background-image: url(../images/circle-img-8.webp), url(../images/circle-img-1.png);
+      background-image: url(../images/circle-img-8.webp);
       background-repeat: no-repeat;
       background-position: -4% 50%, calc(100% + 5%) 5%;
       background-size: 200px, 200px;
@@ -2501,6 +2504,7 @@
     background-image: url(../images/circle-img-1.png);
     background-position: calc(100% + 8%) -3%;
     background-size: 120px;
+    display: none;
   }
   }
   .two-content-block {
@@ -2730,5 +2734,29 @@
         opacity: 0.8;
       }
     }
+  }
+}
+
+.bg-bubble-lottie-position {
+  position: relative; 
+  width: 100vw;
+  margin-left: calc(-50vw + 50% - 8px);
+}
+.bg-bubble-lottie {
+  position: absolute; 
+  z-index: -1;
+  top: 0px; right: 0px; 
+  width: 260px; 
+  height: 260px;
+  @media (max-width: 767px) {
+    width: 160px; 
+    height: 160px;
+    top: 90px;
+  }
+
+  @media (max-width:475px) {
+    width: 120px; 
+    height: 120px;
+    top: 110px;
   }
 }

@@ -8,13 +8,9 @@
         .image-wrapper{
             height: 20rem;
             width: 20rem;
-            @include mobile{
+            @media (max-width: 767px) {
                 height: 130px;
-                width: 130px;
-            }
-            @media (max-width: 375px) {
-                height: 100px;
-                width: 100px;
+                width: 130px;    
             }
             img{
                 display: block;
@@ -23,40 +19,43 @@
                 object-fit: cover;
                 border-radius: 50%;
                 @include mobile{
-                    height: 130px;
-                    width: 130px;
+                    height: 20rem;
+                    width: 20rem;
                     margin: 0 auto;
                 }
-                @media (max-width: 375px) {
-                    height: 100px;
-                    width: 100px;
+                @media (max-width: 767px) {
+                    height: 130px;
+                    width: 130px;  
+                    margin: 0 auto;  
                 }
             }
         }
         .content-wrapper{
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 1em;
             height: 100%;
-            @include mobile{
-                gap: 8px;
-            }
             .member-name{
                 color: #000000;
-                font-size: 26px;
+                font-size: 2.6rem;
                 font-weight: 700;
-                @include mobile{
-                    font-size: 20px;
+                
+                @media (max-width: 767px) {
+                    font-size: 20px; 
                 }
             }
             .role{
                 color: #000000;
                 font-weight: 700;
-                font-size: 14px;
-                margin-bottom: -8px;
-                @include mobile{
-                    font-size: 11px;
-                    margin-bottom: 0;
+                font-size: 1.4rem;
+                margin-bottom: 0;
+                @media (max-width: 767px) {
+                    font-size: 12px; 
+                }
+            }
+            a.linkedin-url{
+                &:hover, &:focus {
+                    opacity: 0.8;
                 }
             }
         }
