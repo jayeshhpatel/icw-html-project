@@ -466,7 +466,7 @@ jQuery(document).ready(function ($) {
 
     var swiperLottie = new Swiper(".lottie-section-product", {
       autoplay: {
-        delay: 6000
+        delay: 12000
       },
       spaceBetween: 20,
       
