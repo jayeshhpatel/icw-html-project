@@ -5,13 +5,30 @@
 .contact{
     &--wrapper{
         padding: 18rem 2rem 41%;
-        background-image: url(https://www.codium.ai/wp-content/uploads/2023/02/Towards.png);
-        background-repeat: no-repeat;
-        background-position: top right;
-        background-size: 52%;
+        // background-image: ;
+        background: linear-gradient(0deg, rgba(10, 6, 60, 0.5) 16.04%, rgba(38, 29, 166, 0.0094955) 63.38%), linear-gradient(150deg, rgba(26, 18, 126, 0.5) 21.31%, rgba(39, 29, 168, 0) 64.89%); 
+        position: relative;
+        &.pb-100 {
+            padding-bottom: 100px;
+        }
+        &::after {
+            content: '';
+            height: 100%;
+            width: 52%;
+            background: url(../images/contact-bg.png) no-repeat top right;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: -1;
+            @include mobile{
+                top: auto;
+                bottom: 50px;
+                background: url(../images/contact-bg-m.png) no-repeat bottom right;
+                background-size: contain;
+            }
+        }
         @include mobile{
             padding: 15rem 0rem 0vh;
-            background-image: initial;
         }
         .container{
             display: flex;
@@ -19,6 +36,9 @@
             @include mobile{
                 flex-direction: column;
                 gap: 0;
+            }            
+            @media only screen and (min-width: 1024px) and (max-width: 1140px){
+                width: 100%;            
             }
         }
         &-form{
@@ -51,27 +71,48 @@
                 .submit-btn{
                     text-align: right;
                     input[type=submit]{
-                        background: #321BB2;
-                        border: 1px solid #321BB2;
-                        color: #fff;
+                        background: #FFFFFF;
+                        border: 1px solid #FFFFFF;
+                        color: #01012A;
                         font-family: $main-font;
+                        min-width: 170px;
                         &:hover{
                             background-color: transparent;
                         }
                     }
                 }
+            }
 
+            .hubspot-form .hs-submit input[type=submit]{
+                background: #FFFFFF;
+                border: 1px solid #FFFFFF;
+                color: #01012A;
+                font-family: $main-font;
+                min-width: 170px;
+                transition: all 0.3s ease-in-out;
+                &:hover{
+                    background-color: #321BB2;
+                    border-color: #321BB2;
+                    color: #FFFFFF;
+                }
+                @media (max-width: 767px) {
+                    min-width: 100%;  
+                }
+            }
+            @include mobile{
+                .actions { min-width: 100%; }   
             }
         }
         &-details{
             width: 60%;
             display: flex;
             flex-direction: row-reverse;
+            align-items: center;
             padding-top: 8rem;
             @include mobile{
                 width: 100%;
                 padding: 0 2rem;
-                background-image: url(https://www.codium.ai/wp-content/uploads/2023/03/Group-1960.png);
+                // background-image: url(https://www.codium.ai/wp-content/uploads/2023/03/Group-1960.png);
                 background-repeat: no-repeat;
                 background-position: bottom;
                 background-size: 100%;
@@ -120,6 +161,66 @@
 
                 }
             }
+            .contact-slider-review-block {                
+                width: 100%;
+                padding-left: 120px;
+                @media (max-width: 1200px) {
+                    padding-left: 60px;
+                }
+                @media (max-width: 1024px) {
+                    padding-left: 0px;
+                    padding-top: 60px;
+                }
+                .review-block {
+                    position: relative;
+                    background: radial-gradient(circle at 100% 100%, #01012a 0, #01012a 22px, transparent 22px) 0 0 / 24px 24px no-repeat, radial-gradient(circle at 0 100%, #01012a 0, #01012a 22px, transparent 22px) 100% 0 / 24px 24px no-repeat, radial-gradient(circle at 100% 0, #01012a 0, #01012a 22px, transparent 22px) 0 100% / 24px 24px no-repeat, radial-gradient(circle at 0 0, #01012a 0, #01012a 22px, transparent 22px) 100% 100% / 24px 24px no-repeat, linear-gradient(#01012a, #01012a) 50% 50% / calc(100% - 4px) calc(100% - 48px) no-repeat, linear-gradient(#01012a, #01012a) 50% 50% / calc(100% - 48px) calc(100% - 4px) no-repeat, repeating-linear-gradient(241deg, #bfb5f6 0, rgba(50, 50, 83, .37) 25%, #7c6ce5 52%, #413d74 85%, #695aca 100%);
+                    @include border-radius(24px);
+                    padding: 35px;
+                    -webkit-box-sizing: content-box;
+                    box-sizing: content-box;
+                    text-align: left;
+                    -webkit-backdrop-filter: blur(36px);
+                    backdrop-filter: blur(36px);
+                    max-width: 600px;
+                    @media (max-width: 1024px) {
+                        margin: 0 auto;
+                    }
+                    &::before, &::after {
+                        content: none;
+                    }
+                    &::before {
+                        content: '';
+                        width: calc(100% - 4px);
+                        height: calc(100% - 4px);
+                        background: rgba(44, 44, 82, .45);
+                        position: absolute;
+                        top: 2px;
+                        left: 2px;
+                        @include border-radius(24px);
+                        z-index: -1;
+                        transform: rotate(0deg);
+                    }
+                    .slide-review-box {
+                        text-align: center;
+                        .review-content {                            
+                            font-size: 18px;
+                            p {
+                                margin-top: 0;
+                                &:last-child {
+                                    margin-bottom: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .homepage-about--strip-logos {
+            padding-top: 150px;
+            @include mobile{
+                padding-top: 120px;
+            }
         }
     }
+    
 }
