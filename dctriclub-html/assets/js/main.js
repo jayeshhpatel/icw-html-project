@@ -41,6 +41,30 @@ jQuery(document).ready(function($) {
 
         memberSplide.mount();
     }
+    if ($('.races-splide').length) {
+        var memberSplide = new Splide( '.races-splide', {
+            type   : 'slide',
+            perPage: 4,
+            perMove: 1,
+            pagination: false,
+            breakpoints: {
+                1360: {
+                  perPage: 3,
+                  focus  : 'center',
+                },
+                992: {
+                  perPage: 2,
+                  focus  : 'center',
+                },
+                767: {
+                  perPage: 1,
+                  focus  : 'center',
+                },
+            },
+        });
+
+        memberSplide.mount();
+    }
     if ($('.logo-navigation-slider-block').length) {
         var logoContent = new Splide( '.logo-content-splide', {
             type: 'fade',
