@@ -7,6 +7,7 @@ jQuery(document).ready(function($) {
             perPage: 1,
             perMove: 1,
             pagination: true,
+            pauseOnHover: false,
         });
         heroSplide.mount();
     }
