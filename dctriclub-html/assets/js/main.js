@@ -1,4 +1,15 @@
 jQuery(document).ready(function($) {
+    if ($('.hero-splide').length) {
+        var heroSplide = new Splide( '.hero-splide', {
+            type   : 'loop',
+            autoplay: true,
+            interval: 8000,
+            perPage: 1,
+            perMove: 1,
+            pagination: true,
+        });
+        heroSplide.mount();
+    }
     if ($('.sponsor-splide').length) {
         var sponsorSplide = new Splide( '.sponsor-splide', {
             type   : 'slide',
@@ -42,7 +53,7 @@ jQuery(document).ready(function($) {
         memberSplide.mount();
     }
     if ($('.races-splide').length) {
-        var memberSplide = new Splide( '.races-splide', {
+        var racesSplide = new Splide( '.races-splide', {
             type   : 'slide',
             perPage: 4,
             perMove: 1,
@@ -63,7 +74,7 @@ jQuery(document).ready(function($) {
             },
         });
 
-        memberSplide.mount();
+        racesSplide.mount();
     }
     if ($('.logo-navigation-slider-block').length) {
         var logoContent = new Splide( '.logo-content-splide', {
