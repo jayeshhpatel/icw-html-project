@@ -823,27 +823,35 @@ h3, .h3 {
         }
         .splide__track--nav>.splide__list>.splide__slide.is-active {
             border: none;
+            &::after {
+                content: " ";
+                position: absolute;
+                bottom: -25px;
+                left: 50%;
+                @include transform(translateX(-50%));
+                width: 20px;
+                height: 20px;
+                display: block;
+                background: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" fill="rgb(0 71 152)"/></svg>') no-repeat center;
+                -moz-animation: bounce 3s infinite;
+                -webkit-animation: bounce 3s infinite;
+                animation: bounce 3s infinite;
+            }
             .logo-img {
-                background: #F4F6FC;
-                padding: 35px 70px;
-                @media (max-width: 767px) {
-                    padding: 20px 30px;
-                }
+                background: #F4F6FC;     
             }
         }
         .logo-img {
-            margin: 0 20px;
-            padding: 35px 0px;
+            padding: 25px 30px;
             height: 100%;
             @include flexbox;
             @include align-items(center);
             @include transition(0.3s, ease-in-out);
             @media (max-width: 767px) {
-                padding: 20px 0;
-                margin: 0 10px;
+                padding: 20px;
             }
             img {
-                max-height: 50px;
+                max-height: 30px;
                 width: auto;
                 @media (max-width: 767px) {
                     max-height: 30px;
@@ -867,6 +875,17 @@ h3, .h3 {
         }
     }
 }
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    40% {
+      transform: translateX(-50%) translateY(20px);
+    }
+    60% {
+      transform: translateX(-50%) translateY(10px);
+    }
+  }
 
 /* Upcoming Races Slider */
 .races-slider-block {
@@ -889,6 +908,18 @@ h3, .h3 {
     @include flexbox;
     @include flex-direction(column);
     height: 100%;
+    &:hover, &:focus {
+        .card-img {
+            @include box-shadow(0px 5px 10px rgba($black, 0.05));
+        }
+    }
+    .card-img {
+        @include border-radius(10px);
+        overflow: hidden;
+        margin-bottom: 25px;
+        @include transition(0.3s, ease-in-out);
+        border: 2px solid rgba(0, 0, 0, 0.05);
+    }
     .card-body {
         flex: 1 1 auto;
     }
@@ -939,6 +970,13 @@ h3, .h3 {
             margin: 0;
             .splide__slide {
                 padding-bottom: 0;
+                &.is-active {
+                    .hero-slide {
+                        img {
+                            animation: slide 8s infinite;
+                        }
+                    }
+                }
             }
         }
         .splide__arrows {
@@ -983,10 +1021,25 @@ h3, .h3 {
             right: auto;
             transform: translateY(-50%);
             .splide__pagination__page {
-                opacity: 1;
+                opacity: 0.5;
                 background: $white;
+                width: 10px;
+                height: 10px;
+                @include border-radius(5px);
+                -webkit-transition: opacity .3s, height .3s;
+                -o-transition: opacity .3s, height .3s;
+                transition: opacity .3s, height .3s;
+                -webkit-transition-delay: .3s, 0s;
+		        -o-transition-delay: .3s, 0s;
+                transition-delay: .3s, 0s;
                 &.is-active {
-                    background: $darkBlue;
+                    // background: $darkBlue;
+                    opacity: 1;
+                    height: 25px;
+                    -webkit-transition-delay: 0s;
+                    -o-transition-delay: 0s;
+                    transition-delay: 0s;
+                    @include transform(unset);
                 }
             }
         }
@@ -1007,7 +1060,7 @@ h3, .h3 {
                 position: relative;
                 height: 0;
                 width: 100%;
-                padding-top: calc(100% / (21 / 9));
+                padding-top: calc(100% / (25 / 9));
                 @media (max-width: 992px) {
                     padding-top: calc(100% / (16 / 9));
                 }
@@ -1018,11 +1071,10 @@ h3, .h3 {
                     width: 100%;
                     height: 100%;
                     -o-object-fit: cover;
-                    object-fit: cover;
+                    object-fit: cover;                    
                 }
             }
-        }
-        
+        }        
         .slide-info {
             @include flexbox;
             @include align-items(flex-end); 
@@ -1034,18 +1086,17 @@ h3, .h3 {
             }
             .sectopn-title {
                 background: rgba(#0B3F94, 0.9);
-                min-width: 40vw;
+                min-width: 35vw;
                 width: 100%;
                 margin: 100px 0  0 auto;
-                padding: 50px 50px 60px;
-                border-top-left-radius: 50px;
+                padding: 45px 50px 50px;
+                border-top-left-radius: 30px;
                 @media (max-width: 1440px) {
                     min-width: 50vw;
-                    padding: 50px;
                 }
                 @media (max-width: 992px) {
                     min-width: 70vw;
-                    padding: 30px 30px 55px;                        
+                    padding: 35px 40px 45px;                        
                 }
                 @media (max-width: 767px) {
                     text-align: center;
@@ -1057,6 +1108,7 @@ h3, .h3 {
                     color: $red;
                     font-size: 20px;
                     font-weight: 500;
+                    margin-bottom: 5px;
                     @media (max-width: 992px) {
                         font-size: 18px;
                     }
@@ -1065,10 +1117,11 @@ h3, .h3 {
                     }
                 }
                 .title {
-                    font-size: 40px;
+                    font-size: 36px;
                     font-weight: 500;
                     color: $white;
-                    margin-bottom: 20px;
+                    margin-bottom: 30px;
+                    line-height: 1.2;
                     @media (max-width: 992px) {
                         font-size: 32px;
                     }
@@ -1080,7 +1133,10 @@ h3, .h3 {
         }
     }
 }
-
+@keyframes slide {
+    from {transform: scale(1);}
+    to {transform: scale(1.05);}
+  }
 /* CTA Section */
 .cta-section {
     border: 1px solid rgba(#558ECF, 0.5);
