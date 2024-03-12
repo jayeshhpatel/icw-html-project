@@ -213,8 +213,10 @@
         <script>
             $(document).ready(function() {
                 if($('.menu-site-menu-container').length) {
-                    if($('.menu-site-menu-container').find('.menu-item-has-children')) {
-                        jQuery('.menu-item-has-children > a').after('<span class="collapse-icon"></span>');
+                    if($(window).width() < 767) {
+                        if($('.menu-site-menu-container').find('.menu-item-has-children')) {
+                            jQuery('.menu-item-has-children > a').after('<span class="collapse-icon"></span>');
+                        }
                     }
                     $('.menu-item-has-children .collapse-icon').on('click', function() {
                         if($(this).parent('.menu-item-has-children').hasClass('active')) {
