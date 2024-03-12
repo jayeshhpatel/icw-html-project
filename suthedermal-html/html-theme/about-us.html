@@ -212,9 +212,20 @@
         <script type="text/javascript" defer='defer' src="js/scripts.js"></script>   
         <script>
             $(document).ready(function() {
-                $(".menu-item-has-children").on("click", function() {
-                    $(this).toggleClass("active");
-                });
+                if($('.menu-site-menu-container').length) {
+                    if($('.menu-site-menu-container').find('.menu-item-has-children')) {
+                        jQuery('.menu-item-has-children > a').after('<span class="collapse-icon"></span>');
+                    }
+                    $('.menu-item-has-children .collapse-icon').on('click', function() {
+                        if($(this).parent('.menu-item-has-children').hasClass('active')) {
+                            $(this).parent('.menu-item-has-children').removeClass('active');
+                        } else {
+                            $('.menu-item-has-children').removeClass('active');
+                            $(this).parent('.menu-item-has-children').addClass('active');
+                        }
+                    });
+                }
+                
             });
 
         </script>    
