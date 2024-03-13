@@ -82,7 +82,7 @@ jQuery(document).ready(function($) {
             type: 'fade',
             pagination: false,
             arrows: false,
-        } );
+        });
         
         var logoNav = new Splide( '.logo-nav-splide', {
             rewind: true,           
@@ -107,10 +107,41 @@ jQuery(document).ready(function($) {
                   perPage: 1,
                 },
             },
-        } );
-        
+        });        
         logoContent.sync( logoNav );
         logoContent.mount();
         logoNav.mount();
     }
+    if($('.btn-hash').length) {
+        $('.btn-hash').bind('click', function(e) {
+            e.preventDefault(); 
+            var target = $(this).attr("href"); 
+            $('html, body').stop().animate({
+                scrollTop: $(target).offset().top                      
+            }, 600, function() {
+                location.hash = target;
+            });
+            return false;
+        });
+    }
 });
+
+$(window).scroll(function() {
+    if($('.sticky-navigation-section').length) {
+        var scrollDistance = $(window).scrollTop();    
+        $('.nav-section').each(function(i) {
+            if ($(this).position().top - 150 <= scrollDistance) {
+                $('.sticky-navbar a.active').removeClass('active');
+                $('.sticky-navbar a').eq(i).addClass('active');
+            } else if($('.sticky-navbar').position().top > scrollDistance) {
+                $('.sticky-navbar a.active').removeClass('active');
+               
+            }
+        });
+        if( scrollDistance > $('.sticky-navigation-section').height() ) {
+            $('.sticky-navigation-section').addClass('is-sticky');
+        } else {
+            $('.sticky-navigation-section').removeClass('is-sticky');
+        }
+    }
+}).scroll();
