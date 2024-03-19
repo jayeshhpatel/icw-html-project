@@ -42,11 +42,14 @@ body {
 	min-height: 100vh; 
 	@include flexbox(); 
 	@include flex-direction(column);
-    &.is-visible {
+    &.is-toggle {
         overflow: hidden;
     }
 	@media (max-width: 992px) {
 		font-size: 16px;
+	}
+	@media (max-width: 767px) {
+		font-size: 14px;
 	}
 }
 .container {
@@ -149,7 +152,7 @@ img{
 	padding: 10px 20px;
 	font-weight: 500;
 	font-size: 14px;
-	@include transition(0.3s, ease-in-out);
+	@include transition(0.1s, ease-in-out);
 	@include inline-flex;
 	@include align-items(center);
 	@include justify-content(center);	
@@ -211,7 +214,7 @@ img{
 	background-position: calc(100% - 5px) center !important;
 	padding-right: 23px;
 	line-height: 1;
-	@include transition(0.3s, ease-in-out);
+	@include transition(0.1s, ease-in-out);
 	&:hover, &:focus {
 		background: url('data:image/svg+xml; utf8,<svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 4.45737H11M11 4.45737L7.25 0.571655M11 4.45737L7.25 8.34308" stroke="rgb(28 39 76)" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 		background-position: calc(100%) center !important;
@@ -284,7 +287,7 @@ h5, .h5 {
 	right: 0; 
 	z-index: 10; 
 	top: 0; 
-	@include transition(0.3s, ease-in-out); 
+	@include transition(0.1s, ease-in-out); 
 	background-color: $white; 
 	&.fixed-header {
 		background: rgba($white, .95);
@@ -316,34 +319,21 @@ h5, .h5 {
 				font-size: 14px;
 				color: $black;
 				position: relative;
-				@include transition(0.3s, ease-in-out);
+				@include transition(0.1s, ease-in-out);
 				&::after {
-                    background-color: transparent;
-                    bottom: -3px;
-                    content: "";
-                    left: 0;
-                    height: 2px;
                     position: absolute;
-                    @include transform(translateX(-30%));
-                    @include transitionValue(transform, 250ms, ease-out);
-                    width: 100%;
+                    bottom: -4px;
+                    left: 0;
+                    content: "";
+                    height: 2px;
+					width: 0;
+					background-color: $black;
+                    @include transition(0.1s, ease-in-out);
                 }
-				&:hover, &:focus {
-					color: $primary;
+				&:hover, &:focus,&.active {
+					font-weight: 700;
 					&::after {
-                        background-color: $primary;
-                        @include border-radius(1.5px);
-                        @include transform(translateX(0));
-                    }
-				}
-			}
-			&.active {
-				a {
-					color: $primary;
-					&::after {
-                        background-color: $primary;
-                        @include border-radius(1.5px);
-                        @include transform(translateX(0));
+                       	width: 100%;
                     }
 				}
 			}
@@ -438,23 +428,20 @@ h5, .h5 {
 			left: 0;
 			display: block;
 			width: 100%;
-			max-height: calc(100vh - 79px);	
+			height: calc(100vh - 79px);	
 			background: $white;
-			overflow: hidden;
 			overflow-y: auto;
 			@include transform(translateX(-100%));
 			@include transition(0.3s, ease-in-out);
 			@media (max-width: 767px) {
 				top: 60px;
-				max-height: calc(100vh - 60px);	
+				height: calc(100vh - 60px);	
 			}
 			ul {
-				@include flex-direction(column);
-				@include align-items(flex-start);
+				display: block;
 				max-width: 720px;
-				margin: 0 auto;
+				margin: 15px auto;
 				padding: 0 15px;
-				height: 100%;
 				@media (max-width: 767px) {
 					max-width: 540px;
 				}
@@ -505,6 +492,7 @@ h5, .h5 {
 		}
 		.sort-info {
 			max-width: 620px;
+			font-size: 14px;
 			@media (max-width: 767px) {	
 				margin-bottom: 15px;
 			}
@@ -531,11 +519,9 @@ h5, .h5 {
 				@include justify-content(center);
 			}
 			li {
-				padding: 0 25px;
+				padding: 3px 15px;
 				border-right: 1px solid $white;
-				@media (max-width: 992px) {	
-					padding: 0 15px;
-				}
+				line-height: 0.7;
 				@media (max-width: 767px) {	
 					padding: 0 10px;
 				}
@@ -547,40 +533,23 @@ h5, .h5 {
 					padding-right: 0;
 				}
 				a {
-					font-size: 16px;
-					line-height: 1;
+					font-size: 14px;
 					color: $white;
-					position: relative;
-					@media (max-width: 767px) {	
-						font-size: 14px;
-					}
+					position: relative;					
 					&::after {
-						background-color: transparent;
-						bottom: -3px;
-						content: "";
-						left: 0;
-						height: 2px;
 						position: absolute;
-						@include transform(translateX(-30%));
-						@include transitionValue(transform, 250ms, ease-out);
-						width: 100%;
+						bottom: -4px;
+						left: 0;
+						content: "";
+						height: 2px;
+						width: 0;
+						background-color: rgba($white, .75);
+						@include transition(0.1s, ease-in-out);
 					}
-					&:hover, &:focus {
+					&:hover, &:focus,&.active {
 						color: rgba($white, .75);
 						&::after {
-							background-color: rgba($white, .75);
-							@include border-radius(1.5px);
-							@include transform(translateX(0));
-						}
-					}
-				}
-				&.active {
-					a {
-						color: rgba($white, .75);
-						&::after {
-							background-color: rgba($white, .75);
-							@include border-radius(1.5px);
-							@include transform(translateX(0));
+							   width: 100%;
 						}
 					}
 				}
@@ -592,7 +561,7 @@ h5, .h5 {
 			grid-column: 1 / -1;
 		}
 		.copyright-text {
-			font-size: 16px;
+			font-size: 14px;
 			color: $white;
 			text-align: center;
 			@media (max-width: 992px) {
