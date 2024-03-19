@@ -89,6 +89,23 @@
                 margin-bottom: 0;
             }
         }
+        ul {
+            li {
+                @include flexbox;
+                @include align-items(center);
+                padding-bottom: 5px;
+                &::before {
+                    content: '';
+                    width: 6px;
+                    height: 6px;
+                    flex: none;
+                    @include border-radius(50%);
+                    background-color: $bodyfontcolor;
+                    margin-right: 8px;
+                    display: inline-block;
+                }
+            }
+        }
     }
     .action {
         @include inline-flex;
