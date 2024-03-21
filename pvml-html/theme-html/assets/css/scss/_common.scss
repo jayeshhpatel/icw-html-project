@@ -900,6 +900,93 @@ h5, .h5 {
 			}
 		}
 	}
+	.mega-menu {
+		.sub-menu {
+			min-width: 670px;
+			display: grid;
+    		grid-template-columns: 45% 55%;
+			background: #002529;
+			@include border-radius(10px);
+			padding: 30px !important;
+			left: -18rem;
+			@media (max-width: 992px) {
+				min-width: auto;
+				grid-template-columns: 100%;
+				padding: 15px !important;
+			}
+			& > li {
+				border-right: 3px solid #2D4F54  !important;
+				padding-bottom: 0 !important;
+				@media (max-width: 992px) {
+					border-right: none !important;
+					border-bottom: 3px solid #2D4F54  !important;
+				}
+				&:first-child {
+					@media (min-width: 992px) {
+						padding-right: 30px !important;
+					}
+				}
+				&:last-child {
+					border-right: none !important;
+					border-bottom: none !important;
+				}
+				.thumbnail-img {
+					padding-left: 90px;		
+					@media (max-width: 992px) {
+						padding-left: 0;
+						padding-top: 20px;
+					}			
+					.title {
+						font-size: 14px;
+						font-weight: 600;
+						color: $white;
+						margin-bottom: 10px;
+					}
+					.video-img {
+						padding: 0;
+						@include border-radius(10px);
+						overflow: hidden;
+						display: block;
+						img {
+							width: 100%;
+						}
+					}
+				}
+				& > ul {
+					li {
+						@media (max-width: 992px) {
+							border: none !important;
+							padding-left: 0;
+						}
+						a {
+							padding: 5px 10px;
+							color: $white;
+							display: flex !important;
+							align-items: center;
+							justify-content: space-between;							
+							&::after {
+								content: '' !important;
+								display: inline-block !important;
+								width: 8px;
+								height: 8px;
+								background: url(../images/icons/arrow-down.svg) no-repeat center right;
+    							background-size: contain;
+								transform: rotate(270deg);
+								margin-right: 0px;
+								@include transition(0.2s, ease-in-out);
+							}
+							&:hover, &:focus {
+								background: transparent;
+								&::after { 
+									margin-right: -5px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	.header-logo {
 		flex: none;
 		img {
