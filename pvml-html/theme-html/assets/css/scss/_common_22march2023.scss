@@ -786,6 +786,9 @@ h5, .h5 {
 		@media (max-width:991px) {
 			display: none;
 			margin-left: 10px;
+			background: #002529;
+			@include border-radius(10px);
+			padding: 15px !important;
 		}
 		@media (min-width:992px) {
 			visibility: hidden; 
@@ -888,15 +891,110 @@ h5, .h5 {
 			margin: 0 !important; 
 			padding: 0px;
 			border-bottom:1px solid #ebebeb;
-		
+			&:first-child {
+				a {
+					@media (max-width: 992px) { padding-top: 0; }
+				}
+			}
 			&:last-child {
 				padding-bottom: 0;
 				border-bottom:0;
+				a {
+					@media (max-width: 992px) { padding-bottom: 0; }
+				}
 			}
 			a {
 				font-size: 13px; 
 				font-weight: 600;
 				padding: 10px 15px;
+			}
+		}
+	}
+	.mega-menu {
+		.sub-menu {
+			min-width: 650px;			
+			background: #002529;
+			@include border-radius(10px);
+			padding: 30px !important;
+			left: -18rem;
+			@media (min-width: 992px) {
+				display: grid;
+    			grid-template-columns: 45% 55%;
+			}
+			@media (max-width: 992px) {
+				min-width: auto;
+				grid-template-columns: 100%;
+				padding: 15px !important;
+				margin-left: 0 !important;
+			}
+			& > li {
+				border-right: 3px solid #2D4F54  !important;
+				padding-bottom: 0 !important;
+				@media (max-width: 992px) {
+					border-right: none !important;
+					border-bottom: 3px solid #2D4F54  !important;
+				}
+				&:first-child {
+					@media (min-width: 992px) {
+						padding-right: 30px !important;
+					}
+				}
+				&:last-child {
+					border-right: none !important;
+					border-bottom: none !important;
+				}
+				.thumbnail-img {
+					padding-left: 30px;		
+					@media (max-width: 992px) {
+						padding-left: 0;
+						padding-top: 20px;
+					}			
+					.title {
+						font-size: 14px;
+						font-weight: 600;
+						color: $white;
+						margin-bottom: 10px;
+					}
+					.video-img {
+						padding: 0;
+						@include border-radius(10px);
+						overflow: hidden;
+						display: block;
+						img {
+							width: 100%;
+						}
+					}
+				}
+				& > ul {
+					li {
+						@media (max-width: 992px) {
+							border-left: none !important;
+							border-bottom: 1px solid rgba(235,235,235,0.3) !important;
+							padding-left: 0;
+							&:last-child {
+								border-bottom: none !important;
+								margin-bottom: 20px !important;
+								a {
+									padding-bottom: 0;
+								}
+							}
+							&:first-child {
+								a {
+									padding-top: 0;
+								}
+							}
+						}
+						a {
+							color: $white;
+							@media (max-width: 992px) {
+								padding: 10px 0;
+								&:hover, &:focus {
+									color: $primary;
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
@@ -919,6 +1017,7 @@ h5, .h5 {
 		@include align-items(center); 
 		@include justify-content(space-between); 
 		position: relative;
+		min-height: 47px;
 	}
 	.action-btn {
 		margin-left: 30px;
