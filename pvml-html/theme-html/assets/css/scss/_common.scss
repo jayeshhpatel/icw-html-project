@@ -786,6 +786,9 @@ h5, .h5 {
 		@media (max-width:991px) {
 			display: none;
 			margin-left: 10px;
+			background: #002529;
+			@include border-radius(10px);
+			padding: 15px !important;
 		}
 		@media (min-width:992px) {
 			visibility: hidden; 
@@ -888,10 +891,17 @@ h5, .h5 {
 			margin: 0 !important; 
 			padding: 0px;
 			border-bottom:1px solid #ebebeb;
-		
+			&:first-child {
+				a {
+					@media (max-width: 992px) { padding-top: 0; }
+				}
+			}
 			&:last-child {
 				padding-bottom: 0;
 				border-bottom:0;
+				a {
+					@media (max-width: 992px) { padding-bottom: 0; }
+				}
 			}
 			a {
 				font-size: 13px; 
@@ -902,7 +912,7 @@ h5, .h5 {
 	}
 	.mega-menu {
 		.sub-menu {
-			min-width: 670px;			
+			min-width: 650px;			
 			background: #002529;
 			@include border-radius(10px);
 			padding: 30px !important;
@@ -915,6 +925,7 @@ h5, .h5 {
 				min-width: auto;
 				grid-template-columns: 100%;
 				padding: 15px !important;
+				margin-left: 0 !important;
 			}
 			& > li {
 				border-right: 3px solid #2D4F54  !important;
@@ -933,7 +944,7 @@ h5, .h5 {
 					border-bottom: none !important;
 				}
 				.thumbnail-img {
-					padding-left: 90px;		
+					padding-left: 30px;		
 					@media (max-width: 992px) {
 						padding-left: 0;
 						padding-top: 20px;
@@ -957,30 +968,28 @@ h5, .h5 {
 				& > ul {
 					li {
 						@media (max-width: 992px) {
-							border: none !important;
+							border-left: none !important;
+							border-bottom: 1px solid rgba(235,235,235,0.3) !important;
 							padding-left: 0;
+							&:last-child {
+								border-bottom: none !important;
+								margin-bottom: 20px !important;
+								a {
+									padding-bottom: 0;
+								}
+							}
+							&:first-child {
+								a {
+									padding-top: 0;
+								}
+							}
 						}
 						a {
-							padding: 5px 10px;
 							color: $white;
-							display: flex !important;
-							align-items: center;
-							justify-content: space-between;							
-							&::after {
-								content: '' !important;
-								display: inline-block !important;
-								width: 8px;
-								height: 8px;
-								background: url(../images/icons/arrow-down.svg) no-repeat center right;
-    							background-size: contain;
-								transform: rotate(270deg);
-								margin-right: 0px;
-								@include transition(0.2s, ease-in-out);
-							}
-							&:hover, &:focus {
-								background: transparent;
-								&::after { 
-									margin-right: -5px;
+							@media (max-width: 992px) {
+								padding: 10px 0;
+								&:hover, &:focus {
+									color: $primary;
 								}
 							}
 						}
