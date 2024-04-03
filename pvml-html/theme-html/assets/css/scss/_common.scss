@@ -783,10 +783,10 @@ h5, .h5 {
 		}
 	}
 	.sub-menu {
+		background: #002529;
 		@media (max-width:991px) {
 			display: none;
 			margin-left: 10px;
-			background: #002529;
 			@include border-radius(10px);
 			padding: 15px !important;
 		}
@@ -794,7 +794,7 @@ h5, .h5 {
 			visibility: hidden; 
 			@include opacity(0); 
 			@include transition(0.2s, ease-in-out); 
-			background: #FFFFFF;
+			// background: #FFFFFF;
 			// -webkit-backdrop-filter: blur(10px);
 			// backdrop-filter: blur(10px);
 			position: absolute; 
@@ -824,15 +824,18 @@ h5, .h5 {
 				}
 				a {
 					display: block !important; 
-					color: #002B31;
+					color: #fff;
 					@include border-radius(8px);
-
+					@media (min-width: 992px) {
+						background: rgba(241, 250, 249, 0.02);
+					}
 					&:before {
 						display: none !important;
 					}
 					&:hover, &:focus {
 						color: $primary !important;
-						background: $light-dark;
+						// background: $light-dark;
+						background: rgba(241, 250, 249, 0.12);
 					}
 				}
 				a:after {
@@ -845,7 +848,8 @@ h5, .h5 {
 				&.current-menu-parent  {
 					> a {
 						color: $primary !important;
-						background: $light-dark;
+						// background: $light-dark;
+						background: rgba(241, 250, 249, 0.12);
 					}
 				}
 
@@ -853,7 +857,8 @@ h5, .h5 {
 				&.menu-item-has-children:focus {
 					> a {
 						color: $primary !important;
-						background: $light-dark;
+						// background: $light-dark;
+						background: rgba(241, 250, 249, 0.12);
 					}
 				}
 
@@ -868,6 +873,37 @@ h5, .h5 {
 						background: url(../images/icons/next.svg) no-repeat center right; 
 						background-size: contain;
 						
+					}
+				}
+			}
+			li.menu-item-has-arrow {
+				a {
+					color: $white;
+					display: flex !important;
+					align-items: center;
+					@media (min-width: 992px) {
+						background: rgba(241, 250, 249, 0.02);
+					}
+					&::after {
+						content: '' !important;
+						display: inline-block !important;
+						background: url(../images/icons/next.svg) no-repeat center right; 
+						background-size: contain;
+						width: 8px;
+						height: 8px;
+						position: absolute;
+						right: 12px;
+						filter: brightness(0) invert(1);
+						@include transition(0.2s, ease-in-out);
+					}
+					&:hover, &:focus {
+						color: $primary;
+						@media (min-width: 992px) {
+							background: rgba(241, 250, 249, 0.12);
+						}
+						&::after {
+							right: 10px;
+						}
 					}
 				}
 			}
@@ -958,7 +994,6 @@ h5, .h5 {
 				}
 				& > ul {
 					li {
-						padding-bottom: 0 !important;
 						@media (max-width: 992px) {
 							border-left: none !important;
 							border-bottom: 1px solid rgba(235,235,235,0.3) !important;
@@ -1009,6 +1044,9 @@ h5, .h5 {
 							color: $white;
 							display: flex !important;
 							align-items: center;
+							@media (min-width: 992px) {
+								background: rgba(241, 250, 249, 0.02);
+							}
 							&::after {
 								content: '' !important;
 								display: inline-block !important;
@@ -1017,7 +1055,7 @@ h5, .h5 {
 								width: 8px;
 								height: 8px;
 								position: absolute;
-								right: 10px;
+								right: 12px;
 								filter: brightness(0) invert(1);
 								@include transition(0.2s, ease-in-out);
 							}
@@ -1027,7 +1065,7 @@ h5, .h5 {
 									background: rgba(241, 250, 249, 0.12);
 								}
 								&::after {
-									right: 5px;
+									right: 10px;
 								}
 							}
 						}
@@ -1057,10 +1095,7 @@ h5, .h5 {
 				// 	width: 100%;
 				// }
 			}
-		}	
-		.with-video {
-			@include border-radius(10px);
-		}	
+		}		
 	}
 
 	.header-logo {
@@ -1623,6 +1658,8 @@ body .with-video-play {
 	padding: 0 !important;
 	position: relative ;
 	display: block !important;
+	@include border-radius(10px !important);
+	overflow: hidden;
 	.with-video-play-inner {
 		&::before {
 			content: '' !important;
