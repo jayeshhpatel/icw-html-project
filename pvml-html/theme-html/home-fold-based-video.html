@@ -194,10 +194,10 @@
                     </div>
                 </div>
             </section>
-            <section class="main-section slider-section bg-secondary is-dark full-slider-section with-bg">
+            <section class="main-section slider-section bg-secondary is-dark full-slider-section style-2 with-bg">
                 <div class="container">
                     <div class="row align-items-center justify-content-center">
-                        <div class="col-11 col-lg-7 col-xl-9 col-xxl-7">
+                        <div class="col-md-9 col-lg-7 col-xl-5">
                             <div class="splide full-content-slider">
                                 <div class="splide__track">
                                     <ul class="splide__list">
@@ -252,6 +252,8 @@
                                     </ul>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-12">
                             <div class="splide full-video-slider icw-splide__pagination"
                                 data-splide='{"autoplay":"true","pagination":true,"interval":34000}'>
                                 <div class="splide__track">
@@ -286,7 +288,7 @@
                             <script defer="">
                                 if (jQuery(".full-video-slider").length > 0) {
                                     var videoSlider = new Splide( '.full-video-slider', {
-                                        perPage: 1,
+                                        perPage: 3,
                                         rewind: true,
                                         // autoplay: true,
                                         // interval: 34000,
@@ -301,7 +303,19 @@
                                         cover: true,
                                         pauseOnHover: false,
                                         pauseOnFocus: false,
-                                        throttle: 300,
+                                        fixedWidth : '40%',
+                                        breakpoints: {
+                                            1400: {
+                                                fixedWidth : '60%',
+                                            },
+                                            992: {
+                                                perPage: 1,
+                                                fixedWidth : '70%',
+                                            },
+                                            767: {
+                                                fixedWidth : '80%',
+                                            }
+                                        }
                                     } ).mount();
                                     // Create the main slider.
                                     var contentSlider = new Splide( '.full-content-slider', {
