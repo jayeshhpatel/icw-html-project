@@ -4367,13 +4367,15 @@ blockquote {
 		.feature-tabs {
 			.info-card {
 				padding: 12px 20px;
-				margin: 15px 5px;
+				margin: 0px 10px 15px;
 				border: 1px solid #D1DAE4;
 				@include border-radius(8px);
 				position: relative;
+				background: transparent;
+				@include transition(0.2s, ease-in-out);
 				@media (max-width: 992px) {
 					padding: 10px 15px;
-					margin: 15px 3px;
+					margin: 0 8px 15px;
 				}
 				&::before {
 					content: '';
@@ -4381,13 +4383,28 @@ blockquote {
 					display: block;
 					width: 0px;
 					left: 50%;
-					bottom: 0;
+					bottom: 1px;
 					border: 10px solid transparent;
 					border-bottom: 0;
 					border-top: 10px solid $white;
 					@include transform(translate(-50%, 100%));
 					opacity: 0;
-					@include transition(0.3s, ease-in-out);
+					@include transition(0.2s, ease-in-out);
+				}
+				&::after {
+					content: '';
+					position: absolute;
+					display: block;
+					width: 0px;
+					left: 50%;
+					bottom: 1px;
+					border: 10px solid transparent;
+					border-bottom: 0;
+					border-top: 11px solid #f3f3f3;
+					@include transform(translate(-50%, 100%));
+					@include transition(0.1s, ease-in-out);
+					opacity: 0;
+					z-index: -1;
 				}
 				&.is-hover:hover, &.is-hover:focus {
 					background: rgba(#FFFFFF, 08);
@@ -4395,8 +4412,9 @@ blockquote {
 				}
 				&.active {
 					background: $white;
-					border-color: transparent;
-					&::before {
+					border-color: #f3f3f3;
+					@include box-shadow(0 5px 5px 0 rgba(#000000, 0.05));
+					&::before, &::after {
 						opacity: 1;
 					}
 					h3 {
