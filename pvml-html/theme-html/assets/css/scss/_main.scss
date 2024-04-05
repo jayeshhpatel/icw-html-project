@@ -4363,4 +4363,74 @@ blockquote {
 			}
 		}
 	}
+	&.is-small-feature-tabs {
+		.feature-tabs {
+			.info-card {
+				padding: 12px 20px;
+				margin: 15px 5px;
+				border: 1px solid #D1DAE4;
+				@include border-radius(8px);
+				position: relative;
+				@media (max-width: 992px) {
+					padding: 10px 15px;
+					margin: 15px 3px;
+				}
+				&::before {
+					content: '';
+					position: absolute;
+					display: block;
+					width: 0px;
+					left: 50%;
+					bottom: 0;
+					border: 10px solid transparent;
+					border-bottom: 0;
+					border-top: 10px solid $white;
+					@include transform(translate(-50%, 100%));
+					opacity: 0;
+					@include transition(0.3s, ease-in-out);
+				}
+				&.is-hover:hover, &.is-hover:focus {
+					background: rgba(#FFFFFF, 08);
+					@include transform(unset)
+				}
+				&.active {
+					background: $white;
+					border-color: transparent;
+					&::before {
+						opacity: 1;
+					}
+					h3 {
+						color: #002B31;
+					}
+				}
+				.card-body {
+					@include flexbox;
+					@include align-items(center);
+					@include justify-content(center);
+					padding: 0 !important;
+					.card-img {
+						margin-bottom: 0 !important;
+						margin-right: 15px;
+						@media (max-width: 992px) {
+							margin-right: 8px;
+						}
+						img {
+							max-width: 60px;
+							height: 45px;
+							@media (max-width: 992px) {
+								max-width: 40px;
+								height: 35px;
+							}
+						}
+					}
+					h3 {
+						white-space: nowrap;
+						@media (max-width: 992px) {
+							font-size: 14px;
+						}
+					}
+				}
+			}
+		}
+	}
 }
