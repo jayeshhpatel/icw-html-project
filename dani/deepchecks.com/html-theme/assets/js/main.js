@@ -461,7 +461,7 @@ jQuery(document).ready(function($) {
 
     if ($('.play-iframe').length){
         $('.play-iframe').click(function(ev){	
-            videourl = $(this).data('videosrc')+"?api=1&autoplay=1&muted=1&rel=0&enablejsapi=1";
+            videourl = $(this).data('videosrc')+"?autoplay=1&cc_load_policy=1&api=1&muted=1&rel=0&enablejsapi=1";
             if($(this).data('ext') == 'mp4'){
                 video = '<div class="video-wrap"><video class="embed-responsive-item" controls autoplay playsinline controlsList="nodownload" oncontextmenu="return false;"><source src="'+videourl+'" type="video/mp4"></video></div>';
             } else {
