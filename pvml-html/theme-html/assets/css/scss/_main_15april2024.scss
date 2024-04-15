@@ -39,12 +39,12 @@
 
 .main-content-wrapper {
 	flex: 1 1 auto;
+	overflow-x: hidden;
 	// padding-top: 95px;
 	// @media (max-width:1199px) {
 	// 	padding-top: 72px;
 	// }
 }
-
 .main-section {
     position: relative;
     padding-top: 100px;
@@ -536,9 +536,6 @@
 				border-radius: 20px;
 				overflow: hidden;
 			}
-			.with-zoom { 
-				right: 30px;	
-			}
 		}
 	}
 }
@@ -824,34 +821,6 @@
 	&.is-hover {
 		&:hover, &:focus {
 			@include transform(scale(1.05));
-		}
-	}
-}
-
-// hero-video-container
-.hero-video-container {
-	position: relative;
-    z-index: 2;
-	.with-zoom {
-		width: 28px;
-		height: 28px;
-		position: absolute;
-		top: auto;
-		left: auto;
-		bottom: 15px;
-		right: 10px;
-		z-index: 9;
-		border-radius: 6px;
-		padding: 5px;
-		@include flexbox;
-		@include align-items(center);
-		@include justify-content(center);
-		background: rgba(255, 255, 255, 0.15);
-		-webkit-backdrop-filter: blur(10px);
-		backdrop-filter: blur(10px);
-
-		&:hover, &:focus {
-			background: rgba(255, 255, 255, 0.8);	
 		}
 	}
 }
@@ -1894,6 +1863,7 @@
 	}
 } 
 
+
 // Review Slider
 .review-slider-section {
 	
@@ -2402,9 +2372,104 @@
 
 // Full-slider-section
 .full-slider-section {
-	overflow: hidden;
-	.full-content-slider {
-		
+	// overflow: hidden;
+	z-index: 9;
+	position: relative;
+	& > .container {
+		max-width: 100%;
+		padding: 0;
+	}
+	&.with-bg {
+		background-color: $dark;
+    	background-image: url(../images/header-page-white.svg);
+		background-repeat: no-repeat;
+		background-position: center bottom;
+		padding-bottom: 0;
+		color: #fff !important;
+		.full-content-slider {		
+			.section-title {
+				h2 {
+					color: $white;
+				}
+				.sort-info {
+					color: rgba(#ffffff, 0.6);
+				}
+			}
+		}
+		.full-video-slider {
+			margin-bottom: -150px;
+			@media (max-width: 767px) {
+				margin-bottom: -100px;
+			}
+			.splide__track {
+				&.splide__track--nav > .splide__list > .splide__slide.is-active {
+					.slide-video {
+						opacity: 1;
+					}
+				}
+				.splide__list > .splide__slide {
+					.slide-video {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+	&.bg-secondary {
+		.full-video-slider {
+			.splide__arrows {
+				.splide__arrow {
+					&:hover:not(:disabled), &:focus:not(:disabled) {
+						background: rgba(#FFFFFF, 0.3);
+    					border-color: rgba(#FFFFFF, 0.3);
+					}
+				}
+			}
+		}
+	}
+	&.style-2 {
+		.full-video-slider {
+			.splide__arrows {
+				display: block;
+				position: absolute;
+				top: -90px;
+				left: 0;
+				right: 0;			
+				height: 50px;
+				width: 33%;
+				margin: 0 auto;
+				@media (max-width: 1200px) {				
+					width: 57%;
+				}
+				@media (max-width: 992px) {				
+					width: 75%;
+				}
+				@media (max-width: 767px) {			
+					position: relative;	
+					top: -20px;
+					width: 100%;
+				}
+				.splide__arrow {
+					top: 0px;
+					left: auto;
+					right: 0;
+					@include transform(unset);				
+					@media (max-width: 767px) {
+						width: 40px;
+						height: 40px;
+						right: calc(50% - 50px);
+					}
+					&.splide__arrow--prev {
+						right: 65px;
+						@media (max-width: 767px) {
+							right: calc(50% + 10px);
+						}
+					}
+				}
+			}
+		}
+	}
+	.full-content-slider {		
 		.section-title {
 			// max-width: 650px;
 			height: 100%;
@@ -2422,10 +2487,10 @@
 		// 	margin-top: 40px;
 		// }
 		@media (max-width: 767px) {
-			margin-top: 30px;
+			margin-top: 40px;
 		}
 		.splide__track {
-			overflow: visible;
+			// overflow: visible;
 			&.splide__track--nav > .splide__list > .splide__slide {
 				cursor: url(../images/drag.png) 16 9, ew-resize;
 			}
@@ -2509,8 +2574,12 @@
 		} 
 	}
 }
-
-
+.full-slider-section.with-bg + .main-section {
+	padding-top: 250px;
+	@media (max-width: 767px) {
+		padding-top: 150px;
+	}
+}
 // splide-gallery
 .splide-gallery {
 	.splide__slide {
@@ -4301,11 +4370,12 @@ blockquote {
 				margin: 0px 10px 15px;
 				border: 1px solid #D1DAE4;
 				@include border-radius(8px);
-				@include transition(0.1s, ease-in-out);
 				position: relative;
+				background: transparent;
+				@include transition(0.2s, ease-in-out);
 				@media (max-width: 992px) {
 					padding: 10px 15px;
-					margin: 0px 5px 15px;
+					margin: 0 8px 15px;
 				}
 				&::before {
 					content: '';
@@ -4319,7 +4389,7 @@ blockquote {
 					border-top: 10px solid $white;
 					@include transform(translate(-50%, 100%));
 					opacity: 0;
-					@include transition(0.1s, ease-in-out);
+					@include transition(0.2s, ease-in-out);
 				}
 				&::after {
 					content: '';
@@ -4343,8 +4413,7 @@ blockquote {
 				&.active {
 					background: $white;
 					border-color: #f3f3f3;
-					box-shadow: 1px 6px 4px 0px rgba(0, 0, 0, 0.02);
-					// @include box-shadow(0 3px 5px 0 rgba(#000000, 0.05));
+					@include box-shadow(0 3px 5px 0 rgba(#000000, 0.05));
 					&::before, &::after {
 						opacity: 1;
 					}
@@ -4379,80 +4448,6 @@ blockquote {
 						}
 					}
 				}
-			}
-		}
-	}
-}
-.pb-250 {
-	padding-bottom: 250px;
-	@media (max-width: 992px) {
-		padding-bottom: 180px;
-	}
-	@media (max-width: 767px) {
-		padding-bottom: 120px;
-	}
-}
-.top-over-section {
-	padding-top: 0;
-}
-.career-img-block {
-	max-width: 1020px;
-	margin: 0 auto;
-	margin-top: -130px;
-	@media (max-width: 992px) {
-		margin-top: -100px;
-	}
-	@media (max-width: 767px) {
-		margin-top: -70px;
-	}
-	img {
-		@include border-radius(24px);
-	}
-}
-.career-list-block {
-	.career-item {
-		padding: 20px 25px;
-		background: $white;
-		@include border-radius(16px);
-		@include flexbox;
-		@include align-items(center);
-		max-width: 970px;
-		margin: 0 auto 15px;
-		@include transition(0.3s, ease-in-out);
-		&:hover, &:focus {
-			@include box-shadow(0px 5px 15px 0 rgba(0, 0, 0, 0.05));
-		}
-		@media (max-width: 767px) {
-			@include flex-direction(column);
-			@include align-items(flex-start);
-			padding: 20px;
-		}
-		.career-title-block {
-			margin-right: 20px;
-			h3 {
-				font-size: 22px;
-				font-weight: 700;
-				margin-bottom: 8px;
-				@media (max-width: 992px) {
-					font-size: 20px;
-				}
-			}
-			.job-location {
-				font-size: 16px;
-				color: #002B31;
-				line-height: 1;
-			}
-		}
-		.career-action {
-			margin-left: auto;
-			@media (max-width: 767px) {
-				margin-top: 25px;
-			}
-			.btn {
-				font-size: 16px;
-				min-height: 44px;
-				padding: 5px 25px;
-				white-space: nowrap;
 			}
 		}
 	}
