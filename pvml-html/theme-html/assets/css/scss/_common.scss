@@ -1955,9 +1955,7 @@ body .with-video-play {
 			@include flex-direction(column);
 			@media (max-width: 767px) {
 				margin-bottom: 15px;
-			}
-			
-			
+			}	
 			label {
 				font-size: 15px;
 				color: rgba($white, 0.8);
@@ -1978,7 +1976,50 @@ body .with-video-play {
 				&::placeholder {
 					color: rgba($white, 0.4);
 				}
-			}		
+				&.hs-fieldtype-intl-phone {
+					background: transparent !important;
+					border: none !important;
+					padding: 0 !important;
+				}
+			}	
+			&.hs-fieldtype-file {
+				overflow: hidden; 
+				.hs-field-desc {
+					font-size: 14px;
+					color: #7177F8;
+					font-weight: 700;
+					text-decoration: underline;
+					cursor: pointer;
+					@include transition(0.2s, ease-in-out);
+				}
+				.input {
+					height: 15px;
+				}
+				.hs-input {
+					position: absolute;
+					top: 30px;
+					z-index: 1;
+					padding-top: 20px;
+					padding-left: 0;
+					cursor: pointer;
+					border-radius: 0;
+					background: transparent !important;
+					border: none !important;
+					font-size: 12px;
+					&::-webkit-file-upload-button {
+						display: none;
+					}
+					&::file-selector-button {
+						display: none;
+					}
+				}
+				&:hover, &:focus {
+					.hs-field-desc {
+						text-decoration: none;
+						color: $primary;
+					}
+				}
+			}	
 			.hs-error-msgs {
 				line-height: normal;
 			}
@@ -2015,6 +2056,7 @@ body .with-video-play {
 				}
 			}
 		}
+		
 		.hs_error_rollup {
 			display: none;
 		}
@@ -2027,12 +2069,22 @@ body .with-video-play {
 		@media (max-width: 767px) {
 			margin-top: 15px;
 		}
+		a {
+			text-decoration: underline;
+		}
 	}
 	&.form-light {
 		.hs-form {
 			// @include flexbox;
 			// @include flex-wrap(wrap);
-			.hs-form-field {				
+			fieldset {
+				max-width: 100%;
+				.input {
+					margin-right: 0;
+				}
+			}
+			.hs-form-field {
+				margin-bottom: 15px;				
 				label {
 					color: #33555A;
 					span {
@@ -2046,16 +2098,19 @@ body .with-video-play {
 					&::placeholder {
 						color: rgba(#002B31, 0.4);
 					}
-				}		
-				.hs-error-msgs {
-					line-height: normal;
-				}
-				.hs-error-msg {
-					font-size: 12px;
-					color: #f36161;
-					opacity: 1;
 				}
 			}
+			.form-columns-2 {
+				.hs-form-field {
+					width: 100%;
+				}
+			}
+		}
+		.hs-richtext {
+			margin-bottom: 15px;
+		}
+		.note {
+			color: #002B31;
 		}
 	}
 }
