@@ -510,7 +510,24 @@
         }
     }
 }
+.membership-form-section {
+    padding: 50px 0;
+}
 .membership-form-block {
+    background-position: center right;
+    background-repeat: no-repeat;
+    background-size: auto;
+    @media (max-width: 1200px) {
+        background-position: bottom right;
+        background-size: 60%;
+    } 
+    @media (max-width: 992px) {
+        background-image: none !important;
+    }
+   
+    h2 {
+        margin-bottom: 40px;
+    }
     .form-block {
         border: 1px solid #F1F1F1;
         background: #F8FCFF;
@@ -521,10 +538,17 @@
         -o-border-radius: 20px;
         max-width: 670px;
         padding: 20px;
+        @media (max-width: 992px) {
+            max-width: 100%;
+        }
         .two-grid-col {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
+            @media (max-width: 767px) {
+                grid-template-columns: repeat(1, 1fr);
+                gap: 0;
+            }
             &.mb-15 {
                 margin-bottom: 15px;
             }
@@ -535,8 +559,13 @@
                 display: block;
                 color: #454545;
                 font-weight: 500;
+                font-size: 16px;
                 span {
                     color: #FF0000;
+                }
+                @media (max-width: 767px) {
+                    font-size: 14px;
+                    margin-bottom: 2px;
                 }
             }
             .form-control, .form-select {
@@ -553,8 +582,18 @@
                 padding: 0 15px;
                 display: block;
                 box-sizing: border-box;
+                @media (max-width: 767px) {
+                    height: 42px;
+                    font-size: 14px;
+                }
                 &::placeholder {
                     color: #666666;
+                }
+                &.error {
+                    background-image: url('data:image/svg+xml; utf8,<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.81929 0.666626C4.21929 0.666626 0.485962 4.39996 0.485962 8.99996C0.485962 13.6 4.21929 17.3333 8.81929 17.3333C13.4193 17.3333 17.1526 13.6 17.1526 8.99996C17.1526 4.39996 13.4193 0.666626 8.81929 0.666626ZM9.65263 13.1666H7.98596V11.5H9.65263V13.1666ZM9.65263 9.83329H7.98596V4.83329H9.65263V9.83329Z" fill="red"/></svg>');
+                    background-size: 16px;
+                    background-position: calc(100% - 15px);
+                    background-repeat: no-repeat;
                 }
             }
         }
@@ -569,6 +608,59 @@
                 padding-left: 5px;
             }
         }
+        .choose-file-input {
+            background: #fff;
+            border: 1px solid #E1E3E6;
+            min-height: 125px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border-radius: 8px;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            -ms-border-radius: 8px;
+            -o-border-radius: 8px;
+            .form-control {
+                width: 100%;
+                height: auto;
+                text-align: center;
+                padding: 0 15px !important;
+                display: none;
+                margin-top: 10px;
+                &::-webkit-file-upload-button {
+                    display: none;
+                }
+                &::file-selector-button {
+                    display: none;
+                }
+            }          
+            .form-label {
+                position: relative;
+                display: inline-block;
+                padding: 8px 15px;
+                background: #F8FCFF;
+                border: 1px solid #E1E3E6;
+                color: #000000;
+                line-height: normal;
+                text-align: center;
+                text-transform: none;
+                cursor: pointer;
+                transition: all 0.3s;
+                border-radius: 5px;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                -ms-border-radius: 5px;
+                -o-border-radius: 5px;
+                margin-bottom: 0;
+            }
+            .form-control:valid {
+                display: block;
+            }
+            .form-control:invalid {               
+                display: none;
+            }
+          }
         .form-action {
             margin-top: 30px;
         }
