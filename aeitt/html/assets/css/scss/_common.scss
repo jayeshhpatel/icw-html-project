@@ -960,7 +960,7 @@ body.is-toggle {
 			}
 			&.profile-menu {
 				& > .arrow {
-					display: none;
+					display: none !important;
 				}
 				& > a {
 					span {
@@ -1036,18 +1036,59 @@ body.is-toggle {
 			}
 			li.menu-item-has-children {
 				margin: 0;
+				.arrow {
+					display: block;
+					right: 15px;
+					&::after {
+						width: 10px;
+					}
+				}
 				& > a > span {
 					&::after {
 						content: none;
 					}
 				}
+				&:hover, &:focus {
+					ul {
+						visibility: visible;
+						opacity: 1;
+						display: block;
+					}
+				}
 				ul {
 					right: 0;
 					left: auto;
+					background: $white;
+					box-shadow: 0 6px 24px 0 rgba(0,0,0,.12),0 3px 8px 0 rgba(0,0,0,.06);
+					@include border-radius(10px);
+					list-style: none;
+					padding: 10px 0;
+					position: absolute;
+					top: -webkit-calc(100% - 15px);
+					top: calc(100% - 15px);
+					margin: 0;
+					min-width: 250px;
+					opacity: 0;
+					visibility: hidden;
+					z-index: 100;
+					@include flex-direction(column);
 					.menu-item-has-children {
 						.sub-menu {
 							left: auto;
 							right: calc(100% - 10px);
+							display: none;
+							@media (max-width: 767px) {
+								top: 100%;
+								right: -20px;
+							}
+						}
+						&:hover, &:focus {
+							ul {
+								visibility: visible;
+								opacity: 1;
+								display: block;
+								position: absolute;
+							}
 						}
 					}
 				}
@@ -1130,19 +1171,36 @@ body.is-toggle {
 		img {
 			max-height: 60px;
 		}
+		@media (max-width: 767px) {
+			text-align: center;
+		}
 	}
 	.footer-menu-block {
 		@include flexbox;
 		@include align-items(center);
 		gap: 30px;
+		@media (max-width: 767px) {
+			gap: 0;
+			@include flex-direction(column);
+		}
 		.copyright-block {
 			font-size: 14px;
 			color: #5a5a5a;
+			@media (max-width: 767px) {
+				order: 2;
+			}
 		}
 		.footer-menu {
+			@media (max-width: 767px) {
+				order: 1;
+				margin-bottom: 10px;
+			}
 			ul {
 				@include flexbox;
 				gap: 30px;
+				@media (max-width: 767px) {
+					gap: 20px;
+				}
 				li {
 					a {
 						font-size: 14px;
