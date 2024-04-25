@@ -681,9 +681,6 @@ body div#message {
 		}
 	}
 }
-.site-content {
-	padding-top: 75px !important;
-}
 body.is-toggle {
 	overflow: hidden;
 }
@@ -1251,7 +1248,22 @@ body.is-toggle {
         }
     }
 }
-
+.bg-overly {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 9;
+    background-color: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+	@include opacity(0);
+   	@include transition(0.3s, ease-in-out);
+	&.is-toggle {
+		@include opacity(1);
+		visibility: visible;
+	}
+}
 .main-footer {
 	padding: 30px 0;
 	font-family: -apple-system,blinkmacsystemfont,"Segoe UI",roboto,oxygen-sans,ubuntu,cantarell,"Helvetica Neue",sans-serif;
@@ -1323,4 +1335,19 @@ body.is-toggle {
 	&.wp-container-core-columns-is-layout-1 {
 		grid-template-columns: repeat(2, 1fr);
 	}
+}
+
+.bp-feedback {
+	@include flexbox;
+    @include align-items(stretch);
+    -webkit-flex-flow: row nowrap;
+    -moz-flex-flow: row nowrap;
+    -ms-flex-flow: row nowrap;
+    -o-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+	box-shadow: none;
+    border: 1px solid #d6d9dd;
+    background-color: $white;
+    @include border-radius(6px);
+    color: #5a5a5a;
 }
