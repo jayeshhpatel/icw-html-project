@@ -752,11 +752,12 @@ body.is-toggle {
 			bottom: 0; 
 			z-index: 99; 
 			margin-top: 75px; 
-			@include transition(0.3s, ease-in-out);
+			// @include transition(0.3s, ease-in-out);
 			@include transform(translateX(100%));
 			ul {
 				@include flex-direction(column);
-				max-width: 540px;
+				// max-width: 540px;
+				width: 100%;
 				margin: 0 auto;
 			}
 		}
@@ -843,14 +844,14 @@ body.is-toggle {
 				}
 				.arrow {
 					position: absolute; 
-					top: 5px;
+					top: 08px;
 					right: 0; 
 					width: 25px;
 					margin-left: auto;
 					text-align: right;
 					&.is-active {
 						&:after {
-        					@include transform(rotate(180deg));
+        					@include transform(rotate(0deg));
                         }
 					}
 					&:after {
@@ -862,6 +863,7 @@ body.is-toggle {
 						height: 10px; 
 						display: inline-block; 
 						@include transition(0.3s, ease-in-out);
+						@include transform(rotate(-90deg));
                     }
 					@media (min-width:767px) {
 						display: none;
@@ -894,7 +896,10 @@ body.is-toggle {
 				.sub-menu {
 					@media (max-width:767px) {
 						display: none;
-						margin-left: 10px;
+						padding-left: 10px;
+						&.is-active {
+							display: block;
+						}
 					}
 					@media (min-width:767px) {
 						background: $white;
@@ -973,7 +978,7 @@ body.is-toggle {
 							min-width: 180px;
 							@media (max-width: 767px) {
 								padding: 0 !important;
-								margin-left: 20px;
+								margin-left: 12px;
 								left: 0;
 								position: relative;
 								a {
@@ -1103,7 +1108,12 @@ body.is-toggle {
 			@media (max-width: 767px) {
 				li {
 					a {
-						padding: 8px 5px;
+						padding: 8px 10px !important;
+					}
+					&:hover, &:focus {
+						& > a {
+							color: #385dff;
+						}
 					}
 				}
 			}
@@ -1124,11 +1134,13 @@ body.is-toggle {
 					}
 				}
 				&:hover, &:focus {
-					// .arrow {
-					// 	&:after {
-					// 		@include transform(rotate(180deg));
-					// 	}
-					// }
+					@media (max-width: 767px) {
+						& > .arrow {
+							&::after {
+								@include transform(rotate(0deg));
+							}
+						}
+					}
 					ul {
 						visibility: visible;
 						opacity: 1;
@@ -1159,10 +1171,10 @@ body.is-toggle {
 							display: none;
 							@media (max-width: 767px) {
 								left: 0;
-								margin-left: 30px;
+								margin-left: 25px;
 								box-shadow: none;
 								a {
-									padding: 5px 15px;
+									padding: 5px 10px !important;
 								}
 							}
 						}
@@ -1386,6 +1398,74 @@ body.is-toggle {
 		span.bp-icon {
 			background-color: #db222a;
 			background-image: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z" fill="white"/></svg>');
+		}
+	}
+}
+
+.course-dropdown-select {
+	position: relative;
+	margin-top: 15px;
+	.dropdown-toggle {
+		border: 1px solid #d6d9dd;
+		background: $white;
+		display: grid; 
+		grid-template-columns: 2fr 1fr;
+		text-align: left;
+		padding: 8px 5px;
+		@include border-radius(6px);
+	}
+	.course-date {
+		padding: 0 8px;
+		height: 100%;
+		&:not(:last-child) {
+			border-right: 1px solid rgba(0, 0, 0, 0.1);
+		}
+		strong {
+			font-size: 11px;
+			display: block;
+			color: rgba(0, 0, 0, 0.5);
+			margin-bottom: 5px;
+		}
+		.value {
+			color: #000;
+			font-size: 13px;
+			display: block;
+			line-height: normal;
+		}
+	}
+	.course-dropdown-date {
+		background: #fff;
+		-webkit-box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.12), 0 3px 8px 0 rgba(0, 0, 0, 0.06);
+		box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.12), 0 3px 8px 0 rgba(0, 0, 0, 0.06);
+		@include border-radius(10px);
+		padding: 10px 0;
+		position: absolute;
+    	top: calc(100% + 5px);
+		@include transition(0.3s, ease-in-out);
+		@include transform(translateY(5px));
+		opacity: 0;
+		visibility: hidden;
+		z-index: 10;
+		li {
+			padding: 8px 10px;
+			&:not(:last-child) {
+				border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+			}
+			&:hover, &:focus {
+				background: #f2f4f5;
+			}
+			.course-info { 
+				border: none;
+			}
+		}
+		.course-date-item {
+			display: grid; 
+			grid-template-columns: 2fr 1fr 1.5fr;
+		}
+		&.active {
+			opacity: 1;
+			visibility: visible;
+			@include transform(translateY(0px));
 		}
 	}
 }
