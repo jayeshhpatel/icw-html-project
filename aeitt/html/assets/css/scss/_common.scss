@@ -1522,8 +1522,27 @@ body.is-toggle {
 	}
 }
 
+
+
 .units-dashboard {
 	background: #fafbfd;
+	.icw-tab-wrapper {
+		padding-top: 30px;
+		.icw-tabs {
+			.icw-tab-link {
+				font-size: 14px;
+				a {
+					color: $black;
+				}
+				&.active {
+					border-color: $primary;
+					a {
+						color: $primary	;
+					}
+				}
+			}
+		}
+	}
 }
 .page-title {
 	margin: 30px 0;
@@ -1544,12 +1563,15 @@ body.is-toggle {
 		}
 		.icw-badge {
 			margin-left: 10px;
+			font-size: 18px;
+			padding: 5px 10px;
 		}
 	}
 }
 .grid-row {
 	display: grid;
-	grid-gap: 40px;
+	grid-gap: 30px;
+	grid-row-gap: 30px;
 	&.grid-two-col {
 		grid-template-columns: repeat(2, 1fr);
 		@media (max-width: 767px) {
@@ -1564,7 +1586,7 @@ body.is-toggle {
 	box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
 	padding: 30px;
 	min-width: 0;
-	@media (max-width: 767px) {
+	@media (max-width: 992px) {
 		padding: 20px;
 	}
 	.card-title {
@@ -1598,15 +1620,72 @@ body.is-toggle {
 				color: #9B9C9F;
 				font-size: 14px;
 				width: 50%;
-				@media (max-width: 767px) {
+				@media (max-width: 992px) {
 					width: auto;
 				}
 			}
 			.data {
 				color: #5A5A5A;
 				font-size: 14px;
-				@media (max-width: 767px) {
+				@media (max-width: 992px) {
 					margin-left: auto;
+				}
+			}
+		}
+		.card-info {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 20px;
+			@media (max-width: 1440px) {
+				gap: 15px;
+			}
+			@media (max-width: 992px) {
+				grid-template-columns: repeat(2, 1fr);
+				& > :first-child {
+					grid-column: 1 / -1;
+				}
+			}
+			.card-field {
+				display: block;
+				padding: 0;
+				&:not(:last-child) {
+					border-right: 1px solid rgb(228, 228, 231);
+				}
+				@media (max-width: 992px) {
+					&:first-child {
+						border-right: none;
+						border-bottom: 1px solid rgb(228, 228, 231);
+						margin-bottom: 10px;
+						padding-bottom: 10px;
+						text-align: center;
+					}
+				}
+				.label {
+					width: 100%;
+					margin-bottom: 15px;
+					font-size: 16px;
+					color: $black;
+					small {
+						color: #9B9C9F;
+					}
+					@media (max-width: 1440px) {
+						font-size: 14px;
+					}
+				}
+				.data {
+					font-size: 26px;
+					color: $black;
+					letter-spacing: -1px;
+					.icw-badge {
+						font-size: 26px;
+						padding: 5px 10px;
+					}
+					@media (max-width: 1440px) {
+						font-size: 20px;
+						.icw-badge {
+							font-size: 20px;
+						}
+					}
 				}
 			}
 		}
