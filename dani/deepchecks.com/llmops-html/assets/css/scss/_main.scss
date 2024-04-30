@@ -24,17 +24,32 @@
     }
 }
 .hero-section {
-    background-image: url(../images/img-bg-hero.png);
-    background-repeat: no-repeat;
-    background-position: bottom right;
-    background-size: contain;
-    @media (max-width: 992px) {  
-        background-size: 40%;
+    position: relative;
+    &::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        display: block;
+        background-image: url(../images/img-bg-hero.png);
+        background-repeat: no-repeat;
+        background-position: center right;
+        background-size: contain;        
+        position: absolute;
+        top: 0;
+        z-index: -2;
+        @media (max-width: 1200px) {
+            filter: blur(1.5px);
+        }
     }
     .section-title { 
         max-width: 760px;
+        z-index: 2;
+        position: relative;
         @media (max-width: 767px) {
             max-width: 400px;
+        }
+        h1 {
+            text-shadow: 0 7px 10px rgba(10, 5, 61, 0.7);
         }
         .sort-info {
             max-width: 600px;
@@ -67,6 +82,7 @@
     @include flexbox;
     @include flex-direction(column);
     position: relative;
+    @include transition(0.2s, ease-in-out); 
     @media (max-width: 767px) {
         padding: 30px;
         background-size: auto 100px;
@@ -97,7 +113,7 @@
             line-height: normal;
             font-family: $font-inter;
             font-weight: 600;
-            @include transition(0.2s, ease-in-out);
+            @include transition(0.2s, ease-in-out);            
             &::after {
                 position: absolute;
                 top: 0;
@@ -110,7 +126,12 @@
             &:hover, &:focus {
                 background: url('data:image/svg+xml; utf8,<svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 7H17M17 7L11 1M17 7L11 13" stroke="rgb(255 255 255)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat;
                 background-position: calc(100% - 5px) center;
+                text-decoration: underline;
+                text-underline-offset: 6px;
             }
         }
+    }
+    &:hover, &:focus {
+        @include transform(translateY(-10px));
     }
 }
