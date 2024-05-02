@@ -212,6 +212,55 @@
                                     </li>
                                 </ul>
                             </div>
+                            <div class="course-date-select-slide">                                
+                                <ul class="course-date-item-list">
+                                    <li class="active">
+                                        <button class="course-date-item" type="button">
+                                            <div class="course-date"><strong>Date & Time</strong><span class="value">Jun 01–02, 2024 <br>(10:00 am TO 10:00 am)</span></div>
+                                            <div class="course-date">
+                                                <strong>Instructor</strong><span class="value">Kal H</span>
+                                                <strong>Venue:</strong><span class="value">Vicenza, Italy</span>
+                                            </div>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button class="course-date-item" type="button">
+                                            <div class="course-date"><strong>Date & Time</strong><span class="value">Jul 01–01, 2024 <br>(10:00 am TO 10:00 am)</span></div>
+                                            <div class="course-date">
+                                                <strong>Instructor</strong><span class="value">Jay P</span>
+                                                <strong>Venue:</strong><span class="value">Vilseck, Germany</span>
+                                            </div>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button class="course-date-item" type="button">
+                                            <div class="course-date"><strong>Date & Time</strong><span class="value">Aug 13–16, 2024 <br>(08:00 am TO 05:00 pm)</span></div>
+                                            <div class="course-date">
+                                                <strong>Instructor</strong><span class="value">Kal H</span>
+                                                <strong>Venue:</strong><span class="value">Virtual - Online</span>
+                                            </div>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button class="course-date-item" type="button">
+                                            <div class="course-date"><strong>Date & Time</strong><span class="value">Sep 25–26, 2024 <br>(10:00 am TO 05:00 pm)</span></div>
+                                            <div class="course-date">
+                                                <strong>Instructor</strong><span class="value">Jay P</span>
+                                                <strong>Venue:</strong><span class="value">Virtual - Online</span>
+                                            </div>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button class="course-date-item" type="button">
+                                            <div class="course-date"><strong>Date & Time</strong><span class="value">Sep 25–26, 2024 <br>(10:00 am TO 05:00 pm)</span></div>
+                                            <div class="course-date">
+                                                <strong>Instructor</strong><span class="value">Jay P</span>
+                                                <strong>Venue:</strong><span class="value">Virtual - Online</span>
+                                            </div>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
                             <div id="instructor-single-course">
                                 <div class="instructor-info pt-3">
                                     <div class="instructor-avatar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -324,6 +373,18 @@
             event.preventDefault();
             $(this).toggleClass('is-active');
             $(this).parent().find('.sub-menu').first().toggleClass('is-active');
+        });
+        $('.course-date-select-slide .course-date-item').click(function() {
+            $(this).closest('.course-date-item-list').find('li').removeClass('active');
+            $(this).parent('li').addClass('active');
+        }); 
+        jQuery(".course-date-item-list").draggable({ 
+            cursor: "move", 
+            containment: "course-date-select-slide",
+            // stop: function() {
+            // if(jQuery("#child").position().left < 1)
+            //     jQuery("#child").css("left", "720px");
+            // }
         });
     </script>
 </body>
