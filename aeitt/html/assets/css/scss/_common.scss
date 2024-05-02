@@ -2135,6 +2135,11 @@ body.is-toggle {
 				&:hover {
 					td {
 						background: #f4f4f5;
+						.thumb-img {
+							img {
+								@include transform(scale(1.05));
+							}
+						}
 					}
 				}
 				td {
@@ -2153,9 +2158,14 @@ body.is-toggle {
 					&:last-child {
 						padding-right: 0;
 					}
-					&.thumb-img {
-						width: 100px;
+					.thumb-img {
+						max-width: 100px;
 						line-height: 0.7;
+						overflow: hidden;
+						@include border-radius(5px);
+						img {
+							@include transition(0.2s, ease-in-out);
+						}
 						@media (max-width: 767px) {
 							width: 80px;
 						}
