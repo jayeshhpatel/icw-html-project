@@ -1521,7 +1521,7 @@ body.is-toggle {
 		}
 	}
 }
-.course-date-select-slide {
+.course-date-splide {
 	position: relative;
 	margin-top: 15px;	
 	.course-date {
@@ -1546,62 +1546,24 @@ body.is-toggle {
 			display: block;
 			line-height: 1.3;
 		}
-	}
-	.course-date-item-list {		
-		@include flexbox;
-		@include align-items(center);
-		overflow: hidden;
-		overflow-x: auto;
-		scroll-snap-type: x mandatory;
-		&::-webkit-scrollbar {
-			background-color: transparent;
-			width: 5px;
-			height: 5px;
-			border-radius: 16px;
-		}
-		&::-webkit-scrollbar-thumb {
-			background-color: #c1c1c1;
-			border-radius: 16px;
-		}
-		&::-webkit-scrollbar-track {
-			background-color: #eeeeee;
-		}
-		li {	
-			width: 100%;
-			border: 1px solid rgba(0, 0, 0, 0.4);
-			background: rgba(0, 0, 0, 0.02);
-			margin: 0 5px;
-			@include border-radius(10px);
-			padding: 10px 0;
-			scroll-snap-align: start;
-          	scroll-snap-stop: always;
-			&:hover, &:focus, &.active {
-				background: #f2f4f5;
-			}
-			&.active {
-				background-image: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z" fill="rgb(56 93 255)"/></svg>');
-				background-size: 12px;
-				background-repeat: no-repeat;
-				background-position:  calc(100% - 5px) 5px; 
-			}
-			.course-info { 
-				border: none;
-			}
-		}
-		.course-date-item {
-			display: grid; 
-			grid-template-columns: auto 40%;
-			background: transparent;
-			border: none;
-			text-align: left;
-			width: 100%;
-			padding: 0;
-			white-space: nowrap;
-		}
+	}	
+	.course-date-item {
+		display: grid; 
+		grid-template-columns: auto 40%;
+		text-align: left;
+		width: 100%;
+		padding: 0;
+		white-space: nowrap;
+		border: 1px solid rgba(0, 0, 0, 0.4);
+		background: rgba(0, 0, 0, 0.02);
+		@include border-radius(6px);
+		padding: 12px 0;
+		cursor: pointer;
 		&.active {
-			opacity: 1;
-			visibility: visible;
-			@include transform(translateY(0px));
+			background-image: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z" fill="rgb(56 93 255)"/></svg>');
+			background-size: 12px;
+			background-repeat: no-repeat;
+			background-position:  calc(100% - 5px) 5px; 
 		}
 	}
 }
