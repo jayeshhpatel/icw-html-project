@@ -55,4 +55,33 @@ jQuery(document).ready(function($) {
            lastScrollTop = st;
         });
     });
+
+    if($('.tab-block').length) {
+        $('.tab-nav li:first-child').addClass('active');
+        $('.tab-content').hide();
+        $('.tab-content:first').show();
+
+        // Click function
+        $('.tab-nav li').click(function(){
+            $('.tab-nav li').removeClass('active');
+            $(this).addClass('active');
+            $('.tab-content').hide();
+        
+            var activeTab = $(this).find('a').attr('href');
+            $(activeTab).fadeIn();
+            return false;
+        });
+    }        
+    
+    $(window).scroll(function(){ 
+        var scrollTo = $('.animate-scale-section .animate-block').offset().top - 150;
+        if($(this).scrollTop()>=scrollTo){
+            console.log(scrollTo);
+            $('.animate-scale-section .animate-block').css("transform", "scale(1)"); ;
+        } else {
+            $('.animate-scale-section .animate-block').css("transform", "scale(0.95)");
+        }
+    });
+    
+    
 });

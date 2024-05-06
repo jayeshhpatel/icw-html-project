@@ -3,11 +3,15 @@
 }
 .section-title {
     h1, h2 {
+        margin-top: 0;
         margin-bottom: 20px;
         color: #27274e;
     }
     .sort-info {
         margin-bottom: 20px;
+        strong {
+            font-weight: 500;
+        }
         p {
             color: #424270;
             &:not(:last-child) {
@@ -55,6 +59,41 @@
         }
     }
 }
-.tab-section {
-    
+.bg-gradient-section {
+    .bg-gradient-block{
+        padding: 100px;
+        @include border-radius(8px);
+        @include transform(scale(0.95));
+        @include transition(0.3s, ease-in-out);
+        .section-title {
+            h2 {
+                color: #f9fafc;
+            }
+            .sort-info {
+                p {
+                    color: #d7e4ff;
+                }
+            }
+        }
+    }
+}
+
+.logo-list-block {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(center);
+    @include flex-wrap(wrap);
+    column-gap: 35px;
+    .logo {
+        margin-top: 20px;
+        img {
+            max-height: 65px;
+            @include transition(0.3s, ease-in-out);
+        }
+        &:hover {
+            img {
+                @include transform(scale(1.05));
+            }
+        }
+    }
 }

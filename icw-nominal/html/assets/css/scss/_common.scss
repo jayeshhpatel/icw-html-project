@@ -32,6 +32,7 @@ body {
 	font-family: $bodyfont; 
 	color: $bodyfontcolor; 
 	font-size: $bodyfontsize; 
+    background: $bodybg;
 	font-weight: 400;
 	position: relative; 
 	line-height: 1.5; 
@@ -68,34 +69,6 @@ ul {
     padding: 0;
 }
 
-a {
-    color: $blue;
-    text-decoration: none;
-	text-underline-offset: 4px;
-    &:focus,
-    &:hover {
-        color: $bodyfontcolor;
-        // text-decoration: none;
-    }
-    &:focus-visible {
-        outline: 3px solid #f0ab2e !important;
-        @include border-radius(4px);
-    }
-}
-
-.d-none {
-    display: none !important;
-}
-.bg-blue {
-    background: $blue;
-}
-
-[type="submit"] {
-    &:focus-visible {
-        outline: 3px solid #f0ab2e !important;
-    }
-}
-
 p {
     margin-top: 0;
     margin-bottom: 15px;
@@ -114,9 +87,64 @@ img {
     -ms-interpolation-mode:nearest-neighbor;
 }
 
+a {
+    color: $blue;
+    text-decoration: none;
+	text-underline-offset: 4px;
+    &:focus,
+    &:hover {
+        color: $bodyfontcolor;
+        // text-decoration: none;
+    }
+    &:focus-visible {
+        outline: 3px solid #f0ab2e !important;
+        @include border-radius(4px);
+    }
+}
+
+[type="submit"] {
+    &:focus-visible {
+        outline: 3px solid #f0ab2e !important;
+    }
+}
+.d-none {
+    display: none !important;
+}
+.bg-blue {
+    background: $blue;
+}
+.bg-gradient {
+    background: linear-gradient(0deg, rgba(115,123,246,1) 0%, rgba(62,100,241,1) 50%, rgba(53,93,229,1) 100%);
+    color: $white !important;
+}
+.bg-lightpurple {
+
+}
+
+.bg-image {
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.text-blue {
+    color: #355de5 !important;
+}
+
+.pl-0 {
+    padding-left: 0 !important;
+}
+.pt-0 {
+    padding-top: 0 !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
 h1, .h1 {
     font-size: 60px;
-    font-family: 500;
+    font-weight: 500;
     line-height: 1.3;
     @media (max-width: 992px) {
         font-size: 50px;
@@ -127,13 +155,26 @@ h1, .h1 {
 }
 h2, .h2 {
     font-size: 40px;
-    font-family: 500;
+    font-weight: 600;
     line-height: 1.3;
     @media (max-width: 992px) {
         font-size: 36px;
     }
     @media (max-width: 767px) {
         font-size: 28px;
+    }
+}
+h3, .h3 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0;
+    letter-spacing: -.4px;
+    @media (max-width: 992px) {
+        font-size: 20px;
+    }
+    @media (max-width: 767px) {
+        font-size: 18px;
     }
 }
 
@@ -290,10 +331,10 @@ h2, .h2 {
 
 .bottom-sm-half-section {
     padding-bottom: 100px;
-    & ~ .main-section {
+    & + .main-section {
         margin-top: -140px;
         padding-top: 0;
-        z-index: 10;
+        z-index: 9;
         position: relative;
     }
 }
@@ -310,7 +351,13 @@ h2, .h2 {
 // Grid 
 .grid-row {
     display: grid;
-    grid-gap: 15px;
+    grid-gap: 30px;
+    &.grid-gap-100 {
+        grid-gap: 100px;
+    }
+    &.align-items-center {
+        @include align-items(center);
+    }
     &.two-grid-col {
         grid-template-columns: repeat(2, 1fr);
 
@@ -1198,6 +1245,95 @@ h2, .h2 {
     }
 }
 
+.check-list {
+    padding-top: 10px;
+    li {
+        position: relative;
+        padding-left: 25px;
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+        strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+        &::before {
+            content: '';
+            background: url(../images/icons/icon-check.svg) no-repeat center center;
+            background-size: 17px;
+            width: 16px;
+            height: 15px;
+            display: inline-block;
+            position: absolute;
+            top: 6px;
+            left: 0;
+        } 
+    }
+}
+
+.sticky-title-block {
+    .section-title {
+        position: sticky;
+        top: 50%;
+        @include transform(translateY(calc(-50% + 100px)))
+    }
+}
+
+.lg-number-list {
+    li {
+        counter-increment: step-counter;
+        position: relative;
+        padding-left: 80px;
+        color: #d7e4ff;
+        font-size: 16px;
+        &:not(:last-child) {
+            margin-bottom: 70px;
+        }
+        &::before {
+            content: counter(step-counter);
+            background: linear-gradient(0deg, rgba(198, 218, 251, 1) 0%, rgba(249, 250, 252, 1) 47%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0px 3px 4px #3258d7);
+            font-size: 90px;
+            font-weight: 600;
+            display: inline-block;
+            line-height: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        h3 {
+            margin-bottom: 8px;
+            color: #f9fafc;
+        }
+    }
+}
+
+.video-border-block {
+    @include border-radius(12px);
+    max-width: 100%;
+    margin-left: auto;
+    padding: 12px;
+    overflow: hidden;
+    background: linear-gradient(0deg, rgba(180, 205, 243, 0.9) -37.13%, rgba(224, 228, 250, 0.9) 9.9%, rgba(221, 224, 242, 0.9) 84.03%, rgba(214, 226, 255, 0.9) 107.09%);
+    box-shadow: inset 0px -0.882453px 4.41227px rgba(255, 255, 255, 0.15), inset 0px 5.29472px 10.5894px rgba(16, 31, 122, 0.07), inset 0px 1px 0.882453px rgba(4, 18, 107, 0.2), inset 0px 19.414px 17.6491px rgba(15, 7, 68, 0.05); 
+    .video-embed-block {
+        object-fit: cover;
+        @include border-radius(8px);
+        @include flexbox;
+        @include justify-content(center);
+        @include align-items(center);
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        video {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
 .tab-block {
     @include border-radius(8px);
     overflow: hidden;
@@ -1206,6 +1342,12 @@ h2, .h2 {
         @include align-items(center);
         li {
             flex-grow: 1;
+            
+            &.active {
+                a::after {
+                    width: 100%;
+                }
+            }
         }
         .tab-link {
             background-color: #f5f6fd;
@@ -1214,7 +1356,9 @@ h2, .h2 {
             padding: 25px;
             border: none;
             @include transition(0.3s, ease-in-out);
+            font-family: $bodyfont; 
             position: relative;
+            display: block;
             &::after {
                 content: '';
                 flex-flow: column;
@@ -1222,7 +1366,6 @@ h2, .h2 {
                 top: auto;
                 bottom: 0%;
                 left: 0%;
-                right: 0%;
                 width: 0;
                 height: 3px;
                 @include transition(0.3s, ease-in-out);
@@ -1232,7 +1375,7 @@ h2, .h2 {
                 @include flexbox;
                 @include align-items(center);
                 gap: 12px;
-                margin-bottom: 8px;
+                margin-bottom: 3px;
                 .tab-icon {
                     border-radius: 8px;
                     @include flexbox;
@@ -1254,6 +1397,7 @@ h2, .h2 {
                     font-size: 18px;
                     color: rgb(39, 39, 78);
                     font-weight: 500;
+                    line-height: normal;
                 }
             }
             .tab-desc {
@@ -1273,17 +1417,22 @@ h2, .h2 {
                     }
                 }
             }
-            &.active {
-                &::after {
-                    width: 100%;
-                }
-            }
         }
     }
     .tab-content-block {
         background: radial-gradient(196.38% 347.86% at 50% -85.04%, rgba(235, 237, 250, 0.25) 47.82%, rgba(166, 52, 255, 0.125) 76.79%, rgba(235, 237, 250, 0) 100%), radial-gradient(175.87% 311.54% at 50% -85.04%, rgba(235, 237, 250, 0.25) 47.82%, rgba(52, 243, 255, 0.125) 76.79%, rgba(235, 237, 250, 0) 100%), radial-gradient(79.48% 752.67% at 50% 50.43%, rgba(235, 237, 250, 0.25) 47.82%, rgba(106, 139, 255, 0.25) 76.79%, rgba(235, 237, 250, 0) 100%), #EBEDFA;
+        padding: 75px;
         .tab-content {
-            padding: 75px;
+            margin: 0 70px;
+            .section-title {
+                .action {
+                    margin-top: 40px;
+                }
+            }
+            .image-block {
+                max-width: 520px;
+                margin-left: auto;
+            }
         }
     }
     
