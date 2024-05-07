@@ -17,7 +17,7 @@ jQuery(document).ready(function($) {
         }
 
         $(window).scroll(function () {
-            if (jQuery(this).scrollTop() > 100) {
+            if (jQuery(this).scrollTop() > 30) {
                 $(".main-header").addClass("fixed-header");
             } else {
                 $(".main-header").removeClass("fixed-header");
@@ -74,7 +74,7 @@ jQuery(document).ready(function($) {
     }        
     
     $(window).scroll(function(){ 
-        var scrollTo = $('.animate-scale-section .animate-block').offset().top - 150;
+        var scrollTo = $('.animate-scale-section .animate-block').offset().top - 500;
         if($(this).scrollTop()>=scrollTo){
             console.log(scrollTo);
             $('.animate-scale-section .animate-block').css("transform", "scale(1)"); ;
