@@ -197,7 +197,7 @@ h2, .h2 {
         font-size: 28px;
     }
     @media (max-width: 767px) {
-        font-size: 24px;
+        font-size: 20px;
     }
 }
 h3, .h3 {
@@ -409,6 +409,9 @@ h3, .h3 {
         padding-top: 0;
         z-index: 9;
         position: relative;
+        @media (max-width: 1200px) {
+            margin-top: -92px;
+        }
         @media (max-width: 992px) {
             margin-top: 0;
             padding-top: 70px;
@@ -1483,6 +1486,11 @@ h3, .h3 {
     overflow: hidden;
     background: linear-gradient(0deg, rgba(180, 205, 243, 0.9) -37.13%, rgba(224, 228, 250, 0.9) 9.9%, rgba(221, 224, 242, 0.9) 84.03%, rgba(214, 226, 255, 0.9) 107.09%);
     box-shadow: inset 0px -0.882453px 4.41227px rgba(255, 255, 255, 0.15), inset 0px 5.29472px 10.5894px rgba(16, 31, 122, 0.07), inset 0px 1px 0.882453px rgba(4, 18, 107, 0.2), inset 0px 19.414px 17.6491px rgba(15, 7, 68, 0.05); 
+    @media (max-width: 992px) {
+        margin: 0 auto;
+        max-height: 200px;
+        padding: 8px;
+    }
     .video-embed-block {
         object-fit: cover;
         @include border-radius(8px);
@@ -1492,9 +1500,16 @@ h3, .h3 {
         width: 100%;
         height: 100%;
         overflow: hidden;
+        @media (max-width: 992px) {
+            max-width: 100%;
+            max-height: 186px;
+        }
         video {
             width: 100%;
-            height: 100%;
+            height: 100%; 
+            @media (max-width: 992px) {
+                object-fit: cover;
+            }
         }
     }
 }
@@ -1502,11 +1517,16 @@ h3, .h3 {
 .tab-block {
     @include border-radius(8px);
     overflow: hidden;
+    @media (max-width: 992px) {
+        overflow: unset;
+    }
     .tab-nav {
         @include flexbox;
         @include align-items(center);
         li {
             flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 0;
             &:hover, &:focus, &.active {
                 a {
                     background-color: #fafafa;
@@ -1600,7 +1620,7 @@ h3, .h3 {
                 font-size: 14px;
                 line-height: 1.4;
                 @media (max-width: 1200px) {
-                    font-size: 11px;
+                    font-size: 10px;
                 }
             }            
         }
@@ -1614,6 +1634,10 @@ h3, .h3 {
         @media (max-width: 1200px) {
             padding: 50px;
         }
+        @media (max-width: 992px) {
+            background: transparent;
+            padding: 0;
+        }
         .tab-content {
             @media (min-width: 1441px) {
                 margin: 0 70px;
@@ -1621,16 +1645,110 @@ h3, .h3 {
             .section-title {
                 .action {
                     margin-top: 40px;
+                    @media (max-width: 992px) {
+                        margin-top: 20px;
+                    }
+                }
+            }
+            .content-block {
+                @media (max-width: 992px) {
+                    order: 2;
                 }
             }
             .image-block {
                 max-width: 520px;
                 margin-left: auto;
+                @media (max-width: 992px) {
+                    max-width: 100%;
+                    order: 1;
+                }
+            }
+        }
+        .collapse-btn {
+            display: none;
+        }
+        @media (max-width: 992px) {
+            .collapse-block {
+                border-radius: 8px;
+                margin-bottom: .8rem;
+                overflow: hidden;
+                box-shadow: 0 17px 39px rgba(41, 38, 211, .1);
+                display: block !important;
+                .collapse-btn {
+                    background-color: #fafafa;
+                    @include border-radius(8px);
+                    padding: 18px;
+                    position: relative;
+                    overflow: hidden;
+                    border: none;
+                    @include flexbox;
+                    @include align-items(flex-start);
+                    text-align: left;
+                    width: 100%;
+                    .tab-icon {
+                        border-radius: 8px;
+                        margin-right: 12px;
+                        @include flexbox;
+                        @include align-items(center);
+                        @include justify-content(center);
+                        flex: none;
+                        width: 40px;
+                        height: 40px;                        
+                        @include transition(0.3s, ease-in-out);
+                        background: radial-gradient(68.21% 171.32% at 87.86% 171.32%, rgba(146, 189, 255, 0.75) 35.72%, rgba(194, 147, 255, 0.525) 51.7%, rgba(74, 131, 246, 0) 99.93%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, #3B63F0;
+                        box-shadow: 0px 1.54545px 7px rgba(117, 84, 159, 0.25), 0px 21.6364px 24.7273px rgba(131, 128, 248, 0.2);
+                        img {
+                            max-height: 24px;
+                            flex: none;
+                            @include transition(0.3s, ease-in-out);      
+                            filter: brightness(0) invert(0.9);                                            
+                        }
+                    }
+                    .tab-info {
+                        .name {
+                            font-size: 16px;
+                            color: rgb(39, 39, 78);
+                            font-weight: 600;
+                            line-height: 1.2;
+                            margin-bottom: 5px;
+                        }
+                        .tab-desc {
+                            color: #424270;
+                            font-size: 12px;
+                            line-height: 1.4;
+                        }   
+                    }
+                    .collapse-icon {
+                        margin-left: auto;
+                        width: 17px;
+                        height: 17px;
+                        background: url('data:image/svg+xml; utf8,<svg class="tab-arrow-mobile" xmlns="http://www.w3.org/2000/svg" width="19" height="20" viewBox="0 0 19 20" fill="none" fs-accordion-element="arrow"><path d="M9.42813 18.7539L9.42857 1.2441M9.42857 1.2441L18 10.0604M9.42857 1.2441L0.857144 10.0604" stroke="rgb(25 96 239)" stroke-width="1.5" stroke-linecap="round"></path></svg>') no-repeat center center;
+                        background-size: contain;
+                        @include transform(rotate(180deg));
+                        @include transition(0.3s, ease-in-out);
+                    }
+                    &.active {
+                        .collapse-icon {
+                            @include transform(rotate(0deg))
+                        }
+                    }
+                }
+                .collapse-content {
+                    background: radial-gradient(196.38% 347.86% at 50% -85.04%, rgba(235, 237, 250, 0.25) 47.82%, rgba(166, 52, 255, 0.125) 76.79%, rgba(235, 237, 250, 0) 100%), radial-gradient(175.87% 311.54% at 50% -85.04%, rgba(235, 237, 250, 0.25) 47.82%, rgba(52, 243, 255, 0.125) 76.79%, rgba(235, 237, 250, 0) 100%), radial-gradient(79.48% 752.67% at 50% 50.43%, rgba(235, 237, 250, 0.25) 47.82%, rgba(106, 139, 255, 0.25) 76.79%, rgba(235, 237, 250, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, #EBEDFA;
+                    box-shadow: 0px 17.4108px 39.5699px rgba(41, 38, 211, 0.05);
+                    padding: 30px;
+                    display: none;
+                    overflow: hidden;
+                    @media (max-width: 767px) {
+                        padding: 20px;
+                    }
+                }
             }
         }
     }
     
 }
+
 
 .post-card {
     min-height: 100%;

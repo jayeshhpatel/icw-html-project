@@ -83,5 +83,15 @@ jQuery(document).ready(function($) {
         }
     });
     
-    
+    $(".collapse-btn").on("click", function() {
+        var isActive = $(this).hasClass("active");
+		$('.collapse-btn').removeClass('active')
+        if (!isActive) {
+            $(this).toggleClass('active');
+        }
+         
+        $(this).next('.collapse-content').slideToggle('800');     
+        //Hide the other panels
+        $(".collapse-content").not($(this).next()).slideUp('800');
+    });
 });
