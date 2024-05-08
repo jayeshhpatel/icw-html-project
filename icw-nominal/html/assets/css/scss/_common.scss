@@ -813,6 +813,9 @@ h3, .h3 {
                             }
                             & > li {
                                 margin-bottom: 15px;
+                                &:last-child {
+                                    margin-bottom: 0;
+                                }
                             }
                             a {                                
                                 @include flexbox;
@@ -888,6 +891,9 @@ h3, .h3 {
                                             }
                                         }
                                     }                                        
+                                }
+                                &.disable {
+                                    pointer-events: none;
                                 }
                             }
                             .megamenu-right-block {
@@ -1750,7 +1756,6 @@ h3, .h3 {
     
 }
 
-
 .post-card {
     min-height: 100%;
     @include flexbox;
@@ -1848,5 +1853,30 @@ h3, .h3 {
                 }
             }
         }
+    }
+}
+
+.comparison-card-block {
+    background: linear-gradient(180deg, rgba(143,154,216,1) 0%, rgba(193,196,227,1) 21%, rgba(206,208,233,1) 37%, rgba(215,218,237,1) 54%);
+    padding: 30px 8px 8px;
+    @include border-radius(24px);
+    &.bg-blue-gradient {
+        background: linear-gradient(180deg, rgba(84,79,215,1) 0%, rgba(96,117,255,1) 21%, rgba(175,112,254,1) 37%, rgba(138,75,252,1) 54%, rgba(154,216,254,1) 100%);
+    }
+    .card-title {
+        color: #f9fafc;
+        text-align: center;
+        font-size: 28px;
+        font-weight: 500;
+        img {
+            width: 160px;
+        }
+    }
+    .card-body {
+        background: linear-gradient(180deg, #F9FAFE -1.68%, #ECEEFB 61.38%, #E2E5F6 86.93%, #FCFDFF 104.73%);
+        box-shadow: 0px 6.56px 8px 0px rgba(71, 158, 220, 0.50);
+        @include border-radius(16px);
+        margin-top: 30px;
+        padding: 40px;
     }
 }

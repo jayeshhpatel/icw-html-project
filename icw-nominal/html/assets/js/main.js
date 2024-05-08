@@ -74,12 +74,14 @@ jQuery(document).ready(function($) {
     }        
     
     $(window).scroll(function(){ 
-        var scrollTo = $('.animate-scale-section .animate-block').offset().top - 500;
-        if($(this).scrollTop()>=scrollTo){
-            console.log(scrollTo);
-            $('.animate-scale-section .animate-block').css("transform", "scale(1)"); ;
-        } else {
-            $('.animate-scale-section .animate-block').css("transform", "scale(0.95)");
+        if($('.tab-block').length) {
+            var scrollTo = $('.animate-scale-section .animate-block').offset().top - 500;
+            if($(this).scrollTop()>=scrollTo){
+                console.log(scrollTo);
+                $('.animate-scale-section .animate-block').css("transform", "scale(1)"); ;
+            } else {
+                $('.animate-scale-section .animate-block').css("transform", "scale(0.95)");
+            }
         }
     });
     
