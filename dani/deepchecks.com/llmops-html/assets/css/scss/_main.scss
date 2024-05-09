@@ -25,29 +25,29 @@
 }
 .hero-section {
     position: relative;
-    &::after {
-        content: '';
-        width: 100%;
-        height: 100%;
-        display: block;
-        background-image: url(../images/img-bg-hero.png);
-        background-repeat: no-repeat;
-        background-position: center right;
-        background-size: contain;        
-        position: absolute;
-        top: 0;
-        z-index: -2;
-        @media (max-width: 1200px) {
-            filter: blur(1.5px);
-        }
+    // &::after {
+    //     content: '';
+    //     width: 100%;
+    //     height: 100%;
+    //     display: block;
+    //     background-image: url(../images/img-bg-hero.png);
+    //     background-repeat: no-repeat;
+    //     background-position: center right;
+    //     background-size: contain;        
+    //     position: absolute;
+    //     top: 0;
+    //     z-index: -2;
+    //     @media (max-width: 1200px) {
+    //         filter: blur(1.5px);
+    //     }
+    // }
+    & > .container {
+        position: relative;
     }
     .section-title { 
         max-width: 760px;
         z-index: 2;
-        position: relative;
-        @media (max-width: 767px) {
-            max-width: 400px;
-        }
+        position: relative;        
         h1 {
             text-shadow: 0 7px 10px rgba(10, 5, 61, 0.7);
         }
@@ -56,6 +56,37 @@
         }
         .action {
             margin-bottom: 30px;
+            @media (max-width: 767px) { 
+                .btn {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .image-block {
+        position: absolute;
+        right: -25%;
+        top: -100px;
+        img {
+            max-width: 700px;
+        }
+        @media (max-width: 992px) {
+            position: relative;
+            right: -12%;
+            top: 0;
+            img {
+                max-width: 500px;
+            }
+        }
+        @media (max-width: 767px) {
+            position: relative;
+            right: unset;
+            top: 0; 
+            text-align: center;
+            img {
+                max-width: 350px;
+                width: 100%;
+            }
         }
     }
 }
