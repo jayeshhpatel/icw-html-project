@@ -182,9 +182,9 @@ h3, .h3 {
     @include inline-flex;
     @include align-items(center);
     @include justify-content(center);
-    @media (max-width: 767px) {       
+    @media (max-width: 992px) {       
         font-size: 16px; 
-        min-height: 46px;
+        min-height: 50px;
     }
     &.btn-primary {
         color: $white;
@@ -243,6 +243,184 @@ h3, .h3 {
         }
     }
 }
+
+/* Default Form Styling */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="text"],
+input[type="password"],
+input,
+textarea,
+select,
+.form-control,
+.hs-input {
+    padding: 15px 25px;
+    @include border-radius(5px);
+    background: #3C376F;
+    border: 1px solid transparent;
+    color: $white;
+    font-weight: 500;
+    height: 60px;
+    width: 100%;
+    min-height: 37px;
+    font-family: $font-inter;
+    font-size: 16px;
+    @media(max-width: 992px){
+        height: 50px;
+        font-size: 15px;
+        padding: 10px 15px;
+    }  
+    &.error {
+        border-color: #f44336;
+    }  
+    &:focus {
+        border-color: rgba($purple, 0.2);
+        box-shadow: none;
+        outline: 0 none;
+    }
+}
+.hs-button {
+    margin-bottom: 0px !important;
+}
+textarea.hs-input {
+    min-height: 150px;
+}
+label {
+    color: #9896AD !important;
+    background: transparent;
+    border: none;
+}
+.hs-form-required,
+.required {
+    padding: 0 0 0 5px;
+    color: #C8C8C8;
+}
+.hs-error-msgs {
+    padding-left: 0;
+    margin-bottom: 5px;
+    line-height: 1;
+    padding: 0px !important;
+    li {
+        list-style-type: none;
+        label {
+            color: #f44336 !important;
+            margin-bottom: 0;
+            font-size: 12px !important;
+            background: transparent !important;
+        }
+    }
+}
+
+.hs-form input[type=submit]  {
+    color: $white !important;
+    background-color:$purple;
+    border:1px solid $purple;
+    height: 60px;
+    min-height: 60px;
+    padding: 0 25px;
+    font-weight: 600;
+    font-size: 18px;
+    min-width: 120px;
+    font-family: $font-inter;
+    @include transition(0.3s, ease-in-out);
+    @include border-radius(5px);
+    @include inline-flex;
+    @include align-items(center);
+    @include justify-content(center);   
+    @media (max-width: 992px) {       
+        font-size: 16px; 
+        min-height: 50px;
+        height: 50px;
+    }
+    &:hover, &:focus, &:active,
+    &:not(:disabled):not(.disabled).active, 
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active:focus, 
+    &:not(:disabled):not(.disabled):active:focus {
+        background-color: #7f35f8 !important;
+        color: $white !important;
+        border-color:#7f35f8 !important;
+        box-shadow: 0px 10px 40px rgba(#7f35f8, 0.6);
+    }
+    &.disabled,
+    &:disabled {
+        background-color: rgba($purple, 0.8) !important;
+        border-color: transparent !important;
+        color: $white !important;
+        pointer-events: none;
+    }
+}
+
+.form-with-slider-labels {
+    $label-displacement: 1px;
+    @media(max-width: 992px){
+        $label-displacement: 3px;
+    }  
+    .hs-form {
+        .hs-form-field {
+            margin: 15px 0;
+            position: relative;
+            label {
+                position: absolute;
+                left: 20px;
+                top: 10px;
+                color: #9896AD;
+                font-size: 18px;
+                padding: 5px 5px 0;
+                @include transition(0.3s, ease-in-out);
+                @media(max-width: 992px){
+                    left: 10px;
+                    padding: 3px 5px 0;
+                    font-size: 16px;
+                }  
+            }
+            &.has-focus, &.has-value {
+                > label {
+                    top: $label-displacement;
+                    color: #9896AD;
+                    font-size: 13px;
+                    @media(max-width: 992px){
+                        font-size: 12px;
+                    }
+                }
+                .hs-input {
+                    padding: 20px 25px 0 !important;
+                    @media(max-width: 992px){
+                        padding: 18px 15px 0 !important;
+                    }
+                }
+                textarea.hs-input {
+                    padding: 25px 25px 15px !important;
+                    @media(max-width: 992px){
+                        padding: 24px 15px 15px !important;
+                    }
+                }
+            }
+            &.not-focused {
+                > label {
+                    top: 10px;
+                }
+            }
+            .hs-error-msgs {
+                li {
+                    label {
+                        top: 0;
+                        left: 0;
+                        position: relative;
+                    }
+                }
+            }
+        }
+        .hs-input {
+            margin-bottom: 0;
+            &.error {
+                border: 1px solid #A94442;
+            } 
+        }
+    }
+}
+
 
 .bg-purple-glow {
     position: relative;

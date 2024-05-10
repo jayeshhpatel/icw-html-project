@@ -15,6 +15,11 @@
     @include flexbox;
     @include align-items(center);
     margin-bottom: 60px;
+    @media (max-width: 992px) {
+        @include flex-direction(column);
+        @include align-items(flex-start);
+        margin-bottom: 30px;
+    }
     .section-title {
         margin-bottom: 0;
         margin-right: 25px;
@@ -30,6 +35,9 @@
 
 .section-title {
     margin-bottom: 50px;
+    @media (max-width: 992px) {
+        margin-bottom: 20px;
+    }
     h1, h2 {
         margin-bottom: 30px;
         span {
@@ -40,6 +48,9 @@
         margin-bottom: 30px;
         font-family: $font-inter;
         color: #9896AD;
+        &.mw-470 {
+            max-width: 470px;
+        }
     }
 }
 
@@ -240,7 +251,7 @@
     }
 }
 
-.event-section, .card-section {
+.post-card-section {
     .row {
         @media (max-width: 992px) {
             margin-left: -10px;
@@ -256,7 +267,7 @@
     }
 }
 
-.event-card {
+.post-card {
     @include flexbox;
     @include flex-direction(column);
     background: #1E1951;
@@ -270,15 +281,15 @@
         line-height: 0.7;
         img {
             @include transition(0.3s, ease-in-out);
+            width: 100%;
         }
     }
     .card-body {
         @include flexbox;
         @include flex-direction(column);
-        padding: 24px;
-        flex: 1 1 auto;
+        padding: 25px;
         @media (max-width: 992px) {
-            padding: 15px 15px 20px;
+            padding: 20px;
         }
         .date {
             font-size: 14px;
@@ -291,12 +302,14 @@
             }
         }
         h3 {
-            margin-bottom: 24px;
             margin-top: 0;
-            flex: 1 1 auto;
             font-size: 20px;
+            display: -webkit-box;
+            overflow : hidden;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;  
             @media (max-width: 992px) {
-                margin-bottom: 15px;
                 font-size: 18px;
             }
             a {
@@ -317,7 +330,23 @@
                 }
             }
         }
-        .event-logo {
+        .sort-info {
+            font-size: 16px;
+            font-weight: 500;
+            color: #9896AD;
+            flex: 1 1 auto;
+            margin: 0;
+        }
+    }
+    .card-footer {
+        padding: 0px 25px 25px;
+        @media (max-width: 992px) {
+            padding: 0px 20px 20px; 
+            .btn {
+                width: 100%;
+            }
+        }
+        .post-user {
             @include flexbox;
             @include align-items(center);
             font-weight: 600;
@@ -331,109 +360,96 @@
                 width: 24px;
                 height: 24px;
                 flex: none;
-                display: inline-block;
+                @include inline-flex;
+                @include align-items(center);
+                @include justify-content(center);
                 margin-right: 10px;
                 @include border-radius(50%);
+                img {
+                    @include border-radius(50%);
+                }
                 @media (max-width: 992px) {
                     margin-right: 8px;
                 }
             }
-        }
+        }       
     }
-    &:hover, &:focus {
-        @include transform(translateY(-10px));
-        @include box-shadow(0 10px 20px 0 rgba(255,255,255,0.2));        
+    &.only-content {
         .card-body {
             h3 {
-                a {
-                    color: rgba($white, 0.8);
-                    text-decoration: underline;
+                margin-bottom: 16px;
+                min-height: 60px;
+                @media (max-width: 992px) {
+                    margin-bottom: 10px;
                 }
-            }
-        }
-    }
-}
-
-.info-card {
-    @include flexbox;
-    @include flex-direction(column);
-    background: #1E1951;
-    @include border-radius(20px);
-    overflow: hidden;
-    position: relative;
-    @include transition(0.3s, ease-in-out);
-    height: 100%;
-    padding: 35px;
-    @media (max-width: 767px) {
-        padding: 20px;
-    }
-    .card-img {
-        .card-icon {
-            @include flexbox;
-            @include align-items(center);
-            gap: 20px;
-            font-family: $font-inter;
-        }
-        .icon {
-            width: 60px;
-            height: 60px;
-            flex: none;
-            @include flexbox;
-            @include align-items(center);
-            @include justify-content(center);
-            @include border-radius(10px);
-            background: #9D60FB;
-            box-shadow: 0px 20px 50px 0px rgba($purple, 0.6);
-            .icon-chat {
-                width: 24px;
-                height: 24px;
-                background: url(../images/icons/icon-chat.svg) no-repeat center center;
-                background-size: contain;
-            }
-        }
-        .info {
-            .tag {
-                font-size: 12px;
-                font-weight: 700;
-                color: #645F97;
-                margin-bottom: 4px;
-            }
-            .time {
-                font-size: 18px;
-                color: $white;
-                font-weight: 700;
                 @media (max-width: 767px) {
-                    font-size: 16px;
+                    min-height: auto;
                 }
             }
-        }
-    }
-    .card-body {
-        margin-top: 25px;
-        @media (max-width: 767px) {
-            margin-top: 15px;
-        }
-        .title {
-            font-size: 24px;
-            margin-bottom: 16px;
-            @media (max-width: 767px) {
-                font-size: 20px;
-                margin-bottom: 10px;
-            }
-            a {
-                color: $white;
-                @include transition(0.3s, ease-in-out);
-                text-underline-offset: 6px;
+            .sort-info {
+                font-size: 16px;
+                font-weight: 500;
+                color: #9896AD;
+                flex: 1 1 auto;
+                margin: 0;
             }
         } 
-        .sort-info {
-            color: #9896AD;
-            font-size: 18px;
-            font-weight: 400;
-            @media (max-width: 767px) {
-                font-size: 16px;
+    }
+    &.logo-with-content {
+        .card-img {    
+            line-height: normal;        
+            &.with-name {
+                @include flexbox;
+                @include align-items(center);
+                gap: 20px;
+                font-family: $font-inter;
+                padding: 25px 25px 0;
+                @media (max-width: 992px) {
+                    padding: 20px 20px 0px;
+                }
+                .icon {
+                    width: 60px;
+                    height: 60px;
+                    flex: none;
+                    @include flexbox;
+                    @include align-items(center);
+                    @include justify-content(center);
+                    @include border-radius(10px);
+                    background: #9D60FB;
+                    box-shadow: 0px 20px 50px 0px rgba($purple, 0.6);
+                    .icon-chat {
+                        width: 24px;
+                        height: 24px;
+                        background: url(../images/icons/icon-chat.svg) no-repeat center center;
+                        background-size: contain;
+                    }
+                }
+                .info {
+                    .tag {
+                        font-size: 12px;
+                        font-weight: 700;
+                        color: #645F97;
+                        margin-bottom: 4px;
+                    }
+                    .time {
+                        font-size: 18px;
+                        color: $white;
+                        font-weight: 700;
+                        @media (max-width: 767px) {
+                            font-size: 16px;
+                        }
+                    }
+                }
             }
         }
+        .card-body {
+            h3 {
+                margin-bottom: 15px;
+                @media (max-width: 992px) {
+                    margin-bottom: 10px;
+                }
+            }
+        } 
     }
     &:hover, &:focus {
         @include transform(translateY(-10px));
@@ -607,5 +623,18 @@
         .dropdown-toggle {
             width: 100%;
         }
+    }
+}
+
+
+.form-block {
+    background: #1E1951;
+    @include border-radius(30px);
+    padding: 50px;
+    @media (max-width: 1200px) {       
+        padding: 30px;
+    }
+    @media (max-width: 767px) {       
+        padding: 20px;
     }
 }
