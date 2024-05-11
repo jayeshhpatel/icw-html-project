@@ -480,46 +480,64 @@ label {
 }
 
 .icw-pagination {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    filter: drop-shadow(0px 1px 2px rgba(16, 24, 40, 0.05));
+    @include border-radius(8px);
+    @include inline-flex;
+    @include align-items(center);
+    @include justify-content(center);
+    overflow: hidden;
     text-align: center;
     margin-top: 60px;
     @media (max-width: 992px) {
         margin-top: 40px;
     }
-    .nav-pagination {
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        filter: drop-shadow(0px 1px 2px rgba(16, 24, 40, 0.05));
-        @include border-radius(8px);
+    span, a {
+        width: 40px;
+        height: 40px;
+        flex: none;
+        font-size: 14px;
+        color: #9896AD;
+        font-weight: 600;
         @include inline-flex;
         @include align-items(center);
-        overflow: hidden;
-        span, a {
-            width: 40px;
-            height: 40px;
-            flex: none;
-            font-size: 14px;
-            color: #9896AD;
-            font-weight: 600;
-            @include inline-flex;
-            @include align-items(center);
-            @include justify-content(center);
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-            font-family: $font-inter;
+        @include justify-content(center);
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        font-family: $font-inter;
+        @include transition(0.3s, ease-in-out);
+        @media (max-width: 767px) {
+            width: 30px;
+            height: 30px;
+        }
+        &.current {
+            background: $purple;
+            color: $white;
+        }
+        .icon { 
             @include transition(0.3s, ease-in-out);
-            @media (max-width: 767px) {
-                width: 35px;
-                height: 35px;
-            }
-            &.current {
-                background: $purple;
-                color: $white;
-            }
+            border: none;
+        }
+        .icon-next {
+            background: url(../images/icons/arrow-right.svg) no-repeat center center;
+            background-size: 7px;
+        }
+        .icon-prev {
+            background: url(../images/icons/arrow-left.svg) no-repeat center center;
+            background-size: 7px;
+        }
+        &.next, &.prev {
             &:hover, &:focus {
-                color: $white;
+                background: $purple;
+                .icon {
+                    filter: brightness(0) invert(1);
+                }
             }
+        }
+        &:hover, &:focus {
+            color: $white;
         }
     }
 }
-
 
 .main-header { 
     position: sticky;
@@ -680,6 +698,107 @@ label {
             .navbar {
                 .menu-list {
                     @include transform(translateX(0px));
+                }
+            }
+        }
+    }
+
+    &.with-offset {
+        .navbar {
+            position: relative;
+        }
+        .sidebar-icon {
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+            padding: 0;
+            background-color: transparent;
+            margin-right: 10px;
+            &.is-visible {
+                .line1 {
+                    @include transform(rotate(-45deg) translate(-4px, 4px));
+                }
+                .line2 {
+                    @include opacity(0);
+                    visibility: hidden;
+                }
+                .line3 {
+                    @include transform(rotate(45deg) translate(-4px, -4px));
+                }
+            }
+            span {
+                width: 21px;
+                height: 21px;
+                margin: 4px 0;
+                background-color: transparent;
+                background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path stroke="rgba(255, 255, 255, 1)" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/></svg>');
+                @include border-radius(4px);
+                display: block;
+                @include transition(0.4s, ease-in-out);
+            }
+            @media (min-width: 992px) {
+                display: none;
+            }
+        }
+        .offcanvas {
+            @media (min-width: 992px) {
+                @include flexbox; 
+                @include align-items(center);
+                @include flex-direction(row);
+                .offcanvas-body {
+                    width: 100%;
+                    .navbar-nav{
+                        @include justify-content(center);
+                    }
+                }
+            }
+        }
+        .navbar-nav {
+            li {
+                padding: 0 15px;
+                display: inline-block;
+                @media (max-width: 992px) {
+                    padding: 8px 0;
+                }
+                a {
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: $white;
+                    position: relative;
+                    padding: 0;
+                    z-index: 1;
+                    @include inline-flex;
+                    @include align-items(center);
+                    @include transition(0.2s, ease-in-out);
+                    &::before {
+                        content: '';
+                        height: 1px;
+                        background: $purple;
+                        width: 0;
+                        display: inline-block;
+                        @include transition(0.2s, ease-in-out);
+                        position: absolute;
+                        bottom: -1px;
+                        left: 0;
+                    }
+                    &:hover, &:focus {
+                        color: $purple;
+                        &::before {
+                            width: 100%;
+                            right: auto;
+                            left: 0;
+                        }
+                    }
+                }
+                &.current-menu-item {
+                    a {
+                        color: $purple;
+                        &::before {
+                            width: 100%;
+                            right: auto;
+                            left: 0;
+                        }
+                    }
                 }
             }
         }

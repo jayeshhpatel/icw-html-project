@@ -638,3 +638,91 @@
         padding: 20px;
     }
 }
+
+.icon-list-block {
+    ul {
+        @include flexbox;
+        @include flex-wrap(wrap);
+        gap: 15px 30px;
+        li {
+            max-width: calc(50% - 15px);
+            width: 100%;
+            font-family: $font-poppins;
+            @media (max-width: 767px) {       
+                max-width: 100%;
+            }
+            a {
+                color: $white;
+                @include transition(0.3s, ease-in-out);
+                text-underline-offset: 5px;
+                &:hover, &:focus {
+                    color: rgba($white, 0.8);
+                    text-decoration: underline;
+                }
+            }
+            .list-item {
+                padding: 15px 25px;
+                @include flexbox;
+                @include align-items(center);
+                background: #1E1951;
+                @include border-radius(10px);
+                @include transition(0.3s, ease-in-out);
+                height: 100%;
+                @media (max-width: 992px) {       
+                    padding: 15px;
+                }
+                &:hover, &:focus {
+                    @include box-shadow(0 0px 15px 3px rgba(143,74,255,0.5));   
+                }
+            }
+            .icon {
+                width: 28px;
+                height: 28px;
+                flex: none;
+                @include inline-flex;
+                @include align-items(center);
+                @include justify-content(center);
+                margin-right: 12px;
+                img {
+                    width: 100%; filter: drop-shadow(0px 5px 5px rgba(143,74,255,0.7));
+                }
+            }
+        }
+    }
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    gap: 20px;
+    @media (max-width: 1200px) {       
+        grid-template-columns: repeat(5,1fr);
+    }
+    @media (max-width: 992px) {       
+        grid-template-columns: repeat(4,1fr);
+    }
+    @media (max-width: 767px) {       
+        grid-template-columns: repeat(2,1fr);
+        gap: 15px;
+    }
+    .product-item {
+        display: inline-block;
+        color: #FFFFFF;
+        font-family: $font-poppins;
+        background-color: #1E1951;
+        @include border-radius(30px);
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+        // max-width: 180px;
+        width: 100%;
+        @media (max-width: 1440px) {
+            // max-width: 150px;
+        }
+        &::before {
+            display: block;
+            padding-top: 100%;
+            content: "";
+        }
+    }
+}
