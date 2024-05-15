@@ -24,24 +24,30 @@
 
     <body>       
         <header class="main-header">
-            <nav class="navbar is-dark">
+            <nav class="navbar navbar-expand-lg">
                 <div class="container">
+                    <a class="navbar-brand" href="/" title="LLMOps.Space" rel="home"><img src="assets/images/logo.svg" alt="LLMOps.Space" /></a>
                     <button class="sidebar-icon toggle-sidebar"><span class="line1"></span><span class="line2"></span><span class="line3"></span></button>
-                    <a class="header-logo" href="/" title="LLMOps.Space" rel="home"><img src="assets/images/logo.png" alt="LLMOps.Space" /></a>
-                    <div class="menu-list">
-                        <ul class="mainMenu">
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav m-auto">
                             <li><a href="#">Upcoming Events</a></li>
                             <li><a href="#">LLMOps Products</a></li>
                             <li><a href="#">Resources</a></li>
                             <li><a href="#">About Us</a></li>
-                            <li><a href="#">Contribute</a></li>
+                            <li class="menu-item-has-children"><a href="#">Contribute</a>
+                                <ul class="sub-menu">
+                                    <li><a class="dropdown-item" href="#">Menu 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Menu 2</a></li>
+                                    <li><a class="dropdown-item" href="#">Menu 3</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav-right">
+                            <li><a href="#" target="_blank" class="btn btn-primary"><em class="icon-discord"></em>Join Discord</a></li>
                         </ul>
                     </div>
-                    <ul class="navbar-nav-right">
-                        <li><a href="#" target="_blank"><img class="btn-icon" src="assets/images/img-join-discord.png" alt="Discord" /></a></li>
-                    </ul>
                 </div>
-            </nav> 
+            </nav>
         </header>
         <div class="bg-overly"></div>
         <main class="main-content-wrapper">
@@ -135,6 +141,9 @@
                                                 submitText: "Submit"
                                             }
                                         },
+                                        onFormReady: function($form, ctx){
+                                            hubspot_labels();
+                                        }
                                     });
                                 </script>
                             </div>

@@ -418,9 +418,13 @@ label {
                 border: 1px solid #A94442;
             } 
         }
+        .hs_error_rollup {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 0;
+        }
     }
 }
-
 
 .bg-purple-glow {
     position: relative;
@@ -560,19 +564,19 @@ label {
             display: inline-block;
             line-height: 0.7;
             img {
-                max-width: 162px;
+                max-height: 35px;
                 @media (max-width: 767px) {
-                    max-width: 140px;
+                    max-height: 30px;
                 }
             }
         }
-        .menu-list {
+        .navbar-collapse {
             width: 100%;
             @media (max-width: 992px) {
                 overflow-y: auto;
                 width: 100%;
                 display: block;
-                padding: 30px 0;
+                padding: 15px 0;
                 background-color: #0A053D;
                 @include transition(0.2s, ease-in-out);
                 @include transform(translateX(-100%));
@@ -583,7 +587,7 @@ label {
                 z-index: -1;
                 height: calc(100vh - 70px);
             }
-            .mainMenu {
+            .navbar-nav {
                 @include flexbox;
                 @include justify-content(center);
                 @media (max-width: 992px) {
@@ -640,23 +644,84 @@ label {
                             }
                         }
                     }
+                    &.menu-item-has-children {
+                        position: relative;
+                        .sub-menu {
+                            @media (min-width:1200px){
+                                @include opacity(0);
+                                visibility: hidden;
+                                position: absolute;
+                                @include border-radius(5px);
+                                @include box-shadow(0 10px 20px 0 rgba(255,255,255,0.2));
+                                border: 1px solid rgba($purple, 0.2);     
+                                background: #1E1951;
+                                width: 100%;
+                                padding: 10px 0;
+                                left: 15px;
+                                z-index: 1;
+                                top: calc(100% + 10px);
+                                @include transition(0.1s, ease-in-out);
+                                min-width: 210px;
+                                li {
+                                    padding: 5px 15px;
+                                    display: block;
+                                    a {
+                                        font-size: 16px;
+                                        font-weight: 400;
+                                        padding: 10px 20px;
+                                        padding: 0;
+                                        display: inline-block;
+                                        color: #9896AD;
+                                        position: relative;
+                                        width: auto;
+                                        &:hover, &:focus, &.active {
+                                            color: $white;
+                                        }
+                                    }
+                                }
+                                
+                            }
+                        }
+                        &:hover, &:focus {
+                            .sub-menu {
+                                @include opacity(1);
+                                visibility: visible;
+                                z-index: 99;
+                            }
+                        }
+                    }
                 }
             }
         }
         .navbar-nav-right {
             margin-left: auto;
+            @media (max-width: 992px) {
+                @include flex-direction(column);
+                max-width: 720px;
+                margin: 15px auto 0; 
+                padding: 0 15px;
+            }
+            @media (max-width: 767px) {
+                max-width: 540px;
+            }
             li {                
                 @include flexbox;
                 @include align-items(center);
                 a {
-                    display: inline-block;
+                    @include inline-flex;
                     line-height: 0.7;
-                    img {
-                        max-width: 107px;
-                        @media (max-width: 767px) {
-                            max-width: 100px;
-                        }
-                    }
+                    font-size: 14px;   
+                    white-space: nowrap;    
+                    min-height: 44px;    
+                    padding: 0 20px; 
+                    .icon-discord {
+                        background: url(../images/icons/icon-discord.svg) no-repeat center center;
+                        background-size: contain;
+                        width: 17px;
+                        height: 17px;
+                        display: inline-block;
+                        margin-right: 8px;
+                    }        
                 }
             }
         }
@@ -696,7 +761,7 @@ label {
     @media (max-width: 992px) {
         &.is-visible {
             .navbar {
-                .menu-list {
+                .navbar-collapse {
                     @include transform(translateX(0px));
                 }
             }
