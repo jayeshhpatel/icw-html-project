@@ -536,6 +536,12 @@
 				border-radius: 20px;
 				overflow: hidden;
 			}
+			img {
+				width: 100%;
+				height: auto;
+				border-radius: 20px;
+				overflow: hidden;
+			}
 			.with-zoom { 
 				right: 30px;	
 			}
@@ -1227,11 +1233,13 @@
 			}
 		}
 		a.logo-item {
-			img {@include transition(0.3s, ease-in-out);}
+			img {
+				@include transition(0.3s, ease-in-out);
+			}
 			&:hover, &:focus {
 				border-color: $primary !important;
 				img {
-					@include transform(scale(1.05));	
+					@include transform(scale(1.04));	
 				}
 			}
 		}
@@ -1291,10 +1299,14 @@
 			}
 		}
 		a.logo-item {
-			img {@include transition(0.3s, ease-in-out);}
+			img {
+				@include transition(0.3s, ease-in-out);
+				opacity: 0.5;
+			}
 			&:hover, &:focus {
 				img {
-					@include transform(scale(1.05));	
+					opacity: 1;
+					@include transform(scale(1.03));	
 				}
 			}
 		}
@@ -1423,6 +1435,13 @@
 				color: rgba($white, .6);
 			}
 			color: rgba($white, .6);
+		}
+	}
+
+	&.cta-section-full {
+		.row {
+			height: inherit;
+			max-height: inherit;
 		}
 	}
 	
@@ -1893,6 +1912,7 @@
 		}
 	}
 } 
+
 
 // Review Slider
 .review-slider-section {
@@ -3018,7 +3038,7 @@
 	h1.post-title {
 		font-weight: 700;
 		word-break: break-word;	
-		margin: 50px 0px 30px;
+		margin: 30px 0px 30px;
 		@media (max-width:767px) {
 			margin: 30px 0px 50px;
 		}
@@ -3060,6 +3080,46 @@
 				width: 50%;
 			}
 		}
+	}
+
+	.is-shape-rb {
+		position: relative;
+		padding-bottom: 70px;
+		border-bottom: 1px solid #DEF3F0;
+
+		.container {
+			position: relative;
+			z-index: 2;
+		}
+
+		@media (max-width:767px) {
+			padding-bottom: 40px;
+		}
+
+		&::before {
+			content: '';
+			background: url(../images/shape/is-shape-br-h-primary.svg) bottom right no-repeat;
+			background-size: contain !important;
+			position: absolute;
+			right: 0px;
+			width: 522px;
+			height: 212px;
+			bottom: 0;
+
+			@media (max-width: 992px) {
+				width: 50%;
+			}
+		}
+	}
+
+	.job-meta {
+		font-size: 16px;
+		color: #002B31;
+		line-height: 1;
+
+		@include flexbox;
+		@include align-items(center);
+		gap: 20px;
 	}
 }
 
@@ -3391,6 +3451,10 @@
 		@media (min-width:992px) {
 			grid-gap: 60px;
 			grid-template-columns: 1fr 280px;
+
+			&.job-single-row-grid {
+				grid-template-columns: 1fr 340px;
+			}
 		}
 	}
 
@@ -3402,6 +3466,21 @@
 	.post-aside-cta {
 		background: #F1FAF9;
 		text-align: center;
+		padding: 40px 30px;
+		@include border-radius(16px);
+		margin-bottom: 30px;
+
+		h3 {
+			font-size: 22px;
+		}
+		p {
+			font-size: 14px;
+			color: rgba(#002B31, 0.6);
+		}
+	}
+
+	.form-aside-job {
+		background: #F1FAF9;
 		padding: 40px 30px;
 		@include border-radius(16px);
 		margin-bottom: 30px;
@@ -4383,31 +4462,91 @@ blockquote {
 		}
 	}
 }
-.pb-250 {
-	padding-bottom: 250px;
-	@media (max-width: 992px) {
-		padding-bottom: 180px;
-	}
-	@media (max-width: 767px) {
-		padding-bottom: 120px;
-	}
-}
-.top-over-section {
-	padding-top: 0;
-}
-.career-img-block {
-	max-width: 1020px;
-	margin: 0 auto;
-	margin-top: -130px;
-	@media (max-width: 992px) {
-		margin-top: -100px;
-	}
-	@media (max-width: 767px) {
-		margin-top: -70px;
-	}
-	img {
-		@include border-radius(24px);
-	}
+
+// Job / Career
+body.single-job {
+       
+        @media (min-width:992px) {
+        .mainMenu {
+            & > li.current_page_parent:not(.menu-item-object-job) {
+                > a {
+                    color: rgba(255,255,255,0.6);
+                    &:hover, &:focus {
+                        color: $primary !important;
+                    }
+                }
+            }
+            & > li.menu-item-object-job > a {
+                color: $primary !important;
+            }
+            .sub-menu {
+                & > li.current_page_parent:not(.menu-item-object-job) {
+                    > a {
+                        color: #fff !important;
+                        background: rgba(241, 250, 249, 0.02) !important;
+                        &:hover, &:focus {
+                            color: $primary !important;
+                            background: rgba(241, 250, 249, 0.12) !important;
+                        }
+                    }
+                }
+                & > li.menu-item-object-job > a {
+                    color: #3FE0D0 !important;
+                    background: rgba(241, 250, 249, 0.12);
+                }
+            }
+        }
+        }
+
+        @media (max-width:992px) {
+        .mainMenu {
+            & > li.current_page_parent:not(.menu-item-object-job) {
+                > a {
+                    color: #fff;
+                    &:hover, &:focus {
+                        color: $primary;
+                    }
+                }
+            }
+            & > li.current-menu-parent {
+                > a {
+                    color: $primary !important;  
+                }
+            }
+            & > li.menu-item-object-job > a {
+                color: $primary;
+            }
+            .sub-menu {
+                & > li.current_page_parent:not(.menu-item-object-job) {
+                    > a {
+                        color: #fff !important;
+                        &:hover, &:focus {
+                            color: $primary;
+                        }
+                    }
+                }
+                & > li.menu-item-object-job > a {
+                    color: $primary !important;
+                }
+            }
+        }
+    }
+    .main-footer .footer-menu {
+        li.current_page_parent:not(.menu-item-object-job) {
+            > a {
+                color: #99AAAD;
+                text-decoration: none;
+                &:hover, &:focus {
+                    color: $primary;
+			        text-decoration: underline;
+                }
+            }
+        }
+        li.menu-item-object-job > a {
+            color: $primary;
+            text-decoration: underline; 
+        }
+    }
 }
 .career-list-block {
 	.career-item {
@@ -4419,6 +4558,8 @@ blockquote {
 		max-width: 970px;
 		margin: 0 auto 15px;
 		@include transition(0.3s, ease-in-out);
+		position: relative;
+
 		&:hover, &:focus {
 			@include box-shadow(0px 5px 15px 0 rgba(0, 0, 0, 0.05));
 		}
@@ -4437,10 +4578,14 @@ blockquote {
 					font-size: 20px;
 				}
 			}
-			.job-location {
+			.job-meta {
 				font-size: 16px;
 				color: #002B31;
 				line-height: 1;
+
+				@include flexbox;
+				@include align-items(center);
+				gap: 20px;
 			}
 		}
 		.career-action {
@@ -4456,17 +4601,5 @@ blockquote {
 				white-space: nowrap;
 			}
 		}
-	}
-}
-.career-form-block {
-	padding: 40px;
-	@include border-radius(16px);
-	@media (max-width: 767px) {
-		padding: 25px;
-	}
-	.title {
-		font-size: 22px;
-		font-weight: 700;
-		margin-bottom: 25px;
 	}
 }
