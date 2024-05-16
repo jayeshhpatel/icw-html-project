@@ -54,6 +54,19 @@ body {
     margin-right: auto;
     padding-left: 40px;
     padding-right: 40px;
+    &.mw-100 {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    &.mw-1020 {
+        width: 1020px;
+        padding: 0;
+        @media (max-width: 1200px) {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
     @media (max-width:1440px) {
         width: 1290px;
     }
@@ -116,6 +129,12 @@ a {
 }
 .bg-gradient {
     background: linear-gradient(0deg, rgba(115,123,246,1) 0%, rgba(62,100,241,1) 50%, rgba(53,93,229,1) 100%);
+    * {
+        color: #f9fafc;
+    }
+}
+.bg-dark-gradient {
+    background: rgb(26,15,47) linear-gradient(170deg, rgba(26,15,47,1) 38%, rgba(24,34,87,1) 67%, rgba(30,33,104,1) 87%, rgba(45,52,143,1) 100%);
     * {
         color: #f9fafc;
     }
@@ -186,7 +205,7 @@ h1, .h1 {
         font-size: 40px;
     }
     @media (max-width: 767px) {
-        font-size: 36px;
+        font-size: 32px;
     }
 }
 h2, .h2 {
@@ -197,7 +216,7 @@ h2, .h2 {
         font-size: 28px;
     }
     @media (max-width: 767px) {
-        font-size: 20px;
+        font-size: 24px;
     }
 }
 h3, .h3 {
@@ -1860,6 +1879,14 @@ h3, .h3 {
     background: linear-gradient(180deg, rgba(143,154,216,1) 0%, rgba(193,196,227,1) 21%, rgba(206,208,233,1) 37%, rgba(215,218,237,1) 54%);
     padding: 30px 8px 8px;
     @include border-radius(24px);
+    max-width: 620px;
+    height: 100%;
+    @include flexbox;
+    @include flex-direction(column);
+    @media (max-width: 767px) {
+        max-width: 100%;
+        padding: 20px 5px 5px;
+    }
     &.bg-blue-gradient {
         background: linear-gradient(180deg, rgba(84,79,215,1) 0%, rgba(96,117,255,1) 21%, rgba(175,112,254,1) 37%, rgba(138,75,252,1) 54%, rgba(154,216,254,1) 100%);
     }
@@ -1868,8 +1895,17 @@ h3, .h3 {
         text-align: center;
         font-size: 28px;
         font-weight: 500;
+        max-height: 42px;
+        @media (max-width: 767px) {
+            font-size: 24px;
+            max-height: 100%;
+            line-height: 1;
+        }
         img {
             width: 160px;
+            @media (max-width: 767px) {
+                width: 120px;
+            }
         }
     }
     .card-body {
@@ -1877,6 +1913,93 @@ h3, .h3 {
         box-shadow: 0px 6.56px 8px 0px rgba(71, 158, 220, 0.50);
         @include border-radius(16px);
         margin-top: 30px;
-        padding: 40px;
+        padding: 40px 80px 40px 40px;
+        flex: 1 1 auto;
+        @media (max-width: 1200px) {
+            padding: 30px;
+        }
+        @media (max-width: 992px) {
+            padding: 20px;
+        }
+        @media (max-width: 767px) {
+            margin-top: 20px;
+            padding: 15px;
+        }
+        ul {
+            @include flexbox;
+            @include flex-direction(column);
+            &.gradient-check {
+                li {
+                    h3 {
+                        background: url(../images/icons/gradient-check.png) no-repeat left center;
+                        background-size: 22px;
+                        padding-left: 30px;
+                    }
+                }
+            }
+            li {
+                margin-bottom: 30px;
+                flex: 1;
+                @media (max-width: 767px) {
+                    margin-bottom: 20px;
+                }
+                h3 {
+                    margin-bottom: 8px;
+                    @media (max-width: 767px) {
+                        margin-bottom: 5px;
+                    }
+                }
+                p {
+                    font-size: 16px;
+                    color: #424270;
+                    @media (max-width: 767px) {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+.card-grid-block {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 8px;
+}
+.info-card {
+    background: linear-gradient(0deg, #737bf6 0%, #3e64f1 50%, #355de5 100%);
+    @include border-radius(8px);
+    padding: 30px;
+    .card-img {
+
+    }
+    .card-body {
+        .sort-info {
+            color: #f9fafc;
+            font-size: 14px;
+        }
+    }
+    &.with-icon {
+        .icon {
+            width: 60px;
+            height: 60px;
+            flex: none;
+            margin-bottom: 15px;
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+.full-cta-block {
+    padding: 80px 80px 0;
+    @include border-radius(8px);
+    max-width: 1700px;
+    margin: 0 auto;
+    .section-title {
+        margin-bottom: 0;
+        padding-bottom: 80px;
+    }
+    .image-block {
+        line-height: 0.7;
     }
 }
