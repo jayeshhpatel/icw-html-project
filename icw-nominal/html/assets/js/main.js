@@ -73,17 +73,17 @@ jQuery(document).ready(function($) {
         });
     }        
     
-    $(window).scroll(function(){ 
-        if($('.tab-block').length) {
-            var scrollTo = $('.animate-scale-section .animate-block').offset().top - 500;
+    if($('.is-animated-scale').length) {
+        $(window).scroll(function(){ 
+            var scrollTo = $('.is-animated-scale').offset().top - 500;
             if($(this).scrollTop()>=scrollTo){
                 console.log(scrollTo);
-                $('.animate-scale-section .animate-block').css("transform", "scale(1)"); ;
+                $('.is-animated-scale').css("transform", "scale(1)"); ;
             } else {
-                $('.animate-scale-section .animate-block').css("transform", "scale(0.95)");
-            }
-        }
-    });
+                $('.is-animated-scale').css("transform", "scale(0.95)");
+            }       
+        });
+    }
     
     $(".collapse-btn").on("click", function() {
         var isActive = $(this).hasClass("active");
