@@ -17,7 +17,7 @@ jQuery(document).ready(function($) {
         }
 
         $(window).scroll(function () {
-            if (jQuery(this).scrollTop() > 30) {
+            if (jQuery(this).scrollTop() > 10) {
                 $(".main-header").addClass("fixed-header");
             } else {
                 $(".main-header").removeClass("fixed-header");

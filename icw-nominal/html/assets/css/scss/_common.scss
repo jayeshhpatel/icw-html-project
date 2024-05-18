@@ -140,6 +140,9 @@ a {
         color: #f9fafc;
     }
 }
+.bg-gray-gradient {
+    background: radial-gradient(66.17% 23.82% at 58.9% 53.12%, rgba(59, 99, 240, 0.08) 0%, rgba(59, 99, 240, 0.00) 100%), linear-gradient(0deg, #EAECF9 0%, #EAECF9 100%), #F5F6FD;
+}
 .bg-lightpurple {
     background-color: #eaecf9;
 }
@@ -151,6 +154,9 @@ a {
     .section-title h2 {
         color: #f9fafc;
     }
+}
+.with-inset-boxshadow {
+    @include box-shadow(inset 0 3px 19px -3px rgba(217,221,239,.66));
 }
 
 .bg-image {
@@ -240,7 +246,7 @@ h3, .h3 {
 	padding: 5px 25px;
 	font-weight: 600;
 	font-size: 18px;
-	@include transition(0.3s, ease-in-out);
+	@include transition(0.2s, ease-in-out);
 	@include inline-flex;
 	@include align-items(center);
 	@include justify-content(center);	
@@ -1996,7 +2002,7 @@ h3, .h3 {
         @include transition(0.3s, ease-in-out);
         z-index: -1;
         @include opacity(0);
-        background: #355de5 linear-gradient(0deg, rgba(#92cef3, 0.8) 0%, rgba(142, 188, 243, 0.5) 30%, #355de5 100%)
+        background: #355de5 linear-gradient(0deg, rgba(#92cef3, 0.5) 0%, rgba(142, 188, 243, 0.5) 30%, #355de5 100%)
     }
     &:hover {
         &::before {
@@ -2051,35 +2057,28 @@ h3, .h3 {
     &.with-hover-text {
         height: 300px;
         max-height: 100%;
-        padding: 0;
+        @media (max-width: 992px) {
+            height: 200px;
+        }
+        @media (max-width: 575px) {
+            height: auto;
+        }
         .card-body {
             height: 100%;
-            padding: 30px;
             @include flexbox;
             @include flex-direction(column);
             @include justify-content(flex-end);
-            &::-webkit-scrollbar {
-                background-color: transparent;
-                width: 3px;
-                height: 3px;
-                border-radius: 16px;
-            }        
-            &::-webkit-scrollbar-thumb {
-                background-color: $lightblue;
-                border-radius: 16px;
-                &:hover {
-                  background-color: $blue !important;
-                }
-            }    
-            &::-webkit-scrollbar-track {
-                background-color: rgba(#ffffff, 0.1);
-                border-radius: 16px;
-            }
             h3 {            
                 font-size: 40px;
                 margin-bottom: 10px;
                 @include transition(0.2s, ease-in-out);
                 line-height: 1.2;
+                @media (max-width: 992px) {
+                    font-size: 30px;
+                }
+                @media (max-width: 767px) {
+                    font-size: 24px;
+                }
             }
             .sort-info {
                 font-size: 16px;
@@ -2091,16 +2090,34 @@ h3, .h3 {
                 @include transition(0.3s, ease-in-out);
                 opacity: 0;
                 display: none;
+                &::-webkit-scrollbar {
+                    background-color: transparent;
+                    width: 3px;
+                    height: 3px;
+                    border-radius: 16px;
+                }        
+                &::-webkit-scrollbar-thumb {
+                    background-color: $lightblue;
+                    border-radius: 16px;
+                    &:hover {
+                      background-color: $blue !important;
+                    }
+                }    
+                &::-webkit-scrollbar-track {
+                    background-color: rgba(#ffffff, 0.1);
+                    border-radius: 16px;
+                }
             }
         }
         &:hover, &:focus {
             .card-body {
                 @include justify-content(flex-start);
-                overflow: hidden;
-                overflow-y: auto;
                 h3 {            
                     font-size: 24px;
                     margin-bottom: 15px;
+                    @media (max-width: 992px) {
+                        font-size: 20px;
+                    }
                 }
                 .sort-info {                    
                     opacity: 0;
@@ -2110,7 +2127,9 @@ h3, .h3 {
                     color: #f9fafc;
                     font-size: 16px;
                     opacity: 1;
-                    display: block;
+                    display: block;                    
+                    overflow: hidden;
+                    overflow-y: auto;
                 }
             } 
         }
@@ -2137,4 +2156,73 @@ h3, .h3 {
     .image-block {
         line-height: 0.7;
     }
+}
+// Logos
+.logo-section {
+    padding: 70px 0 50px!important;
+    @media (max-width: 992px) {
+        padding: 30px 0 !important;
+    }
+	// Slider
+	&.is-logo-slider-full {
+		& > .container {
+			max-width: 100%;
+		}
+	}
+	.logo-style-slider {
+		-webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 10%, rgb(0, 0, 0)90%, rgba(0, 0, 0, 0) 100%);
+		mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 10%, rgb(0, 0, 0)90%, rgba(0, 0, 0, 0) 100%);
+        
+		.splide__arrows {opacity: 0px; visibility: hidden;}
+		&:hover {
+			.splide__arrows {opacity: 1px; visibility: visible;}	
+		}   
+        .splide__list {
+            @media (min-width: 1200px) {
+                @include justify-content(center);
+            }
+            .splide__slide:last-child {
+                margin-right: 0 !important;
+            }
+        }
+		.splide__slide {
+			@include flexbox();
+			@include align-items(center);
+			@include justify-content(center);
+		}
+
+		.logo-item {
+			@include flexbox();
+			@include align-items(center);
+			@include justify-content(center);
+
+			img {
+				
+				width: auto;
+                max-height: 100px;
+				@media (min-width:992px) {
+                    flex: none;
+                    -webkit-box-flex: 1;
+                    -ms-flex: 1 1 auto;
+                    flex: 1 1 auto;
+                    aspect-ratio: 3/2;
+                    object-fit: contain;
+                    max-height: 120px;
+				}
+			}
+		}
+		a.logo-item {
+			img {
+				@include transition(0.3s, ease-in-out);
+				opacity: 0.5;
+			}
+			&:hover, &:focus {
+				img {
+					opacity: 1;
+					@include transform(scale(1.03));	
+				}
+			}
+		}
+	}
+
 }
