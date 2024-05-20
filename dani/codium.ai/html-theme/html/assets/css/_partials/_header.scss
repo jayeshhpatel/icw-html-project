@@ -52,6 +52,7 @@
 
     &-cta-right {
       @include inline-flex;
+      margin-left: auto;
       // display: flex;
       // align-items: stretch;
       gap: 1rem;
@@ -950,6 +951,127 @@
   }
   @media (max-width:600px) {
     width: 100%;
+  }
+}
+
+.user-profile-menu {
+  margin-left: 15px;
+  @include flexbox;
+  position: relative;
+  @include mobile {
+    margin-left: auto;
+    margin-right: 15px;
+  }
+  &:hover,
+  &.hover,
+  &:focus,
+  &:focus-visible {
+    .sub-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      display: block;
+    }
+  }
+  .profile-name {
+    border: 1px solid #05E5AD;
+    background: #05E5AD;
+    color: #01012A;
+    width: 40px;
+    height: 40px;
+    flex: none;
+    @include border-radius(50%);
+    @include inline-flex;
+    @include align-items(center);
+    @include justify-content(center);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  ul.sub-menu {
+    right: 0;
+    left: auto;
+    border: 2px solid #000000;
+    line-height: normal;
+    @include mobile {
+      opacity: 0;
+      visibility: hidden;
+      @include transition(0.2s, ease-in-out);
+      position: absolute;
+      background-color: #fefefe;     
+      padding: 15px 15px;
+      margin: 12px 0 0 0;
+      z-index: 99;
+      min-width: 250px;
+      top: 100%;
+      @include border-radius(8px);
+      @include transform(translateY(10px));
+      @include box-shadow(0px 69px 140px rgba(143, 136, 182, 0.45));
+    }
+    .menu-item {
+      border-color: #000000;
+      font-size: 16px;
+      &:last-child {
+        padding-bottom: 0;
+      }
+      @include mobile {
+        padding: 10px 5px;
+        &:first-child {
+          padding-top: 5px;
+        }
+      }
+      a {
+        color: #000 !important;
+        @include mobile {
+          &::after {
+            content: '';
+            position: absolute;
+            background: url(../icons/arrow-right.svg) no-repeat center center;
+            background-size: 18px;
+            width: 22px;
+            height: 22px;
+            right: 0;
+            top: 0;
+            opacity: 0;
+            @include transition(0.2s, ease-in-out); 
+            filter: unset;
+          }
+          &:hover, &:focus {
+            &::after {
+              -webkit-transform: translateX(5px);
+              transform: translateX(5px);
+              opacity: 1;
+            }
+          }
+        }
+      }
+      &:not(:last-child) {
+        display: block;
+        a {
+          width: 100%;
+          display: inline-block;
+        }
+      }
+      .user-email {
+        color: #9e9e9e
+      }
+      .is-label {
+        @include flexbox;
+        @include justify-content(space-between);
+        @include align-items(center);
+        font-weight: 600;
+        margin-bottom: 5px;
+        font-size: 12px;
+        .user-name {
+          background: #05E5AD;
+          color: #01012A;
+          line-height: normal;
+          padding: 2px 5px;
+          font-size: 10px;
+          @include border-radius(5px);
+        }
+      }
+    }
   }
 }
 

@@ -379,6 +379,11 @@ jQuery(document).ready(function ($) {
           el: ".icw-swiper-scrollbar",
           hide: true,
         },
+        autoplay: {
+          delay: 10000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        },
       });
       
     }

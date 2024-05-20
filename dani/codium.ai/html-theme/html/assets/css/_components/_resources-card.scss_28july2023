@@ -1,0 +1,100 @@
+.resources-card {
+    height: 100%; position: relative;
+
+    .resources-card-content {
+        height: 100%; 
+        @include flexbox;
+        @include flex-direction(column);
+        .card-image {
+            @include border-radius(10px); 
+            position: relative;
+            padding-top: 55%;
+            @include transform(scale(1));
+            @include transition(0.2s, ease);            
+            img {
+                display: block;
+                object-fit: cover;
+                @include border-radius(10px);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+            &.card-video {
+                &::before {
+                    content: ''; width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: block; background: rgba(26, 21, 52, 0.4); @include border-radius(10px); z-index: 1;
+                }
+                .icon-play {
+                    background: url(../icons/icon-play.svg) no-repeat center center;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 64px;
+                    height: 64px;
+                    @include transform(translate(-50%, -50%) scale(1)); 
+                    @include transition(0.3s, ease-in-out);
+                    @include border-radius(50%);
+                    display: inline-block;
+                    flex: none;
+                    z-index: 2;
+                }
+            }
+        }
+
+        .card-body {
+            color: #01012a;
+            padding: 24px 0 0;
+            flex: 1 1 auto;
+            
+            .resources-categories {
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.5px;
+                text-transform: uppercase;
+                color: #684BFE;
+                line-height: 1px;
+                margin-bottom: 15px;
+            }
+            h3 {
+                color: #01012a;
+                font-weight: 700;
+                font-size: 22px;
+                line-height: 30px;
+                @media (max-width: 767px) {
+                    font-size: 20px;
+                }
+            }
+        }
+
+
+        .resources-actions {
+            margin-top: 0;
+        }
+
+        .read-more {
+            margin-top: 20px;
+            color: #684bfe;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            @include transition(0.3s, ease-in-out); 
+        }
+        &:hover,
+        &:focus {
+            .card-image {
+               @include transform(scale(1.02));
+               &.card-video {
+                    .icon-play {
+                        @include box-shadow(0px 0px 20px 5px rgba(255,255,255,0.3)); 
+                        @include transform(translate(-50%, -50%) scale(1.1)); 
+                    }
+               }
+            }
+
+            .read-more {
+                text-decoration: underline; color: #01012a;
+            }
+        }
+    }
+}
