@@ -956,11 +956,11 @@
 
 .user-profile-menu {
   margin-left: 15px;
-  @include flexbox;
-  position: relative;
   @include mobile {
     margin-left: auto;
     margin-right: 15px;
+    @include flexbox;
+    position: relative;
   }
   &:hover,
   &.hover,
@@ -995,6 +995,7 @@
     line-height: normal;
     @include mobile {
       opacity: 0;
+      top: 100%;
       visibility: hidden;
       @include transition(0.2s, ease-in-out);
       position: absolute;
@@ -1003,7 +1004,6 @@
       margin: 12px 0 0 0;
       z-index: 99;
       min-width: 250px;
-      top: 100%;
       @include border-radius(8px);
       @include transform(translateY(10px));
       @include box-shadow(0px 69px 140px rgba(143, 136, 182, 0.45));
@@ -1014,15 +1014,17 @@
       &:last-child {
         padding-bottom: 0;
       }
+      &:first-child {
+        padding-top: 5px;
+      }
       @include mobile {
         padding: 10px 5px;
-        &:first-child {
-          padding-top: 5px;
-        }
+        font-size: 14px;
       }
       a {
         color: #000 !important;
         @include mobile {
+          font-size: 14px;
           &::after {
             content: '';
             position: absolute;
