@@ -839,12 +839,75 @@
         font-family: $font-poppins;
         font-size: 20px;
         margin-bottom: 20px;
+        @media (max-width: 767px) {
+            font-size: 16px;
+        }
     }
     .title {
         margin-bottom: 30px;
         font-weight: 600;
         @media (max-width: 767px) {
             margin-bottom: 15px;
+        }
+    }
+    &.is-after-event {
+        max-width: 770px;
+        margin: 0 auto;
+        .event-img {
+            box-shadow: 0px 20px 50px 0px #00000033;
+            margin-bottom: 50px;
+            @media (max-width: 767px) {
+                margin-bottom: 30px;
+            }
+        }
+        .event-reg-info {
+            @include flexbox;
+            @include justify-content(space-between);
+            @include align-items(center);
+            margin-bottom: 50px;   
+            @media (max-width: 767px) {
+                @include flex-direction(column);
+                @include align-items(flex-start);
+                margin-bottom: 40px;   
+            }
+            .action {
+                @media (max-width: 767px) {
+                    margin-top: 30px;
+                    width: 100%;
+                }
+                .btn {
+                    min-width: 300px;
+                    @media (max-width: 767px) {
+                        min-width: 100%;
+                    }
+                }
+            }
+        }
+        .event-date-time {
+            .icon {            
+                width: 28px;
+                height: 28px;
+                display: inline-block;
+                background-size: contain;
+                &.icon-celender {
+                    background: url(../images/icons/icon-celender.svg) no-repeat center center;
+                }
+                &.icon-time {
+                    background: url(../images/icons/icon-time.svg) no-repeat center center;
+                }
+            }
+            .date, .time {
+                @include flexbox;
+                @include align-items(center);
+                gap: 15px;
+                margin-bottom: 25px;
+                @media (max-width: 767px) {
+                    margin-bottom: 15px;
+                }
+            }
+            .time {
+                margin-bottom: 0;
+            }
         }
     }
 }
