@@ -441,7 +441,7 @@ label {
 }
 .bg-pink-glow {
     position: relative;
-    &::before {
+    &::after {
         content: '';
         width: 430px;
         height: 430px;
@@ -454,6 +454,12 @@ label {
         z-index: -1;
         @media (max-width: 767px) {  
             top: 100px;
+        }
+    }    
+    &.glow-bottom {
+        &::after {
+            top: auto;
+            bottom: 200px;
         }
     }
 }
@@ -473,12 +479,6 @@ label {
         @media (max-width: 767px) {  
             top: 100px;
         }
-    }
-}
-.glow-bottom {
-    &::before {
-        top: auto;
-        bottom: 200px;
     }
 }
 

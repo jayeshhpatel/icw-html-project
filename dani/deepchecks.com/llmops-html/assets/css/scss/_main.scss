@@ -733,6 +733,17 @@
     padding: 50px;
     margin-top: 160px;
     text-align: center;
+    max-width: 470px;
+    margin-left: auto;
+    @media (max-width: 992px) {
+       margin-left: auto;
+       margin-right: auto;
+    }
+    @media (max-width: 575px) {
+        max-width: 100%;
+        @include border-radius(0px);
+        padding: 30px 15px;
+    }
     .event-author-img {
         width: 320px;
         height: 320px;
@@ -745,6 +756,95 @@
         }
     }
     h3 {
-        
+        margin-bottom: 12px;
+    }
+    .author-post {
+        font-size: 16px;
+        font-family: $font-inter;
+        margin-bottom: 40px;
+        span {
+            font-weight: 400;
+            display: block;
+            color: #9896AD;
+        }
+        strong {
+            font-weight: 700;
+        }
+    }
+    .event-date-time {
+        margin-bottom: 50px;
+        .icon {            
+            width: 28px;
+            height: 28px;
+            display: inline-block;
+            background-size: contain;
+            &.icon-celender {
+                background: url(../images/icons/icon-celender.svg) no-repeat center center;
+            }
+            &.icon-time {
+                background: url(../images/icons/icon-time.svg) no-repeat center center;
+            }
+        }
+        .date, .time {
+            @include flexbox;
+            @include align-items(center);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+    }
+    .action {
+        width: 100%;
+        .btn {
+            width: 100%;
+        }
+    }
+}
+
+.event-details {
+    @media (max-width: 992px) {
+        margin-bottom: 50px;
+    }
+    .event-logo {
+        @include flexbox;
+        @include align-items(center);
+        gap: 50px;
+        margin-bottom: 50px;
+        @media (max-width: 767px) {
+            gap: 25px;
+        }
+        @media (max-width: 575px) {
+            @include flex-direction(column);
+        }
+        .icon-cross {
+            background: url(../images/icons/icon-close.svg) no-repeat center center;
+            background-size: contain;
+            display: inline-block;
+            min-width: 18px;
+            height: 18px;
+            @media (max-width: 767px) {
+                min-width: 15px;
+            }
+        }
+        img {
+            width: 100%;
+            max-width: 230px;
+        }
+    }
+    .event-number {
+        padding: 5px 20px;
+        @include border-radius(70px);
+        border: 3px solid $purple;
+        display: inline-block;
+        color: $purple;
+        font-family: $font-poppins;
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    .title {
+        margin-bottom: 30px;
+        font-weight: 600;
+        @media (max-width: 767px) {
+            margin-bottom: 15px;
+        }
     }
 }
