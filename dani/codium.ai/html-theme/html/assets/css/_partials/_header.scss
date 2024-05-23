@@ -991,8 +991,7 @@
   ul.sub-menu {
     right: 0;
     left: auto;
-    border: 2px solid #000000;
-    line-height: normal;
+    padding: 20px;
     @include mobile {
       opacity: 0;
       top: 100%;
@@ -1009,17 +1008,48 @@
       @include box-shadow(0px 69px 140px rgba(143, 136, 182, 0.45));
     }
     .menu-item {
-      border-color: #000000;
       font-size: 16px;
+      padding: 15px 0px;
+      line-height: normal;
+      gap: 10px;
+      @include flex-direction(column);
+      border-bottom: 1px solid #E0E0E0;
+      &:first-child {
+        padding-top: 0;
+        gap: 0;
+      }
       &:last-child {
         padding-bottom: 0;
       }
-      &:first-child {
-        padding-top: 5px;
-      }
       @include mobile {
-        padding: 10px 5px;
+      }
+      .name {
+        font-size: 18px;
+        color: #2C2C2C;
+        margin-bottom: 4px;
+      }
+      .user-email {
+        color: #7C7C7C;
         font-size: 14px;
+      }
+      .plan-menu {
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(space-between);
+        span {
+          color: #8F8FA8;
+          font-size: 12px;
+          text-transform: uppercase;
+        }
+        .plan-name {
+          background: #05E5AD;
+          color: #2C2C2C;
+          font-weight: 600;
+          padding: 4px 8px;
+          font-size: 10px;
+          @include border-radius(30px);
+          text-transform: capitalize;
+        }
       }
       a {
         color: #000 !important;
@@ -1047,30 +1077,26 @@
           }
         }
       }
-      &:not(:last-child) {
-        display: block;
-        a {
-          width: 100%;
-          display: inline-block;
+      .menu-signout {
+        .menu-name {
+          font-weight: 400;
+          svg {
+            margin-right: 8px;
+            filter: brightness(0);
+            @include transition(0.2s, ease-in-out);
+          }
         }
-      }
-      .user-email {
-        color: #9e9e9e
-      }
-      .is-label {
-        @include flexbox;
-        @include justify-content(space-between);
-        @include align-items(center);
-        font-weight: 600;
-        margin-bottom: 5px;
-        font-size: 12px;
-        .user-name {
-          background: #05E5AD;
-          color: #01012A;
-          line-height: normal;
-          padding: 2px 5px;
-          font-size: 10px;
-          @include border-radius(30px);
+        &::after {
+          content: none;
+        }
+        &:hover, &:focus {
+          color: #ff0000 !important;
+          .menu-name {
+            font-weight: 400;
+            svg {
+              filter: unset;
+            }
+          }
         }
       }
     }
