@@ -60,6 +60,19 @@ body {
         padding-left: 15px;
         padding-right: 15px;
     }
+    &.container-fluid {
+        width: 100%;
+        padding-left: 90px;
+        padding-right: 90px;
+        @media (max-width:1440px) {
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+        @media (max-width:1200px) {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
     &.mw-1200 {
         width: 1100px;
         padding: 0;
@@ -138,6 +151,11 @@ a {
     background: rgb(26,15,47) linear-gradient(170deg, rgba(26,15,47,1) 38%, rgba(24,34,87,1) 67%, rgba(30,33,104,1) 87%, rgba(45,52,143,1) 100%);
     * {
         color: #f9fafc;
+        .section-title {
+            h2 {
+                color: #f9fafc;
+            }
+        }
     }
 }
 .bg-gray-gradient {
@@ -1876,6 +1894,10 @@ h3, .h3 {
             font-size: 14px;
             margin-bottom: 5px;
             font-weight: 500;
+            span {
+                margin-right: 10px;
+                display: inline-block;
+            }
         }
         .title {
             margin-bottom: 10px;
@@ -1944,15 +1966,23 @@ h3, .h3 {
                 }
                 .text {
                     position: relative;
+                    font-size: 14px;
                     &::before {
                         content: '';
                         width: 0%;
-                        height: 2px;
+                        height: 1px;
                         background: $blue;
                         position: absolute;
                         bottom: 0px;
                         @include transition(0.3s, ease-in-out);
                         z-index: 1;
+                    }
+                }
+                .icons {
+                    height: 8px;
+                    .icon {
+                        width: 8px;
+                        height: 8px;
                     }
                 }
             }
@@ -1964,12 +1994,17 @@ h3, .h3 {
                 @include transform(scale(1.05));
             }
         }
-        .card-body {
+        .card-footer {
             .action {
                 .btn-link {
                     .text {
                         &::before {
                             width: 100%;
+                        }
+                    }
+                    .icons {  
+                        .icon {
+                            @include transform(translate(10px, -8px));
                         }
                     }
                 }

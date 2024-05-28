@@ -289,7 +289,7 @@
                 <div class="container">
                     <div class="content-block">
                         <div class="section-title mw-960">
-                            <h2 class="mb-0">From real-time solo and consolidated reports to a centralized Financial Data Lake, Nominal provides unparalleled efficiency and accuracy without the limitations of traditional ERP systems.</h2>
+                            <h2 class="mb-0 text-color-animation" data-bg-color="#424270" data-fg-color="rgb(249, 250, 252)">From real-time solo and consolidated reports to a centralized Financial Data Lake, Nominal provides unparalleled efficiency and accuracy without the limitations of traditional ERP systems.</h2>
                         </div>
                     </div>
                 </div>
@@ -574,5 +574,38 @@
             </div>
         </footer>
         <script src="assets/js/main.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+        <script src="https://unpkg.com/split-type"></script>
+        <script>
+            gsap.registerPlugin(ScrollTrigger);
+            const splitTypes = document.querySelectorAll(".text-color-animation");
+            splitTypes.forEach((char, i) => {
+                const bg = char.dataset.bgColor;
+                const fg = char.dataset.fgColor;
+
+                const text = new SplitType(char, { types: "chars" });
+
+                gsap.fromTo(
+                    text.chars,
+                    {
+                        color: bg
+                    },
+                    {
+                        color: fg,
+                        duration: 0.3,
+                        stagger: 0.02,
+                        scrollTrigger: {
+                            trigger: char,
+                            start: "top 80%",
+                            end: "top 20%",
+                            scrub: true,
+                            markers: false,
+                            toggleActions: "play play reverse reverse"
+                        }
+                    }
+                );
+            });
+        </script>
     </body>
 </html>
