@@ -194,12 +194,26 @@ jQuery(document).ready(function($) {
          $("div.data-toggle-showhide").hide();
          $("[id=" + $(this).attr("data-toggle") + "]").show();
          return false;
-   });
-  }
-
-  if ($('[data-bs-toggle=tooltip]').length) {
-   $("body").tooltip({ selector: '[data-bs-toggle=tooltip]' });
+      });
    }
+
+   if ($('[data-bs-toggle=tooltip]').length) {
+      $("body").tooltip({ selector: '[data-bs-toggle=tooltip]' });
+   }
+
+   if ($('.play-iframe').length){
+      $('.play-iframe').click(function(ev){	
+          videourl = $(this).data('videosrc')+"?autoplay=1&cc_load_policy=1&api=1&muted=1&rel=0&enablejsapi=1";
+          if($(this).data('ext') == 'mp4'){
+              video = '<div class="video-wrap"><video class="embed-responsive-item" controls autoplay playsinline controlsList="nodownload" oncontextmenu="return false;"><source src="'+videourl+'" type="video/mp4"></video></div>';
+          } else {
+              video = '<div class="video-wrap"><iframe class="embed-responsive-item play-in_iframe" allow="autoplay" src="'+videourl+'" controls="0" scrolling="no" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" allowfullscreen></iframe></div>';
+          }
+          
+          $(this).parents('.play-video-block').html(video);
+          ev.preventDefault();
+      });
+  }
 
 });
 
