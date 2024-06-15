@@ -287,6 +287,9 @@
             gap: 72px 25px;
             padding: 0;
             margin: 0px;
+            li {
+
+            }
             @include mobile {
               grid-template-columns: repeat(2, 1fr);
               gap: 4rem;
@@ -591,5 +594,42 @@
   @include desktop {
     margin-left: -25rem !important;
     width: 500px !important;
+  }
+}
+
+
+.case-study .blog-page--content .posts-archive-list ul li {
+  &:first-child {
+    grid-column: 1 / -1;
+    .article-card--wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 60px;
+      @media (max-width: 767px) {
+        gap: 30px;
+      }
+      @media (max-width: 600px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+      @include align-items(center);
+      .image-wrapper {
+        img {
+          @include border-radius(24px);
+        }
+        .thumb-overlay {
+          @include border-radius(24px);
+        }
+      }
+      .content-wrapper {
+        @include justify-content(center);
+        max-width: 600px;
+        h3 {
+          font-size: 26px;
+          @media (max-width: 767px) {
+            font-size: 24px;
+          }
+        }
+      }
+    }
   }
 }
