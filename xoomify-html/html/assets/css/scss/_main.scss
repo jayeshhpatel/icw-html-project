@@ -250,6 +250,12 @@
         color: $secondary;
         font-weight: 600;
         margin-bottom: 10px;
+        img {
+            margin-bottom: 10px;
+            @media (max-width: 767px) {
+                max-width: 50px;
+            }
+        }
     }
     h1, h2 {
         margin-bottom: 10px;
@@ -748,34 +754,33 @@
 
 // Hero CTA
 .cta-section {
-    background: #1E1951;
-    @include border-radius(30px);
-    
-	background-repeat: no-repeat;
-	background-position: center top;
-	background-size: cover;
-
-    margin-bottom: 100px; 
-    @media (max-width: 992px) {  
-        margin-bottom: 60px; 
+	.cta-block {
+        background-repeat: no-repeat;
+        background-position: top center;
+        background-size: cover;
+        @include border-radius(30px);
+        padding: 70px 100px;
+        .section-title {
+            max-width: 550px;
+            .action {
+                .btn {
+                    width: auto;
+                }
+            }
+        }
+        @media (max-width: 1400px) {
+            padding: 50px 70px;
+        }
+        @media (max-width: 1200px) {
+            padding: 40px;
+        }
+        @media (max-width: 767px) {
+            padding: 30px;
+            margin-left: -12px;
+            margin-right: -12px;
+            @include border-radius(0);
+        }
     }
-    @media (max-width: 767px) {  
-        margin-bottom: 40px; 
-    }
-	
-	
-	&.bg-darktheme {
-		h2 {
-			color: $white;
-		}
-		.sort-info {
-			*:not(a) {
-				color: rgba($white, .6);
-			}
-			color: rgba($white, .6);
-		}
-	}
-	
 }
 // img-text-box-list-section
 .img-text-box-list-section {
@@ -1089,6 +1094,7 @@
     }
     @media (max-width: 767px) {
         padding: 30px 12px;
+        @include border-radius(0px);
     }
     &::before {
         content: '';
@@ -1363,6 +1369,95 @@
     }
     @media (max-width: 767px) {
         .dropdown-toggle {
+            width: 100%;
+        }
+    }
+}
+
+.pricing-box {
+    border: 1px solid #EEF3FF;
+    @include border-radius(10px);
+    padding: 20px;
+    @include flexbox;
+    @include flex-direction(column);
+    height: 100%;
+    position: relative;
+    &.bg-light {
+        background: #EEF3FF !important;
+        border-color: $dark;
+    }
+    .offer-img {
+        position: absolute;
+        top: -18px;
+        right: -10px;
+    }
+    .plan {
+        font-size: 14px;
+        color: $primary;
+        font-weight: 600;
+        margin-bottom: 12px;
+    }
+    h3 {
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        @media (max-width: 992px) {
+            font-size: 24px;
+        }
+    }
+    .price {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        line-height: 1;
+        @media (max-width: 992px) {
+            font-size: 20px;
+        }
+        small {
+            font-size: 16px;
+            font-weight: 400;
+            @media (max-width: 992px) {
+                font-size: 14px;
+            }
+        }
+    }
+    .info {
+        @include flexbox;
+        @include align-items(center);
+        color: $primary;
+        margin-bottom: 20px;
+        .icon-diamond {
+            background: url(../images/icons/icon-diamond.svg) no-repeat center left;
+            background-size: contain;
+            width: 18px; 
+            height: 14px;
+            margin-right: 10px;
+        }
+    }
+    .fetures-list {
+        margin-bottom: 30px;
+        flex: 1 1 auto;
+        li {
+            margin-bottom: 10px;
+            @include flexbox;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            &::before {
+                content: '';
+                background: url(../images/icons/icon-check.svg) no-repeat center left;
+                background-size: contain;
+                width: 11px;
+                height: 11px;
+                flex: none;
+                display: inline-block;
+                margin-right: 10px;
+                margin-top: 6px;
+            }
+        }
+    }
+    .action {
+        .btn {
             width: 100%;
         }
     }
