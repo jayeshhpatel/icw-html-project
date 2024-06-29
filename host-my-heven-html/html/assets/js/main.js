@@ -50,6 +50,21 @@ if($('.hero-slider').length){
     });
     herosplide.mount();
 }
+if($('.testimonials-slider').length){
+    var testimonialsplide = new Splide('.testimonials-slider', {
+        type: 'loop',
+        perPage: 2,
+        perMove: 1,
+        arrows: true,
+        dots: false,
+        autoplay: true,
+        updateOnMove: true,
+        classes: {
+            arrows: 'splide__arrows icw-splide-arrows',
+        }
+    });
+    testimonialsplide.mount();
+}
 //Input Quantity Increment
 var input = document.querySelector('#qtybedroom');
 var btnminus = document.querySelector('.qtyminus');
