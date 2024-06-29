@@ -170,13 +170,13 @@ font-family: $bodyfont;
 p {
     margin-top: 0;
     margin-bottom: 15px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     &:last-child{
         margin-bottom: 0;
     }
     @media (max-width: 767px) {
-        font-size: 16px;
+        font-size: 14px;
     }
 }
 
@@ -330,12 +330,19 @@ h3, .h3 {
 	&.btn-primary-outline {
 		color: $primary !important;
 		border: 1px solid $primary;
-		background-color: transparent;
-		color: $white !important;
+		background-color: $white;
+		color: $primary !important;
+        &:after{
+            background: url('data:image/svg+xml,<svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 0.75L6.65385 6L1 11.25" stroke="rgb(41 63 204)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center right;
+        }
 		&:hover, &:focus, &:active{
 			background-color: $primary;
 			color: $white !important;
 			border: 1px solid $primary;
+            &:after{
+                filter: brightness(0) invert(1);
+                -webkit-filter: brightness(0) invert(1);
+            }
 		}
 	}
 	&.btn-secondary{
@@ -565,6 +572,36 @@ body a.icw-admin {
 		margin-bottom: 10px;
 		&::marker {
 			color: $primary;
+		}
+	}
+}
+.check-list{
+	padding-left: 0;
+	margin-bottom: 30px;
+	@media (max-width:991px) {
+		margin-bottom: 20px;
+	}
+	li {
+		list-style: none;
+		margin-bottom: 10px;
+        @include flexbox;
+        &:last-child {
+            margin-bottom: 0;
+        }
+		&::before {
+            content: '';
+            width: 18px;
+            height: 18px;
+            flex: none;
+            display: inline-block;
+            background-size: contain !important;
+			background: url(../images/icons/icon-circle-check.svg) no-repeat center;
+            margin-top: 3px;
+            margin-right: 10px;
+            @media (max-width:991px) {
+                margin-top: 1px;
+                margin-right: 8px;
+            }
 		}
 	}
 }
@@ -1162,7 +1199,6 @@ body a.icw-admin {
                                         text-transform: uppercase;
                                         color: rgba(0, 0, 0, 0.7);
                                         @media (max-width: 1200px) {
-                                            margin-bottom: 15px;
                                             color: $white;
                                             font-size: 14px;
                                         }
@@ -1170,7 +1206,7 @@ body a.icw-admin {
                                     .menu-list {
                                         margin-left: auto;
                                         @media (max-width: 1200px) {
-                                            margin-left: 0;
+                                            display: none;
                                         }
                                         ul {
                                             @include flexbox;
