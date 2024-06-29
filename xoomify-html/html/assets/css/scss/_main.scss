@@ -420,6 +420,95 @@
         @include align-items(center);
     }
 }
+.hero-slider {
+    .splide__track {
+        @include border-radius(20px);
+    }
+}
+.post-slider {
+    @media (max-width: 767px) {
+        margin-bottom: 50px;
+    }
+    .splide__track {
+        @include border-radius(10px);
+    }
+}
+.post-slide-block {
+    height: 100%;
+    @include border-radius(10px);
+    overflow: hidden;
+    position: relative;
+    @include flexbox;
+    @include align-items(center);
+    @include flex-direction(column);
+    max-height: 400px;
+    .image {
+        width: 100%;
+        img {
+            object-fit: cover;
+            max-width: 100%;
+            width: 100%;
+            @include transition(0.3s, ease-in-out);
+        }
+    }
+    .post-info {
+        @include border-radius(0px 0px 10px 10px);
+        flex: 1 1 auto;
+        background: linear-gradient(360deg, #0B0757 0%, rgba(11, 7, 87, 0) 100%); 
+        padding: 20px;  
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        .category {
+            background: rgba($white, 0.4);
+            color: rgba($white, 0.8);
+            display: inline-block;
+            padding: 7px 10px;
+            @include border-radius(5px);
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        h3 {
+            font-size: 22px;
+            color: $white;
+            margin-bottom: 6px;
+            @include transition(0.3s, ease-in-out);
+        }
+        .post-user {
+            @include flexbox;
+            @include align-items(center);
+            color: $white;
+            font-size: 12px;
+            .date {
+                @include inline-flex;
+                @include align-items(center);
+                border-left: 0.5px solid $white;
+                padding-left: 6px;
+                margin-left: 6px;
+                .icon-celender {
+                    width: 13px;
+                    height: 12px;
+                    margin-right: 5px;
+                    display: inline-block;
+                    background: url(../images/icons/icon-celender.svg) no-repeat center center;
+                    background-size: contain;
+                }
+            }
+        }
+    }
+    &:hover, &:focus {
+        .image {
+            img {
+                @include transform(scale(1.1));
+            }
+        }
+        .post-info {
+            h3 {
+                color: $secondary;
+            }
+        }
+    }
+}
 .grid-card-block {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

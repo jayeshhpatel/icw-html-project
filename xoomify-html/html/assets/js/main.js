@@ -74,4 +74,32 @@ if($('.hero-slider').length){
     });
     herosplide.mount();
 }
+if($('.post-slider').length){
+    var postsplide = new Splide('.post-slider', {
+        type: 'loop',
+        perPage: 4,
+        perMove: 1,
+        pagination: false,
+        arrows: true,
+        autoplay: true,
+        speed: 600,
+        gap: 30,
+        omitEnd: true,
+        classes: { arrows: 'icw-slide-arrows', },
+        breakpoints: {
+            1400: {
+                perPage: 3.5,
+            },
+            992: {
+                gap: 20,
+                perPage: 2.5,
+            },
+            575: {
+                gap: 20,
+                perPage: 1.5,
+            },
+        }
+    });
+    postsplide.mount();
+}
 
