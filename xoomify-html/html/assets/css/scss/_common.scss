@@ -236,10 +236,10 @@ h3, .h3 {
     font-weight: 600;
     margin: 0;
     @media (max-width: 1200px) {
-        font-size: 20px;
+        font-size: 24px;
     }
     @media (max-width: 767px) {
-        font-size: 18px;
+        font-size: 20px;
     }
 }
 
@@ -260,7 +260,10 @@ h3, .h3 {
     @media (max-width: 992px) {       
         font-size: 14px; 
     }
-
+    @media (max-width: 575px) {    
+        min-height: 40px;   
+        padding: 0 15px !important;
+    }
 	&.mw-200 {
 		max-width: 200px;
 		width: 100%;
@@ -289,6 +292,9 @@ h3, .h3 {
     &.with-arrow {
         position: relative;   
         padding-right: 45px !important;     
+        @media (max-width: 575px) {       
+            padding-right: 35px !important;     
+        }
         &:after{
             content: "";
             position: absolute;
@@ -303,6 +309,9 @@ h3, .h3 {
                 width: 10px;
                 height: 10px;
                 top: calc(50% - 5px);
+            }
+            @media (max-width: 575px) {       
+                right: 15px;
             }
         }
         &:hover, &:focus, &:active {
@@ -335,30 +344,9 @@ h3, .h3 {
             background: url('data:image/svg+xml,<svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 0.75L6.65385 6L1 11.25" stroke="rgb(41 63 204)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center right;
         }
 		&:hover, &:focus, &:active{
-			background-color: $primary;
-			color: $white !important;
+			background-color: #D6E2FF;
+			color: $primary !important;
 			border: 1px solid $primary;
-            &:after{
-                filter: brightness(0) invert(1);
-                -webkit-filter: brightness(0) invert(1);
-            }
-		}
-	}
-	&.btn-dark-outline {
-		color: $dark !important;
-		border: 1px solid $dark;
-		background-color: $white;
-        &:after{
-            background: url('data:image/svg+xml,<svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 0.75L6.65385 6L1 11.25" stroke="rgb(11 7 87)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center right;
-        }
-		&:hover, &:focus, &:active{
-			background-color: $dark;
-			color: $white !important;
-			border: 1px solid $dark;
-            &:after{
-                filter: brightness(0) invert(1);
-                -webkit-filter: brightness(0) invert(1);
-            }
 		}
 	}
 	&.btn-secondary{
@@ -411,11 +399,20 @@ h3, .h3 {
         color: $dark !important;
         @include inline-flex;
         @include align-items(center);
+        @media (max-width: 575px) {       
+            padding: 0 15px !important;
+        }
         .icon {
             margin-right: 10px;
             line-height: 0.7;
             display: inline-block;
+            @media (max-width: 575px) {       
+                margin-right: 5px;
+            }
             svg {
+                @media (max-width: 575px) {       
+                    width: 15px;
+                }
                 path {
                     @include transition(0.2s, ease-in-out);
                 }
@@ -434,16 +431,9 @@ h3, .h3 {
             padding: 1px 10px 0;
         }
         &:hover, &:focus, &:active {
-            background: $primary !important;
+            background: #c0d2fd !important;
             border-color: $primary !important;
-            color: $white !important;
-            .icon { 
-                svg {
-                    path, circle {
-                        stroke: $secondary;
-                    }
-                }
-            }
+            color: $primary !important;
         }
     }
 }
@@ -1002,6 +992,7 @@ body a.icw-admin {
 .main-header {
     .offcanvas.offcanvas-end {
         --bs-offcanvas-width: 300px;
+        height: 100vh;
     }
     .offcanvas-body {
         --bs-offcanvas-padding-x: 1.5rem;
@@ -1026,8 +1017,10 @@ body a.icw-admin {
     max-width: 100vw;
     background: transparent;
     &.fixed-header {
-        background: $white;
-        @include box-shadow(0 5px 20px 0 rgba($black, 0.1))
+        background: rgba($white, 0.8);
+        @include box-shadow(0 5px 20px 0 rgba($black, 0.1));
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
     }
     .navbar {
         padding: 15px 0;
@@ -1147,10 +1140,10 @@ body a.icw-admin {
                             @include opacity(0);
                             visibility: hidden;
                             position: absolute;
-                            @include border-radius(5px);
-                            @include box-shadow(0 10px 20px 0 rgba(255,255,255,0.2));
+                            @include border-radius(20px);
+                            @include box-shadow(-1px 0px 10px rgba(0, 0, 0, 0.07));     
                             border: 1px solid rgba($primary, 0.2);     
-                            background: $dark;
+                            background: $white;
                             width: 100%;
                             padding: 10px;
                             left: 15px;
@@ -1183,28 +1176,35 @@ body a.icw-admin {
                                 font-weight: 400;
                                 padding: 0;
                                 display: block;
-                                color: $white;
+                                color: $black;
                                 position: relative;
                                 width: auto;
                                 vertical-align: middle;
                                 @include transition(0.2s, ease-in-out);
                                 padding: 10px 20px 10px 15px;
                                 background: transparent;
-                                border-radius: 4px;
+                                @include border-radius(8px);
+                                @media (max-width: 1200px) {
+                                    color: $white;
+                                }
                                 &::before {
                                     content: none;
                                     display: none !important;
                                 }
                                 &:hover, &:focus, &.active {
-                                    color: $white;
-                                    background: rgba(255, 255, 255, 0.10);
+                                    color: $primary;
+                                    background: #EEF0FF;
+                                    @media (max-width: 1200px) {
+                                        background: rgba(#fff, 0.1);
+                                        color: $white;
+                                    }
                                 }
                             }
 
                             &.current-menu-item, &.current_page_parent {
                                 & > a {
-                                    color: $white;
-                                    background: rgba(255, 255, 255, 0.10);
+                                    color: $primary;
+                                    background: #EEF0FF;
                                 }
                             }
                         } 
@@ -1313,6 +1313,7 @@ body a.icw-admin {
                                                     }
                                                     &:hover, &:focus {
                                                         color: $primary;
+                                                        background: transparent;
                                                         &::after {
                                                             width: 100%;
                                                         }
@@ -1401,7 +1402,7 @@ body a.icw-admin {
                                                 &:hover, &:focus {
                                                     background: #EEF0FF;
                                                     @media (max-width: 1200px) {
-                                                        background: rgba(#fff, 0.05);
+                                                        background: rgba(#fff, 0.1);
                                                     }
                                                     .menu-name {
                                                         div {
@@ -1449,13 +1450,7 @@ body a.icw-admin {
                                         }
                                     }
                                     &:hover, &:focus {
-                                        background: #D6E2FF !important;
-                                        color: $dark !important;
-                                        svg {
-                                            path, circle {
-                                                stroke: $primary;
-                                            }
-                                        }
+                                        background: #1d31ad !important;
                                     }
                                 }
                             }
@@ -1590,7 +1585,7 @@ body a.icw-admin {
             margin-right: 0px;
             margin-left: 20px;
             span {
-                background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path stroke="rgb(11 7 87)" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/></svg>');
+                background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path stroke="rgb(41 63 204)" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/></svg>');
             }
             @media (max-width: 767px) {
                 margin-left: auto;
@@ -1635,16 +1630,33 @@ body a.icw-admin {
 		z-index: 1;	
 		text-underline-offset: 4px;	
 		text-decoration: none;
-        @include inline-flex;
-        @include align-items(center);
+        display: inline-block;
         font-weight: 400;
+        position: relative;
+        &.btn {
+            @include inline-flex;
+            &::before {
+                content: none;
+            }
+        }
+        &::before {
+            content: '';
+            height: 1px;
+            background: $white;
+            width: 0;
+            display: inline-block;
+            @include transition(0.2s, ease-in-out);
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+        }
 		&:hover,
 		&:focus,
 		&:focus-visible {
             color: $white;
-            text-decoration: underline;
-            text-decoration-color: $white !important;
-            -moz-text-decoration-color: $white !important;
+            &::before {
+                width: 100%;
+            }
         }
         svg {
             margin-right: 5px;
@@ -1682,7 +1694,7 @@ body a.icw-admin {
     .menu-collapse {
         @media (max-width: 767px) {
             width: 100%;
-            min-width: 300px;
+            min-width: 280px;
             border-bottom: 1px solid #696969;
         }
         .menu-title {
@@ -1721,13 +1733,19 @@ body a.icw-admin {
         .menu-list-block {
             @include flexbox;
             gap: 50px;
+            @media (max-width: 992px) {
+                gap: 30px;
+            }
             @media (max-width: 767px) {
                 display: none;
             }
             a {
-                min-width: 120px;
-                @media (min-width: 992px) {
+                @media (max-width: 575px) {
+                    min-width: 120px;
+                }
+                @media (min-width: 767px) {
                     white-space: nowrap;
+                    min-width: auto;
                 }
             }
         }
@@ -1749,9 +1767,22 @@ body a.icw-admin {
                 @include align-items(center);
                 @include justify-content(center);
                 flex: none;
+                &::before {
+                    content: none;
+                }
                 svg {
                     width: 20px;
                     margin-right: 0;
+                    path {
+                        @include transition(0.3s, ease-in-out);
+                    }
+                }
+                &:hover, &:focus {
+                    svg {
+                        path {
+                            fill: $secondary;     
+                        }               
+                    }
                 }
             }
         }
@@ -1792,13 +1823,45 @@ body a.icw-admin {
             border-left: 1px solid $white;
             line-height: 1.3;
             padding: 0 10px;
+            @media (min-width: 992px) {
+                &:first-child, &:nth-child(2) {
+                    &::before {
+                        left: 10px;
+                    }
+                }
+                &:hover {
+                    &:first-child, &:nth-child(2) {
+                        &::before {                        
+                            width: calc(100% - 20px);
+                        }
+                    }
+                }
+            }
             @media (max-width: 992px) {
                 &:first-child {
                     border-left: none;
-                    padding-left: 0;
+                    padding-left: 0;  
+                    &::before {
+                        left: 0;
+                    }
+                    &:hover {
+                        &::before {                        
+                            width: calc(100% - 10px);
+                        }
+                    }                  
+                }
+                &:nth-child(2) {
+                    &::before {
+                        left: 10px;
+                    }
+                    &:hover {
+                        &::before {                        
+                            width: calc(100% - 10px);
+                        }
+                    }   
                 }
                 &:last-child {
-                    padding-right: 0;
+                    padding-right: 0;                    
                 }
             }
         }
