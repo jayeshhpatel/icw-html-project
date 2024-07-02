@@ -21,8 +21,13 @@
 	background-color: #056588 !important;
 }
 .bg-darktheme {
-	background-color: #1E1951 !important;
+	background-color: #0F0080 !important;
 	* {color: $white;}
+    .section-title {
+        h1, h2 {
+            color: $white;
+        } 
+    }
 }
 .bg-lighttheme-dark {
 	background-color: #F1FAF9 !important;
@@ -232,10 +237,19 @@
 
 .section-title {
     margin-bottom: 50px;
+    @media (max-width: 767px) {
+        margin-bottom: 30px; 
+    }
     &.text-center {
         margin: 0 auto 50px;
+        @media (max-width: 767px) {
+            margin: 0 auto 30px;
+        }
         .sort-info {
             margin: 0 auto 30px;
+            @media (max-width: 767px) {
+                margin: 0 auto 20px;
+            }
         }
     }
     &.is-flex {
@@ -255,12 +269,16 @@
     h1, h2 {
         margin-bottom: 30px;
         color: $black;
+        @media (max-width: 767px) {
+            margin-bottom: 15px; 
+        }
         span {
             color: $primary;
         }
     }
     .sort-info {
         margin-bottom: 30px;
+        max-width: 550px;
     }
 }
 
@@ -272,7 +290,7 @@
     }
 }
 
-.icon-animation {
+.star-animation {
     width: 66px;
     display: inline-block;
     line-height: 0.7;
@@ -335,6 +353,9 @@
     border-bottom: 1px solid rgba($black, 0.08);
     @media (max-width: 992px) {
         padding-top: 50px;
+    }
+    @media (max-width: 767px) {
+        padding-top: 35px;
     }
     & > .container {
         position: relative;
@@ -1368,11 +1389,13 @@
     }
 }
 
-
 .form-block {   
     &.email-form-block {
         max-width: 400px;
         margin: 0 auto;
+        @media (max-width: 767px) {
+            max-width: 100%;
+        }
         form {
             @include flexbox;
             @include align-items(center);
@@ -1390,58 +1413,157 @@
     } 
 }
 
-.icon-list-block {
-    ul {
-        @include flexbox;
-        @include flex-wrap(wrap);
-        gap: 15px 30px;
-        li {
-            max-width: calc(50% - 15px);
-            width: 100%;
-            @media (max-width: 767px) {       
-                max-width: 100%;
+.vector-animation {
+    position: relative;
+    overflow: hidden;
+    .small-vector {
+        position: relative;
+        @include inline-flex;
+        @include align-items(center);
+        position: absolute;
+        top: 75px;
+        right: 330px;
+        @media (max-width: 992px) {
+            top: 150px;
+            right: 30px;
+        }
+        @media (max-width: 767px) {
+            display: none;
+        }
+        &::after {
+            content: '';
+            width: 128px;
+            height: 116px;
+            background: url('data:image/svg+xml,<svg width="129" height="120" viewBox="0 0 129 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M125.62 46.5938L100.76 9.09684C96.9731 3.38485 90.4305 0.12345 83.6043 0.537735L38.7543 3.27164C31.9282 3.68592 25.8424 7.72068 22.7871 13.8576L2.80753 54.1045C-0.231693 60.2308 0.225149 67.5269 4.01209 73.2389L28.8719 110.736C32.6588 116.448 39.2014 119.709 46.0276 119.295L90.8776 116.561C97.7038 116.147 103.79 112.112 106.845 105.975L126.824 65.7282C129.864 59.602 129.407 52.3058 125.62 46.5938Z" fill="rgb(81 62 218)"/></svg>') no-repeat center center;
+            background-size: contain !important;
+            display: inline-block;
+            animation: rotate 10s linear infinite;
+            @media (max-width: 992px) {
+                width: 100px;
+                height: 98px;
             }
-            a.list-item {
+        }
+        &::before {
+            content: '';
+            width: 54px;
+            height: 54px;
+            background: url('data:image/svg+xml,<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28.4389 29.5093L17.7858 25.246C16.2154 24.6169 14.4748 24.6169 12.9044 25.246L2.2513 29.5093C1.46107 29.8288 0.670832 29.04 0.990925 28.2513L5.26219 17.6179C5.89237 16.0503 5.89237 14.313 5.26219 12.7455L0.990925 2.1121C0.670832 1.32334 1.46107 0.534571 2.2513 0.854072L12.9044 5.11741C14.4748 5.74643 16.2154 5.74643 17.7858 5.11741L28.4389 0.854072C29.2291 0.534571 30.0194 1.32334 29.6993 2.1121L25.428 12.7455C24.7978 14.313 24.7978 16.0503 25.428 17.6179L29.6993 28.2513C30.0194 29.04 29.2291 29.8288 28.4389 29.5093Z" fill="rgb(15 0 128)"/></svg>') no-repeat center center;
+            background-size: contain;
+            display: inline-block;
+            position: absolute;
+            top: calc(50% - 27px);
+            right: calc(50% - 27px);
+            z-index: 1;
+            animation: rotate 15s linear infinite reverse;
+            @media (max-width: 992px) {
+                width: 40px;
+                height: 40px;
+                top: calc(50% - 20px);
+                right: calc(50% - 20px);
+            }
+        }
+    }
+    .large-vector {
+        position: relative;
+        @include inline-flex;
+        @include align-items(center);
+        position: absolute;
+        top: -120px; 
+        right: 0;
+        @media (max-width: 992px) {
+            top: -125px;
+        }
+        @media (max-width: 767px) {
+            display: none;
+        }
+        &::after {
+            content: '';
+            width: 330px;
+            height: 300px;
+            background: url('data:image/svg+xml,<svg width="331" height="304" viewBox="0 0 331 304" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M216.611 0.0549021L101.066 5.51287C83.4647 6.3443 67.6413 16.4892 59.5587 32.1048L6.47959 134.72C-1.60303 150.335 -0.717199 169.088 8.80374 183.922L71.3193 281.076C80.8379 295.861 97.5471 304.469 115.148 303.637L230.694 298.179C248.295 297.348 264.118 287.203 272.201 271.587L325.28 168.973C333.363 153.357 332.477 134.604 322.956 119.77L260.44 22.6158C250.922 7.83164 234.212 -0.776522 216.611 0.0549021Z" fill="rgb(25 9 144)"/></svg>') no-repeat center center;
+            background-size: contain !important;
+            display: inline-block;
+            animation: rotate 10s linear infinite;
+            @media (max-width: 992px) {
+                width: 250px;
+                height: 245px;
+            }
+        }
+        &::before {
+            content: '';
+            width: 142px;
+            height: 142px;
+            background: url('data:image/svg+xml,<svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M142.928 142.726L89.2776 124.14C81.3684 121.398 72.7655 121.804 65.15 125.28L13.4901 148.84C9.65876 150.604 5.56866 146.889 6.96663 142.916L25.5957 89.3608C28.3445 81.4657 27.9389 72.8788 24.4581 65.2779L0.863711 13.7173C-0.902583 9.89334 2.8192 5.81018 6.79969 7.20488L60.4504 25.7901C68.3596 28.5325 76.9625 28.1262 84.578 24.6504L136.238 1.09065C140.069 -0.673056 144.159 3.0411 142.761 7.0145L124.132 60.5697C121.383 68.4648 121.789 77.0517 125.27 84.6525L148.864 136.213C150.631 140.037 146.909 144.12 142.928 142.726Z" fill="rgb(15 0 128)"/></svg>') no-repeat center center;
+            background-size: contain;
+            display: inline-block;
+            position: absolute;
+            top: calc(50% - 71px);
+            right: calc(50% - 71px);
+            z-index: 1;
+            animation: rotate 15s linear infinite reverse;
+            @media (max-width: 992px) {
+                width: 100px;
+                height: 100px;
+                top: calc(50% - 50px);
+                right: calc(50% - 50px);
+            }
+        }
+    }
+}
+@keyframes rotate {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0); }
+}
+ul.topic-list {
+    columns: 120px 2;
+    column-gap: 50px;
+    @media (max-width: 992px) {
+        column-gap: 30px;
+    }
+    @media (max-width: 767px) {
+        columns: 300px 1;
+    }
+    li {     
+        a {
+            color: $white;
+            @include transition(0.3s, ease-in-out);
+            border-bottom: 1px solid rgba(#fff, 0.16);
+            display: block;
+            padding: 25px 15px 25px 0;
+            font-size: 18px;
+            @include flexbox;
+            @include align-items(center);
+            @media (max-width: 992px) {
+                font-size: 15px;
+                padding: 20px 10px 20px 0;
+            }
+            &::after {
+                content: '';
+                background: url('data:image/svg+xml,<svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 1.5L8 8L1.5 14.5" stroke="white" stroke-width="2"/></svg>') no-repeat center center;
+                background-size: contain;
+                width: 8px;
+                height: 13px;
+                display: inline-block;
+                margin-left: auto;
+                opacity: 0;
+                @include transition(0.3s, ease-in-out);
+            }
+            &:hover, &:focus {
                 color: $white;
-                @include transition(0.3s, ease-in-out);
-                text-underline-offset: 5px;
-                &:hover, &:focus {
-                    color: $white;
-                    text-decoration: underline;
-                    @include transform(translateY(4px));
-                    @include box-shadow(0 -4px 0px 0px rgba(44, 37, 114, 1)); 
+                border-color: $white;
+                background: rgba(#fff, 0.08) ;
+                padding: 25px 15px;
+                @media (max-width: 992px) {
+                    padding: 20px 10px;
                 }
-            }
-            .list-item {
-                padding: 15px 25px;
-                @include flexbox;
-                @include align-items(center);
-                background: #1E1951;
-                @include border-radius(10px);
-                @include transition(0.3s, ease-in-out);
-                height: 100%;
-                @media (max-width: 992px) {       
-                    padding: 15px;
-                }
-                // &:not(.list-item):hover, &:not(.list-item):focus {
-                //     @include box-shadow(0 0px 15px 3px rgba(143,74,255,0.5));   
-                // }
-            }
-            .icon {
-                width: 28px;
-                height: 28px;
-                flex: none;
-                @include inline-flex;
-                @include align-items(center);
-                @include justify-content(center);
-                margin-right: 12px;
-                img {
-                    width: 100%; filter: drop-shadow(0px 5px 5px rgba(143,74,255,0.7));
+                &::after {
+                    opacity: 1;
                 }
             }
         }
     }
 }
+
 .product-container {
     margin-bottom: 100px; 
     @media (max-width: 992px) {  
@@ -1451,6 +1573,7 @@
         margin-bottom: 40px; 
     }
 }
+
 .product-item {
     color: #FFFFFF;
     background-color: #1E1951;
