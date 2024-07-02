@@ -1514,6 +1514,13 @@
     from { transform: rotate(360deg); }
     to { transform: rotate(0); }
 }
+.tool-section {
+    @media (max-width: 992px) {
+        .is-show {
+            display: none; 
+        }
+    }  
+}
 ul.topic-list {
     columns: 120px 2;
     column-gap: 50px;
@@ -1523,7 +1530,12 @@ ul.topic-list {
     @media (max-width: 767px) {
         columns: 300px 1;
     }
-    li {     
+    li {   
+        @media (max-width: 992px) {
+            &.is-show {
+                display: none; 
+            }
+        }  
         a {
             color: $white;
             @include transition(0.3s, ease-in-out);

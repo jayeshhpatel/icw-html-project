@@ -45,3 +45,18 @@ jQuery(document).ready(function($) {
         $(this).parent().find('.sub-menu').first().toggle(300);
     });
 });
+var isHidden = true;
+$('.is-show-all').on('click', function(e) {
+   e.preventDefault();
+   $('.is-xs-none').toggleClass('is-show');
+   isHidden = !isHidden;
+   // Update button text based on the boolean value
+   $(this).find('.is-text').text(isHidden ? "Show All" : "Hide All");
+   
+   if(isHidden){
+    var offset_target = $(this).parents('.main-section').offset().top;
+    $('html, body').animate({ 
+        scrollTop: offset_target
+    }, 50);
+   } 
+});
