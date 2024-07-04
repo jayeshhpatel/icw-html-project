@@ -891,9 +891,8 @@ body a.icw-admin {
         }
     }
     .navbar {
-        padding: 25px 0;
+        padding: 15px 0;
         @media (max-width:992px) {
-            padding: 15px 0;
             & > .container {
                 @include justify-content(flex-start);
             }
@@ -932,7 +931,7 @@ body a.icw-admin {
                     color: $black;
                     position: relative;
                     z-index: 1;
-                    padding: 12px 16px;
+                    padding: 10px 25px;
                     border: 1px solid transparent;
                     @include border-radius(8px);
                     @include inline-flex;
@@ -1087,7 +1086,7 @@ body a.icw-admin {
                 &.current-menu-item, &.current_page_parent {
                     & > a {
                         color: $primary;
-                        border-color: $primary;
+                        border-color: $primary !important;
                         &::after {
                             opacity: 1;
                         }
@@ -1111,6 +1110,7 @@ body a.icw-admin {
             
                 &:hover, &:focus {   
                     & > a {
+                        border-color: rgba($black, 0.08);
                         color: $primary;
                     } 
                 }
@@ -1238,9 +1238,9 @@ body a.icw-admin {
                     height: 12px;
                     display: inline-block;
                     margin-left: auto;
-                    margin: 0 50px;
+                    margin: 0 25px;
                     @media (max-width: 992px) {
-                        margin: 0 20px;
+                        margin: 0 10px;
                     }
                 }
                 &:last-child {
@@ -1249,13 +1249,27 @@ body a.icw-admin {
                     }
                 }
                 a {
-                    font-size: 24px;
+                    font-size: 20px;
                     font-weight: 500;
+                    padding: 10px 25px;
+                    border: 1px solid transparent;
+                    @include border-radius(0px 8px 0 8px);
+                    &:hover, &:focus {
+                        border-color: rgba($black, 0.08);
+                    }
                     @media (max-width: 992px) {
-                        font-size: 20px;
+                        font-size: 18px;
+                        padding: 8px 15px;
                     }
                     @media (max-width: 767px) {
                         font-size: 16px;
+                        padding: 5px 10px;
+                    }
+                }
+                &.current-menu-item {
+                    a {
+                        border-color: $primary;
+                        color: $primary;
                     }
                 }
             }
@@ -1280,17 +1294,25 @@ body a.icw-admin {
                     height: 48px;
                     flex: none;
                     @include transition(0.3s, ease-in-out);
+                    @media (max-width: 767px) {
+                        width: 38px;
+                        height: 38px;
+                    }
                     .icon {
-                        width: 24px;
-                        height: 24px;
+                        width: 22px;
+                        height: 22px;
                         display: inline-block;
                         background-size: contain !important;
                         &.icon-twitter { background: url(../images/icons/icon-twitter.svg) no-repeat center center; }
                         &.icon-linkedin { background: url(../images/icons/icon-linkedin.svg) no-repeat center center; }
                         &.icon-instagram { background: url(../images/icons/icon-instagram.svg) no-repeat center center; }
+                        @media (max-width: 767px) {
+                            width: 18px;
+                            height: 18px;
+                        }
                     }
                     &:hover, &:focus {
-                        background: rgba(0, 0, 0, 0.05);
+                        border-color: $primary; 
                     }
                 }
             }
@@ -1388,10 +1410,12 @@ body a.icw-admin {
                     font-size: 14px;
                     font-weight: 500;
                     color: rgba($black, 0.59);
+                    text-underline-offset: 4px;
                     @include transition(0.3s, ease-in-out);
                     &:hover, &:focus {
                         color: $primary;
                         font-weight: 600;
+                        text-decoration: underline;
                     }
                 }
             }

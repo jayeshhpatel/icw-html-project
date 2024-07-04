@@ -290,6 +290,8 @@
     }
 }
 
+
+
 .star-animation {
     width: 66px;
     display: inline-block;
@@ -300,23 +302,21 @@
         width: 50px;
         margin: 0 10px;
     }
-    &::after {
+    &::before {
         content: '';
         width: 66px;
         height: 61px;
         background: url('data:image/svg+xml,<svg width="67" height="61" viewBox="0 0 67 61" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M45.0381 0L21.6613 0C18.1003 0 14.8093 1.89704 13.0288 4.97223L1.33539 25.1807C-0.445129 28.2558 -0.445129 32.0499 1.33539 35.1351L13.0288 55.3435C14.8093 58.4187 18.1003 60.3158 21.6613 60.3158H45.0381C48.5991 60.3158 51.8901 58.4187 53.6706 55.3435L65.364 35.1351C67.1445 32.0599 67.1445 28.2658 65.364 25.1807L53.6706 4.97223C51.8901 1.89704 48.5991 0 45.0381 0Z" fill="rgb(29 0 245)"/></svg>') no-repeat center center;
         background-size: contain !important;
         display: inline-block;
-        // animation: rotate 10s linear;
         @include transform(translateY(7px) rotate(-120deg));
-        // animation-timeline: view(50px);
         @include transition(0.3s, ease-in-out);
         @media (max-width: 1200px) {
             width: 50px;
             height: 48px;
         }
     }
-    &::before {
+    &::after {
         content: '';
         width: 28px;
         height: 28px;
@@ -326,11 +326,9 @@
         position: absolute;
         top: calc(50% - 14px);
         right: calc(50% - 14px);
+        z-index: 1;
         @include transition(0.3s, ease-in-out);
         @include transform(translateY(7px) rotate(90deg));
-        z-index: 1;
-        // animation: rotate 10s linear;
-        // animation-timeline: view(50px);
         @media (max-width: 1200px) {
             width: 22px;
             height: 22px;
@@ -339,26 +337,20 @@
         }
     }
     &.icon-purple {
-        &::after {
+        &::before {
             background: url('data:image/svg+xml,<svg width="67" height="61" viewBox="0 0 67 61" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M45.0381 0L21.6613 0C18.1003 0 14.8093 1.89704 13.0288 4.97223L1.33539 25.1807C-0.445129 28.2558 -0.445129 32.0499 1.33539 35.1351L13.0288 55.3435C14.8093 58.4187 18.1003 60.3158 21.6613 60.3158H45.0381C48.5991 60.3158 51.8901 58.4187 53.6706 55.3435L65.364 35.1351C67.1445 32.0599 67.1445 28.2658 65.364 25.1807L53.6706 4.97223C51.8901 1.89704 48.5991 0 45.0381 0Z" fill="rgb(152 0 245)"/></svg>') no-repeat center center;
-            // animation: rotate 10s infinite;
-            @include transform(translateY(7px) rotate(-120deg));
-            // animation-timeline: view(50px);
         }
     }
     &:hover{
         &::after{
-            @include transform(translateY(7px) rotate(-240deg));
+            @include transform(translateY(7px) rotate(180deg));
         }
         &::before{
-            @include transform(translateY(7px) rotate(180deg));
+            @include transform(translateY(7px) rotate(-240deg)); 
         }
     }
 }
-// @keyframes starRotate {
-//     from { transform: rotate(360deg); }
-//     to { transform: rotate(0); }
-// }
+
 .hero-section {
     position: relative;   
     border-bottom: 1px solid rgba($black, 0.08);
@@ -376,7 +368,16 @@
         z-index: 2;
         position: relative;        
         h1 {
-            
+            &:hover {
+                .star-animation {
+                    &::after{
+                        @include transform(translateY(7px) rotate(180deg));
+                    }
+                    &::before{
+                        @include transform(translateY(7px) rotate(-240deg)); 
+                    }
+                }
+            }
         }
         .sort-info {
             max-width: 550px;
@@ -586,12 +587,22 @@
             max-width: fit-content;
             font-size: 14px;
             font-weight: 500;
+            text-transform: uppercase;
             padding: 6px 10px;
             font-family: $font-spaceGrotesk;
+            @include transition(0.3s, ease-in-out);
             margin-bottom: 15px;
+            z-index: 2;
+            &:hover {
+                color: $white;
+                background: #F55800;
+            }
             &.purple {
                 color: #9800F5;
                 border-color: #9800F5;
+                &:hover {
+                    background: #9800F5;
+                }
             }
         }
         .date {
@@ -1032,6 +1043,17 @@
                 a {
                     color: $black;
                     @include transition(0.3s, ease-in-out);
+                    &.stretched-link {
+                        &::after {
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            bottom: 0;
+                            left: 0;
+                            z-index: 1;
+                            content: "";
+                        }
+                    }
                 }
             }
         }
