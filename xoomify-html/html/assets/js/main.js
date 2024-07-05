@@ -49,6 +49,23 @@ jQuery(document).ready(function($) {
         $(this).toggleClass('is-active');
         // $(this).parent().find('.menu-list-block').toggle(300);
     });
+    if ($('.is-play-icon').length){
+        $('.video-block').each(function() {
+            var $videoBlock = $(this);
+            var $video = $videoBlock.find('video');
+            var $playIcon = $videoBlock.find('.is-play-icon');
+    
+            $playIcon.click(function() {
+                if ($video.get(0).paused) {
+                    $video.get(0).play();
+                    $playIcon.hide();
+                } else {
+                    $video.get(0).pause();
+                    $playIcon.show();
+                }
+            });
+        });
+    }
 });
 if($('.hero-slider').length){
     var herosplide = new Splide('.hero-slider', {
@@ -109,4 +126,90 @@ if($('.post-slider').length){
     });
     postsplide.mount();
 }
+document.addEventListener("DOMContentLoaded", function () {
+    testimonial_slider_option();
+});
+function testimonial_slider_option() {
+    var testimonial_slider = document.getElementsByClassName('testimonial-slider');
+    for (var i = 0; i < testimonial_slider.length; i++) {
+        new Splide(testimonial_slider[i], {
+            type   : 'loop',
+            drag   : 'free',
+            focus  : 'center',
+            arrows: false,
+            pagination: false,
+            gap: 20,
+            perPage: 2.5,
+            autoScroll: {
+                speed: 1,
+            },
+            breakpoints: {
+                992: {
+                    perPage: 1.5,
+                },
+                767: {
+                    perPage: 1,
+                },
+            }
+        }).mount(window.splide.Extensions);
+    }
+}
 
+/****** Tab & Collapse Change Autoplay Video Function */
+// Function to pause all videos
+function pauseAllVideos() {
+    $('video').each(function () {
+        this.pause();
+        $(this).parents('.video-block').find('.play-icon').show();
+    });
+}
+// Function to play the video in the active tab
+function playActiveVideo(id) {
+    var video = $(id).find('video').get(0);
+    
+    if (video) {
+        setTimeout(() => {
+            $(id).find('.play-icon').hide();
+            video.play().catch(error => {
+                console.error("Error playing video: ", error);
+            }); 
+        }, 500);
+    }
+}
+
+// Handle tab shown event
+if($('button[data-bs-toggle="tab"]').length) {
+    $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function (event) {
+        pauseAllVideos();
+        var activeTabContentId = $(event.target).attr('data-bs-target');
+        playActiveVideo(activeTabContentId);
+    });
+    var initialActiveTab = $('.tab-pane.active');
+    var initialVideo = initialActiveTab.find('video').get(0);
+    // console.log(initialActiveTab);
+    if (initialVideo) {
+        initialVideo.play().catch(error => {
+            console.error("Error playing video: ", error);
+        });
+    }
+}
+// Handle collapse shown event
+if($('collapse').length) {
+    $('.collapse').on('shown.bs.collapse', function (event) {
+        pauseAllVideos();
+        var activeCollapseId = '#' + $(event.target).attr('id');
+        playActiveVideo(activeCollapseId);
+    });
+    // Handle collapse hidden event
+    $('.collapse').on('hidden.bs.collapse', function (event) {
+        pauseAllVideos();
+    });
+    // Play the video in the initially active collapse on page load
+    var initialActiveCollapse = $('.collapse.show');
+    var initialVideo = initialActiveCollapse.find('video').get(0);
+    if (initialVideo) {
+        initialVideo.play().catch(error => {
+            console.error("Error playing video: ", error);
+        });
+    }
+}
