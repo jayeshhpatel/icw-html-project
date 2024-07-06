@@ -66,6 +66,7 @@ jQuery(document).ready(function($) {
             });
         });
     }
+    const lightbox = GLightbox();
 });
 if($('.hero-slider').length){
     var herosplide = new Splide('.hero-slider', {
@@ -213,3 +214,10 @@ if($('collapse').length) {
         });
     }
 }
+$('.collapse-content').on('show.bs.collapse', function () {
+    $(this).parents('.collapse-item').addClass('active');
+});
+
+$('.collapse-content').on('hide.bs.collapse', function () {
+    $(this).parents('.collapse-item').removeClass('active');
+});
