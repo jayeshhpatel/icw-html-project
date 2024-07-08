@@ -86,13 +86,11 @@ if($('.hero-slider').length){
             },
             992: {
                 perPage: 3.5,
-                focus: 'center',
             },
             767: {
                 perPage: 2.5,
             },
             420: {
-                gap: 10,
                 perPage: 2,
             },
         }
@@ -216,6 +214,10 @@ if($('collapse').length) {
 }
 $('.collapse-content').on('show.bs.collapse', function () {
     $(this).parents('.collapse-item').addClass('active');
+    var collapsetop = $(this).parents('.collapse-item');
+        $('html,body').animate({
+        scrollTop: collapsetop.offset().top-85
+    }, 100);
 });
 
 $('.collapse-content').on('hide.bs.collapse', function () {
