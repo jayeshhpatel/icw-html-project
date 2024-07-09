@@ -2796,6 +2796,7 @@
 		@media (max-width: 992px) {
 			width: 250px;
 			height: 320px;
+			top: 30%;
 		}
 		@media (max-width: 767px) {
 			content: none;
@@ -2875,8 +2876,11 @@
 					list-style-type: disc;
 					font-size: 22px;
 					margin-bottom: 15px;
+					&:last-child {
+						margin-bottom: 0;
+					}
 					@media (max-width: 992px) {
-						font-size: 16px;
+						font-size: 18px;
 						margin-bottom: 8px;
 						line-height: normal;
 					}
@@ -2909,13 +2913,45 @@
 .codiumate-content-section {
 	z-index: 1;
 	.two-content-block {
+		padding: 100px 0;
 		&.align-items-center{
 			@include align-items(center);
+		}
+		@media (max-width: 992px) {
+			padding: 0 0 50px;
+			.order-2 {
+				order: 2;
+			}
+			.order-1 {
+				order: 1;
+			}
+			.image-block {
+				img {
+					width: 100%;
+				}
+			}
+		}
+	}
+	.single-content-block {
+		.image-block {
+			padding-top: 30px;
 		}
 	}
 	.image-block {
 		img {
 			@include border-radius(16px);
+			&.mobile {
+				display: none;
+				@media (max-width: 992px) {
+					display: inline-block;
+				}
+			}
+			&.desktop {
+				display: inline-block;
+				@media (max-width: 992px) {
+					display: none;
+				}
+			}
 		}
 	}
 	.section-title {
@@ -2935,8 +2971,6 @@
 				font-size: 18px;
 				margin-bottom: 10px;
 				@media (max-width: 992px) {
-					font-size: 16px;
-					margin-bottom: 5px;
 					line-height: normal;
 				}
 				&::marker {
@@ -2954,6 +2988,7 @@
 		font-size: 14px;
 		color: #ffffff;
 		font-weight: 700;
+		margin-top: 20px;
 		.logos {
 			margin-top: 15px;
 			display: flex;
