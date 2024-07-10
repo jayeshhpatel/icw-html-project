@@ -14,6 +14,7 @@
         <link href="//fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     
         <link rel='stylesheet' href='assets/css/main.css' type='text/css' media='screen' />
+        <link rel='stylesheet' href='assets/css/images-compare.css' type='text/css' media='screen' />
         <script type="text/javascript" src="assets/js/jquery.min.js"></script> 
     
         <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
@@ -227,20 +228,20 @@
             <section class="main-section pt-0">
                 <div class="container">
                     <div class="row align-items-center">
-                        <div class="col-md-7">
+                        <div class="col-lg-7">
                             <div class="section-title">
                                 <div class="tag">AI-Powered Features</div>
                                 <h2>Flexible and scalable options for various requirements</h2>
                                 <div class="sort-info">With our pay-as-you-go model, you can effortlessly scale your usage and control your costs. Our API adapts to both small and large photo volumes, offering the flexibility to meet your unique needs.</div>
                             </div>
                         </div>
-                        <div class="col-md-5">
-                            <div class="pricing-box ms-auto">
+                        <div class="col-lg-5">
+                            <div class="pay-pricing-box m-auto ms-lg-auto">
                                 <div class="tag">Pay as You go</div>
                                 <div class="price">$0.14<span>/credit</span></div>
                                 <ul class="price-list">
                                     <li class="list-item">
-                                        <div class="form-check">
+                                        <div class="pay-credits form-check">
                                             <input class="form-check-input" type="radio" id="radio_price100" name="price" value="v1_100_39">
                                             <label class="form-check-label" for="radio_price100">
                                                 <span class="credits">100 credits</span>
@@ -250,7 +251,7 @@
                                         </div>
                                     </li>
                                     <li class="list-item">
-                                        <div class="form-check">
+                                        <div class="pay-credits form-check">
                                             <input class="form-check-input" type="radio" id="radio_price300" name="price" value="v1_300_79">
                                             <label class="form-check-label" for="radio_price300">
                                                 <span class="credits">300 credits</span>
@@ -260,7 +261,7 @@
                                         </div>                                        
                                     </li>
                                     <li class="list-item">
-                                        <div class="form-check">
+                                        <div class="pay-credits form-check">
                                             <input class="form-check-input" type="radio" id="radio_price1000" name="price" value="v1_1000_199">
                                             <label class="form-check-label" for="radio_price1000">
                                                 <span class="credits">1000 credits</span>
@@ -270,7 +271,7 @@
                                         </div> 
                                     </li>
                                     <li class="list-item">
-                                        <div class="form-check">
+                                        <div class="pay-credits form-check">
                                             <input class="form-check-input" type="radio" id="radio_price10000" name="price" value="v1_10000_1399" checked>
                                             <label class="form-check-label" for="radio_price10000">
                                                 <span class="credits">10000 credits</span>
@@ -280,7 +281,7 @@
                                         </div>    
                                     </li>
                                     <li class="list-item">
-                                        <div class="form-check">
+                                        <div class="pay-credits form-check">
                                             <input class="form-check-input" type="radio" id="radio_price30000" name="price" value="v1_30000_2999">
                                             <label class="form-check-label" for="radio_price30000">
                                                 <span class="credits">30000 credits</span>
@@ -302,6 +303,29 @@
                     </div>           
                 </div>
             </section>     
+            <section class="main-section pt-0">
+                <div class="container">
+                    <div class="section-title text-center">
+                        <div class="tag">AI-Powered Features</div>
+                        <h2>Empower with a complete set of AI-driven functionalities</h2>
+                        <div class="sort-info">Access comprehensive features from image and video enhancement to reconstructing low-quality assets and preserving identities.</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="image-comparison-slider">
+                                <div style="display: none;">
+                                    <span class="images-compare-label">Before</span>
+                                    <img src="upload/img-before-compare-image.jpg" alt="Before">
+                                </div>
+                                <div>
+                                    <span class="images-compare-label">After</span>
+                                    <img src="upload/img-after-compare-image.jpg" alt="After">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
         <footer class="main-footer">
             <div class="container">
@@ -393,17 +417,28 @@
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/splide.min.js"></script>
         <script src="assets/js/splide-extension-auto-scroll.min.js"></script>
+        <script type="text/javascript" src="assets/js/jquery.images-compare.js"></script>
         <script src="assets/js/glightbox.min.js"></script>
         <script src="assets/js/main.js"></script>
         <script>
-            $('.form-check').on('click', function(){
+            $('.pay-credits').on('click', function(){
                 var price = $(this).parents('.pricing-box').find('.price');
                 var action = $(this).parents('.pricing-box').find('.action .btn span');
                 var per_credit = $(this).find('.per-credit').text().trim().match(/[\d\.]+/)[0];
                 var credits = $(this).find('.credits').text();
                 var totals = $(this).find('.totals').text();
+
                 $(price).html('$' + per_credit + '<span>/credit</span>');
                 $(action).html( credits + '-' + totals);
+            });
+        </script>
+        <script>
+             $('.image-comparison-slider').imagesCompare({
+                initVisibleRatio: 0.2,
+                interactionMode: "mousemove",
+                animationDuration: 450,
+                animationEasing: "swing",
+                precision: 2
             });
         </script>
     </body>
