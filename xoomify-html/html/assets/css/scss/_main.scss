@@ -1098,6 +1098,11 @@
         background: #F2F6FF;
         padding: 20px;
         @include border-radius(20px);
+    }
+    &.no-bg {
+        background: transparent;
+        padding: 20px;
+        @include border-radius(20px);
         .card-body {
             margin-top: 20px;
         }
@@ -3112,6 +3117,9 @@ blockquote {
 }
 .image-comparison-slider {
     @include border-radius(20px);
+    max-height: 500px !important;
+    max-width: 100% !important;
+    width: 100%;
     .images-compare-separator {
         width: 3px;
     }
@@ -3144,6 +3152,9 @@ blockquote {
             margin-right: -10px;
         }
     }
+    img {
+        width: 100%;
+    }
     .images-compare-label {
         @include border-radius(30px);
         padding: 5px 15px;
@@ -3153,5 +3164,107 @@ blockquote {
         font-size: 16px;
         font-weight: 400;
         font-family: $bodyfont;
+    }
+}
+.image-comparison-slider-tab {
+    .nav-tabs {
+        border: none;
+        gap: 30px;
+        @include justify-content(center);
+        margin-top: 30px;
+        @media (max-width: 767px) {
+            gap: 10px;
+        }
+        .nav-link {
+            border: 1px solid #EEF3FF;
+            padding: 10px;
+            @include border-radius(10px);
+            display: block;
+            color: $dark;
+            @include transition(0.3s, ease-in-out);
+            line-height: 1;
+            @media (max-width: 767px) {
+                padding: 5px;
+                font-size: 12px;
+            }
+            .img {
+                @include border-radius(10px);
+                overflow: hidden;
+                display: block;
+                margin-bottom: 10px;
+                max-width: 110px;
+                @media (max-width: 767px) {
+                    max-width: 80px;
+                }
+                img {                    
+                    aspect-ratio: 3 / 2;
+                }
+            }
+            &:hover, &:focus {
+                border-color: $primary;
+            }
+            &.active {
+                background: #EEF3FF;
+                border-color: $primary;
+            }
+        }
+    }
+    .tab-pane.active {
+        display: flex;
+    }
+}
+.features-block {
+    border: 1px solid #B3D1FF;
+    @include border-radius(10px);
+    background: #F2F6FF;
+    @media (max-width: 992px) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin-bottom: 30px;
+        background: transparent;
+        border: none;
+        gap: 30px;
+    }
+    @media (max-width: 767px) {
+        gap: 20px;
+    }
+    .features-card {
+        @include flexbox;
+        padding: 20px;
+        gap: 10px;
+        @media (max-width: 1400px) {
+            padding: 15px;
+        }
+        @media (max-width: 992px) {
+            @include flex-direction(column);
+            border: 1px solid #B3D1FF;
+            background: #F2F6FF;
+            @include border-radius(10px);
+        }
+        &:not(:last-child) {           
+            @media (min-width: 1400px) {
+                border-bottom: 1px solid #B3D1FF;
+            }
+        }
+        .card-img {
+            width: 18px;
+            height: 18px;
+            flex: none;
+            @include inline-flex;
+            margin-top: 5px;
+        }
+        .card-body {
+            .title {
+                font-size: 20px;
+                font-weight: 500;
+                margin-bottom: 5px;
+                @media (max-width: 1400px) {
+                    font-size: 18px;
+                }
+                @media (max-width: 767px) {
+                    font-size: 16px;
+                }
+            }
+        }
     }
 }

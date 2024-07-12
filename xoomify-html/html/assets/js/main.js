@@ -67,6 +67,41 @@ jQuery(document).ready(function($) {
         });
     }
     const lightbox = GLightbox();
+    function initImagesCompare(id) {
+        $(id).find('.image-comparison-slider').each(function() {
+            $(this).imagesCompare({
+                initVisibleRatio: 0.2,
+                interactionMode: "mousemove",
+                animationDuration: 450,
+                animationEasing: "linear",
+                precision: 2
+            });
+        });
+    }
+
+    if($('.image-comparison-slider-tab').length) {
+        // Initialize on page load for the active tab
+        initImagesCompare('.tab-pane.active');
+
+        // Listen for tab change events
+        $('.nav-link').on('click', function(e){
+            var id = $(this).attr('data-bs-target'); // activated tab
+            console.log(id);
+            initImagesCompare(id);
+        });
+    }
+    if($('.pay-pricing-box').length) {
+        $('.pay-credits').on('click', function(){
+            var price = $(this).parents('.pay-pricing-box').find('.price');
+            var action = $(this).parents('.pay-pricing-box').find('.action .btn span');
+            var per_credit = $(this).find('.per-credit').text().trim().match(/[\d\.]+/)[0];
+            var credits = $(this).find('.credits').text();
+            var totals = $(this).find('.totals').text();
+
+            $(price).html('$' + per_credit + '<span>/credit</span>');
+            $(action).html( credits + '-' + totals);
+        });
+    }
 });
 if($('.hero-slider').length){
     var herosplide = new Splide('.hero-slider', {

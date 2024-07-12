@@ -311,15 +311,88 @@
                         <div class="sort-info">Access comprehensive features from image and video enhancement to reconstructing low-quality assets and preserving identities.</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-9">
-                            <div class="image-comparison-slider">
-                                <div style="display: none;">
-                                    <span class="images-compare-label">Before</span>
-                                    <img src="upload/img-before-compare-image.jpg" alt="Before">
+                        <div class="col-lg-9 order-2 order-lg-1">
+                            <div class="image-comparison-slider-tab">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="portrait" role="tabpanel" aria-labelledby="portrait-tab" tabindex="0">
+                                        <div class="image-comparison-slider">
+                                            <div style="display: none;">
+                                                <span class="images-compare-label">Before</span>
+                                                <img src="upload/img-before-compare-image.jpg" alt="Before">
+                                            </div>
+                                            <div>
+                                                <span class="images-compare-label">After</span>
+                                                <img src="upload/img-after-compare-image.jpg" alt="After">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="landscape" role="tabpanel" aria-labelledby="landscape-tab" tabindex="0">
+                                        <div class="image-comparison-slider">
+                                            <div style="display: none;">
+                                                <span class="images-compare-label">Before</span>
+                                                <img src="upload/img-before-landscape-image.jpg" alt="Before">
+                                            </div>
+                                            <div>
+                                                <span class="images-compare-label">After</span>
+                                                <img src="upload/img-after-landscape-image.jpg" alt="After">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="old-photo" role="tabpanel" aria-labelledby="old-photo-tab" tabindex="0">
+                                        <div class="image-comparison-slider">
+                                            <div style="display: none;">
+                                                <span class="images-compare-label">Before</span>
+                                                <img src="upload/img-before-old-photo.jpg" alt="Before">
+                                            </div>
+                                            <div>
+                                                <span class="images-compare-label">After</span>
+                                                <img src="upload/img-after-old-photo.jpg" alt="After">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <span class="images-compare-label">After</span>
-                                    <img src="upload/img-after-compare-image.jpg" alt="After">
+                                <div class="nav nav-tabs" role="tablist" aria-orientation="vertical">
+                                    <button class="nav-link active" id="portrait-tab" data-bs-toggle="tab" data-bs-target="#portrait" type="button" role="tab" aria-controls="portrait" aria-selected="false">
+                                        <span class="img"><img src="upload/img-after-compare-image.jpg" alt="Portrait"></span>Portrait
+                                    </button>
+                                    <button class="nav-link" id="landscape-tab" data-bs-toggle="tab" data-bs-target="#landscape" type="button" role="tab" aria-controls="landscape" aria-selected="false">
+                                        <span class="img"><img src="upload/img-after-landscape-image.jpg" alt="Portrait"></span>Landscape
+                                    </button>
+                                    <button class="nav-link" id="old-photo-tab" data-bs-toggle="tab" data-bs-target="#old-photo" type="button" role="tab" aria-controls="old-photo" aria-selected="true">
+                                        <span class="img"><img src="upload/img-after-old-photo.jpg" alt="Portrait"></span>Old Photo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 order-1 order-lg-2">
+                            <div class="features-block">
+                                <div class="features-card">
+                                    <div class="card-img"><img src="upload/icon-face-enhance.svg" alt="Face Enhance"></div>
+                                    <div class="card-body">
+                                        <div class="title">Face Enhance</div>
+                                        <div class="sort-info">Improve the quality of facial features.</div>
+                                    </div>
+                                </div>
+                                <div class="features-card">
+                                    <div class="card-img"><img src="upload/icon-face-glow.svg" alt="Face Glow"></div>
+                                    <div class="card-body">
+                                        <div class="title">Face Glow</div>
+                                        <div class="sort-info">Revitalize people's look and feel.</div>
+                                    </div>
+                                </div>
+                                <div class="features-card">
+                                    <div class="card-img"><img src="upload/icon-auto-color.svg" alt="Auto Color"></div>
+                                    <div class="card-body">
+                                        <div class="title">Auto Color</div>
+                                        <div class="sort-info">Enhance and refine colors and tones</div>
+                                    </div>
+                                </div>
+                                <div class="features-card">
+                                    <div class="card-img"><img src="upload/icon-background-enhance.svg" alt="Background Enhance"></div>
+                                    <div class="card-body">
+                                        <div class="title">Background Enhance</div>
+                                        <div class="sort-info">Enhance the quality of every detail.</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -420,26 +493,5 @@
         <script type="text/javascript" src="assets/js/jquery.images-compare.js"></script>
         <script src="assets/js/glightbox.min.js"></script>
         <script src="assets/js/main.js"></script>
-        <script>
-            $('.pay-credits').on('click', function(){
-                var price = $(this).parents('.pricing-box').find('.price');
-                var action = $(this).parents('.pricing-box').find('.action .btn span');
-                var per_credit = $(this).find('.per-credit').text().trim().match(/[\d\.]+/)[0];
-                var credits = $(this).find('.credits').text();
-                var totals = $(this).find('.totals').text();
-
-                $(price).html('$' + per_credit + '<span>/credit</span>');
-                $(action).html( credits + '-' + totals);
-            });
-        </script>
-        <script>
-             $('.image-comparison-slider').imagesCompare({
-                initVisibleRatio: 0.2,
-                interactionMode: "mousemove",
-                animationDuration: 450,
-                animationEasing: "swing",
-                precision: 2
-            });
-        </script>
     </body>
 </html>
