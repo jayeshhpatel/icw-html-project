@@ -1272,30 +1272,6 @@ img {
     }
 }
 
-.marker-list {
-    list-style: none; 
-    padding-left: 35px !important;
-
-    & li:where([data-marker]) {
-        position: relative; 
-        margin-bottom: 10px;
-        list-style-type:none !important;
-
-        &::marker {
-            display: none !important;
-        }
-        &::before {
-            content: attr(data-marker); 
-            margin-right: 10px;
-            position: absolute; 
-            left: -35px; 
-            font-weight: 600;
-        }
-    }
-}
-
-  
-  
 
 .navbar-toggler:focus {
     box-shadow: none !important;
@@ -4868,10 +4844,10 @@ body {
             height: 100%;
             flex: none;
             max-width: none;
-            padding: 0 0px 15px;
+            padding: 0 15px 15px;
             @media (max-width: 992px) {
-                padding: 0 0 15px !important; 
-                margin: 0px 0px 0px 15px;
+                padding: 0 0px 15px 15px; 
+                margin: 0px;
             }
 
             .blog-post-inner {
@@ -4887,17 +4863,13 @@ body {
             }
         }
 
-        @media (min-width:992px) { 
+        @media (min-width:768px) { 
             @include justify-content(center);
             // width: 100%; 
 
             .slick-track {
                 width: 100% !important;
-                .slick-slide {
-                    width: calc(33.33% - 30px) !important;
-                    padding-left: 0;
-                    padding-right: 0;
-                }
+                .slick-slide {width: 33.33% !important;}
             }
         }
 
@@ -5177,7 +5149,7 @@ body {
         position: relative !important;
         @media (min-width:992px) {
             position: sticky !important;
-            top: 112px;
+            top: 110px;
             z-index: 2;
         }
     }
@@ -5187,12 +5159,11 @@ body {
             min-width: 305px;
         }
         @media (max-width:991px) {
-            position: inherit;
-            // position: sticky;
-            // top:55px;
-            // z-index: 2;
+            position: sticky;
+            top:55px;
+            z-index: 2;
             background-color: $white;
-            padding-top: 0px;
+            padding-top: 20px;
             padding-bottom: 20px;
         }
     }
@@ -5213,8 +5184,8 @@ body.single-post {
     .main-content-wrapper {overflow: visible !important;}
 
     .page-header-section{
-        @media (max-width:992px) {
-            margin-bottom: 20px;
+        @media (max-width:767px) {
+            margin-bottom: 10px;
         }
     }
 } 
@@ -5385,11 +5356,6 @@ body.single-post {
             font-size: 16px;
         }
     }
-
-    u {
-        text-decoration: underline;
-        text-underline-offset: 5px;
-    }
     // @media (max-width: 991px) {
     //     h2 {font-size: 22px; margin-bottom: 1rem;}
     //     h3 {font-size: 18px; margin-bottom: 1rem;}
@@ -5481,13 +5447,7 @@ body.single-post {
     table tr {border-bottom: 1px solid #3d4650; }
     table th {font-weight: bold; padding: 5px 15px; background:#674ea7; color: #fff; border-right: 1px solid #d6d7d8;}
     table th:last-child {border-right: 0px;}
-    table td { padding: 5px 15px; border: 1px solid #d6d7d8; vertical-align: top;}
-    table ul {
-        font-size: 14px;
-        li {
-            margin-bottom:5px !important;
-        }
-    }
+    table td { padding: 5px 15px; border: 1px solid #d6d7d8;}
 
     .post-sticky-content {
         h2 {margin-top: -25px; padding-top: 30px;
@@ -11246,179 +11206,6 @@ body .icw-gallery-imgs {
                 font-size: 13px;
                 font-weight: 500;
                 color: #7D7E8E;
-            }
-        }
-    }
-}
-
-.new-pricing-section {
-    .text-underline-curve {
-        display: inline-block !important;
-        background-image: url('data:image/svg+xml,<svg width="198" height="6" viewBox="0 0 198 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1C1 1 26.088 4.78225 97.6933 4.99237C169.299 5.2025 197 1 197 1" stroke="white" stroke-width="2"/></svg>');
-        background-position: center bottom;
-        background-repeat: no-repeat;
-        margin-bottom: 0 !important; 
-        padding-bottom: 5px;
-    }
-    .pricing-inner-block {
-        &.three_column {
-            &::before {
-                top: 0;
-                bottom: 0;
-                @include border-radius(0);
-            }
-        }
-        .pricing-header-block {
-            .pricing-card-header {                
-                padding: 40px 25px 15px;
-                @media (max-width: 1200px) {
-                    padding: 40px 10px 15px;
-                }
-                h3 {
-                    font-size: 20px;
-                    font-weight: 900;
-                }
-                .tag {
-                    color: #7D7E8E;
-                    font-size: 12px;
-                    font-weight: 500;
-                    margin: 0 !important;
-                }
-                .offer-model-text {
-                    margin: 30px 0 !important;
-                    .price-title {
-                        font-size: 36px;
-                        font-weight: 900;
-                        margin-top: 0 !important;
-                        margin-bottom: 5px;  
-                        @media (max-width: 1200px) {                            
-                            font-size: 30px;
-                        }
-                    }
-                    .text-gray {                        
-                        color: #7D7E8E;
-                        font-weight: 500;
-                    }
-                }
-                .action-btn {
-                    .btn {
-                        width: 100%;
-                        padding: 0 12px;
-                    }
-                }
-                &.popular-plan {
-                    padding: 40px 25px 15px;
-                    @media (max-width: 1200px) {
-                        padding: 40px 10px 15px;
-                    }
-                    margin: 0;
-                    @include border-radius(0);
-                    h3 {
-                        margin: 0 !important;
-                        margin-bottom: 5px !important;
-                    }
-                    .action-btn {
-                        .btn {                            
-                            span {
-                                color: $purple !important;
-                                margin-top: 0 !important;
-                            }
-                            &:hover, &:focus {
-                                span {
-                                    color: $white !important;
-                                }
-                                .arrow-down {
-                                    filter: brightness(0) invert(1);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        .pricing-body {
-            h3 {
-                padding: 0px 20px;
-            }
-            .pricing-content-block {
-                &:last-child {
-                    padding-bottom: 30px;
-                }
-            }
-            .pricing-content {
-                padding: 6px 0;
-                div {
-                    padding: 0px 20px;
-                    font-weight: 500;
-                    @include inline-flex;
-                    @include align-items(center);
-                    @include justify-content(center);
-                    &:first-child {
-                        @include justify-content(flex-start);
-                    }
-                    .yes-icon {
-                        width: 24px;
-                        height: 24px;
-                    }
-                }
-            }
-        }
-    }
-    .pricing-mobile-block {
-        .pricing-card {
-            @media (max-width: 992px) {
-                max-width: 570px;
-                margin: 0 auto 20px;
-            }
-            .pricing-header {
-                h2 {
-                    font-weight: 900;
-                }
-                .tag {
-                    color: #7D7E8E;
-                    font-size: 12px;
-                    font-weight: 500;
-                    margin: 0 !important;
-                }
-                .offer-model-text {
-                    margin: 20px 0 !important;
-                    .price-title {
-                        font-size: 36px;
-                        font-weight: 900;
-                        margin-top: 0 !important;
-                        margin-bottom: 5px;
-                    }
-                    .text-gray {                        
-                        color: #7D7E8E;
-                        font-weight: 500;
-                    }
-                }
-                .action-btn {
-                    .btn {
-                        width: 100%;
-                        padding: 13px 25px;
-                        font-size: 16px;
-                        border-radius: 5px;
-                        min-height: 46px;
-                    }
-                }
-            }
-            &.popular-plan {
-                .action-btn {
-                    .btn {                            
-                        span {
-                            color: $purple !important;
-                        }
-                        &:hover, &:focus {
-                            span {
-                                color: $white !important;
-                            }
-                            .arrow-down {
-                                filter: brightness(0) invert(1);
-                            }
-                        }
-                    }
-                }
             }
         }
     }
