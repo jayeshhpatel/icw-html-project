@@ -614,6 +614,7 @@
                 border-color: #9800F5;
                 &:hover {
                     background: #9800F5;
+                    color: $white;
                 }
             }
         }
@@ -768,6 +769,62 @@
                 a {
                     color: $primary;
                 }
+            }            
+        }
+    }
+}
+
+.single-post {
+    @media (min-width: 992px) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 50px;
+        @include align-items(center);
+    }
+}
+
+.topic_splide {
+    .post-card {
+        .card-body {
+            .category {
+                border: 1px solid #F55800;
+                color: $white;
+                background: #F55800;
+                &:hover {
+                    color: #F55800;
+                    background: transparent;
+                }
+                &.purple {
+                    border-color: #9800F5;
+                    background: #9800F5;
+                    color: $white !important;
+                    &:hover {
+                        color: #9800F5 !important;
+                        background: transparent;
+                    }
+                }
+            }
+            h3 {
+                a {
+                    color: $white;
+                }
+            }
+        }
+        .card-footer {
+            .user-info {
+                color: #C6C6FB;
+                .icon-star {
+                    background: url('data:image/svg+xml,<svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.64448 8.64383L4.68537 7.45961C4.24915 7.28489 3.76569 7.28489 3.32946 7.45961L0.370359 8.64383C0.150857 8.73258 -0.0686471 8.51349 0.020265 8.29439L1.20669 5.34076C1.38174 4.90534 1.38174 4.42278 1.20669 3.98736L0.020265 1.03373C-0.0686471 0.814638 0.150857 0.595543 0.370359 0.68429L3.32946 1.86852C3.76569 2.04324 4.24915 2.04324 4.68537 1.86852L7.64448 0.68429C7.86398 0.595543 8.08348 0.814638 7.99457 1.03373L6.80815 3.98736C6.6331 4.42278 6.6331 4.90534 6.80815 5.34076L7.99457 8.29439C8.08348 8.51349 7.86398 8.73258 7.64448 8.64383Z" fill="rgb(255 255 255)"/></svg>') no-repeat center center;
+                }
+            } 
+        }
+        &:hover, &:focus {
+            .card-body {
+                h3 {
+                    a {
+                        color: rgba(#fff, 0.7);
+                    }
+                }            
             }
         }
     }
@@ -2147,10 +2204,10 @@ margin: 8rem 0;
 
 .btn {
     .icw-loading {
-    margin-right: 15px;
-    &:after {
-        background-color: transparent !important;
-    }
+        margin-right: 15px;
+        &:after {
+            background-color: transparent !important;
+        }
     }
 }
 
@@ -2167,6 +2224,40 @@ a[disabled] {
         margin-top: 40px;
     }
 }
+.icw-splide-arrows {
+    .splide__arrow {
+        width: 48px;
+        height: 48px;
+        background: $white;
+        opacity: 1;
+        top: -82px;
+        right: 0;
+        @include transition(0.3s, ease-in-out);
+        @media (max-width: 992px) {
+            width: 40px;
+            height: 40px;
+            top: -72px;
+        }
+        svg {
+            width: 14px;
+            height: 14px;
+            fill: #212121;
+        }
+        &:disabled {
+            opacity: 1;
+            background: rgba(#fff, 0.16);
+            pointer-events: none;
+        }
+        &--prev {
+            right: 64px;
+            left: auto;
+        }
+        &:hover, &:focus {
+            opacity: 0.7;
+        }
+    }
+}
+
 ul.icw-pagenavi-pager {
     padding: 0;
     list-style: none;

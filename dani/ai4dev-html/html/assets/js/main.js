@@ -47,16 +47,42 @@ jQuery(document).ready(function($) {
 });
 var isHidden = true;
 $('.is-show-all').on('click', function(e) {
-   e.preventDefault();
-   $('.is-xs-none').toggleClass('is-show');
-   isHidden = !isHidden;
-   // Update button text based on the boolean value
-   $(this).find('.is-text').text(isHidden ? "Show All" : "Hide All");
+    e.preventDefault();
+    $('.is-xs-none').toggleClass('is-show');
+    isHidden = !isHidden;
+    // Update button text based on the boolean value
+    $(this).find('.is-text').text(isHidden ? "Show All" : "Hide All");
    
-   if(isHidden){
-    var offset_target = $(this).parents('.main-section').offset().top;
-    $('html, body').animate({ 
-        scrollTop: offset_target
-    }, 50);
-   } 
+    if(isHidden){
+        var offset_target = $(this).parents('.main-section').offset().top;
+        $('html, body').animate({ 
+            scrollTop: offset_target
+        }, 50);
+    } 
 });
+
+if ($('.topic_splide').length) {
+    var splide = new Splide( '.topic_splide', {
+        type   : 'slide',
+        perPage: 3,
+        perMove: 1,
+        gap: '48px',
+        pagination: false,
+        classes: {
+            arrows: 'icw-splide-arrows',
+        },
+        breakpoints: {
+            1200: {
+                gap: '24px',
+            },
+            992: {
+                perPage: 2,
+            },
+            767: {
+                perPage: 1,
+            },
+        }
+    } );
+    
+    splide.mount();
+}
