@@ -55,7 +55,7 @@ jQuery(document).ready(function($) {
             var $video = $videoBlock.find('video');
             var $playIcon = $videoBlock.find('.is-play-icon');
     
-            $playIcon.click(function() {
+            $videoBlock.click(function() {
                 if ($video.get(0).paused) {
                     $video.get(0).play();
                     $playIcon.hide();
@@ -64,9 +64,9 @@ jQuery(document).ready(function($) {
                     $playIcon.show();
                 }
             });
-        });
+        });        
     }
-    const lightbox = GLightbox();
+    var lightbox = GLightbox();
     function initImagesCompare(id) {
         $(id).find('.image-comparison-slider').each(function() {
             $(this).imagesCompare({
@@ -103,6 +103,7 @@ jQuery(document).ready(function($) {
         });
     }
 });
+
 if($('.hero-slider').length){
     var herosplide = new Splide('.hero-slider', {
         type: 'loop',
@@ -113,7 +114,7 @@ if($('.hero-slider').length){
         speed: 600,
         gap: 30,
         omitEnd: true,
-        classes: { pagination: 'icw-slide-dots', },
+        classes: { pagination: 'icw-slide-dots'},
         breakpoints: {
             1400: {
                 gap: 10,
