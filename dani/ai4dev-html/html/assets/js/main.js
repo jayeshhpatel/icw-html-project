@@ -4,9 +4,8 @@
 var $ = jQuery.noConflict();
 
 jQuery(document).ready(function($) {
-    if ($('[data-bs-toggle=tooltip]').length) {
-        $("body").tooltip({ selector: '[data-bs-toggle=tooltip]' });
-    }
+    $('[data-bs-toggle="popover"]').popover();
+    $('[data-bs-toggle="tooltip"]').tooltip({ boundary: 'window' });
 
     $('.toggle-sidebar,.bg-overly').on('click', function (e) {
         $('.toggle-sidebar,body,.main-header').toggleClass('is-visible');
