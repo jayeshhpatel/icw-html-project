@@ -259,3 +259,37 @@ $('.collapse-content').on('show.bs.collapse', function () {
 $('.collapse-content').on('hide.bs.collapse', function () {
     $(this).parents('.collapse-item').removeClass('active');
 });
+
+function playPauseVideo() {
+    let videos = document.querySelectorAll("video");
+    videos.forEach((video) => {
+        // We can only control playback without insteraction if video is mute
+        video.muted = true;
+        // Play is a promise so we need to check we have it
+        var play_icon = video.parentNode.parentNode.childNodes[3];
+        let playPromise = video.play();
+        console.log(play_icon.style.visibility = 'hidden');
+        if (playPromise !== undefined) {
+            playPromise.then((_) => {
+                let observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.intersectionRatio !== 1 && !video.paused) {
+                                video.pause();                                
+                                play_icon.style.visibility = 'visible';
+                            } else if (video.paused) {
+                                video.play();
+                                play_icon.style.visibility = 'hidden';
+                            }
+                        });
+                    },
+                    { threshold: 0.2 }
+                );
+                observer.observe(video);
+            });
+        }
+    });
+}
+
+// And you would kick this off where appropriate with:
+playPauseVideo();

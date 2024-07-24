@@ -1388,5 +1388,28 @@
         <script src="assets/js/splide-extension-auto-scroll.min.js"></script>
         <script src="assets/js/glightbox.min.js"></script>
         <script src="assets/js/main.js"></script>
+        <script>
+            $(document).ready(function() {
+                var videos = document.querySelectorAll('.video-block video');
+
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            // entry.target.play();
+                            console.log('here');
+                        } else {
+                            // entry.target.pause();
+                            console.log('there');
+                        }
+                    });
+                }, {
+                    threshold: 0.5 // Adjust this value as needed
+                });
+
+                videos.forEach(function(video) {
+                    observer.observe(video);
+                });
+            });
+        </script>
     </body>
 </html>
