@@ -268,7 +268,7 @@ function playPauseVideo() {
         // Play is a promise so we need to check we have it
         var play_icon = video.parentNode.parentNode.childNodes[3];
         let playPromise = video.play();
-        console.log(play_icon.style.visibility = 'hidden');
+        console.log(play_icon.style.display = 'none');
         if (playPromise !== undefined) {
             playPromise.then((_) => {
                 let observer = new IntersectionObserver(
@@ -276,10 +276,10 @@ function playPauseVideo() {
                         entries.forEach((entry) => {
                             if (entry.intersectionRatio !== 1 && !video.paused) {
                                 video.pause();                                
-                                play_icon.style.visibility = 'visible';
+                                play_icon.style.display = 'block';
                             } else if (video.paused) {
                                 video.play();
-                                play_icon.style.visibility = 'hidden';
+                                play_icon.style.display = 'none';
                             }
                         });
                     },
