@@ -593,8 +593,9 @@ body a.icw-admin {
     }
 }
 
-.main-content-wrapper {
-    /* Default Form Styling */
+
+/* Default Form Styling */
+.icw-hubspot-form {
     input[type="text"],
     input[type="email"],
     input[type="tel"],
@@ -636,9 +637,12 @@ body a.icw-admin {
         min-height: 150px;
     }
     label {
-        color: rgba($black, 0.59) !important;
+        color: $black !important;
         background: transparent;
         border: none;
+    }
+    .hs-form-field {
+        margin-bottom: 15px;
     }
     .hs-form-required,
     .required {
@@ -660,6 +664,9 @@ body a.icw-admin {
             }
         }
     }
+    .hs_error_rollup {
+        display: none;
+    }
 
     .hs-form input[type=submit]  {
         color: $white !important;
@@ -670,6 +677,7 @@ body a.icw-admin {
         padding: 0 25px;
         font-weight: 700;
         font-size: 16px;
+        font-family: $font-spaceGrotesk;
         min-width: 120px;
         @include transition(0.3s, ease-in-out);
         @include border-radius(0 8px 0 8px);
@@ -681,9 +689,9 @@ body a.icw-admin {
         &:not(:disabled):not(.disabled):active,
         &:not(:disabled):not(.disabled).active:focus, 
         &:not(:disabled):not(.disabled):active:focus {
-            background-color: $primary !important;
+            background-color: #1c00e5 !important;
             color: $white !important;
-            border-color:$primary !important;
+            border-color: #1c00e5 !important;
         }
         &.disabled,
         &:disabled {
@@ -694,6 +702,7 @@ body a.icw-admin {
         }
     }
 }
+
 
 .form-with-slider-labels {
     $label-displacement: 1px;
@@ -764,6 +773,28 @@ body a.icw-admin {
             text-align: center;
             margin-bottom: 20px;
             padding: 0;
+        }
+    }
+}
+
+.icw-hubspot-form.is-email-form {
+    max-width: 400px;
+    form {
+        @include flexbox;
+        @include align-items(flex-start);
+    }
+    .hs-form {
+        @include flexbox;
+        @include align-items(flex-start);
+        .hs-form-field {
+            width: 100%;
+            position: relative;
+            & > label {
+                display: none;
+            }
+        }
+        .hs-submit {
+            margin-left: 8px;
         }
     }
 }
@@ -1174,7 +1205,6 @@ body a.icw-admin {
     }
 }
 
-
 .main-footer {
 	background: transparent; 
 	padding: 80px 0 50px;
@@ -1207,13 +1237,22 @@ body a.icw-admin {
             color: rgba($black, 0.6);
             font-size: 16px;
         }
-        .form-block {
+        .icw-hubspot-form {
             margin: 0;
-            max-width: 100%;
-            @media (max-width: 992px) {
+            max-width: 400px;
+            width: 100%;
+            .form-group {
+                width: 100%;
+            }
+            .form-action {
+                margin-left: 8px;
+                white-space: nowrap;
+            }
+            @media (max-width: 767px) {
+                max-width: 100%;
                 form {
                     @include flex-direction(column);
-                    .form-action {
+                    .form-action, .hs-submit {
                         margin-top: 15px;
                         margin-left: 0;
                         width: 100%;
@@ -1221,30 +1260,6 @@ body a.icw-admin {
                             width: 100%;
                         }
                     }
-                }
-            }
-            input {
-                padding: 12px 16px;
-                @include border-radius(5px);
-                background: transparent;
-                border: 1px solid #E5E5E5;
-                color: $black;
-                font-weight: 400;
-                height: 48px;
-                width: 100%;
-                min-height: 37px;
-                font-size: 16px;
-                @include border-radius(0 8px 0 8px);
-                &::placeholder {
-                    color: #6D6D6D;
-                }
-                &.error {
-                    border-color: #f44336;
-                }  
-                &:focus {
-                    border-color: $primary;
-                    box-shadow: none;
-                    outline: 0 none;
                 }
             }
         }
@@ -1286,7 +1301,7 @@ body a.icw-admin {
                     }
                 }
                 a {
-                    font-size: 20px;
+                    font-size: 16px;
                     font-weight: 500;
                     padding: 10px 25px;
                     border: 1px solid transparent;
@@ -1295,7 +1310,6 @@ body a.icw-admin {
                         border-color: rgba($black, 0.08);
                     }
                     @media (max-width: 1200px) {
-                        font-size: 18px;
                         padding: 8px 15px;
                     }
                     @media (max-width: 767px) {
