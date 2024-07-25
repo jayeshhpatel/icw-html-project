@@ -894,15 +894,25 @@ body a.icw-admin {
             pointer-events: none;
         }
     }
-    input[type="radio"], input[type="checkbox"] {
-        border-color: rgba(41, 63, 204, 0.2) !important;
+    input[type=radio], input[type=checkbox] {
+        border: 1px solid $primary !important;
         height: 20px;
         min-height: 20px;
         width: 20px;
         padding: 0;
+        position: relative;
     }
-    input[type="checkbox"]:checked {
-        background: url('../images/icons/icon-check.svg')
+    
+    input[type=checkbox]:checked::before {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        background: #0075ff url('../images/icons/icon-check-white.svg') no-repeat center center;
+        z-index: 2;
+        @include border-radius(2px);
     }
     .ff-el-input--content {
         @include flexbox;
