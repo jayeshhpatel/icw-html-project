@@ -3314,6 +3314,10 @@ blockquote {
     border: 1px solid rgba($primary, 0.3);
     @include border-radius(10px);
     padding: 30px;
+    @media (max-width: 992px) {
+        padding: 20px;
+        margin-top: 40px;
+    }
     .ff-el-group {
         margin-bottom: 15px;
         &:last-child {
@@ -3323,8 +3327,16 @@ blockquote {
     .ff-t-container {
         @include flexbox;
         gap: 20px;
+        @media (max-width: 767px) {
+            @include flex-direction(column);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
         .ff-t-cell  {
             width: 50%;
+            @media (max-width: 767px) {
+                width: 100%;
+            }
         }
     }
 }
