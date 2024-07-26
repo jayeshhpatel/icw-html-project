@@ -55,7 +55,7 @@ jQuery(document).ready(function($) {
             var $video = $videoBlock.find('video');
             var $playIcon = $videoBlock.find('.is-play-icon');
     
-            $videoBlock.click(function() {
+            $playIcon.click(function() {
                 if ($video.get(0).paused) {
                     $video.get(0).play();
                     $playIcon.hide();
@@ -64,9 +64,9 @@ jQuery(document).ready(function($) {
                     $playIcon.show();
                 }
             });
-        });        
+        });
     }
-    var lightbox = GLightbox();
+    const lightbox = GLightbox();
     function initImagesCompare(id) {
         $(id).find('.image-comparison-slider').each(function() {
             $(this).imagesCompare({
@@ -103,7 +103,6 @@ jQuery(document).ready(function($) {
         });
     }
 });
-
 if($('.hero-slider').length){
     var herosplide = new Splide('.hero-slider', {
         type: 'loop',
@@ -114,7 +113,7 @@ if($('.hero-slider').length){
         speed: 600,
         gap: 30,
         omitEnd: true,
-        classes: { pagination: 'icw-slide-dots'},
+        classes: { pagination: 'icw-slide-dots', },
         breakpoints: {
             1400: {
                 gap: 10,
@@ -259,39 +258,3 @@ $('.collapse-content').on('show.bs.collapse', function () {
 $('.collapse-content').on('hide.bs.collapse', function () {
     $(this).parents('.collapse-item').removeClass('active');
 });
-
-function playPauseVideo() {
-    let videos = document.querySelectorAll("video");
-    videos.forEach((video) => {
-        // We can only control playback without insteraction if video is mute
-        video.muted = true;
-        // Play is a promise so we need to check we have it
-        var play_icon = video.parentNode.parentNode.childNodes[3];
-        let playPromise = video.play();
-        play_icon.style.display = 'none';
-        if (playPromise !== undefined) {
-            playPromise.then((_) => {
-                let observer = new IntersectionObserver(
-                    (entries) => {
-                        entries.forEach((entry) => {
-                            if (entry.intersectionRatio !== 1 && !video.paused) {
-                                video.pause();                                
-                                play_icon.style.display = 'flex';
-                            } else if (video.paused) {
-                                video.play();
-                                play_icon.style.display = 'none';
-                            }
-                        });
-                    },
-                    { threshold: 0.2 }
-                );
-                observer.observe(video);
-            });
-        }
-    });
-}
-
-// And you would kick this off where appropriate with:
-if($('video').length) {  
-    playPauseVideo();
-}
