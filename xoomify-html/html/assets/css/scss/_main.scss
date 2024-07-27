@@ -3250,8 +3250,25 @@ blockquote {
             }
         }
     }
-    .tab-pane.active {
-        display: flex;
+    .tab-content {
+        @include flexbox;
+        @include flex-direction(column);
+        height: 100%;
+    }
+    .tab-pane {
+        flex: 1;
+        max-height: 500px;
+        overflow: hidden;
+        @include border-radius(20px);
+        &.active {
+            @include flexbox;
+        }
+        .video-block {
+            max-width: 100%;            
+            video {
+                @include border-radius(20px);
+            }
+        }
     }
 }
 .features-block {
