@@ -31,11 +31,14 @@
             .contact--wrapper-details .contact-slider-review-block .review-block::before {content: none;}
             .email-form {padding: 20px}
             .meetings-iframe-container {  border-radius: 24px; overflow: hidden; background: radial-gradient(circle at 100% 100%, #01012a 0, #01012a 22px, transparent 22px) 0 0/24px 24px no-repeat,radial-gradient(circle at 0 100%, #01012a 0, #01012a 22px, transparent 22px) 100% 0/24px 24px no-repeat,radial-gradient(circle at 100% 0, #01012a 0, #01012a 22px, transparent 22px) 0 100%/24px 24px no-repeat,radial-gradient(circle at 0 0, #01012a 0, #01012a 22px, transparent 22px) 100% 100%/24px 24px no-repeat,-webkit-gradient(linear, left top, left bottom, from(#01012a), to(#01012a)) 50% 50%/calc(100% - 4px) calc(100% - 48px) no-repeat,-webkit-gradient(linear, left top, left bottom, from(#01012a), to(#01012a)) 50% 50%/calc(100% - 48px) calc(100% - 4px) no-repeat,repeating-linear-gradient(241deg, #bfb5f6 0, rgba(50,50,83,0.37) 25%, #7c6ce5 52%, #413d74 85%, #695aca 100%);}
-            .meetings-iframe-container iframe { border-radius: 24px; background: #2f2272; vertical-align: bottom; width: calc(100% - 4px); margin: 2px; }
+            .meetings-iframe-container iframe { border-radius: 24px; background: #2f2272; vertical-align: bottom; width: calc(100% - 4px); margin: 2px; height: 590px !important; }
             .p-top-4 { padding-top: 0 !important;}
             .hline { display: none; }
             @media (max-width: 1300px) {
                 .contact--wrapper::after {background-size:contain;}
+            }
+            @media (max-width: 1440px) {
+                .meetings-iframe-container iframe { height: 600px !important; }
             }
             @media(min-width: 1025px){
                 .container.container--bottom {flex-direction: row-reverse;gap: 50px;}
@@ -172,7 +175,7 @@
                                 <iframe
                                     src="https://meetings.codium.ai/meetings/adam-rubin/website-demo-request-round-robin?embed=true&amp;parentHubspotUtk=1c63cf084a676d3013b3b663944c491e&amp;parentPageUrl=https://www.codium.ai/&amp;page_id=7618"
                                     width="100%" data-hs-ignore="true"
-                                    style="min-width: 312px; min-height: 516px; height: 756px; border: none;"></iframe></div>
+                                    style="min-width: 312px; min-height: 516px; height: 690px; border: none;" class="celender-iframe"></iframe></div>
                             <script type="text/javascript"
                                 src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></script>
                         </div>
@@ -621,11 +624,13 @@
         <script type="text/javascript" src="assets/lib/glightbox/glightbox.min.js"></script>        
         <script type="text/javascript" src="assets/js/main.js"></script>
         <script>
-            jQuery(document).ready(function () {
-                $('iframe').contents().find("head").append(
-                    $("<style type='text/css'> .p-top-4{ padding-top: 0 !important; } </style>")
-                );
-            });
+            // jQuery('.celender-iframe').each(function(i){
+            //     var $head = jQuery(this).contents().find('head');
+            //     if ($head.length){
+            //         console.log('here');
+            //         $head.append('there');
+            //     }
+            // });
         </script>
     </body>
 
