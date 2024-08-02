@@ -3068,92 +3068,148 @@ blockquote {
         }
     }
 }
-.pay-pricing-box {   
-    background: #EEF3FF;
-    border: 1px solid $primary;
-    padding: 40px;
-    max-width: 460px;
-    @include border-radius(20px);
-    @media (max-width: 575px) {
-        padding: 20px;
-    }
-    .tag {
-        font-size: 14px;
-        color: $primary;
-        font-weight: 600;
-        margin-bottom: 10px;
-    }
-    .price {
-        font-size: 38px;
-        font-weight: 600;
-        color: $dark;
-        margin-bottom: 20px;
-        @media (max-width: 767px) {
-            font-size: 28px;
-        }
-        span {
-            color: #616161;
-        }
-    }
-    .price-list {
-        .list-item {
-            @include flexbox;
-            @include align-items(center);
-            margin-bottom: 10px;
-            .pay-credits {
-                width: 100%;
-                .form-check-input {
-                    margin-top: 1px;
-                    @include border-radius(3px);
-                    &:checked[type=radio] {
-                        background-color: $white;
-                        background-image: url('data:image/svg+xml,<svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.34162 10C3.96135 10 3.60119 9.85499 3.3704 9.60496L0.246956 6.23251C0.150388 6.12836 0.0798871 6.00967 0.0394839 5.88324C-0.00091932 5.75681 -0.0104325 5.62512 0.0114879 5.49568C0.0334084 5.36624 0.0863327 5.24161 0.167235 5.1289C0.248138 5.01619 0.355433 4.91761 0.482985 4.8388C0.610492 4.75967 0.755856 4.70188 0.910746 4.66874C1.06564 4.6356 1.22701 4.62776 1.38561 4.64568C1.54421 4.6636 1.69693 4.70692 1.83501 4.77315C1.97309 4.83939 2.09381 4.92725 2.19026 5.03168L4.24546 7.24903L9.41274 0.468397C9.58411 0.244518 9.85715 0.0853227 10.172 0.0257293C10.4868 -0.0338641 10.8177 0.0110105 11.092 0.15051C11.6629 0.440537 11.8386 1.05488 11.4819 1.52207L5.37665 9.52996C5.27243 9.66727 5.12877 9.78172 4.95816 9.86339C4.78754 9.94505 4.59511 9.99145 4.39757 9.99857C4.37834 10 4.36085 10 4.34162 10V10Z" fill="rgb(41 63 204)"/></svg>');
-                        background-repeat: no-repeat;
-                        background-position: center center;
+.pay-pricing-box { 
+	background: #EEF3FF;
+	border: 2px solid $primary;
+	padding: 40px;
+	max-width: 460px;
+	position: relative;
+	@include border-radius(20px);
+	
+	@media (min-width: 992px) {
+		margin-left: 100px;
+	}
 
-                    }
-                }
-                .form-check-label {
-                    display: grid;
-                    grid-template-columns: auto 60px 100px;
-                    gap: 20px;
-                    margin-left: 10px;
-                    @media (max-width: 992px) {
-                        grid-template-columns: auto 45px 85px;
-                    }
-                    .credits {
-                        color: $dark;
-                    }
-                    .totals {
-                        color: $dark;
-                        font-weight: 500;
-                    }
-                    .per-credit {
-                        color: #616161;
-                    }
-                }
-            }
-            &.more-credits {
-                margin-top: 20px;
-                svg {
-                    margin-right: 10px;
-                }
-            }
-        }
-    }
-    .action {
-        margin-top: 30px;
-        .btn {
-            display: block;
-            padding: 7px 25px !important;
-            min-height: auto;
-            span {
-                font-size: 14px;
-                display: block;
-                font-weight: 400;
-            }
-        }
-    }
+	@media (max-width: 575px) {
+		padding: 20px;
+	}
+
+	.offer-badge {
+		position: absolute;
+		right: 14px;
+		top: -20px;
+		// -webkit-animation: pulse 3s linear infinite;
+		// animation: pulse 3s linear infinite;
+		img {
+			border-radius: 0px;
+		}
+	}
+
+	.offer-text {
+		font-size: 18px;
+		color: $dark;
+	}
+
+	.tag {
+		font-size: 14px;
+		color: $primary;
+		font-weight: 600;
+		margin-bottom: 10px;
+	}
+	.price {
+		font-size: 38px;
+		font-weight: 600;
+		color: $dark;
+		margin-bottom: 20px;
+		@media (max-width: 767px) {
+			font-size: 28px;
+		}
+		span {
+			color: #616161;
+		}
+	}
+	.price-list {
+		margin: 0px;
+		padding: 0px;
+		list-style: none;
+		.list-item {
+			@include flexbox;
+			@include align-items(center);
+			margin-bottom: 20px;
+			.pay-credits {
+				width: 100%;
+				.form-check-input {
+					margin-top: 0;
+					@include border-radius(3px);
+					border: 1px solid #9DC4FF !important;
+					height: 20px;
+					min-height: 20px;
+					width: 20px;
+					padding: 0;
+					position: relative;
+					&:checked[type=radio] {
+						background-color: $white;
+						background-image: url('data:image/svg+xml,<svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.34162 10C3.96135 10 3.60119 9.85499 3.3704 9.60496L0.246956 6.23251C0.150388 6.12836 0.0798871 6.00967 0.0394839 5.88324C-0.00091932 5.75681 -0.0104325 5.62512 0.0114879 5.49568C0.0334084 5.36624 0.0863327 5.24161 0.167235 5.1289C0.248138 5.01619 0.355433 4.91761 0.482985 4.8388C0.610492 4.75967 0.755856 4.70188 0.910746 4.66874C1.06564 4.6356 1.22701 4.62776 1.38561 4.64568C1.54421 4.6636 1.69693 4.70692 1.83501 4.77315C1.97309 4.83939 2.09381 4.92725 2.19026 5.03168L4.24546 7.24903L9.41274 0.468397C9.58411 0.244518 9.85715 0.0853227 10.172 0.0257293C10.4868 -0.0338641 10.8177 0.0110105 11.092 0.15051C11.6629 0.440537 11.8386 1.05488 11.4819 1.52207L5.37665 9.52996C5.27243 9.66727 5.12877 9.78172 4.95816 9.86339C4.78754 9.94505 4.59511 9.99145 4.39757 9.99857C4.37834 10 4.36085 10 4.34162 10V10Z" fill="rgb(41 63 204)"/></svg>');
+						background-repeat: no-repeat;
+						background-position: center center;
+						background-size: 12px;
+					}
+				}
+				.form-check-label {
+					display: grid;
+					grid-template-columns: auto 60px 100px;
+					gap: 20px;
+					margin-left: 10px;
+					font-size: 16px;
+					font-weight: 400;
+
+					@media (max-width: 992px) {
+						grid-template-columns: auto 45px 85px;
+					}
+					.credits {
+						color: $dark;
+						strong {
+							font-size: 14px;
+							display: block;
+							line-height: 1.3;
+						}
+					}
+					.totals {
+						color: $dark;
+						font-weight: 600;
+						small {
+							color: #8F8F8F;
+							font-size: 13px;
+							font-weight: 500;
+							display: block;
+							line-height: 1.3;
+							text-decoration: line-through;
+						}
+					}
+					.per-credit {
+						color: #353535;
+						small {
+							color: #8F8F8F;
+							font-size: 13px;
+							display: block;
+							line-height: 1.3;
+							text-decoration: line-through;
+						}
+					}
+				}
+			}
+			&.more-credits {
+				margin-top: 20px;
+				svg {
+					margin-right: 10px;
+				}
+			}
+		}
+	}
+	.action {
+		margin-top: 30px;
+		position: relative;
+		.btn {
+			display: block;
+			padding: 7px 25px !important;
+			min-height: auto;
+			span {
+				font-size: 14px;
+				display: block;
+				font-weight: 400;
+			}
+		}
+	}
 }
 .image-comparison-slider {
     @include border-radius(20px);

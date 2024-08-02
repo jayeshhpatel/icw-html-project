@@ -93,13 +93,17 @@ jQuery(document).ready(function($) {
     if($('.pay-pricing-box').length) {
         $('.pay-credits').on('click', function(){
             var price = $(this).parents('.pay-pricing-box').find('.price');
+            var buybutton = $(this).parents('.pay-pricing-box').find('.action .btn');
             var action = $(this).parents('.pay-pricing-box').find('.action .btn span');
-            var per_credit = $(this).find('.per-credit').text().trim().match(/[\d\.]+/)[0];
-            var credits = $(this).find('.credits').text();
-            var totals = $(this).find('.totals').text();
-
+            var per_credit = $(this).find('.per-credit .main-per-credit').text().trim().match(/[\d\.]+/)[0];
+            var credits = $(this).find('.credits .main-credits').text();
+            var totals = $(this).find('.totals .main-totals').text();
+            var value = $(this).find('input').val();
+    
+            $(buybutton).attr('href', 'https://xoomify.in/pricing?' + value);
             $(price).html('$' + per_credit + '<span>/credit</span>');
             $(action).html( credits + '-' + totals);
+            console.log(value);
         });
     }
 });
