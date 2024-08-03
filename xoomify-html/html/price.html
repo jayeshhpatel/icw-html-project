@@ -272,6 +272,78 @@
                 </div>
                 </div>
             </section>  
+            <section class="main-section pt-0 is-container-fluid pricing-section">
+                <div class="container">
+                    <div class="bg-with-shape bg-section-with-shape-star-top bg-section-with-shape-star-bottom">                       
+                        <div class="row g-4">
+                            <div class="col-xl-4">
+                                <div class="section-title">
+                                    <div class="tag">Pricing</div>
+                                    <h2>Get Premium</h2>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-4">
+                                <div class="pricing-box">
+                                    <div class="switcher-plan-wrapper">
+                                        <nav class="switcher-plan">
+                                            <div class="selector"></div>
+                                            <a href="#monthly" class="active">Monthly</a>
+                                            <a href="#yearly">Yearly</a>
+                                        </nav>
+                                        <div class="switcher-plan-contents">
+                                            <div id="monthly" class="switcher-plan-content active">
+                                                <div class="access-day">Free Access 3 Days<span class="arrow-img"><svg width="62" height="25" viewBox="0 0 62 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 14.5L2.07864 19.8863L5.70402 15.393L0 14.5ZM61.037 0.811352C58.4643 7.12607 50.4557 15.7799 39.9021 20.5339C29.3824 25.2727 16.3955 26.1115 3.79948 16.9239L3.21018 17.7318C16.153 27.1724 29.5344 26.301 40.3129 21.4457C51.0575 16.6056 59.2771 7.78133 61.963 1.18865L61.037 0.811352Z" fill="#0EABCF"/></svg></span></div>
+                                                <h3>Get Pro Access</h3>
+                                                <div class="price">$5 USD <small>(monthly)</small></div>
+                                                <div class="info"><em class="icon-diamond"></em>Get Unlimited Credits</div>
+                                                <ul class="fetures-list">
+                                                    <li>Unlimited access</li>
+                                                    <li>3 days trail</li>
+                                                    <li>Lorem ipsum dolor sit.</li>
+                                                </ul>
+                                                <div class="action">
+                                                    <span class="offer-badge"><img src="assets/images/img-off.svg" alt="50% off" /></span>
+                                                    <a href="#" class="btn btn-primary">Buy Plan</a>
+                                                </div>
+                                            </div>
+                                            <div id="yearly" class="switcher-plan-content">
+                                                <div class="access-day">Free Access 3 Days<span class="arrow-img"><svg width="62" height="25" viewBox="0 0 62 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 14.5L2.07864 19.8863L5.70402 15.393L0 14.5ZM61.037 0.811352C58.4643 7.12607 50.4557 15.7799 39.9021 20.5339C29.3824 25.2727 16.3955 26.1115 3.79948 16.9239L3.21018 17.7318C16.153 27.1724 29.5344 26.301 40.3129 21.4457C51.0575 16.6056 59.2771 7.78133 61.963 1.18865L61.037 0.811352Z" fill="#0EABCF"/></svg></span></div>
+                                                <h3>Get Pro Access</h3>
+                                                <div class="price">$10 USD <small>(yearly)</small></div>
+                                                <div class="info"><em class="icon-diamond"></em>Get Unlimited Credits</div>
+                                                <ul class="fetures-list">
+                                                    <li>Lorem ipsum dolor sit.</li>
+                                                    <li>Lorem ipsum dolor sit.</li>
+                                                </ul>
+                                                <div class="action">
+                                                    <span class="offer-badge"><img src="assets/images/img-off.svg" alt="50% off" /></span>
+                                                    <a href="#" class="btn btn-primary">Buy Plan</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-4">
+                                <div class="pricing-box">
+                                    <div class="plan">Get a Quote</div>
+                                    <h3>Let's talk</h3>
+                                    <div class="price"><small><strong>Business plan</strong> or <strong>API Access required</strong></small></div>
+                                    <div class="info"></div>
+                                    <ul class="fetures-list">
+                                        <li>Lorem ipsum dolor sit.</li>
+                                        <li>Lorem ipsum dolor sit.</li>
+                                        <li>Lorem ipsum dolor sit.</li>
+                                    </ul>
+                                    <div class="action">
+                                        <a href="#" class="btn btn-primary-outline">Book a Demo</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>  
             <section class="main-section faq-section pt-0">
                 <div class="container">
                     <div class="section-title text-center">
@@ -415,5 +487,38 @@
         <script src="assets/js/splide-extension-auto-scroll.min.js"></script>
         <script src="assets/js/glightbox.min.js"></script>
         <script src="assets/js/main.js"></script>
+        <script>
+            jQuery(document).ready(function ($) {
+                if($('.switcher-plan').length) {
+                    var tabs = $('.switcher-plan');
+                    var selector = $('.switcher-plan').find('a').length;
+                    //var selector = $(".tabs").find(".selector");
+                    var activeItem = tabs.find('.active');
+                    var activeWidth = activeItem.innerWidth()-10;
+                    $(".selector").css({
+                        "left": activeItem.position.left + "px", 
+                        "width": activeWidth + "px"
+                    });
+                
+                    $(".switcher-plan").on("click","a",function(e){
+                        e.preventDefault();
+                        $('.switcher-plan a').removeClass("active");
+                        $(this).addClass('active');
+                        var activeWidth = $(this).innerWidth()-10;
+                        var itemPos = $(this).position();
+                        $(".selector").css({
+                            "left":itemPos.left + "px", 
+                            "width": activeWidth + "px"
+                        });
+                        // Hide all tab contents
+                        $('.switcher-plan-content').hide();
+                            
+                        // Show the content of the selected tab
+                        var target = $(this).attr('href');
+                        $(target).show();
+                    });
+                }
+            });
+        </script>
     </body>
 </html>
