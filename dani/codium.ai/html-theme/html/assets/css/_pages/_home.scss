@@ -1964,6 +1964,7 @@
   }
 }
 
+
 .single-review-section {
   background: #ffffff;
   padding: 50px 15px 50px;
@@ -1980,6 +1981,7 @@
     }
   }
 }
+
 
 .single-review-block {
   background: #01012A url(../images/single-review-bg.jpg) no-repeat center center;
@@ -2935,6 +2937,7 @@
     filter: blur(132px);
 	transform: matrix(1, 0, 0, -1, 0, 0);
     z-index: -1;
+    max-height: 1200px;
 }
 .codiumate-content-section {
 	z-index: 1;
@@ -3172,6 +3175,89 @@
       }
       @media (max-width: 1200px) {
         font-size: 16px;
+      }
+    }
+  }
+}
+.new-single-review-section {
+  background: linear-gradient(180deg, #C1B6FF 20.85%, #FAF9FF 50%), #ffff;
+  .single-review-block {
+    padding: 50px 50px 100px;
+    &::after, &::before {
+      content: none;
+    }
+  }
+}
+.new-customer-review-section {
+  background-image: url(../images/new-customer-review-bg.jpg);
+  .customer-review-box {
+    width: 300px;
+    &::before {
+      display: block;
+      padding-top: 355px;
+      content: "";
+    }
+    .app-box {
+      padding: 30px;
+      &:not(:last-child) {
+        border-right: 1px solid rgba(#ffffff, 0.6);
+      }
+      @media (max-width: 992px) {
+        padding: 25px;
+      }
+    }
+    .box-title {
+      font-size: 18px;
+    }
+    .box-desc {
+      padding: 0;
+      margin: 0 30px 24px;
+      font-size: 16px;
+      border-bottom: 1px solid rgba(#ffffff, 0.6);
+    }
+    .box-icon {
+      padding: 0 30px;
+      margin-bottom: 20px;
+      @include justify-content(flex-start);
+      .text {
+        font-size: 48px;
+      }
+    }
+    .box-review {
+      .icon-star {
+        margin: 0 auto 12px;
+      }
+    }
+    .box-customer-details {
+      @include flexbox;
+      @include align-items(center);
+      .user-img {
+        width: 48px;
+        height: 48px;
+        @include border-radius(50%);
+        margin-right: 10px;
+        img {
+          @include border-radius(50%);
+        }
+      }
+      .user-detail {
+        .user-name {
+          margin-bottom: 8px;
+        }
+      }
+    }
+    &.vs-review-box {
+      @include transition(0.32s, ease-in-out);
+      transform: scale(1);
+      width: 440px;
+      .box-icon {
+        padding: 0;
+        @include justify-content(center);
+        margin-bottom: 30px;
+      }
+      &:hover, &:focus {
+        transform: scale(1.02);
+        opacity: 0.8;
       }
     }
   }
