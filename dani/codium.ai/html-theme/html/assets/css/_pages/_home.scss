@@ -3180,7 +3180,7 @@
   }
 }
 .new-single-review-section {
-  background: linear-gradient(180deg, #C1B6FF 20.85%, #FAF9FF 50%), #ffff;
+  background: linear-gradient(180deg, #C1B6FF 20.85%, #FAF9FF 50%), #fff;
   .single-review-block {
     padding: 50px 50px 100px;
     &::after, &::before {
@@ -3196,6 +3196,9 @@
       display: block;
       padding-top: 355px;
       content: "";
+      @media (max-width: 767px) {
+        padding-top: 277px;
+      }
     }
     .app-box {
       padding: 30px;
@@ -3208,24 +3211,52 @@
     }
     .box-title {
       font-size: 18px;
+      @media (max-width: 767px) {
+        font-size: 14px;
+      }
     }
     .box-desc {
       padding: 0;
       margin: 0 30px 24px;
       font-size: 16px;
       border-bottom: 1px solid rgba(#ffffff, 0.6);
+      @media (max-width: 767px) {
+        font-size: 14px;        
+        margin: 0 20px 15px;
+        min-height: 130px;
+      }
     }
     .box-icon {
       padding: 0 30px;
       margin-bottom: 20px;
       @include justify-content(flex-start);
+      .icon {
+        @media (max-width: 767px) {
+          max-width: 32px;
+          min-height: 32px;
+        }
+      }
       .text {
         font-size: 48px;
+        @media (max-width: 767px) {
+          font-size: 34px;
+        }
       }
     }
     .box-review {
+      @media (max-width: 767px) {
+        .number-review {
+          font-size: 14px;
+        }
+      }
       .icon-star {
         margin: 0 auto 12px;
+        @media (max-width: 767px) {
+          svg {
+            width: 16px;
+            height: 16px;
+          }
+        }
       }
     }
     .box-customer-details {
@@ -3250,6 +3281,9 @@
       @include transition(0.32s, ease-in-out);
       transform: scale(1);
       width: 440px;
+      @media (max-width: 767px) {
+        width: 340px;
+      }
       .box-icon {
         padding: 0;
         @include justify-content(center);
