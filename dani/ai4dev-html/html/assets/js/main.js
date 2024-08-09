@@ -43,6 +43,21 @@ jQuery(document).ready(function($) {
         $(this).toggleClass('is-active');
         $(this).parent().find('.sub-menu').first().toggle(300);
     });
+    if ($('.star-animation').length) {
+        $(".star-animation").hover(
+            function () {
+                $(this).removeClass("is-star-leave");
+                $(this).addClass("is-star-hover");
+            },
+            function () {
+                $(this).removeClass("is-star-hover");
+                $(this).addClass("is-star-leave");
+                setTimeout(() => {
+                    $(this).removeClass("is-star-leave");
+                }, 2000);
+            }
+        );
+    }
 });
 var isHidden = true;
 $('.is-show-all').on('click', function(e) {

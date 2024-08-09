@@ -195,18 +195,24 @@ img {
     }
 }
 
-// .container {
-// 	padding-left: 15px;
-// 	padding-right: 15px;
-//     .row {
-//         margin-left: -15px;
-//         margin-right: -15px;
-//         & > * {
-//             padding-left: 15px;
-//             padding-right: 15px;
-//         }
-//     }
-// }
+.image-block {
+    position: relative;
+}
+
+.container {
+	@media (max-width: 575px) {
+        padding-left: 24px;
+        padding-right: 24px;
+        .row {
+            margin-left: -24px;
+            margin-right: -24px;
+            & > * {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+        }
+    }
+}
 
 h1, .h1 {
     font-size: 72px;
@@ -1277,9 +1283,17 @@ body a.icw-admin {
             @media (max-width: 992px) {
                 @include justify-content(center);
             }
+            @media (max-width: 575px) {
+                @include flex-direction(column);
+                @include align-items(flex-start);
+            }
             li {
                 @include inline-flex;
                 @include align-items(center);
+                @media (max-width: 575px) {
+                    @include flex-direction(column);
+                    @include align-items(flex-start);
+                }
                 &::after {
                     content: '';
                     background: url('data:image/svg+xml; utf8,<svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.64448 8.64383L4.68537 7.45961C4.24915 7.28489 3.76569 7.28489 3.32946 7.45961L0.370359 8.64383C0.150857 8.73258 -0.0686471 8.51349 0.020265 8.29439L1.20669 5.34076C1.38174 4.90534 1.38174 4.42278 1.20669 3.98736L0.020265 1.03373C-0.0686471 0.814638 0.150857 0.595543 0.370359 0.68429L3.32946 1.86852C3.76569 2.04324 4.24915 2.04324 4.68537 1.86852L7.64448 0.68429C7.86398 0.595543 8.08348 0.814638 7.99457 1.03373L6.80815 3.98736C6.6331 4.42278 6.6331 4.90534 6.80815 5.34076L7.99457 8.29439C8.08348 8.51349 7.86398 8.73258 7.64448 8.64383Z" fill="rgb(29 0 245)"/></svg>') no-repeat center center;
@@ -1291,6 +1305,11 @@ body a.icw-admin {
                     margin: 0 10px;
                     @media (max-width: 767px) {
                         margin: 0 5px;
+                        width: 8px;
+                        height: 8px;
+                    }
+                    @media (max-width: 575px) {
+                        margin: 5px 12px;
                         width: 8px;
                         height: 8px;
                     }
@@ -1313,8 +1332,8 @@ body a.icw-admin {
                         padding: 8px 15px;
                     }
                     @media (max-width: 767px) {
-                        font-size: 14px;
-                        padding: 5px 8px;
+                        font-size: 20px;
+                        padding: 8px 10px;
                     }
                 }
                 &.current-menu-item {
@@ -1333,6 +1352,9 @@ body a.icw-admin {
             @media (max-width: 992px) {
                 @include justify-content(center);
                 margin-top: 30px;
+            }
+            @media (max-width: 575px) {
+                @include justify-content(flex-start);
             }
             li {
                 a {
@@ -1435,6 +1457,9 @@ body a.icw-admin {
         @include justify-content(space-between);
         @media (max-width: 767px) {
             @include flex-direction(column);
+        }
+        @media (max-width: 575px) {
+            @include align-items(flex-start);
         }
         .copyright-text {
             font-family: $font-spaceGrotesk;

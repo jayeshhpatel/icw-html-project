@@ -287,7 +287,7 @@
     }
 
 	& * :last-child {
-        margin-bottom: 0px !important;
+        margin-bottom: 0px;
     }
 
 	.back-action {
@@ -304,49 +304,9 @@
 			}
 		}
 	}
-    &.is-vector-star {
-        .container {
-            position: relative;
-        }
-        .star-animation {
-            position: absolute;
-            top: 140px;
-            right: -40px;
-            @media (max-width: 992px) {
-                right: -20px;
-            }
-            @media (max-width: 767px) {
-                display: none;
-            }
-            &.icon-purple {
-                width: 88px;
-                top: 20px;
-                right: auto;
-                left: 0;
-                @media (max-width: 992px) {
-                    width: 68px;
-                }
-                &::before {
-                    width: 88px;
-                    height: 80px;
-                    @media (max-width: 992px) {
-                        width: 68px;
-                        height: 60px;
-                    }
-                }
-                &::after {
-                    width: 38px;
-                    height: 38px;
-                    top: calc(50% - 19px);
-                    right: calc(50% - 19px);
-                    @media (max-width: 992px) {
-                        width: 28px;
-                        height: 28px;
-                        top: calc(50% - 14px);
-                        right: calc(50% - 14px);
-                    }
-                }
-            }
+    .image-block {
+        @media (max-width: 992px) {
+            margin-bottom: 30px;
         }
     }
     &.about-page-header {
@@ -378,37 +338,75 @@
             }
         }
     }
-    &.is-right-vector {
-        padding: 100px 0;
-        overflow: hidden;
+}
+
+.is-vector-star {
+    .container {
+        position: relative;
+    }
+    .star-animation {
+        position: absolute;
+        top: 140px;
+        right: -40px;
+        margin: 0;
         @media (max-width: 992px) {
-            padding: 60px 0;
+            right: -20px;
         }
         @media (max-width: 767px) {
-            padding: 50px 0 80px;
+            display: none;
         }
-        .star-animation {
-            position: absolute;
-            top: 150px;
-            right: 70px;
-            margin: 0;
+        &.icon-purple {
+            width: 88px;
+            top: 20px;
+            right: auto;
+            left: 0;
             @media (max-width: 992px) {
-                right: -20px;
+                width: 68px;
+            }
+            &::before {
+                width: 88px;
+                height: 80px;
+                @media (max-width: 992px) {
+                    width: 68px;
+                    height: 60px;
+                }
+            }
+            &::after {
+                width: 38px;
+                height: 38px;
+                top: calc(50% - 19px);
+                right: calc(50% - 19px);
+                @media (max-width: 992px) {
+                    width: 28px;
+                    height: 28px;
+                    top: calc(50% - 14px);
+                    right: calc(50% - 14px);
+                }
+            }
+        }
+    }
+    &.is-right-vector {
+        .star-animation {
+            top: auto;
+            bottom: -30px;
+            right: 80px;
+            @media (max-width: 992px) {
+                right: 0px;
             }
             @media (max-width: 767px) {
                 display: block;
                 top: auto;
-                bottom: -70px;
-                left: -20px;
+                bottom: 0px;
+                left: -30px;
                 right: auto;
             }
             &.icon-purple {
-                top: -40px;
+                top: -10px;
+                bottom: auto;
                 right: 20px;
                 left: auto;
-                @media (max-width: 767px) {
-                    right: -20px;
-                    bottom: auto;
+                @media (max-width: 992px) {
+                    right: -30px;
                 }
             }
         }
@@ -446,6 +444,7 @@
     line-height: 0.7;
     margin: 0 20px;
     position: relative;
+    vertical-align: middle;
     @media (max-width: 1200px) {
         width: 50px;
         margin: 0 10px;
@@ -457,6 +456,7 @@
         background: url('data:image/svg+xml; utf8,<svg width="67" height="61" viewBox="0 0 67 61" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M45.0381 0L21.6613 0C18.1003 0 14.8093 1.89704 13.0288 4.97223L1.33539 25.1807C-0.445129 28.2558 -0.445129 32.0499 1.33539 35.1351L13.0288 55.3435C14.8093 58.4187 18.1003 60.3158 21.6613 60.3158H45.0381C48.5991 60.3158 51.8901 58.4187 53.6706 55.3435L65.364 35.1351C67.1445 32.0599 67.1445 28.2658 65.364 25.1807L53.6706 4.97223C51.8901 1.89704 48.5991 0 45.0381 0Z" fill="rgb(29 0 245)"/></svg>') no-repeat center center;
         background-size: contain !important;
         display: inline-block;
+        transform: rotate(0deg);
         animation: starRotate 0.01s ease-in-out;
         animation-timeline: view();
         animation-range: entry 0% cover 100%;
@@ -476,6 +476,7 @@
         top: calc(50% - 14px);
         right: calc(50% - 14px);
         z-index: 1;
+        transform: rotate(0deg);
         animation: starRotate-reverse 0.01s ease-in-out;
         animation-timeline: view();
         animation-range: entry 0% cover 100%;
@@ -491,6 +492,22 @@
             background: url('data:image/svg+xml; utf8,<svg width="67" height="61" viewBox="0 0 67 61" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M45.0381 0L21.6613 0C18.1003 0 14.8093 1.89704 13.0288 4.97223L1.33539 25.1807C-0.445129 28.2558 -0.445129 32.0499 1.33539 35.1351L13.0288 55.3435C14.8093 58.4187 18.1003 60.3158 21.6613 60.3158H45.0381C48.5991 60.3158 51.8901 58.4187 53.6706 55.3435L65.364 35.1351C67.1445 32.0599 67.1445 28.2658 65.364 25.1807L53.6706 4.97223C51.8901 1.89704 48.5991 0 45.0381 0Z" fill="rgb(152 0 245)"/></svg>') no-repeat center center;
         }
     }
+    &.is-star-hover {
+        &::before {
+            animation: starHoverRotate 2s ease-in-out;
+        }
+        &::after {
+            animation: starHoverRotateReverse 2s ease-in-out;
+        }
+    }
+    &.is-star-leave {
+        &::before {
+            animation: starHoverRotateReverse 2s ease-in-out;
+        }
+        &::after {
+            animation: starHoverRotate 2s ease-in-out;
+        }
+    }
 }
 @keyframes starRotate {
     from { transform: rotate(0deg);}
@@ -499,6 +516,15 @@
 @keyframes starRotate-reverse {
     from {  transform: rotate(0deg);}
     to{ transform: rotate(1000deg);} 
+}
+
+@keyframes starHoverRotate {
+    from { transform: rotate(0); }
+    to { transform: rotate(360deg); }
+}
+@keyframes starHoverRotateReverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0); }
 }
 
 .hero-section {
@@ -516,19 +542,8 @@
     .section-title { 
         max-width: 1200px;
         z-index: 2;
-        position: relative;        
-        h1 {
-            &:hover {
-                .star-animation {
-                    &::after{
-                        @include transform(translateY(7px) rotate(180deg));
-                    }
-                    &::before{
-                        @include transform(translateY(7px) rotate(-240deg)); 
-                    }
-                }
-            }
-        }
+        position: relative;       
+        
         .sort-info {
             max-width: 550px;
         }
@@ -2938,4 +2953,11 @@ blockquote {
             }
         }
     }
+}
+
+.hexagon-shape {
+    width: 230px;
+    height: 230px;
+    -webkit-clip-path: polygon(98.66025% 45%, 99.39693% 46.5798%, 99.84808% 48.26352%, 100% 50%, 99.84808% 51.73648%, 99.39693% 53.4202%, 98.66025% 55%, 78.66025% 89.64102%, 77.66044% 91.06889%, 76.42788% 92.30146%, 75% 93.30127%, 73.4202% 94.03794%, 71.73648% 94.48909%, 70% 94.64102%, 30% 94.64102%, 28.26352% 94.48909%, 26.5798% 94.03794%, 25% 93.30127%, 23.57212% 92.30146%, 22.33956% 91.06889%, 21.33975% 89.64102%, 1.33975% 55%, 0.60307% 53.4202%, 0.15192% 51.73648%, 0% 50%, 0.15192% 48.26352%, 0.60307% 46.5798%, 1.33975% 45%, 21.33975% 10.35898%, 22.33956% 8.93111%, 23.57212% 7.69854%, 25% 6.69873%, 26.5798% 5.96206%, 28.26352% 5.51091%, 30% 5.35898%, 70% 5.35898%, 71.73648% 5.51091%, 73.4202% 5.96206%, 75% 6.69873%, 76.42788% 7.69854%, 77.66044% 8.93111%, 78.66025% 10.35898%);
+    clip-path: polygon(98.66025% 45%, 99.39693% 46.5798%, 99.84808% 48.26352%, 100% 50%, 99.84808% 51.73648%, 99.39693% 53.4202%, 98.66025% 55%, 78.66025% 89.64102%, 77.66044% 91.06889%, 76.42788% 92.30146%, 75% 93.30127%, 73.4202% 94.03794%, 71.73648% 94.48909%, 70% 94.64102%, 30% 94.64102%, 28.26352% 94.48909%, 26.5798% 94.03794%, 25% 93.30127%, 23.57212% 92.30146%, 22.33956% 91.06889%, 21.33975% 89.64102%, 1.33975% 55%, 0.60307% 53.4202%, 0.15192% 51.73648%, 0% 50%, 0.15192% 48.26352%, 0.60307% 46.5798%, 1.33975% 45%, 21.33975% 10.35898%, 22.33956% 8.93111%, 23.57212% 7.69854%, 25% 6.69873%, 26.5798% 5.96206%, 28.26352% 5.51091%, 30% 5.35898%, 70% 5.35898%, 71.73648% 5.51091%, 73.4202% 5.96206%, 75% 6.69873%, 76.42788% 7.69854%, 77.66044% 8.93111%, 78.66025% 10.35898%);
 }
