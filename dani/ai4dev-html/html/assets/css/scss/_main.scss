@@ -319,7 +319,7 @@
                 top: 100px;
                 right: 20%;
                 @media (max-width: 992px) {
-                    right: -20px;
+                    right: 10%;
                 }
                 @media (max-width: 767px) {
                     display: block;
@@ -457,12 +457,17 @@
         background-size: contain !important;
         display: inline-block;
         transform: rotate(0deg);
-        animation: starRotate 0.01s ease-in-out;
-        animation-timeline: view();
-        animation-range: entry 0% cover 100%;
+        @media (min-width: 767px) {
+            animation: starRotate 0.01s ease-in-out;
+            animation-timeline: view();
+            animation-range: entry 0% cover 100%;
+        }
         @media (max-width: 1200px) {
             width: 50px;
             height: 48px;
+        }
+        @media (max-width: 767px) {
+            animation: starHoverRotate 4s linear infinite reverse;
         }
     }
     &::after {
@@ -477,14 +482,19 @@
         right: calc(50% - 14px);
         z-index: 1;
         transform: rotate(0deg);
-        animation: starRotate-reverse 0.01s ease-in-out;
-        animation-timeline: view();
-        animation-range: entry 0% cover 100%;
+        @media (min-width: 767px) {
+            animation: starRotate-reverse 0.01s ease-in-out;
+            animation-timeline: view();
+            animation-range: entry 0% cover 100%;
+        }
         @media (max-width: 1200px) {
             width: 22px;
             height: 22px;
             top: calc(50% - 11px);
             right: calc(50% - 11px);
+        }
+        @media (max-width: 767px) {
+            animation: starHoverRotate 4s linear infinite;
         }
     }
     &.icon-purple {
@@ -497,15 +507,23 @@
             animation: starHoverRotate 2s ease-in-out;
         }
         &::after {
-            animation: starHoverRotateReverse 2s ease-in-out;
+            animation: starHoverRotate 2s ease-in-out reverse;
         }
     }
     &.is-star-leave {
         &::before {
-            animation: starHoverRotateReverse 2s ease-in-out;
+            animation: starHoverRotate 2s ease-in-out reverse;
         }
         &::after {
             animation: starHoverRotate 2s ease-in-out;
+        }
+    }
+    &.auto-animation {
+        &::before {
+            animation: autoRotateAnimation 9s linear infinite;
+        }
+        &::after {
+            animation: autoRotateAnimationReverse 9s linear infinite;
         }
     }
 }
@@ -522,9 +540,15 @@
     from { transform: rotate(0); }
     to { transform: rotate(360deg); }
 }
-@keyframes starHoverRotateReverse {
-    from { transform: rotate(360deg); }
-    to { transform: rotate(0); }
+@keyframes autoRotateAnimation {
+    0% { transform: rotate(0); }
+    50% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}
+@keyframes autoRotateAnimationReverse {
+    0% { transform: rotate(360deg); }
+    50% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .hero-section {
@@ -1041,7 +1065,9 @@
 		}
 
         .content-block {
-            border-bottom: 1px solid #F2F2F2;
+            &:not(:last-child) {
+                border-bottom: 1px solid #F2F2F2;
+            }
             padding-bottom: 100px;
 			margin-bottom: 100px;
             &:last-child {
@@ -1254,6 +1280,7 @@
             text-align: left;
             @include flex-direction(row);
             @include align-items(center);
+            padding: 20px 15px;
         }
         .card-img {
             width: 40px;
@@ -1757,56 +1784,6 @@
 @keyframes rotate {
     from { transform: rotate(360deg); }
     to { transform: rotate(0); }
-}
-
-.hover-arrow-list {
-    columns: 120px 2;
-    column-gap: 50px;
-    @media (max-width: 992px) {
-        column-gap: 30px;
-    }
-    @media (max-width: 767px) {
-        columns: 300px 1;
-    }
-    li { 
-        a {
-            color: $white;
-            @include transition(0.3s, ease-in-out);
-            border-bottom: 1px solid rgba(#fff, 0.16);
-            display: block;
-            padding: 25px 15px 25px 0;
-            font-size: 18px;
-            @include flexbox;
-            @include align-items(center);
-            @media (max-width: 992px) {
-                font-size: 15px;
-                padding: 20px 10px 20px 0;
-            }
-            &::after {
-                content: '';
-                background: url('data:image/svg+xml; utf8,<svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 1.5L8 8L1.5 14.5" stroke="white" stroke-width="2"/></svg>') no-repeat center center;
-                background-size: contain;
-                width: 8px;
-                height: 13px;
-                display: inline-block;
-                margin-left: auto;
-                opacity: 0;
-                @include transition(0.3s, ease-in-out);
-            }
-            &:hover, &:focus {
-                color: $white;
-                border-color: $white;
-                background: rgba(#fff, 0.08) ;
-                padding: 25px 15px;
-                @media (max-width: 992px) {
-                    padding: 20px 10px;
-                }
-                &::after {
-                    opacity: 1;
-                }
-            }
-        }
-    }
 }
 
 .product-container {

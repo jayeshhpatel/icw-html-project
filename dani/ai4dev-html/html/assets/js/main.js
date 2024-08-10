@@ -44,7 +44,7 @@ jQuery(document).ready(function($) {
         $(this).parent().find('.sub-menu').first().toggle(300);
     });
     if ($('.star-animation').length) {
-        $(".star-animation").hover(
+        $(".star-animation.is-hover").hover(
             function () {
                 $(this).removeClass("is-star-leave");
                 $(this).addClass("is-star-hover");
