@@ -195,24 +195,18 @@ img {
     }
 }
 
-.image-block {
-    position: relative;
-}
-
-.container {
-	@media (max-width: 575px) {
-        padding-left: 24px;
-        padding-right: 24px;
-        .row {
-            margin-left: -24px;
-            margin-right: -24px;
-            & > * {
-                padding-left: 24px;
-                padding-right: 24px;
-            }
-        }
-    }
-}
+// .container {
+// 	padding-left: 15px;
+// 	padding-right: 15px;
+//     .row {
+//         margin-left: -15px;
+//         margin-right: -15px;
+//         & > * {
+//             padding-left: 15px;
+//             padding-right: 15px;
+//         }
+//     }
+// }
 
 h1, .h1 {
     font-size: 72px;
@@ -548,7 +542,20 @@ body a.icw-admin {
     }
 }
 
-
+.ul-list{
+	padding-left: 20px;
+	margin-bottom: 30px;
+	@media (max-width:991px) {
+		margin-bottom: 25px;
+	}
+	li {
+		list-style: disc;
+		margin-bottom: 10px;
+		&::marker {
+			color: $primary;
+		}
+	}
+}
 .ol-list {
 	padding-left: 20px;
 	margin-bottom: 30px;
@@ -565,73 +572,16 @@ body a.icw-admin {
 	}
 }
 
-.ul-list {
-    &.is-two-col {
-        columns: 120px 2;
-        column-gap: 50px;
-        @media (max-width: 992px) {
-            column-gap: 30px;
-        }
-        @media (max-width: 767px) {
-            columns: 300px 1;
-        }
-    }    
-    li { 
-        div, a {
-            color: $white;
-            @include transition(0.3s, ease-in-out);
-            border-bottom: 1px solid rgba(#fff, 0.16);
-            display: block;
-            padding: 25px 15px 25px 0;
-            font-size: 18px;
-            @include flexbox;
-            @include align-items(center);
-            @media (max-width: 992px) {
-                font-size: 15px;
-                padding: 20px 10px 20px 0;
-            }
-            &::after {
-                content: '';
-                background: url('data:image/svg+xml; utf8,<svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 1.5L8 8L1.5 14.5" stroke="white" stroke-width="2"/></svg>') no-repeat center center;
-                background-size: contain;
-                width: 8px;
-                height: 13px;
-                display: inline-block;
-                margin-left: auto;
-                opacity: 0;
-                @include transition(0.3s, ease-in-out);
-            } 
-        }             
-        a {
-            &:hover, &:focus {
-                color: $white;
-                border-color: $white;
-                background: rgba(#fff, 0.08) ;
-                padding: 25px 15px;
-                @media (max-width: 992px) {
-                    padding: 20px 10px;
-                }
-                &::after {
-                    opacity: 1;
-                }
-            }          
-        }
-    }
-}
-.ul-check-list {
+.check-list {
     padding: 0;
     margin: 0;
     li {
         list-style: none;
         color: $black;
-        @include flexbox; 
-        margin: 0 0 10px;
-        &:last-child {
-            margin-bottom: 0;
-        }
+        @include flexbox;
         &::before {
             content: '';
-            background: url('data:image/svg+xml; utf8,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6663 5L7.49967 14.1667L3.33301 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
+            background: url('data:image/svg+xml; utf8,<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg"><rect y="0.601562" width="16" height="16" rx="8" fill="rgb(109 109 109)"/><path d="M6.66748 11.9325C6.49682 11.9325 6.32615 11.8671 6.19615 11.7371L3.52948 9.07046C3.26882 8.80979 3.26882 8.38846 3.52948 8.12779C3.79015 7.86713 4.21148 7.86713 4.47215 8.12779L6.66748 10.3231L11.5295 5.46113C11.7901 5.20046 12.2115 5.20046 12.4722 5.46113C12.7328 5.72179 12.7328 6.14312 12.4722 6.40379L7.13882 11.7371C7.00882 11.8671 6.83815 11.9325 6.66748 11.9325Z" fill="white"/></svg>') no-repeat center center;
             background-size: contain;
             width: 16px;
             height: 16px;
@@ -639,31 +589,6 @@ body a.icw-admin {
             display: inline-block;
             margin-right: 8px;
             margin-top: 4px;
-        }
-    }
-}
-.ul-dot-list {
-    padding: 0;
-    margin: 0;
-    li {
-        list-style: none;
-        color: $black;
-        @include flexbox;
-        margin: 0 0 10px;
-        &:last-child {
-            margin-bottom: 0;
-        }
-        &::before {
-            content: '';
-            background: $white;
-            background-size: contain;
-            width: 8px;
-            height: 8px;
-            @include border-radius(50%);
-            flex: none;
-            display: inline-block;
-            margin-right: 8px;
-            margin-top: 8px;
         }
     }
 }
@@ -729,7 +654,6 @@ body a.icw-admin {
         margin-bottom: 5px;
         line-height: 1;
         padding: 0px !important;
-        text-align: left;
         li {
             list-style-type: none;
             label {
@@ -744,50 +668,9 @@ body a.icw-admin {
         display: none;
     }
 
-    .actions {
-        overflow: hidden;
-        position: relative;
-        &::before {
-            content: '';
-            background: url('data:image/svg+xml; utf8,<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28.4389 29.5093L17.7858 25.246C16.2154 24.6169 14.4748 24.6169 12.9044 25.246L2.2513 29.5093C1.46107 29.8288 0.670832 29.04 0.990925 28.2513L5.26219 17.6179C5.89237 16.0503 5.89237 14.313 5.26219 12.7455L0.990925 2.1121C0.670832 1.32334 1.46107 0.534571 2.2513 0.854072L12.9044 5.11741C14.4748 5.74643 16.2154 5.74643 17.7858 5.11741L28.4389 0.854072C29.2291 0.534571 30.0194 1.32334 29.6993 2.1121L25.428 12.7455C24.7978 14.313 24.7978 16.0503 25.428 17.6179L29.6993 28.2513C30.0194 29.04 29.2291 29.8288 28.4389 29.5093Z" fill="white"/></svg>') no-repeat center center;
-            background-size: contain !important;
-            display: inline-block;
-            width: 24px;
-            height: 24px;
-            @include transition(0.3s, ease-in-out);
-            margin: 0 auto;
-            @include transform(translateY(50px));
-            position: absolute;
-            left: calc(50% - 12px);
-            cursor: pointer;
-        }
-        &::after {
-            content: 'Join Us';
-            @include inline-flex;
-            color: $white;
-            font-weight: 700;
-	        font-size: 16px;
-            font-family: $font-spaceGrotesk;
-            @include transition(0.3s, ease-in-out);
-            margin: 0 auto;
-            position: absolute;
-            left: 50%;
-            @include transform(translate(-50%, 12px));
-            cursor: pointer;
-        }
-        &:hover, &:focus, &:active {
-            &::after {
-                @include transform(translate(-50%, -30px));
-            }
-            &::before {
-                @include transform(translateY(12px) rotate(180deg));
-            }
-        }
-    }
-
     .hs-form input[type=submit]  {
         color: $white !important;
-        background-color: $primary;
+        background-color:$primary;
         border:1px solid $primary;
         height: 48px;
         min-height: 48px;
@@ -820,22 +703,23 @@ body a.icw-admin {
     }
 }
 
+
 .form-with-slider-labels {
+    $label-displacement: 1px;
     @media(max-width: 992px){
         $label-displacement: 3px;
     }  
     .hs-form {
         .hs-form-field {
-            margin: 0 0 35px;
+            margin: 15px 0;
             position: relative;
             label {
                 position: absolute;
-                left: 15px;
-                top: 6px;
+                left: 20px;
+                top: 10px;
                 color: #9896AD;
                 font-size: 16px;
                 padding: 7px 5px 0;
-                @include transition(0.3s, ease-in-out);
                 @media(max-width: 992px){
                     left: 10px;
                     padding: 3px 5px 0;
@@ -844,11 +728,15 @@ body a.icw-admin {
             }
             &.has-focus, &.has-value {
                 > label {
-                    top: -30px;
-                    left: 0;
+                    top: $label-displacement;
+                    color: #9896AD;
+                    font-size: 13px;
+                    @media(max-width: 992px){
+                        font-size: 12px;
+                    }
                 }
                 .hs-input {
-                    padding: 0px 15px 0 !important;
+                    padding: 20px 25px 0 !important;
                     @media(max-width: 992px){
                         padding: 18px 15px 0 !important;
                     }
@@ -862,7 +750,7 @@ body a.icw-admin {
             }
             &.not-focused {
                 > label {
-                    top: 6px;
+                    top: 10px;
                 }
             }
             .hs-error-msgs {
@@ -1321,7 +1209,6 @@ body a.icw-admin {
 	background: transparent; 
 	padding: 80px 0 50px;
 	color: $black;
-    border-top: 1px solid #F2F2F2;
     @media (max-width: 767px) {
         padding: 50px 0 30px;
     }
@@ -1376,12 +1263,6 @@ body a.icw-admin {
                 }
             }
         }
-        @media (max-width: 992px) and (min-width: 767px) {
-            text-align: center;
-            .icw-hubspot-form {
-                margin: 0 auto;
-            }
-        }
     }
 
 	.menu-block {
@@ -1396,17 +1277,9 @@ body a.icw-admin {
             @media (max-width: 992px) {
                 @include justify-content(center);
             }
-            @media (max-width: 575px) {
-                @include flex-direction(column);
-                @include align-items(flex-start);
-            }
             li {
                 @include inline-flex;
                 @include align-items(center);
-                @media (max-width: 575px) {
-                    @include flex-direction(column);
-                    @include align-items(flex-start);
-                }
                 &::after {
                     content: '';
                     background: url('data:image/svg+xml; utf8,<svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.64448 8.64383L4.68537 7.45961C4.24915 7.28489 3.76569 7.28489 3.32946 7.45961L0.370359 8.64383C0.150857 8.73258 -0.0686471 8.51349 0.020265 8.29439L1.20669 5.34076C1.38174 4.90534 1.38174 4.42278 1.20669 3.98736L0.020265 1.03373C-0.0686471 0.814638 0.150857 0.595543 0.370359 0.68429L3.32946 1.86852C3.76569 2.04324 4.24915 2.04324 4.68537 1.86852L7.64448 0.68429C7.86398 0.595543 8.08348 0.814638 7.99457 1.03373L6.80815 3.98736C6.6331 4.42278 6.6331 4.90534 6.80815 5.34076L7.99457 8.29439C8.08348 8.51349 7.86398 8.73258 7.64448 8.64383Z" fill="rgb(29 0 245)"/></svg>') no-repeat center center;
@@ -1421,11 +1294,6 @@ body a.icw-admin {
                         width: 8px;
                         height: 8px;
                     }
-                    @media (max-width: 575px) {
-                        margin: 5px 12px;
-                        width: 8px;
-                        height: 8px;
-                    }
                 }
                 &:last-child {
                     &::after {
@@ -1433,10 +1301,10 @@ body a.icw-admin {
                     }
                 }
                 a {
-                    font-size: 22px;
+                    font-size: 16px;
                     font-weight: 500;
                     padding: 10px 25px;
-                    // border: 1px solid transparent;
+                    border: 1px solid transparent;
                     @include border-radius(0px 8px 0 8px);
                     &:hover, &:focus {
                         border-color: rgba($black, 0.08);
@@ -1445,13 +1313,13 @@ body a.icw-admin {
                         padding: 8px 15px;
                     }
                     @media (max-width: 767px) {
-                        font-size: 20px;
-                        padding: 8px 10px;
+                        font-size: 14px;
+                        padding: 5px 8px;
                     }
                 }
                 &.current-menu-item {
                     a {
-                        // border-color: $primary;
+                        border-color: $primary;
                         color: $primary;
                     }
                 }
@@ -1465,9 +1333,6 @@ body a.icw-admin {
             @media (max-width: 992px) {
                 @include justify-content(center);
                 margin-top: 30px;
-            }
-            @media (max-width: 575px) {
-                @include justify-content(flex-start);
             }
             li {
                 a {
@@ -1570,9 +1435,6 @@ body a.icw-admin {
         @include justify-content(space-between);
         @media (max-width: 767px) {
             @include flex-direction(column);
-        }
-        @media (max-width: 575px) {
-            @include align-items(flex-start);
         }
         .copyright-text {
             font-family: $font-spaceGrotesk;
