@@ -715,6 +715,7 @@ body a.icw-admin {
         color: $black !important;
         background: transparent;
         border: none;
+        margin-bottom: 3px;
     }
     .hs-form-field {
         margin-bottom: 15px;
@@ -761,24 +762,24 @@ body a.icw-admin {
             left: calc(50% - 12px);
             cursor: pointer;
         }
-        &::after {
-            content: 'Join Us';
-            @include inline-flex;
-            color: $white;
-            font-weight: 700;
-	        font-size: 16px;
-            font-family: $font-spaceGrotesk;
-            @include transition(0.3s, ease-in-out);
-            margin: 0 auto;
-            position: absolute;
-            left: 50%;
-            @include transform(translate(-50%, 12px));
-            cursor: pointer;
-        }
+        // &::after {
+        //     content: 'Join Us';
+        //     @include inline-flex;
+        //     color: $white;
+        //     font-weight: 700;
+	    //     font-size: 16px;
+        //     font-family: $font-spaceGrotesk;
+        //     @include transition(0.3s, ease-in-out);
+        //     margin: 0 auto;
+        //     position: absolute;
+        //     left: 50%;
+        //     @include transform(translate(-50%, 12px));
+        //     cursor: pointer;
+        // }
         &:hover, &:focus, &:active {
-            &::after {
-                @include transform(translate(-50%, -30px));
-            }
+            // &::after {
+            //     @include transform(translate(-50%, -30px));
+            // }
             &::before {
                 @include transform(translateY(12px) rotate(180deg));
             }
@@ -809,6 +810,7 @@ body a.icw-admin {
             background-color: #1c00e5 !important;
             color: $white !important;
             border-color: #1c00e5 !important;
+            font-size: 0;
         }
         &.disabled,
         &:disabled {
@@ -831,27 +833,22 @@ body a.icw-admin {
             label {
                 position: absolute;
                 left: 15px;
-                top: 6px;
+                top: 11px;
                 color: #9896AD;
                 font-size: 16px;
-                padding: 7px 5px 0;
                 @include transition(0.3s, ease-in-out);
-                @media(max-width: 992px){
-                    left: 10px;
-                    padding: 3px 5px 0;
+                @media(max-width: 767px){
                     font-size: 14px;
                 }  
             }
             &.has-focus, &.has-value {
                 > label {
-                    top: -30px;
+                    top: -25px;
                     left: 0;
+                    font-size: 14px;
                 }
                 .hs-input {
                     padding: 0px 15px 0 !important;
-                    @media(max-width: 992px){
-                        padding: 18px 15px 0 !important;
-                    }
                 }
                 textarea.hs-input {
                     padding: 25px 25px 15px !important;
@@ -862,7 +859,7 @@ body a.icw-admin {
             }
             &.not-focused {
                 > label {
-                    top: 6px;
+                    top: 11px;
                 }
             }
             .hs-error-msgs {
@@ -877,9 +874,9 @@ body a.icw-admin {
         }
         .hs-input {
             margin-bottom: 0;
-            &.error {
-                border: 1px solid #A94442;
-            } 
+            // &.error {
+            //     border: 1px solid #A94442;
+            // } 
         }
         .hs_error_rollup {
             text-align: center;

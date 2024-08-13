@@ -2907,6 +2907,8 @@ blockquote {
 }
 
 .contact-section {
+    padding: 80px 0;
+    overflow: hidden !important;
     .is-contact-form {
         max-width: 600px;
         margin: 0 auto;
@@ -2914,10 +2916,21 @@ blockquote {
             fieldset {
                 max-width: 100%;
                 &.form-columns-2 {
-                    display: flex;
+                    @include flexbox;
+                    @media (max-width: 767px) {                        
+                        @include flex-direction(column);
+                    }
                     .hs-form-field {
                         &:first-child {
                             margin-right: 15px;
+                            @media (max-width: 767px) {                                
+                                margin-right: 0;
+                            }
+                        }
+                        .hs-input {
+                            @media (max-width: 767px) {                                
+                                width: 100%;
+                            }
                         }
                     }
                 }
@@ -2927,6 +2940,37 @@ blockquote {
             }
             .hs-input {
                 width: 100%;
+            }
+        }
+    }
+    .star-animation {
+        right: -40px;
+        width: 100px;
+        overflow: hidden;
+        &::after {
+            width: 40px;
+            height: 40px;
+            top: calc(50% - 20px);
+            right: calc(50% - 20px);
+        }
+        &::before {
+            width: 100px;
+            height: 100px;
+        }
+        &.icon-purple {
+            top: auto;
+            bottom: 120px;
+            left: -60px; 
+            width: 135px;
+            &::after {
+                width: 50px;
+                height: 50px;
+                top: calc(50% - 25px);
+                right: calc(50% - 25px);
+            }
+            &::before {
+                width: 135px;
+                height: 135px;
             }
         }
     }
