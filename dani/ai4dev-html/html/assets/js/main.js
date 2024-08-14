@@ -75,8 +75,8 @@ $('.is-show-all').on('click', function(e) {
     } 
 });
 
-if ($('.topic_splide').length) {
-    var splide = new Splide( '.topic_splide', {
+if ($('.post_splide').length) {
+    var splide = new Splide( '.post_splide', {
         type   : 'slide',
         perPage: 3,
         perMove: 1,
