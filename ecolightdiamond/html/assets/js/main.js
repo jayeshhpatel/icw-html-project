@@ -34,3 +34,35 @@ jQuery(document).ready(function($) {
         $(this).parent().find('.sub-menu').first().toggle(300);
     });
 });
+if($('.hero-slider').length){
+    var herosplide = new Splide('.hero-slider', {
+        type: 'loop',
+        perPage: 1,
+        perMove: 1,
+        arrows: false,
+        classes: { pagination: 'icw-slide-dots', }
+    });
+    herosplide.mount();
+}
+var splideOptions = {
+    perPage: 5,
+    autoWidth: true,
+    pagination: false,
+    arrows: false,
+    gap: 60,
+    type: 'loop',
+    focus: 'center',
+    autoScroll: {
+        speed: 1
+    },
+    breakpoints: {
+        767: {
+            perPage: 3,
+            arrows: false,
+            gap: 30,
+        },
+    },
+};
+if (jQuery('.logo-slider').length) {
+    new Splide('.logo-slider', splideOptions).mount(window.splide.Extensions);
+}

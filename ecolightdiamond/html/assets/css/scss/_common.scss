@@ -87,6 +87,7 @@ p {
 }
 
 img {
+    width: 100%;
     max-width:100%;
     height: auto;
     image-rendering:-moz-crisp-edges;
@@ -104,6 +105,10 @@ img {
 .container {
 	padding-left: 15px;
 	padding-right: 15px;
+    &.container-big {
+        max-width: 1550px;
+        margin: 0 auto;
+    }
     .row {
         margin-left: -15px;
         margin-right: -15px;
@@ -135,7 +140,7 @@ h2, .h2 {
         font-size: 36px;
     }
     @media (max-width: 767px) {
-        font-size: 24px;
+        font-size: 26px;
     }
 }
 h3, .h3 {
@@ -149,18 +154,25 @@ h3, .h3 {
     }
 }
 
+.bg-gray {
+    background: $gray !important;
+}
+
 .btn {
     min-height: 48px;
     padding: 0 25px;
+    min-width: 150px;
     font-weight: 600;
     font-size: 16px;
-    min-width: 320px;
     white-space: nowrap;
     @include transition(0.1s, ease-in-out);
     @include border-radius(0);
     @include inline-flex;
     @include align-items(center);
     @include justify-content(center);
+    &.btn-lg {        
+        min-width: 280px;
+    }
     &.btn-primary {
         color: $white;
         background-color:$primary;
@@ -191,6 +203,28 @@ h3, .h3 {
     }
 }
 
+.icw-slide-dots {
+    @include flexbox;
+    @include justify-content(center);
+    li {
+        line-height: 0.7;
+        margin: 3px;
+        @include inline-flex;
+        button {
+            margin: 0;
+            opacity: 1;
+            width: 9px;
+            height: 9px;
+            @include border-radius(15px);
+            &.is-active {
+                @include transform(scale(1));
+                background: $primary;
+                width: 24px;
+            }
+        }
+    }
+}
+
 .main-header { 
     position: sticky;
     top: 0;
@@ -199,6 +233,13 @@ h3, .h3 {
     max-width: 100vw;
     .offcanvas {
         --bs-offcanvas-width: 350px;
+    }
+    &.fixed-header {
+        background: $gray;
+        @media (min-width: 1200px) {
+            backdrop-filter: blur(120px);
+            background: transparent;
+        }
     }
     .navbar {
         padding: 10px 0;
@@ -515,7 +556,7 @@ h3, .h3 {
             display: inline-block;
         }
         img {
-            height: 35px;
+            height: 55px;
         }
     }
     .availabel-block {
@@ -526,17 +567,15 @@ h3, .h3 {
             @include flexbox;
             @include align-items(center);
             gap: 10px;
+            img {
+                max-width: 110px;
+            }
         }
     }
     .footer-grid-menu {
         .footer-menu {
-            @include flexbox;
-            @include justify-content(center);
-            // @include flex-wrap(wrap);
-            gap: 40px;
             li.menu-item-has-children {
-                flex: 1 0 auto;
-                & > a {
+                & > a, .title {
                     pointer-events: none;
                     font-size: 18px;
                     font-weight: 600;
@@ -555,12 +594,27 @@ h3, .h3 {
                         @include inline-flex;
                         @include align-items(center);
                         @include transition(0.1s, ease-in-out);
+                        position: relative;
+                        &::before {
+                            content: '';
+                            height: 1px;
+                            background: $primary;
+                            width: 0;
+                            display: inline-block;
+                            @include transition(0.1s, ease-in-out);
+                            position: absolute;
+                            bottom: -1px;
+                            left: 0;
+                        }
                         &:hover, &:focus {
                             color: $primary;
+                            &::before {
+                                width: 100%;
+                            }
                         }
                         .icon {
                             display: inline-block;
-                            width: 20px;
+                            min-width: 20px;
                             height: 20px;
                             background-size: contain;
                             margin-right: 10px;
@@ -584,8 +638,9 @@ h3, .h3 {
                 font-size: 14px;
                 margin-bottom: 10px;
                 @include align-items(flex-start !important);
+                min-width: 280px;
                 .icon {
-                    width: 24px;
+                    min-width: 24px;
                     height: 16px;
                     margin-right: 10px;
                     margin-top: 6px;
@@ -608,6 +663,9 @@ h3, .h3 {
                     display: block;
                     font-size: 16px;
                     font-weight: 500;
+                }
+                a {
+                    display: block !important;
                 }
             }
         }

@@ -1,0 +1,301 @@
+.main-section {
+    padding: 100px 0;
+    @media (max-width: 992px) {
+        padding: 70px 0;
+    }
+    @media (max-width: 767px) {
+        padding: 50px 0;
+    }
+}
+.is-bottom-vector {
+    position: relative;
+    z-index: 1;
+    .vector {
+        position: absolute;
+        bottom: 55px;
+        right: 5px;
+        z-index: -1;
+        &.vector-heart {
+            background: url(../images/img-heart-shape-vector.png) no-repeat center center;
+            background-size: contain;
+            width: 260px;
+            height: 260px;
+            display: inline-block;
+            @media (max-width: 767px) {
+                display: none;
+            }
+        }
+    }
+}
+.section-title {
+    &.text-center {
+        margin: 0 auto 50px;
+        .action {
+            @include justify-content(center);
+        }
+    }
+    @media (max-width: 992px) {
+        margin-bottom: 30px;
+    }
+    &.mw-700 {
+        max-width: 700px;
+        margin: 0 auto 50px;
+    }
+    .tag-line {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        @media (max-width: 767px) {
+            font-size: 14px;     
+            margin-bottom: 5px;   
+        }
+        span {
+            line-height: 1;
+            display: inline-block;
+            padding: 0 7px;
+        }
+    }
+    .title {        
+        margin-bottom: 20px;
+    }
+    .sort-info {
+        margin-bottom: 20px;        
+    }
+    .action {
+        @include flexbox;
+        gap: 20px;
+        margin-top: 40px;
+        @media (max-width: 767px) {
+            gap: 15px;
+            @include flex-direction(column);
+            margin-top: 30px;
+        }
+    }
+}
+.sort-info {
+    p {
+        margin-bottom: 20px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    &.font-lg, .font-lg {
+        font-size: 22px;
+        @media (max-width: 767px) {
+            font-size: 18px;
+        }
+    }
+}
+.with-bg-block {
+    padding: 70px 10%;
+    margin: 0 -10%;
+    @include border-radius(40px);
+    @media (max-width: 1200px) {
+        padding: 50px 5%;
+        margin: 0 -5%;
+    }
+    @media (max-width: 767px) {
+        padding: 50px 8%;
+        margin: 0 -8%;
+    }
+    @media (max-width: 600px) {
+        padding: 50px 15px;
+        margin: 0 -15px;        
+        @include border-radius(0px);
+    }
+}
+.hero-section {
+    padding-top: 0;
+    .hero-slider {
+        position: relative;
+        .icw-slide-dots {
+            position: absolute;
+            width: 100%;
+            bottom: 30px;
+        }
+        @media (max-width: 767px) {            
+            margin: 0 -15px;
+        }
+    }
+}
+.hero-slide-content {
+    background-color: #F8F8F8;
+    background-image: var(--bg-desktop);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    padding: 170px 0;
+    @include border-radius(50px);
+    @media (max-width: 992px) {
+        padding: 100px 0;
+    }
+    @media (max-width: 767px) {
+        background-image: var(--bg-mobile), url(../../upload/img-jewelry-diamonds-m-bg.jpg);        
+        background-position: left calc(100% - 100px), top center;
+        background-size: 350px, cover;
+        padding: 50px 15px 350px;
+        @include border-radius(0);
+    }
+    .section-title {
+        max-width: 590px;
+        .tag-line {
+            font-size: 20px;
+            @media (max-width: 767px) {
+                font-size: 14px;  
+                margin-bottom: 10px;          
+            }
+        }
+        .title {
+            margin-bottom: 10px;
+        }
+        .sort-info {
+            max-width: 460px;
+            margin: 0 auto 20px;
+        }
+        .action {
+            margin-top: 20px;
+        }
+    }
+}
+.icon-box-grid-block {
+    display: grid;
+    grid-gap: 20px;
+    @media (max-width: 767px) { 
+        grid-gap: 10px;
+    }
+    &.four-col-grid {
+        grid-template-columns: repeat(4, 1fr);
+        @media (max-width: 1200px) and (min-width: 992px) {
+            grid-template-columns: repeat(3, 1fr);        
+        }
+        @media (max-width: 767px) {
+            grid-template-columns: repeat(3, 1fr);        
+        }
+    }
+}
+.icon-box {
+    @include flexbox;
+    @include align-items(center);
+    @include flex-direction(column);
+    &.only-icon {
+        .icon {
+            flex: 1 1 auto;
+        }
+    }
+    .icon {
+        padding: 15px;        
+        @include inline-flex;
+        @include align-items(center);
+        @include justify-content(center);
+        img {
+            max-height: 90px;
+            @include transition(0.2s, ease-in-out);
+            @media (max-width: 767px) { 
+                max-height: 70px;
+            }
+        }
+    }
+    .info {
+        font-size: 16px;
+        color: $bodyfontcolor;
+        @include transition(0.2s, ease-in-out);
+        @media (max-width: 767px) { 
+            font-size: 14px;
+        }
+    }
+}
+a.icon-box {
+    &:hover, &:focus {
+        .icon {
+            img {
+                @include transform(scale(1.1));
+            }
+        }
+        .info {
+            color: $primary;
+            font-weight: 500;
+        }
+    }
+}
+.left-right-image-section {
+    padding: 0;
+}
+.img-content-block  {
+    padding: 50px 0;
+    @media (max-width: 992px) {
+        padding: 35px 0;
+    }
+    @media (max-width: 767px) {
+        padding: 25px 0;
+    }
+    &:first-child {
+        padding-top: 0;
+    }
+    &:last-child {
+        padding-bottom: 0;
+    }
+    .image-block {
+        @media (max-width: 992px) {            
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        img {           
+            @media (min-width: 992px) { 
+                max-width: 550px; 
+            }
+        }
+    }
+    .section-title {
+        @media (max-width: 992px) {            
+            margin-bottom: 0px;
+        }
+    }
+    &.right-image-block {
+        .image-block {
+            text-align: right;
+        }
+    }
+}
+.info-card {
+    height: 100%;
+    @include flexbox;
+    @include flex-direction(column);
+    &.with-bg {
+        background: var(--cat-color, $white);
+        padding: 20px;
+    }
+    .card-img {
+        margin-bottom: 20px;
+        &.sm-img {
+            width: 50px;
+            height: 50px;
+            flex: none;
+            img {
+                height: 50px;
+                width: auto;
+            }
+        }
+    }
+    .card-body {
+        h3 {
+            color: $black;
+            margin-bottom: 10px;
+        }
+        .sort-info {
+            font-size: 16px;
+        }
+    }
+}
+.logo-slider-block {
+    background: $gray;
+    @include border-radius(190px);
+    padding: 30px 40px;
+    overflow: hidden;
+    .logo-slider {
+        margin: 0 -40px;
+    }
+    img {
+        mix-blend-mode: darken;
+    }
+}
