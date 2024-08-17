@@ -4,6 +4,9 @@
 var $ = jQuery.noConflict();
 
 jQuery(document).ready(function($) {
+    if ($('[data-bs-toggle=tooltip]').length) {
+        $("body").tooltip({ selector: '[data-bs-toggle=tooltip]' });
+    }
 
     $('.toggle-sidebar,.bg-overly').on('click', function (e) {
         $('.toggle-sidebar,body,.main-header').toggleClass('is-visible');
@@ -32,6 +35,11 @@ jQuery(document).ready(function($) {
         event.preventDefault();
         $(this).toggleClass('is-active');
         $(this).parent().find('.sub-menu').first().toggle(300);
+    });
+    $('.menu-list-block .title').on('click',function(event){
+        event.preventDefault();
+        $(this).parent('.menu-list-block').toggleClass('is-active');
+        // $(this).parent().find('.menu-list-block').toggle(300);
     });
 });
 if($('.hero-slider').length){
