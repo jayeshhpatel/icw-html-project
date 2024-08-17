@@ -90,6 +90,11 @@ p {
     }
 }
 
+.font-cormorant {
+    font-family: $font-cormorant-garamond;
+    font-weight: 700;
+}
+
 img {
     width: 100%;
     max-width:100%;
@@ -153,8 +158,14 @@ h3, .h3 {
     font-family: $bodyfont;
     margin: 0;
     line-height: normal;
+    &.font-lg {
+        font-size: 30px;
+    }
     @media (max-width: 992px) {
         font-size: 20px;
+        &.font-lg {
+            font-size: 24px;
+        }
     }
 }
 
@@ -700,6 +711,9 @@ h3, .h3 {
             @media (max-width: 992px) {
                 margin-bottom: 20px;
             }
+            li {
+                margin-bottom: 5px;
+            }
             li.menu-list-block {
                 @media (max-width: 992px) {   
                     border-bottom: 1px solid rgba($white, 0.6);
@@ -709,7 +723,7 @@ h3, .h3 {
                     @include flexbox;
                     @include align-items(center);
                     @media (max-width: 992px) {                        
-                        margin-bottom: 15px;
+                        margin-bottom: 18px;
                         line-height: 1;
                         cursor: pointer;
                         &::after {
@@ -744,7 +758,6 @@ h3, .h3 {
                     display: none;
                 }
                 li {
-                    padding-bottom: 5px;
                     .title {
                         @media (max-width: 992px) {
                             font-size: 16px;
@@ -828,6 +841,7 @@ h3, .h3 {
             font-size: 12px;
             @media (max-width: 767px) {
                 @include flex-direction(column);
+                @include align-items(flex-start);
             }
             .copyright-text {
                 color: $white;
