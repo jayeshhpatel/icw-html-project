@@ -81,7 +81,6 @@ p {
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 18px;
-    font-weight: 500;
     &:last-child{
         margin-bottom: 0;
     }
@@ -96,7 +95,6 @@ p {
 }
 
 img {
-    width: 100%;
     max-width:100%;
     height: auto;
     image-rendering:-moz-crisp-edges;
@@ -142,7 +140,7 @@ h1, .h1 {
 }
 h2, .h2 {
     font-size: 44px;
-    font-weight: 600;
+    font-weight: 700;
     margin: 0;
     line-height: 1.3;
     @media (max-width: 992px) {
@@ -154,8 +152,7 @@ h2, .h2 {
 }
 h3, .h3 {
     font-size: 22px;
-    font-weight: 500;
-    font-family: $bodyfont;
+    font-weight: 700;
     margin: 0;
     line-height: normal;
     &.font-lg {
@@ -215,6 +212,60 @@ h3, .h3 {
             color: $white !important;
             border-color:#313131 !important;
         }
+    }
+}
+
+.form-group {
+    margin-bottom: 15px;
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="text"],
+    input[type="password"],
+    input,
+    textarea,
+    select,
+    .form-control {
+        padding: 5px 10px;
+        @include border-radius(5px);
+        background: #F8F8F8;
+        border: 1px solid #CCCCCC;
+        color: $black;
+        font-weight: 400;
+        height: 36px;
+        width: 100%;
+        font-size: 15px;
+        &::placeholder {
+            color: rgba($black, 0.6)
+        }
+        &.error {
+            border-color: #FF0000;
+        }  
+        &:focus {
+            border-color: rgba($primary, 0.8);
+            box-shadow: none;
+            outline: 0 none;
+        }
+    }
+    select, .form-select {
+        background: #F8F8F8 url('data:image/svg+xml; utf8,<svg width="10" height="5" viewBox="0 0 10 5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0L5 5L10 0" fill="black"/></svg>') no-repeat calc(100% - 10px) center;
+        background-size: 10px;
+    }
+    label {
+        color: $black;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 7px;
+        line-height: 1;
+        span {
+            color: #FF0000;
+        }
+    }
+}
+.form-action {
+    margin-top: 5px;
+    .btn {
+        width: 100%;
     }
 }
 
@@ -468,7 +519,7 @@ h3, .h3 {
                     }
                 }
             
-                &:hover, &:focus {   
+                &:hover, &:focus, &.active {   
                     & > a {
                         color: $primary;
                         &::before {
@@ -565,6 +616,9 @@ h3, .h3 {
 .main-footer {
     background: $black;
     padding: 70px 0 30px;
+    @media (max-width: 767px) {
+        padding: 50px 0 30px;
+    }
     .logo {
         margin-bottom: 30px;
         a {
@@ -577,11 +631,11 @@ h3, .h3 {
             height: 55px;
         }
     }
-    .availabel-block {
+    .download-app-block {
         @include flexbox;
         @include align-items(center);
         gap: 10px;
-        .availabel-store {
+        .download-app-link {
             @include flexbox;
             @include align-items(center);
             gap: 10px;
@@ -716,7 +770,7 @@ h3, .h3 {
             }
             li.menu-list-block {
                 @media (max-width: 992px) {   
-                    border-bottom: 1px solid rgba($white, 0.6);
+                    border-bottom: 1px solid rgba($white, 0.1);
                 }
                 .title {
                     position: relative;
@@ -838,7 +892,7 @@ h3, .h3 {
         .copyright-block {
             @include flexbox;
             @include align-items(center);
-            font-size: 12px;
+            font-size: 14px;
             @media (max-width: 767px) {
                 @include flex-direction(column);
                 @include align-items(flex-start);
@@ -847,6 +901,13 @@ h3, .h3 {
                 color: $white;
                 @media (max-width: 767px) {
                     order: 2;
+                }
+            }
+            .design-by {
+                a {
+                    &::before {
+                        content: none;
+                    }
                 }
             }
             .footer-menu-inline {
@@ -869,7 +930,7 @@ h3, .h3 {
                         }
                     }
                     a {
-                        font-size: 12px;
+                        font-size: 14px;
                     }
                 }
             }

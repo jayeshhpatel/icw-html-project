@@ -7,46 +7,110 @@
         padding: 50px 0;
     }
 }
-.is-bottom-vector {
+.is-heart-vector {
     position: relative;
     z-index: 1;
-    .vector {
+    .vector-heart {
         position: absolute;
         bottom: 55px;
         right: 5px;
-        z-index: -1;
-        &.vector-heart {
-            background: url(../images/img-heart-shape-vector.png) no-repeat center center;
-            background-size: contain;
-            width: 260px;
-            height: 260px;
-            display: inline-block;
-            @media (max-width: 767px) {
-                display: none;
-            }
+        z-index: -1;        
+        background-size: contain;
+        display: inline-block;
+        background: url(../images/img-heart-shape-vector.png) no-repeat center center;
+        width: 260px;
+        height: 260px;
+        @media (max-width: 767px) {
+            display: none;
         }
     }
 }
-.is-top-bottom-vector {
+.is-tl-br-tree-vector {
     position: relative;
     z-index: 1;
-    .vector {
+    overflow: hidden;
+    &::before {
+        content: '';
         position: absolute;
         z-index: -1;
         background-size: contain !important;
-        &.vector-tree-top-left {
-            top: 6px;
-            left: 5px;
-            width: 90px;
-            height: 250px;
-            background: url(../images/img-tree-shape-vector.png) no-repeat center center;
+        top: 6px;
+        left: 5px;
+        width: 90px;
+        height: 250px;
+        background: url(../images/img-tree-shape-vector.png) no-repeat center center;
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        background-size: contain !important;
+        bottom: 0;
+        right: 0;
+        width: 130px;
+        height: 375px;
+        background: url(../images/img-tree-shape-vector.png) no-repeat center center;
+    }
+}
+.is-tr-bl-tree-vector {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        background-size: contain !important;
+        top: 6px;
+        right: 5px;
+        width: 90px;
+        height: 250px;
+        background: url(../images/img-tree-shape-vector.png) no-repeat center center;
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        background-size: contain !important;
+        bottom: 0;
+        left: 0;
+        width: 130px;
+        height: 375px;
+        background: url(../images/img-tree-shape-vector.png) no-repeat center center;
+    }
+}
+.is-tr-bl-line-vector {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        background-size: contain !important;
+        top: 0;
+        right: 0;
+        width: 480px;
+        height: 170px;
+        background: url(../images/right-line-vector.svg) no-repeat center center;
+        @media (max-width: 767px) {            
+            width: 280px;
+            height: 100px;
         }
-        &.vector-tree-bottom-right {
-            bottom: 0;
-            right: 0;
-            width: 130px;
-            height: 375px;
-            background: url(../images/img-tree-shape-vector.png) no-repeat center center;
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        background-size: contain !important;
+        bottom: 0;
+        left: 0;
+        width: 470px;
+        height: 210px;
+        background: url(../images/left-line-vector.svg) no-repeat center center;
+        @media (max-width: 767px) {            
+            width: 280px;
+            height: 125px;
         }
     }
 }
@@ -73,12 +137,13 @@
     .tag-line {
         font-size: 16px;
         font-weight: 500;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         text-transform: uppercase;
         letter-spacing: 0.05em;
+        @include inline-flex;
+        @include align-items(center);
         img {
-            max-height: 45px;
-            width: auto;
+            max-width: 300px;
         }
         @media (max-width: 767px) {
             font-size: 14px;     
@@ -210,8 +275,8 @@
         }
         @media (max-width: 767px) {
             padding: 50px 15px 250px;
-            background-position: right bottom, top center;
-            background-size: 100% 250px, cover;          
+            background-position: var(--bg-position, center calc(100% - 20px)), top center;
+            background-size: 60%, cover;          
             margin: 0 -15px;
         }
     }
@@ -307,6 +372,7 @@ a.icon-box {
         img {           
             @media (min-width: 992px) { 
                 max-width: 550px; 
+                width: 100%;
             }
         }
     }
@@ -318,6 +384,9 @@ a.icon-box {
     &.right-image-block {
         .image-block {
             text-align: right;
+            @media (max-width: 992px) {  
+                text-align: center;
+            }
         }
     }
 }
@@ -334,6 +403,9 @@ a.icon-box {
         margin-bottom: 20px;
         overflow: hidden;
         img {
+            width: 100%;
+            min-height: 250px;
+            max-height: 350px;
             @include transition(0.1s, ease-in-out);
         }
         &.sm-img {
@@ -341,7 +413,31 @@ a.icon-box {
             height: 50px;
             flex: none;
             img {
-                height: 50px;
+                max-height: 100%;
+                min-height: 50px;
+                width: auto;
+            }
+        }
+        &.is-square {            
+            img {
+                aspect-ratio: 1/1;
+                object-fit: cover;
+                object-position: center center;
+            }
+        }
+        &.with-gray-bg {
+            background: $gray;
+            padding: 30px;
+            @include flexbox;
+            @include justify-content(center);
+            @include align-items(center);
+            flex: 1 1 auto;
+            @media (min-width: 575px) {
+                aspect-ratio: 1/1;
+            }
+            img {
+                max-height: 180px;
+                min-height: auto;
                 width: auto;
             }
         }
@@ -378,8 +474,7 @@ a.icon-box {
                 }
             }
             .card-body {
-                h3 {
-                    color: $primary;
+                h3 {                
                     a {
                         color: $primary;
                     }
@@ -388,11 +483,15 @@ a.icon-box {
         }
     }
 }
-.logo-slider-block {
+.logo-block {
     background: $gray;
     @include border-radius(190px);
     padding: 30px 40px;
     overflow: hidden;
+    @include flexbox;
+    @include justify-content(center);
+    @include align-items(center);
+    gap: 40px;
     @media (max-width: 767px) {
         padding: 20px;
         @include border-radius(100px);
@@ -402,18 +501,31 @@ a.icon-box {
         @include border-radius(0px);
         margin: 0 -15px;
     }
-    .logo-slider {
-        margin: 0 -40px;
-        @media (max-width: 767px) {
-            margin: 0 -20px;
-        }
-    }
     .logo-item {
         display: block;
         img {
             max-height: 70px;
             @media (max-width: 767px) {
                 max-height: 50px;
+            }
+        }
+    }
+}
+.form-block {
+    background: $white;
+    @include border-radius(12px);
+    padding: 25px;
+    .img-block {
+        margin-right: 30px;
+        @media (max-width: 767px) {
+            text-align: center;
+        }
+        img {
+            min-width: 230px;
+            max-width: 230px;
+            @media (max-width: 1200px) {
+                min-width: 150px;
+                max-width: 150px;
             }
         }
     }
