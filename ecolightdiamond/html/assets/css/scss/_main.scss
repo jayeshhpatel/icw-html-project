@@ -217,22 +217,28 @@
     background-color: #F8F8F8;
     background-image: var(--bg-desktop);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center center;
     padding: 170px 70px;
     @include border-radius(50px);
+    @media (max-width: 1200px) {        
+        background-size: cover;
+        background-position: 50% center;
+    }
     @media (max-width: 992px) {
         padding: 100px 50px;
     }
     @media (max-width: 767px) {
-        background-image: var(--bg-mobile), url(../../upload/img-jewelry-diamonds-m-bg.jpg);        
-        background-position: left calc(100% - 100px), top center;
-        background-size: 350px, cover;
-        padding: 50px 15px 350px;
+        background-image: url(../../upload/img-jewelry-diamonds-m-bg.jpg);        
+        background-position: top center;
+        background-size: cover;
+        padding: 50px 15px;
         @include border-radius(0);
     }
     .section-title {
-        max-width: 590px;
+        @media (min-width: 767px) {
+            max-width: 700px;
+        }
         .tag-line {
             font-size: 20px;
             @media (max-width: 767px) {
@@ -244,8 +250,7 @@
             margin-bottom: 10px;
         }
         .sort-info {
-            max-width: 460px;
-            margin: 0 auto 20px;
+            margin-bottom: 30px;
         }
         .action {
             margin-top: 20px;
@@ -270,18 +275,21 @@
     padding-top: 0;
     .hero-content { 
         padding: 100px 70px;
+        @media (min-width: 992px) {
+            min-height: 450px;
+            @include flexbox;
+            @include align-items(center);
+        }
         @media (max-width: 992px) {
             padding: 70px 40px;
         }
         @media (max-width: 767px) {
-            padding: 50px 15px 250px;
-            background-position: var(--bg-position, center calc(100% - 20px)), top center;
-            background-size: 60%, cover;          
+            padding: 50px 15px;
+            background-position: top center;  
             margin: 0 -15px;
         }
     }
-    .section-title {
-        max-width: 640px;
+    .section-title {       
         .sort-info {
             max-width: 100%;
         }
@@ -351,18 +359,12 @@ a.icon-box {
     padding: 0;
 }
 .img-content-block  {
-    padding: 50px 0;
+    padding: 100px 0 0;
     @media (max-width: 992px) {
-        padding: 35px 0;
+        padding: 70px 0 0;
     }
     @media (max-width: 767px) {
-        padding: 25px 0;
-    }
-    &:first-child {
-        padding-top: 0;
-    }
-    &:last-child {
-        padding-bottom: 0;
+        padding: 50px 0 0;
     }
     .image-block {
         @media (max-width: 992px) {            
@@ -398,6 +400,13 @@ a.icon-box {
     &.with-bg {
         background: var(--cat-color, $white);
         padding: 20px;
+        .card-body {
+            h3 {
+                font-family: $bodyfont;
+                font-weight: 500;
+                font-size: 22px;
+            }
+        }
     }
     .card-img {
         margin-bottom: 20px;
@@ -462,8 +471,10 @@ a.icon-box {
     }
     .card-footer {
         margin-top: 20px;
-        .btn {
-            width: 100%;
+        @media (max-width: 767px) {
+            .btn {
+                width: 100%;
+            }
         }
     }
     &.is-hover {
@@ -526,6 +537,27 @@ a.icon-box {
             @media (max-width: 1200px) {
                 min-width: 150px;
                 max-width: 150px;
+            }
+        }
+    }
+}
+.cta-block {
+    position: relative;
+    background: #F8F8F8 url(../images/img-cta.png) no-repeat top right !important;
+    background-size: contain !important;
+    @media (max-width: 1200px) {
+        background-size: 60% !important;
+    }
+    @media (max-width: 992px) {
+        background-position: bottom right !important;
+    }
+    &.is-tr-bl-line-vector {
+        &::after, &::before {
+            width: 270px;
+            height: 120px;
+            @media (max-width: 767px) {
+                width: 170px;
+                height: 80px;
             }
         }
     }
