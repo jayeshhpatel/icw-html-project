@@ -57,7 +57,7 @@ jQuery(document).ready(function($) {
                 }, 2000);
             }
         );
-    }
+    } 
 });
 var isHidden = true;
 $('.is-show-all').on('click', function(e) {

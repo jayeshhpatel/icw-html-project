@@ -769,78 +769,45 @@ body a.icw-admin {
     .hs_error_rollup {
         display: none;
     }
-
     .actions {
-        overflow: hidden;
         position: relative;
-        &::before {
-            content: '';
-            background: url('data:image/svg+xml; utf8,<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28.4389 29.5093L17.7858 25.246C16.2154 24.6169 14.4748 24.6169 12.9044 25.246L2.2513 29.5093C1.46107 29.8288 0.670832 29.04 0.990925 28.2513L5.26219 17.6179C5.89237 16.0503 5.89237 14.313 5.26219 12.7455L0.990925 2.1121C0.670832 1.32334 1.46107 0.534571 2.2513 0.854072L12.9044 5.11741C14.4748 5.74643 16.2154 5.74643 17.7858 5.11741L28.4389 0.854072C29.2291 0.534571 30.0194 1.32334 29.6993 2.1121L25.428 12.7455C24.7978 14.313 24.7978 16.0503 25.428 17.6179L29.6993 28.2513C30.0194 29.04 29.2291 29.8288 28.4389 29.5093Z" fill="white"/></svg>') no-repeat center center;
-            background-size: contain !important;
-            display: inline-block;
-            width: 24px;
-            height: 24px;
-            @include transition(0.3s, ease-in-out);
-            margin: 0 auto;
-            @include transform(translateY(50px));
-            position: absolute;
-            left: calc(50% - 12px);
-            cursor: pointer;
-        }
-        // &::after {
-        //     content: 'Join Us';
-        //     @include inline-flex;
-        //     color: $white;
-        //     font-weight: 700;
-	    //     font-size: 16px;
-        //     font-family: $font-spaceGrotesk;
-        //     @include transition(0.3s, ease-in-out);
-        //     margin: 0 auto;
-        //     position: absolute;
-        //     left: 50%;
-        //     @include transform(translate(-50%, 12px));
-        //     cursor: pointer;
-        // }
-        &:hover, &:focus, &:active {
-            // &::after {
-            //     @include transform(translate(-50%, -30px));
-            // }
-            &::before {
-                @include transform(translateY(12px) rotate(180deg));
-            }
-        }
+        max-height: 48px;
+        overflow: hidden;
+        @include border-radius(0 8px 0 8px);
     }
-
     .hs-form input[type=submit]  {
         color: $white !important;
         background-color: $primary;
         border:1px solid $primary;
-        height: 48px;
         min-height: 48px;
+        max-height: 48px;
         padding: 0 25px;
-        font-weight: 700;
-        font-size: 16px;
-        font-family: $font-spaceGrotesk;
         min-width: 120px;
-        @include transition(0.3s, ease-in-out);
         @include border-radius(0 8px 0 8px);
         @include inline-flex;
         @include align-items(center);
-        @include justify-content(center);   
+        @include justify-content(center); 
+        @include transition(0.3s, ease-in-out);
+        line-height: 48px;
         &:hover, &:focus, &:active,
         &:not(:disabled):not(.disabled).active, 
         &:not(:disabled):not(.disabled):active,
         &:not(:disabled):not(.disabled).active:focus, 
-        &:not(:disabled):not(.disabled):active:focus {
-            background-color: #1c00e5 !important;
-            color: $white !important;
-            border-color: #1c00e5 !important;
+        &:not(:disabled):not(.disabled):active:focus {   
+            padding-bottom: 30px;
             font-size: 0;
+            & + .star {
+                @include transform(translateY(-36px) rotate(180deg));
+            }
         }
         &:focus,
         &:not(:disabled):not(.disabled).active:focus, 
-        &:not(:disabled):not(.disabled):active:focus { 
-            font-size: 16px;
+        &:not(:disabled):not(.disabled):active:focus {   
+            padding-bottom: 30px;
+            font-size: 0;
+            & + .star {
+                @include transform(translateY(-36px) rotate(180deg));
+            }
         }
         &.disabled,
         &:disabled {
@@ -849,6 +816,18 @@ body a.icw-admin {
             color: $white !important;
             pointer-events: none;
         }
+    }
+    .star {
+        background: url('data:image/svg+xml; utf8,<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28.4389 29.5093L17.7858 25.246C16.2154 24.6169 14.4748 24.6169 12.9044 25.246L2.2513 29.5093C1.46107 29.8288 0.670832 29.04 0.990925 28.2513L5.26219 17.6179C5.89237 16.0503 5.89237 14.313 5.26219 12.7455L0.990925 2.1121C0.670832 1.32334 1.46107 0.534571 2.2513 0.854072L12.9044 5.11741C14.4748 5.74643 16.2154 5.74643 17.7858 5.11741L28.4389 0.854072C29.2291 0.534571 30.0194 1.32334 29.6993 2.1121L25.428 12.7455C24.7978 14.313 24.7978 16.0503 25.428 17.6179L29.6993 28.2513C30.0194 29.04 29.2291 29.8288 28.4389 29.5093Z" fill="white"/></svg>') no-repeat center center;
+        background-size: contain;
+        width: 24px;
+        height: 24px;
+        display: inline-block;
+        position: absolute;
+        bottom: -24px;
+        left: calc(50% - 12px);
+        @include transition(0.3s, ease-in-out);
+        cursor: pointer;
     }
 }
 
