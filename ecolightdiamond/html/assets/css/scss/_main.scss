@@ -199,7 +199,7 @@
     padding: 70px 10%;
     margin: 0 -10%;
     @include border-radius(40px);
-    @media (max-width: 1400px) {
+    @media (max-width: 1500px) {
         padding: 50px 5%;
         margin: 0 -5%;
     }
@@ -691,7 +691,7 @@ a.icon-box {
     }
     @media (max-width: 992px) {
         background-position: bottom right !important;
-        padding: 50px 15px 100px;
+        padding: 50px 25px 100px;
     }
     &.is-tr-bl-line-vector {
         &::after, &::before {
@@ -851,7 +851,9 @@ a.icon-box {
     .table {
         border: 1px solid #E4E4E4;
         &.fixed-layout {
-            table-layout: fixed;
+            @media (min-width: 767px) {
+                table-layout: fixed;
+            }
         }
         thead {
             tr {
@@ -862,6 +864,10 @@ a.icon-box {
                         font-weight: 600;
                         line-height: 1.3;
                         padding: 10px 20px;
+                        text-align: center;
+                        @media (max-width: 992px) {
+                            font-size: 18px;
+                        }
                     }
                 }
                 th {
@@ -870,6 +876,12 @@ a.icon-box {
                     background: $gray;
                     padding: 10px 20px;
                     border-right: 1px solid #E4E4E4;
+                    @media (max-width: 992px) {
+                        font-size: 16px;
+                    }
+                    @media (max-width: 767px) {
+                        min-width: 170px;
+                    }
                 }
             }
         }
@@ -881,6 +893,12 @@ a.icon-box {
                     border-right: 1px solid #E4E4E4;
                     color: $bodyfontcolor;
                     vertical-align: middle;
+                    @media (max-width: 992px) {
+                        font-size: 14px;
+                    }
+                    @media (max-width: 767px) {
+                        min-width: 170px;
+                    }
                 }
                 &.border-0 {
                     td {
