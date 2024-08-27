@@ -41,6 +41,13 @@ jQuery(document).ready(function($) {
         $(this).parent('.menu-list-block').toggleClass('is-active');
         // $(this).parent().find('.menu-list-block').toggle(300);
     });
+    $('.tab-nav li a').on('click', function(){
+        var target = $(this).attr('href');
+        $(this).parents('.tab-nav').find('a').removeClass('active');
+        $(this).addClass('active');
+        $(target).fadeIn('fast').siblings(".tab-content-block").hide();
+        return false;
+    });
 });
 if($('.hero-slider').length){
     var herosplide = new Splide('.hero-slider', {
