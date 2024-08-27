@@ -48,6 +48,20 @@ jQuery(document).ready(function($) {
         $(target).fadeIn('fast').siblings(".tab-content-block").hide();
         return false;
     });
+    $(".collapse-item .collapse-title").click(function () {
+        if ($(this).closest(".collapse-item").hasClass("is-open")) {
+           $(this).closest(".collapse-item").stop(true,true).removeClass("is-open");
+           $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).hide("fast");
+        } else {
+           $(".collapse-item").removeClass("is-open");
+           $(".collapse-item").find(".collapse-body").stop(true,true).hide();
+           $(this).closest(".collapse-item").stop(true,true).addClass("is-open");
+           $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).slideDown("fast");
+  
+         
+        }
+        return false;
+    });
 });
 if($('.hero-slider').length){
     var herosplide = new Splide('.hero-slider', {

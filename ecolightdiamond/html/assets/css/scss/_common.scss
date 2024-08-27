@@ -293,6 +293,61 @@ h3, .h3 {
         }
     }
 }
+.form-check {
+    padding-left: 30px;
+    .form-check-input {
+        width: 20px;
+        height: 20px;
+        border-color: #E4E4E4;
+        @include border-radius(6px);
+        margin-left: -30px;
+    }
+    .form-check-label {
+        color: $black;
+        cursor: pointer;
+    }
+}
+input[type="checkbox"].checkboxbtn , 
+input[type="radio"].radiobtn {
+    display: none;
+    & + label {
+        @include inline-flex;
+        @include flex-direction(column);
+        @include align-items(center);
+        @include justify-content(center);
+        position: relative;
+        background-color: $white;
+        border: 1px solid #E4E4E4;           
+        padding: 9px 8px 8px;
+        color: black;
+        font-size: 14px;
+        white-space: nowrap;
+        width: 100%;
+        line-height: 1;
+        @include border-radius(2px);
+        cursor: pointer;
+        @include transition(0.1s, ease-in-out);
+    }
+    &:checked + label {
+        border-color: $black;
+        background: $black;
+        color: $white;
+    }
+    &:disabled + label {
+        opacity: 0.5;
+    }
+    &:hover, &:focus {
+        & + label {
+            background: $gray;
+            color: $black;
+        }
+        &:checked + label {
+            border-color: $black;
+            background: $black;
+            color: $white;
+        }
+    }
+}
 .select2 {
     width: 100% !important;    
 }
