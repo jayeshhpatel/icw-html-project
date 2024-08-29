@@ -508,8 +508,9 @@ input[type="radio"].radiobtn {
                 }
                 &.menu-item-has-children {
                     position: relative;
+                    display: block;
                     @media (max-width: 992px) {
-                        width: 100%;
+                        width: 100% !important;
                     }
                     .arrow {
                         position: relative; 
@@ -579,8 +580,7 @@ input[type="radio"].radiobtn {
                             top: calc(100% + 10px);
                             @include transition(0.2s, ease-in-out);
                             @include transform(translateY(5px));
-                            min-width: 260px;
-                                                       
+                            min-width: 260px;                                                       
                         }
                         @media (max-width: 992px) {                            
                             display: none;
@@ -589,7 +589,7 @@ input[type="radio"].radiobtn {
                             background: $white;
                             margin-top: 10px;
                             @include transform(unset);
-                            min-width: 100% !important;
+                            width: 100% !important;
                             @include border-radius(0px);
                         }
                         li {
@@ -637,7 +637,9 @@ input[type="radio"].radiobtn {
                             @include opacity(1);
                             visibility: visible;
                             z-index: 99;
-                            @include transform(translateY(0px));
+                            @media (min-width: 992px){
+                                @include transform(translateY(0px));
+                            }
                         }
                     }
                 }

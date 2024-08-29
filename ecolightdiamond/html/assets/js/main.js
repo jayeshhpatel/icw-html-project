@@ -56,7 +56,7 @@ jQuery(document).ready(function($) {
            $('.collapse-item').removeClass('is-open');
            $('.collapse-item').find('.collapse-body').stop(true,true).hide();
            $(this).closest('.collapse-item').stop(true,true).addClass('is-open');
-           $(this).closest('.collapse-item').find('.collapse-body').stop(true,true).slideDown('fast');
+           $(this).closest('.collapse-item').find('.collapse-body').stop(true,true).show('fast');
         }
         return false;
     }); 
