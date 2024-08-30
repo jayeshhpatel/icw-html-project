@@ -48,18 +48,20 @@ jQuery(document).ready(function($) {
         $(target).fadeIn('fast').siblings('.tab-content-block').hide();
         return false;
     });
+
     $('.collapse-item .collapse-title').click(function () {
         if ($(this).closest('.collapse-item').hasClass('is-open')) {
            $(this).closest('.collapse-item').stop(true,true).removeClass('is-open');
-           $(this).closest('.collapse-item').find('.collapse-body').stop(true,true).hide('fast');
+           $(this).closest('.collapse-item').find('.collapse-body').stop(true,true).slideUp();
         } else {
            $('.collapse-item').removeClass('is-open');
            $('.collapse-item').find('.collapse-body').stop(true,true).hide();
            $(this).closest('.collapse-item').stop(true,true).addClass('is-open');
-           $(this).closest('.collapse-item').find('.collapse-body').stop(true,true).show('fast');
+           $(this).closest('.collapse-item').find('.collapse-body').stop(true,true).slideDown();
         }
         return false;
     }); 
+
     if ($('.range-slider').length) {
         $('.range-slider').each(function () {
             let $this = $(this),
