@@ -34,10 +34,6 @@ jQuery(document).ready(function($) {
     $('li.menu-item-has-children .arrow').on('click',function(event){
         event.preventDefault();
         $(this).toggleClass('is-active');
-        $(this).parent().find('.sub-menu').first().toggle(300);
-    });
-    $('.menu-list-block .title').on('click',function(event){
-        event.preventDefault();
-        $(this).parent('.menu-list-block').toggleClass('is-active');
+        $(this).parent().find('.sub-menu').toggle(300);
     });
 });
