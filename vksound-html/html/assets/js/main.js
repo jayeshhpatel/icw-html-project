@@ -31,9 +31,9 @@ jQuery(document).ready(function($) {
     if ($('li.menu-item-has-children').length) {
         $('li.menu-item-has-children > a').after('<i class="arrow"></i>');
     }
-    $('li.menu-item-has-children .arrow').on('click',function(event){
+    $('li.menu-item-has-children > .arrow').on('click',function(event){
         event.preventDefault();
         $(this).toggleClass('is-active');
-        $(this).parent().find('.sub-menu').toggle(300);
+       $(this).siblings('.sub-menu').first().slideToggle(300);
     });
 });
