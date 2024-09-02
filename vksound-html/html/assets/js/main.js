@@ -34,6 +34,7 @@ jQuery(document).ready(function($) {
     $('li.menu-item-has-children > .arrow').on('click',function(event){
         event.preventDefault();
         $(this).toggleClass('is-active');
-       $(this).siblings('.sub-menu').first().slideToggle(300);
+        $(this).parent().toggleClass('active');
+        $(this).siblings('.sub-menu').first().slideToggle(300);
     });
 });
