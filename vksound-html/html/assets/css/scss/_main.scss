@@ -1,5 +1,9 @@
 .main-section {
     padding: 100px 0;
+    position: relative;
+    .container {
+        position: relative;
+    }
 }
 .section-title {
     .title {
@@ -31,11 +35,64 @@
         }
     }
 }
-.main-page-header-section {
+.page-header {
     background-color: #F8F8F8;
     background-image: var(--bg-desktop);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center center;
-    padding: 170px 70px;
+    padding: 170px 70px 100px;
+    min-height: 100vh;
+}
+.page-header-block {
+    .section-title {
+        &.text-center {
+            max-width: 660px;
+            margin: 0 auto;
+        }
+        .tag {
+            background: $primary;
+            color: $white;
+            font-size: 18px;
+            padding: 8px 15px;
+            line-height: 1;
+            display: inline-block;
+            @include border-radius(30px);
+        }
+        .title {
+            color: $primary;
+            margin-top: -10px;
+            span {
+                font-size: 75px;
+                color: $white;
+                font-weight: 400;
+            }
+        }
+        .sort-info {
+            color: $white;
+            font-size: 22px;
+            max-width: 550px;
+            margin: 0 auto 40px;
+        }
+        .contact-info {
+            @include justify-content(center);
+            color: $white;
+            .call-action span {
+                text-align: left;
+            }
+        }
+    }
+}
+.with-red-bg-shape {
+    position: relative;
+    &::before {
+        content: '';
+        position: absolute;
+        height: 520px;
+        width: 90vw;
+        background: $primary;
+        top: 0;
+        left: -20vw;
+        z-index: -1;
+    }
 }
