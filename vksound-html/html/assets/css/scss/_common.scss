@@ -147,7 +147,7 @@ h3, .h3 {
     font-size: 22px;
     font-weight: 700;
     margin: 0;
-    line-height: normal;
+    line-height: 1;
     &.font-lg {
         font-size: 30px;
     }
@@ -363,20 +363,22 @@ h3, .h3 {
 .icw-slide-dots {
     @include flexbox;
     @include justify-content(center);
+    @include align-items(center);
     li {
         line-height: 0.7;
-        margin: 3px;
+        margin: 0 2px;
         @include inline-flex;
         button {
             margin: 0;
             opacity: 1;
-            width: 9px;
-            height: 9px;
+            width: 8px;
+            height: 8px;
             @include border-radius(15px);
             &.is-active {
                 @include transform(scale(1));
                 background: $primary;
-                width: 24px;
+                width: 25px;
+                height: 10px;
             }
         }
     }
@@ -788,6 +790,12 @@ h3, .h3 {
             .title {
                 @media (max-width: 575px) {
                     max-width: 200px;
+                }
+            }
+            .sort-info {
+                strong {
+                    font-size: 18px;
+                    color: $white;
                 }
             }
         }

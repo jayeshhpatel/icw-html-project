@@ -38,3 +38,31 @@ jQuery(document).ready(function($) {
         $(this).siblings('.sub-menu').first().slideToggle(300);
     });
 });
+if ($('.auto-width-slider').length) {
+    var autoWidthSplide = new Splide( '.auto-width-slider', {
+        type: 'loop',
+        height: '400px',
+        autoWidth: true,
+        arrows: false,
+        gap: '20px',
+        classes: {
+            pagination: 'splide__pagination icw-slide-dots',
+        },
+    });
+
+    autoWidthSplide.mount();
+}
+if ($('.single-slider').length) {
+    var singleplide = new Splide( '.single-slider', {
+        type: 'slide',
+        arrows: false,
+        classes: {
+            pagination: 'splide__pagination icw-slide-dots',
+        },
+    });
+
+    singleplide.mount();
+}
+var glightbox = GLightbox({
+    selector: ".glightbox",
+});
