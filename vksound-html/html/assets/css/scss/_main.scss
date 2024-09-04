@@ -1,12 +1,21 @@
 .main-section {
-    padding: 100px 0;
     position: relative;
+    padding: 150px 0;
+    @media (max-width: 992px) {        
+        padding: 100px 0;
+    }
+    @media (max-width: 767px) {        
+        padding: 50px 0;
+    }
     .container {
         position: relative;
     }
 }
 .section-title {
     margin-bottom: 50px;
+    @media (max-width: 767px) {
+        margin-bottom: 30px;
+    }
     &.is-flex {
         @media (min-width: 1200px) {
             @include flexbox;
@@ -75,7 +84,6 @@
     background-size: cover;
     background-position: center center;
     padding-top: 80px;
-    min-height: 100vh;
     overflow: hidden;
     @media (max-width: 992px) {
         padding-top: 65px;
@@ -184,50 +192,6 @@
         }
     }
 }
-.section-overlap {
-    margin-top: -200px;
-    z-index: 3;
-    @media (max-width: 992px) {
-        margin-top: -130px;
-    }
-    @media (max-width: 767px) {
-        margin-top: -140px;
-    }
-}
-.top-bg-red-half {
-    position: relative;
-    color: $white;
-    z-index: 1;
-    &::before {
-        content: '';
-        position: absolute;
-        height: 520px;
-        width: 50vw;
-        background: $primary;
-        top: 0;
-        left: -50vw;
-        z-index: -1;
-    }
-    .red-bg-shape {
-        background: $primary;
-        width: calc(100% - 150px);
-        height: 520px;
-        z-index: -1;
-        position: absolute;
-        top: -100px;
-        left: 0;
-        &::before {
-            content: '';
-            position: absolute;
-            height: 520px;
-            width: 50vw;
-            background: $primary;
-            top: 0;
-            left: -50vw;
-            z-index: -1;
-        }
-    }
-}
 .auto-width-slider {
     @media (min-width: 992px) {
         margin-left: -50px;
@@ -287,6 +251,13 @@
     @include flex-direction(column);
     height: 100%;
     position: relative;
+    .card-img {
+        overflow: hidden;
+        img {
+            width: 100%;
+            @include transition(0.2s, ease-in-out);
+        }
+    }
     .card-body {
         background: $white;
         padding: 20px;
@@ -295,6 +266,8 @@
             font-size: 22px;
             font-family: $bodyfont;
             margin-bottom: 10px;
+            font-weight: 600;
+            @include transition(0.2s, ease-in-out);
         }
         .sort-info {
             font-size: 16px;
@@ -304,5 +277,158 @@
         background: $white;        
         padding: 0 20px 20px;
         line-height: 1;
+        .btn-arrow-link {
+            font-size: 16px;
+            font-weight: 500;            
+            @include transition(0.2s, ease-in-out);
+        }
+    }
+    &:hover, &:focus {
+        .card-img {
+            img {
+                @include transform(scale(1.1));
+            }
+        }
+        .card-body { 
+            .title {
+                color: $primary;
+            }
+        }
+        .card-footer {
+            .btn-arrow-link {
+                background-position: 100% center;
+            }
+        }
+    }
+}
+.counter-block {
+    max-width: 1000px;
+}
+.counter-box {
+    .count-number {
+        font-size: 150px;
+        font-weight: 400;
+        line-height: 0.9;
+        margin-bottom: 15px;
+        @media (max-width: 1200px) {
+            font-size: 120px;
+        }
+        @media (max-width: 992px) {
+            font-size: 90px;
+        }
+        @media (max-width: 767px) {
+            font-size: 75px;
+        }
+        span {
+            display: inline-block;
+        }
+    }
+    .info-text {
+        font-size: 40px;
+        font-family: $font-darker-grotesque;
+        line-height: 0.9;
+        margin-bottom: 15px;
+        @media (max-width: 1200px) {
+            font-size: 30px;
+        }
+        @media (max-width: 992px) {
+            font-size: 20px;
+        }
+        @media (max-width: 767px) {
+            font-size: 18px;
+        }
+    }
+    .btn-arrow-link {
+        z-index: 3;
+        position: relative;
+        &:hover {
+            opacity: 0.9;
+        }
+    }
+}
+.logo-list {
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    @media (max-width: 992px) {
+        grid-template-columns: repeat(5, auto);
+    }
+    @media (max-width: 767px) {
+        grid-template-columns: repeat(3, auto);
+    }
+    .logo-item {
+        @include flexbox;
+        @include align-items(center);
+        img {
+            max-width: 145px;
+            max-height: 56px;
+        }
+    }
+}
+.icon-box {
+    @include flexbox;
+    @include flex-direction(column);
+    height: 100%;
+    padding: 30px;
+    position: relative;
+    @media (max-width: 992px) {
+        padding: 20px;
+    }
+    &.with-border {
+        border: 1px solid rgba($primary, 0.3);
+        text-align: center;
+    }
+    .icon {
+        margin-bottom: 20px;
+        img {
+            width: 82px;
+            height: 82px;
+            flex: none;
+            @include transition(0.2s, ease-in-out);
+            @media (max-width: 992px) {
+                width: 65px;
+                height: 65px;
+            }
+        }
+    }
+    .info {
+        color: $white;
+        font-size: 22px;
+        font-weight: 600;
+        @include transition(0.2s, ease-in-out);
+        @media (max-width: 992px) {
+            font-size: 18px;
+        }
+        @media (max-width: 767px) {
+            font-size: 16px;
+        }
+    }
+    .arrow {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 34px;
+        height: 34px;
+        flex: none;
+        display: inline-block;
+        background: url('data:image/svg+xml; utf8,<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.375 27.625L27.625 6.375M27.625 6.375L11.6875 6.375M27.625 6.375V22.3125" stroke="rgb(236 82 54)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+        background-size: contain;
+        @include transition(0.2s, ease-in-out);
+        @media (max-width: 992px) {
+            width: 25px;
+            height: 25px;
+        }
+    }
+    &:hover, &:focus {
+        .icon {
+            img {
+                @include transform(scale(1.1));
+            }
+        }
+        .info { 
+            @include opacity(0.9);
+        }
+        .arrow {
+            @include transform(translate(10px, -10px));
+        }
     }
 }
