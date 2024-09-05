@@ -71,15 +71,38 @@ if ($('.auto-width-slider').length) {
     autoWidthSplide.mount();
 }
 if ($('.single-slider').length) {
-    var singleplide = new Splide( '.single-slider', {
+    var singleSplide = new Splide( '.single-slider', {
         type: 'slide',
         arrows: false,
         classes: {
             pagination: 'splide__pagination icw-slide-dots',
         },
     });
-
-    singleplide.mount();
+    singleSplide.mount();
+}
+if ($('.gallery-slider').length) {
+    var gallerySplide = new Splide( '.gallery-slider', {
+        type: 'loop',
+        perPage: 4,
+        perMove: 1,
+        arrows: false,
+        autoplay: true,
+        gap: '30px',
+        pagination: false,
+        breakpoints: {
+            992: {
+                perPage: 3,
+            },
+            767: {
+                perPage: 2,
+                gap: '20px',
+            },
+            575: {
+                perPage: 1.5,
+            },
+        }
+    });
+    gallerySplide.mount();
 }
 var glightbox = GLightbox({
     selector: ".glightbox",

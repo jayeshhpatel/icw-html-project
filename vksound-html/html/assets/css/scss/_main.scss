@@ -208,6 +208,17 @@
         bottom: -30px;
     }
 }
+.gallery-slider {
+    .splide__track {
+        overflow: visible;
+    }
+    .image-block {
+        @include border-radius(0);
+        img {
+            aspect-ratio: 1/1;
+        }
+    }
+}
 
 .image-block, .video-block {
     height: 100%;
@@ -251,6 +262,25 @@
     @include flex-direction(column);
     height: 100%;
     position: relative;
+    .user-info {
+        @include flexbox;
+        @include align-items(center);
+        margin-top: 5px;
+        .user-img {
+            margin-right: 10px;
+            img {
+                width: 28px;
+                height: 28px;
+                flex: none;
+                @include border-radius(50%);
+            }
+        }
+        .name {
+            font-size: 14px;
+            color: rgba($black, 0.6);
+            font-weight: 500;
+        }
+    }
     .card-img {
         overflow: hidden;
         img {
@@ -262,12 +292,54 @@
         background: $white;
         padding: 20px;
         color: $black;
+        .category {
+            color: $primary;
+            font-size: 12px;
+            background: #F9CDC5;
+            padding: 3px 10px;
+            @include border-radius(30px);
+            display: inline-block;
+            margin-bottom: 15px;
+            z-index: 3; 
+            position: relative;   
+            @include transition(0.2s, ease-in-out);
+        }
+        a.category {        
+            &:hover, &:focus {
+                background: $primary;
+                color: $white;
+            }
+        }
+        .date-time {
+            color: rgba($black, 0.6);
+            font-size: 12px;
+            @include flexbox;
+            @include align-items(center);
+            @include justify-content(space-between);
+            margin-bottom: 15px;
+            .icon-time {
+                background: url('data:image/svg+xml; utf8,<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.5 3.375V6.5L8.0625 7.4375M12.125 6.5C12.125 9.60663 9.60663 12.125 6.5 12.125C3.3934 12.125 0.875 9.60663 0.875 6.5C0.875 3.3934 3.3934 0.875 6.5 0.875C9.60663 0.875 12.125 3.3934 12.125 6.5Z" stroke="black" stroke-opacity="0.6" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
+                background-size: contain;
+                width: 12px;
+                height: 12px;
+                display: inline-block;
+                margin-right: 5px
+            }
+            span {
+                @include inline-flex;
+                @include align-items(center);
+            }
+        }
         .title {
             font-size: 22px;
             font-family: $bodyfont;
             margin-bottom: 10px;
             font-weight: 600;
             @include transition(0.2s, ease-in-out);
+            a {
+                color: $black;
+                @include transition(0.2s, ease-in-out);
+            }
         }
         .sort-info {
             font-size: 16px;
@@ -279,7 +351,7 @@
         line-height: 1;
         .btn-arrow-link {
             font-size: 16px;
-            font-weight: 500;            
+            font-weight: 500; 
             @include transition(0.2s, ease-in-out);
         }
     }
@@ -292,6 +364,9 @@
         .card-body { 
             .title {
                 color: $primary;
+                a {
+                    color: $primary;
+                }
             }
         }
         .card-footer {
@@ -317,7 +392,7 @@
             font-size: 90px;
         }
         @media (max-width: 767px) {
-            font-size: 75px;
+            font-size: 65px;
         }
         span {
             display: inline-block;
@@ -348,19 +423,41 @@
 }
 .logo-list {
     display: grid;
-    grid-template-columns: repeat(7, auto);
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 30px;
+    @media (max-width: 1200px) {
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 20px;
+    }
     @media (max-width: 992px) {
-        grid-template-columns: repeat(5, auto);
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 15px;
     }
     @media (max-width: 767px) {
-        grid-template-columns: repeat(3, auto);
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 575px) {
+        grid-template-columns: repeat(2, 1fr);
     }
     .logo-item {
         @include flexbox;
         @include align-items(center);
+        @include justify-content(center);
+        height: 100%;
+        flex-grow: 1;
+        background: $white;
+        padding: 20px;
+        border: 1px solid transparent;
+        @include transition(0.2s, ease-in-out);
         img {
-            max-width: 145px;
             max-height: 56px;
+            @include transition(0.2s, ease-in-out);
+        }
+    }
+    a.logo-item {
+        &:hover, &:focus {
+            border-color: #E4E4E4;
+            @include transform(translateY(-5px));
         }
     }
 }
