@@ -144,6 +144,29 @@ if ($('.card-img-slider').length) {
     });
     cardImgSplide.mount();
 }
+if ($('.feedback-slider').length) {
+    var cardImgSplide = new Splide( '.feedback-slider', {
+        type: 'slide',
+        perPage: 2,
+        perMove: 1,
+        arrows: false,
+        gap: '20px',
+        classes: {
+            pagination: 'splide__pagination icw-slide-dots',
+        }, 
+        breakpoints: {
+            767: {               
+                perPage: 1.5,
+                gap: '15px',
+            },
+            575: {               
+                perPage: 1,
+                gap: '15px',
+            },
+        }
+    });
+    cardImgSplide.mount();
+}
 if ($('.gallery-slider').length) {
     var gallerySplide = new Splide( '.gallery-slider', {
         type: 'loop',

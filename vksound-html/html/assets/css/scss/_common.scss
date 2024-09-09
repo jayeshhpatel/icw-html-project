@@ -410,6 +410,7 @@ h3, .h3 {
             width: 8px;
             height: 8px;
             @include border-radius(15px);
+            background: $white;
             &.is-active {
                 @include transform(scale(1));
                 background: $primary;
@@ -459,7 +460,7 @@ h3, .h3 {
         font-size: 16px;
         line-height: 1.5;
         &:not(:last-child) {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         @media (max-width: 767px) {
             font-size: 14px;
@@ -828,7 +829,8 @@ h3, .h3 {
                                 }
                                 & > a {
                                     padding: 0; 
-                                    margin-bottom: 10px;
+                                    padding-right: 15px;
+                                    margin-bottom: 12px;
                                     font-size: 12px;
                                     font-weight: 600;
                                     text-transform: uppercase;
@@ -836,6 +838,26 @@ h3, .h3 {
                                     display: inline-block;
                                     background: transparent;
                                     border-bottom: 0;
+                                    position: relative;
+                                    width: 100%;
+                                    &::after {
+                                        content: '';
+                                        background: url('data:image/svg+xml; utf8,<svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5.74878C0.585787 5.74878 0.25 6.08457 0.25 6.49878C0.25 6.91299 0.585786 7.24878 1 7.24878L1 5.74878ZM17.5303 7.02911C17.8232 6.73622 17.8232 6.26134 17.5303 5.96845L12.7574 1.19548C12.4645 0.902586 11.9896 0.902586 11.6967 1.19548C11.4038 1.48837 11.4038 1.96325 11.6967 2.25614L15.9393 6.49878L11.6967 10.7414C11.4038 11.0343 11.4038 11.5092 11.6967 11.8021C11.9896 12.095 12.4645 12.095 12.7574 11.8021L17.5303 7.02911ZM1 7.24878L17 7.24878L17 5.74878L1 5.74878L1 7.24878Z" fill="rgb(236 82 54)"/></svg>') no-repeat right center;                                        
+                                        background-size: contain;
+                                        width: 13px;
+                                        height: 10px;
+                                        @include transition(0.2s, ease-in-out);
+                                        position: absolute;
+                                        top: 0; 
+                                        right: 10px;
+                                        opacity: 0;
+                                    }
+                                    &:hover, &:focus { 
+                                        &::after {
+                                            right: 0;
+                                            opacity: 1;
+                                        }
+                                    }
                                 }
                                 .sub-menu {
                                     position: relative;
@@ -934,6 +956,7 @@ h3, .h3 {
         padding-top: 50px;
         overflow: hidden;
         .section-title {
+            margin-bottom: 0;
             .sort-info {
                 strong {
                     font-size: 18px;
@@ -1080,9 +1103,9 @@ h3, .h3 {
         .privacy-menu {
             margin-top: 30px;
             li {
-                line-height: 1.2;
+                line-height: 1.1;
                 &:not(:last-child) {
-                    margin-bottom: 15px;
+                    margin-bottom: 10px;
                     @media (max-width: 992px) {
                         margin-bottom: 10px;
                     }
@@ -1363,6 +1386,60 @@ h3, .h3 {
         @media (max-width: 767px) {            
             width: 200px;
             height: 200px;
+        }
+    }
+}
+.with-br-vector {
+    position: relative;
+    &::before {
+        content: '';
+        background: url(../images/bg-v-right-vector.svg) no-repeat right center;
+        background-size: contain;
+        display: inline-block;
+        width: 440px;
+        height: 600px;
+        position: absolute;
+        bottom: 60px;
+        right: 0;
+        @media (max-width: 1200px) {            
+            width: 295px;
+            height: 400px;
+        }
+        @media (max-width: 992px) {            
+           bottom: 20px;
+        }
+        @media (max-width: 767px) {            
+            width: 150px;
+            height: 200px;
+        }
+    }
+}
+.with-out-bg-block {
+    padding: 100px 10%;
+    margin: 0 -10%;
+    background-color: $white;
+    @media (max-width: 1400px) {
+        padding: 70px 8%;
+        margin: 0 -8%;
+    }
+    @media (max-width: 992px) {
+        padding: 50px 8%;
+        margin: 0 -8%;
+    }
+    @media (max-width: 600px) {
+        padding: 50px 15px;
+        margin: 0 -15px;        
+        @include border-radius(0px);
+    }
+    &.with-bg-img {
+        background-image: var(--bg-img, $white);
+        background-size: cover;
+        background-position: bottom right;
+        background-repeat: no-repeat;
+    }
+    .section-title {
+        @media (min-width: 992px) {
+            padding-right: 70px;
         }
     }
 }
