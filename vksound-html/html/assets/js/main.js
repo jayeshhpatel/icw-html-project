@@ -134,6 +134,33 @@ if ($('.single-slider').length) {
     });
     singleSplide.mount();
 }
+if ($('.post-slider').length) {
+    var postSplide = new Splide( '.post-slider', {
+        type: 'slide',
+        perPage: 4,
+        perMove: 1,
+        gap: '30px',
+        arrows: true,
+        classes: {
+            pagination: 'splide__pagination icw-slide-dots is-light',
+        }, 
+        breakpoints: {
+            1200: {               
+                perPage: 3,
+                gap: '20px',
+            },
+            992: {               
+                perPage: 2,
+                gap: '20px',
+            },
+            767: {               
+                perPage: 1.2,
+                gap: '20px',
+            },
+        }
+    });
+    postSplide.mount();
+}
 if ($('.card-img-slider').length) {
     var cardImgSplide = new Splide( '.card-img-slider', {
         type: 'slide',
