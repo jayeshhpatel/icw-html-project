@@ -182,22 +182,111 @@ h3, .h3 {
     color: $primary !important;
 }
 
-.btn {
-    min-height: 44px;
-    padding: 0 25px;
+// .btn {     
+//     position: relative;
+//     text-align: center;
+//     text-decoration: none;  
+//     min-height: 44px;
+//     padding: 0 25px;
+//     min-width: 150px;
+//     font-weight: 600;
+//     font-size: 16px;
+//     white-space: nowrap;
+//     border: none;
+//     transition: transform.3s cubic-bezier(.5,2.5,.7,.7),box-shadow.3s cubic-bezier(.5,2.5,.7,.7),-webkit-transform.3s cubic-bezier(.5,2.5,.7,.7),-webkit-box-shadow.3s cubic-bezier(.5,2.5,.7,.7);
+//     @include border-radius(5px);
+//     @include inline-flex;
+//     @include align-items(center);
+//     @include justify-content(center);
+//     @include transform(translateY(0));
+//     line-height: 1;
+//     -webkit-box-sizing: border-box;
+//     box-sizing: border-box;
+//     &:hover, &:focus, &:active,
+//     &:not(:disabled):not(.disabled).active, 
+//     &:not(:disabled):not(.disabled):active,
+//     &:not(:disabled):not(.disabled).active:focus, 
+//     &:not(:disabled):not(.disabled):active:focus {
+//         @include transform(translateY(-5px));
+//     }
+//     @media (max-width: 992px) {
+//         font-size: 14px;
+//         min-height: 40px;
+//         padding: 0 20px;
+//         min-width: auto;
+//     }
+//     &.btn-lg {        
+//         min-width: 280px;
+//         @media (max-width: 767px) {
+//             min-width: 100%;
+//         }
+//     }
+//     &.btn-primary {
+//         color: $white;
+//         background-color: $primary;
+//         @include box-shadow(0 0 0 1px $primary);
+//         &:hover, &:focus, &:active,
+//         &:not(:disabled):not(.disabled).active, 
+//         &:not(:disabled):not(.disabled):active,
+//         &:not(:disabled):not(.disabled).active:focus, 
+//         &:not(:disabled):not(.disabled):active:focus {
+//             box-shadow: 0 0 0 1px $primary, 0 4px 0 0 #A62707;
+//             background-color: $primary !important;
+//             color: $white !important;
+//         }
+//     }
+//     &.btn-white {
+//         color: $primary;
+//         background-color: $white;
+//         border:1px solid $white;
+//         &:hover, &:focus, &:active,
+//         &:not(:disabled):not(.disabled).active, 
+//         &:not(:disabled):not(.disabled):active,
+//         &:not(:disabled):not(.disabled).active:focus, 
+//         &:not(:disabled):not(.disabled):active:focus {
+//             background-color: #eeeeee !important;
+//             color: $primary !important;
+//             border-color: #eeeeee !important;
+//         }
+//     }
+// }
+.btn {    
+    background: transparent;
+    border: none;
     min-width: 150px;
-    font-weight: 600;
+    min-height: 44px;
+    line-height: 44px;
+    @include border-radius(5px);    
+    box-shadow: 0px 4px 0px transparent;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
     font-size: 16px;
-    white-space: nowrap;
-    @include transition(0.2s, ease-in-out);
-    @include border-radius(4px);
-    @include inline-flex;
-    @include align-items(center);
-    @include justify-content(center);
-    line-height: 1;
+    font-weight: 600;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;    
+    @include transform(translateY(0));
+    -webkit-transition: -webkit-transform.3s cubic-bezier(.5,2.5,.7,.7),-webkit-box-shadow.3s cubic-bezier(.5,2.5,.7,.7);
+    transition: -webkit-transform.3s cubic-bezier(.5,2.5,.7,.7),-webkit-box-shadow.3s cubic-bezier(.5,2.5,.7,.7);
+    transition: transform.3s cubic-bezier(.5,2.5,.7,.7),box-shadow.3s cubic-bezier(.5,2.5,.7,.7);
+    transition: transform.3s cubic-bezier(.5,2.5,.7,.7),box-shadow.3s cubic-bezier(.5,2.5,.7,.7),-webkit-transform.3s cubic-bezier(.5,2.5,.7,.7),-webkit-box-shadow.3s cubic-bezier(.5,2.5,.7,.7);
+    &::before {
+        @include border-radius(5px);
+        bottom: 0;
+        content: "";
+        height: 100%;
+        left: 0;
+        position: absolute;
+        -webkit-transition: bottom.3s cubic-bezier(.5,2.5,.7,.7);
+        transition: bottom.3s cubic-bezier(.5,2.5,.7,.7);
+        width: 100%
+    }    
     @media (max-width: 992px) {
         font-size: 14px;
         min-height: 40px;
+        line-height: 40px;
         padding: 0 20px;
         min-width: auto;
     }
@@ -208,31 +297,37 @@ h3, .h3 {
         }
     }
     &.btn-primary {
-        color: $white;
-        background-color:$primary;
-        border:1px solid $primary;
+        color: $white !important;
+        background-color: $primary !important;
         &:hover, &:focus, &:active,
         &:not(:disabled):not(.disabled).active, 
         &:not(:disabled):not(.disabled):active,
         &:not(:disabled):not(.disabled).active:focus, 
         &:not(:disabled):not(.disabled):active:focus {
-            background-color: #d43417 !important;
-            color: $white !important;
-            border-color:#d43417 !important;
+            background: $primary !important;
+            box-shadow: 0px 4px 0px #A62707;
+            color: $white !important;        
+            @include transform(translateY(-4px));
+            &::before {
+                bottom: -4px;
+            }
         }
     }
     &.btn-white {
-        color: $primary;
-        background-color: $white;
-        border:1px solid $white;
+        color: $primary !important;
+        background-color: $white !important;
         &:hover, &:focus, &:active,
         &:not(:disabled):not(.disabled).active, 
         &:not(:disabled):not(.disabled):active,
         &:not(:disabled):not(.disabled).active:focus, 
         &:not(:disabled):not(.disabled):active:focus {
-            background-color: #eeeeee !important;
-            color: $primary !important;
-            border-color: #eeeeee !important;
+            background: $white !important;
+            box-shadow: 0px 4px 0px $black;
+            color: $primary !important;        
+            @include transform(translateY(-4px));
+            &::before {
+                bottom: -4px;
+            }
         }
     }
 }
@@ -273,15 +368,56 @@ h3, .h3 {
 }
 
 .btn-arrow-link {
-    background: url('data:image/svg+xml; utf8,<svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5.74878C0.585787 5.74878 0.25 6.08457 0.25 6.49878C0.25 6.91299 0.585786 7.24878 1 7.24878L1 5.74878ZM17.5303 7.02911C17.8232 6.73622 17.8232 6.26134 17.5303 5.96845L12.7574 1.19548C12.4645 0.902586 11.9896 0.902586 11.6967 1.19548C11.4038 1.48837 11.4038 1.96325 11.6967 2.25614L15.9393 6.49878L11.6967 10.7414C11.4038 11.0343 11.4038 11.5092 11.6967 11.8021C11.9896 12.095 12.4645 12.095 12.7574 11.8021L17.5303 7.02911ZM1 7.24878L17 7.24878L17 5.74878L1 5.74878L1 7.24878Z" fill="rgb(236 82 54)"/></svg>') no-repeat calc(100% - 10px) center;
-    background-size: 15px;
-    padding-right: 35px;
-    line-height: 0.7;
+    --shift-distance: 4px;
+    color: $primary;
     display: inline-block;
-    @include transition(0.2s, ease-in-out);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 32px;
+    padding-right: 40px;
+    position: relative;
+    text-decoration: none;
+    -webkit-transform: translatex(0);
+    -ms-transform: translatex(0);
+    transform: translatex(0);
+    -webkit-transition: color .15s ease-in-out, -webkit-transform .3s ease;
+    transition: color .15s ease-in-out, -webkit-transform .3s ease;
+    transition: color .15s ease-in-out, transform .3s ease;
+    transition: color .15s ease-in-out, transform .3s ease, -webkit-transform .3s ease;
+    z-index: 1;
+    &::before {
+        background-color: $primary;
+        background-image: url('data:image/svg+xml; utf8,<svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5.74878C0.585787 5.74878 0.25 6.08457 0.25 6.49878C0.25 6.91299 0.585786 7.24878 1 7.24878L1 5.74878ZM17.5303 7.02911C17.8232 6.73622 17.8232 6.26134 17.5303 5.96845L12.7574 1.19548C12.4645 0.902586 11.9896 0.902586 11.6967 1.19548C11.4038 1.48837 11.4038 1.96325 11.6967 2.25614L15.9393 6.49878L11.6967 10.7414C11.4038 11.0343 11.4038 11.5092 11.6967 11.8021C11.9896 12.095 12.4645 12.095 12.7574 11.8021L17.5303 7.02911ZM1 7.24878L17 7.24878L17 5.74878L1 5.74878L1 7.24878Z" fill="rgb(255 255 255)"/></svg>');
+        background-position-x: calc(100% - 7px);
+        background-position-y: calc(100% - 9px);
+        background-repeat: no-repeat;
+        background-size: 18px;
+        @include border-radius(16px);
+        bottom: 0;
+        content: '';
+        display: block;
+        height: 32px;
+        left: calc(100% - 32px);
+        position: absolute;
+        right: 0;
+        -webkit-transition: left .3s cubic-bezier(.34,1.2,.64,1), right .3s ease, background-position .3s ease;
+        transition: left .3s cubic-bezier(.34,1.2,.64,1), right .3s ease, background-position .3s ease;
+        z-index: -1;
+    }
     &:hover, &:focus {
-        color: $primary;
-        background-position: 100% center !important;
+        color: $white;
+        -webkit-transform: translatex(var(--shift-distance));
+        -ms-transform: translatex(var(--shift-distance));
+        transform: translatex(var(--shift-distance));
+        &::before {
+            -webkit-animation: fakebounce .3s ease-in-out;
+            animation: fakebounce .3s ease-in-out;
+            background-position-x: calc(100% - 3.5* var(--shift-distance));
+            height: 100%;
+            left: -16px;
+            -webkit-transition: right .3s ease, background-position .3s ease;
+            transition: right .3s ease, background-position .3s ease;
+        }
     }
     &.is-white {
         color: $white;
@@ -290,6 +426,22 @@ h3, .h3 {
             color: $white;
         }
     }
+}
+
+@-webkit-keyframes fakebounce {
+    0% { left: calc(100% - 32px); }
+    50% { left: -24px }
+    75% { left: -4px }
+    88% { left: -18px }
+    to { left: -16px }
+}
+
+@keyframes fakebounce {
+    0% { left: calc(100% - 32px); }
+    50% { left: -24px }
+    75% { left: -4px }
+    88% { left: -18px }
+    to { left: -16px }
 }
 
 .form-group {
@@ -419,6 +571,16 @@ h3, .h3 {
             }
         }
     }
+    &.is-light {
+        li {
+            button {
+                background: #F9CDC5;
+                &.is-active {
+                    background: $primary;
+                }
+            }
+        }
+    }
 }
 
 .splide__arrows {
@@ -436,9 +598,21 @@ h3, .h3 {
         }
         &.splide__arrow--prev {
             left: -50px;
+            @media (max-width: 1200px) {
+                left: -30px;
+            }
+            @media (max-width: 767px) {
+                left: -10px;
+            }
         }
         &.splide__arrow--next {
             right: -50px;
+            @media (max-width: 1200px) {
+                right: -30px;
+            }
+            @media (max-width: 767px) {
+                right: -10px;
+            }
         }
         &:disabled {
             pointer-events: none;
@@ -587,6 +761,7 @@ h3, .h3 {
         .btn {
             @media (max-width: 992px) {                                    
                 min-height: 36px; 
+                line-height: 36px;
             }
         }
         .navbar-nav {
@@ -628,13 +803,14 @@ h3, .h3 {
                         left: 0;
                     }
                     &.btn {
-                        line-height: 1;
+                        line-height: 40px;
                         min-width: auto;  
                         padding: 0 25px;                      
                         min-height: 40px;
                         @media (max-width: 1200px) {
                             padding: 0 15px;                      
                             min-height: 36px;
+                            line-height: 36px;
                         }
                         @media (max-width: 992px) {
                             width: 100%;
@@ -1331,7 +1507,7 @@ h3, .h3 {
             @media (min-width: 575px) {
                 position: relative;
             }
-            &::after {
+            &::before {
                 content: '';
                 background: url(../images/bg-vector.svg) no-repeat bottom right;
                 background-size: contain;
