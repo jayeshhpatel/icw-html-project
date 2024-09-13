@@ -114,13 +114,19 @@
 .page-header-block {
     padding: 100px 0 200px;
     @media (max-width: 992px) {
-        padding: 70px 0 200px;
+        padding: 70px 0 150px;
     }
     @media (max-width: 767px) {
-        padding: 50px 0 200px;
+        padding: 50px 0 100px;
     }
     &.pb-100 {
         padding-bottom: 100px;
+        @media (max-width: 992px) {
+            padding-bottom: 70px;
+        }
+        @media (max-width: 767px) {
+            padding-bottom: 50px;
+        }
     }
     .section-title {
         z-index: 3;
@@ -277,9 +283,7 @@
     }
     .image-block {
         @include border-radius(0);
-        img {
-            aspect-ratio: 1/1;
-        }
+        display: inline-block;
     }
 }
 .is-video {
@@ -788,6 +792,50 @@
 .counter-block {
     max-width: 1000px;
 }
+.with-bg-counter-block {
+    padding: 50px 0;
+    max-width: 100%;
+    .section-title {
+        @media (max-width: 1400px) and (min-width: 767px) {
+            max-width: 50%;
+        }
+        h2 {
+            font-size: 46px;
+        }
+    }
+    .counter-box {
+        background: $white;
+        color: $primary;
+        padding: 40px;
+        @include border-radius(30px);
+        text-align: center;
+        height: 100%;
+        @media (max-width: 1400px) {
+            padding: 30px;
+        }
+        @media (max-width: 992px) {
+            padding: 20px;
+        }
+        h3 {
+            font-size: 68px;
+            font-weight: 500; 
+            @media (max-width: 1400px) {
+                font-size: 55px;
+            }
+        }
+        .info-text {
+            font-size: 30px;
+            margin-bottom: 0;
+            line-height: 1;
+            @media (max-width: 1400px) {
+                font-size: 25px;
+            }
+            @media (max-width: 992px) {
+                font-size: 20px;
+            }
+        }
+    }
+}
 .counter-box {
     .count-number {
         font-size: 150px;
@@ -909,7 +957,6 @@
         &.is-overlay-hover {
             position: relative;
             img {
-                min-height: 80px;
                 @media (max-width: 992px) {
                     min-height: auto;
                 }

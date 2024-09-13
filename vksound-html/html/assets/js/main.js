@@ -197,24 +197,12 @@ if ($('.feedback-slider').length) {
 if ($('.gallery-slider').length) {
     var gallerySplide = new Splide( '.gallery-slider', {
         type: 'loop',
-        perPage: 4,
-        perMove: 1,
         arrows: false,
+        autoWidth: true,
         autoplay: true,
         gap: '30px',
         pagination: false,
-        breakpoints: {
-            992: {
-                perPage: 3,
-            },
-            767: {
-                perPage: 2,
-                gap: '20px',
-            },
-            575: {
-                perPage: 1.5,
-            },
-        }
+        height: '300px',        
     });
     gallerySplide.mount();
 }
