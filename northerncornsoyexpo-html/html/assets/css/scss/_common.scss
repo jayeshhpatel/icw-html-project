@@ -118,32 +118,29 @@ img {
 h1, .h1 {
     font-size: 48px;
     margin: 0;
-    line-height: 0.9;
     font-weight: 700;
-    @media (max-width: 1200px) {
-        font-size: 80px;
+    @media (max-width: 992px) {
+        font-size: 42px;
     }
     @media (max-width: 767px) {
-        font-size: 60px;
+        font-size: 36px;
     }
 }
 h2, .h2 {
     font-size: 42px;
     font-weight: 700;
     margin: 0;
-    line-height: 1;
-    @media (max-width: 1200px) {
-        font-size: 60px;
+    @media (max-width: 992px) {
+        font-size: 36px;
     }
     @media (max-width: 767px) {
-        font-size: 40px;
+        font-size: 30px;
     }
 }
 h3, .h3 {
     font-size: 28px;
     font-weight: 700;
     margin: 0;
-    line-height: 1;
     &.font-lg {
         font-size: 30px;
     }
@@ -183,6 +180,7 @@ h3, .h3 {
     transition: -webkit-transform.3s cubic-bezier(.5,2.5,.7,.7);
     transition: transform.3s cubic-bezier(.5,2.5,.7,.7);
     transition: transform.3s cubic-bezier(.5,2.5,.7,.7),-webkit-transform.3s cubic-bezier(.5,2.5,.7,.7);
+    white-space: nowrap;
     &::before {
         @include border-radius(5px);
         bottom: 0;
@@ -241,6 +239,23 @@ h3, .h3 {
             }
         }
     }
+    &.btn-white {
+        color: $blue !important;
+        background-color: $white !important;
+        &:hover, &:focus, &:active,
+        &:not(:disabled):not(.disabled).active, 
+        &:not(:disabled):not(.disabled):active,
+        &:not(:disabled):not(.disabled).active:focus, 
+        &:not(:disabled):not(.disabled):active:focus {
+            background: $white !important;
+            box-shadow: 0px 4px 0px $blue;
+            color: $blue !important;        
+            @include transform(translateY(-4px));
+            &::before {
+                bottom: -4px;
+            }
+        }
+    }
 }
 
 .btn-link {
@@ -250,6 +265,9 @@ h3, .h3 {
     text-decoration: none;
     padding: 0;
     position: relative;
+    @media (max-width: 767px) {
+        font-size: 14px;
+    }
     &::before {
         content: '';
         height: 1px;
@@ -614,22 +632,44 @@ h3, .h3 {
 	background-color: $blue;
 	text-align: center;	
 	.container {
-		max-width: initial;
-		overflow-x: auto;
+        max-width: initial;
+        overflow-x: auto;
+        padding: 22px 15px;
+        &::-webkit-scrollbar { 
+            width: 4px; 
+            height: 8px; 
+            background-color:#fafafa; 
+        }
+        &::-webkit-scrollbar-thumb { 
+            background-color:rgba(0,0,0,0.2); 
+        }
+        @media (max-width: 767px) {
+            padding: 15px;
+        }
     }
     .note-info {
-        @include flexbox;
+        @include inline-flex;
         @include align-items(center);
         @include justify-content(center);
-        padding: 22px 0;
+        @include flex-wrap(nowrap);
+        @media (max-width: 767px) {
+        }
         .note-text {
             color: $white;
             font-size: 18px;
             font-weight: 600;
+            white-space: nowrap;
+            @media (max-width: 992px) {
+                font-size: 16px;
+            }
+            @media (max-width: 767px) {
+                font-size: 14px;
+            }
         }
         .btn-link {
             color: $primary;
             margin-left: 10px;
+            white-space: nowrap;
         }
     }
 }
@@ -642,46 +682,67 @@ h3, .h3 {
 	@include transition(0.3s, ease-in-out); 
 	background-color: $white; 
     height: 90px;
+    @media (max-width: 767px) {
+        height: 70px;
+    }
     &.fixed-header {
         background: $white;
     }
-    @media (min-width: 992px) {        
-        backdrop-filter: blur(215px);
-        background: rgba(184, 184, 184, 0.15);
-    }
     .offcanvas {
-        background-color: $black;
+        background-color: $white;
         --bs-offcanvas-width: 330px;
         .btn-close {
             filter: invert(1);
             opacity: 1;
+        }
+        .offcanvas-title {
+            img {
+                max-height: 70px;
+            }
         }
     }
     .navbar {
         background: transparent;
         padding: 12px 0;
         height: 90px;
+        @media (max-width: 767px) {
+            height: 70px;
+        }
+        & > .container {
+            height: 100%;
+            flex-wrap: unset;
+        }
         .navbar-toggler {
             padding: 0;
-            margin-left: 10px;
+            margin-right: 10px;
+            border: none;
             span {
-                background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path stroke="rgb(255 255 255)" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/></svg>');                
+                background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path stroke="rgb(0 0 0)" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/></svg>');                
                 @include transition(0.2s, ease-in-out);
             }
             &:hover, &:focus {
                 span {
-                    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path stroke="rgb(236 82 54)" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/></svg>');
+                    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path stroke="rgb(156 203 64)" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/></svg>');
                 }
             }
         }
         .navbar-brand {
             padding: 0;
             margin: 0;
-            margin-top: 75px ;
+            margin-top: 75px;
+            @media (max-width: 1440px) {
+                margin-top: 35px;
+            }
+            @media (max-width: 767px) {
+                margin-top: 15px;
+            }
             img {
                 max-height: 140px;
-                @media (max-width: 992px) {
-                    max-height: 40px;
+                @media (max-width: 1440px) {
+                    max-height: 100px;
+                }                
+                @media (max-width: 767px) {
+                    max-height: 70px;
                 }
             }
         }
@@ -697,21 +758,20 @@ h3, .h3 {
             }
         }
         .btn {
-            @media (max-width: 992px) {                                    
-                min-height: 36px; 
-                line-height: 36px;
+            @media (max-width: 992px) {                         
+                padding: 0 15px;
             }
         }
         .navbar-nav {
-            @media (min-width: 992px) {
+            @media (min-width: 1200px) {
                 @include align-items(center);
             }
             & > li {
                 margin: 0 8px;
-                @media (max-width: 1200px) {
-                    margin: 0 8px;
+                @media (max-width: 1440px) {
+                    margin: 0 5px;
                 }
-                @media (max-width: 992px) {
+                @media (max-width: 1200px) {
                     margin: 8px 0;
                 }
                 &:last-child {
@@ -723,10 +783,10 @@ h3, .h3 {
                     font-weight: 500;
                     padding: 0;
                     position: relative;
-                    @media (max-width: 1200px) {
-                        font-size: 14px;
+                    @media (max-width: 1440px) {
+                        font-size: 15px;
                     }
-                    @media (max-width: 992px) {
+                    @media (max-width: 1200px) {
                         @include inline-flex;
                     }
                     &::before {
@@ -743,12 +803,15 @@ h3, .h3 {
                     &.btn {
                         min-width: auto;  
                         padding: 0 25px; 
-                        @media (max-width: 1200px) {
-                            padding: 0 15px;     
+                        margin-left: 20px;
+                        @media (max-width: 1440px) {                            
+                            padding: 0 15px; 
                         }
                         @media (max-width: 992px) {
                             width: 100%;
                             margin-top: 20px;
+                            margin-left: 0;
+                            @include justify-content(center);
                         }
                         &::before {
                             content: none;
@@ -757,7 +820,7 @@ h3, .h3 {
                     &:hover, &:focus {  
                         color: $primary;
                         &::before {
-                            width: 100%;
+                            width: 70%;
                             right: auto;
                             left: 0;
                         }
@@ -771,20 +834,20 @@ h3, .h3 {
                             @include align-items(center);
                             &::after {
                                 content: '';
-                                background: url('data:image/svg+xml; utf8,<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
+                                background: url('data:image/svg+xml; utf8,<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
                                 width: 10px;
                                 height: 5px;
                                 display: inline-block;
-                                background-size: contain;
-                                margin-top: 5px;
+                                background-size: contain !important;
+                                margin-top: 2px;
                                 margin-left: 5px;
                                 @include transition(0.2s, ease-in-out);
                             }
                         }
                     }
                     .arrow {
-                        background: url('data:image/svg+xml; utf8,<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
-                        background-size: 10px;
+                        background: url('data:image/svg+xml; utf8,<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
+                        background-size: 10px !important;
                         width: 24px;
                         height: 24px;
                         display: inline-block;
@@ -798,7 +861,7 @@ h3, .h3 {
                             @include transform(rotate(180deg));
                         }
                         &:hover, &:focus {                            
-                            background: url('data:image/svg+xml; utf8,<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="rgb(236 82 54)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
+                            background: url('data:image/svg+xml; utf8,<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="rgb(156 203 64)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
                         }
                     }
                     .sub-menu {
@@ -806,18 +869,19 @@ h3, .h3 {
                             display: none;
                             @include transform(unset);
                             width: 100% !important;
-                            background: rgba($white, 0.15);
-                            margin-top: 5px;
+                            background: rgba($black, 0.03);
+                            margin-top: 10px;
                             padding: 20px;
+                            @include border-radius(5px);
                         }
                         @media (min-width: 992px) {
                             @include opacity(0);
                             visibility: hidden;
                             position: absolute;
-                            @include border-radius(2px);
-                            @include box-shadow(0px 4px 6.5px rgba(0, 0, 0, 0.25));
+                            @include border-radius(5px);
+                            @include box-shadow(0px 4px 6.5px rgba(0, 0, 0, 0.1));
                             border: none;     
-                            background: $black;
+                            background: $white;
                             padding: 15px 15px;
                             left: 0;
                             z-index: 1;
@@ -846,27 +910,28 @@ h3, .h3 {
                             a {
                                 font-size: 14px;
                                 padding: 12px 15px;
-                                @include border-radius(2px);
+                                @include border-radius(5px);
                                 margin-bottom: 8px;
                                 line-height: 1;
                                 &::before {
                                     content: none;
                                 }
                                 @media (min-width: 992px) {
-                                    background: rgba($white, 0.15);                                    
+                                    background: rgba($black, 0.03);                                    
                                 }
                                 @media (max-width: 1200px) {
                                     font-size: 13px;
                                 }
                                 @media (max-width: 992px) {
                                     padding: 12px 0;
-                                    border-bottom: 1px solid rgba(255,255,255,0.15);
+                                    border-bottom: 1px solid rgba(0,0,0,0.03);
                                     margin: 0;
-                                    display: block;
+                                    display: block;                    
+                                    @include border-radius(0px);
                                 }
                                 &:hover, &:focus {
                                     @media (min-width: 992px) {
-                                        background: rgba($white, 0.18);
+                                        background: rgba($black, 0.05);
                                         color: $primary;
                                     }
                                     @media (max-width: 992px) {
@@ -897,7 +962,7 @@ h3, .h3 {
                         & > a {
                             &::after {
                                 @include transform(rotate(180deg));
-                                background: url('data:image/svg+xml; utf8,<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="rgb(236 82 54)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
+                                background: url('data:image/svg+xml; utf8,<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="rgb(156 203 64)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
                             }
                         }                  
                         .sub-menu {
@@ -912,153 +977,9 @@ h3, .h3 {
                     &.active, &.current-menu-item {
                         & > a {
                             &::after {
-                                background: url('data:image/svg+xml; utf8,<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="rgb(236 82 54)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
+                                background: url('data:image/svg+xml; utf8,<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="rgb(156 203 64)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
                             }
                         }    
-                    }
-                    &.mega-menu {
-                        & > .sub-menu {
-                            padding: 20px;
-                            @media (min-width: 992px) {
-                                min-width: 600px;
-                                display: grid;
-                                grid-template-columns: 45% 55%;
-                            }
-                            @media (max-width: 992px) {
-                                background: rgba($white, 0.15);
-                                margin-top: 5px;
-                            }
-                            .menu-item-has-children {
-                                margin: 0;
-                                line-height: 1;
-                                display: block !important;
-                                .arrow {
-                                    display: none;
-                                }
-                                &:first-child {                                    
-                                    @media (min-width: 992px) {
-                                        border-right: 2px solid rgba($white, 0.18);
-                                        padding-right: 20px;
-                                    }
-                                }
-                                &:last-child {                           
-                                    @media (min-width: 992px) {
-                                        padding-left: 20px;
-                                    }
-                                    @media (max-width: 992px) {
-                                        padding-top: 30px;
-                                    }
-                                }
-                                &.two-col-grid {
-                                    .sub-menu {
-                                        @media (min-width: 992px) {
-                                            display: grid !important;
-                                        }
-                                        grid-template-columns: repeat(2, 1fr);
-                                        grid-column-gap: 8px;
-                                    }
-                                }
-                                & > a {
-                                    padding: 0; 
-                                    padding-right: 15px;
-                                    margin-bottom: 12px;
-                                    font-size: 12px;
-                                    font-weight: 600;
-                                    text-transform: uppercase;
-                                    color: $primary;
-                                    display: inline-block;
-                                    background: transparent;
-                                    border-bottom: 0;
-                                    position: relative;
-                                    width: 100%;
-                                    &::after {
-                                        content: '';
-                                        background: url('data:image/svg+xml; utf8,<svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5.74878C0.585787 5.74878 0.25 6.08457 0.25 6.49878C0.25 6.91299 0.585786 7.24878 1 7.24878L1 5.74878ZM17.5303 7.02911C17.8232 6.73622 17.8232 6.26134 17.5303 5.96845L12.7574 1.19548C12.4645 0.902586 11.9896 0.902586 11.6967 1.19548C11.4038 1.48837 11.4038 1.96325 11.6967 2.25614L15.9393 6.49878L11.6967 10.7414C11.4038 11.0343 11.4038 11.5092 11.6967 11.8021C11.9896 12.095 12.4645 12.095 12.7574 11.8021L17.5303 7.02911ZM1 7.24878L17 7.24878L17 5.74878L1 5.74878L1 7.24878Z" fill="rgb(236 82 54)"/></svg>') no-repeat right center;                                        
-                                        background-size: contain;
-                                        width: 13px;
-                                        height: 10px;
-                                        @include transition(0.2s, ease-in-out);
-                                        position: absolute;
-                                        top: 0; 
-                                        right: 10px;
-                                        opacity: 0;
-                                    }
-                                    &:hover, &:focus { 
-                                        &::after {
-                                            right: 0;
-                                            opacity: 1;
-                                        }
-                                    }
-                                }
-                                .sub-menu {
-                                    position: relative;
-                                    top: unset;
-                                    padding: 0;
-                                    display: block !important;
-                                    background: transparent;
-                                    li {
-                                        margin: 0;
-                                        @media (max-width: 992px) {
-                                            &:first-child {
-                                                a {
-                                                    padding-top: 0;
-                                                }
-                                            }
-                                            &:last-child {
-                                                a {                                                    
-                                                    border-bottom: 0;
-                                                    padding-bottom: 0;
-                                                }
-                                            }
-                                        }
-                                        a {      
-                                            @include flexbox;
-                                            @include align-items(center);
-                                            @include justify-content(space-between);
-                                            @include transition(0.2s, ease-in-out);     
-                                            @media (min-width: 992px) {
-                                                background: rgba($white, 0.15);
-                                                margin-bottom: 8px;
-                                                padding: 12px 15px;
-                                            }                                       
-                                            @media (max-width: 992px) {
-                                                margin: 0;
-                                                padding: 12px 0;
-                                                border-bottom: 1px solid rgba($white, 0.15);
-                                                &::before {
-                                                    content: none;
-                                                }
-                                            }
-                                            &:after {
-                                                content: '';
-                                                background: url('data:image/svg+xml; utf8,<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
-                                                @include transform(rotate(-90deg));
-                                                background-size: contain;
-                                                width: 10px;
-                                                height: 10px;
-                                                @include transition(0.2s, ease-in-out);
-                                            }
-                                            &:hover, &:focus {            
-                                                @media (min-width: 992px) {                                                 
-                                                    background: rgba($white, 0.18);
-                                                }
-                                                &::after {
-                                                    background: url('data:image/svg+xml; utf8,<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="rgb(236 82 54)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
-                                                    @include transform(rotate(-90deg) translateY(5px));
-                                                }
-                                            }
-                                        }
-                                        &.current-menu-item {
-                                            a {
-                                                &:after {
-                                                    background: url('data:image/svg+xml; utf8,<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="rgb(236 82 54)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
                     }
                 }  
                 &:hover, &:focus {  
@@ -1066,7 +987,7 @@ h3, .h3 {
                         & > a {
                             color: $primary;
                             &::before {
-                                width: 100%;
+                                width: 70%;
                                 right: auto;
                                 left: 0;
                             }
@@ -1077,7 +998,7 @@ h3, .h3 {
                     & > a {
                         color: $primary;
                         &::before {
-                            width: 100%;
+                            width: 70%;
                             right: auto;
                             left: 0;
                         }
@@ -1090,74 +1011,103 @@ h3, .h3 {
 .main-footer {
     color: $white;
     .footer-top-block {
-        background: #9C2610;
-        padding-top: 50px;
+        background: #5D860E;
         overflow: hidden;
-        .section-title {
-            margin-bottom: 0;
-            .sort-info {
-                strong {
-                    font-size: 18px;
-                    color: $white;
-                }
-            }
-            .contact-info {                
-                @media (max-width: 575px) {
-                    @include flex-direction(column);
-                    @include align-items(center);
-                    gap: 10px;
-                }
+        padding: 80px 10%;
+        margin: 0 -10%;  
+        background-image: url(../images/img-footer-vector.svg);
+        background-position: bottom right;
+        background-repeat: no-repeat;
+        @media (max-width: 1500px) {
+            padding: 50px 5%;
+            margin: 0 -5%
+        }
+        @media (max-width: 767px) {
+            padding: 50px 8%;
+            margin: 0 -8%
+        }
+        @media (max-width: 600px) {
+            padding: 30px 15px;
+            margin: 0 -15px;
+        }
+        .inner-content {
+            @include flexbox;
+            @include align-items(center);
+            @media (max-width: 767px) {
+                @include flex-direction(column);
             }
         }
-        .footer-top-inner-shape {
-            background: $primary;
-            box-shadow: 26px 57px 15.7px rgba(0, 0, 0, 0.16);
-            @include border-radius(0 500px 500px 0);
-            padding: 40px 0 65px;
-            position: relative;
-            z-index: 1;
-            color: $white;
-            @media (max-width: 575px) { 
-                @include border-radius(500px 500px 0 0);
+        .section-title { 
+            margin-bottom: 0;   
+            max-width: 760px; 
+            @media (max-width: 767px) {
+                margin-bottom: 30px;
                 text-align: center;
-                margin: 0 -15px;
-                padding: 100px 20px 10px;
+            }        
+            h2 {
+                margin-bottom: 0;
+            }        
+        }
+        .action {
+            margin-left: auto;
+            max-width: 310px;
+            @media (max-width: 767px) {
+                margin: 0 auto;
             }
-            &::before {
-                content: '';
-                position: absolute;
-                height: 100%;
-                width: 50vw;
-                background: $primary;
-                top: 0;
-                left: -50vw;
-                z-index: -1;
-                @media (max-width: 575px) { 
-                    content: none;    
+            .btn {
+                width: 100%;
+                &:not(:last-child) {
+                    margin-bottom: 20px;
                 }
             }
         }
     }
     .footer-bottom-block {
-        padding: 100px 0 50px;
         background: #01061B;
-        @media (max-width: 992px) {
-            padding: 70px 0 50px;
+        padding: 100px 10% 20px;
+        margin: 0 -10%;  
+        @media (max-width: 1500px) {
+            padding: 100px 5% 20px;
+            margin: 0 -5%
         }
         @media (max-width: 767px) {
-            padding: 40px 0;
+            padding: 50px 8% 20px;
+            margin: 0 -8%
         }
-        h3 {
-            font-size: 18px;
-            color: $white;
-            font-family: $bodyfont;
-            margin-bottom: 15px;
-            margin-top: 30px;
-            @media (max-width: 992px) {
+        @media (max-width: 600px) {
+            padding: 50px 15px 20px;
+            margin: 0 -15px;
+        }
+        .logo-content-block {
+            @include flexbox;
+            @include align-items(center);
+            gap: 30px;
+            @media (max-width:767px) {
+                @include flex-direction(column);
+                @include align-items(flex-start);
+                gap: 20px;
+                margin-bottom: 30px;
+            }
+            .logo {
+                &::before {
+                    content: none;
+                }
+                img {
+                    max-width: 100px;
+                }
+            }
+            .sort-info {
                 font-size: 16px;
+                color: $white;
+                max-width: 550px;
+                @media (max-width: 1200px) {
+                    max-width: 450px;
+                }
+                @media (max-width: 992px) {                    
+                    font-size: 14px;
+                }
             }
         }
-        
         a {
             color: $white;
             position: relative;
@@ -1176,60 +1126,24 @@ h3, .h3 {
                 bottom: -1px;
                 left: 0;
             }
-            &.icon-link {
-                font-size: 16px;
-                @include align-items(flex-start);
-                gap: 10px;
-                @media (max-width: 992px) {
-                    font-size: 14px;
-                    gap: 5px;
-                }
-                &::before {
-                    left: 30px;
-                }
-            }
             &:hover, &:focus {
                 color: $primary;
                 &::before {
-                    width: 100%;
-                }
-                &.icon-link {                     
-                    &::before {
-                        width: calc(100% - 30px);
-                    }
-                    .icon {
-                        filter: unset;
-                        @include transition(0.2s, ease-in-out);
-                    }
+                    width: 70%;
                 }
             }
         }
-        .icon {
-            width: 20px;
-            height: 20px;
-            flex: none;
-            display: inline-block;
-            background-size: contain !important;
-            @include transition(0.2s, ease-in-out);
-            filter: brightness(0) invert(1);
-            @media (max-width: 992px) {
-                width: 15px;
-                height: 15px;
-                margin-top: 3px;
+        .main-menu-block {            
+            margin-top: 50px;
+            @media (max-width: 767px) {                    
+                margin-top: 30px;
             }
-            &.icon-location {
-                background: url(../images/icons/icon-location.svg) no-repeat center center;
-            }
-            &.icon-phone {
-                background: url(../images/icons/icon-phone.svg) no-repeat center center;
-            }
-            &.icon-mail {
-                background: url(../images/icons/icon-mail.svg) no-repeat center center;
+            .footer-menu {
+                @include flex-wrap(wrap);
             }
         }
         .footer-menu {
             li {
-                line-height: 1.3;
                 &:not(:last-child) {
                     margin-bottom: 15px;
                     @media (max-width: 992px) {
@@ -1237,122 +1151,70 @@ h3, .h3 {
                     }
                 }
             }
-        }
-        .privacy-menu {
-            margin-top: 30px;
-            li {
-                line-height: 1.1;
-                &:not(:last-child) {
-                    margin-bottom: 10px;
-                    @media (max-width: 992px) {
-                        margin-bottom: 10px;
-                    }
+            &.d-flex {
+                @include flexbox;
+                gap: 8px 25px;
+                @media (max-width: 767px) {                    
+                    gap: 8px 15px;
                 }
-                a {
-                    font-size: 16px;
-                    @media (max-width: 992px) {
-                        font-size: 14px;
-                    }
+                li {
+                    margin-bottom: 0;
                 }
             }
         }
-        .social-list {
+        .social-menu {
             @include flexbox;
             @include align-items(center);
-            gap: 15px;
+            gap: 10px;
+            @media (max-width: 1200px) {
+                margin-top: 20px;
+            }
             a {
-                svg {
-                    path {
-                        @include transition(0.2s, ease-in-out);
-                    }
-                }
+                width: 28px;
+                height: 28px;
+                flex: none;
+                @include inline-flex;
+                @include justify-content(center);
+                @include align-items(center);
+                border: 1px solid $white;
+                @include border-radius(50%);
+                @include transition(0.2s, ease-in-out);
                 &::before {
                     content: none;
                 }
                 &:hover, &:focus {
-                    svg {
-                        path {
-                            fill: $primary;
-                        }
-                    }
+                    background: $primary;
+                    border-color: $primary;
                 }
             }
         }
-        .connect-link-block {
-            a {
-                font-size: 175px;
-                line-height: 0.8;
-                position: relative;
-                display: block;
-                @media (max-width: 1200px) {
-                    font-size: 120px;
+        .privacy-menu {
+            @include flexbox;
+            @include align-items(center);    
+            @media (max-width: 992px) {
+                margin-top: 15px;
+            }   
+            li {   
+                padding: 0 10px;  
+                border-right: 1px solid $white;
+                &:first-child {
+                    padding-left: 0;
                 }
-                @media (max-width: 992px) and (min-width: 767px) {
-                    font-size: 100px;
-                }
-                @media (max-width: 767px) {
-                    margin-bottom: 40px;
-                }
-                @media (max-width: 575px){
-                    font-size: 80px;
-                }
-                &::before {
-                    content: none;
-                }
-                &:hover, &:focus {
-                    .icon-arrow {
-                        right: -15px;
-                        @include transform(scale(1.1));
-                        @media (max-width: 575px){
-                            right: -8px;
-                        }
-                    }
-                }
-                .icon-arrow {
-                    position: absolute;
-                    top: 35px;
-                    right: 0;
-                    @include inline-flex;
-                    width: 75px;
-                    height: 75px;
-                    flex: none;
-                    @include transition(0.2s, ease-in-out);
-                    @media (max-width: 1200px) {                        
-                        width: 65px;
-                        height: 65px;
-                        top: 15px;
-                    }
-                    @media (max-width: 992px) and (min-width: 767px) {                        
-                        width: 45px;
-                        height: 45px;
-                        top: 5px;
-                    }
-                    @media (max-width: 575px){
-                        width: 45px;
-                        height: 45px;
-                        top: 5px;
-                    }
+                &:last-child {
+                    padding-right: 0;
+                    border-right: none;
+                }   
+                a {
+                    font-size: 12px;
+                    line-height: 1;
                 }
             }
         }
         .copyright-block {
-            margin-top: 30px;
-            color: #B6BECB;
-            font-size: 14px;
-            @media (max-width: 767px) {
-                font-size: 12px;
-            }
-            .design-by {
-                font-size: 12px;
-                margin-top: 5px;
-                a {
-                    color: #B6BECB;
-                    font-size: 12px;
-                    &:hover, &:focus {
-                        color: $primary;
-                    }
-                }
-            }
+            margin-top: 20px;
+            padding-top: 20px;
+            font-size: 12px;
+            border-top: 1px solid rgba($white, 0.4);
         }
     }
 }
