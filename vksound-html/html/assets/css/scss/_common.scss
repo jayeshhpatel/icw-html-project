@@ -300,7 +300,6 @@ h3, .h3 {
 }
 
 .btn-arrow-link {
-    --shift-distance: 4px;
     color: $primary;
     display: inline-block;
     font-size: 16px;
@@ -338,15 +337,16 @@ h3, .h3 {
     }
     &:hover, &:focus {
         color: $white;
-        -webkit-transform: translatex(var(--shift-distance));
-        -ms-transform: translatex(var(--shift-distance));
-        transform: translatex(var(--shift-distance));
+        -webkit-transform: translatex(4px);
+        -ms-transform: translatex(4px);
+        transform: translatex(4px);
+        padding-left: 16px;
         &::before {
             -webkit-animation: fakebounce .3s ease-in-out;
             animation: fakebounce .3s ease-in-out;
-            background-position-x: calc(100% - 3.5* var(--shift-distance));
+            background-position-x: calc(100% - 3.5* 4px);
             height: 100%;
-            left: -16px;
+            left: -2px;
             -webkit-transition: right .3s ease, background-position .3s ease;
             transition: right .3s ease, background-position .3s ease;
         }
@@ -361,19 +361,19 @@ h3, .h3 {
 }
 
 @-webkit-keyframes fakebounce {
-    0% { left: calc(100% - 32px); }
-    50% { left: -24px }
+    0% { left: calc(100% - 24px); }
+    50% { left: -20px }
     75% { left: -4px }
     88% { left: -18px }
-    to { left: -16px }
+    to { left: -2px }
 }
 
 @keyframes fakebounce {
-    0% { left: calc(100% - 32px); }
-    50% { left: -24px }
+    0% { left: calc(100% - 24px); }
+    50% { left: -20px }
     75% { left: -4px }
     88% { left: -18px }
-    to { left: -16px }
+    to { left: -2px }
 }
 
 .form-group {
