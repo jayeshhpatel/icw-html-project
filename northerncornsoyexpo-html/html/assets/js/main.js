@@ -50,4 +50,68 @@ jQuery(document).ready(function($) {
         }
         return false;
     });
+    
+    if ($('.counter').length) {
+        let options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5 // Trigger when 50% of the element is visible
+        };
+
+        // Create a new observer
+        let observer = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    let $this = $(entry.target);
+                    var countTo = $this.attr("data-countto");
+                    var countDuration = parseInt($this.attr("data-duration"));
+
+                    // Trigger counter animation
+                    $({ counter: $this.find('span').text() }).animate({
+                        counter: countTo
+                    }, {
+                        duration: countDuration,
+                        easing: "linear",
+                        step: function () {
+                            $this.find('span').text(Math.floor(this.counter));
+                        },
+                        complete: function () {
+                            $this.find('span').text(this.counter);
+                        }
+                    });
+
+                    // Stop observing once the animation is triggered
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        // Target each element with the class .counter
+        $('.counter').each(function () {
+            observer.observe(this);
+        });
+    }
 });
+if ($('.presentations-slider').length) {   
+    const presentationsSplide = new Splide( '.presentations-slider', {
+        type: 'slide',
+        arrows: true,
+        classes: {
+            pagination: 'splide__pagination presentations-year-pagination',
+        },
+        breakpoints: {
+            1200: {
+                arrows: false,
+            },
+        }
+    });
+    presentationsSplide.on( 'pagination:mounted', function ( data ) {
+        var paginationItems = document.querySelectorAll('.splide__pagination__page');
+        var slides = document.querySelectorAll('.splide__slide');
+        paginationItems.forEach(function (paginationItem, index) {
+            var dataNumber = slides[index].getAttribute('data-number'); // Get data-number from the slide
+            paginationItem.textContent = dataNumber; // Set the button text to the data-number
+        });
+    });
+    presentationsSplide.mount();
+}
