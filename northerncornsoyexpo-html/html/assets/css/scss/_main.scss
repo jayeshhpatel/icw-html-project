@@ -434,3 +434,103 @@
         text-align: center;
     }
 }
+.agenda-info-block {
+    font-size: 16px;
+    color: $blue;
+    font-weight: 600;
+    .icon {
+        width: 14px;
+        height: 14px;
+        background-size: contain !important;
+        display: inline-block;
+        margin-right: 7px;
+        &.icon-location {
+            background: url(../images/icons/icon-location.svg) no-repeat center center;
+        }
+        &.icon-calendar {
+            background: url(../images/icons/icon-calendar.svg) no-repeat center center;
+        }
+        &.icon-time {
+            background: url(../images/icons/icon-time.svg) no-repeat center center;
+        }
+    }
+    .info-title {
+        color: $blue;
+    }
+    .date-time {
+        @include flexbox;
+        @include align-items(center);
+        gap: 10px 30px;
+    }
+    .icon-text {
+        @include inline-flex;
+        margin-top: 10px;
+        .icon {
+            margin-top: 5px;
+        }
+    }
+}
+.table-block {
+    .table-responsive {        
+        border: 1px solid rgba($black, 0.2); 
+        @include border-radius(10px);
+    }
+    .table {
+        margin-bottom: 0;
+        @media (max-width: 992px) {
+            min-width: 900px;
+        }
+        thead {
+            tr {
+                th {
+                    padding: 12px 20px;
+                    background: #F7F7F9;    
+                    border-left: 1px solid rgba($black, 0.2);   
+                    @media (max-width: 767px) {
+                        padding: 10px 12px;
+                    }                
+                    &:first-child {
+                        border-left: none;
+                    }
+                    
+                }
+            }
+        }
+        tbody {
+            tr {
+                &:last-child {
+                    td {
+                        border-bottom: none;
+                    }
+                }
+                td {
+                    padding: 12px 20px;
+                    border-left: 1px solid rgba($black, 0.2);    
+                    @media (max-width: 767px) {
+                        padding: 10px 12px;
+                    }             
+                    &:first-child {
+                        border-left: none;
+                        white-space: nowrap;
+                    }
+                    &:nth-child(2) {
+                        white-space: nowrap;
+                    }
+                    strong {
+                        color: $blue;
+                    }
+                    ul {
+                        margin-top: 15px;
+                    }
+                    a {
+                        color: $black;
+                        @include transition(0.3s, ease-in-out);
+                        &:HOVER, &:focus {
+                            color: $primary;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
