@@ -41,6 +41,19 @@
         }
     }
     .sort-info {
+        strong {
+            color: $blue;
+        }
+        .font-lg {
+            font-size: 24px;
+            font-weight: 600;
+            @media (max-width: 992px) {
+                font-size: 20px;
+            }
+            @media (max-width: 767px) {
+                font-size: 18px;
+            }
+        }
         &.mw-600 {
             max-width: 600px;
         }
@@ -109,7 +122,7 @@
         background-repeat: no-repeat;
     }
     .header-inner-content {
-        max-width: 750px;
+        max-width: 780px;
         background: $white;
         padding: 80px;
         border-left: 15px solid $primary;
@@ -124,6 +137,9 @@
         .section-title {
             margin-bottom: 0;
             max-width: 600px;
+            .title {
+                letter-spacing: -0.9px;
+            }
             .sort-info {
                 font-size: 22px;
                 @media (max-width: 992px) {        
@@ -207,7 +223,46 @@
             gap: 10px 50px;
         }
         @media (max-width: 767px) {
-           @include flex-direction(column);
+            gap: 10px;
+           @include flex-wrap(wrap);
+           .btn-arrow-link {
+                background: $primary;
+                padding: 10px 45px 10px 25px;
+                color: $white;
+                @include border-radius(5px);
+                &::before {
+                    right: 20px;
+                    filter: brightness(0) invert(1);
+                }
+            }
+        }
+    }
+}
+.check-list-grid {
+    margin: 20px 0 50px;
+    @media (max-width: 767px) {
+        margin: 20px 0 30px;
+    }
+    .icon-check-list {
+        columns: 120px 3;
+        column-gap: 40px;
+        @media (max-width: 767px) {
+            columns: 120px 2;
+            column-gap: 20px;
+        }   
+        li {
+            -webkit-column-break-inside: avoid;
+            break-inside: avoid;
+        }
+        &.five-col {
+            -webkit-columns: 120px 5;
+            columns: 120px 5;
+            @media (max-width: 1200px) {
+                columns: 120px 3;
+            }
+            @media (max-width: 767px) {
+                columns: 120px 2;
+            }
         }
     }
 }
@@ -530,6 +585,98 @@
                         }
                     }
                 }
+            }
+        }
+    }
+}
+.contact-form {
+    background: $white;
+    padding: 50px;
+    @media (max-width: 1200px) {
+        padding: 30px;
+    }
+    @media (max-width: 767px) {
+        padding: 20px;
+    }
+    h4 {
+        font-size: 22px;
+        color: $black;
+        font-weight: 600;
+        @media (max-width: 767px) {
+            font-size: 18px;
+        }
+    }
+    h6 {
+        color: $blue;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+    hr {
+        border-color: rgba($black, 0.1);
+        margin-top: 5px;
+    }
+    small {
+        color: $blue;
+        font-size: 16px;
+        font-weight: 500;
+        @media (max-width: 767px) {
+            font-size: 14px;
+        }
+    }
+    .hide {
+        display: none;
+    }
+    .btn {
+        margin-top: 10px;
+        min-width: 230px;
+        @media (max-width: 767px) {            
+            min-width: 100%;
+        }
+    }
+    .paypaltotal {
+        background: $gray url(../images/icon-paypal.png);
+        background-position: calc(100% - 15px) center;
+        background-repeat: no-repeat;
+        background-size: 160px;
+        padding: 15px;
+        overflow: hidden;
+        margin-bottom: 15px;
+        display: flex;
+        height: 80px;
+        @include border-radius(5px);
+        @media (max-width: 575px) {
+            height: 115px;
+            background-position: calc(100% - 15px) calc(100% - 15px);
+        }
+        storng {
+            font-weight: bolder;
+            color: #000;
+        }
+        input {
+            width: 100px;
+            border: 0;
+            background: transparent;
+            padding-left: 2px;
+            font-weight: bolder;
+            color: $black;
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+    .cf7-method {
+        margin-bottom: 30px;
+        @media (max-width: 767px) {
+            margin-bottom: 10px;
+        }
+        li {
+            @include flexbox;
+            gap: 10px;
+            @include align-items(center);
+            margin-bottom: 10px;
+            @media (max-width: 767px) {
+                gap: 5px;
+                margin-bottom: 5px;
             }
         }
     }
