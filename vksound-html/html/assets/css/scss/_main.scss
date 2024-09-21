@@ -11,6 +11,53 @@
         position: relative;
     }
 }
+.single-details-section {
+    padding: 100px 0;
+    @media (max-width: 992px) {        
+        padding: 70px 0;
+    }
+    @media (max-width: 767px) {        
+        padding: 50px 0;
+    }    
+    .single-row-grid {
+        display: -ms-grid;
+        display: grid;
+        grid-gap: 20px;
+        grid-gap: 40px;
+        grid-template-columns: 1fr 250px;
+        @media (max-width:992px) {
+            grid-gap: 30px;
+            grid-template-columns: 1fr 200px;
+        }
+        @media (max-width:767px) {
+            grid-template-columns: 1fr;
+        }
+    }    
+    .post-sidebar {
+        position: sticky;
+        top: 95px;
+    }    
+    .post-aside-cta {
+        background: rgba($primary, 0.1);
+        text-align: center;
+        padding: 25px;
+        @include border-radius(5px);
+        margin-bottom: 30px;
+        @media (max-width:992px) {
+            padding: 20px;
+        }
+        h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+        p {
+            font-size: 14px;
+        }
+        .btn {
+            margin-top: 10px;
+        }
+    }  
+}
 .section-title {
     margin-bottom: 50px;
     @media (max-width: 767px) {
@@ -161,8 +208,7 @@
         }
         .title {
             color: $primary;
-            @media (min-width: 1200px) {                
-                white-space: nowrap;
+            @media (min-width: 1200px) {     
                 margin-top: -10px;
             }
             span {
@@ -175,6 +221,14 @@
                 @media (max-width: 767px) {
                     font-size: 45px;
                 }
+            }
+        }
+        .date-time { 
+            color: $white;
+            margin-bottom: 20px;
+            .icon-time {
+                opacity: 1;
+                filter: invert(1);
             }
         }
         .sort-info {
@@ -361,6 +415,97 @@
         }
     }
 }
+.user-info {
+    @include flexbox;
+    @include align-items(center);
+    .user-img {
+        margin-right: 10px;
+        img {
+            width: 28px;
+            height: 28px;
+            flex: none;
+            @include border-radius(50%);
+        }
+    }
+    .name {
+        font-size: 16px;
+        color: $white;
+        font-weight: 500;
+    }
+    &:hover, &:focus {
+        .name {
+            opacity: 0.8;
+        }
+    }
+}
+.date-time {
+    color: rgba($black, 0.6);
+    font-size: 12px;
+    @include flexbox;
+    @include align-items(center);
+    margin-bottom: 15px;
+    gap: 30px;
+    .icon-time {
+        background: url('data:image/svg+xml; utf8,<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.5 3.375V6.5L8.0625 7.4375M12.125 6.5C12.125 9.60663 9.60663 12.125 6.5 12.125C3.3934 12.125 0.875 9.60663 0.875 6.5C0.875 3.3934 3.3934 0.875 6.5 0.875C9.60663 0.875 12.125 3.3934 12.125 6.5Z" stroke="black" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
+        background-size: contain;
+        width: 12px;
+        height: 12px;
+        display: inline-block;
+        margin-right: 5px;
+        opacity: 0.6;
+    }
+    span {
+        @include inline-flex;
+        @include align-items(center);
+    }
+}
+.share-socials {
+	@include flexbox();
+	@include align-items(center);
+	@include justify-content(center);
+	@include flex-direction(column);
+    span {
+        font-size: 16px;
+        color: $primary;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 10px
+    }	
+	.social-media-icons {
+		@include flexbox();
+		@include align-items(center);
+		@include flex-wrap(wrap);
+		gap: 15px;
+		li {
+			a {
+				display: block;
+				@include flexbox();
+				@include align-items(center);
+				@include justify-content(center);
+				@include transition(0.2s, ease-in-out);
+				padding: 4px;
+                width: 32px;
+                height: 32px;
+                @include border-radius(5px);
+                border: 1px solid $black;
+				svg {
+					path {                        
+				        @include transition(0.2s, ease-in-out);
+                    }
+				}
+				&:focus, &:hover {
+					color: $white;
+                    background: $primary;
+                    border-color: $primary;
+					svg, path {
+						fill : $white
+					}
+				}
+				
+			}
+		}
+	}
+}
 .info-card {
     padding: 20px;
     background: $white;
@@ -438,30 +583,7 @@
     }
     .feedback-user {
         background: $primary;
-        padding: 15px 20px;
-        .user-info {
-            @include flexbox;
-            @include align-items(center);
-            .user-img {
-                margin-right: 10px;
-                img {
-                    width: 28px;
-                    height: 28px;
-                    flex: none;
-                    @include border-radius(50%);
-                }
-            }
-            .name {
-                font-size: 16px;
-                color: $white;
-                font-weight: 500;
-            }
-            &:hover, &:focus {
-                .name {
-                    opacity: 0.8;
-                }
-            }
-        }
+        padding: 15px 20px;        
     }
 }
 
@@ -480,6 +602,61 @@
             bottom: -30px;
         }
     }
+}
+
+
+.category-navs {
+    width: 100%;
+    padding-bottom: 50px;
+    @media (max-width:767px) {
+        padding-bottom: 15px;
+    }
+    overflow-y: auto;
+    scrollbar-width: thin;        
+    &::-webkit-scrollbar {
+        background-color: transparent;
+        width: 4px;
+        height: 4px;
+        border-radius: 16px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #e4e4e4;
+        border-radius: 16px;
+        &:hover {
+            background-color: #000 !important;
+        }
+    }
+    &::-webkit-scrollbar-track {
+        background-color: rgba(#e4e4e4, 0.2);
+    }
+    .category-nav {
+		@include flexbox();
+		@include align-items(center);
+		@include flex-wrap(nowrap);
+        gap: 15px;
+		a {
+			color: var(--cat-text-color);
+            font-size: 14px;
+            background: var(--cat-bg);
+            padding: 8px 15px;
+            @include border-radius(30px);
+            @include inline-flex;
+            line-height: 1;
+            width: max-content;
+            z-index: 3; 
+            position: relative;   
+            @include transition(0.2s, ease-in-out);      
+            &:hover, &:focus {
+                background: var(--cat-text-color);
+                color: $white;
+            }
+            &.active {
+                background: $primary;
+                color: $white;
+            }
+		}
+
+	}
 }
 
 .post-card-section {
@@ -555,27 +732,7 @@
         color: $black;
         @include flexbox;
         @include flex-direction(column);
-        @include transition(0.2s, ease-in-out);        
-        .date-time {
-            color: rgba($black, 0.6);
-            font-size: 12px;
-            @include flexbox;
-            @include align-items(center);
-            @include justify-content(space-between);
-            margin-bottom: 15px;
-            .icon-time {
-                background: url('data:image/svg+xml; utf8,<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.5 3.375V6.5L8.0625 7.4375M12.125 6.5C12.125 9.60663 9.60663 12.125 6.5 12.125C3.3934 12.125 0.875 9.60663 0.875 6.5C0.875 3.3934 3.3934 0.875 6.5 0.875C9.60663 0.875 12.125 3.3934 12.125 6.5Z" stroke="black" stroke-opacity="0.6" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
-                background-size: contain;
-                width: 12px;
-                height: 12px;
-                display: inline-block;
-                margin-right: 5px
-            }
-            span {
-                @include inline-flex;
-                @include align-items(center);
-            }
-        }
+        @include transition(0.2s, ease-in-out);     
         .title {
             font-size: 22px;
             font-family: $bodyfont;
@@ -605,6 +762,9 @@
                     font-size: 14px;
                 }
             }
+        }
+        .date-time {            
+            @include justify-content(space-between);
         }
         .card-action {
             margin-top: 10px;
@@ -685,7 +845,7 @@
             }
             @media (max-width: 767px) {                
                 margin: 0;
-                padding: 20px;
+                padding: 15px;
             }
         }
     }
@@ -1363,6 +1523,105 @@
             bottom: -40px;
             padding: 0;
             @include justify-content(flex-start);
+        }
+    }
+}
+
+.post-content {
+    * {
+        &:last-child {
+            margin-bottom: 0 !important;
+        }
+    }
+    figure{
+        margin-bottom: 30px;
+        @media (max-width:992px) {
+            margin-bottom: 25px;
+        }
+    }
+    .wp-caption {
+        width: auto !important;
+        margin-bottom: 30px;
+        .wp-caption-text {
+            padding-top: 10px;
+            font-size: 12px;
+        }
+
+        a {
+            display: block;
+            &:hover, &:focus {
+                opacity: 0.8;
+                cursor: zoom-in;	
+            }
+        }
+    }
+    
+    img {
+        width: 100%;
+        max-width: 100%;
+        object-fit: cover;
+        aspect-ratio: 16/9;
+        @include border-radius(5px);
+        margin-bottom: 20px;
+    }
+    p {
+        margin-bottom: 20px;
+    }
+    h2,h3,h4,h5,h6{
+        margin-bottom: 10px;
+    }
+    & > h2:not(:first-child),& > h3:not(:first-child),& > h4:not(:first-child),& > h5:not(:first-child),& > h6:not(:first-child){
+        margin-top: 20px;
+    }
+
+    h2, .h2 {
+        font-size: 30px;
+        font-weight: 700;
+        @media (max-width: 992px) {
+            font-size: 24px;
+        }
+    }
+    
+    h3, .h3 {
+        font-size: 22px;
+        @media (max-width:992px) {
+            font-size: 20px;
+        }	
+    }
+    
+    h4, .h4 {
+        font-size: 18px;
+        @media (max-width: 992px) {
+            font-size: 16px;
+        }	
+    }
+    ul {
+        padding-left: 20px;
+        margin-bottom: 30px;
+        @media (max-width:992px) {
+            margin-bottom: 25px;
+        }
+        li {
+            list-style: disc;
+            margin-bottom: 10px;
+            &::marker {
+                color: $primary;
+            }
+        }
+    }
+    ol {
+        padding-left: 20px;
+        margin-bottom: 30px;
+        @media (max-width:992px) {
+            margin-bottom: 25px;
+        }
+        li {
+            padding-left: 5px;
+            list-style: decimal;
+            margin-bottom: 10px;
+            &::marker {
+                color: $primary;
+            }
         }
     }
 }
