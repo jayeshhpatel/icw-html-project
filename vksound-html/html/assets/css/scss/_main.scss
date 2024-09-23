@@ -399,7 +399,7 @@
     gap: 15px;
     margin-bottom: 15px;
     .blog-meta-badge {
-        color: var(--cat-text-color);
+        color: var(--cat-color);
         font-size: 12px;
         background: var(--cat-bg);
         padding: 3px 10px;
@@ -410,7 +410,7 @@
         position: relative;   
         @include transition(0.2s, ease-in-out);      
         &:hover, &:focus {
-            background: var(--cat-text-color);
+            background: var(--cat-color);
             color: $white;
         }
     }
@@ -633,26 +633,28 @@
 		@include flexbox();
 		@include align-items(center);
 		@include flex-wrap(nowrap);
-        gap: 15px;
+        border-bottom: 1px solid rgba($black, 0.1);
+        gap: 30px;
+        padding-bottom: 30px;
 		a {
-			color: var(--cat-text-color);
-            font-size: 14px;
-            background: var(--cat-bg);
-            padding: 8px 15px;
+			color: $black;
+            font-size: 16px;
             @include border-radius(30px);
             @include inline-flex;
             line-height: 1;
             width: max-content;
+            text-underline-offset: 4px;
             z-index: 3; 
             position: relative;   
             @include transition(0.2s, ease-in-out);      
             &:hover, &:focus {
-                background: var(--cat-text-color);
-                color: $white;
+                color: var(--cat-color);
+                text-decoration: underline;
             }
             &.active {
-                background: $primary;
-                color: $white;
+                color: $black;
+                font-weight: 700;
+                text-decoration: underline;
             }
 		}
 
