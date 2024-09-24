@@ -521,6 +521,10 @@
             flex: none;
         }
     }
+    &.no-bg {
+        background: transparent;
+        padding: 0;
+    }
     &.is-number-card {
         .icon {
             width: 60px;
@@ -550,6 +554,10 @@
         }
         .sort-info {
             font-size: 16px;
+            .font-darker {
+                font-size: 22px;
+                line-height: 1;
+            }
         }
     }
 }
@@ -1229,14 +1237,15 @@
     }
 }
 
-.form-block {
-    background: $black;
+.form-block {    
     @include border-radius(10px);
-    background: $black;
     height: 100%;
-    padding: 50px;
-    @media (max-width: 992px) {
-        padding: 30px;
+    &.is-dark {
+        background: $black;
+        padding: 50px;
+        @media (max-width: 992px) {
+            padding: 30px;
+        }
     }
 }
 
@@ -1245,12 +1254,19 @@
         background: $primary;
         padding: 50px;
         color: $white;
+        height: 100%;
         @media (max-width: 992px) {
             padding: 30px;
         }
     }
     .form-block {
         @include border-radius(0);
+    }
+    .image-block {
+        img {
+            height: 100%;
+            object-fit: cover;
+        }
     }
 }
 
@@ -1626,4 +1642,7 @@
             }
         }
     }
+}
+.contact-details {
+    max-width: 520px;
 }
