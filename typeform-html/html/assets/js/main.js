@@ -9,37 +9,39 @@ jQuery(document).ready(function($) {
     }
 
     $('.navbar-toggler').on('click', function (e) {
-        $('.toggle-sidebar, .megamenu-overlay').toggleClass('is-visible');
+        $('.toggle-sidebar, .megamenu-overlay, .main-header,.menu-list').toggleClass('is-visible');
         e.preventDefault();
     });
 
     if ($('.main-header').length) {
-        if (jQuery(this).scrollTop() > 100) {
+        if (jQuery(this).scrollTop() > 150) {
             $('.main-header').addClass('fixed-header');
         } else {
             $('.main-header').removeClass('fixed-header');
         }
 
         $(window).scroll(function () {
-            if (jQuery(this).scrollTop() > 100) {
+            if (jQuery(this).scrollTop() > 150) {
                 $('.main-header').addClass('fixed-header');
             } else {
                 $('.main-header').removeClass('fixed-header');
             }
         });
-        if ($(window).width() > 767) {
-            $('.menu-item-has-children').hover(
-                function(){               
-                    var overlay_height = $(this).find('.sub-menu').outerHeight();
-                    $(this).parents('.main-header').find('.megamenu-overlay').addClass('is-active');
-                    $('.megamenu-overlay').height( overlay_height + $('.main-header').height());
-                },
-                function () {
-                    $(this).parents('.main-header').find('.megamenu-overlay').removeClass('is-active');
-                    $('.megamenu-overlay').height('88');
-                }
-            );
-        }
+        $(window).on('resize', function () {
+            if ($(window).width() > 992) {
+                $('.menu-item-has-children').hover(
+                    function(){               
+                        var overlay_height = $(this).find('.sub-menu').outerHeight();
+                        $(this).parents('.main-header').find('.megamenu-overlay').addClass('is-active');
+                        $('.megamenu-overlay').height( overlay_height + $('.main-header').height());
+                    },
+                    function () {
+                        $(this).parents('.main-header').find('.megamenu-overlay').removeClass('is-active');
+                        $('.megamenu-overlay').height('88');
+                    }
+                );
+            }
+        });
     }
     if ($('li.menu-item-has-children').length) {
         $('li.menu-item-has-children > a').after('<i class="arrow"></i>');
