@@ -191,8 +191,15 @@ h3, .h3 {
     z-index: 1001;
     &.fixed-header {
         .navbar { 
-            .megamenu-overlay:not(.is-active) {     
+            .megamenu-overlay {     
                 height: 88px;
+            }
+            .navbar-brand {      
+                .logo-text {
+                    transform: translateX(0px);
+                    visibility: visible;
+                    transition: transform 300ms, visibility 300ms;
+                }
             }
         }
     }
@@ -212,6 +219,20 @@ h3, .h3 {
             color: $primary;
             border: 0;
             margin-left: 25px;
+        }
+        .navbar-brand {        
+            overflow: hidden;
+            .logo-icon {
+                background: $white;
+                z-index: 2;
+                position: relative;
+            }
+            .logo-text {
+                display: inline-block;  
+                transform: translateX(-150px);
+                visibility: hidden;
+                transition: transform 300ms, visibility 300ms;
+            }
         }
         .nav-btn {
             font-size: 13px;
