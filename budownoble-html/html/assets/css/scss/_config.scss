@@ -1,0 +1,179 @@
+@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/Gotham-Light.eot');
+  src: local('Gotham Light'), local('Gotham-Light'),
+      url('../fonts/Gotham-Light.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/Gotham-Light.woff2') format('woff2'),
+      url('../fonts/Gotham-Light.woff') format('woff'),
+      url('../fonts/Gotham-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/Gotham-Bold.eot');
+  src: local('Gotham Bold'), local('Gotham-Bold'),
+      url('../fonts/Gotham-Bold.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/Gotham-Bold.woff2') format('woff2'),
+      url('../fonts/Gotham-Bold.woff') format('woff'),
+      url('../fonts/Gotham-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/Gotham-Medium.eot');
+  src: local('Gotham Medium'), local('Gotham-Medium'),
+      url('../fonts/Gotham-Medium.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/Gotham-Medium.woff2') format('woff2'),
+      url('../fonts/Gotham-Medium.woff') format('woff'),
+      url('../fonts/Gotham-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/Gotham-Black.eot');
+  src: local('Gotham Black'), local('Gotham-Black'),
+      url('../fonts/Gotham-Black.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/Gotham-Black.woff2') format('woff2'),
+      url('../fonts/Gotham-Black.woff') format('woff'),
+      url('../fonts/Gotham-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/Gotham-Book.eot');
+  src: local('Gotham Book'), local('Gotham-Book'),
+      url('../fonts/Gotham-Book.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/Gotham-Book.woff2') format('woff2'),
+      url('../fonts/Gotham-Book.woff') format('woff'),
+      url('../fonts/Gotham-Book.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Variables */
+$bodyfont: 'Gotham'; 
+$bodyfontsize: 18px;
+$bodyfontcolor: #000000;
+$bodybg: #ffffff;
+$black: #000000;
+$white: #ffffff;
+
+$primary: #fbb12c;
+$secondary: #14406e;
+$blue: #5d94b6;
+$gray: #F8F8F8;
+
+
+/* Mixins */
+@mixin border-radius($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+@mixin box-shadow($box-shadow) {
+  -moz-box-shadow: $box-shadow;
+  -webkit-box-shadow: $box-shadow;
+  box-shadow: $box-shadow;
+}
+@mixin box-shadow-all($bs-t, $bs-r, $bs-b, $bs-l, $box-shadow-all-color) {
+  box-shadow: $bs-t $bs-r $bs-b $bs-l $box-shadow-all-color;
+  -webkit-box-shadow: $bs-t $bs-r $bs-b $bs-l $box-shadow-all-color;
+  -moz-box-shadow: $bs-t $bs-r $bs-b $bs-l $box-shadow-all-color;
+  -o-box-shadow: $bs-t $bs-r $bs-b $bs-l $box-shadow-all-color;
+}
+
+@mixin transition($duration, $ease) {
+  -webkit-transition: all $duration $ease;
+  -moz-transition: all $duration $ease;
+  -o-transition: all $duration $ease;
+  transition: all $duration $ease;
+}
+@mixin transitionValue($value, $duration, $ease) {
+  -webkit-transition: $value $duration $ease;
+  -moz-transition: $value $duration $ease;
+  -o-transition: $value $duration $ease;
+  transition: $value $duration $ease;
+}
+@mixin opacity($value) {
+  -moz-opacity: $value;
+  -khtml-opacity: $value;
+  -webkit-opacity: $value;
+  opacity: $value;
+}
+@mixin transform($value) {
+  -moz-transform: $value;
+  -webkit-transform: $value;
+  -o-transform: $value;
+  -ms-transform: $value;
+  transform: $value;
+}
+
+@mixin filter($value) {
+  -webkit-filter: $value;
+  -moz-filter: $value;
+  -o-filter: $value;
+  filter: $value;
+}
+
+/* display: flex */
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+@mixin inline-flex {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+@mixin justify-content($justify) {
+  -webkit-justify-content: $justify;
+  -moz-justify-content: $justify;
+  -ms-justify-content: $justify;
+  justify-content: $justify;
+  -ms-flex-pack: $justify;
+}
+@mixin align-items($align) {
+  -webkit-align-items: $align;
+  -moz-align-items: $align;
+  -ms-align-items: $align;
+  -ms-flex-align: $align;
+  align-items: $align;
+}
+@mixin flex-direction($direction) {
+  -webkit-flex-direction: $direction;
+  -moz-flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+}
+@mixin flex-wrap($wrap) {
+  -webkit-flex-wrap: $wrap;
+  -moz-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+@mixin flex-flow($flow) {
+  -webkit-flex-flow: $flow;
+  -moz-flex-flow: $flow;
+  -ms-flex-flow: $flow;
+  flex-flow: $flow;
+}
+// Display Order
+@mixin order($val) {
+  -webkit-box-ordinal-group: $val;
+  -moz-box-ordinal-group: $val;
+  -ms-flex-order: $val;
+  -webkit-order: $val;
+  order: $val;
+}
+
+/** Operation **/
+/* Parametric Mixins */
+/** Guarded Mixins **/
