@@ -1,0 +1,188 @@
+body {
+  .waitlist {
+    &--wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      max-width: 81.2rem;
+      padding: 8rem;
+      background:
+        linear-gradient(0deg, rgba(1, 1, 42, 0.4), rgba(1, 1, 42, 0.4)),
+        linear-gradient(
+          105.87deg,
+          rgba(255, 255, 255, 0.4) 3.04%,
+          rgba(255, 255, 255, 0) 99.23%
+        );
+      background-blend-mode: overlay, normal, normal;
+      box-shadow: inset -6px 6px 8px -6px #6447ff,
+        inset 8px 8px 8px -8px rgba(100, 71, 255, 0.7),
+        inset 2px 2px 9px -2px #ffffff, inset 0px -6px 2px -4px #6447ff,
+        inset 0px 0px 0px 2px rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(40px);
+      border-radius: 40px;
+      text-align: start;
+      margin: 0 auto;
+      @include mobile {
+        width: 100%;
+        padding: 6rem 3rem;
+        text-align: center;
+      }
+      p.text-bigger {
+        margin-bottom: 0;
+        line-height: 120%;
+
+        @include desktop {
+          margin-top: 1.6rem;
+        }
+      }
+      .hubspot-homepage-form,
+      .hubspot-product-form {
+        form {
+          @include desktop {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.4rem;
+            .hs-email {
+              width: calc(100% - 12.4rem);
+              order: 1;
+            }
+            .hs-submit {
+              width: auto;
+            }
+          }
+          margin-top: 4.2rem;
+
+          @include mobile {
+            text-align: left;
+          }
+          label {
+            color: var(--grey-300);
+            font-size: 1.4rem;
+            line-height: 120%;
+            margin-bottom: .8rem;
+          }
+          input,
+          textarea,
+          select {
+            background: transparent;
+            border: none;
+            padding: 1em;
+            width: 100%;
+            font-family: $main-font;
+            color: #fff;
+            padding: 1rem !important;
+            font-size: 1.8rem !important;
+            resize: none !important;
+          }
+          // .hs-error-msgs {
+          //   padding: 0.4rem 1rem;
+          //   border: 1px solid red;
+          //   border-radius: 4px;
+          // }
+          .hs-error-msg{
+            padding: 0;
+            font-size: 13px;
+            color: #ff5722;
+          }
+          .hs-error-msgs {
+            padding: 0;
+            margin: 0;
+            line-height: normal;
+          }
+
+          .hs-form-field {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            input {
+              height: 4rem;
+              padding: 1rem 1.2rem !important;
+              font-size: 1.4rem !important;
+              color: var(--white);
+              background: var(--dark-blue-500);
+              border: .1rem solid var(--purple-500);
+              border-radius: 1rem;
+              transition: box-shadow .25s ease-in-out;
+
+              &::placeholder {
+                color: var(--grey-500);
+              }
+
+              &:focus {
+                outline: none;
+                box-shadow: 0 0 0 .2rem var(--dark-blue-500), 0 0 0 .4rem var(--white);
+              }
+            }
+          }
+          .hs-submit {
+            display: flex;
+            flex-direction: row-reverse;
+            order: 2;
+            padding-top: 2.4rem;
+            @include mobile {
+              justify-content: center;
+              padding-top: 1rem;
+            }
+            .actions {
+              width: 100%;
+              @include mobile {
+                width: 55%;
+              }
+            }
+          }
+          .hs_error_rollup {
+            display: none !important;
+            // order: 3;
+            // width: 100%;
+          }
+        }
+        .submitted-message {
+          color: #fff;
+        }
+      }
+      .gform_wrapper {
+        margin-top: 1em;
+        @include mobile {
+          margin-top: 0.5em;
+        }
+      }
+      .gform-body {
+        input {
+          background: #01012a;
+          border: 2px solid #684bfe;
+          border-radius: 8px;
+          padding: 1.4rem !important;
+          line-height: 1 !important;
+        }
+        .gfield--type-submit {
+          align-self: flex-start;
+          @include mobile {
+            width: 60%;
+            margin: 0 auto;
+          }
+          input.gform-button {
+            background: #05e5ad;
+            color: #01012a;
+            font-weight: 600;
+            border-radius: 30px;
+            border: 1px solid #05e5ad;
+            font-size: 1.4rem !important;
+            cursor: pointer;
+            transition: 0.2s all ease;
+            &:hover {
+              background-color: #00bd85;
+            }
+          }
+        }
+        .gform_fields {
+          grid-column-gap: 5%;
+        }
+      }
+      .gform_footer {
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+    }
+  }
+}

@@ -234,7 +234,7 @@ jQuery(document).ready(function ($) {
   $("#main-menu").accessibleDropDown();
   if ($("li.menu-item-has-children").length) {
     $("li.menu-item-has-children > a").after(
-      '<button type="button" class="arrow" tabindex="-1"></button>'
+      '<button type="button" class="arrow" tabindex="-1" aria-label="Dropdown Menu"></button>'
     );
 
     $("li.menu-item-has-children > a[rel]").each(function (index, value) {

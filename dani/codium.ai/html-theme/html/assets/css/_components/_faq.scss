@@ -1,0 +1,120 @@
+#faq,
+.product-qa {
+  ul.faq {
+    list-style: none;
+    padding: 0;
+    margin: 4em 0 4em 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    @include mobile {
+      margin: 2em 0 2em 0;
+    }
+    .active {
+      background-color: var(--purple-1000);
+      border-color: var(--purple-1000);
+      text-align: start;
+
+      .title-icon {
+        transform: rotate(-180deg);
+      }
+    }
+    li:nth-child(n + 4) {
+      display: none;
+    }
+    > li {
+      border: 2px solid var(--purple-500);
+      border-radius: 16px;
+      padding: 3.2rem 4.8rem;
+      transition: border-color .25s ease-in-out, background-color .25s ease-in-out;
+
+      @include mobile {
+        padding: 2rem;
+      }
+      .question {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: start;
+        h3 {
+          color: #ffffff;
+          font-size: 2.2rem;
+          line-height: 1.25;
+          @include mobile {
+            font-size: 4vw;
+            width: 77%;
+          }
+        }
+
+        .title-icon {
+          width: 3.2rem;
+          height: 3.2rem;
+          transition: transform .25s ease-in-out;
+
+          svg {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+      p {
+        display: none;
+        position: relative;
+        text-align: left;
+        font-size: 1.6rem;
+        line-height: 130%;
+        opacity: .6;
+        margin: 1.8rem 0 0;
+      }
+    }
+    li:first-child p {
+      // display: block;
+    }
+  }
+  .more-qa-btn {
+    display: flex;
+    justify-content: center;
+
+    .more-faq {
+      height: 4.8rem;
+      border-radius: 2.4rem;
+    }
+
+    a {
+      color: #05e5ad;
+      display: flex;
+      gap: 1rem;
+    }
+
+    a.close-faq {
+      img {
+        transform: scale(-1);
+      }
+    }
+
+    & + .text-center {
+      .btn-grey {
+        height: 4.8rem;
+
+        &:hover {
+          img {
+            filter: none;
+          }
+        }
+
+        img {
+          filter: brightness(0) invert(1);
+          transition: filter .25s ease-in-out;
+        }
+      }
+    }
+  }
+
+  ul.faq > li.active .title-icon .fa-minus {
+    display: block;
+  }
+  ul.faq > li.active .title-icon .fa-plus {
+    display: none;
+  }
+}
