@@ -4045,6 +4045,12 @@
             h1 {
                 font-weight: 500;
                 font-size: 48px;
+                @media (max-width: 992px) {
+                    font-size: 42px;
+                }
+                @media (max-width: 767px) {
+                    font-size: 36px;
+                }
             }
         }
     }
@@ -4053,6 +4059,12 @@
             font-size: 34px;
             font-weight: 500;
             line-height: normal;
+            @media (max-width: 992px) {
+                font-size: 30px;
+            }
+            @media (max-width: 767px) {
+                font-size: 28px;
+            }
         }
     }
     .image-block.with-glow {
@@ -4095,23 +4107,43 @@
 .info-card-grid-block {
     display: flex;
     @include justify-content(center);
-    gap: 50px;
     @include flex-wrap(wrap);
-    flex: 1 0 auto;
+    row-gap: 30px;
     & > * {
         width: 100%;
-        max-width: 33.33%;
+        margin: 0 25px;
+        max-width: calc(33.33% - 50px);
+        @media (max-width: 992px) {
+            margin: 0 10px;
+            max-width: calc(33.33% - 20px);
+        }
+        @media (max-width: 767px) {
+            margin: 0 10px;
+            max-width: calc(50% - 20px);
+        }
+        @media (max-width: 575px) {
+            margin: 0;
+            max-width: 100%;
+        }
     }
     &.four-col {
         & > * {
-            max-width: 25%;
+            max-width: calc(25% - 50px);
+            @media (max-width: 992px) {
+                margin: 0 10px;
+                max-width: calc(50% - 20px);
+            }
+            @media (max-width: 575px) {
+                margin: 0;
+                max-width: 100%;
+            }
         }
     }
     .info-card {
-        height: 100%;
-        @include flexbox;
-        @include flex-direction(column);
-        flex: 1;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 auto;
         padding: 40px 30px;
         &.no-bg {    
             padding: 0px;
@@ -4124,7 +4156,10 @@
             box-sizing: border-box;
             background: #0e0d53;
             background-clip: padding-box;
-            border: solid 1px transparent;
+            border: 1px solid transparent;
+            @media (max-width: 992px) {
+                padding: 30px 20px;
+            }
             &::before {
                 content: "";
                 background: linear-gradient(0deg, rgba(1, 1, 42, 0.24), rgba(1, 1, 42, 0.24)), linear-gradient(105.87deg, rgba(255, 255, 255, 0.256) 3.04%, rgba(255, 255, 255, 0) 99.23%); 
@@ -4151,6 +4186,9 @@
                 .title {
                     font-weight: 700;
                     font-size: 22px;
+                    @media (max-width: 992px) {
+                        font-size: 18px;
+                    }
                 }
             }
         }
@@ -4163,12 +4201,22 @@
             .title {
                 color: #ffffff;
                 margin-bottom: 15px;
+                font-size: 28px;
+                @media (max-width: 992px) {
+                    font-size: 24px;
+                }
+                @media (max-width: 767px) {
+                    font-size: 20px;
+                }
             }
             .sort-info {
                 font-weight: 400;
                 font-size: 18px;
                 color: #FFFFFF;
                 line-height: 1.5;
+                @media (max-width: 992px) {
+                    font-size: 16px;
+                }
             }
         }
     }
