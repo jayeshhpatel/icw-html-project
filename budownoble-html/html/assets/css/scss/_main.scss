@@ -1,4 +1,121 @@
+.main-section {
+    padding: 100px 0;
+}
+.section-title {
+    &.is-border-thin {
+        border-width: 1px;
+    }
+    &.is-top-border-line {
+        padding-top: 30px;
+        border-top: 5px solid var(--line-color, $primary);
+    }
+    &.is-only-info-line {
+        .sort-info {
+            padding-left: 40px;
+            border-left: 5px solid var(--line-color, $primary);
+        }
+    }
+    .tag-line {
+        color: $blue;
+        font-weight: 700;
+        font-size: 24px;
+        letter-spacing: 1.5px;
+        @include flexbox;
+        @include align-items(center);
+        white-space: nowrap;
+        &.is-line-right {
+            span {
+                padding-right: 20px;
+            }
+            &::after {
+                content: '';
+                height: 5px;
+                width: 100%;
+                background-color: var(--line-color, $primary);
+            }
+        }
+    }
+    .h1, h1, .h2, h2 {
+        margin-bottom: 30px;
+        color: $secondary;
+        letter-spacing: 2.5px;
+    }
+    .sort-info {
+        font-size: 20px;
+        max-width: 500px;
+        strong {
+            color: $secondary;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+    }
+    .action {
+        margin-top: 50px;
+    }
+}
 .page-header {
     background: var(--header-bg);
-    padding: 200px;
+    padding: 280px 0 200px;
+    min-height: 700px;
+    @include flexbox;
+    @include align-items(center);
+    & > * {
+        z-index: 1;
+    }
+    .section-title {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+        h1 {
+            color: $primary;
+            letter-spacing: 1.5px;
+            strong {
+                color: $white;
+            }
+        }
+    }
+}
+.info-card {
+    &.is-hover-animation {
+        position: relative;
+        .card-image {
+            img {
+                width: 100%;
+            }
+        }
+        .hover-text {
+            position: absolute;
+            bottom: 20px;
+            width: calc(100% - 40px);
+            height: calc(100% - 40px);
+            left: 20px;
+            border: 1px solid $primary;
+            @include flexbox;
+            @include align-items(flex-end);
+            @include transition(0.3s, ease-in-out);
+            .content {
+                background: rgba($primary, 0.8);
+                color: $secondary;
+                font-weight: 700;
+                letter-spacing: 0.5px;
+                text-transform: uppercase;
+                text-align: center;
+                line-height: normal;
+                padding: 10px;
+                width: 100%;
+                height: auto;
+                transition: height 0.25s ease-out;
+                @include flexbox;
+                @include justify-content(center);
+            }
+        }
+        &:hover {
+            .hover-text {               
+                .content {
+                    height: 100%;
+                    @include align-items(center);
+                }
+            }
+        }
+    }
 }

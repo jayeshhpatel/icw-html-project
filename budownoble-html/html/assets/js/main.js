@@ -21,16 +21,14 @@ jQuery(document).ready(function($) {
         }
         $(window).scroll(function () {
             if ($(this).scrollTop() > 150) {
-                $('.main-header').addClass('fixed-header');
-                
+                $('.main-header').addClass('fixed-header');                
                 if ($('.main-header').hasClass('fixed-header')) {
                     // Check if the overlay has 'is-active' class
                     if ($('.megamenu-overlay').hasClass('is-active')) {
                         // Set height based on overlay_height (submenu height + header height)
                         $('.megamenu-overlay').height(overlay_height + $('.main-header').height());
                     } else {
-                        // Set height to 88 if overlay is not active
-                        $('.megamenu-overlay').height(180);
+                        $('.megamenu-overlay').height(100);
                     }
                 }
             } else {
@@ -88,9 +86,18 @@ function updateMegaMenuOverlay(element, isHover) {
     } else {
         overlay.removeClass('is-active');
         if ($(element).parents('.main-header').hasClass('fixed-header')) {
-            overlay.height(180);
+            overlay.height(100);
         } else {
             overlay.height(0);
         }
+    }
+}
+function adjustMegamenuHeight() {
+    if ($(window).width() > 1400) {
+        $('.megamenu-overlay').height(180);
+    } else if ($(window).width() > 1300) {
+        $('.megamenu-overlay').height(160);
+    } else {
+        $('.megamenu-overlay').height(140);
     }
 }
