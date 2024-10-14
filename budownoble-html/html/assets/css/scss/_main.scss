@@ -1,18 +1,68 @@
 .main-section {
     padding: 100px 0;
+    @media (max-width: 992px) {
+        padding: 70px 0;
+    }
+    @media (max-width: 767px) {
+        padding: 50px 0;
+    }
 }
 .section-title {
+    margin-bottom: 50px;
+    @media (max-width: 992px) {
+        margin-bottom: 40px;
+    }
     &.is-border-thin {
         border-width: 1px;
     }
     &.is-top-border-line {
         padding-top: 30px;
         border-top: 5px solid var(--line-color, $primary);
+        @media (max-width: 992px) {
+            padding-top: 20px;
+        }
     }
     &.is-only-info-line {
         .sort-info {
             padding-left: 40px;
             border-left: 5px solid var(--line-color, $primary);
+            @media (max-width: 767px) {
+                padding-left: 20px;
+            }
+        }
+        &.mw-500 {
+            .sort-info {
+                max-width: 500px;
+                @media (max-width: 992px) {
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+    &.is-title-line-center {
+        .title {
+            position: relative;
+            z-index: 1;
+            span {
+                background: var(--bg-color, $white);
+                padding: 0 40px;
+                @media (max-width: 992px) {
+                    padding: 0 20px;
+                }
+                @media (max-width: 767px) {
+                    padding: 0 10px;
+                }
+            }
+            &::before, &::after {
+                content: '';
+                height: 5px;
+                width: 100%;
+                background: var(--line-color, $primary);
+                display: block;
+                position: absolute;
+                top: calc(50% - 3px);
+                z-index: -1;
+            }
         }
     }
     .tag-line {
@@ -39,10 +89,18 @@
         margin-bottom: 30px;
         color: $secondary;
         letter-spacing: 2.5px;
+        @media (max-width: 767px) {
+            margin-bottom: 20px;
+        }
     }
     .sort-info {
-        font-size: 20px;
-        max-width: 500px;
+        font-size: 22px;
+        @media (max-width: 992px) {
+            font-size: 18px;
+        }
+        @media (max-width: 767px) {
+            font-size: 16px;
+        }
         strong {
             color: $secondary;
             font-weight: 600;
@@ -51,15 +109,26 @@
     }
     .action {
         margin-top: 50px;
+        @media (max-width: 992px) {
+            margin-top: 30px;
+        }
+        @media (max-width: 767px) {
+            margin-top: 20px;
+        }
     }
 }
 .page-header {
     background: var(--header-bg) no-repeat center right;
     background-size: cover;
-    padding: 280px 0 200px;
-    min-height: 700px;
+    padding: 300px 0 70px;
     @include flexbox;
     @include align-items(center);
+    @media (max-width: 1200px) {
+        padding: 250px 0 70px;
+    }
+    @media (max-width: 767px) {
+        padding: 150px 0 70px;
+    }
     & > * {
         z-index: 1;
     }
@@ -74,14 +143,40 @@
                 color: $white;
             }
         }
+        .action {
+            margin-top: 70px;
+            @media (max-width: 992px) {
+                margin-top: 50px;
+            }
+            @media (max-width: 767px) {
+                margin-top: 30px;
+            }
+        }
+    }
+}
+blockquote {
+    font-size: 45px;
+    font-style: italic;
+    @media (max-width: 1200px) {        
+        font-size: 35px;
+    }
+    @media (max-width: 767px) {        
+        font-size: 25px;
+    }
+    strong {
+        color: $primary !important;
+        font-weight: 700;
+        text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
     }
 }
 .info-card {
-    &.is-hover-animation {
+    &.is-bg-hover-animation {
         position: relative;
         .card-image {
-            img {
+            img {                
+                aspect-ratio: 1/1;
                 width: 100%;
+                object-fit: cover;
             }
         }
         .hover-text {
@@ -105,9 +200,13 @@
                 padding: 10px;
                 width: 100%;
                 height: auto;
-                transition: height 0.25s ease-out;
+                @include transition(0.3s, ease-in-out);
                 @include flexbox;
                 @include justify-content(center);
+                z-index: 1;
+                @media (max-width: 1200px) {
+                    font-size: 16px;
+                }
             }
         }
         &:hover {
@@ -117,6 +216,24 @@
                     @include align-items(center);
                 }
             }
+        }
+    }
+}
+
+.client-review-section {
+    .blockquote-block {
+        max-width: 650px;
+        padding: 30px;
+        padding-right: 0;
+        border-left: 5px solid $primary;
+        line-height: 1.1;
+        margin-left: auto;
+        @media (max-width: 1200px) {        
+            max-width: 450px;
+            padding: 20px;
+        }
+        @media (max-width: 767px) {        
+            max-width: 100%;
         }
     }
 }
