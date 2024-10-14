@@ -14,7 +14,7 @@ jQuery(document).ready(function($) {
     });
 
     if ($('.main-header').length) {
-        if (jQuery(this).scrollTop() > 150) {
+        if (jQuery(this).scrollTop() > 50) {
             $('.main-header').addClass('fixed-header');
         } else {
             $('.main-header').removeClass('fixed-header');
