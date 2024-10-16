@@ -113,6 +113,13 @@
             text-align: justify;
         }
     }
+    &.mw-850 {
+        max-width: 850px;
+        margin: 0 auto 50px;
+        @media (max-width: 992px) {
+            margin: 0 auto 40px;
+        }
+    }
     .tag-line {
         color: $blue;
         font-weight: 700;
@@ -167,16 +174,23 @@
     }
 }
 .page-header {
-    background: var(--header-bg) no-repeat center right;
+    background-image: var(--header-bg);
+    background-repeat: no-repeat;
+    background-position: center right;
     background-size: cover;
-    padding: 300px 0 70px;
+    padding: 300px 0 150px;
     @include flexbox;
     @include align-items(center);
+    min-height: 600px;
     @media (max-width: 1200px) {
-        padding: 250px 0 70px;
+        padding: 250px 0 100px;
+    }
+    @media (max-width: 992px) {
+        min-height: 450px;
     }
     @media (max-width: 767px) {
         padding: 150px 0 70px;
+        min-height: 300px;
     }
     & > * {
         z-index: 1;
@@ -206,6 +220,7 @@
 blockquote {
     font-size: 45px;
     font-style: italic;
+    margin: 0;
     @media (max-width: 1200px) {        
         font-size: 35px;
     }
@@ -218,12 +233,14 @@ blockquote {
         text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
     }
 }
+$info_card_hover_padding:20px;
 .info-card {
     @include flexbox;
     @include flex-direction(column);
     height: 100%;
-    &.is-bg-hover-animation {
+    &.is-card-content-bottom {
         position: relative;
+        height: auto;
         .card-image {
             img {                
                 aspect-ratio: 1/1;
@@ -233,14 +250,14 @@ blockquote {
         }
         .hover-text {
             position: absolute;
-            bottom: 20px;
-            width: calc(100% - 40px);
-            height: calc(100% - 40px);
-            left: 20px;
+            bottom: $info_card_hover_padding;
+            width: calc(100% - #{2 * $info_card_hover_padding});
+            height: calc(100% - #{2 * $info_card_hover_padding});
+            left: $info_card_hover_padding;
             border: 1px solid $primary;
             @include flexbox;
-            @include align-items(flex-end);
             @include transition(0.3s, ease-in-out);
+            @include align-items(flex-end);
             .content {
                 background: rgba($primary, 0.8);
                 color: $secondary;
@@ -254,6 +271,7 @@ blockquote {
                 height: 65px;
                 @include transition(0.3s, ease-in-out);
                 @include flexbox;
+                @include align-items(center);
                 @include justify-content(center);
                 z-index: 1;
                 @media (max-width: 1200px) {
@@ -261,12 +279,16 @@ blockquote {
                     height: 55px;
                 }
             }
+            
         }
-        &:hover {
-            .hover-text {               
+        &.is-no-padding {
+            .hover-text {
                 .content {
-                    height: 100%;
-                    @include align-items(center);
+                    margin-bottom: -($info_card_hover_padding + 1);
+                    background: $primary;
+                    width: calc(100% + #{2 * ($info_card_hover_padding + 1)});
+                    margin-left: -($info_card_hover_padding + 1);
+                    margin-right: -($info_card_hover_padding + 1);
                 }
             }
         }
@@ -338,12 +360,20 @@ blockquote {
     }
 }
 a.info-card {
-    &.is-bg-hover-animation {
+    &.is-hover-animation {
         &:hover, &:focus {
             .hover-text {               
                 .content {
                     height: 100%;
-                    @include align-items(center);
+                }
+            }
+        }
+        &.is-no-padding {
+            &:hover, &:focus {
+                .hover-text {
+                    .content {
+                        height: calc(100% + #{2 * ($info_card_hover_padding + 1)});
+                    }
                 }
             }
         }
@@ -354,6 +384,85 @@ a.info-card {
             @include transform(translateY(-5px));
             .card-body {
                 h3 {
+                    color: $primary;
+                }
+            }
+        }
+    }
+}
+.practice-card {
+    .info-card {
+        &.is-hover-animation {
+            .hover-text {
+                border: 1px solid #B9D1E9;
+                .content {
+                    background: #B9D1E9;
+                }
+            }
+        }
+    }
+    .info-card-details {
+        display: none;
+    }
+    &.active {
+        position: sticky;
+        top: 120px;
+        @media (max-width: 767px) {
+            top: 100px;
+        }
+        .info-card {
+            &.is-hover-animation {
+                .hover-text {
+                    border: 1px solid $primary;
+                    .content {
+                        background: $primary;
+                    }
+                }
+            }
+        }
+        .info-card-details {
+            display: block;
+        }
+    }
+}
+.info-card-details {
+    padding: 20px 10px;
+    text-align: center;
+    @media (max-width: 992px) {
+        padding: 15px 0;
+    }
+    .sort-info {
+        color: $secondary;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: normal;
+        padding: 0 20px;
+        @media (max-width: 1200px) {
+            font-size: 18px;
+            padding: 0 10px;
+        }
+        @media (max-width: 767px) {
+            font-size: 16px;
+            padding: 0;
+        }
+    }
+    .title {
+        background: $secondary;
+        padding: 10px 15px;
+        color: $white;
+        text-transform: uppercase;
+        font-weight: 500;
+        margin: 15px 0;
+    }
+    ul {
+        li {
+            padding: 5px 0;
+            color: $secondary;
+            font-weight: 700;
+            a {
+                color: $secondary;
+                @include transition(0.3s, ease-in-out);
+                &:hover, &:focus {
                     color: $primary;
                 }
             }
@@ -376,5 +485,12 @@ a.info-card {
         @media (max-width: 767px) {        
             max-width: 100%;
         }
+    }
+}
+
+.filter-form-block {
+    margin-bottom: 50px;
+    @media (max-width: 992px) {
+        margin-bottom: 30px;
     }
 }

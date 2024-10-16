@@ -123,11 +123,36 @@ img {
 }
 
 .bg-lightblue {
-    background: #B9D1E9 !important;
+    background-color: #B9D1E9 !important;
+}
+.bg-skyblue {
+    background-color: #E0EAF4 !important;
 }
 .custom-bg {
-    background: var(--header-bg) no-repeat center right;
+    background: var(--header-bg);
+    background-repeat: no-repeat;
+    background-position: center right;
     background-size: cover;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    .form-control {
+        border: 1px solid #EBCD8D;
+        @include border-radius(0);
+        height: 56px;
+        color: $secondary;
+        font-size: 20px;
+        font-weight: 500;
+        padding: 0 20px;
+        &::placeholder {
+            color: $secondary;
+        }
+        &.with-lightyellow-bg {
+            background: #FFE4B9;
+            border-color: #EBCD8D;
+        }
+    }
 }
 
 .btn {
@@ -364,6 +389,7 @@ h2, .h2 {
             background-color: rgba($secondary, 0.9);
             backdrop-filter: saturate(180%) blur(20px);
             transition: height 400ms cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+            @include box-shadow(0px 4px 6.5px rgba(0, 0, 0, 0.25));
             &.is-active {                
                 @include box-shadow(0px 2px 4px 0px rgba(25, 25, 25, 0.08));
             }
@@ -399,7 +425,7 @@ h2, .h2 {
         .menu-list-block {
             @media (min-width: 1200px) {
                 &:not(:first-child) {
-                    padding-left: 60px;
+                    padding-left: 40px;
                     margin-left: 25px;
                     border-left: 1px solid rgba($primary, 0.07);
                 }
@@ -430,7 +456,7 @@ h2, .h2 {
                     padding: 0 !important;
                     border: none !important;
                     @media (max-width: 1200px) {
-                        padding: 8px 10px !important;
+                        padding: 8px 0px !important;
                         &:not(:last-child) {
                             border-bottom: 1px solid rgba($primary, 0.07) !important;
                         }
@@ -601,7 +627,7 @@ h2, .h2 {
                             top: calc(100% - 70px);
                             @include transition(0.2s, ease-in-out);
                             @include transform(translateY(5px));
-                            min-width: 280px;
+                            min-width: 220px;
                         }
                         li {
                             padding: 8px 10px;
@@ -688,12 +714,14 @@ h2, .h2 {
                             }    
                             @media (max-width: 1200px) {
                                 margin-bottom: 10px;
+                                padding: 10px 10px 0;
                             }                            
                             .sub-menu-inner {
                                 @media (min-width: 1200px) {
-                                    max-width: 1080px;
-                                    margin: auto;
-                                    width: max-content;
+                                    max-width: 710px;
+                                    margin-right: 15px;
+                                    margin-left: auto;
+                                    width: 100%;
                                     @include flexbox;
                                     @include flex-direction(column);
                                     gap: 100px;
@@ -702,6 +730,10 @@ h2, .h2 {
                                     transition: visibility 300ms, opacity 300ms, transform 300ms;
                                     opacity: 0;
                                     transform: translateX(-24px);
+                                }
+                                @media (min-width: 1400px) {
+                                    max-width: 810px;
+                                    margin-right: 60px;
                                 }
                                 .sub-menu-grid {
                                     @include flexbox;
@@ -713,8 +745,11 @@ h2, .h2 {
                                         @include flex-direction(row);
                                         margin-bottom: 0px;
                                         margin-top: 0px;
-                                        gap: 0px 80px;
+                                        gap: 0px 40px;
                                         @include align-items(stretch);
+                                    }
+                                    .menu-list-block {
+                                        flex: 1;
                                     }
                                 }
                             }
@@ -753,7 +788,7 @@ h2, .h2 {
                     &.current-menu-item {
                         & > a {
                             &::after {
-                                background: url('data:image/svg+xml;utf8,<svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.3327 0.66626L5.99935 5.99959L0.666016 0.66626" stroke="rgb(127 127 127)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center;
+                                background: url('data:image/svg+xml;utf8,<svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.3327 0.66626L5.99935 5.99959L0.666016 0.66626" stroke="rgb(251 177 44)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center;
                             }
                         }
                     }
@@ -763,14 +798,14 @@ h2, .h2 {
     }
 }
 .main-footer {
-    background: linear-gradient(359.21deg, #16447F 0.68%, #16447F 29.11%, rgba(22, 70, 129, 0.91) 65.51%, #5E98C3 96.37%);
+    background: linear-gradient(359.21deg, #16447F 0.68%, #16447F 29.11%, rgba(22, 70, 129, 0.91) 65.51%, #5E98C3 98.37%);
     padding: 80px 15px 30px;
     @media (max-width: 1400px) {
         font-size: 16px;
     }
     @media (max-width: 1200px) {
         font-size: 14px;
-        padding: 50px 15px 30px;
+        padding: 50px 0px 30px;
     }
     @media (max-width: 992px) {
         font-size: 16px;
@@ -783,6 +818,18 @@ h2, .h2 {
     }
     .footer-logo { 
         display: block;
+        img {
+            max-height: 120px;
+            @media (max-width: 1440px) {
+                height: 100px;
+            }
+            @media (max-width: 1300px) {
+                height: 80px;
+            }
+            @media (max-width: 767px) {
+                height: 50px;
+            }
+        }
         @media (max-width: 992px) {
             margin-bottom: 40px;
             img {
@@ -888,9 +935,9 @@ h2, .h2 {
         .menu-list {
             @include flexbox;
             @include justify-content(space-between);
-            gap: 15px;
+            gap: 35px;
             @media (max-width: 1200px) {
-                gap: 10px;
+                gap: 15px;
             }
             @media (max-width: 767px) {
                 @include justify-content(center);
@@ -950,6 +997,21 @@ h2, .h2 {
         z-index: -1;
     }
 }
+.bg-left-gradient {
+    position: relative;
+    z-index: 1;
+    &::before {
+        content: '';
+        background: linear-gradient(90deg, #13467F 0%, rgba(19, 70, 127, 0.2) 100%);
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+}
 .bottom-curve-shape {
     clip-path: ellipse(79% 104% at 52% -5%);
     @media (max-width: 1200px) {
@@ -962,14 +1024,17 @@ h2, .h2 {
 .top-curve-shape {
     padding: 150px 0 100px !important;
     clip-path: ellipse(65% 79% at 50% 79%);
+    min-height: 500px;
     @media (max-width: 1200px) {
         clip-path: ellipse(73% 79% at 50% 79%);
     }
     @media (max-width: 992px) {        
         padding: 120px 0 70px !important;
+        min-height: 350px;
     }
     @media (max-width: 767px) {
         clip-path: ellipse(83% 79% at 50% 79%);
         padding: 70px 0 50px !important;
+        min-height: 200px;
     }
 }
