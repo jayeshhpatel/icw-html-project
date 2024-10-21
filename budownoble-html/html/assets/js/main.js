@@ -42,7 +42,7 @@ jQuery(document).ready(function($) {
             }
         });
         $(window).on('resize', function () {
-            if ($(window).width() > 992) {
+            if ($(window).width() > 1200) {
                 $('.mega-menu').hover(
                     function() {
                         overlay_height = $(this).find('.sub-menu').outerHeight()
@@ -54,7 +54,7 @@ jQuery(document).ready(function($) {
                 );
             }
         });
-        if ($(window).width() > 992) {
+        if ($(window).width() > 1200) {
             $('.mega-menu').hover(
                 function() {
                     overlay_height = $(this).find('.sub-menu').outerHeight()
