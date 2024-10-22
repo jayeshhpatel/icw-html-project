@@ -131,7 +131,13 @@ img {
 .custom-bg {
     background: var(--header-bg);
     background-repeat: no-repeat;
-    background-position: center right;
+    background-position: center;
+    background-size: cover;
+}
+.bg-line-img {
+    background-image: url(../images/bg-line.png);
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
 }
 
@@ -909,30 +915,24 @@ h2, .h2 {
                 @include flexbox;
                 @include align-items(flex-end);
                 gap: 20px;
+                @media (max-width: 1200px) {
+                    gap: 10px;
+                }
                 li {
                     a {
                         display: inline-block;
+                        @include transition(0.3s, ease-in-out);
                         svg {
                             width: 32px;
                             height: 32px;
                             flex: none;
                             @media (max-width: 767px) {
-                                width: 30px;
-                                height: 30px;
-                            }
-                            path {
-                                @include transition(0.3s, ease-in-out);
+                                width: 28px;
+                                height: 28px;
                             }
                         }
                         &:hover, &:focus {
-                            svg {
-                                path {
-                                    fill: $white;
-                                    &.icon-bg {
-                                        fill: $primary;
-                                    }
-                                }
-                            }
+                            opacity: 0.8;
                         }
                     }
                 }
@@ -1034,6 +1034,21 @@ h2, .h2 {
     }
     @media (max-width: 767px) {
         clip-path: ellipse(102% 104% at 52% -5%);
+    }
+}
+.bottom-curve-shape + .main-section {
+    margin-top: -200px;
+    padding-top: 300px;
+    @media (max-width: 1200px) {       
+        margin-top: -150px;
+        padding-top: 250px;
+    }
+    @media (max-width: 992px) {     
+        padding-top: 210px;
+    }
+    @media (max-width: 767px) {     
+        margin-top: -100px;
+        padding-top: 150px;
     }
 }
 .top-curve-shape {
