@@ -4041,6 +4041,9 @@
                 font-weight: 400;
                 font-size: 22px;
                 color: #9B9BC5;
+                @media (max-width: 992px) {
+                    font-size: 18px;
+                }
             }
             h1 {
                 font-weight: 500;
@@ -4080,6 +4083,9 @@
 .commercial-section {
     padding: 70px 0;
     @include box-shadow(0px 4px 48px rgba(0, 0, 0, 0.04));
+    @media (max-width: 992px) {
+        padding: 50px 0;
+    }
     .section-title {
         margin-bottom: 0;
         h2 {
@@ -4087,6 +4093,9 @@
             font-weight: 500;
             margin-bottom: 0;
             line-height: normal;
+            @media (max-width: 992px) {
+                text-align: center;
+            }
         }
     }
     .icw-hubspot-form-wrapper {
@@ -4098,8 +4107,34 @@
             margin-left: auto;
         }
         .hubspot-form {
+            .hs-form {
+                position: relative;
+            }
+            label {
+                font-size: 16px;
+                margin-bottom: 5px !important;
+                min-height: 20px;
+            }
             .hs-input {
                 height: 48px;
+                padding-right: 130px;
+            }
+            .hs-submit {
+                position: absolute;
+                top: 31px;
+                right: 5px;
+                @media (max-width: 992px) {
+                    top: 23px
+                }
+                @media (max-width: 767px) {
+                    top: 25px
+                }
+                @media (max-width: 575px) {
+                    top: 31px
+                }
+                input[type="submit"] {
+                    padding: 0.6rem 2.5rem !important;
+                }
             }
         }
     }
@@ -4108,7 +4143,7 @@
     display: flex;
     @include justify-content(center);
     @include flex-wrap(wrap);
-    row-gap: 30px;
+    row-gap: 20px;
     & > * {
         width: 100%;
         margin: 0 25px;
@@ -4145,6 +4180,7 @@
         flex-direction: column;
         flex: 1 0 auto;
         padding: 40px 30px;
+        @include transition(0.3s, ease-in-out);
         &.no-bg {    
             padding: 0px;
         }
@@ -4217,6 +4253,14 @@
                 @media (max-width: 992px) {
                     font-size: 16px;
                 }
+            }
+        }
+    }
+    a.info-card {
+        &:hover, &:focus {
+            @include transform(translateY(-8px));
+            &::after {
+                opacity: 1;
             }
         }
     }
