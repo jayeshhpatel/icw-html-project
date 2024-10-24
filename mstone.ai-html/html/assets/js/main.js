@@ -58,3 +58,49 @@ if ($('.hero-splide-slider').length) {
     });
     heroSplide.mount();
 }
+if ($('.testimonials-splide-slider').length) {
+    var testimonialSplide = new Splide('.testimonials-splide-slider', {
+        type: 'fade',
+        arrows: true,
+        classes: {
+            pagination: 'splide__pagination icw-pagination is-dark',
+            arrows: 'splide__arrows icw-arrows'
+        },
+        breakpoints: {
+            767: {
+                pagination: false,
+            },
+    }
+    });
+    testimonialSplide.mount();
+}
+if ($('.use-case-splide-slider').length) {
+    var useCaseSplide = new Splide('.use-case-splide-slider', {
+        type: 'fade',
+        arrows: false,
+        classes: {
+            pagination: 'splide__pagination icw-pagination is-dark',
+            arrows: 'splide__arrows icw-arrows'
+        },
+    });
+    useCaseSplide.mount();
+}
+
+if ($('.benefits-splide-slider').length) {
+    new Splide('.benefits-splide-slider', {
+        type: 'slide', 
+        perPage: 1.2, 
+        gap: '24px',
+        arrows: false,
+        autoplay: true,
+        classes: {
+            pagination: 'splide__pagination icw-pagination is-dark',
+        },
+        mediaQuery: 'min',
+        breakpoints: {
+                767: {
+                    destroy: true,
+                },
+        }
+    }).mount();
+}
