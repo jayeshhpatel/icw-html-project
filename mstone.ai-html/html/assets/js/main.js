@@ -47,6 +47,23 @@ jQuery(document).ready(function($) {
             $('#'+tab_id).fadeIn();
         });
     }
+    $(".collapse-item .collapse-title").click(function () {
+        if ($(this).closest(".collapse-item").hasClass("is-open")) {
+            $(this).closest(".collapse-item").stop(true,true).removeClass("is-open");
+            $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).hide("fast");
+        } else {
+            $(".collapse-item").removeClass("is-open");
+            $(".collapse-item").find(".collapse-body").stop(true,true).hide();
+            $(this).closest(".collapse-item").stop(true,true).addClass("is-open");
+            $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).slideDown("fast");
+    
+            var collapsetop = $(this);
+                $('html,body').animate({
+                scrollTop: collapsetop.offset().top-115
+            }, 10);
+        }
+        return false;
+    });
 });
 if ($('.hero-splide-slider').length) {
     var heroSplide = new Splide('.hero-splide-slider', {

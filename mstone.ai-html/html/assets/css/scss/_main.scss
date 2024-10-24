@@ -2,7 +2,7 @@
    
 }
 .main-section {
-    padding: 80px 0;
+    padding: 100px 0;
     @media (max-width: 992px) { 
         padding: 50px 0;
     }
@@ -290,6 +290,18 @@
         }
     }
 }
+.section-blog-post {
+    @media (max-width: 992px) {
+        .row {
+            @include flex-wrap(nowrap);
+            overflow: hidden;
+            overflow-x: auto;
+            & > .col {
+                max-width: 300px;
+            }
+        }
+    }
+}
 .tab-block {
     .nav-tabs {
         border: 1px solid $gray400;
@@ -558,6 +570,33 @@
         }
     }
 }
+.blog-meta-info {
+    @include flexbox;
+    @include align-items(center);
+    @include flex-wrap(wrap);
+    gap: 15px;
+    margin-bottom: 15px;
+    .blog-meta-badge {
+        color: $dark;
+        font-size: 12px;
+        font-weight: 500;
+        background: $gray;
+        border: 1px solid $gray75;
+        font-family: $font-jetbrains;
+        text-transform: uppercase;
+        padding: 7px 16px 5px;
+        @include border-radius(8px);
+        @include inline-flex;
+        width: max-content;
+        z-index: 3; 
+        position: relative;   
+        @include transition(0.3s, ease-in-out);     
+        text-decoration: none; 
+        &:hover, &:focus {
+            background: $gray75;
+        }
+    }
+}
 .post-card {
     position: relative;
     @include flexbox;
@@ -591,6 +630,9 @@
             font-size: 32px;
             letter-spacing: 0.8px;
             margin: 0;
+            @media (max-width:767px) {
+                font-size: 24px;
+            }
             a {
                 color: $dark;
                 text-decoration: none;
@@ -679,6 +721,120 @@
         bottom: -100px;
         @media (max-width: 767px) {
             bottom: -70px;
+        }
+    }
+}
+.collapse-item {
+	padding: 25px 30px;
+	border: 1px solid $gray75;
+    @include border-radius(16px);
+    margin-bottom: 15px;
+    @media (max-width:767px) {
+        padding: 24px;
+    }
+	.collapse-title {
+		@include flexbox();
+		@include align-items(center);
+		text-align: left;
+		cursor: pointer;
+		background-color: transparent;
+		border: none;
+		width: 100%;
+		padding: 0;
+		@include border-radius(4px);
+		h3 {
+			font-size: 32px;
+			margin-bottom: 0;
+            color: $dark;
+            margin-right: 30px;
+            max-width: 530px;
+            @media (max-width:767px) {
+                font-size: 24px;
+            }
+		}
+        .collapse-btn {
+            width: 68px;
+            height: 68px;
+            flex: none;
+            background: $white;
+            border: 1px solid $gray75;
+            @include border-radius(16px);
+            position: relative;
+            z-index: 1;
+            margin-left: auto;
+            @media (max-width: 767px) {
+                width: 48px;
+                height: 48px;
+            }
+            &::before {
+                content: '';
+                width: 60px;
+                height: 60px;
+                position: absolute;
+                top: 3px;
+                left: 3px;
+                border: 1px solid $dark;
+                background: $white;
+                @include box-shadow(0px 2px 4px rgba(11, 32, 55, 0.45));
+                @include border-radius(12px);
+                @include transition(0.3s, ease-in-out);
+                @media (max-width: 767px) {
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+            &::after {
+                content: '';
+                width: 12px;
+                height: 12px;
+                display: inline-block;
+                z-index: 2;
+                background: url('data:image/svg+xml,<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 7H9V1C9 0.4 8.6 0 8 0C7.4 0 7 0.4 7 1V7H1C0.4 7 0 7.4 0 8C0 8.6 0.4 9 1 9H7V15C7 15.6 7.4 16 8 16C8.6 16 9 15.6 9 15V9H15C15.6 9 16 8.6 16 8C16 7.4 15.6 7 15 7Z" fill="rgb(9 10 12)"/></svg>') center center;
+                background-size: contain !important;
+                background-repeat: no-repeat !important;
+                @include transition(0.3s, ease-in-out);
+                position: absolute;
+                top: calc(50% - 6px);
+                left: calc(50% - 6px);
+            }
+        }
+	}
+	.card-content {
+        max-width: 530px;
+		a {
+			text-decoration: underline;
+			text-underline-offset: 4px;
+		}
+	}
+	.collapse-body {
+		margin-top: 12px;
+		padding-right: 40px;		
+	}
+    &:hover, &:focus {
+        .collapse-btn {
+            &::before {
+                background: $dark;
+            }
+            &::after {
+                filter: invert(1);
+            }
+        }
+    }
+    &.is-open {
+        .collapse-btn {
+            &::before {
+                background: $dark;
+            }
+            &::after {
+                background: url('data:image/svg+xml,<svg width="16" height="2" viewBox="0 0 16 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 0H1C0.4 0 0 0.4 0 1C0 1.6 0.4 2 1 2H15C15.6 2 16 1.6 16 1C16 0.4 15.6 0 15 0Z" fill="white"/></svg>') center center;
+            }
+        }
+        &:hover, &:focus { 
+            .collapse-btn {
+                &::after {
+                    filter: invert(0);
+                }
+            }
         }
     }
 }
