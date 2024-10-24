@@ -288,6 +288,22 @@ img {
             background-position: 22px center;
             background-repeat: no-repeat;
         }
+        @media (max-width:767px) {
+            .arrow-icon { 
+                width: 40px;
+                height: 40px;
+                @include border-radius(8px);
+                background-position: 14px center;
+            }
+            .btn-text {
+                padding: 0 20px 0 55px;
+            }
+            &:hover, &:focus {
+                .arrow-icon {
+                    background-position: 25px center;
+                }
+            } 
+        }
         &:hover, &:focus {
             .arrow-icon {
                 background-position: 35px center;
@@ -338,6 +354,7 @@ img {
         width: 100%; 
         background: $dark;
         object-fit: cover;
+        pointer-events: none;
     }
 }
 .bg-dark {
@@ -354,13 +371,11 @@ img {
         }
     }
 }
-
 .bg-custom {
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
 }
-
 .with-bg-blue-vector {
     position: relative;
     z-index: 1;
@@ -377,6 +392,40 @@ img {
         z-index: -1;
     }
 }
+.full-width-block {
+    position: relative;
+    @include border-radius(24px);
+    overflow: hidden;
+    padding: 100px;
+    background-image: var(--bg-image, none);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: $dark;
+    @media (max-width: 992px) {
+        padding: 70px 30px;
+    }
+    @media (max-width: 767px) {
+        padding: 30px 15px;        
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+    .section-title {
+        z-index: 3;
+        position: relative;
+    }
+    &.bottom-video-content {       
+        @media (max-width: 575px) {
+            padding-bottom: 300px;
+            .video-bg-block {
+                img, video {
+                    object-position: bottom center;
+                }
+            }
+        }
+    }
+}
+
 .image-block {
     &.with-border {
         img {
@@ -470,8 +519,6 @@ h5, .h5 {
     font-weight: 500;
     line-height: 1;
 }
-
-
 
 .splide {
     padding-bottom: 45px;
