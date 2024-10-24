@@ -88,8 +88,8 @@ if ($('.use-case-splide-slider').length) {
 
 if ($('.benefits-splide-slider').length) {
     new Splide('.benefits-splide-slider', {
-        type: 'loop', 
-        perPage: 1.2, 
+        type: 'slide', 
+        perPage: 1, 
         gap: '20px',
         arrows: false,
         autoplay: true,
