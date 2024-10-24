@@ -87,7 +87,7 @@ if ($('.testimonials-splide-slider').length) {
             767: {
                 pagination: false,
             },
-    }
+        }
     });
     testimonialSplide.mount();
 }
@@ -97,10 +97,22 @@ if ($('.use-case-splide-slider').length) {
         arrows: false,
         classes: {
             pagination: 'splide__pagination icw-pagination is-dark',
-            arrows: 'splide__arrows icw-arrows'
         },
     });
     useCaseSplide.mount();
+}
+if ($('.metrics-splide-slider').length) {
+    var metricsSplide = new Splide('.metrics-splide-slider', {
+        type: 'slide',
+        arrows: false,
+        autoWidth: true,
+        perMove: 1,
+        gap: '40px',
+        classes: {
+            pagination: 'splide__pagination icw-pagination',
+        },
+    });
+    metricsSplide.mount();
 }
 
 if ($('.benefits-splide-slider').length) {
