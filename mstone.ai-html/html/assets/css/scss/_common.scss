@@ -656,7 +656,14 @@ h5, .h5 {
     width: 100%;
     z-index: 1001;
     padding: 12px 0;
-    @media (max-width: 992px) { 
+    @media (min-width: 992px) {        
+        padding: 20px 0 12px;
+        @include transition(0.2s, ease-in-out);
+        &.fixed-header {
+            padding: 12px 0;
+        }
+    }
+    @media (max-width: 767px) { 
         padding: 4px 0;
     }
     .container {

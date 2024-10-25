@@ -69,23 +69,27 @@ jQuery(document).ready(function($) {
     $(window).on('scroll', updateProgressBars);
     $('.progress-section').on('scroll', updateProgressBars);
 });
+updateProgressBars()
 function updateProgressBars() {
     var scrollPosition = $(window).scrollTop();
 
     // Loop through each section and check if it's in the viewport
-    $('.progress-content').each(function (index) {
+    $('.progress-content-step').each(function (index) {
         var sectionTop = $(this).offset().top - $(window).height() / 2 + 50; // Mid-point trigger
         var sectionHeight = $(this).outerHeight();
         var sectionBottom = sectionTop + sectionHeight;
-        var progressBarId = '#progress-bar-' + (index + 1); // Target progress bar by ID
-
+        var progressBarId = $(this).attr('id'); // Target progress bar by ID
+        
         if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
             // Animate progress bar height to 100%
-            $(progressBarId).css('height', '100%');
+            $('.image-block').find('.progress-content-img').removeClass('is-active');
+            $('[data-progress-id="' + progressBarId + '"]').css('height', '100%');
+            $('.image-block').find('[data-id="' + progressBarId + '"]').addClass('is-active');
         } else if (scrollPosition <= sectionTop) {
             // Reset progress bar height when section is not in view
-            $(progressBarId).css('height', '0');
-        }
+            $('[data-progress-id="' + progressBarId + '"]').css('height', '0');
+            
+        } 
     });
 }
 if ($('.hero-splide-slider').length) {
@@ -100,7 +104,7 @@ if ($('.hero-splide-slider').length) {
 }
 if ($('.testimonials-splide-slider').length) {
     var testimonialSplide = new Splide('.testimonials-splide-slider', {
-        type: 'fade',
+        type: 'slide',
         arrows: true,
         classes: {
             pagination: 'splide__pagination icw-pagination is-dark',
@@ -116,7 +120,7 @@ if ($('.testimonials-splide-slider').length) {
 }
 if ($('.use-case-splide-slider').length) {
     var useCaseSplide = new Splide('.use-case-splide-slider', {
-        type: 'fade',
+        type: 'slide',
         arrows: false,
         classes: {
             pagination: 'splide__pagination icw-pagination is-dark',
