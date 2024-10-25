@@ -47,24 +47,47 @@ jQuery(document).ready(function($) {
             $('#'+tab_id).fadeIn();
         });
     }
-    $(".collapse-item .collapse-title").click(function () {
-        if ($(this).closest(".collapse-item").hasClass("is-open")) {
-            $(this).closest(".collapse-item").stop(true,true).removeClass("is-open");
-            $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).hide("fast");
-        } else {
-            $(".collapse-item").removeClass("is-open");
-            $(".collapse-item").find(".collapse-body").stop(true,true).hide();
-            $(this).closest(".collapse-item").stop(true,true).addClass("is-open");
-            $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).slideDown("fast");
-    
-            var collapsetop = $(this);
-                $('html,body').animate({
-                scrollTop: collapsetop.offset().top-115
-            }, 10);
-        }
-        return false;
-    });
+    if ($('.collapse-block').length) {
+        $(".collapse-item .collapse-title").click(function () {
+            if ($(this).closest(".collapse-item").hasClass("is-open")) {
+                $(this).closest(".collapse-item").stop(true,true).removeClass("is-open");
+                $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).hide("fast");
+            } else {
+                $(".collapse-item").removeClass("is-open");
+                $(".collapse-item").find(".collapse-body").stop(true,true).hide();
+                $(this).closest(".collapse-item").stop(true,true).addClass("is-open");
+                $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).slideDown("fast");
+        
+                var collapsetop = $(this);
+                    $('html,body').animate({
+                    scrollTop: collapsetop.offset().top-115
+                }, 10);
+            }
+            return false;
+        });
+    }
+    $(window).on('scroll', updateProgressBars);
+    $('.progress-section').on('scroll', updateProgressBars);
 });
+function updateProgressBars() {
+    var scrollPosition = $(window).scrollTop();
+
+    // Loop through each section and check if it's in the viewport
+    $('.progress-content').each(function (index) {
+        var sectionTop = $(this).offset().top - $(window).height() / 2 + 50; // Mid-point trigger
+        var sectionHeight = $(this).outerHeight();
+        var sectionBottom = sectionTop + sectionHeight;
+        var progressBarId = '#progress-bar-' + (index + 1); // Target progress bar by ID
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            // Animate progress bar height to 100%
+            $(progressBarId).css('height', '100%');
+        } else if (scrollPosition <= sectionTop) {
+            // Reset progress bar height when section is not in view
+            $(progressBarId).css('height', '0');
+        }
+    });
+}
 if ($('.hero-splide-slider').length) {
     var heroSplide = new Splide('.hero-splide-slider', {
         type: 'slide',
@@ -122,6 +145,7 @@ if ($('.benefits-splide-slider').length) {
         gap: '20px',
         arrows: false,
         autoplay: true,
+        autoWidth: true,
         classes: {
             pagination: 'splide__pagination icw-pagination is-dark',
         },

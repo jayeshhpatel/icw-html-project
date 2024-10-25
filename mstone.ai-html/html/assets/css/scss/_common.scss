@@ -158,7 +158,7 @@ img {
 	font-size: 14px;
     position: relative;
     border: 1px solid transparent;
-	@include transition(0.2s, ease-in-out);
+	@include transition(0.1, ease-in-out);
 	@include inline-flex;
 	@include align-items(center);
 	@include justify-content(center);	
@@ -668,6 +668,7 @@ h5, .h5 {
         background: $dark;        
         @include border-radius(16px);
         padding: 8px 8px 8px 25px;
+        animation: slide-down 0.5s forwards;
         @media (max-width: 992px) {
             padding: 12px 20px;
             @include border-radius(8px);
@@ -697,7 +698,7 @@ h5, .h5 {
                     @include border-radius(2px); 
                     display: block; 				
                     position: relative; 
-                    @include transition(0.2s, ease-in-out);
+                    @include transition(0.1, ease-in-out);
                 }                
                 &.is-visible {
                     span {
@@ -817,7 +818,7 @@ h5, .h5 {
                     .sub-menu {
                         @media (min-width: 992px) {
                             box-shadow: 0 8px 26px -4px hsla(0, 0%, 8%, .15), 0 8px 9px -5px hsla(0, 0%, 8%, .06);
-                            transition: visibility 0.2s, opacity 0.2s, transform 0.2s;
+                            transition: visibility 0.1, opacity 0.1, transform 0.1;
                             position: absolute;
                             display: block;
                             opacity: 0;
@@ -841,7 +842,7 @@ h5, .h5 {
                                 right: auto;
                                 width: 18px;
                                 height: 18px;
-                                transition: top 0.2s ease;
+                                transition: top 0.1 ease;
                             }
                         }
                         @media (max-width: 992px) {
@@ -898,6 +899,16 @@ h5, .h5 {
             }
         }
     }   
+}
+@keyframes slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
 }
 .main-footer {
     z-index: 2;
