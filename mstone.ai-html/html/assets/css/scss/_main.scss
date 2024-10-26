@@ -114,11 +114,34 @@
     .hero-slider-block {
         z-index: 2;
         position: relative;
+        padding-bottom: 50px;
+        @media (max-width: 767px) {
+            padding-bottom: 30px;
+        }
         .splide__track {
-            @include border-radius(24px);
+            @include border-radius(16px);
+            @media (max-width: 767px) {
+                @include border-radius(12px);
+            }
         }
         .image-block {
             text-align: center;
+            img {
+                width: 100%;
+                @include border-radius(16px);
+                @media (max-width: 767px) {
+                    @include border-radius(12px);
+                }
+            }
+        }
+        .hero-splide-slider {
+            padding-bottom: 0;
+            .splide__pagination {
+                bottom: -50px;
+                @media (max-width: 767px) {
+                    bottom: -40px;
+                }
+            }
         }
     }
     .trusted-logo-block {
@@ -238,7 +261,15 @@
         background-image: unset !important;
     }
 }
-
+.with-bg-shodow-image {
+    padding: 16px;
+    background-image: url(../images/img-with-bg-shodow.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%; 
+    @media (max-width: 767px) {        
+        padding: 8px;
+    }
+}
 .tab-block, .thumbnail-slider-block {
     .nav-tabs, .useCase-thumbnail-splide-slider {
         border: 1px solid $gray400;
