@@ -922,6 +922,7 @@ h5, .h5 {
     position: relative;
     padding: 100px 0 0;
     background: $dark;
+    overflow: hidden;
     @media (max-width: 992px) {
         padding: 70px 0 0;
     }
@@ -1058,8 +1059,22 @@ h5, .h5 {
     }
     .site-logo-block {
         overflow: hidden;
+        opacity: 0;
         svg {
             max-width: 100%;
         }
+        &.is-animate {
+            animation: slide-up 0.5s forwards;
+        }
+    }
+}
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(150px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
     }
 }
