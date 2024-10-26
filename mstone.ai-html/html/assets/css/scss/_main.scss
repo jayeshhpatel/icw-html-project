@@ -6,7 +6,7 @@
     @media (max-width: 992px) { 
         padding: 60px 0;
     }
-    &.overtide-top {
+    &.overide-top {
         margin-top: -100px;
         position: relative;
         padding-top: 150px;
@@ -16,13 +16,13 @@
         @media (min-width: 992px) {
             &::before {
                 content: '';
-                background: $dark;
-                filter: blur(25.25px);
+                background: $dark800;
+                filter: blur(40.25px);
                 height: 50px;
                 width: 100%;
                 display: block;
                 position: absolute;
-                top: -30px;
+                top: -50px;
             }
         }
     }
@@ -68,10 +68,10 @@
     padding: 180px 0;
     position: relative;
     // overflow: hidden;
-    background: $dark;
+    background: $dark800;
     @media (min-width: 992px) {
         @include border-radius(24px 24px 0 0);
-        border: 10px solid $dark;
+        border: 10px solid $dark800;
     }
     @media (max-width: 992px) { 
         padding: 120px 0 70px;
@@ -84,12 +84,12 @@
             position: absolute;
             top: 0;
             left: 0;   
-            height: 100%;
+            height: calc(100% - 130px);
             width: 100%; 
-            background: $dark;
+            background: $dark800;
             object-fit: cover;
             @media (min-width: 992px) {
-                @include border-radius(24px 24px 0 0);
+                @include border-radius(24px);
             }
             @media (max-width: 992px) {
                 height: calc(100% - 400px);
@@ -175,8 +175,8 @@
                 background: rgba($white, 0.15);
                 display: block;
                 position: absolute;
-                width: 100vw;
-                left: calc(-50vw + 49%);
+                width: calc(100vw - 40px);
+                left: calc(-50vw + 51.49%);
                 bottom: 0;
                 z-index: -1;
             }
@@ -291,7 +291,7 @@
             background: $dark;
             border: 1px solid $dark300;
             @include border-radius(16px);
-            height: 65px;
+            height: 56px;
             padding: 5px 15px;
             color: $white;
             font-size: 14px;
@@ -500,6 +500,10 @@
             width: 95px;
             height: 95px;
             flex: none;
+            @media (max-width: 1200px) {
+                width: 75px;
+                height: 75px;
+            }
             @media (max-width: 992px) {
                 width: 65px;
                 height: 65px;
