@@ -74,7 +74,7 @@ function updateProgressBars() {
     var scrollPosition = $(window).scrollTop();
     // Loop through each section and check if it's in the viewport
     $('.progress-content-step').each(function (index) {
-        var sectionTop = $(this).offset().top - $(window).height() / 2 + 50; // Mid-point trigger
+        var sectionTop = $(this).offset().top - $(window).height() / 1.1; // Mid-point trigger
         var sectionHeight = $(this).outerHeight();
         var sectionBottom = sectionTop + sectionHeight;
         var progressBarId = $(this).attr('id'); // Target progress bar by ID
@@ -83,6 +83,7 @@ function updateProgressBars() {
             // Animate progress bar height to 100%
             $('.image-block').find('.progress-content-img').removeClass('is-active');
             $('[data-progress-id="' + progressBarId + '"]').css('height', '100%');
+            $('.progress-content-wrapper').find('[id="' + progressBarId + '"]').addClass('is-active');
             $('.image-block').find('[data-id="' + progressBarId + '"]').addClass('is-active');
         } else if (scrollPosition <= sectionTop) {
             // Reset progress bar height when section is not in view
@@ -162,7 +163,7 @@ if ($('.benefits-splide-slider').length) {
 }
 if ($('.thumbnail-slider-block').length) {
     var main = new Splide( '.use-case-splide-slider', {
-        type      : 'slide',
+        type      : 'fade',
         rewind    : true,
         pagination: false,
         arrows    : false,

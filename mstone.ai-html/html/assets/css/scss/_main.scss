@@ -705,8 +705,7 @@
             }
         }
     }  
-    .progress-content-wrapper {
-       
+    .progress-content-wrapper {       
         .position-sticky-bar {
             display: none;
             @media (min-width: 992px) {
@@ -752,6 +751,9 @@
             position: relative;
             .content {
                 padding: 0 0 200px 150px;
+                transform: translateY(20%);
+                opacity: 0.4;
+                @include transition(0.8s, ease-in-out);
                 @media (max-width: 1200px) {
                     padding: 0 0 150px 100px;
                 }
@@ -799,11 +801,16 @@
                     }
                 }
             }
+            &.is-active {
+                .content {                   
+                    @include transform(translateY(0));
+                    opacity: 1;
+                }
+            }
         }
 
     }
 }
-
 
 .testimonials-splide-slider {
     @media (max-width: 767px) {
