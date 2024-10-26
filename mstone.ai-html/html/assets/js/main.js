@@ -85,7 +85,7 @@ function updateProgressBars() {
     var scrollPosition = $(window).scrollTop();
     // Loop through each section and check if it's in the viewport
     $('.progress-content-step').each(function (index) {
-        var sectionTop = $(this).offset().top - $(window).height() / 1.1; // Mid-point trigger
+        var sectionTop = $(this).offset().top - $(window).height() / 2; // Mid-point trigger
         var sectionHeight = $(this).outerHeight();
         var sectionBottom = sectionTop + sectionHeight;
         var progressBarId = $(this).attr('id'); // Target progress bar by ID
