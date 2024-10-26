@@ -112,6 +112,7 @@ if ($('.hero-splide-slider').length) {
     var heroSplide = new Splide('.hero-splide-slider', {
         type: 'slide',
         arrows: false,
+        gap: '15px',
         classes: {
             pagination: 'splide__pagination icw-pagination',
         },
@@ -122,6 +123,7 @@ if ($('.testimonials-splide-slider').length) {
     var testimonialSplide = new Splide('.testimonials-splide-slider', {
         type: 'slide',
         arrows: true,
+        gap: '100px',
         classes: {
             pagination: 'splide__pagination icw-pagination is-dark',
             arrows: 'splide__arrows icw-arrows'
