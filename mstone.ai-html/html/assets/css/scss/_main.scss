@@ -641,6 +641,7 @@
 .progress-section {
     border-bottom: 1px solid $gray75;
     position: relative; 
+    overflow: hidden;
     &::after {
         content: '';
         position: absolute;
@@ -785,10 +786,12 @@
         .progress-content-step {
             position: relative;
             .content {
-                padding: 0 0 200px 150px;
-                transform: translateY(20%);
-                opacity: 0.4;
+                padding: 0 0 200px 150px;                
                 @include transition(0.8s, ease-in-out);
+                @media (min-width: 767px) {
+                    transform: translateY(20%);
+                    opacity: 0.4;
+                }
                 @media (max-width: 1200px) {
                     padding: 0 0 150px 100px;
                 }
@@ -837,9 +840,11 @@
                 }
             }
             &.is-active {
-                .content {                   
-                    @include transform(translateY(0));
-                    opacity: 1;
+                .content {  
+                    @media (min-width: 767px) {                 
+                        @include transform(translateY(0));
+                        opacity: 1;
+                    }
                 }
             }
         }
@@ -848,26 +853,58 @@
 }
 
 .testimonials-splide-slider {
+    max-width: 1020px;
+    margin: 0 auto;
+    position: relative;
+    @media (max-width: 1439px) {
+        max-width: 850px;
+    }
+    @media (max-width: 1200px) {
+        max-width: 750px;
+    }
+    @media (max-width: 992px) {
+        max-width: 550px;
+    }
     @media (max-width: 767px) {
+        max-width: 100%;
         padding-bottom: 60px;
     }
     .splide__track {
-        max-width: 850px;
-        margin: 0 auto;
+        mask-image: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(10%, #000), color-stop(90%, #000), to(transparent));
+        mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+        @media (max-width: 767px) {
+            margin: 0 -35px;
+        }
+    }
+    .testimonial-card {
+        padding: 0 85px;
+        @media (max-width: 1439px) {
+            padding: 0 65px;
+        }
+        @media (max-width: 1200px) {
+            padding: 0 45px;
+        }
+        @media (max-width: 992px) {
+            padding: 0 35px;
+        }
+    }
+    .icw-arrows {
+        .splide__arrow--prev {
+            @media (min-width: 767px) {
+                left: -13%;
+            }
+        }
+        .splide__arrow--next {
+            @media (min-width: 767px) {
+                right: -13%;
+            }
+        }
     }
 }
 .testimonial-card {
-    max-width: 850px;
-    margin: 0 auto;
     height: 100%;
     @include flexbox;
     @include flex-direction(column);
-    @media (max-width: 1200px) {
-        max-width: 650px;
-    }
-    @media (max-width: 992px) {
-        max-width: 450px;
-    }
     .card-icon {
         margin-bottom: 30px;
         @media (max-width: 992px) {
