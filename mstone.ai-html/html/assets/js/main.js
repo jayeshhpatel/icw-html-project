@@ -123,14 +123,18 @@ if ($('.testimonials-splide-slider').length) {
     var testimonialSplide = new Splide('.testimonials-splide-slider', {
         type: 'slide',
         arrows: true,
-        gap: '100px',
+        gap: 30,
         classes: {
             pagination: 'splide__pagination icw-pagination is-dark',
             arrows: 'splide__arrows icw-arrows'
         },
         breakpoints: {
+            992: {
+                gap: 0,
+            },
             767: {
                 pagination: false,
+                gap: 0,
             },
         }
     });
