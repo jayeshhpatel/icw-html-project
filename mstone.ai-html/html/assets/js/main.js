@@ -90,12 +90,17 @@ function updateProgressBars() {
         var sectionBottom = sectionTop + sectionHeight;
         var progressBarId = $(this).attr('id'); // Target progress bar by ID
         
+        var sectionAnimateContentTop = $(this).offset().top - $(window).height() / 1.1;
+        var sectionAnimateContentBottom = sectionAnimateContentTop + sectionHeight;
+        
         if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
             // Animate progress bar height to 100%
             $('.image-block').find('.progress-content-img').removeClass('is-active');
             $('[data-progress-id="' + progressBarId + '"]').css('height', '100%');
-            $('.progress-content-wrapper').find('[id="' + progressBarId + '"]').addClass('is-active');
             $('.image-block').find('[data-id="' + progressBarId + '"]').addClass('is-active');
+        } else if (scrollPosition >= sectionAnimateContentTop && scrollPosition < sectionAnimateContentBottom) {
+            $('.progress-content-wrapper').find('[id="' + progressBarId + '"]').addClass('is-active');
+            
         } else if (scrollPosition <= sectionTop) {
             // Reset progress bar height when section is not in view
             $('[data-progress-id="' + progressBarId + '"]').css('height', '0');
