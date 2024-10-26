@@ -239,12 +239,12 @@
     }
 }
 
-.tab-block {
-    .nav-tabs {
+.tab-block, .thumbnail-slider-block {
+    .nav-tabs, .useCase-thumbnail-splide-slider {
         border: 1px solid $gray400;
         padding: 12px;
         @include border-radius(24px);
-        max-width: 750px;
+        max-width: fit-content;
         margin: 0 auto 40px;
         @include flexbox;
         @include align-items(center);
@@ -255,7 +255,7 @@
         @media (max-width: 767px) {
             padding: 8px;
         }
-        .tab-link {
+        .tab-link, .thumbnail-btn {
             flex: 1;
             background: $dark;
             border: 1px solid $dark300;
@@ -289,6 +289,20 @@
                 }
             }
         }
+        .splide__slide {
+            &:last-child {
+                margin-right: 0 !important;
+            }
+            &.is-active {
+                .thumbnail-btn { 
+                    background: $white;
+                    color: $dark;
+                    .icon {
+                        filter: invert(1);
+                    }
+                }
+            }
+        }
     }
     .tab-content {
         .tab-pane {
@@ -306,6 +320,20 @@
                         margin-bottom: 25px;
                     }
                 }
+            }
+        }
+    }
+}
+.use-case-splide-slider {
+    .section-title {
+        @media (min-width: 992px) {
+            margin-bottom: 0;
+        }
+        .tag {
+            padding: 0;
+            border: none;
+            @media (max-width: 992px) {
+                margin-bottom: 25px;
             }
         }
     }
@@ -690,7 +718,7 @@
                     min-height: 420px;
                     .progress-content-img {
                         pointer-events: none;
-                        @include transform(scaleX(-1));
+                        // @include transform(scaleX(-1));
                         position: absolute;
                         top: 100px;
                         bottom: 150px;
@@ -712,7 +740,7 @@
                             display: inline-block;
                         }
                         &.is-active {
-                            @include transform(scaleX(1));
+                            // @include transform(scaleX(1));
                             opacity: 1;
                             visibility: visible;
                         }
@@ -874,11 +902,13 @@
     }
     .content-block {
         @include border-radius(24px);
-        padding: 50px;
         color: $white;
         background: $dark;
-        @media (max-width: 767px) {
-            padding: 30px;
+        .story-card {
+            padding: 50px;
+            @media (max-width: 767px) {
+                padding: 30px;
+            }
         }
     }
 }
@@ -1056,7 +1086,7 @@
         }
     }
 }
-.use-case-splide-slider {
+.stories-splide-slider {
     padding: 0;
     .icw-pagination {
         bottom: -100px;

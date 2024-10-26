@@ -72,7 +72,6 @@ jQuery(document).ready(function($) {
 updateProgressBars()
 function updateProgressBars() {
     var scrollPosition = $(window).scrollTop();
-
     // Loop through each section and check if it's in the viewport
     $('.progress-content-step').each(function (index) {
         var sectionTop = $(this).offset().top - $(window).height() / 2 + 50; // Mid-point trigger
@@ -118,15 +117,15 @@ if ($('.testimonials-splide-slider').length) {
     });
     testimonialSplide.mount();
 }
-if ($('.use-case-splide-slider').length) {
-    var useCaseSplide = new Splide('.use-case-splide-slider', {
+if ($('.stories-splide-slider').length) {
+    var storiesSplide = new Splide('.stories-splide-slider', {
         type: 'slide',
         arrows: false,
         classes: {
             pagination: 'splide__pagination icw-pagination is-dark',
         },
     });
-    useCaseSplide.mount();
+    storiesSplide.mount();
 }
 if ($('.metrics-splide-slider').length) {
     var metricsSplide = new Splide('.metrics-splide-slider', {
@@ -160,4 +159,25 @@ if ($('.benefits-splide-slider').length) {
                 },
         }
     }).mount();
+}
+if ($('.thumbnail-slider-block').length) {
+    var main = new Splide( '.use-case-splide-slider', {
+        type      : 'slide',
+        rewind    : true,
+        pagination: false,
+        arrows    : false,
+    } );
+    
+    var thumbnails = new Splide( '.useCase-thumbnail-splide-slider', {       
+        gap         : 8,
+        rewind      : true,
+        pagination  : false,
+        arrows  : false,
+        isNavigation: true,
+        autoWidth: true,
+    } );
+    
+    main.sync( thumbnails );
+    main.mount();
+    thumbnails.mount();
 }
