@@ -189,6 +189,38 @@
     background-position: bottom center;
     background-size: cover;
     border: none;
+    color: $white;
+    padding: 130px 0;
+    & > .container {
+        height: 100%;
+    }
+    .page-title {
+        padding-top: 80px;
+    }
+}
+.breadcrumb-nav {
+    margin-bottom: 30px;
+    .breadcrumb {
+        .breadcrumb-item {
+            font-size: 14px;
+            color: $white;
+            a {
+                text-decoration: none;
+                color: $white;
+                @include transition(0.3s, ease-in-out);
+                &:hover, &:focus {
+                    color: rgba($white, 0.7);
+                    text-decoration: underline;
+                }
+            }
+        }
+        .breadcrumb-item + .breadcrumb-item {
+            &::before {
+                content: '-';
+                color: $white;
+            }
+        }
+    }
 }
 .logo-list-block {
     margin-top: 50px;
@@ -1198,6 +1230,16 @@
                 }
             }
         }
+    }
+}
+.is-hero-blog-post {
+    .card-img { 
+        img {
+            max-height: 100%;
+        }
+    }
+    .card-content {
+        padding: 50px 0 50px 40px;
     }
 }
 .stories-splide-slider {
