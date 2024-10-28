@@ -252,6 +252,14 @@
       transform: translateX(-100%);
     } 
 }
+.content-block {
+    .sort-info {
+        line-height: 32px;
+        @media (max-width: 992px) {
+            line-height: 28px;
+        }
+    }
+}
 .use-case-section {
     background-size: auto;
     background-repeat: no-repeat;
@@ -292,7 +300,7 @@
             border: 1px solid $dark300;
             @include border-radius(16px);
             height: 56px;
-            padding: 5px 15px;
+            padding: 5px 25px;
             color: $white;
             font-size: 14px;
             font-weight: 600;
@@ -303,6 +311,7 @@
             white-space: nowrap;
             @media (max-width: 767px) {
                 height: 48px;
+                padding: 5px 15px;
             }
             .icon {
                 margin-right: 8px;
@@ -641,7 +650,6 @@
 .progress-section {
     border-bottom: 1px solid $gray75;
     position: relative; 
-    overflow: hidden;
     &::after {
         content: '';
         position: absolute;
@@ -870,10 +878,12 @@
         padding-bottom: 60px;
     }
     .splide__track {
-        mask-image: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(10%, #000), color-stop(90%, #000), to(transparent));
-        mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+         @media (min-width: 767px) {
+            mask-image: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(10%, #000), color-stop(90%, #000), to(transparent));
+            mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+        }
         @media (max-width: 767px) {
-            margin: 0 -35px;
+            margin: 0 -20px;
         }
     }
     .testimonial-card {
@@ -886,6 +896,9 @@
         }
         @media (max-width: 992px) {
             padding: 0 35px;
+        }
+        @media (max-width: 767px) {
+            padding: 0 20px;
         }
     }
     .icw-arrows {
@@ -1168,9 +1181,9 @@
 .stories-splide-slider {
     padding: 0;
     .icw-pagination {
-        bottom: -100px;
+        bottom: -50px;
         @media (max-width: 767px) {
-            bottom: -70px;
+            bottom: -40px;
         }
     }
 }
