@@ -56,9 +56,6 @@
     h1, h2, h3 {
         margin-bottom: 25px;
         color: $dark;
-        @media (max-width: 992px) {
-            margin-bottom: 15px;
-        }
     }
     .action {
         margin-top: 25px;
@@ -279,20 +276,32 @@
     }
 }
 .tab-block, .thumbnail-slider-block {
+    .tab-nav-block {
+        overflow: hidden;
+        overflow-x: auto;
+        margin: 0 auto 40px;     
+        max-width: 750px;
+        @media (max-width: 575px) {
+            padding: 0 20px;
+            margin-right: -20px;
+            margin-left: -20px;
+        }
+    }
     .nav-tabs, .useCase-thumbnail-splide-slider {
         border: 1px solid $gray400;
         padding: 12px;
         @include border-radius(24px);
-        max-width: fit-content;
-        margin: 0 auto 40px;
         @include flexbox;
         @include align-items(center);
         @include flex-wrap(nowrap);
-        gap: 12px;
-        overflow: hidden;
-        overflow-x: auto;
+        min-width: 960px;
+        gap: 12px;  
+        @media (max-width: 992px) {
+            min-width: 690px;
+        }
         @media (max-width: 767px) {
             padding: 8px;
+            gap: 8px;
         }
         .tab-link, .thumbnail-btn {
             flex: 1;
@@ -309,7 +318,7 @@
             @include justify-content(center);
             @include transition(0.3s, ease-in-out);
             white-space: nowrap;
-            @media (max-width: 767px) {
+            @media (max-width: 992px) {
                 height: 48px;
                 padding: 5px 15px;
             }
@@ -596,6 +605,7 @@
     }
 }
 .metrics-section {
+    background-image: url(../images/img-metrics-bg.png);
     background-repeat: no-repeat;
     background-position: center calc(100% + 30px);
     @include border-radius(24px);
@@ -1304,6 +1314,14 @@
 }
 
 .cta-section {
+    background-image: url(../images/img-cta-bg.png);
     background-repeat: no-repeat;
     background-position: center bottom;
+    @media (max-width: 767px) {
+        background-image: url(../images/img-cta-bg-m.png);
+        background-size: auto;
+    }
+    .action {
+        margin-top: 40px;
+    }
 }
