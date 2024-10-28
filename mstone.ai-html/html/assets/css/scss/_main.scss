@@ -112,8 +112,14 @@
         z-index: 2;
         position: relative;
         padding-bottom: 50px;
+        width: 50%;
+        margin: auto;
+        @media (max-width: 992px) {
+            width: 80%;
+        }
         @media (max-width: 767px) {
             padding-bottom: 30px;
+            width: 100%;
         }
         .splide__track {
             @include border-radius(16px);
@@ -185,17 +191,54 @@
     @include border-radius(24px);
     background-color: #010103;
     background-image: url(../images/img-inner-page-header-bg.png);
-    background-repeat: no-repeat;
-    background-position: bottom center;
-    background-size: cover;
+    background-repeat: no-repeat !important;
+    background-position: bottom center !important;
+    background-size: 100% 100% !important;
     border: none;
     color: $white;
     padding: 130px 0;
-    & > .container {
-        height: 100%;
+    @media (max-width: 992px) {
+        padding: 80px 0 100px;
+        min-height: 420px;
+    }
+    @media (max-width: 767px) {
+        background-image: url(../images/img-inner-page-header-bg-m.png);
+        padding: 70px 0 120px;
     }
     .page-title {
         padding-top: 80px;
+        @media (max-width: 992px) {
+            padding-top: 60px;
+        }
+        @media (max-width: 767px) {
+            padding-top: 40px;
+        }
+        .tagline {
+            border: 1px solid $white;
+            @include border-radius(25px);
+            font-family: $font-jetbrains;
+            padding: 8px 16px;
+            font-size: 16px;
+            color: $white;
+            display: inline-block;
+            margin-bottom: 30px;
+            @media (max-width: 767px) { 
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+        }
+        h1 {
+            margin-bottom: 25px;
+            @media (max-width: 767px) {
+                margin-bottom: 15px;
+            }
+        }
+        .sort-info {
+            color: $gray75;
+        }
+        .action {
+            margin-top: 30px;
+        }
     }
 }
 .breadcrumb-nav {
@@ -1240,7 +1283,12 @@
     }
     .card-content {
         padding: 50px 0 50px 40px;
-
+        height: 100%;
+        @include flexbox;
+        @include flex-direction(column);
+        .card-body {
+            flex: 1 1 auto;
+        }
     }
 }
 .stories-splide-slider {
