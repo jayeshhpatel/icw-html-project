@@ -695,9 +695,12 @@ h5, .h5 {
         @include border-radius(16px);
         padding: 8px 8px 8px 25px;
         animation: slide-down 0.5s forwards;
+        height: 64px;
+        @include transition(0.1s, ease-in-out);
         @media (max-width: 992px) {
             padding: 12px 20px;
             @include border-radius(8px);
+            height: 48px;
         }
         .navbar-brand {
             @include flexbox;
@@ -924,7 +927,12 @@ h5, .h5 {
                 }
             }
         }
-    }   
+    } 
+    &.is-visible {
+        .navbar {
+            height: 100%;
+        }
+    }  
 }
 @keyframes slide-down {
     from {
