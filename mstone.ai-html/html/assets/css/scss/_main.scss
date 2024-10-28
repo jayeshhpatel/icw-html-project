@@ -85,8 +85,8 @@
             width: 100%; 
             background: $dark800;
             object-fit: cover;
+            @include border-radius(24px);
             @media (min-width: 992px) {
-                @include border-radius(24px);
             }
             @media (max-width: 992px) {
                 height: calc(100% - 400px);
@@ -179,6 +179,16 @@
             }
         }
     }
+}
+.inner-page-header {
+    min-height: 520px;
+    @include border-radius(24px);
+    background-color: #010103;
+    background-image: url(../images/img-inner-page-header-bg.png);
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: cover;
+    border: none;
 }
 .logo-list-block {
     margin-top: 50px;
@@ -489,7 +499,8 @@
         .info-card {
             @media (max-width: 767px) {
                 max-height: 300px;
-                min-height: 300px;
+                min-height: 280px;
+                padding: 15px;
             } 
         }
         .image-block {
@@ -1049,6 +1060,7 @@
         letter-spacing: 1.8px;
         @include flexbox;
         @include align-items(center);
+        line-height: 1;
         .icon {
             margin-right: 12px;
         }
@@ -1095,6 +1107,7 @@
         position: relative;   
         @include transition(0.3s, ease-in-out);     
         text-decoration: none;
+        letter-spacing: 1.2px;
         @media (max-width:767px) {
             font-size: 10px;
         } 
