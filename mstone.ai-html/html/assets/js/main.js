@@ -108,21 +108,13 @@ function updateProgressBars() {
         } 
     });
 }
-if ($('.hero-splide-slider').length) {
-    new Splide('.hero-splide-slider').mount();
+if ($('.splide').length) {
+    var splide_sliders = $('.splide');
+    for (var i = 0; i < splide_sliders.length; i++) {
+        new Splide(splide_sliders[i]).mount();
+    }
 }
-if ($('.testimonials-splide-slider').length) {
-    new Splide('.testimonials-splide-slider').mount();
-}
-if ($('.stories-splide-slider').length) {
-    new Splide('.stories-splide-slider').mount();
-}
-if ($('.metrics-splide-slider').length) {
-    new Splide('.metrics-splide-slider').mount();
-}
-if ($('.benefits-splide-slider').length) {
-    new Splide('.benefits-splide-slider').mount();
-}
+
 if ($('.thumbnail-slider-block').length) {
     var main = new Splide( '.use-case-splide-slider', {
         type      : 'fade',

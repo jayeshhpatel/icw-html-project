@@ -1,12 +1,34 @@
 .page-header.about-page-header {
     position: relative;
     background-color: $dark800;
+    @media (max-width: 767px) {
+        padding-bottom: 80px;
+    }
     .page-title {
         z-index: 2;
         position: relative;
         padding-top: 230px;
+        @media (max-width: 767px) {
+            padding-top: 160px;
+        }
     }
 }
 .counter-block {
-    
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(space-between);
+    padding: 50px 100px;
+    border: 1px solid $gray50;
+    .counter-box {
+        .counter {
+            font-size: 88px;
+            color: $primary;
+            @media (max-width: 992px) {
+                font-size: 72px;
+            }
+            @media (max-width: 767px) {
+                font-size: 56px;
+            }
+        }
+    }
 }
