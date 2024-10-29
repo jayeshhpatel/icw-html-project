@@ -35,11 +35,18 @@
     }
     &.text-center {
         margin: 0 auto 50px;
+        max-width: 800px;
         @media (max-width: 767px) { 
             margin: 0 auto 40px;
         }
     }
-    .tag {
+    &.no-border-tagline {
+        .tagline {
+            border: none;
+            padding: 0;
+        }
+    }
+    .tagline {
         border: 1px solid $dark300;
         @include border-radius(25px);
         font-family: $font-jetbrains;
@@ -51,6 +58,21 @@
         @media (max-width: 767px) { 
             font-size: 14px;
             margin-bottom: 15px;
+        }
+        .icon {
+            background: linear-gradient(180deg, rgba(111, 132, 153, 0.3) 0%, #202535 100%);
+            box-shadow: inset 0px 4px 8px rgba(127, 135, 153, 0.5);
+            @include border-radius(8px);
+            width: 56px;
+            height: 56px;
+            flex: none;
+            @include flexbox;
+            @include align-items(center);
+            @include justify-content(center);
+            img {
+                width: 16px;
+                height: 16px;
+            }
         }
     }
     h1, h2, h3 {
@@ -208,6 +230,10 @@
     }
     .page-title {
         padding-top: 80px;
+        max-width: 800px;
+        &.text-center {
+            margin: 0 auto;
+        }
         @media (max-width: 992px) {
             padding-top: 60px;
         }
@@ -244,6 +270,8 @@
 }
 .breadcrumb-nav {
     margin-bottom: 30px;
+    z-index: 2;
+    position: relative;
     .breadcrumb {
         .breadcrumb-item {
             font-size: 14px;
@@ -447,7 +475,7 @@
                 @media (min-width: 992px) {
                     margin-bottom: 0;
                 }
-                .tag {
+                .tagline {
                     padding: 0;
                     border: none;
                     @media (max-width: 992px) {
@@ -463,7 +491,7 @@
         @media (min-width: 992px) {
             margin-bottom: 0;
         }
-        .tag {
+        .tagline {
             padding: 0;
             border: none;
             @media (max-width: 992px) {
@@ -926,7 +954,7 @@
                 @media (min-width: 992px) {
                     margin-bottom: 0;
                 }
-                .tag {
+                .tagline {
                     @include border-radius(8px);
                     background: $gray;
                     text-transform: uppercase;
