@@ -13,22 +13,84 @@
         }
     }
 }
-.counter-block {
+.counter-content-block {
+    position: relative;
+    padding: 50px 100px;
+    border: 1px solid $gray50;
+    position: relative;
+    &::before, &::after {
+        content: '';
+        width: 20px;
+        height: 20px;
+        background: #F7F8F9;
+        border: 1px solid #C8D0D9;
+        @include border-radius(2px);
+        display: inline-block;
+        position: absolute;
+        top: -10px;
+        left: -10px;
+    }
+    &::after {
+        right: -10px;
+        left: auto;
+    }
+    .sm-square-vector {
+        &::before, &::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: #F7F8F9;
+            border: 1px solid #C8D0D9;
+            @include border-radius(2px);
+            display: inline-block;
+            position: absolute;
+            bottom: -10px;
+            left: -10px;
+        }
+        &::after {
+            right: -10px;
+            left: auto;
+        }
+    }
+    .sm-square-center-vector {
+        &::before, &::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: #F7F8F9;
+            border: 1px solid #C8D0D9;
+            @include border-radius(2px);
+            display: inline-block;
+            position: absolute;
+            top: -10px;
+            left: calc(50% - 10px);
+        }
+        &::after {
+            bottom: -10px;
+            top: auto;
+        }
+    }
+}
+.animate-counter-block {
     @include flexbox;
     @include align-items(center);
     @include justify-content(space-between);
-    padding: 50px 100px;
-    border: 1px solid $gray50;
     .counter-box {
+        min-width: 210px;
         .counter {
             font-size: 88px;
             color: $primary;
+            font-weight: 400;
+            margin-bottom: 15px;
             @media (max-width: 992px) {
                 font-size: 72px;
             }
             @media (max-width: 767px) {
                 font-size: 56px;
             }
+        }
+        .info-text {
+            color: $gray600;
         }
     }
 }
