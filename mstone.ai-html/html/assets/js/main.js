@@ -109,78 +109,19 @@ function updateProgressBars() {
     });
 }
 if ($('.hero-splide-slider').length) {
-    var heroSplide = new Splide('.hero-splide-slider', {
-        type: 'slide',
-        arrows: false,
-        gap: '15px',
-        classes: {
-            pagination: 'splide__pagination icw-pagination',
-        },
-    });
-    heroSplide.mount();
+    new Splide('.hero-splide-slider').mount();
 }
 if ($('.testimonials-splide-slider').length) {
-    var testimonialSplide = new Splide('.testimonials-splide-slider', {
-        type: 'slide',
-        arrows: true,
-        gap: 30,
-        classes: {
-            pagination: 'splide__pagination icw-pagination is-dark',
-            arrows: 'splide__arrows icw-arrows'
-        },
-        breakpoints: {
-            992: {
-                gap: 0,
-            },
-            767: {
-                pagination: false,
-                gap: 0,
-            },
-        }
-    });
-    testimonialSplide.mount();
+    new Splide('.testimonials-splide-slider').mount();
 }
 if ($('.stories-splide-slider').length) {
-    var storiesSplide = new Splide('.stories-splide-slider', {
-        type: 'slide',
-        arrows: false,
-        classes: {
-            pagination: 'splide__pagination icw-pagination is-dark',
-        },
-    });
-    storiesSplide.mount();
+    new Splide('.stories-splide-slider').mount();
 }
 if ($('.metrics-splide-slider').length) {
-    var metricsSplide = new Splide('.metrics-splide-slider', {
-        type: 'slide',
-        arrows: false,
-        autoWidth: true,
-        perMove: 1,
-        gap: '40px',
-        classes: {
-            pagination: 'splide__pagination icw-pagination',
-        },
-    });
-    metricsSplide.mount();
+    new Splide('.metrics-splide-slider').mount();
 }
 if ($('.benefits-splide-slider').length) {
-    new Splide('.benefits-splide-slider', {
-        type: 'slide', 
-        perPage: 1, 
-        gap: '20px',
-        arrows: false,
-        autoplay: true,
-        autoWidth: true,
-        classes: {
-            pagination: 'splide__pagination icw-pagination is-dark',
-        },
-        mediaQuery: 'min',
-        breakpoints: {
-                767: {
-                    destroy: true,
-                },
-        }
-    }).mount();
+    new Splide('.benefits-splide-slider').mount();
 }
 if ($('.thumbnail-slider-block').length) {
     var main = new Splide( '.use-case-splide-slider', {
