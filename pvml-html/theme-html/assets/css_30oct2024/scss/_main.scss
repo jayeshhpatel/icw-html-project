@@ -549,51 +549,6 @@
 	}
 }
 
-// 3D Home Hero
-.home-3d-hero-section {
-	padding: 0;
-	background-color: #031b1e !important;
-	@media (max-width: 992px) {
-		padding: 50px 0;
-	}
-	.section-title {
-		z-index: 2;
-		position: relative;
-	}
-	.home-3d-img {
-		width: 50vw;
-		position: relative;
-		height: 700px;
-		margin-left: -15%;
-		z-index: 1;
-		@media (min-width: 1920px) {
-			width: 1000px;
-			margin-left: -20%;
-		}
-		@media (max-width: 1440px) {
-			width: 60vw;
-			margin-left: -35%;
-		}
-		@media (max-width: 1200px) {
-			width: 75vw;
-			margin-left: -35%;
-		}
-		@media (max-width: 992px) {
-			width: 100%;
-			margin-left: 0;
-			height: auto;
-		}
-		iframe {
-			position: absolute;
-			left: 0;
-			bottom: 0;
-			right: 0;
-			width: 100%;
-			height: 100%;
-		}
-	}
-}
-
 
 .section-title {
 	margin-bottom: 40px;
@@ -654,7 +609,7 @@
 	}
 }
 
-.sort-info :not(.splide,.pagination-pager) {
+.sort-info :not(.splide) {
 	.action {
 		display: inline-flex;
 		flex-wrap: wrap;
@@ -5117,115 +5072,26 @@ body.single-question {
 		}
 	}
 }
-
-
-// Release Note
-body.single-release_note {
-	@media (min-width:992px) {
-	.mainMenu {
-		& > li.current_page_parent:not(.menu-item-object-release-note) {
-			> a {
-				color: rgba(255,255,255,0.6);
-				&:hover, &:focus {
-					color: $primary !important;
-				}
-			}
-		}
-		& > li.menu-item-object-release-note > a {
-			color: $primary !important;
-		}
-		.sub-menu {
-			& > li.current_page_parent:not(.menu-item-object-release-note) {
-				> a {
-					color: #fff !important;
-					background: rgba(241, 250, 249, 0.02) !important;
-					&:hover, &:focus {
-						color: $primary !important;
-						background: rgba(241, 250, 249, 0.12) !important;
-					}
-				}
-			}
-			& > li.menu-item-object-release-note > a {
-				color: #3FE0D0 !important;
-				background: rgba(241, 250, 249, 0.12);
-			}
-		}
-	}
-	}
-
-	@media (max-width:992px) {
-	.mainMenu {
-		& > li.current_page_parent:not(.menu-item-object-release-note) {
-			> a {
-				color: #fff;
-				&:hover, &:focus {
-					color: $primary;
-				}
-			}
-		}
-		& > li.current-menu-parent {
-			> a {
-				color: $primary !important;  
-			}
-		}
-		& > li.menu-item-object-release-note > a {
-			color: $primary;
-		}
-		.sub-menu {
-				& > li.current_page_parent:not(.menu-item-object-release-note) {
-					> a {
-						color: #fff !important;
-						&:hover, &:focus {
-							color: $primary;
-						}
-					}
-				}
-				& > li.menu-item-object-release-note > a {
-					color: $primary !important;
-				}
-			}
-		}
-	}
-	.main-footer .footer-menu {
-		li.current_page_parent:not(.menu-item-object-release-note) {
-			> a {
-				color: #99AAAD;
-				text-decoration: none;
-				&:hover, &:focus {
-					color: $primary;
-					text-decoration: underline;
-				}
-			}
-		}
-		li.menu-item-object-release-note > a {
-			color: $primary;
-			text-decoration: underline; 
-		}
-	}
-}
-
 .releases-notes-list {
 	max-width: 570px;
 	margin: 0 auto;
-
-	article:not(:first-child) {
-		margin-top: 40px;
-	}
 }
-.releases-note-item {
+.releases-notes-item {
+	margin-bottom: 30px;
 	@include flexbox;
 	@include flex-direction(column);
-	
+	&:last-child {
+		margin-bottom: 0;
+	}
 	.image-block {
 		@include border-radius(16px);
 		overflow: hidden;
 		img {
 			@include border-radius(16px);
 			@include transition(0.3s, ease-in-out);
-			object-fit: cover;
 		}
 	}
-	.releases-note-content {
+	.releases-notes-content {
 		margin-top: 24px;
 		.date {
 			@include border-radius(27px);
@@ -5265,103 +5131,10 @@ body.single-release_note {
 				@include transform(scale(1.1));
 			}
 		}
-		.releases-note-content {
+		.releases-notes-content {
 			h3 {
 				color: $primary;
 			}
 		}
 	}
-}
-
-#main-content .pagination-pager {
-    margin-top: 20px;
-
-    @media (min-width: 576px) {
-        margin-top: 40px;
-    }
-    
-    ul.icw-pagenavi-pager {
-        @include flexbox;
-        @include align-items(center);
-        @include justify-content(center);
-        padding: 0;
-        list-style: none;
-
-        li {
-            line-height: 0.7;
-            margin: 0 3px;
-            @include border-radius(40px);
-            list-style: none;
-			padding:0px;
-			&::after {
-				content: unset !important;
-			}
-
-            .page-numbers {
-                width: 40px;
-                height: 40px;
-                @include border-radius(40px);
-                border: 1px solid #EBEAF1;
-
-                @include inline-flex;
-                @include align-items(center);
-                @include justify-content(center);
-                font-size: 16px;
-                color: rgba(#01012A, 0.6);
-                @include transition(0.2s, ease-in-out);
-
-                &.prev {
-                    min-width: 40px;
-                    min-height: 40px;
-                    margin-right: 5px;
-
-                    .icon-arrow-left {
-                        background: url(../images/icons/icon-arrow-left.svg) no-repeat center center;
-                        width: 7px;
-                        height: 12px;
-                        display: inline-block;
-                        background-size: contain;
-                        flex: none;
-                    }
-
-                    @media (max-width: 575px) {
-                        margin-right: 5px;
-                    }
-                }
-
-                &.next {
-                    min-width: 40px;
-                    min-height: 40px;
-                    margin-left: 5px;
-
-                    .icon-arrow-right {
-                        background: url(../images/icons/icon-arrow-right.svg) no-repeat center center;
-                        width: 7px;
-                        height: 12px;
-                        display: inline-block;
-                        background-size: contain;
-                        flex: none;
-                    }
-                }
-            }
-
-            &:hover,
-            &:focus {
-                .page-numbers:not(.current) {
-                    background: rgba(242, 240, 255, 1);
-                    border-color: #684BFE;
-                }
-            }
-
-            .current {
-                font-weight: 700;
-                color: #01012A;
-				background: #3FE0D0;
-                border-color: #3FE0D0;
-                cursor: default;
-            }
-
-            
-        }
-    }
 }
