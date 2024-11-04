@@ -108,53 +108,80 @@ function updateProgressBars() {
         } 
     });
 }
-if ($('.splide').length) {
-    var splide_sliders = $('.splide');
-    for (var i = 0; i < splide_sliders.length; i++) {
-        new Splide(splide_sliders[i]).mount();
-    }
-}
-
-
-if ($('.counter').length) {
-    let options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5 // Trigger when 50% of the element is visible
-    };
-
-    // Create a new observer
-    let observer = new IntersectionObserver(function (entries, observer) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                let $this = $(entry.target);
-                var countTo = $this.attr("data-countto");
-                var countDuration = parseInt($this.attr("data-duration"));
-                
-                $({ counter: $this.find('span').text() }).animate({
-                    counter: countTo
-                }, {
-                    duration: countDuration,
-                    easing: "linear",
-                    step: function () {
-                        $this.find('span').text(Math.floor(this.counter));
-                    },
-                    complete: function () {
-                        $this.find('span').text(this.counter);
-                    }
-                });
-                observer.unobserve(entry.target);
-            }
-        });
-    }, options);
-
-    // Target each element with the class .counter
-    $('.counter').each(function () {
-        observer.observe(this);    
+if ($('.hero-splide-slider').length) {
+    var heroSplide = new Splide('.hero-splide-slider', {
+        type: 'slide',
+        arrows: false,
+        gap: '15px',
+        classes: {
+            pagination: 'splide__pagination icw-pagination',
+        },
     });
-    
+    heroSplide.mount();
 }
-
+if ($('.testimonials-splide-slider').length) {
+    var testimonialSplide = new Splide('.testimonials-splide-slider', {
+        type: 'slide',
+        arrows: true,
+        gap: 30,
+        classes: {
+            pagination: 'splide__pagination icw-pagination is-dark',
+            arrows: 'splide__arrows icw-arrows'
+        },
+        breakpoints: {
+            992: {
+                gap: 0,
+            },
+            767: {
+                pagination: false,
+                gap: 0,
+            },
+        }
+    });
+    testimonialSplide.mount();
+}
+if ($('.stories-splide-slider').length) {
+    var storiesSplide = new Splide('.stories-splide-slider', {
+        type: 'slide',
+        arrows: false,
+        classes: {
+            pagination: 'splide__pagination icw-pagination is-dark',
+        },
+    });
+    storiesSplide.mount();
+}
+if ($('.metrics-splide-slider').length) {
+    var metricsSplide = new Splide('.metrics-splide-slider', {
+        type: 'slide',
+        arrows: false,
+        autoWidth: true,
+        perMove: 1,
+        gap: '40px',
+        classes: {
+            pagination: 'splide__pagination icw-pagination',
+        },
+    });
+    metricsSplide.mount();
+}
+if ($('.benefits-splide-slider').length) {
+    new Splide('.benefits-splide-slider', {
+        type: 'slide', 
+        perPage: 1, 
+        gap: '20px',
+        arrows: false,
+        autoplay: true,
+        autoWidth: true,
+        classes: {
+            pagination: 'splide__pagination icw-pagination is-dark',
+        },
+        mediaQuery: 'min',
+        breakpoints: {
+                767: {
+                    destroy: true,
+                },
+        }
+    }).mount();
+}
 if ($('.thumbnail-slider-block').length) {
     var main = new Splide( '.use-case-splide-slider', {
         type      : 'fade',
