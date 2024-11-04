@@ -210,7 +210,7 @@
 }
 .page-header {
     min-height: 520px;
-    @include border-radius(24px);
+    @include border-radius(24px 24px 0 0);
     background-color: #010103;
     background-image: url(../images/img-inner-page-header-bg.png);
     background-repeat: no-repeat !important;
@@ -219,8 +219,9 @@
     border: none;
     color: $white;
     padding: 130px 0;
+    overflow: hidden;
     @media (min-width: 767px) {
-        margin: 8px;
+        margin: 8px 8px 0;
     }
     @media (max-width: 992px) {
         padding: 80px 0 100px;
@@ -1343,6 +1344,9 @@
         }
         .card-body {
             flex: 1 1 auto;
+            .blog-meta-info {                
+                margin-bottom: 25px;
+            }
             .blog-meta-badge {
                 border-color: $gray75;
                 background: transparent;
@@ -1414,6 +1418,7 @@
                 height: 48px;
                 @include flexbox;
                 @include align-items(center);
+                font-family: $font-jetbrains;
                 &:hover,
                 &:focus {
                     background-color: #090A0C;
