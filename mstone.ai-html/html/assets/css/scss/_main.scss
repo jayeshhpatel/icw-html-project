@@ -1409,8 +1409,17 @@
     h2 {
         font-size: 40px;
         line-height: normal;
+        @media (max-width: 1200px) { 
+            font-size: 36px;
+        }
+        @media (max-width: 767px) { 
+            font-size: 30px;
+        }
         &.font-sm {
             font-size: 24px;
+            @media (max-width: 767px) { 
+                font-size: 20px;
+            }
         }
     }
     h3 {
@@ -1419,6 +1428,18 @@
     ol, ul {
         margin: 0;
         padding: 0;
+    }
+    ul {
+        list-style-type: disc;
+        padding-left: 20px;
+        margin-bottom: 30px;
+        li {
+            list-style-type: disc;
+            margin-bottom: 8px;
+        }
+    }
+    a {
+        color: $primary;
     }
     .marker-list {
         padding-left: 35px;
@@ -1452,6 +1473,71 @@
         width: 100%;
         @include border-radius(16px);
         margin: 40px 0;
+    }
+    blockquote {
+        background: $gray;
+        padding: 50px 40px 50px 130px;
+        font-size: 22px;
+        @include border-radius(20px);
+        margin: 40px 0 50px;
+        background-image: url(../images/icons/icon-quote.svg);
+        background-repeat: no-repeat;
+        background-position: 40px 45px;
+        background-size: 45px;
+        line-height: 1.5;
+        @media (max-width: 767px) { 
+            padding: 70px 20px 20px;
+            background-position: 20px 20px;
+            background-size: 32px;
+            font-size: 18px;
+        }
+        .user-info-content {
+            border-top: 1px solid #C8D0D9;
+            margin-top: 40px;
+            padding-top: 25px;
+            @include flexbox;
+            @include align-items(center);
+            @include justify-content(space-between);
+            @media (max-width: 767px) { 
+                @include flex-direction(column);
+                @include align-items(flex-start);
+            }
+            .user-info {
+                .user-img {
+                    margin-right: 12px;
+                    img {
+                        width: 56px;
+                        height: 56px;
+                        margin: 0;
+                    }
+                }
+                .user-detail {
+                    .name {
+                        font-size: 16px;
+                    }
+                    span {
+                        font-size: 14px;
+                        display: block;
+                    }
+                }
+            }
+            .logo {
+                text-align: right;
+                @media (max-width: 767px) { 
+                    margin-top: 24px;
+                    text-align: left;
+                }
+                img {
+                    margin: 0;
+                    @include border-radius(0px);
+                }
+                @media (max-width: 767px) { 
+                    img {
+                        max-width: 80%;
+                    }
+                }
+            }
+        }
     }
     .post-sticky-contents {        
         h3 {
