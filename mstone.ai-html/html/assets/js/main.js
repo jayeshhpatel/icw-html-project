@@ -10,9 +10,6 @@ jQuery(document).ready(function($) {
         $('.navbar-toggler,body,.main-header').toggleClass('is-visible');
         e.preventDefault();
     });
-    $('body').scrollspy({
-        target: '#navbar-blog'
-    });
     if ($('.main-header').length) {
         if (jQuery(this).scrollTop() > 100) {
             $(".main-header").addClass("fixed-header");
@@ -48,56 +45,99 @@ jQuery(document).ready(function($) {
             $('#'+tab_id).fadeIn();
         });
     }
-    if ($('.collapse-block').length) {
-        $(".collapse-item .collapse-title").click(function () {
-            if ($(this).closest(".collapse-item").hasClass("is-open")) {
-                $(this).closest(".collapse-item").stop(true,true).removeClass("is-open");
-                $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).hide("fast");
+
+    if ($('.collapse-item').length) {
+        $(document).on("click", ".collapse-item .collapse-title", function () {
+            var $this = $(this).closest(".collapse-item");
+            
+            if ($this.hasClass("is-open")) {
+                $this.removeClass("is-open");
+                $this.find(".collapse-body").stop(true, true).slideUp(300); // Slide up with a smooth animation (300ms)
             } else {
                 $(".collapse-item").removeClass("is-open");
-                $(".collapse-item").find(".collapse-body").stop(true,true).hide();
-                $(this).closest(".collapse-item").stop(true,true).addClass("is-open");
-                $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).slideDown("fast");
-        
-                var collapsetop = $(this);
-                    $('html,body').animate({
-                    scrollTop: collapsetop.offset().top-115
-                }, 10);
+                $(".collapse-item").find(".collapse-body").stop(true, true).slideUp(300); // Slide up other items smoothly
+                $this.addClass("is-open");
+                $this.find(".collapse-body").stop(true, true).slideDown(300); // Slide down with a smooth animation (300ms)
+                
+                // var collapsetop = $this.find(".collapse-title");
+                // $('html, body').animate({
+                //     scrollTop: collapsetop.offset().top - 115
+                // }, 300); // Smooth scroll to the item
             }
             return false;
         });
     }
-    $(window).on('scroll', function() {
-        updateProgressBars();
+    
+    
 
-        if ($('.main-footer').length) {
-            var is_footer = $('.main-footer');
-            var window_offset = is_footer.offset().top - $(window).scrollTop() - is_footer.outerHeight(); 
-                
-            if ( window_offset < 100 ) {
-                is_footer.find('.site-logo-block').addClass('is-animate');
+    // Step Progress Section
+    if ($('.progress-section').length) {
+        $(window).on('scroll', function() {
+            updateProgressBars();
+        });
+    }
+    
+
+    // Step Progress Section
+    if ($('.progress-section').length) {
+        $('.progress-section').on('scroll', updateProgressBars);
+    }
+
+    if ($(".icw-progress-goto").length > 0) {
+        var progressPath = document.querySelector('.icw-progress-goto path');
+        var pathLength = progressPath.getTotalLength();
+    
+        progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
+        progressPath.style.strokeDasharray = pathLength + ' ' + pathLength;
+        progressPath.style.strokeDashoffset = pathLength;
+        progressPath.getBoundingClientRect();
+        progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';
+    
+        var updateProgress = function() {
+            var scroll = $(window).scrollTop();
+            var height = $(document).height() - $(window).height();
+            var progress = pathLength - (scroll * pathLength / height);
+            progressPath.style.strokeDashoffset = progress;
+        }
+    
+        updateProgress();
+        $(window).scroll(updateProgress);
+    
+        var offset = 200;
+        var duration = 550;
+    
+        jQuery(window).on('scroll', function() {
+            if(jQuery(this).scrollTop() > offset) {
+                jQuery('.icw-progress-goto').addClass('active-progress');
             } else {
-                is_footer.find('.site-logo-block').removeClass('is-animate');
+                jQuery('.icw-progress-goto').removeClass('active-progress');
             }
-        }
-    });
-    $('.progress-section').on('scroll', updateProgressBars);
+        });
+    
+        jQuery('.icw-progress-goto').on('click', function(event) {
+            event.preventDefault();
+            jQuery('html, body').animate({scrollTop: 0}, duration);
+            return false;
+        });
+    }
 
-    $(".post-search-btn").on("click", function(event) {
-        if(event.preventDefault) { event.preventDefault(); }
 
-        $(this).closest('.post-search').toggleClass('active');
-        if($('.post-search').hasClass('active')){
-            $('.post-search').find('#q-input').removeAttr('tabindex');
-            $('.post-search').find('#q-input').focus();
-        }else{
-            $('.post-search').find('#q-input').val('');
-            $('.post-search').find('#q-input').attr('tabindex', '-1');
-            $("#q-input").trigger( 'keyup' );
-        }
-    }); 
+    const $logoBlock = $('.site-logo-block');
+    if ($logoBlock.length) {
+        $(window).on('scroll', function() {
+            const logoBlockTop = $logoBlock.offset().top;
+            const windowBottom = $(window).scrollTop() + $(window).height();
+
+            // Toggle class based on footer visibility
+            $logoBlock.toggleClass('is-animate', windowBottom >= logoBlockTop);
+        });
+    }
 });
-updateProgressBars()
+
+// Step Progress Section
+if ($('.progress-section').length) {
+updateProgressBars();
+}
 function updateProgressBars() {
     var scrollPosition = $(window).scrollTop();
     // Loop through each section and check if it's in the viewport
@@ -125,51 +165,12 @@ function updateProgressBars() {
         } 
     });
 }
+
 if ($('.splide').length) {
     var splide_sliders = $('.splide');
     for (var i = 0; i < splide_sliders.length; i++) {
         new Splide(splide_sliders[i]).mount();
     }
-}
-
-
-if ($('.counter').length) {
-    let options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5 // Trigger when 50% of the element is visible
-    };
-
-    // Create a new observer
-    let observer = new IntersectionObserver(function (entries, observer) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                let $this = $(entry.target);
-                var countTo = $this.attr("data-countto");
-                var countDuration = parseInt($this.attr("data-duration"));
-                
-                $({ counter: $this.find('span').text() }).animate({
-                    counter: countTo
-                }, {
-                    duration: countDuration,
-                    easing: "linear",
-                    step: function () {
-                        $this.find('span').text(Math.floor(this.counter));
-                    },
-                    complete: function () {
-                        $this.find('span').text(this.counter);
-                    }
-                });
-                observer.unobserve(entry.target);
-            }
-        });
-    }, options);
-
-    // Target each element with the class .counter
-    $('.counter').each(function () {
-        observer.observe(this);    
-    });
-    
 }
 
 if ($('.thumbnail-slider-block').length) {
