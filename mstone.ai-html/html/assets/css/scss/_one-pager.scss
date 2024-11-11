@@ -1,0 +1,24 @@
+.icon-boxes-block {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 24px;
+    .icon-box {
+        box-shadow: 0px 22px 39px 0px rgba(191, 172, 159, 0.18);
+        background: #FFFFFF;
+        border-radius: 8px;
+        padding: 30px;
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+        min-width: 130px;
+        @include transition(0.3s, ease-in-out);
+        img {
+            max-height: 50px;
+            max-width: 55px;
+        }
+        &:hover, &:focus {
+            box-shadow: 0px 22px 39px 0px rgba(191, 172, 159, 0.38);
+            @include transform(translateY(-5px));
+        }
+    }
+}
