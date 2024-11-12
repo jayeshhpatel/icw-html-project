@@ -1,8 +1,21 @@
-.icon-boxes-block {
+.one-pager-page .page-header {
+    padding: 0;
+    min-height: auto;
+    .page-title {
+        padding: 0;
+        .logo {
+            margin-bottom: 80px;
+            img {
+                max-height: 32px;
+            }
+        }
+    }
+}
+.list-box-block {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(var(--grid-col), 1fr);
     gap: 24px;
-    .icon-box {
+    & > a, & > div {
         box-shadow: 0px 22px 39px 0px rgba(191, 172, 159, 0.18);
         background: #FFFFFF;
         border-radius: 8px;
@@ -16,6 +29,8 @@
             max-height: 50px;
             max-width: 55px;
         }
+    }
+    & > a {        
         &:hover, &:focus {
             box-shadow: 0px 22px 39px 0px rgba(191, 172, 159, 0.38);
             @include transform(translateY(-5px));
