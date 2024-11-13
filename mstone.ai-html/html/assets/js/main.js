@@ -142,20 +142,21 @@ function updateProgressBars() {
     var scrollPosition = $(window).scrollTop();
     // Loop through each section and check if it's in the viewport
     $('.progress-content-step').each(function (index) {
-        var sectionTop = $(this).offset().top - $(window).height() / 2; // Mid-point trigger
+        var sectionTop = $(this).offset().top - $(window).height() / 1.2; // Mid-point trigger
         var sectionHeight = $(this).outerHeight();
         var sectionBottom = sectionTop + sectionHeight;
         var progressBarId = $(this).attr('id'); // Target progress bar by ID
         
-        var sectionAnimateContentTop = $(this).offset().top - $(window).height() / 1.1;
-        var sectionAnimateContentBottom = sectionAnimateContentTop + sectionHeight;
+        // var sectionAnimateContentTop = $(this).offset().top - $(window).height() / 1;
+        // var sectionAnimateContentBottom = sectionAnimateContentTop + sectionHeight;
         
         if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
             // Animate progress bar height to 100%
             $('.image-block').find('.progress-content-img').removeClass('is-active');
             $('[data-progress-id="' + progressBarId + '"]').css('height', '100%');
             $('.image-block').find('[data-id="' + progressBarId + '"]').addClass('is-active');
-        } else if (scrollPosition >= sectionAnimateContentTop && scrollPosition < sectionAnimateContentBottom) {
+        // } else if (scrollPosition >= sectionAnimateContentTop && scrollPosition < sectionAnimateContentBottom) {
+            $('.progress-content-wrapper').find('.progress-content-step').removeClass('is-active');
             $('.progress-content-wrapper').find('[id="' + progressBarId + '"]').addClass('is-active');
             
         } else if (scrollPosition <= sectionTop) {

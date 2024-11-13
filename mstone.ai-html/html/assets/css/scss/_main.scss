@@ -1177,18 +1177,20 @@
                         position: absolute;
                         top: 100px;
                         bottom: 150px;
-                        visibility: hidden;
                         object-fit: contain;
                         left: 0;
                         right: 0;
                         margin: auto;
-                        opacity: 0;
                         @include transition(0.3s, ease-in-out);
                         text-align: center;
                         @include flexbox;
                         @include align-items(center);
                         min-height: 100%;   
-                        padding-bottom: 100px;           
+                        padding-bottom: 100px; 
+                        &:not(:nth-child(1)) {
+                            opacity: 0;
+                            visibility: hidden;
+                        }
                         img {
                             @include border-radius(24px);
                             margin: auto;
@@ -1206,12 +1208,7 @@
         .progress-content-step {
             position: relative;
             .content {
-                padding: 0 0 200px 150px;                
-                @include transition(0.8s, ease-in-out);
-                @media (min-width: 767px) {
-                    transform: translateY(20%);
-                    opacity: 0.4;
-                }
+                padding: 0 0 200px 150px; 
                 @media (max-width: 1200px) {
                     padding: 0 0 150px 100px;
                 }
@@ -1228,6 +1225,15 @@
                     img {
                         @include border-radius(24px);
                     }
+                }
+            }             
+            &:not(:nth-child(1)) {
+                .content {
+                    @include transition(0.8s, ease-in-out);
+                    @media (min-width: 992px) {
+                        // transform: translateY(20%);
+                        opacity: 0.4;
+                    } 
                 }
             }
             &:last-child {
