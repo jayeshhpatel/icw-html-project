@@ -1,0 +1,166 @@
+@font-face {
+  font-family: 'GeneralSans';
+  src: url('../fonts/GeneralSans-Regular.woff2') format('woff2'),
+       url('../fonts/GeneralSans-Regular.woff') format('woff'),
+       url('../fonts/GeneralSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GeneralSans';
+  src: url('../fonts/GeneralSans-Medium.woff2') format('woff2'),
+       url('../fonts/GeneralSans-Medium.woff') format('woff'),
+       url('../fonts/GeneralSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GeneralSans';
+  src: url('../fonts/GeneralSans-Semibold.woff2') format('woff2'),
+       url('../fonts/GeneralSans-Semibold.woff') format('woff'),
+       url('../fonts/GeneralSans-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+/* Variables */
+$bodyfont: 'GeneralSans'; 
+$bodyfontsize: 18px;
+$bodyfontcolor: #3E4751;
+$bodybg: #ffffff;
+$black: #000000;
+$white: #ffffff;
+
+$primary: #0371EE;
+$skyblue: #87BFF3;
+$bottlegreen: #12D3DD;
+
+$dark: #090A0C;
+$dark800: #111419;
+$dark700: #181C21;
+$dark300: #65717F;
+$dark200: #8996A4;
+$dark100: #B0BAC6;
+
+$gray600: #20252B;
+$gray500: #2C323A;
+$gray400: #3E4751;
+$gray75: #C8D0D9;
+$gray50: #EBEDF0;
+$gray: #F7F8F9;
+
+$font-jetbrains: "JetBrains Mono", monospace;
+
+
+/* Mixins */
+@mixin border-radius($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+@mixin box-shadow($box-shadow) {
+  -moz-box-shadow: $box-shadow;
+  -webkit-box-shadow: $box-shadow;
+  box-shadow: $box-shadow;
+}
+@mixin box-shadow-all($bs-t, $bs-r, $bs-b, $bs-l, $box-shadow-all-color) {
+  box-shadow: $bs-t $bs-r $bs-b $bs-l $box-shadow-all-color;
+  -webkit-box-shadow: $bs-t $bs-r $bs-b $bs-l $box-shadow-all-color;
+  -moz-box-shadow: $bs-t $bs-r $bs-b $bs-l $box-shadow-all-color;
+  -o-box-shadow: $bs-t $bs-r $bs-b $bs-l $box-shadow-all-color;
+}
+
+@mixin transition($duration, $ease) {
+  -webkit-transition: all $duration $ease;
+  -moz-transition: all $duration $ease;
+  -o-transition: all $duration $ease;
+  transition: all $duration $ease;
+}
+@mixin transitionValue($value, $duration, $ease) {
+  -webkit-transition: $value $duration $ease;
+  -moz-transition: $value $duration $ease;
+  -o-transition: $value $duration $ease;
+  transition: $value $duration $ease;
+}
+@mixin opacity($value) {
+  -moz-opacity: $value;
+  -khtml-opacity: $value;
+  -webkit-opacity: $value;
+  opacity: $value;
+}
+@mixin transform($value) {
+  -moz-transform: $value;
+  -webkit-transform: $value;
+  -o-transform: $value;
+  -ms-transform: $value;
+  transform: $value;
+}
+
+@mixin filter($value) {
+  -webkit-filter: $value;
+  -moz-filter: $value;
+  -o-filter: $value;
+  filter: $value;
+}
+
+/* display: flex */
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+@mixin inline-flex {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+@mixin justify-content($justify) {
+  -webkit-justify-content: $justify;
+  -moz-justify-content: $justify;
+  -ms-justify-content: $justify;
+  justify-content: $justify;
+  -ms-flex-pack: $justify;
+}
+@mixin align-items($align) {
+  -webkit-align-items: $align;
+  -moz-align-items: $align;
+  -ms-align-items: $align;
+  -ms-flex-align: $align;
+  align-items: $align;
+}
+@mixin flex-direction($direction) {
+  -webkit-flex-direction: $direction;
+  -moz-flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+}
+@mixin flex-wrap($wrap) {
+  -webkit-flex-wrap: $wrap;
+  -moz-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+@mixin flex-flow($flow) {
+  -webkit-flex-flow: $flow;
+  -moz-flex-flow: $flow;
+  -ms-flex-flow: $flow;
+  flex-flow: $flow;
+}
+// Display Order
+@mixin order($val) {
+  -webkit-box-ordinal-group: $val;
+  -moz-box-ordinal-group: $val;
+  -ms-flex-order: $val;
+  -webkit-order: $val;
+  order: $val;
+}
+
+/** Operation **/
+/* Parametric Mixins */
+/** Guarded Mixins **/

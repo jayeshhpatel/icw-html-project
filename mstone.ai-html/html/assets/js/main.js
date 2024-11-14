@@ -68,7 +68,6 @@ jQuery(document).ready(function($) {
         });
     }
     
-    
 
     // Step Progress Section
     if ($('.progress-section').length) {
@@ -77,7 +76,6 @@ jQuery(document).ready(function($) {
         });
     }
     
-
     // Step Progress Section
     if ($('.progress-section').length) {
         $('.progress-section').on('scroll', updateProgressBars);
@@ -121,7 +119,6 @@ jQuery(document).ready(function($) {
         });
     }
 
-
     const $logoBlock = $('.site-logo-block');
     if ($logoBlock.length) {
         $(window).on('scroll', function() {
@@ -136,7 +133,7 @@ jQuery(document).ready(function($) {
 
 // Step Progress Section
 if ($('.progress-section').length) {
-updateProgressBars();
+    updateProgressBars();
 }
 function updateProgressBars() {
     var scrollPosition = $(window).scrollTop();
@@ -167,11 +164,58 @@ function updateProgressBars() {
     });
 }
 
-if ($('.splide').length) {
-    var splide_sliders = $('.splide');
-    for (var i = 0; i < splide_sliders.length; i++) {
-        new Splide(splide_sliders[i]).mount();
-    }
+// if ($('.splide').length) {
+//     var splide_sliders = $('.splide');
+//     for (var i = 0; i < splide_sliders.length; i++) {
+//         new Splide(splide_sliders[i]).mount();
+//     }
+// }
+
+// Splide Slider
+if ($('.splide:not(.splide-js)').length) {
+    $('.splide:not(.splide-js)').each(function() {
+        new Splide(this).mount();
+        $(this).addClass('icw_splide-with-data'); // Mark as initialized
+    });
+}
+// Counter
+if ($('.counter').length) {
+    let options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5 // Trigger when 50% of the element is visible
+    };
+
+    // Create a new observer
+    let observer = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                let $this = $(entry.target);
+                var countTo = $this.attr("data-countto");
+                var countDuration = parseInt($this.attr("data-duration"));
+                
+                $({ counter: $this.find('span').text() }).animate({
+                    counter: countTo
+                }, {
+                    duration: countDuration,
+                    easing: "linear",
+                    step: function () {
+                        $this.find('span').text(Math.floor(this.counter));
+                    },
+                    complete: function () {
+                        $this.find('span').text(this.counter);
+                    }
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, options);
+
+    // Target each element with the class .counter
+    $('.counter').each(function () {
+        observer.observe(this);    
+    });
+    
 }
 
 if ($('.thumbnail-slider-block').length) {

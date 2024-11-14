@@ -1,0 +1,296 @@
+.page-header.about-page-header {
+    position: relative;
+    background-color: $dark800;
+    background-image: none;
+    margin: 0;
+    padding-bottom: 150px;
+    @include border-radius(24px 24px 0 0);
+    @media (max-width: 992px) {
+        padding-top: 170px;
+    }
+    @media (max-width: 767px) {
+        padding-bottom: 80px;
+    }
+    &::after { 
+        left: 0;    
+        margin: 0 auto;
+    }
+    .page-title {
+        z-index: 2;
+        position: relative;
+        padding-top: 230px;
+        @media (max-width: 767px) {
+            padding-top: 160px;
+        }
+    }
+    .video-bg-block {
+        video {
+            @media (min-width: 992px) {
+                object-fit: contain;
+            }
+        }
+    }
+}
+.counter-content-block {
+    position: relative;
+    padding: 50px 100px;
+    border: 1px solid $gray50;
+    position: relative;
+    @media (max-width: 992px) {
+        padding: 50px 30px;
+    }
+    @media (max-width: 767px) {
+        padding: 40px;
+    }
+    &::before, &::after {
+        content: '';
+        width: 20px;
+        height: 20px;
+        background: #F7F8F9;
+        border: 1px solid #C8D0D9;
+        @include border-radius(2px);
+        display: inline-block;
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        @media (max-width: 767px) {
+            width: 16px;
+            height: 16px;
+            top: -8px;
+            left: -8px;
+        }
+    }
+    &::after {
+        right: -10px;
+        left: auto;
+        @media (max-width: 767px) {
+            right: -8px;
+            left: auto;
+        }
+    }
+    .sm-square-vector {
+        &::before, &::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: #F7F8F9;
+            border: 1px solid #C8D0D9;
+            @include border-radius(2px);
+            display: inline-block;
+            position: absolute;
+            bottom: -10px;
+            left: -10px;
+            @media (max-width: 767px) {
+                width: 16px;
+                height: 16px;
+                bottom: -8px;
+                left: -8px;
+            }
+        }
+        &::after {
+            right: -10px;
+            left: auto;
+            @media (max-width: 767px) {
+                right: -8px;
+                left: auto;
+            }
+        }
+    }
+    .sm-square-center-vector {
+        &::before, &::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: #F7F8F9;
+            border: 1px solid #C8D0D9;
+            @include border-radius(2px);
+            display: inline-block;
+            position: absolute;
+            top: -10px;
+            left: calc(50% - 10px);
+            @media (max-width: 767px) {
+                width: 16px;
+                height: 16px;
+                top: -8px;
+                left: calc(50% - 8px);
+            }
+        }
+        &::after {
+            bottom: -10px;
+            top: auto;
+            @media (max-width: 767px) {
+                bottom: -8px;
+                top: auto;
+            }
+        }
+    }
+}
+.animate-counter-block {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(space-between);
+    gap: 20px;
+    @media (max-width: 767px) {
+        @include flex-wrap(wrap);
+    }
+    .counter-box {
+        min-width: 210px;
+        .counter {
+            font-size: 88px;
+            color: $primary;
+            font-weight: 400;
+            margin-bottom: 15px;
+            @media (max-width: 992px) {
+                font-size: 64px;
+            }
+            @media (max-width: 767px) {
+                font-size: 56px;
+            }
+        }
+        .info-text {
+            color: $gray600;
+        }
+    }
+}
+.team-splide-slider {
+    padding-bottom: 0;
+    .splide__track {
+        overflow: visible;
+        .splide__list {
+            @include align-items(center);
+        }
+    }
+    .splide__slide {
+        height: 100%;
+        @include flexbox;
+        @include align-items(center);
+        @media (max-width: 767px) {
+            max-width: 250px;
+        }
+        .image-block {
+            @include border-radius(16px);
+            overflow: hidden;
+            img {
+                @include border-radius(16px);
+                @include transition(0.3s, ease-in-out);
+            }
+            &:hover, &:focus {
+                img {
+                    @include transform(scale(1.05));
+                }
+            }
+        }
+    }
+}
+.team-section {
+    position: relative;
+    &::before {
+        content: '';
+        width: 100%;
+        height: 40%;
+        background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 59%);
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+    .section-title {
+        margin-bottom: 70px !important;
+        @media (max-width: 767px) {        
+            margin-bottom: 40px !important;
+        }
+    }
+    .video-bg-block {
+        @media (max-width: 767px) {
+            display: none;
+        }
+        img, video {
+            max-width: 860px;
+            height: 600px;
+            object-position: top center;
+            left: calc(50% - 430px);
+            z-index: -1;
+            top: 180px;
+            opacity: 0.5;
+            @media (max-width: 992px) {
+                max-width: 650px;
+                height: 400px;
+                top: 150px;
+                left: calc(50% - 325px);
+            }
+        }
+    }
+}
+.team-card {
+    margin: 0 50px;
+    position: relative;
+    @media (max-width: 1200px) {
+        margin: 0 25px;
+    }
+    @media (max-width: 992px) {
+        margin: 0;
+    }
+    @media (max-width: 767px) {        
+        max-width: 300px;   
+        margin: 0 auto;
+    }
+    .card-img {
+        @include border-radius(16px);
+        overflow: hidden;
+        margin-bottom: 30px;
+        @media (max-width: 992px) {
+            margin-bottom: 20px; 
+        }
+        img {
+            width: 100%;
+            @include border-radius(16px);
+            @include transition(0.3s, ease-in-out);
+        }
+    }
+    .card-body {
+        h3 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            @media (max-width: 992px) {
+                font-size: 20px;
+            }
+            a {
+                text-decoration: none;
+                color: $dark;
+            }
+        }
+        .designation {
+            font-size: 12px;
+            font-weight: 500;
+            color: $dark;
+            letter-spacing: 1.8px;
+            font-family: $font-jetbrains;
+            margin-bottom: 20px; 
+            @media (max-width: 992px) {
+                margin-bottom: 15px; 
+            }
+        }
+        .sort-info {
+            font-size: 16px;
+            @media (max-width: 992px) {
+                font-size: 14px;
+            }
+        }
+    }
+    &:hover, &:focus {
+        .card-img {
+            img {
+                @include transform(scale(1.08));
+            }
+        } 
+        .card-body {
+            h3 {
+                a {
+                    color: $primary;
+                }
+            }
+        }
+    }
+}

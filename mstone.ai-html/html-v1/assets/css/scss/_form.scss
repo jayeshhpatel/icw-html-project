@@ -1,0 +1,193 @@
+// General Input CSS
+
+.hbspt-form {
+    fieldset {
+        max-width: 100%;
+    }
+    .form-columns-1 {
+        max-width: 100%;
+        .input {
+            margin-right: 0 !important;
+        }
+        .hs-input {
+            width: 100% !important;
+        }
+    }
+    .hs-form-field {
+        margin-bottom: 15px;
+        label {
+            color: $dark;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+        
+        .hs-input {
+            border: 1.2px solid $gray75;
+            @include border-radius(16px);
+            height: 64px;
+            color: $dark;
+            font-size: 14px;
+            font-weight: 400;
+            padding: 0 20px;
+            line-height: 1;
+            width: 100%;
+            @media (max-width: 992px) {
+                height: 54px;
+            }
+            @media (max-width: 767px) {
+                height: 48px;
+            }
+            &::placeholder {
+                color: $dark300;
+            }
+            &.error {
+                border-color: #f36161;
+            }
+        }   
+        textarea.hs-input {
+            height: auto;
+            padding: 20px;
+        }
+        .hs-error-msgs {
+            line-height: 1;
+        }
+        .hs-error-msg {
+            font-size: 12px;
+            color: #f36161;
+            opacity: 1;
+            margin-bottom: 0;
+        }
+    }
+    .hs-submit {
+        margin-top: 20px;
+        .actions {
+            position: relative;
+            &::before {
+                content: '';
+                @include flexbox;
+                @include align-items(center);
+                @include justify-content(center);
+                width: 56px;
+                height: 56px;
+                border: 1px solid transparent;
+                background-color: $dark;
+                background-image: url('data:image/svg+xml,<svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 6.99997H9.086L6.793 9.29297C6.69749 9.38522 6.62131 9.49556 6.5689 9.61757C6.51649 9.73957 6.4889 9.87079 6.48775 10.0036C6.4866 10.1363 6.5119 10.268 6.56218 10.3909C6.61246 10.5138 6.68671 10.6255 6.7806 10.7194C6.8745 10.8133 6.98615 10.8875 7.10905 10.9378C7.23194 10.9881 7.36362 11.0134 7.4964 11.0122C7.62918 11.0111 7.7604 10.9835 7.8824 10.9311C8.00441 10.8787 8.11475 10.8025 8.207 10.707L12.207 6.70697C12.3001 6.61408 12.374 6.50373 12.4244 6.38224C12.4748 6.26075 12.5008 6.1305 12.5008 5.99897C12.5008 5.86743 12.4748 5.73719 12.4244 5.6157C12.374 5.49421 12.3001 5.38386 12.207 5.29097L8.207 1.29097C8.01923 1.10346 7.76466 0.998226 7.49929 0.998413C7.23393 0.998601 6.97951 1.1042 6.792 1.29197C6.60449 1.47974 6.49926 1.73431 6.49944 1.99968C6.49963 2.26504 6.60523 2.51946 6.793 2.70697L9.086 4.99997H1.5C1.23478 4.99997 0.98043 5.10533 0.792893 5.29286C0.605357 5.4804 0.5 5.73475 0.5 5.99997C0.5 6.26519 0.605357 6.51954 0.792893 6.70708C0.98043 6.89461 1.23478 6.99997 1.5 6.99997Z" fill="white"/></svg>');
+                background-size: 12px;
+                background-position: 22px center;
+                background-repeat: no-repeat;
+                @include box-shadow(0px 2px 2px rgba(11, 32, 55, 0.37));
+                @include border-radius(12px);
+                position: absolute;
+                transition: all 0.3s cubic-bezier(0.65, 0, 0.076, 1);
+                left: 3px;
+                top: 3px;
+            }
+            .hs-button {
+                min-height: 64px;
+                font-weight: 600;
+                font-size: 14px;
+                position: relative;
+                border: 4px solid #0371EE;
+                @include transition(0.3, ease-in-out);
+                @include inline-flex;
+                @include align-items(center);
+                @include justify-content(center);	
+                line-height: 1;
+                @include border-radius(16px);
+                padding: 4px;
+                white-space: nowrap;  
+                background-color: #0371EE;
+                background-image: url(../images/icons/icon-black-arrow.svg);
+                background-position: -2px 0;
+                background-repeat: no-repeat;
+                background-size: 59px !important;
+                color: $white;
+                padding: 0 20px 0 75px;
+                transition: background-color 0.3s ease-in-out;
+                &:hover, &:focus {
+                    background-color: $dark;
+                }
+            }
+        }
+    }    
+    .hs_error_rollup {
+        display: none;
+    }
+} 
+
+.icw-form-block {
+    position: relative;
+    margin: auto;
+    height: 100%;
+    padding: 16px;
+    @media (max-width:992px) {
+        padding: 10px;
+    }
+    &::before {
+        content: '';
+        background: linear-gradient(0deg, rgba(160, 179, 201, 0.19), rgba(160, 179, 201, 0.19)), rgba(255, 255, 255, 0.01);
+        backdrop-filter: blur(17.2px);
+        @include border-radius(24px);
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        position: absolute;
+    }
+    .glow {
+        font-size: 0;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 60%;
+        height: 60%;
+        &::after {
+            content: '';
+            background: #0371EE;
+            opacity: 0.51;
+            filter: blur(40px);
+            border-radius: 24px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: -30px;
+            left: -30px;
+            z-index: -1;
+        }
+        &::before {
+            content: '';
+            background: #2F8CF6;
+            mix-blend-mode: plus-lighter;
+            opacity: 0.51;
+            filter: blur(7.35px);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: -5px;
+            left: -10px;
+            z-index: -1;
+        }
+    }
+    .form-content {
+        z-index: 1;
+        @include border-radius(12px);
+        background: $white;
+        padding: 50px;
+        position: relative;
+        @media (max-width:992px) {
+            padding: 25px;
+        }
+    }
+    .title {
+        color: $dark;
+        font-size: 32px;
+        margin-bottom: 40px;
+        @media (max-width:992px) {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+    }
+}
