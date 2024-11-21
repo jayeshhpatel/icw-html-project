@@ -1,0 +1,40 @@
+/********** WordPress Socials Widget **********/
+.wp-block-social-links  {    
+    &:not(.is-style-logos-only):not(.is-style-pill-shape) {
+        gap: 0;
+        line-height: 1;        
+        .wp-block-social-link {
+            margin: 0;
+            @include border-radius(0);
+            svg {
+                @include transition(color .3s);
+            }
+        }
+        &:not(.has-icon-background-color) {
+            .wp-block-social-link {
+                background: none;
+                border: 1px solid;
+                z-index: 1;
+                &:not(:first-child) {
+                    border-left: none;
+                }            
+                &:after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    height: 0;
+                    width: 100%;
+                    -webkit-transition: height 0.3s;
+                    transition: height 0.3s;
+                    z-index: -1;
+                }
+                &:hover {
+                    &:after {
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

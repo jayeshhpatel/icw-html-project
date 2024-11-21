@@ -1,0 +1,138 @@
+/********** Slider Title with Navigation **********/
+.elementor-widget {
+    .industrium-heading.heading-with-pagination {
+        @include flex(column, nowrap, flex-start, stretch);
+        .industrium-heading-inner {
+            display: block;
+        }
+        &:not(:last-child) {
+            margin-bottom: 50px;
+        }
+    }
+    .owl-dots-desktop {
+        display: none;
+    }
+}
+
+.elementor-section-stretched.elementor-section-full_width {
+    > .elementor-column-gap-no {
+        > .elementor-row {
+            > .elementor-column {
+                > .elementor-widget-wrap {
+                    > .elementor-widget {
+                        > .elementor-widget-container {
+                            .heading-with-pagination {
+                                max-width: 1420px;
+                                padding: 0 20px;
+                            }
+                        }
+                    }                        
+                }
+            }
+        }        
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .elementor-section-stretched.elementor-section-full_width {
+        > .elementor-column-gap-no {
+            > .elementor-row {
+                > .elementor-column {
+                    > .elementor-widget-wrap {
+                        > .elementor-widget {
+                            > .elementor-widget-container {
+                                .heading-with-pagination {
+                                    padding: 0 30px;
+                                }
+                            }
+                        }                        
+                    }
+                }
+            }        
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .elementor-widget {
+        .industrium-heading.heading-with-pagination {
+            @include flex(row, nowrap, space-between, flex-end);
+            margin: 0 auto;
+            width: 100%;
+            max-width: 1340px;
+            .industrium-heading-inner {
+                width: calc(100% - 30px);
+                margin: 0 15px 0 0;
+            }
+            .owl-dots {
+                @include flex-shrink(0);
+                margin: 0 -20px 0 -20px;
+                text-align: initial;
+            }
+        }
+        &.title-alignment-left {
+            .industrium-heading.heading-with-pagination {
+                @include flex(row, nowrap, space-between, flex-end);
+                text-align: left;
+                .industrium-heading-inner {
+                    margin: 0 15px 0 0;
+                }
+                .owl-dots {
+                    margin: 0 -20px 0 -20px;
+                }
+            }
+        }
+        &.title-alignment-right {
+            .industrium-heading.heading-with-pagination {
+                @include flex(row-reverse, nowrap, space-between, flex-end);
+                text-align: right;
+                .industrium-heading-inner {
+                    margin: 0 0 0 15px;
+                }
+                .owl-dots {
+                    margin: 0 -20px 0 -20px;
+                }
+            }
+        }
+        &.title-alignment-center {
+            .industrium-heading.heading-with-pagination {
+                @include flex(column, nowrap, flex-start, stretch);
+                text-align: center;
+                .industrium-heading-inner {
+                    margin: 0;
+                }
+                .owl-dots {
+                    margin: 0;
+                    margin-top: 30px;
+                    text-align: center;
+                }
+            }
+        }
+        .owl-dots-desktop {
+            display: block;
+            &.disabled {
+                display: none;
+            }
+        }
+        .owl-dots-mobile {
+            display: none;
+        }
+    }
+    .elementor-section-stretched.elementor-section-full_width {
+        > .elementor-column-gap-no {
+            > .elementor-row {
+                > .elementor-column {
+                    > .elementor-widget-wrap {
+                        > .elementor-widget {
+                            > .elementor-widget-container {
+                                .heading-with-pagination {
+                                    padding: 0 40px;
+                                }
+                            }
+                        }                        
+                    }
+                }
+            }        
+        }
+    }
+}

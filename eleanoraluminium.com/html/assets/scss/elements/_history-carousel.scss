@@ -1,0 +1,116 @@
+/********** Elementor History Carousel Widget **********/
+.elementor-widget-industrium_history_carousel {    
+    .owl-carousel {        
+        &.view-type-2 {
+            .owl-stage-outer {
+                overflow: initial !important;
+            }
+            .owl-item {
+                opacity: .5;
+                @include transition(opacity .3s);
+            }
+            .owl-item.active {
+                opacity: 1;
+            }
+        }
+        .owl-stage {
+            @include align-items(stretch);
+            .owl-item {
+                .history-item {
+                    height: 100%;
+                    .history-item-inner {
+                        height: 100%;
+                    }
+                }
+            }
+        }
+        .slider-item {
+            &:not(:first-child) {
+                position: absolute;
+                visibility: hidden;
+            }
+        }
+        &.owl-loaded {
+            .slider-item {
+                &:not(:first-child) {
+                    position: relative;
+                    visibility: visible;
+                }
+            }
+        }
+    }
+    .history-slider-container {
+        margin: 0 -30px;
+    }
+    .history-item {        
+        padding: 0 30px;
+        .history-item-inner {
+            @include flex(column, nowrap, stretch, stretch);
+            position: relative;
+            padding: 0 0 45px 0;
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 15px;
+                height: 15px;
+                @include border-radius(50%);
+            }
+        }        
+        .history-year {
+            font-size: 100px;
+            line-height: 0.8em;
+            letter-spacing: -0.03em;
+            font-weight: 700;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .history-title {
+            margin-top: 0;
+            &:not(:first-child) {
+                margin-top: 35px;
+            }
+            margin-bottom: 0.3em;
+        }
+    }
+}
+
+.cursor_drag {
+    display: none;
+    padding: 0;
+    pointer-events: none;
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    line-height: 1;
+    font-size: 0;
+    letter-spacing: 0.4em;
+    text-indent: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    left: 50%;
+    top: 50%;
+    z-index: 2;
+    @include transition(width .3s, height .3s, padding .3s);
+    .cursor-bg {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        @include transition(transform .3s);
+    }
+    span {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        @include transform(translate(-50%, -50%));
+    }
+}
+.cursor_drag.active {    
+    line-height: 94px;
+    font-size: 14px;
+    .cursor-bg {
+        @include transform(scale(10));
+    }
+}

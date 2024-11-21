@@ -1,0 +1,1009 @@
+/********** Icon Box Elementor Widget **********/
+.elementor-widget-icon-box {
+    .elementor-icon-box-wrapper {
+        .elementor-icon-box-content {
+            .elementor-icon-box-title {
+                margin-bottom: 10px;
+                font-weight: 700;
+                border-bottom: 2px solid;
+                padding: 0 0 12px 0;
+                a {
+                    display: block;
+                    position: relative;
+                    padding: 0 1.5em 0 0;
+                    &:before {
+                        content: '\e82d';
+                        font: 0.8em 'fontello';
+                        line-height: inherit;
+                        position: absolute;
+                        top: 0;
+                        right: 6px;
+                        @include transition(transform .3s, color .3s);
+                    }
+                    &:hover {
+                        &:before {
+                            @include transform(rotate(-45deg));
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.industrium-icon-box-widget {
+     > .icon-box-header {
+        @include transition(border-color .3s);
+        .icon-box-title {
+            @include transition(color .3s);
+        }
+        .icon-container {
+            i {
+                @include transition(color .3s, fill .3s);
+            }
+        }
+    }
+    .icon-box-item-link {
+        display: block;
+        padding: 0 0 25px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-bottom-color: currentColor;
+        &:hover {
+            .icon-box-item.icon-box-header {
+                &.with_arrow {
+                    &:before {
+                        opacity: 0;
+                        @include transform(translate(150%, 150%));
+                    }
+                    &:after {
+                        opacity: 1;
+                        @include transform(translate(0, 0));
+                    }
+                }                
+            }            
+        } 
+        .icon-box-item {
+            &.icon-box-header {
+                position: relative;                
+                border: none;
+                padding: 0;
+                &.with_arrow {
+                    padding: 0 30px 0 0;
+                    &:before {
+                        font-family: 'fontello';
+                        content: '\e82d';
+                        position: absolute;
+                        right: 1px;
+                        bottom: 0.1em;
+                        font-size: 16px;
+                        line-height: 1.5em;
+                        font-weight: 400;
+                        @include transition(transform .3s, opacity .3s);
+                    }
+                    &:after {
+                        font-family: 'fontello';
+                        content: '\e82d';
+                        position: absolute;
+                        right: 1px;
+                        bottom: auto;
+                        font-size: 16px;
+                        line-height: 1.5em;
+                        font-weight: 400;
+                        opacity: 0;
+                        @include transform(translate(-150%, -150%));
+                        @include transition(transform .3s, opacity .3s);
+                    } 
+                }                             
+            }
+            .icon-box-title {
+                color: inherit;
+            }
+        }
+    }
+    .icon-box-item {
+        &.icon-box-header {
+            padding: 0 0 25px;
+            border-bottom-width: 2px;
+            border-bottom-style: solid;
+        }        
+        &.icon-box-content {
+            &:not(:first-child) {
+                margin-top: 20px;
+            }
+        }
+        .icon-container {
+            @include flex-shrink(0);
+            @include flex(column, nowrap, center, center);
+            position: relative;
+            cursor: default;
+            margin: 0 0 15px;
+            img {
+                position: absolute;
+                display: block;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
+                -o-object-fit: contain;
+                object-fit: contain;
+                @include transition(opacity .3s);
+            }
+            .icon,
+            .background {
+                position: absolute;
+                display: block;
+                left: 50%;
+                right: auto;
+                top: 50%;
+                bottom: initial;
+                width: 100%;
+                height: 100%;
+                @include transform(translate(-50%, -50%));
+                svg {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    @include transition(fill .3s);
+                }
+            }
+            .icon {
+                z-index: 3;
+            }
+            i {
+                position: relative;
+                z-index: 3;
+            }
+        }
+        .content-container {
+            display: block;
+        }
+        .icon-box-title {
+            margin: 0;
+        }
+        .icon-box-info {
+            &:not(:first-child) {
+                margin: 13px 0 0;
+            }
+        }
+        .icon-box-button-link {
+            padding: 30px 30px 0 0;
+            font-size: 16px;
+            width: auto;
+        }
+    }
+}
+
+
+// Icon Position & Alignment
+.elementor-widget-industrium_icon_box {
+    .icon-box-item {
+        @include flex(column, nowrap, flex-start, center);
+    }
+    &.alignment-left {
+        .icon-box-item {
+            .icon-box-button-link {
+                padding: 30px 30px 0 0;
+            }
+        }
+    }
+    &.alignment-right {
+        .icon-box-item {
+            .icon-box-button-link {
+                padding: 30px 0 0 30px;
+            }
+        }
+    }
+
+    &.icon-position-top {
+        .icon-box-item {
+            @include flex-direction(column);
+        }
+        &.alignment-left {
+            .icon-box-item {
+                @include align-items(flex-start);
+                text-align: left;
+            }
+        }
+        &.alignment-right {
+            .icon-box-item {
+                @include align-items(flex-end);
+                text-align: right;
+            }
+        }
+        &.alignment-center {
+            .icon-box-item {
+                @include align-items(center);
+                text-align: center;
+            }
+        }
+    }
+    &.icon-position-left {
+        .icon-box-item {
+            @include flex-direction(row);
+        }
+        &.alignment-left {
+            .icon-box-item {
+                @include justify-content(flex-start);
+                text-align: left;
+            }
+        }
+        &.alignment-right {
+            .icon-box-item {
+                @include justify-content(flex-end);
+                text-align: right;
+            }
+        }
+        &.alignment-center {
+            .icon-box-item {
+                @include justify-content(center);
+                text-align: center;
+            }
+        }
+        .industrium-icon-box-widget .icon-box-item-link .icon-box-item.icon-box-header {
+            &.with_arrow {
+                padding: 0 30px 0 0;
+            }
+            
+            &:before,
+            &:after {
+                right: 0;
+                left: initial;
+            }
+        }
+    }
+    &.icon-position-right {
+        .icon-box-item {
+            @include flex-direction(row-reverse);
+        }
+        &.alignment-left {
+            .icon-box-item {
+                @include justify-content(flex-end);
+                text-align: left;
+            }
+        }
+        &.alignment-right {
+            .icon-box-item {
+                @include justify-content(flex-start);
+                text-align: right;
+            }
+        }
+        &.alignment-center {
+            .icon-box-item {
+                @include justify-content(center);
+                text-align: center;
+            }
+        }
+        .industrium-icon-box-widget .icon-box-item-link .icon-box-item.icon-box-header {
+            &.with_arrow {
+                padding: 0 0 0 30px;
+            }
+            &:before,
+            &:after {
+                left: 0;
+                right: initial;
+            }
+        }
+    }
+
+    &.v-alignment-top {
+        .icon-box-item {
+            @include align-items(flex-start);
+        }
+        .industrium-icon-box-widget .icon-box-item-link {  
+            &:hover {
+                .icon-box-item.icon-box-header.with_arrow:before {
+                    @include transform(translate(150%, 150%));
+                }
+            }          
+            .icon-box-item.icon-box-header:before,
+            .icon-box-item.icon-box-header:after {
+                top: 0;
+                bottom: initial;
+            }
+        }
+    }
+    &.v-alignment-middle {
+        .icon-box-item {
+            @include align-items(center);
+        }
+        .industrium-icon-box-widget .icon-box-item-link {
+            &:hover {
+                .icon-box-item.icon-box-header.with_arrow:before {
+                    @include transform(translate(150%, 100%));
+                }
+                .icon-box-item.icon-box-header.with_arrow:after {
+                    @include transform(translate(0, -50%));
+                }
+            }
+            .icon-box-item.icon-box-header:after {
+                top: 50%;
+            }
+            .icon-box-item.icon-box-header:before {
+                top: 50%;
+                bottom: initial;
+                @include transform(translateY(-50%));
+            }
+        }
+    }
+    &.v-alignment-bottom {
+        .icon-box-item {
+            @include align-items(flex-end);
+        }
+        .industrium-icon-box-widget .icon-box-item-link .icon-box-item.icon-box-header:before {
+            bottom: 0.1em;
+        }
+    }
+}
+
+@media only screen and (max-width: 1600px) {
+    .elementor-widget-industrium_icon_box {
+        &.icon-position-laptop-top {
+            .icon-box-item {
+                @include flex-direction(column);
+            }
+            &.alignment-left {
+                .icon-box-item {
+                    @include align-items(flex-start);
+                    text-align: left;
+                }
+            }
+            &.alignment-right {
+                .icon-box-item {
+                    @include align-items(flex-end);
+                    text-align: right;
+                }
+            }
+            &.alignment-center {
+                .icon-box-item {
+                    @include align-items(center);
+                    text-align: center;
+                }
+            }
+            .industrium-icon-box-widget .icon-box-item-link .icon-box-item.icon-box-header {
+                &.with_arrow {
+                    padding: 0 30px 0 0;
+                }
+                &:before,
+                &:after {
+                    right: 0;
+                    left: initial;
+                }
+            }
+        }
+        &.icon-position-laptop-left {
+            .icon-box-item {
+                @include flex-direction(row);
+            }
+            &.alignment-left {
+                .icon-box-item {
+                    @include justify-content(flex-start);
+                    text-align: left;
+                }
+            }
+            &.alignment-right {
+                .icon-box-item {
+                    @include justify-content(flex-end);
+                    text-align: right;
+                }
+            }
+            &.alignment-center {
+                .icon-box-item {
+                    @include justify-content(center);
+                    text-align: center;
+                }
+            }
+            &.v-alignment-top {
+                .icon-box-item {
+                    @include align-items(flex-start);
+                }
+            }
+            &.v-alignment-middle {
+                .icon-box-item {
+                    @include align-items(center);
+                }
+            }
+            &.v-alignment-bottom {
+                .icon-box-item {
+                    @include align-items(flex-end);
+                }
+            }
+            .industrium-icon-box-widget .icon-box-item-link .icon-box-item.icon-box-header {
+                &.with_arrow {
+                    padding: 0 30px 0 0;
+                }
+                &:before,
+                &:after {
+                    right: 0;
+                    left: initial;
+                }
+            }
+        }
+        &.icon-position-laptop-right {
+            .icon-box-item {
+                @include flex-direction(row-reverse);
+            }
+            &.alignment-left {
+                .icon-box-item {
+                    @include justify-content(flex-end);
+                    text-align: left;
+                }
+            }
+            &.alignment-right {
+                .icon-box-item {
+                    @include justify-content(flex-start);
+                    text-align: right;
+                }
+            }
+            &.alignment-center {
+                .icon-box-item {
+                    @include justify-content(center);
+                    text-align: center;
+                }
+            }
+            &.v-alignment-top {
+                .icon-box-item {
+                    @include align-items(flex-start);
+                }
+            }
+            &.v-alignment-middle {
+                .icon-box-item {
+                    @include align-items(center);
+                }
+            }
+            &.v-alignment-bottom {
+                .icon-box-item {
+                    @include align-items(flex-end);
+                }
+            }
+            .industrium-icon-box-widget .icon-box-item-link .icon-box-item.icon-box-header {
+                &.with_arrow {
+                    padding: 0 0 0 30px;
+                }
+                &:before,
+                &:after {
+                    left: 0;
+                    right: initial;
+                }
+            }
+        }        
+    }
+}
+
+@media only screen and (max-width: 1279px) {
+    .elementor-widget-industrium_icon_box {
+        &.icon-position-tablet_extra-top {
+            .icon-box-item {
+                @include flex-direction(column);
+            }
+            &.alignment-left {
+                .icon-box-item {
+                    @include align-items(flex-start);
+                    text-align: left;
+                }
+            }
+            &.alignment-right {
+                .icon-box-item {
+                    @include align-items(flex-end);
+                    text-align: right;
+                }
+            }
+            &.alignment-center {
+                .icon-box-item {
+                    @include align-items(center);
+                    text-align: center;
+                }
+            }
+            .industrium-icon-box-widget .icon-box-item-link .icon-box-item.icon-box-header {
+                &.with_arrow {
+                    padding: 0 30px 0 0;
+                }
+                &:before,
+                &:after {
+                    right: 0;
+                    left: initial;
+                }
+            }
+        }
+        &.icon-position-tablet_extra-left {
+            .icon-box-item {
+                @include flex-direction(row);
+            }
+            &.alignment-left {
+                .icon-box-item {
+                    @include justify-content(flex-start);
+                    text-align: left;
+                }
+            }
+            &.alignment-right {
+                .icon-box-item {
+                    @include justify-content(flex-end);
+                    text-align: right;
+                }
+            }
+            &.alignment-center {
+                .icon-box-item {
+                    @include justify-content(center);
+                    text-align: center;
+                }
+            }
+            &.v-alignment-top {
+                .icon-box-item {
+                    @include align-items(flex-start);
+                }
+            }
+            &.v-alignment-middle {
+                .icon-box-item {
+                    @include align-items(center);
+                }
+            }
+            &.v-alignment-bottom {
+                .icon-box-item {
+                    @include align-items(flex-end);
+                }
+            }
+            .industrium-icon-box-widget .icon-box-item-link .icon-box-item.icon-box-header {
+                &.with_arrow {
+                    padding: 0 30px 0 0;
+                }
+                &:before,
+                &:after {
+                    right: 0;
+                    left: initial;
+                }
+            }
+        }
+        &.icon-position-tablet_extra-right {
+            .icon-box-item {
+                @include flex-direction(row-reverse);
+            }
+            &.alignment-left {
+                .icon-box-item {
+                    @include justify-content(flex-end);
+                    text-align: left;
+                }
+            }
+            &.alignment-right {
+                .icon-box-item {
+                    @include justify-content(flex-start);
+                    text-align: right;
+                }
+            }
+            &.alignment-center {
+                .icon-box-item {
+                    @include justify-content(center);
+                    text-align: center;
+                }
+            }
+            &.v-alignment-top {
+                .icon-box-item {
+                    @include align-items(flex-start);
+                }
+            }
+            &.v-alignment-middle {
+                .icon-box-item {
+                    @include align-items(center);
+                }
+            }
+            &.v-alignment-bottom {
+                .icon-box-item {
+                    @include align-items(flex-end);
+                }
+            }
+            .industrium-icon-box-widget .icon-box-item-link .icon-box-item.icon-box-header {
+                &.with_arrow {
+                    padding: 0 0 0 30px;
+                }
+                &:before,
+                &:after {
+                    left: 0;
+                    right: initial;
+                }
+            }
+        }        
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .elementor-widget-industrium_icon_box {
+        &.icon-position-tablet-top {
+            .icon-box-item {
+                @include flex-direction(column);
+            }
+            &.alignment-left {
+                .icon-box-item {
+                    @include align-items(flex-start);
+                    text-align: left;
+                }
+            }
+            &.alignment-right {
+                .icon-box-item {
+                    @include align-items(flex-end);
+                    text-align: right;
+                }
+            }
+            &.alignment-center {
+                .icon-box-item {
+                    @include align-items(center);
+                    text-align: center;
+                }
+            }
+            .industrium-icon-box-widget .icon-box-item-link .icon-box-item.icon-box-header {
+                &.with_arrow {
+                    padding: 0 30px 0 0;
+                }
+                &:before,
+                &:after {
+                    right: 0;
+                    left: initial;
+                }
+            }
+        }
+        &.icon-position-tablet-left {
+            .icon-box-item {
+                @include flex-direction(row);
+            }
+            &.alignment-left {
+                .icon-box-item {
+                    @include justify-content(flex-start);
+                    text-align: left;
+                }
+            }
+            &.alignment-right {
+                .icon-box-item {
+                    @include justify-content(flex-end);
+                    text-align: right;
+                }
+            }
+            &.alignment-center {
+                .icon-box-item {
+                    @include justify-content(center);
+                    text-align: center;
+                }
+            }
+            &.v-alignment-top {
+                .icon-box-item {
+                    @include align-items(flex-start);
+                }
+            }
+            &.v-alignment-middle {
+                .icon-box-item {
+                    @include align-items(center);
+                }
+            }
+            &.v-alignment-bottom {
+                .icon-box-item {
+                    @include align-items(flex-end);
+                }
+            }
+            .industrium-icon-box-widget .icon-box-item-link .icon-box-item.icon-box-header {
+                &.with_arrow {
+                    padding: 0 30px 0 0;
+                }
+                &:before,
+                &:after {
+                    right: 0;
+                    left: initial;
+                }
+            }
+        }
+        &.icon-position-tablet-right {
+            .icon-box-item {
+                @include flex-direction(row-reverse);
+            }
+            &.alignment-left {
+                .icon-box-item {
+                    @include justify-content(flex-end);
+                    text-align: left;
+                }
+            }
+            &.alignment-right {
+                .icon-box-item {
+                    @include justify-content(flex-start);
+                    text-align: right;
+                }
+            }
+            &.alignment-center {
+                .icon-box-item {
+                    @include justify-content(center);
+                    text-align: center;
+                }
+            }
+            &.v-alignment-top {
+                .icon-box-item {
+                    @include align-items(flex-start);
+                }
+            }
+            &.v-alignment-middle {
+                .icon-box-item {
+                    @include align-items(center);
+                }
+            }
+            &.v-alignment-bottom {
+                .icon-box-item {
+                    @include align-items(flex-end);
+                }
+            }
+            .industrium-icon-box-widget .icon-box-item-link .icon-box-item.icon-box-header {
+                &.with_arrow {
+                    padding: 0 0 0 30px;
+                }
+                &:before,
+                &:after {
+                    left: 0;
+                    right: initial;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .elementor-widget-industrium_icon_box {
+        &.icon-position-mobile_extra-top {
+            .icon-box-item {
+                @include flex-direction(column);
+            }
+            &.alignment-left {
+                .icon-box-item {
+                    @include align-items(flex-start);
+                    text-align: left;
+                }
+            }
+            &.alignment-right {
+                .icon-box-item {
+                    @include align-items(flex-end);
+                    text-align: right;
+                }
+            }
+            &.alignment-center {
+                .icon-box-item {
+                    @include align-items(center);
+                    text-align: center;
+                }
+            }
+            .industrium-icon-box-widget .icon-box-item-link .icon-box-item.icon-box-header {
+                &.with_arrow {
+                    padding: 0 30px 0 0;
+                }
+                &:before,
+                &:after {
+                    right: 0;
+                    left: initial;
+                }
+            }
+        }
+        &.icon-position-mobile_extra-left {
+            .icon-box-item {
+                @include flex-direction(row);
+            }
+            &.alignment-left {
+                .icon-box-item {
+                    @include justify-content(flex-start);
+                    text-align: left;
+                }
+            }
+            &.alignment-right {
+                .icon-box-item {
+                    @include justify-content(flex-end);
+                    text-align: right;
+                }
+            }
+            &.alignment-center {
+                .icon-box-item {
+                    @include justify-content(center);
+                    text-align: center;
+                }
+            }
+            &.v-alignment-top {
+                .icon-box-item {
+                    @include align-items(flex-start);
+                }
+            }
+            &.v-alignment-middle {
+                .icon-box-item {
+                    @include align-items(center);
+                }
+            }
+            &.v-alignment-bottom {
+                .icon-box-item {
+                    @include align-items(flex-end);
+                }
+            }
+            .industrium-icon-box-widget .icon-box-item-link .icon-box-item.icon-box-header {
+                &.with_arrow {
+                    padding: 0 30px 0 0;
+                }
+                &:before,
+                &:after {
+                    right: 0;
+                    left: initial;
+                }
+            }
+        }
+        &.icon-position-mobile_extra-right {
+            .icon-box-item {
+                @include flex-direction(row-reverse);
+            }
+            &.alignment-left {
+                .icon-box-item {
+                    @include justify-content(flex-end);
+                    text-align: left;
+                }
+            }
+            &.alignment-right {
+                .icon-box-item {
+                    @include justify-content(flex-start);
+                    text-align: right;
+                }
+            }
+            &.alignment-center {
+                .icon-box-item {
+                    @include justify-content(center);
+                    text-align: center;
+                }
+            }
+            &.v-alignment-top {
+                .icon-box-item {
+                    @include align-items(flex-start);
+                }
+            }
+            &.v-alignment-middle {
+                .icon-box-item {
+                    @include align-items(center);
+                }
+            }
+            &.v-alignment-bottom {
+                .icon-box-item {
+                    @include align-items(flex-end);
+                }
+            }
+            .industrium-icon-box-widget .icon-box-item-link .icon-box-item.icon-box-header {
+                &.with_arrow {
+                    padding: 0 0 0 30px;
+                }
+                &:before,
+                &:after {
+                    left: 0;
+                    right: initial;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .elementor-widget-industrium_icon_box {
+        &.icon-position-mobile-top {
+            .icon-box-item {
+                @include flex-direction(column);
+            }
+            &.alignment-left {
+                .icon-box-item {
+                    @include align-items(flex-start);
+                    text-align: left;
+                }
+            }
+            &.alignment-right {
+                .icon-box-item {
+                    @include align-items(flex-end);
+                    text-align: right;
+                }
+            }
+            &.alignment-center {
+                .icon-box-item {
+                    @include align-items(center);
+                    text-align: center;
+                }
+            }
+            .industrium-icon-box-widget .icon-box-item-link .icon-box-item.icon-box-header {
+                &.with_arrow {
+                    padding: 0 30px 0 0;
+                }
+                &:before,
+                &:after {
+                    right: 0;
+                    left: initial;
+                }
+            }
+        }
+        &.icon-position-mobile-left {
+            .icon-box-item {
+                @include flex-direction(row);
+            }
+            &.alignment-left {
+                .icon-box-item {
+                    @include justify-content(flex-start);
+                    text-align: left;
+                }
+            }
+            &.alignment-right {
+                .icon-box-item {
+                    @include justify-content(flex-end);
+                    text-align: right;
+                }
+            }
+            &.alignment-center {
+                .icon-box-item {
+                    @include justify-content(center);
+                    text-align: center;
+                }
+            }
+            &.v-alignment-top {
+                .icon-box-item {
+                    @include align-items(flex-start);
+                }
+            }
+            &.v-alignment-middle {
+                .icon-box-item {
+                    @include align-items(center);
+                }
+            }
+            &.v-alignment-bottom {
+                .icon-box-item {
+                    @include align-items(flex-end);
+                }
+            }
+            .industrium-icon-box-widget .icon-box-item-link .icon-box-item.icon-box-header {
+                &.with_arrow {
+                    padding: 0 30px 0 0;
+                }
+                &:before,
+                &:after {
+                    right: 0;
+                    left: initial;
+                }
+            }
+        }
+        &.icon-position-mobile-right {
+            .icon-box-item {
+                @include flex-direction(row-reverse);
+            }
+            &.alignment-left {
+                .icon-box-item {
+                    @include justify-content(flex-end);
+                    text-align: left;
+                }
+            }
+            &.alignment-right {
+                .icon-box-item {
+                    @include justify-content(flex-start);
+                    text-align: right;
+                }
+            }
+            &.alignment-center {
+                .icon-box-item {
+                    @include justify-content(center);
+                    text-align: center;
+                }
+            }
+            &.v-alignment-top {
+                .icon-box-item {
+                    @include align-items(flex-start);
+                }
+            }
+            &.v-alignment-middle {
+                .icon-box-item {
+                    @include align-items(center);
+                }
+            }
+            &.v-alignment-bottom {
+                .icon-box-item {
+                    @include align-items(flex-end);
+                }
+            }
+            .industrium-icon-box-widget .icon-box-item-link .icon-box-item.icon-box-header {
+                &.with_arrow {
+                    padding: 0 0 0 30px;
+                }
+                &:before,
+                &:after {
+                    left: 0;
+                    right: initial;
+                }
+            }
+        }
+    }
+}

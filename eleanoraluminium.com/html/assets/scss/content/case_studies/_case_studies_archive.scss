@@ -1,0 +1,111 @@
+/*********** Case Studies Archive ***********/
+.archive-listing-wrapper.case-study-listing-wrapper {
+    margin: -15px;
+    font-size: 0;
+    line-height: 1;
+    &.isotope-trigger {
+        @include clearfix;
+    }
+    &.owl-carousel {
+        width: calc(100% + 30px);
+        margin: 0 -15px;
+    }
+    .grid-item {
+        padding: 15px;
+        display: inline-block;
+        vertical-align: top;
+        @include box-sizing;
+        .post-media-wrapper {
+            font-size: 0;
+            line-height: 1;
+            a {
+                position: relative;
+                display: inline-block;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 576px) {
+    .case-study-listing-wrapper {
+        // Grid Gallery
+        &.case-study-grid-listing {
+            &.columns-2,
+            &.columns-3,
+            &.columns-4,
+            &.columns-5,
+            &.columns-6 {
+                .grid-blog-item-wrapper {
+                    width: 50%;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .case-study-listing-wrapper {
+        // Grid Gallery
+        &.case-study-grid-listing {
+            @include flex(row, wrap, flex-start, flex-start);
+            &.columns-6 {
+                .grid-blog-item-wrapper {
+                    width: 33.3333%;
+                }
+            }
+            &.columns-4,
+            &.columns-5 {
+                .grid-blog-item-wrapper {
+                    width: 25%;
+                }
+            }
+            &.columns-3 {
+                .grid-blog-item-wrapper {
+                    width: 25%;
+                    &:nth-child(6n+6),
+                    &:nth-child(6n+1) {
+                        width: 50%;
+                        .post-media-wrapper {
+                            padding-bottom: 58.8%;
+                            height: 0;
+                            a {
+                                position: absolute;
+                                height: 100%;
+                                width: 100%;
+                                img {
+                                    height: 100%;
+                                    width: 100%;
+                                    object-fit: cover;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .case-study-listing-wrapper {
+        // Grid Gallery
+        &.case-study-grid-listing {
+            &.columns-5 {
+                .grid-blog-item-wrapper {
+                    width: 20%;
+                }
+                .grid-sizer {
+                    width: 20%;
+                }
+            }
+            &.columns-6 {
+                .grid-blog-item-wrapper {
+                    width: 16.6667%;
+                }
+                .grid-sizer {
+                    width: 16.6667%;
+                }
+            }
+        }
+    }
+}

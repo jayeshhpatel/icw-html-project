@@ -1,0 +1,236 @@
+/********** Instagram Feed Elementor Widget **********/
+#sb_instagram {
+    font-size: 0;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+    .sbi_item {
+        position: relative;
+        float: none !important;
+        .sbi_photo {
+            position: relative;
+            opacity: 1 !important;
+            height: 0 !important;
+            padding: 100% 0 0;
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                z-index: 2;
+                opacity: 0;
+                @include transition(top .3s, opacity .3s);
+            }
+            &:after {
+                content: '\f16d';
+                width: 28px;
+                height: 28px;
+                position: absolute;
+                display: block;
+                text-align: center;
+                font: 400 normal 28px/1em 'Font Awesome 5 Brands';
+                z-index: 3;
+                left: 50%;
+                right: auto;
+                top: 40%;
+                margin: -14px 0 0 -14px;
+                opacity: 0;
+                @include transition(top .3s, opacity .3s);
+            }
+            &:hover {
+                &:before {
+                    opacity: 0.5;
+                }
+                &:after {
+                    top: 50%;
+                    opacity: 1;
+                }
+            }
+            img {
+                display: block !important;
+                position: absolute;
+                left: 0;
+                right: initial;
+                top: 0;
+                -o-object-fit: cover;
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    &.sbi_width_resp {
+        &.sbi_col_2,
+        &.sbi_col_4,
+        &.sbi_col_6,
+        &.sbi_col_8,
+        &.sbi_col_10 {
+            #sbi_images {
+                .sbi_item {
+                    width: 50%;
+                }
+            }
+        }
+    }
+}
+.industrium-instagram-feed {
+    position: relative;
+    .instagram-feed-info {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 576px) {
+    #sb_instagram {
+        &.sbi_width_resp {
+            &.sbi_col_2,
+            &.sbi_col_4,
+            &.sbi_col_8 {
+                #sbi_images {
+                    .sbi_item {
+                        width: 25%;
+                    }
+                }
+            }
+            &.sbi_col_3,
+            &.sbi_col_6,
+            &.sbi_col_9 {
+                #sbi_images {
+                    .sbi_item {
+                        width: 33.3333%;
+                    }
+                }
+            }
+            &.sbi_col_5,
+            &.sbi_col_10 {
+                #sbi_images {
+                    .sbi_item {
+                        width: 20%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    #sb_instagram {
+        &.sbi_width_resp {
+            &.sbi_col_2 {
+                #sbi_images {
+                    .sbi_item {
+                        width: 50%;
+                    }
+                }
+            }
+            &.sbi_col_3 {
+                #sbi_images {
+                    .sbi_item {
+                        width: 33.3333%;
+                    }
+                }
+            }
+            &.sbi_col_4 {
+                #sbi_images {
+                    .sbi_item {
+                        width: 25%;
+                    }
+                }
+            }
+            &.sbi_col_5 {
+                #sbi_images {
+                    .sbi_item {
+                        width: 20%;
+                    }
+                }
+            }
+            &.sbi_col_6 {
+                #sbi_images {
+                    .sbi_item {
+                        width: 16.6667%;
+                    }
+                }
+            }
+            &.sbi_col_7 {
+                #sbi_images {
+                    .sbi_item {
+                        width: 14.2857%;
+                    }
+                }
+            }
+            &.sbi_col_8 {
+                #sbi_images {
+                    .sbi_item {
+                        width: 12.5%;
+                    }
+                }
+            }
+            &.sbi_col_9 {
+                #sbi_images {
+                    .sbi_item {
+                        width: 11.1111%;
+                    }
+                }
+            }
+            &.sbi_col_10 {
+                #sbi_images {
+                    .sbi_item {
+                        width: 10%;
+                    }
+                }
+            }
+        }
+    }
+    .industrium-instagram-feed {
+        #sb_instagram {
+            .sbi_item {
+                .sbi_photo {
+                    &:after {
+                        font-size: 46px;
+                        line-height: 46px;
+                        width: 46px;
+                        height: 46px;
+                        margin: -23px 0 0 -23px;
+                    }
+                }
+            }
+        }
+        .instagram-feed-info {
+            display: block;
+            min-width: 270px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            right: initial;
+            @include transform(translate(-50%, -50%));
+            padding: 30px 30px 31px;
+            text-align: center;
+            z-index: 3;
+            .user-name {
+                font-size: 21px;
+                text-transform: uppercase;
+                line-height: 1.5em;
+                font-weight: 600;
+                padding: 9px 0 3px;
+                position: relative;
+                z-index: 2;
+                letter-spacing: .0952em;
+            }
+            .user-description {
+                font-size: 14px;
+                line-height: 1.5em;
+                text-transform: uppercase;
+                color: #a2a2a2;
+                font-weight: 600;
+                position: relative;
+                z-index: 2;
+            }
+        }
+        #sbi_mod_error + .instagram-feed-info {
+            display: none;
+        }
+    }
+}

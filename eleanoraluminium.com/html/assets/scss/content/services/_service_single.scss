@@ -1,0 +1,75 @@
+/********** Single Service **********/
+.single-service {
+    .post-media-wrapper {
+        position: relative;
+    }
+    .post-title {
+        &:not(:first-child) {
+            margin-top: 35px;
+        }
+    }
+    .help-wrapper {
+        margin-top: 30px;
+    }
+    .help-item {
+        border-top: 2px solid;
+        &:last-child {
+            border-bottom: 2px solid;
+        }                
+        .help-item-title {
+            padding: 18px 50px 18px 0;
+            position: relative;
+            cursor: pointer;
+            font-weight: 600;
+            @include transition(color .3s, background-color .3s);
+            &:after {
+                content: '\e82d';
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                display: block;
+                right: 0;
+                left: initial;
+                top: 50%;
+                margin: -10px 0 0;
+                font: 400 normal 16px/20px 'fontello';
+                text-align: center;
+                @include transition(transform .3s, margin .3s, color .3s);
+            }
+        }
+        .help-item-content {
+            padding: 0 0 20px;
+            display: none;
+        }
+        &.active {
+            .help-item-title {
+                &:after {
+                    @include transform(rotate(-45deg));
+                    margin: -12px 1px 0;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 576px) {
+    
+}
+
+@media only screen and (min-width: 768px) {
+    .single-service {
+        h3.post-title {
+            font-size: 30px;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) {
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+}

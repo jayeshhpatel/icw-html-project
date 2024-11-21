@@ -1,0 +1,79 @@
+/********** WordPress Standard Media Audio Widget **********/
+.widget_media_audio,
+.mejs-audio {
+    @include border-radius(5px);
+    .mejs-container,
+    .mejs-controls {
+        @include border-radius(5px);
+    }
+    .mejs-horizontal-volume-slider {
+        width: 50px;
+        margin: 0 0 0 10px;
+    }
+    .mejs-time-rail {
+        margin: 0;
+    }
+    .mejs-time-handle-content {
+        border: none;
+        left: -4px;
+        width: 1px;
+    }
+    .mejs-time {
+        padding-top: 15px;
+    }
+    .mejs-button {
+        width: 20px;
+        > button {
+            margin: 10px 0;
+            padding: 0;
+            border: none;
+            min-width: 0;
+            background: none;
+            @include border-radius(0);
+            &:before {
+                content: none;
+                display: none;
+            }
+            &:after {
+                font: 700 normal 18px/20px 'Font Awesome 5 Free';
+                background: none !important;
+                position: relative;
+                width: auto;
+                height: auto;
+                top: initial;
+                bottom: initial;
+                left: initial;
+                right: initial;
+                @include transform(none);
+            }
+        }
+        &.mejs-play {
+            > button {
+                &:after {
+                    content: '\f04b';
+                }
+            }
+        }
+        &.mejs-pause {
+            > button {
+                &:after {
+                    content: '\f04c';
+                }
+            }
+        }
+        &.mejs-mute {
+            > button {
+                &:after {
+                    content: '\f028';
+                }
+            }
+        }
+        &.mejs-unmute {
+            > button {
+                &:after {
+                    content: '\f026';
+                }
+            }
+        }
+    }
+}

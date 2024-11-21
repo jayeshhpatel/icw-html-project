@@ -1,0 +1,130 @@
+/********** Tabs Elementor Widget **********/
+.industrium_tabs_widget {
+    .industrium_tabs_titles_container {
+        margin: 0 -15px;
+        @include flex(row, wrap, flex-start, stretch);
+        .industrium_tab_title_item {
+            display: block;
+            vertical-align: top;
+            position: relative;
+            width: 50%;
+            padding: 15px 15px 0 15px;
+            a {
+                @include flex(row, nowrap, flex-start, center);
+                @include box-sizing;
+                padding: 0 0 15px 0;
+                font-size: 16px;
+                line-height: 30px;
+                font-weight: 700;
+                letter-spacing: -0.03em;
+                position: relative;
+                height: 100%;
+                width: 100%;
+                border-bottom-width: 2px;
+                border-bottom-style: solid;
+            }
+            .tab-title-icon {
+                margin: 0 15px 0 0;
+                display: block;
+                line-height: 1;
+                font-size: 0;
+                i {
+                    font-size: 33px;
+                    line-height: 1;
+                }
+                svg {
+                    width: 36px;
+                    height: 36px;
+                    fill: currentColor;
+                }
+            }
+            &.active {
+                z-index: 2;
+            }
+        }
+    }
+    .industrium_tabs_content_container {
+        &:not(:first-child) {
+            margin-top: 45px;
+        }
+        .industrium_tab_content_item {
+            display: none;
+            &.active {
+                display: block;
+            }
+        }
+        img.alignright,
+        img.alignleft {
+            float: none;
+            margin: 0 0 30px;
+        }
+        ul {
+            li {
+                padding: 0 0 0 45px;
+                &:before {
+                    content: '\e810';
+                    border: none;
+                    width: 22px;
+                    height: 22px;
+                    font: 400 normal 22px/30px 'fontello';
+                    @include border-radius(0);
+                    top: 0;
+                }
+                &:not(:first-child) {
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 576px) {
+    .industrium_tabs_widget {
+        .industrium_tabs_titles_container {
+            .industrium_tab_title_item {
+                width: 33.3333%;
+                a {
+                    width: 100%;
+                }
+            }
+        }
+        .industrium_tabs_content_container {
+            img.alignright,
+            img.alignleft {
+                max-width: 50%;
+            }
+            img.alignright {
+                float: right;
+                margin: 7px 0 30px 20px;
+            }
+            img.alignleft {
+                float: left;
+                margin: 7px 20px 30px 0;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .industrium_tabs_widget {
+        .industrium_tabs_titles_container {
+            .industrium_tab_title_item {
+                width: auto;
+                flex: 1 1 0;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .industrium_tabs_widget {
+        .industrium_tabs_content_container {
+            img.alignright {
+                margin-left: 11%;
+            }
+            img.alignleft {
+                margin-right: 11%;
+            }
+        }
+    }
+}

@@ -1,0 +1,100 @@
+/********** Single Project **********/
+.single-project {
+    @include flex(column, nowrap, flex-start, flex-start);
+    margin: 0 -20px;
+    .project-post-gallery {
+        width: 100%;
+        @include box-sizing;
+        padding: 0 20px;
+        .single-post-gallery-image-item {
+            &:not(:first-child) {
+                margin: 40px 0 0;
+            }
+            img {
+                position: relative;
+                width: 100%;
+            }
+        }
+    }
+    .project-post-content {
+        width: 100%;
+        padding: 0 20px;
+        @include box-sizing;
+        &:not(:first-child) {
+            margin-top: 30px;
+        }
+        .project-post-title {
+            //margin-bottom: 0.65em;
+            -ms-word-wrap: break-word;
+            word-wrap: break-word;
+        }
+        .project-post-meta-wrapper {
+            border-top-style: solid;
+            border-top-width: 1px;
+            &:not(:first-child) {
+                margin-top: 37px;
+            }
+        }
+        .project-post-meta {
+            margin: 0 -15px;            
+            .project-post-meta-label {
+                font-weight: 600;
+                font-size: 20px;
+                margin: 0 0 2px;
+                letter-spacing: -0.03em;
+            }
+        }
+        .project-post-meta-item {            
+            padding: 20px 0 0;
+            margin: 0 15px;
+            br {
+                display: none;
+            }
+        }
+        .project-post-button {
+            font-size: 0;
+            line-height: 1;
+            &:not(:first-child) {
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 576px) {
+    .single-project {
+        .project-post-content {
+            .project-post-meta {
+                @include flex(row, nowrap, flex-start, flex-start);
+                margin-top: 0;
+            }
+            .project-post-meta-item {
+                width: calc(33.3333% - 30px);
+                &:not(:first-child) {
+                    margin-top: 0;
+                }
+                br {
+                    display: initial;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .single-project {
+        @include flex-direction(row);
+        .project-post-gallery {
+            width: 50%;
+            order: 1;
+        }
+        .project-post-content {
+            width: 50%;
+            order: 2;
+            &:not(:first-child) {
+                margin-top: -10px;
+                margin-bottom: 0;
+            }
+        }
+    }
+}

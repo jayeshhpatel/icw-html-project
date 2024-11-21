@@ -1,0 +1,322 @@
+/* ---------- Header Layout ---------- */
+
+// Top Bar
+.top-bar {
+    font-size: 77.7777%;
+    display: none;
+    position: relative;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    .top-bar-additional-text {
+        padding: 5px 0 4px;
+    }
+}
+.top-bar-row {    
+    margin: 0 20px;
+    @include flex(row, nowrap, space-between, stretch);
+}
+.top-bar-column {
+    padding: 0 20px;
+    @include flex(row, wrap, flex-start, center);
+    &:not(:first-child) {
+        text-align: right;
+    }
+    &:only-child {
+        width: 100%;
+    }
+}
+
+// Header
+.header {
+    position: relative;
+    z-index: 4;
+    display: none !important;
+    &.header-position-over {
+        position: absolute;
+        display: block;
+        width: 100%;
+        left: 0;
+        right: 0;
+        top: 0;
+        background-color: transparent !important;
+        @include box-shadow(none);
+        .header-icons-container.icons-container-big {
+            background-color: transparent !important;
+        }
+    }
+    &.sticky-header-on {
+        &.sticky-ready {
+            .sticky-wrapper {
+                position: fixed;
+                width: 100%;
+                left: 0;
+                right: 0;
+                top: 0;
+                z-index: 10;
+                @include transition(transform linear 1s);
+                margin-top: -500px;
+                @include transform(translateY(0));
+            }
+        }
+        &.sticky-ready.sticky-active {
+            .sticky-wrapper {
+                @include transform(translateY(500px));
+                @include box-shadow(0 15px 38px rgba(0, 0, 0, 0.1));
+            }
+        }
+    }
+    &.sticky-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 5;
+        @include transform(translateY(-150%));
+        @include transition(transform linear 0.5s);
+        transition-delay: 0.1s;
+        @include box-shadow(0 15px 38px rgba(0, 0, 0, 0.1));
+        &.sticky-active {
+            @include transform(translateY(0));
+            transition-delay: 0s;
+            .header-row {
+                opacity: 1;
+                @include transform(translateY(0));
+                transition-delay: 0.5s;
+            }
+        }
+        .header-row {
+            @include transform(translateY(-75%));
+            @include transition(all 0.3s);
+            transition-delay: 0s;
+        }
+    }
+}
+.header-menu-container {
+    width: 100%;
+    text-align: center;
+}
+.header-icons-container {
+    margin: 7px 20px;
+    min-height: 50px;
+    white-space: nowrap;
+    @include flex-shrink(0);
+    &:first-child {
+        @include flex(row, nowrap, flex-start, center);
+    }
+    &:last-child {
+        @include flex(row, nowrap, flex-end, center);
+    }
+    &:first-child:last-child  {
+        width: calc(100% - 40px);
+        @include flex(row, nowrap, flex-end, center);
+    }
+    .header-icon {
+        margin: 5px 10px;
+    }
+    &.icons-container-big {
+        margin: 0 0 -12px 20px;
+        padding: 0 20px 0 10px;
+        &:first-child:last-child {
+            margin-bottom: 0;
+            margin-right: 20px;
+            padding: 0;
+        }
+    }
+    .header-icon.mini-cart {
+        & + .header-button-container {
+             margin-left: 25px;
+        }
+    }
+    .header-button-container {
+        white-space: nowrap;
+        line-height: 1;
+        font-size: 0;
+        @include flex(column, nowrap, flex-start, center);
+        @include align-self(stretch);
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        &.header-icon {
+            &:first-child {
+                margin-left: -10px;
+            }
+        }        
+        .industrium-button {
+            height: 100%;
+            @include box-sizing;
+            min-width: 254px;
+            margin: 0 -35px 0 0;
+            padding: 0;
+            font-weight: 500;
+            @include flex(row, nowrap, center, center);
+            z-index: 1;
+            border: none;
+            background-image: none;
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(255, 255, 255, 0.2);
+                opacity: 0;
+                @include transition(opacity .3s);
+                z-index: -1;
+            }
+            &:after {
+                display: none;
+            }
+            &:hover {
+                &:before {
+                    opacity: 1;
+                }
+            }
+        }
+        &:not(:last-child) {
+            .industrium-button {
+                margin-right: 0;
+            }
+        }
+    }
+}
+.header-row {
+    margin: 0;
+    @include flex(row, nowrap, space-between, center);
+    .header-icons-container {
+        @include align-self(stretch);
+        .header-icon {
+            margin: 5px 15px;
+        }
+    }
+}
+body.admin-bar {
+    .header {
+        &.sticky-header-on {
+            &.sticky-ready {
+                .sticky-wrapper {
+                    top: 46px;
+                }
+            }
+        }
+        &.sticky-header {
+            top: 46px;
+        }
+    }
+    .mobile-header {
+        &.sticky-header {
+            top: 46px;
+        }
+    }
+}
+
+// Mobile Header
+.mobile-header {
+    border-bottom: solid 1px transparent;
+    z-index: 4;
+    position: relative;
+    &.mobile-header-position-over {
+        position: absolute;
+        display: block;
+        width: 100%;
+        left: 0;
+        right: 0;
+        top: 0;
+    }
+    &.sticky-header-on {
+        &.sticky-ready {
+            .sticky-wrapper {
+                position: fixed;
+                width: 100%;
+                left: 0;
+                right: 0;
+                top: 0;
+                z-index: 10;
+                background-color: #fff;
+                @include transition(transform linear 1s);
+                margin-top: -200px;
+                @include transform(translateY(0));
+                @include box-shadow(0 0 15px rgba(0, 0, 0, 0.14));
+            }
+        }
+        &.sticky-ready.sticky-active {
+            .sticky-wrapper {
+                @include transform(translateY(200px));
+            }
+        }
+    }
+    &.sticky-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 5;
+        @include box-shadow(0 15px 38px rgba(0, 0, 0, 0.1));
+        @include transform(translateY(-150%));
+        @include transition(transform linear 0.5s);
+        transition-delay: 0.1s;
+        &.sticky-active {
+            @include transform(translateY(0));
+            transition-delay: 0s;
+            .mobile-header-row {
+                opacity: 1;
+                @include transform(translateY(0));
+                transition-delay: 0.5s;
+            }
+        }
+        .mobile-header-row {
+            opacity: 0;
+            @include transform(translateY(-20px));
+            @include transition(all 0.3s);
+            transition-delay: 0s;
+        }
+    }
+}
+.mobile-header-row {
+    @include flex(row, nowrap, space-between, center);
+}
+
+@media only screen and (min-width: 576px) {
+    .mobile-header {
+        .header-icon {
+            &.search-trigger,
+            &.mini-cart,
+            &.header-button-container {
+                display: block;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 783px) {
+    body.admin-bar {
+        .header {
+            &.sticky-header-on {
+                &.sticky-ready {
+                    .sticky-wrapper {
+                        top: 32px;
+                    }
+                }
+            }
+            &.sticky-header {
+                top: 32px;
+            }
+        }
+        .mobile-header {
+            &.sticky-header {
+                top: 32px;
+            }
+        }
+    }
+}
+
+//@media only screen and (min-width: 1365px) {
+//    .header {
+//        &.header-type-3 {
+//            .header-row {
+//                .header-icons-container {
+//                    width: auto;
+//                }
+//            }
+//        }
+//    }
+//}

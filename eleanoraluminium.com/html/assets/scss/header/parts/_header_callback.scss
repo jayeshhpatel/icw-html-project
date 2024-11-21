@@ -1,0 +1,43 @@
+/* ---------- Header Callback ---------- */
+.header-callback-container {
+    @include flex(row, nowrap, stretch, stretch);
+    border-bottom: 2px solid;
+    .callback {
+        margin: 0 !important;
+    }
+}
+.callback {
+    position: relative;
+    white-space: nowrap;
+    margin: 0;
+    @include flex(column, nowrap, center, flex-start);
+    .callback-title {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.5em;
+    }
+    .callback-text {
+        font-size: 16px;
+        line-height: 1.5em;
+        font-weight: 500;
+    }
+}
+
+.mobile-header-menu-container {
+    .callback {
+        margin: 30px 30px 0;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .header-callback-container {
+        &:not(:last-child) {
+            margin-right: 5%;
+        }
+        .callback {
+            .callback-text {
+                font-size: 20px;
+            }
+        }
+    }    
+}

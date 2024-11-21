@@ -1,0 +1,133 @@
+/********** WooCommerce Filter by Price Widget **********/
+.woocommerce .widget_price_filter,
+.woocommerce.widget_price_filter,
+.woocommerce-page .widget_price_filter {
+    form {
+        &:first-child {
+            margin-top: 10px;
+        }
+        &:not(:first-child) {
+            margin-top: 30px;
+        }
+    }
+    .price_slider_wrapper {
+        .ui-slider {
+            margin: 0 12px 0 8px;
+            .ui-slider-handle {
+                width: 18px;
+                height: 18px;
+                border-style: solid;
+                border-width: 1px;
+                top: -10px;
+                &:before {
+                    content: '';
+                    width: 4px;
+                    height: 4px;
+                    @include border-radius(50%);
+                    display: block;
+                    position: absolute;
+                    left: 50%;
+                    right: auto;
+                    top: 50%;
+                    margin: -2px 0 0 -2px;
+                }
+            }
+        }
+        .ui-widget-content {
+            @include border-radius(0);
+        }
+        .ui-slider-horizontal {
+            height: 1px;
+        }
+    }
+    .price_slider_amount {
+        margin: 17px 0 0;
+        position: relative;
+        z-index: 2;
+        @include flex(row, wrap, space-between, center);
+        .price_label {
+            order: 1;
+            font-size: 14px;
+            text-align: left;
+            margin: 5px 10px 0 0;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+        .button {
+            order: 2;
+            min-width: 123px;
+            padding: 13px 20px 12px;
+            margin: 7px 0 0;
+            @include flex-shrink(0);
+            font-size: 12px;
+            line-height: 1.6667em;
+        }
+        input {
+            position: absolute;
+        }
+        .clear {
+            display: none;
+        }
+    }
+}
+.wc-block-components-filter-reset-button:not([disabled]):hover {
+    text-decoration: none;
+}
+.wc-block-price-filter {
+    input[type="range"] {
+        height: auto;
+        background: none;
+    }
+    .wc-block-components-price-slider__range-input-wrapper {
+        height: 1px;
+        margin-top: 35px;
+    }
+    .wc-block-components-price-slider__range-input-progress {
+        height: 2px;
+    }
+    .wc-block-components-price-slider__range-input::-webkit-slider-thumb {
+        width: 10px;
+        height: 10px;
+        border: none;
+        margin-top: -4px;
+    }
+    .wc-block-components-price-slider__range-input::-moz-range-thumb {
+        width: 10px;
+        height: 10px;
+        border: none;
+        margin-top: -4px;
+    }
+    .wc-block-components-price-slider__range-input::-ms-thumb {
+        width: 10px;
+        height: 10px;
+        border: none;
+        margin-top: -4px;
+    }
+    .wc-block-components-price-slider__range-input:focus::-ms-thumb {
+        width: 10px;
+        height: 10px;
+        border: none;
+        margin-top: -4px;
+    }
+    .wc-block-components-price-slider__actions {
+        button {
+            padding: 0;
+            &:after {
+                display: none;
+            }
+        }
+    }
+    .wc-block-components-price-slider__range-text {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 25px;
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+    .wc-block-components-price-slider__actions {
+        button {
+            font-size: 14px;
+            line-height: 30px;
+        }
+    }
+}

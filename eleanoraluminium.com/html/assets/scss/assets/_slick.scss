@@ -1,0 +1,181 @@
+/* Slick Slider */
+
+.slick-slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+.slick-list {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin: 0;
+    padding: 0;
+    &:focus {
+        outline: none;
+    }
+    &.dragging {
+        cursor: pointer;
+        cursor: hand;
+    }
+}
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+    position: relative;
+    left: 0;
+    top: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+    .slick-loading & {
+        visibility: hidden;
+    }
+}
+.slick-slide {
+    float: left;
+    height: 100%;
+    min-height: 1px;
+    clear: none !important;
+    [dir="rtl"] & {
+        float: right;
+    }
+    img {
+        display: block;
+    }
+    &.slick-loading img {
+        display: none;
+    }
+    display: none;
+    &.dragging img {
+        pointer-events: none;
+    }
+    .slick-initialized & {
+        display: block;
+    }
+    .slick-loading & {
+        visibility: hidden;
+    }
+    .slick-vertical & {
+        display: block;
+        height: auto;
+        border: 1px solid transparent;
+    }
+}
+.slick-arrow.slick-hidden {
+    display: none;
+}
+
+// Product Gallery
+.woocommerce-product-gallery {
+    .slick-slider {
+        width: 100%;
+        max-width: 768px;
+        .slick-button {
+            text-align: center;
+            font: 400 normal 10px/20px 'Fontello';
+            cursor: pointer;
+            position: absolute;
+            @include transition(color .3s, background-color .3s, opacity .3s);
+            z-index: 3;
+            &:before {
+                position: absolute;
+                left: 50%;
+                right: auto;
+                top: 50%;
+                @include transform(translate(-50%, -50%));
+                width: 20px;
+                height: 20px;
+            }
+            &.slick-disabled {
+                cursor: default;
+                opacity: .5;
+            }
+        }
+        &:not(.slick-vertical) {
+            .slick-list:first-child {
+                margin: 0 -5px;
+            }
+            .slick-list:not(:first-child) {
+                margin: 0 35px;
+            }
+            .slick-button {
+                width: 30px;
+                height: auto;
+                &.slick-prev {
+                    left: 0;
+                    right: initial;
+                    top: 5px;
+                    bottom: 5px;
+                    &:before {
+                        content: '\e80d';
+                    }
+                }
+                &.slick-next {
+                    left: initial;
+                    right: 0;
+                    top: 5px;
+                    bottom: 5px;
+                    &:before {
+                        content: '\e824';
+                    }
+                }
+            }
+        }
+        &.slick-vertical {
+            .slick-list:first-child {
+                margin: -5px 0;
+            }
+            .slick-list:not(:first-child) {
+                margin: 35px 0;
+            }
+            .slick-button {
+                width: auto;
+                height: 30px;
+                &.slick-prev {
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: initial;
+                    &:before {
+                        content: '\e814';
+                    }
+                }
+                &.slick-next {
+                    left: 0;
+                    right: 0;
+                    top: initial;
+                    bottom: 0;
+                    &:before {
+                        margin: 1px 0 0;
+                        content: '\e801';
+                    }
+                }
+            }
+        }
+    }
+}

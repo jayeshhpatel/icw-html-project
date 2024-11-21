@@ -1,0 +1,36 @@
+/********** Image Box Elementor Widget **********/
+.elementor-widget-image-box {
+    .elementor-image-box-wrapper {
+        .elementor-image-box-img {
+            img {
+                margin: 0 auto;
+            }
+        }
+        .elementor-image-box-content {
+            .elementor-image-box-title {
+                margin-bottom: 5px;
+                font-weight: 700;
+                border-bottom: 2px solid;
+                a {
+                    display: block;
+                    position: relative;
+                    padding: 0 1.5em 0 0;
+                    &:before {
+                        content: '\e82d';
+                        font: 0.8em 'fontello';
+                        line-height: inherit;
+                        position: absolute;
+                        top: 0;
+                        right: 6px;
+                        @include transition(transform .3s, color .3s);
+                    }
+                    &:hover {
+                        &:before {
+                            @include transform(rotate(-45deg));
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

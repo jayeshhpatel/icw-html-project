@@ -1,0 +1,170 @@
+/*********** Case Studies Single ***********/
+.single-post.industrium_case {
+    max-width: 1110px;
+    margin: 0 auto;
+    .post-content:not(:first-child) {
+        margin: 13px 0 0;
+    }
+    .post-meta-header {
+        &:not(:first-child) {
+            text-align: right;
+            margin-top: 0;
+            .post-meta-item-date {
+                margin-top: -55px;
+            }
+        }
+        .post-meta-item {
+            min-width: 63px;
+            .post-meta-item-day {
+                font-size: 35px;
+                padding: 11px 11px 9px;
+            }
+            .post-meta-item-month-year {
+                line-height: 24px;
+            }
+        }
+        & + .post-labels {
+            margin: 10px 0 0;
+        }
+    }
+    .post-categories .post-category-item {
+        font-size: 16px;
+    }
+    > .post-title:not(:first-child) {
+        margin-top: 12px;
+    }
+}
+.case-studies-results {
+    h4 {
+        &:not(:last-child) {
+            margin-bottom: 0.5em;
+        }
+    }
+}
+.results-wrapper {
+    ul {
+        li {
+            font-weight: 600;
+        }
+    }
+}
+.results-boxes {
+    padding: 75px 20px 100px 20px;
+    @include flex(column, nowrap, center, center);
+    position: relative;
+    &:before {
+        content: '\e82d';
+        font: 52px/1em 'fontello';
+        position: absolute;
+        bottom: 26px;
+        right: 32px;
+    }
+    &:not(:first-child) {
+        margin: 50px 0 0;
+    }
+    .result-boxes-decoration {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 78px;
+        width: 51px;
+        height: 51px;
+        &:before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            right: 100%;
+            top: 0;
+        }
+    }
+}
+.result-box {
+    &:not(:last-child) {
+        margin-bottom: 40px;
+    }
+    .result-box-value {
+        font-family: 'Manrope Alt';
+        font-weight: 700;
+        font-size: 80px;
+        line-height: 0.8em;
+        overflow: hidden;
+        letter-spacing: -0.03em;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        white-space: nowrap;
+    }
+    .result-box-title {
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: -0.03em;
+        &:not(:first-child) {
+            margin-top: 12px;
+        }
+    }
+}
+
+@media screen and (min-width: 540px) {
+    .results-wrapper {
+        .results-boxes {
+            &.result-boxes-direction-horizontal {
+                text-align: center;
+                margin: 0 -15px;
+                width: calc(100% + 30px);
+                @include flex(row, wrap, space-between, flex-start);
+                .result-box {
+                    margin: 0 15px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .single-post.industrium_case {
+        .post-meta-footer:not(:first-child) {
+            margin-top: 60px;
+        }
+    }    
+    .results-wrapper {
+        @include flex(row, nowrap, flex-start, flex-start);
+        .results-content {
+            width: 100%;
+        }
+        .results-boxes {
+            &:not(:first-child) {
+                margin: 0;
+            }
+            &.result-boxes-direction-vertical {
+                @include box-sizing();
+                width: 45%;
+                padding: 75px 60px 100px 60px;
+                @include flex-shrink(0);
+                margin: 0 0 0 65px;
+            }
+            .result-boxes-decoration {
+                display: block;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 992px) { 
+    .results-wrapper {
+        .results-boxes {
+            &.result-boxes-direction-vertical {
+                width: 40%;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) { 
+    .results-wrapper {
+        .results-boxes {
+            &.result-boxes-direction-vertical {
+                width: 31%;
+            }
+        }
+    }
+}

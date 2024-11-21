@@ -1,0 +1,78 @@
+/********** Icon Elementor Widget **********/
+.elementor-widget-icon {
+    .elementor-icon-wrapper {
+        font-size: 0;
+        line-height: 1;
+    }
+    .elementor-icon {
+        svg {
+            @include transition(fill .3s);
+        }
+    }
+    &.pulse-animation-yes {
+        .elementor-icon {
+            z-index: 2;
+            position: relative;
+            &:before {
+                content: '';
+                position: absolute;
+                display: block;
+                width: 132%;
+                height: 132%;
+                left: -16%;
+                top: -16%;
+                right: initial;
+                @include border-radius(inherit);
+                @include box-sizing;
+                border: solid 1px #ffffff;
+                opacity: .3;
+                -webkit-animation: icon-pulse 2s infinite ease-in-out;
+                animation: icon-pulse 2s infinite ease-in-out;
+            }
+        }
+    }
+}
+
+@keyframes icon-pulse {
+    0% {
+        width: 132%;
+        height: 132%;
+        left: -16%;
+        top: -16%;
+        opacity: 0.3;
+    }
+    50% {
+        width: 164%;
+        height: 164%;
+        left: -32%;
+        top: -32%;
+        opacity: 0.1;
+    }
+    100% {
+        width: 132%;
+        height: 132%;
+        left: -16%;
+        top: -16%;
+        opacity: 0.3;
+    }
+}
+@-webkit-keyframes icon-pulse {
+    0% {
+        width: 132%;
+        height: 132%;
+        left: -16%;
+        top: -16%;
+    }
+    50% {
+        width: 164%;
+        height: 164%;
+        left: -32%;
+        top: -32%;
+    }
+    100% {
+        width: 132%;
+        height: 132%;
+        left: -16%;
+        top: -16%;
+    }
+}

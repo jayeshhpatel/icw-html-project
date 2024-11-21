@@ -1,0 +1,165 @@
+/********** WordPress Standard Calendar Widget **********/
+body .content-wrapper .widget_calendar,
+.widget_calendar,
+body .content-wrapper .wp-block-calendar,
+.wp-block-calendar {
+    @include box-sizing;
+    a {
+        text-decoration: none;
+    }
+    .wp-calendar-table {
+        width: 100%;
+        text-align: center;
+    }
+    .calendar_wrap {
+        padding: 61px 12px 19px;
+        position: relative;
+        &:not(:first-child) {
+            margin: 38px 0 0;
+        }
+    }
+    table {
+        width: 100%;
+        border: none;
+        border-collapse: collapse;
+        z-index: 2;
+        text-align: center;
+        position: relative;
+        margin: 0;
+        thead {
+            th {
+                font-size: 16px;
+                font-weight: 700;
+                background: none;
+                border: none !important;
+                padding: 1px !important;
+                text-align: center;
+            }
+        }
+        tbody {
+            td {
+                padding: 0 !important;
+                min-height: 32px;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                line-height: 32px;
+                font-size: 14px;
+                text-align: center;
+                border: none !important;
+                &#today {
+                    position: relative;
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        display: block;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        z-index: -1;
+                        border: 1px solid;
+                    }
+                }
+            }
+            a {
+                display: block;
+                position: relative;
+            }
+        }
+    }
+
+    caption {
+        font-size: 16px;
+        line-height: 28px;
+        font-weight: 700;
+        text-align: center;
+        @include box-sizing;
+        padding: 0 15.2857%;
+        position: absolute;
+        display: block;
+        top: -39px;
+        left: 0;
+        right: 0;
+        white-space: nowrap;
+    }
+    .wp-calendar-nav {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 0;
+        z-index: 3;
+        .wp-calendar-nav-prev,
+        .wp-calendar-nav-next {
+            font-size: 0;
+            line-height: 1;
+            width: 15.2857%;
+            height: 28px;
+            display: block;
+            position: absolute;
+            top: 23px;
+            text-align: center;
+            a {
+                display: block;
+                text-decoration: none;
+                opacity: 0.7;
+                @include transition(color .3s, opacity .3s);
+                &:before {
+                    font: 400 normal 8px/28px 'fontello';
+                }
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+        .wp-calendar-nav-prev {
+            left: 3px;
+            right: initial;
+            a {
+                &:before {
+                    content: '\e80d';
+                }
+            }
+        }
+        .wp-calendar-nav-next {
+            left: initial;
+            right: 3px;
+            a {
+                &:before {
+                    content: '\e824';
+                }
+            }
+        }
+    }
+}
+
+body .content-wrapper .wp-block-calendar,
+.wp-block-calendar {
+    padding: 61px 12px 19px;
+    position: relative;    
+    &:not(:first-child) {
+        margin: 38px 0 0;
+    }
+}
+.content-wrapper .wp-widget-group__inner-blocks {
+    .wp-block-calendar {
+        margin: 38px 0 0;
+    }
+}
+
+.slide-sidebar-wrapper {
+    .widget_calendar {
+        .calendar_wrap {
+            &:not(:first-child) {
+                margin: 1.1111em 0 0;
+            }
+        }
+    }
+    .wp-block-calendar {
+        margin: 0;
+        &:not(:first-child) {
+            margin: 1.1111em 0 0;
+        }
+    }
+}

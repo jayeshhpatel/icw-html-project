@@ -1,0 +1,64 @@
+/********** Button Elementor Widget **********/
+.elementor-widget-industrium_button {
+    .button-container {
+        position: relative;
+        z-index: 2;
+        line-height: 1;
+        font-size: 0;
+    }
+    .industrium-button {
+    	&.button-type-2 {
+    		background-image: none;
+            padding: 0;
+            border: 2px solid;
+            text-transform: none;
+            &:before {
+                content: '';
+                position: absolute;
+                height: 100%;
+                width: 55px;
+                right: 0;
+                top: 0;
+            }
+            &:after {
+                content: '\e839';
+                position: relative;
+                margin: 0;
+                @include transform(none);
+                width: 55px;
+                font-size: 17px;
+                font-weight: 400;
+                text-align: center;
+                flex-shrink: 0;
+                @include transition(transform .3s);
+            }
+            &:hover {
+                &:after {
+                    opacity: 1;
+                    @include transform(rotate(45deg));
+                }
+                .industrium-button-text {
+                    &:before {
+                        width: 100%;
+                    }
+                }
+            }
+            .industrium-button-text {
+	            position: relative;
+	            padding: 13px 28px 13px 38px;
+	            z-index: 1;
+	            width: 100%;
+	            &:before {
+	                content: '';
+	                position: absolute;
+	                width: 0;
+	                right: 0;
+	                top: 0;
+	                height: 100%;
+	                z-index: -1;
+	                @include transition(width .3s ease-out);
+	            }
+	        }
+    	}    	
+    }
+}

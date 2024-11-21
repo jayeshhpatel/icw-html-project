@@ -1,0 +1,74 @@
+/********** WooCommerce Product Filter by Attributes **********/
+.woocommerce .woocommerce-widget-layered-nav,
+.woocommerce.woocommerce-widget-layered-nav,
+.woocommerce-page .woocommerce-widget-layered-nav {
+    ul.woocommerce-widget-layered-nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li.woocommerce-widget-layered-nav-list__item {
+            padding: 0;
+            &:not(:first-child) {
+                margin: 6px 0 0;
+            }
+            &:before {
+                content: none;
+                display: none;
+            }
+            a {
+                font-weight: 600;
+                display: inline-block;
+                position: relative;
+                padding: 0 0 0 36px;
+                font-size: inherit;
+                &:before {
+                    content: '';
+                    width: 17px;
+                    height: 17px;
+                    @include box-sizing;
+                    @include border-radius(4px);
+                    display: inline-block !important;
+                    margin: 2px 18px 0 0;
+                    cursor: pointer;
+                    vertical-align: text-top;
+                    border-style: solid;
+                    border-width: 2px;
+                    outline: none !important;
+                    position: absolute;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    left: 0;
+                    right: initial;
+                    top: 5px;
+                    @include transition(background-color .3s);
+                }
+                &:after {
+                    @include transition(opacity .3s);
+                    opacity: 0;
+                    content: '\f00c';
+                    position: absolute;
+                    width: 14px;
+                    height: 13px;
+                    font: 700 normal 12px/14px 'Font Awesome 5 Free';
+                    text-align: center;
+                    display: block;
+                    z-index: 2;
+                    left: 2px;
+                    right: initial;
+                    top: 9px;
+                }
+            }
+            &.chosen {
+                a {
+                    &:before {
+                        content: '';
+                    }
+                    &:after {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}

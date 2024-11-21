@@ -1,0 +1,52 @@
+/********** Industrium Quote Widget **********/
+.widget_industrium_request_contacts_widget {
+    .footer & {
+        width: calc(100% - 30px) !important;
+        .quote-widget-wrapper {
+            padding-bottom: 31px;
+        }        
+    }    
+    .request_contacts-widget-row {
+        margin: 0 -10px;
+        @include flex(row, wrap, stretch, flex-end);
+    }
+    .request_contacts-widget-content {
+        @include box-sizing;
+        padding: 0 10px;
+        width: 100%;
+    }
+    .request_contacts-button {
+        margin-top: 20px;
+        @include flex(row, nowrap, stretch, center);
+        @include box-sizing;
+        padding: 0 10px;
+        width: 100%;
+    }
+    .request_contacts-description {
+        margin: 10px 0;
+    }
+    .request_contacts-title {        
+        line-height: 1.375em;
+        &:not(:last-child) {
+            margin-bottom: 7px;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .widget_industrium_request_contacts_widget {
+        .request_contacts-description {
+            margin: 0;
+        }
+    }
+    .footer .widget_industrium_request_contacts_widget {
+        .request_contacts-widget-content {
+            width: 66%
+        }
+        .request_contacts-button {
+            width: 34%;
+            margin-top: 0;
+            @include justify-content(flex-end);
+        }
+    }
+}

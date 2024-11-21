@@ -1,0 +1,752 @@
+/********** Projects Archive **********/
+.industrium-projects-listing-widget {
+    .owl-dots {
+         margin: 20px -20px 30px;
+        &.disabled {
+            display: none !important;
+        }
+    }
+    .industrium-heading.heading-with-pagination {
+        display: block !important;
+        &:not(:last-child) {
+            margin-bottom: 60px !important;
+        }
+        .industrium-heading-inner {
+            margin: 0 !important;
+            width: 100% !important;
+        }
+        .pagination_wrapper {
+            display: block;
+            font-size: 0;
+            line-height: 1;
+            &:not(:first-child) {
+                margin-top: 20px;
+            }
+            .industrium-button {
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+    }
+}
+.project-listing-wrapper {
+    margin: 0 -15px -60px;
+    &.isotope-trigger {
+        @include clearfix;
+    }
+    &.owl-carousel {
+        width: 100%;
+        margin: 0;
+    }
+
+    .project-item-wrapper {
+        margin: 0;
+        position: relative;
+        width: 100%;
+        padding: 0 15px 60px;
+        @include box-sizing;
+        &.slider-item {
+            padding: 0;
+        }
+        .project-item-link {
+            display: block;
+            position: relative;
+            text-decoration: none;
+            &:hover {
+                .post-more-button {
+                    margin-top: 25px;
+                }
+            }
+            .project-item-media {
+                display: block;
+                overflow: hidden;
+                position: relative;
+                font-size: 0;
+                line-height: 1;
+                &:before {
+                    content: '';
+                    position: absolute;
+                    display: block;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    z-index: 2;
+                }
+            }
+            img {
+                width: 100%;
+                position: relative;
+            }
+            .post-more-button {
+                margin-top: 0;
+                display: none;
+                overflow: hidden;
+                @include transition(margin-top .3s);
+            }
+        }
+        .project-item-content {
+            display: block;
+            &:not(:first-child) {
+                margin: 34px 0 0;
+            }
+        }
+        .post-title {
+            font-size: 20px;
+            line-height: 1.25em;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            display: block;
+        }
+        .project-item-categories {
+            font-size: 14px;
+            line-height: 1.5714em;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: block;
+            &:not(:first-child) {
+                margin: 7px 0 0;
+            }
+        }
+        .project-item-excerpt {
+            display: block;
+            &:not(:first-child) {
+                margin: 15px 0 0;
+            }
+        }
+    }
+
+    &.text-position-inside {
+        .project-item-wrapper {
+            .project-item-link {
+                &:hover {
+                    .post-title {
+                        &:before {
+                            @include transform(rotate(90deg));
+                        }
+                    }
+                    .project-item-content {
+                        &,
+                        &:not(:first-child) {
+                            bottom: 0;
+                            right: 0;
+                        }
+                    }
+                }
+                .project-item-media {
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                        background-color: #181818;
+                        opacity: .15;
+                        z-index: 2;
+                    }
+                }
+                .post-title {
+                    position: relative;
+                    padding: 0 30px 0 0;
+                    @include transition(color .3s);
+                    > span {
+                        display: block;
+                    }
+                    &:before {
+                        font-family: 'fontello';
+                        content: '\e839';
+                        font-size: 17px;
+                        height: 1em;
+                        width: 1em;
+                        line-height: 1em;
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                        margin: auto;
+                        -webkit-transition: transform 0.3s, color 0.3s;
+                        transition: transform 0.3s, color 0.3s;
+                    }
+                }
+            }            
+        }
+    }
+    &.project-masonry-listing,
+    &.project-grid-listing {
+        &.text-position-inside {
+            .project-item-wrapper {
+                .project-item-link {
+                    &:hover {                        
+                        .project-item-excerpt {
+                            &:not(:first-child) {
+                                margin: 15px 0 0;
+                            }
+                        }
+                    }
+                }
+                .project-item-excerpt {
+                    overflow: hidden;
+                    display: none;
+                    @include transition(margin .3s);
+                    &:not(:first-child) {
+                        margin: 0;
+                    }
+                }
+                .project-item-content {
+                    &,
+                    &:not(:first-child) {
+                        padding: 25px 37px 25px 37px;
+                        margin: 0;
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        bottom: 30px;
+                        z-index: 3;
+                        @include transition(right .3s, bottom .3s, background-color .3s);
+                    }
+                }
+            }
+        }
+    }
+    &.project-masonry-listing {
+        .grid-sizer {
+            width: 25%;
+        }
+    }
+    &.project-slider-listing {
+        .owl-stage-outer {
+            overflow: visible;            
+        }
+        .project-item-button {
+            @include inline-flex(flex-start, stretch);
+            @include transition(transform .3s);
+            &:not(:first-child) {
+                margin-top: 40px;
+            }
+            &:before {
+                content: '\e82d';
+                font-family: 'fontello';
+                font-size: 28px;
+                line-height: 1; 
+            }
+        }        
+        .owl-stage-outer {
+            .owl-stage-bg {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                // opacity: 0;
+                // @include transition(all .3s ease-out);
+                // z-index: -1;
+                // &:last-child {
+                //     opacity: 1;
+                //     z-index: 0;
+                // }
+                @include transition(opacity .2s ease-out);
+            }
+            .owl-item {
+                &:not(.active) {
+                    & + .owl-item.active {
+                        .slider-item {
+                            &:before {
+                                background-color: transparent;
+                            }
+                        }
+                    }
+                }
+                &.active {
+                    &:first-child {
+                        .slider-item {
+                            &:before {
+                                background-color: transparent;
+                            }
+                        }
+                    }
+                    & + .owl-item:not(.active) {
+                        .slider-item {
+                            &:before {
+                                background-color: transparent;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .slider-item {
+            border-top: 2px solid;
+            &:before {
+                content: '';
+                position: absolute;
+                height: 100%;
+                width: 2px;
+                left: -1px;
+                top: 0;
+            }
+        }
+        &.view-type-1 {
+            .project-item-link {
+                height: 645px;
+                @include transition(transform .3s);
+                &:hover {
+                    .project-item-button {
+                        @include transform(rotate(-45deg));
+                    }
+                    .project-item-media {
+                        opacity: 1;
+                        clip-path: inset(0 0 0 0);
+                        -webkit-clip-path: inset(0 0 0 0);
+                    }
+                    .project-item-content {
+                        @include transform(translateY(15%));
+                    }
+                }
+                .project-item-media {
+                    position: absolute;
+                    min-width: 100%;
+                    height: 113%;
+                    left: -1px;
+                    right: -1px;
+                    top: -35px;
+                    opacity: 0;
+                    clip-path: inset(0 100% 0 0);
+                    -webkit-clip-path: inset(0 100% 0 0);
+                    @include transition(all .3s ease-out);
+                    pointer-events: none;
+                    z-index: 1;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                .post-title {
+                    padding: 0;
+                    @include transition(color .3s);
+                    > span {
+                        display: block;
+                    }
+                    &:before {
+                        display: none;
+                    }
+                }
+                .project-item-excerpt {
+                    @include transition(color .3s);
+                    &:not(:first-child) {
+                        margin: 20px 0 0;
+                    }
+                }
+            }
+        }        
+        .project-item-content {
+            &,
+            &:not(:first-child) {
+                padding: 0 48px 65px 70px;
+                position: absolute;
+                margin: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 3;
+                @include transition(transform .3s);
+            }
+        }
+        &.view-type-2 {
+            .slider-item {
+                border-top: none;
+                &:before {
+                    content: '';
+                    position: absolute;
+                    height: 100%;
+                    width: 2px;
+                    left: -1px;
+                    top: 0;
+                }
+                .project-item-link {
+                    height: 650px;  
+                    &:hover {
+                        .project-item-content {
+                            clip-path: inset(0 0 0 0);
+                            -webkit-clip-path: inset(0 0 0 0);
+                            @include transition(all .3s 0s ease-out);
+                        }
+                        .button-container {
+                            @include transform(rotateX(0));
+                            visibility: visible;
+                            @include transition(all .3s .3s ease-out);
+                        }
+                    }
+                }
+                .project-item-media {
+                    display: none;
+                }
+                .project-item-content {
+                    left: -1px;
+                    right: -1px;
+                    padding: 35px 30px 35px;
+                    clip-path: inset(100% 0 0 0);
+                    -webkit-clip-path: inset(100% 0 0 0);
+                    @include transition(all .3s .4s ease-out);
+                }
+                .project-item-content-alt {
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    padding: 0 20px 20px;
+                    @include flex(row, nowrap, space-between, flex-end);                    
+                }
+                .post-title {
+                    &:not(:first-child) {
+                        margin: 25px 0 0;
+                    }
+                }
+                .project-item-excerpt {
+                    &:not(:first-child) {
+                        margin: 25px 0 0;
+                    }
+                }
+                .slide-counter-big {
+                    font-weight: 700;
+                    line-height: 0.9em;
+                    font-size: 70px;                        
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
+                .button-container {
+                    position: absolute;
+                    top: 100%;
+                    left: -1px;
+                    right: -1px;
+                    padding: 26px 40px 23px 40px;
+                    @include transform-origin(0 0);
+                    @include transform(translateY(-100%));
+                    visibility: hidden;
+                    @include transition(all .3s .0s ease-out);
+                    .industrium-button {
+                        background-image: none;
+                        white-space: nowrap;
+                        &:hover {
+                            &:after {
+                                content: '\e82d';
+                                opacity: 1;
+                            }
+                        }                        
+                    }
+                }
+            }
+        }
+    }
+}
+
+.elementor-widget-industrium_projects_listing {
+    &.title-alignment-left {
+        .heading-with-pagination {
+            .pagination_wrapper {
+                .owl-dots {
+                    text-align: left;
+                }
+            }
+        }
+    }
+    &.title-alignment-right {
+        .heading-with-pagination {
+            .pagination_wrapper {
+                .owl-dots {
+                    text-align: right;
+                }
+            }
+        }
+    }
+    &.title-alignment-center {
+        .heading-with-pagination {
+            .pagination_wrapper {
+                .owl-dots {
+                    text-align: center;
+                }
+            }
+        }
+    }    
+}
+.industrium-projects-listing-widget {
+    .industrium-heading.heading-with-pagination {
+        .pagination_wrapper {
+            .owl-dots {
+                display: block;
+                margin: 30px -20px 0 -20px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 576px) {
+    .project-listing-wrapper {
+        // Grid Gallery
+        &.project-grid-listing {
+            @include flex(row, wrap, flex-start, flex-start);
+            &.columns-2,
+            &.columns-3,
+            &.columns-4,
+            &.columns-5,
+            &.columns-6 {
+                .project-item-wrapper {
+                    width: 50%;
+                }
+            }
+        }
+
+        // Masonry Gallery
+        &.project-masonry-listing {
+            &.columns-2,
+            &.columns-3,
+            &.columns-4,
+            &.columns-5,
+            &.columns-6 {
+                .project-item-wrapper {
+                    width: 50%;
+                }
+            }
+        }
+    }
+    .industrium-projects-listing-widget {
+        .industrium-heading.heading-with-pagination {
+            .pagination_wrapper {
+                &:not(:first-child) {
+                    margin-top: 40px;
+                }
+                .owl-dots {
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin: -10px -20px 0 50px;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 992px) {
+    .project-listing-wrapper {
+        // Grid Gallery
+        &.project-grid-listing {
+            &.text-position-inside {
+                .project-item-wrapper {
+                    .project-item-content {
+                        &,
+                        &:not(:first-child) {
+                            position: relative;
+                            bottom: initial;
+                        }                            
+                    }
+                }
+            }            
+        }
+    }
+}
+@media only screen and (min-width: 768px) {
+    .project-listing-wrapper {     
+        // Grid Gallery
+        &.project-grid-listing {            
+            &.columns-3,
+            &.columns-6 {
+                .project-item-wrapper {
+                    width: 33.3333%;
+                }
+            }
+            &.columns-4,
+            &.columns-5 {
+                .project-item-wrapper {
+                    width: 25%;
+                }
+            }
+        }
+        // Masonry Gallery
+        &.project-masonry-listing {
+            &.columns-3,
+            &.columns-6 {
+                .project-item-wrapper {
+                    width: 33.3333%;
+                }
+            }
+            &.columns-4,
+            &.columns-5 {
+                .project-item-wrapper {
+                    width: 25%;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .project-listing-wrapper {
+        &.project-slider-listing {
+            .owl-stage-bg {
+                display: none;
+            }
+            &.view-type-2 {
+                .slider-item {
+                	&:before {
+                		display: none;
+                	}
+                    .slide-counter-big {
+                        font-size: 42px;
+                    }
+                    .post-title:not(:first-child) {
+                        margin: 10px 0 0;
+                    }
+                    .project-item-excerpt:not(:first-child) {
+                        margin: 15px 0 0;
+                    }
+                    .project-item-link {
+                        @include flex(column, nowrap, flex-end, stretch);
+                        .project-item-content {
+                        	left: initial;
+                        	right: initial;
+                            position: relative;
+                            border-left: 1px solid transparent;
+                            clip-path: inset(0 0 0 0);
+                            -webkit-clip-path: inset(0 0 0 0);
+                        }
+                        .project-item-content-alt {
+                            display: none;
+                        }
+                        .button-container {
+                            position: relative;
+                            left: initial;
+                            right: initial;
+                            border-left: 1px solid transparent;
+                            padding: 11px 30px 11px 30px;
+                            @include transform(none);
+                            visibility: visible;
+                            top: initial;
+                        }
+                        .project-item-media {
+                            display: block;
+                            flex: 1 auto;
+                            img {
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                                left: 0;
+                                top: 0;
+                                object-fit: cover;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .elementor-widget-industrium_projects_listing {
+        &,   
+        &.title-alignment-left,
+        &.title-alignment-right,
+        &.title-alignment-center {
+            .heading-with-pagination {
+                .pagination_wrapper {
+                    .owl-dots {
+                        margin: -10px -20px 0 -10px !important;
+                        &:not(:first-child) {
+                            margin-left: 70px !important;
+                        }
+                    }
+                }
+            }
+        }    
+    }
+    .industrium-projects-listing-widget {
+        .industrium-heading.heading-with-pagination {
+            .pagination_wrapper {
+                .owl-dots {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+    .project-listing-wrapper {
+        // Grid Gallery
+        &.project-grid-listing {
+            &.columns-5 {
+                .project-item-wrapper {
+                    width: 20%;
+                }
+            }
+            &.columns-6 {
+                .project-item-wrapper {
+                    width: 16.6667%;
+                }
+            }
+        }
+        // Masonry Gallery
+        &.project-masonry-listing {
+            &.columns-5 {
+                .project-item-wrapper {
+                    width: 20%;
+                }
+            }
+            &.columns-6 {
+                .project-item-wrapper {
+                    width: 16.6667%;
+                }
+            }
+        }
+        &.project-grid-listing,
+        &.project-masonry-listing {
+            &.text-position-inside {
+                .project-item-wrapper {
+                    .project-item-content {
+                        &,
+                        &:not(:first-child) {
+                            left: 0;
+                            right: 24.6%;
+                            bottom: 50px;
+                        }
+                    }
+                }
+            }
+        }        
+    }    
+    .project-listing-wrapper.project-slider-listing.view-type-2 .slider-item {
+        .project-item-link {
+            height: 817px;
+        }
+    }
+}
+@media only screen and (min-width: 1200px) {
+    .project-listing-wrapper {
+        &.project-slider-listing {
+            &.view-type-1 {
+                .project-item-link {
+                    &:hover {
+                        .project-item-content {
+                            @include transform(translateY(20%));
+                        }
+                    }
+                }
+            }            
+        }
+    }
+    .project-listing-wrapper {
+        &.project-slider-listing {
+            &.view-type-2 {
+                .slider-item {
+                    .slide-counter-big {
+                        font-size: 100px;
+                    }
+                    .project-item-content-alt {
+                        padding: 0 60px 68px;
+                    }
+                    .project-item-content {
+                        padding: 55px 65px 65px;
+                    }
+                }
+            }
+        }
+    }
+}

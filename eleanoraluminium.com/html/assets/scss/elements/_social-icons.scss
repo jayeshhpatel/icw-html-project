@@ -1,0 +1,29 @@
+/********** Social Icons Elementor Widget **********/
+.elementor-widget-social-icons {
+    .elementor-grid-item {
+        &:not(:first-child) {
+            margin-left: -1px;
+        }
+        .elementor-social-icon {
+            position: relative;
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 0;
+                @include transition(height .3s);
+                z-index: -1;
+            }
+            &:hover {
+                &:before {
+                    height: 100%;
+                }
+            }
+            i {
+                @include transition(color .3s);
+            }
+        }
+    }
+}

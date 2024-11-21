@@ -1,0 +1,215 @@
+/* ---------- Header Minicart ---------- */
+.mini-cart {
+    width: 22px;
+    height: 23px;
+    position: relative;
+    .mini-cart-trigger {
+        width: 22px;
+        height: 23px;
+        display: block;
+        text-align: center;
+        position: relative;
+        z-index: 3;
+    }
+    .mini-cart-count {
+        &:before {
+            content: '\e826';
+            font: 400 normal 21px/24px 'fontello';
+            vertical-align: top;
+        }
+        & > span {
+            position: absolute;
+            top: -3px;
+            right: -8px;
+            left: initial;
+            min-width: 10px;
+            min-height: 10px;
+            @include border-radius(50%);
+            font-size: 0;
+            line-height: 1;
+            border-width: 2px;
+            border-style: solid;
+        }
+    }
+    .mini-cart-panel {
+        position: absolute;
+        right: -40px;
+        top: -40px;
+        width: 501px;
+        border: 2px solid;
+        @include transition(opacity .3s, visibility .3s);
+        opacity: 0 !important;
+        pointer-events: none;
+        z-index: 2;
+        padding: 104px 47px 75px 50px;
+        overflow: hidden;
+        visibility: hidden;
+        white-space: initial;
+        &.empty {
+            width: 270px;
+            padding-bottom: 50px;
+        }
+        &:before {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 99px;
+            height: 103px;
+            right: 0;
+            top: 0;
+            left: initial;
+            border-left: 1px solid;
+            border-bottom: 1px solid;
+        }
+        .woocommerce-mini-cart__empty-message {
+            margin: 0;
+            font-size: 0.8888em;
+        }
+        .mini-cart-title {
+            margin: 0 44px 21px 0;
+            letter-spacing: -0.03em;
+            word-spacing: 1px;
+        }
+        .cart_list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: block;
+            margin: 0 -47px 0 -50px;
+            &:not(:first-child) {
+                padding: 0;
+            }
+            li {
+                padding: 40px 47px 40px 50px;
+                @include flex(row, nowrap, flex-start, center);
+                border-bottom: 1px solid;
+                margin: 0 !important;
+                &:first-child {
+                    padding-top: 30px;
+                }
+                &:before {
+                    display: none;
+                    content: none;
+                }
+                a {
+                    font-weight: inherit;
+                    display: inline;
+                }
+                .thumbnail-woocommerce_wrapper {
+                    @include flex-shrink(0);
+                    margin: 0 35px 0 0;
+                    position: static;
+                    order: 1;
+                    img {
+                        display: block;
+                        position: relative;
+                        margin: 0;
+                        float: none;
+                        width: 80px;
+                        height: auto;
+                        @include border-radius(0);
+                    }
+                }
+                .content-woocommerce-wrapper {
+                    display: block;
+                    width: 100%;
+                    order: 2;
+                    h6 {
+                        font-weight: 600;
+                        margin: 0;
+                        line-height: 1.39em;
+                        letter-spacing: 0;
+                    }
+                    .quantity {
+                        display: block;
+                        font-size: 14px;
+                        font-weight: 600;
+                        line-height: 20px;
+                        text-transform: uppercase;
+                    }
+                    .product-rating-wrapper {
+                        &:not(:first-child) {
+                            margin-top: 3px;
+                        }
+                        .star-rating {
+                            font-size: 13px;
+                        }
+                    }
+                }
+                .subtotal {
+                    order: 3;
+                    width: 40%;
+                    font-weight: 600;
+                    font-size: 14px;
+                    margin: 25px 0 0 20px;
+                }
+                a.remove_from_cart_button {
+                    position: static;
+                    font-size: 25px;
+                    font-weight: 400;
+                    line-height: 1;
+                    margin: 20px 0 0 20px;
+                    background: none;
+                    @include flex-shrink(0);
+                    order: 4;
+                    color: #e33f1e !important;
+                }
+            }
+        }
+        .total {
+            margin: 35px 0 0;
+            border-width: 0;
+            font-weight: 500;
+            strong {
+                font-weight: inherit;
+            }
+            .amount {
+                margin-left: 5px;
+            }
+        }
+        .woocommerce-mini-cart-buttons {
+            position: relative;
+            z-index: 2;
+            padding: 25px 0 0;
+            margin: 0 -5px;
+            font-size: 0;
+            line-height: 1;
+            @include flex(row, wrap, space-between, flex-start);
+            &:before,
+            &:after {
+                content: none;
+                display: none;
+            }
+            a.button {
+                margin: 15px 5px 0;
+                @include flex-shrink(0);
+            }
+        }
+    }
+    &:hover {
+        .mini-cart-trigger {
+            @include border-radius(0);
+        }
+        .mini-cart-panel {
+            opacity: 1 !important;
+            pointer-events: initial;
+            visibility: visible;
+        }
+    }
+}
+.header-mobile {
+    .mini-cart {
+        width: 42px;
+        height: 42px;
+        .mini-cart-trigger {
+            width: 42px;
+            height: 42px;
+            background: none;
+        }
+        .mini-cart-count {
+            &:before {
+                line-height: 42px;
+            }
+        }
+    }
+}

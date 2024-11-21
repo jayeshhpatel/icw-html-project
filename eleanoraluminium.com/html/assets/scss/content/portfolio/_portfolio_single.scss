@@ -1,0 +1,69 @@
+/********** Single Portfolio **********/
+.single-portfolio {
+    @include flex(column, nowrap, flex-start, flex-start);
+    margin: 0 -20px;
+    .portfolio-post-gallery {
+        width: 100%;
+        order: 2;
+        @include box-sizing;
+        padding: 0 20px;
+        .single-post-gallery-image-item {
+            &:not(:first-child) {
+                margin: 40px 0 0;
+            }
+            img {
+                position: relative;
+                width: 100%;
+            }
+        }
+    }
+    .portfolio-post-content {
+        width: 100%;
+        order: 1;
+        padding: 0 20px;
+        @include box-sizing;
+        &:not(:first-child) {
+            margin-bottom: 30px;
+        }
+        .portfolio-post-title {
+            //margin-bottom: 0.65em;
+            -ms-word-wrap: break-word;
+            word-wrap: break-word;
+        }
+        .portfolio-post-meta {
+            &:not(:first-child) {
+                margin-top: 37px;
+            }
+            .portfolio-post-meta-label {
+                font-weight: 600;
+            }
+        }
+        .portfolio-post-meta-item {
+            &:not(:first-child) {
+                margin-top: 4px;
+            }
+            .wrapper-socials {
+                margin: -3px 0 0 3px;
+                display: inline-block;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .single-portfolio {
+        @include flex-direction(row);
+        .portfolio-post-gallery {
+            width: 50%;
+            order: 1;
+        }
+        .portfolio-post-content {
+            width: 50%;
+            order: 2;
+            &:not(:first-child) {
+                margin-top: -8px;
+                margin-bottom: 0;
+            }
+        }
+    }
+}

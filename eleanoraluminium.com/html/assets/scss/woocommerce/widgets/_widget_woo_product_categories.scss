@@ -1,0 +1,120 @@
+/********** WooCommerce Product Categories Widget **********/
+.widget_product_categories {
+    ul {
+        list-style: none;
+        padding: 0;
+        position: relative;
+        margin: 0;
+        li {
+            position: relative;
+            font-weight: 500;
+            padding: 0;
+            @include transition(color .3s);
+            &:not(:first-child) {
+                margin: 6px 0 0;
+            }
+            &:before {
+                content: none;
+                display: none;
+            }
+            &.cat-item-hierarchical {
+                margin-right: 20px;
+                margin-left: 0;
+            }
+            .widget-archive-trigger {
+                display: block;
+                position: absolute;
+                z-index: 1;
+                top: 0;
+                right: -20px;
+                left: auto;
+                text-align: right;
+                cursor: pointer;
+                font: 400 normal 12px/30px 'fontello';
+                width: 20px;
+                height: 30px;
+                @include transition(all .3s);
+                &:before {
+                    content: '\e824';
+                }
+                &.active {
+                    @include transform(rotate(90deg) translate(-6px, -4px));
+                    -webkit-transform-origin: center center;
+                    -moz-transform-origin: center center;
+                    -ms-transform-origin: center center;
+                    -o-transform-origin: center center;
+                    transform-origin: center center;
+                }
+            }
+            .post-count {
+                @include flex-shrink(0);
+                margin: 0 0 0 20px;
+            }
+            > ul {
+                margin: 0 -20px 0 0;
+                padding: 6px 0 0;
+            }
+        }
+        > li {
+            padding: 0 0 0 24px;
+            &:before {
+                content: '';
+                position: absolute;
+                display: block;
+                width: 5px;
+                height: 5px;
+                @include border-radius(50%);
+                @include transition(background-color .3s);
+                left: 1px;
+                right: initial;
+                top: 13px;
+            }
+        }
+    }
+}
+.wc-block-product-categories {
+    &.is-list {
+        .wc-block-product-categories-list {
+            font-weight: 500;
+            .wc-block-product-categories-list-item-count {
+                @include transition(color .3s);
+            }
+        }
+        .wc-block-product-categories-list--has-images {
+            .wc-block-product-categories-list-item {
+                padding: 0;
+                margin: 0 0 0 94px;
+                &:not(:first-child) {
+                    margin-top: 6px;
+                }
+                &:before {
+                    content: none;
+                    display: none;
+                }
+                .wc-block-product-categories-list-item__image {
+                    max-width: 70px;
+                    @include border-radius(3px);
+                    overflow: hidden;
+                    margin: 0 24px 0 -94px;
+                }
+            }
+        }
+    }
+    button.wc-block-product-categories__button {
+        margin: 0 0 0 10px;
+        padding: 0;
+        height: 50px;
+        min-width: 50px;
+        &:after {
+            width: 304%;
+            left: -180%;
+        }
+        svg {
+            width: 16px;
+            position: relative;
+            left: 1px;
+            top: 2px;
+            right: initial;
+        }
+    }
+}

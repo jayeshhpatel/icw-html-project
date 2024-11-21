@@ -1,0 +1,76 @@
+/********** WC Product Category Elementor Widget **********/
+.product-category-widget {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+    &:before {
+        content: '';
+        position: absolute;
+        display: block;
+        z-index: 1;
+        border-width: 1px;
+        border-style: solid;
+        left: 50%;
+        right: initial;
+        top: 50%;
+        @include transform(translate(-50%, -50%));
+        @include transition(all .3s ease-in-out);
+        width: calc(100% - 34px);
+        height: calc(100% - 34px);
+    }
+    .product-category-image {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        left: 50%;
+        right: initial;
+        top: 50%;
+        @include transform(translate(-50%, -50%));
+        -o-object-fit: cover;
+        object-fit: cover;
+        z-index: 0;
+        @include transition(all .3s ease-out);
+    }
+    .product-category-header {
+        display: block;
+        width: 67%;
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 500;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        right: initial;
+        @include transform(translate(-50%, -50%));
+        z-index: 2;
+        text-align: center;
+    }
+    .product-category-title {
+        position: relative;
+        display: block;
+        padding: 6.4626% 30px;
+        margin: 0;
+        @include transition(all .3s ease-out);
+    }
+    &:hover {
+        .product-category-image {
+            width: 108%;
+            height: 108%;
+        }
+        .product-category-title {
+            padding: 10% 20px;
+            margin: 0 10px;
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .product-category-widget {
+        .product-category-header {
+            font-size: 20px;
+            line-height: 30px;
+        }
+    }
+}

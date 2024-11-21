@@ -1,0 +1,101 @@
+/********** WordPress Standard RSS Widget **********/
+.widget_rss {
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+            padding: 0;
+            &:before {
+                content: none;
+                display: none;
+            }
+            &:not(:first-child) {
+                margin-top: 27px;
+            }
+        }
+        a.rsswidget {
+            font-weight: 500;
+            line-height: 1.6875em;
+        }
+    }
+    .rss-date {
+        display: block;
+        font-size: 87.5%;
+        line-height: 1.5em;
+        font-weight: 600;
+        margin: 6px 0 0;
+        letter-spacing: -0.02em;
+    }
+    .rssSummary {
+        margin: 13px 0 0;
+        font-size: 87.5%;
+        line-height: 1.6em;
+    }
+    cite {
+        display: block;
+        margin: 5px 0 0;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 87.5%;
+    }
+}
+
+body {
+    .content-wrapper {
+        .wp-block-rss {
+            margin: 0 0 -27px;
+            padding: 0;
+            &:not(:last-child) {
+                margin: 0;
+            }
+            li.wp-block-rss__item {
+                @include flex(column, nowrap, flex-start, flex-start);
+                margin-bottom: 27px;
+                padding: 0;
+                &:before {
+                    content: none;
+                    display: none;
+                }
+            }
+            &.is-grid {
+                margin: 0 -1em -27px 0;
+                padding: 0;
+                &:not(:last-child) {
+                    margin: 0 -1em 0 0;
+                }
+            }
+            .wp-block-rss__item-title {
+                display: block;
+                font-size: 18px;
+                line-height: 1.3333em;
+                font-weight: 700;
+                order: 0;
+            }
+            .wp-block-rss__item-publish-date {
+                order: 1;
+                display: block;
+                font-size: 75%;
+                line-height: 1.5em;
+                font-weight: 600;
+                text-transform: uppercase;
+                margin: 3px 0 0;
+                letter-spacing: -0.02em;
+            }
+            .wp-block-rss__item-author {
+                order: 3;
+                display: block;
+                margin: 5px 0 0;
+                font-size: inherit;
+                font-style: normal;
+                font-weight: 600;
+            }
+            .wp-block-rss__item-excerpt {
+                order: 2;
+                font-size: 15px;
+                line-height: 1.6667em;
+                margin: 5px 0 0;
+            }
+        }
+    }
+}

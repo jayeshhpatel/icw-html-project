@@ -1,0 +1,119 @@
+/********** WooCommerce Product Gallery **********/
+.single-product.woocommerce {
+    div.product {
+        .woocommerce-product-gallery {
+            @include flex(column, nowrap, flex-start, flex-start);
+            .flex-control-nav {
+                margin: 5px 0 0;
+                @include box-sizing;
+                position: relative;
+                &.flex-control-thumbs {
+                    li {
+                        width: 25%;
+                        padding: 5px 5px;
+                        @include box-sizing;
+                        &:before {
+                        	content: '';
+                        	position: absolute;
+                        	top: 5px;
+                        	left: 5px;
+                        	bottom: 5px;
+                        	right: 5px;
+                        	border: 1px solid transparent;
+                        	@include transition(border-color .3s);
+                        	z-index: 1;
+                        	pointer-events: none;
+                        }
+                        img {
+                            opacity: 1;
+                            position: relative;
+                            @include transition(opacity .3s);
+                        }
+                    }
+                }
+            }
+            .attachment-woocommerce_flash {
+                position: absolute;
+                left: 0;
+                right: initial;
+                top: 0;
+                z-index: 3;
+                margin: 0 -5px;
+                .flash-item {
+                    display: block;
+                    height: 34px;
+                    font-size: 14px;
+                    line-height: 34px;
+                    font-weight: 500;
+                    text-align: center;
+                    padding: 0 10px 0 13px;
+                    margin: 0 5px 10px;
+                    @include box-sizing;
+                    &.new {
+                        background-color: #00ddac;
+                        color: #ffffff;
+                    }
+                }
+            }
+            > .woocommerce-product-gallery__wrapper,
+            .flex-viewport {
+                width: 100%;
+                display: block;
+                position: relative;
+                overflow: hidden;
+                .woocommerce-product-gallery__image {
+                    position: relative;
+                    a {
+                        display: block;
+                        position: relative;
+                        height: 0;
+                        padding: 87.65% 0 0;
+                        z-index: 2;
+                    }
+                    img {
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                        width: 100%;
+                        height: 100%;
+                        -webkit-object-fit: cover;
+                        object-fit: cover;
+                    }
+                }
+            }
+            .flex-viewport {
+                max-height: 768px;
+                a {
+                    max-width: 768px;
+                }
+                .woocommerce-product-gallery__image {
+                    img {
+                        max-width: 768px;
+                        max-height: 768px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .single-product.woocommerce {
+        div.product {
+            .woocommerce-product-gallery {
+
+                .flex-control-nav {
+                    float: none;
+                    @include flex-shrink(0);
+                    &.flex-control-thumbs {
+                        li {
+                            width: auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

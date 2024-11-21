@@ -1,0 +1,242 @@
+/********** WooCommerce Reviews **********/
+.woocommerce {
+    #reviews {
+        #comments {
+            ol.commentlist {
+                margin: 30px 0 0 0;
+                li.review {
+                    padding: 0 0 25px;                    
+                    margin: 0;
+                    font-weight: 400;
+                    color: inherit;
+                    &.depth-1 {
+                        border-bottom-style: solid;
+                        border-bottom-width: 1px;
+                        &:last-child {
+                            border-bottom-width: 2px;
+                        }
+                    }
+                    &:not(:first-child) {
+                        margin-top: 50px;
+                    }
+                    .comment_container {
+                        display: block;
+                        .comment-avatar {
+                            @include flex-shrink(0);
+                            margin: 0 15px 0 0;
+                            float: left;
+                            .avatar {
+                                width: 45px;
+                                height: auto;
+                                position: relative;
+                                @include border-radius(50%);
+                                padding: 0;
+                                border: none;
+                            }
+                        }
+                        .comment-text {
+                            width: 100%;
+                            margin: 0;
+                            padding: 0;
+                            border: none;
+                        }
+                        .comment-meta {
+                            display: block;
+                            margin-left: 60px;
+                            margin-right: 0;
+                            .star-rating {
+                                margin: 0;
+                                float: none;
+                            }
+                        }
+                        .woocommerce-review__author {
+                            font-size: 18px;
+                            line-height: 30px;
+                            font-weight: 700;
+                            letter-spacing: -0.03em;
+                            &:not(:first-child) {
+                                margin: 7px 0 0;
+                            }
+                        }
+                        .comment-date {
+                            font-size: 14px;
+                            line-height: 1.4286em;
+                            font-weight: 500;
+                            &:not(:first-child) {
+                                margin-top: 1px;
+                            }
+                        }
+                        .description {
+                            margin: 0;
+                            &:not(:first-child) {
+                                margin: 10px 0 0;
+                            }
+                            p {
+                                margin: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #comment {
+            height: 180px;
+        }
+    }
+    .comment-reply-title {
+        display: block;
+        margin: 0 0 10px;
+    }
+    #review_form_wrapper {
+        &:not(:first-child) {
+            margin: 30px 0 0;
+        }
+    }
+    #review_form {
+        #respond {
+            p.comment-notes {
+                margin-bottom: 5px;
+            }
+            p.comment-form-cookies-consent {
+                margin: 26px 0;
+                clear: both;
+            }
+            .form-fields {
+                .form-field.comment-form-rating {
+                    margin: 10px 5px 20px;
+                }
+                .comment-reply-title + .form-field.comment-form-rating {
+                    margin: -3px 5px 20px;
+                }
+                .form-cookies {
+                    font-size: 16px;
+                    margin-top: 8px;
+                    input[type="checkbox"] {
+                        margin-right: 7px;
+                    }
+                }
+            }
+            p.stars {
+                margin: 0;
+                font-size: 0;
+                line-height: 1;
+                span {
+                    line-height: 1em;
+                }
+                a {
+                    font-size: 15px;
+                    margin: 0;
+                    &:before {
+                        content: '\e829';
+                        font: 400 normal 15px/1 'Fontello';
+                        //opacity: .4;
+                    }
+                    &:hover~a:before {
+                        //opacity: .4;
+                    }
+                    &.active:before {
+                        color: #ffa16a;
+                    }
+                }
+                &:hover {
+                    a {
+                        &:before,
+                        &.active:before {
+                            color: #ffa16a;
+                        }
+                    }
+                }
+                &.selected {
+                    a {
+                        &:not(.active):before {
+                            color: #ffa16a;
+                            //opacity: 1;
+                        }
+                        &.active~a:before {
+                            //opacity: .4;
+                        }
+                    }
+                }
+            }
+            .submit {
+                min-width: 101px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 576px) {
+    .woocommerce {
+        #reviews {
+            #comments {
+                ol.commentlist {
+                    li.review {
+                        .comment_container {
+                            @include flex(row, nowrap, flex-start, flex-start);
+                            .comment-avatar {
+                                margin: 0 30px 0 0;
+                                .avatar {
+                                    width: 90px;
+                                }
+                            }
+                            .description {
+                                margin: 0;
+                            }
+                            .comment-meta {
+                                margin: -2px 0 0;
+                            }
+                            .comment-date {
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+            #review_form {
+                #respond {
+                    p.comment-form-cookies-consent {
+                        margin: 26px 0;
+                        clear: both;
+                    }
+                    .form-fields {
+                        .form-name,
+                        .form-email {
+                            width: calc(50% - 10px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .woocommerce {
+        #review_form_wrapper {
+            &:not(:first-child) {
+                margin: 60px 0 0;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .woocommerce {
+        #review_form {
+            #respond {
+                textarea {
+                    height: 165px;
+                }
+            }
+        }
+        #reviews {
+            #comments {
+                ol.commentlist {
+                    margin: 65px 0 0 0;
+                }
+            }
+
+        }
+    }
+}

@@ -1,0 +1,90 @@
+/********** WordPress Standard Page Widget **********/
+.widget_pages {
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+            position: relative;
+            font-weight: 700;
+            padding: 0 0 0 1.3333em;
+            letter-spacing: -0.03em;
+            @include transition(all .3s);
+            &:before {
+                display: block;
+                left: 0;
+                top: 0.15em;
+                font-family: 'fontello';
+                content: '\e82d';
+                font-size: 55.5555%;
+                font-weight: 400;
+                line-height: inherit;
+                background: none;
+                opacity: 0;
+                @include transition(color .3s, opacity .3s);
+            }
+            &:hover {
+                &:before {
+                    opacity: 1;
+                }
+            }
+            &:not(:first-child) {
+                margin: 0.83333em 0 0;
+            }
+            .footer-widgets & {
+                &:not(:first-child) {
+                    margin: 0.5em 0 0;
+                }
+            }
+            .widget-archive-trigger {
+                display: block;
+                position: absolute;
+                z-index: 1;
+                top: 0;
+                right: -20px;
+                left: auto;
+                text-align: right;
+                cursor: pointer;
+                font: 400 normal 12px/30px 'fontello';
+                width: 20px;
+                height: 30px;
+                @include transition(all .3s);
+                &:before {
+                    content: '\e824';
+                }
+                &.active {
+                    @include transform(rotate(90deg) translate(-6px, -4px));
+                    -webkit-transform-origin: center center;
+                    -moz-transform-origin: center center;
+                    -ms-transform-origin: center center;
+                    -o-transform-origin: center center;
+                    transform-origin: center center;
+                }
+            }
+            > ul {
+                margin: 0 -20px 0 0;
+                padding: 6px 0 0;
+                list-style: none;
+                position: relative;
+            }
+        }
+    }
+}
+
+.widget_pages .widget-wrapper > ul {
+    > li {
+        padding: 0;        
+        &:hover {
+            padding: 0 0 0 1.3333em;
+            &:before {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.widget_pages {
+    &:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+}

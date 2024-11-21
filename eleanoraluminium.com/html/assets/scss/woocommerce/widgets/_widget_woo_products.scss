@@ -1,0 +1,210 @@
+/********** WooCommerce Products Widget **********/
+.woocommerce,
+.woocommerce-page {
+    ul.product_list_widget {
+        padding: 0;
+        &:not(:first-child) {
+            padding: 10px 0 0;
+        }
+        li {
+            @include flex(column, nowrap, flex-start, flex-start);
+            padding: 0 0 0 95px;
+            position: relative;
+            min-height: 70px;
+            &:not(:first-child) {
+                margin: 32px 0 0;
+            }
+            &:before {
+                content: none;
+                display: none;
+            }
+            img {
+                width: 80px;
+                height: auto;
+                float: none;
+                position: absolute;
+                left: 0;
+                right: initial;
+                top: 0;
+                margin: 0;
+            }
+            > a {
+                //order: 1;
+                margin: -6px 0 0;
+                line-height: 1;
+                font-size: 0;
+                @include transition(color .3s);
+            }
+            .product-title {
+                font-weight: 500;
+                letter-spacing: -0.01em;
+                font-size: 16px;
+                line-height: 1.5em;
+                @include transition(color .3s);
+            }
+            .price_wrapper {
+                //order: 2;
+                font-size: 14px;
+                line-height: 20px;
+                font-weight: 600;
+                margin: 12px 0 0;
+                del {
+                    opacity: 1;
+                    margin: 0 12px 0 0;
+                }
+                ins {
+                    text-decoration: none;
+                    font-weight: inherit;
+                }
+            }
+            .product-rating-wrapper,
+            .star-rating {
+                font-size: 11px;
+                &:not(:first-child) {
+                    margin: 8px 0 0;
+                }
+            }
+            //.star-rating {
+            //    order: 4;
+            //    margin: 10px 0 0;
+            //    font: 400 normal 13.2px/1 'Flaticon';
+            //    letter-spacing: 0.15em;
+            //    width: 5.75em;
+            //    &:before {
+            //        content: '\f118\f118\f118\f118\f118';
+            //        color: #dfdfdf;
+            //    }
+            //    span {
+            //        color: #ffa800;
+            //        &:before {
+            //            content: '\f118\f118\f118\f118\f118';
+            //        }
+            //    }
+            //}
+            .reviewer {
+                font-size: 14px;
+                line-height: 20px;
+                //order: 3;
+                font-weight: 600;
+                &:not(:first-child) {
+                    margin: 12px 0 0;
+                }
+            }
+        }
+    }
+}
+
+.sidebar,
+.footer-widgets,
+.slide-sidebar-content {
+    .wc-block-grid__products {
+        padding: 10px 0 0;
+        .wc-block-grid__product {
+            @include flex(column, nowrap, flex-start, flex-start);
+            padding: 0 0 0 105px;
+            position: relative;
+            min-height: 80px;
+            @include border-radius(0);
+            @include box-shadow(none);
+            background: none;
+            text-align: left;
+            flex: 1 auto;
+            .wc-block-grid__product-onsale {
+                display: none;
+            }
+            .wc-block-grid__product-link {
+                margin: -6px 0 0;
+                line-height: 1;
+                font-size: 0;
+                display: block;
+            }
+            .wc-block-grid__product-image {
+                width: 80px;
+                height: 80px;
+                float: none;
+                position: absolute;
+                left: 0;
+                right: initial;
+                top: 0;
+                margin: 0;
+                img {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            .wc-block-grid__product-title {
+                font-size: 16px;
+                line-height: 1.5em;
+                font-weight: 600;
+                margin: 0;
+            }
+            .wc-block-grid__product-rating {
+                margin: 8px 0 0;
+                .star-rating {
+                    margin: 0;
+                    font-size: 12px;
+                }
+            }
+            .wc-block-grid__product-price {
+                font-size: 14px;
+                line-height: 20px;
+                font-weight: 500;
+                margin: 8px 0 0;
+                ins {
+                    margin: 0;
+                }
+                del {
+                    margin: 0 12px 0 0;
+                }
+            }
+            .wp-block-button {
+                position: static;
+                top: initial;
+                width: auto;
+                height: auto;
+                left: initial;
+                right: initial;
+                padding: 0 !important;
+                margin: 14px -8px 0 0;
+                .wp-block-button__link {
+                    margin: 8px 8px 0 0 !important;
+                    max-width: 100%;
+                    opacity: 1;
+                    position: relative;
+                    top: initial;
+                    left: initial;
+                    right: initial;
+                    @include transform(none);
+                }
+                .add_to_cart_button {
+                    &:before {
+                        content: none;
+                        display: none;
+                        margin: 0;
+                    }
+                }
+            }
+            &:hover {
+                .wp-block-button {
+                    .wp-block-button__link {
+                        margin: 8px 8px 0 0 !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .sidebar,
+    .footer-widgets,
+    .slide-sidebar-content {
+        .wc-block-grid__products {
+            .wc-block-grid__product {
+                padding: 0 0 0 115px;
+            }
+        }
+    }
+}

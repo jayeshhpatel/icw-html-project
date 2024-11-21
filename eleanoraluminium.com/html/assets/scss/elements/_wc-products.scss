@@ -1,0 +1,154 @@
+/********** WC Products Elementor Widget **********/
+.elementor-widget-industrium_products {
+    .woocommerce {
+        .catalog-top-info-wrapper {
+            display: none;
+        }
+        ul.products {
+            li.product {
+                .woocommerce-loop-product__wrapper {
+                    @include transition(all .3s);
+                }
+            }
+        }
+    }
+    .products-widget {
+        &.view-type-compact {
+            ul.products {
+                margin: 0 -20px -35px !important;
+                .content-wrapper .content-inner & {
+                    margin: 0 -20px -35px !important;
+                }            
+                li.product {
+                    margin: 0 0 35px !important;
+                    .woocommerce-loop-product__wrapper {
+                        @include flex(row, nowrap, flex-start, center);
+                        border: none !important;
+                        .attachment-woocommerce_wrapper {
+                            overflow: visible;                        
+                            @include flex-shrink(0);
+                            margin: 0 30px 0 0 !important;
+                            width: 90px;
+                            .attachment-woocommerce_link {
+                                overflow: hidden;
+                            }                        
+                            .attachment-woocommerce_flash {
+                                display: none;
+                            }
+                        }
+                        .content-woocommerce-wrapper {
+                            border-bottom: 2px solid;
+                            @include transition(border-color .3s);
+                            //@include flex(column, nowrap, flex-start, stretch);
+                            .woocommerce-loop-product-title,
+                            .woocommerce-loop-category-title,
+                            h3 {
+                                font-size: 18px;
+                                font-weight: 700;
+                                padding: 0;
+                                a {
+                                    -webkit-hyphens: auto;
+                                    -moz-hyphens: auto;
+                                    hyphens: auto;
+                                }
+                            }
+                            .product_meta {
+                                margin-bottom: 10px;
+                            }
+                            .price {
+                                font-size: 14px;
+                                line-height: 30px;
+                                margin: 7px 0 0;
+                                font-weight: 600;
+                            }
+                            .product-rating-wrapper {
+                                margin: 8px 0 0;
+                                line-height: 1;
+                                font-size: 0;
+                            }
+                        }
+                        .product-info-wrapper a {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .elementor-widget-industrium_products {
+        .products-widget {
+            &.view-type-compact {
+                ul.products {
+                    li.product {
+                        .woocommerce-loop-product__wrapper {
+                            .attachment-woocommerce_wrapper {
+                                width: 120px;
+                            }
+                        }
+                    }
+                    &.columns-3,
+                    &.columns-5,
+                    &.columns-6 {
+                        li.product {
+                            width: 50%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .elementor-widget-industrium_products {
+        .products-widget {
+            &.view-type-compact {
+                ul.products {
+                    &.columns-3,
+                    &.columns-5,
+                    &.columns-6 {
+                        li.product {
+                            width: 33.3333%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .elementor-widget-industrium_products {
+        .products-widget {
+            &.view-type-compact {
+                ul.products {
+                    li.product {
+                        .woocommerce-loop-product__wrapper {
+                            .attachment-woocommerce_wrapper {
+                                width: 170px;
+                            }
+                        }
+                    }
+                    &.columns-4 {
+                        li.product {
+                            width: 25%;
+                        }
+                    }
+                    &.columns-5 {
+                        li.product {
+                            width: 20%;
+                        }
+                    }
+                    &.columns-6 {
+                        li.product {
+                            width: 16.6667%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

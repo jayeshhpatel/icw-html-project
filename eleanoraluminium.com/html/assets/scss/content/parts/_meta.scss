@@ -1,0 +1,89 @@
+/*********** Post Meta ***********/
+.industrium_post_meta {
+    font-size: 0;
+    line-height: 1;
+    .industrium_post_meta_item {
+        display: inline-block;
+        vertical-align: top;
+        color: #b6b6b6;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 600;
+        position: relative;
+        margin: 0;
+        &:not(:last-child) {
+            padding: 0 25px 0 0;
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
+                right: 10px;
+                left: auto;
+                top: 9px;
+                width: 5px;
+                height: 5px;
+                @include border-radius(50%);
+            }
+        }
+
+        // Tags
+        &.meta_item_tags {
+            a {
+                &:before {
+                    content: '#';
+                }
+            }
+        }
+
+        // Socials
+        &.meta_item_socials {
+            padding: 0;
+            list-style: none;
+            font-size: 0;
+            line-height: 1;
+            margin: 20px 0 0;
+            li {
+                margin: 0 8px;
+                display: inline-block;
+                vertical-align: middle;
+                padding: 0;
+                &:first-child {
+                    margin: 0 8px 0 0;
+                }
+                &:last-child {
+                    margin: 0 0 0 8px;
+                }
+                &:before {
+                    content: none;
+                    display: none;
+                }
+            }
+            a {
+                text-align: center;
+                display: block;
+                @include transition(color 0.3s, background-color 0.3s);
+                width: 2.3077em;
+                height: 2.3077em;
+                font: 400 normal 13px/2.3077em 'Font Awesome 5 Free';
+                @include border-radius(50%);
+                background-color: #eceae4;
+                &:hover {
+                    color: #ffffff;
+                }
+            }
+        }
+        a {
+            color: inherit;
+        }
+    }
+}
+
+@media only screen and (min-width: 576px) {
+    .industrium_post_meta {
+        .industrium_post_meta_item {
+            &.meta_item_socials {
+                margin: 0;
+            }
+        }
+    }
+}

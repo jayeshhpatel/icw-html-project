@@ -1,0 +1,215 @@
+/********** Decoration Elementor Widget **********/
+@keyframes decoration_animation_1 {
+    0% {
+        @include transform(scaleX(0));
+    }
+    100% {
+        @include transform(scaleX(1));
+    }
+}
+@keyframes decoration_animation_2 {
+    0% {
+        @include transform(scaleY(0));
+    }
+    100% {
+        @include transform(scaleY(1));
+    }
+}
+
+.elementor-widget-industrium_decoration {
+    &.decoration-type-2 {
+        .decoration-widget {            
+            .decoration-container {
+                width: 70px;
+                height: 70px;
+                .industrium-decoration {
+                    > div {
+                        &:nth-child(2n) {
+                            top: 0;
+                            left: -100%;
+                        }
+                    }
+                }
+            }            
+        }
+    }
+    &.decoration-type-3 {
+        .decoration-widget {            
+            .decoration-container {
+                width: 295px;
+                height: 50px;
+                .industrium-decoration {
+                    > div {
+                        &:first-child {
+                            top: 0;
+                            left: initial;
+                            right: 0;
+                            width: 50px;
+                            height: 50px;
+                        }
+                    }
+                }
+            }            
+        }
+    }
+    &.decoration-type-4 {
+        .decoration-widget {            
+            .decoration-container {
+                width: 300px;
+                height: 50px;
+                .industrium-decoration {
+                    > div {
+                        &:first-child {
+                            top: initial;
+                            bottom: 100%;
+                            left: initial;
+                            right: 100%;
+                            width: 50px;
+                            height: 50px;
+                        }
+                        &:nth-child(2n) {
+                            top: 0;
+                        }
+                        &:nth-child(3n) {
+                            display: block;
+                            top: initial;
+                            bottom: 100%;
+                            left: 100%;
+                            right: initial;
+                            width: 50px;
+                            height: 50px;
+                        }
+                    }
+                }
+            }            
+        }
+    }
+    &.industrium_decoration {
+        &.animated-fast {
+            animation-duration: .5s;
+        }
+        .elementor-widget-container {
+            animation-duration: inherit;
+            .decoration-widget {
+                animation-duration: inherit;
+                .decoration-container {
+                    animation-duration: inherit;
+                    .industrium-decoration {
+                        animation-duration: inherit;
+                        > div {
+                            animation-duration: inherit;
+                        }
+                    }
+                }
+            }
+        }
+        &.decoration-type-2 {
+            .decoration-widget {
+                .industrium-decoration {
+                    > div {
+                        @include transform(scaleX(0));
+                        animation-name: decoration_animation_1;
+                        &:first-child {
+                            animation-delay: .4s;
+                        }
+                        &:nth-child(2n) {
+                            @include transform-origin(right top);                            
+                        }
+                    }
+                }
+            }
+        }
+        &.decoration-type-1 {
+            .decoration-widget {
+                .industrium-decoration {
+                    > div {
+                        @include transform(scaleY(0));
+                        animation-name: decoration_animation_2;
+                        &:first-child {
+                            animation-delay: .4s;
+                        }
+                    }
+                }
+            }
+        }
+        &.decoration-type-3 {
+            .decoration-widget {
+                .industrium-decoration {
+                    > div {
+                        @include transform(scaleY(0));
+                        animation-name: decoration_animation_2;
+                        &:first-child {
+                            animation-delay: .4s;
+                        }
+                    }
+                }
+            }
+        }
+        &.decoration-type-4 {
+            .decoration-widget {
+                .industrium-decoration {
+                    > div {
+                        @include transform(scaleY(0));
+                        animation-name: decoration_animation_2;
+                        &:first-child,
+                        &:nth-child(3n) {
+                            @include transform-origin(left bottom);
+                            animation-delay: .5s;
+                        }
+                        &:nth-child(2n) {
+                            @include transform-origin(left top);
+                        }
+                    }
+                }
+            }
+        }
+        .decoration-widget {
+            .industrium-decoration {
+                > div {
+                    animation-timing-function: ease-out;
+                    animation-fill-mode: forwards;
+                    animation-timing-function: cubic-bezier(0, 0, 0.15, 0.96);
+                    &:first-child {
+                        @include transform-origin(left top);
+                    }
+                    &:nth-child(2n) {
+                        @include transform-origin(left bottom);
+                    }
+                    &:nth-child(3n) {
+                        @include transform-origin(left bottom);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.decoration-widget {
+    text-align: left;
+    font-size: 0;
+    line-height: 1;
+    .decoration-container {
+        position: relative;
+        display: inline-block;
+        width: 144px;
+        height: 129px;
+        .industrium-decoration {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            > div {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                &:nth-child(2n) {
+                    top: -100%;
+                }
+                &:nth-child(3n) {
+                    display: none;
+                }
+            }
+        }
+    }
+}

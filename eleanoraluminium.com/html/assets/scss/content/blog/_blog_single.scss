@@ -1,0 +1,275 @@
+/*********** Blog Single Layout ***********/
+// Quote
+.single-post {
+    .post-quote:not(:last-child) {
+        margin-bottom: 25px;
+    }
+}
+
+// Media
+.single-post {
+    .post-media-wrapper {
+        position: relative;
+        overflow: hidden;
+    }
+}
+
+// Categories
+.single-post {
+    .post-labels {
+        margin: 0;
+        position: relative;
+        &:not(:first-child) {
+            margin: 30px 0 0;
+        }
+    }
+}
+
+// Meta Header
+.post-meta-header {
+    font-size: 0;
+    line-height: 1;
+    position: relative;
+    z-index: 3;
+    pointer-events: none;
+    &:not(:first-child) {
+        margin-top: -56px;
+    }    
+    .grid-blog-item-wrapper & {
+        &:first-child {
+            text-align: left;
+            .post-meta-item {
+                text-align: center;
+            }
+        }
+        &:not(:first-child) {
+            text-align: right;
+            .post-meta-item {
+                text-align: center;
+            }
+        }
+    }
+    .post-meta-item {
+        pointer-events: auto;
+        display: inline-block;
+        vertical-align: top;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.4286em;
+        position: relative;
+        min-width: 63px;
+        .post-meta-item-month-year {
+            display: block;
+            line-height: 33px;
+            padding: 0 7px;
+            text-align: center;
+            .grid-blog-item-wrapper & {
+                line-height: 24px;
+            }
+        }
+        .post-meta-item-day {
+            padding: 12px 12px 9px;
+            line-height: 1em;
+            display: block;
+            font-size: 35px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            @include box-sizing;
+            text-align: center;
+        }
+        &.post-meta-item-author {
+            .grid-blog-item-wrapper & {
+                min-width: auto;
+                text-align: left;
+            }
+        }
+    }
+    .industrium-format-quote & {
+        &,
+        &:not(:first-child) {
+            margin-top: 0;
+        } 
+    }
+}
+
+// Title
+.single-post {
+    > .post-title {
+        margin: 0;
+        &:not(:first-child) {
+            margin: 10px 0 0;
+        }
+    }
+}
+
+// Content
+.single-post {
+    .post-content {
+        @include clearfix;
+        &:not(:first-child) {
+            margin: 17px 0 0;
+        }
+    }
+}
+
+// Meta Footer
+.single-post {
+    .post-meta-footer {
+        position: relative;
+        margin: 0 -15px;
+        @include flex(column, nowrap, flex-start, center);
+        &:not(:first-child) {
+            margin: 39px -15px 0;
+            padding: 30px 0 0;
+            position: relative;
+            &:before {
+                content: '';
+                position: absolute;
+                display: block;
+                left: 15px;
+                right: 15px;
+                top: 0;
+                height: 2px;
+            }
+        }
+        .post-meta-item {
+            margin: 0 15px;
+            font-size: 14px;
+            font-weight: 500;
+            &:not(:last-child) {
+                margin-bottom: 20px;
+            }
+            &.post-meta-item-tags {
+                text-align: center;
+                margin: -10px 10px 0;
+                font-size: 0;
+                line-height: 1;
+                &:not(:last-child) {
+                    margin-bottom: 20px;
+                }
+                a {
+                    position: relative;
+                    font-size: 14px;
+                    font-weight: 700;
+                    line-height: 20px;
+                    padding: 5px 17px;
+                    @include transition(color .3s);
+                    display: inline-block;
+                    vertical-align: top;
+                    margin: 3px 3px 0;
+                    letter-spacing: -0.03em;
+                    &:before {
+                        content: '\e82d';
+                        position: absolute;
+                        font-family: 'fontello';
+                        font-size: 10px;
+                        display: block;
+                        left: 0;
+                        right: initial;
+                        top: 0;
+                        bottom: 0;
+                        margin: auto;
+                        line-height: 1em;
+                        height: 1em;
+                        width: 1em;
+                    }
+                }
+            }
+            &.post-meta-item-socials {
+                text-align: center;
+            }
+            &.post-meta-item-author {
+                @include flex-shrink(0);
+                font-weight: 700;
+                font-size: 16px;
+
+            }
+        }
+    }
+}
+
+// Password Form
+.post-password-form {
+    margin: 2rem 0;
+    position: relative;
+    z-index: 2;
+    label {
+        display: block;
+        font-size: 0;
+        line-height: 1;
+        width: 100%;
+    }
+    input[type="submit"],
+    button {
+        width: 100%;
+        margin: 10px 0 0;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    // Meta Header
+    .post-meta-header {
+        &:not(:first-child) {
+            margin-top: -102px;
+        }        
+        .post-meta-item {
+            min-width: 115px;
+            .grid-blog-item-wrapper & {
+                min-width: 63px;
+            }
+            .post-meta-item-day {
+                padding: 39px 20px 13px;
+                text-align: left;
+                font-size: 50px;
+                .grid-blog-item-wrapper & {
+                    padding: 12px 12px 9px;
+                    text-align: center;
+                    font-size: 35px;
+                }
+            }
+        }
+    }
+    // Password Form
+    .post-password-form {
+        p {
+            @include flex(row, nowrap, flex-start, flex-start);
+            position: relative;
+        }
+        label {
+            width: 50%;
+        }
+        input[type="submit"],
+        button {
+            @include flex-shrink(0);
+            margin: 0 0 0 20px;
+            width: auto;
+        }
+        button {
+            padding: 15px 40px !important;
+            min-width: 120px !important;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    // Meta Footer
+    .single-post {
+        .post-meta-footer {
+            @include flex(row, nowrap, space-between, center);
+            .post-meta-item {
+                &:not(:last-child) {
+                    margin-bottom: 0;
+                }
+                &.post-meta-item-socials {
+                    text-align: right;
+                }
+                &.post-meta-item-tags {
+                    text-align: left;
+                    &:not(:last-child) {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}

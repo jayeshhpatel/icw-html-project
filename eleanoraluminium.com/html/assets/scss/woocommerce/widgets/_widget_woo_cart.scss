@@ -1,0 +1,107 @@
+/********** WooCommerce Cart Widget **********/
+.woocommerce .widget_shopping_cart,
+.woocommerce-page .widget_shopping_cart,
+.woocommerce.widget_shopping_cart {
+    .cart_list {
+        padding: 11px 0 0;
+        li {
+            @include flex(row, nowrap, flex-start, center);
+            padding: 0;
+            &:not(:first-child) {
+                margin: 20px 0 0;
+                padding: 19px 0 0;
+                border-top-width: 1px;
+                border-top-style: solid;
+            }
+            &:before {
+                display: none;
+                content: none;
+            }
+            a {
+                font-weight: inherit;
+                display: inline;
+            }
+            .thumbnail-woocommerce_wrapper {
+                @include flex-shrink(0);
+                margin: 0 24px 0 0;
+                position: static;
+                order: 1;
+                img {
+                    display: block;
+                    position: relative;
+                    margin: 0;
+                    float: none;
+                    width: 76px;
+                    height: auto;
+                    @include transition(border-color, .3s);
+                    @include border-radius(5px);
+                }
+            }
+            .content-woocommerce-wrapper {
+                display: block;
+                width: 100%;
+                order: 2;
+                h6 {
+                    font-weight: 700;
+                    margin: 0;
+                    line-height: 1.375em;
+                }
+                .quantity {
+                    display: block;
+                    font-size: 14px;
+                    line-height: 20px;
+                    margin: 2px 0 0;
+                }
+            }
+            a.remove_from_cart_button {
+                position: static;
+                font-size: 25px;
+                font-weight: 400;
+                line-height: 1;
+                margin: 0 0 0 20px;
+                background: none;
+                @include flex-shrink(0);
+                order: 3;
+                color: #e95151;
+            }
+        }
+    }
+    .total {
+        margin: 21px 0 0;
+        padding: 15px 0 0;
+        border-width: 0;
+        border-style: solid;
+        border-top-width: 1px;
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: uppercase;
+        @include flex(row, nowrap, space-between, flex-start);
+        strong {
+            font-weight: inherit;
+        }
+    }
+    .woocommerce-mini-cart-buttons {
+        position: relative;
+        z-index: 2;
+        padding: 7px 0 0;
+        margin: 0 -5px;
+        font-size: 0;
+        line-height: 1;
+        @include flex(row, wrap, space-between, flex-start);
+        &:before,
+        &:after {
+            content: none;
+            display: none;
+        }
+        a.button {
+            margin: 15px 5px 0;
+            font-size: 12px;
+            line-height: 1.6667em;
+            //text-transform: uppercase;
+            min-width: 86px;
+            padding: 13px 20px 12px;
+            //letter-spacing: 0.048em;
+            @include flex-shrink(0);
+        }
+    }
+}

@@ -1,0 +1,232 @@
+/********** Image Carousel Elementor Widget **********/
+.elementor-widget-industrium_image_carousel {
+    &.view-type-3 {
+        .owl-dots {
+             margin: 20px -20px 30px;
+            &.disabled {
+                display: none !important;
+            }
+        }
+        .industrium-heading.heading-with-pagination {
+            display: block !important;
+            &:not(:last-child) {
+                margin-bottom: 60px !important;
+            }
+            .industrium-heading-inner {
+                margin: 0 !important;
+                width: 100% !important;
+            }
+            .pagination_wrapper {
+                display: block;
+                font-size: 0;
+                line-height: 1;
+                &:not(:first-child) {
+                    margin-top: 40px;
+                }
+                .industrium-button {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+    .cursor_drag {
+        &.active {
+            font-size: 13px;
+            line-height: 58px;
+            .cursor-bg {
+                @include transform(scale(6));
+            }
+            span {
+                opacity: 1;
+            }
+        }
+        span {
+            opacity: 0;
+            @include transition(opacity .3s);
+            &:before,
+            &:after {
+                font: 13px/13px 'fontello';
+                font-weight: 400;
+                width: 1em;
+                height: 1em;
+            }
+            &:before {
+                content: '\e80d';
+            }
+            &:after {
+                content: '\e824';
+                margin-left: 10px;
+            }
+        }
+    }    
+}
+.elementor-widget-industrium_image_carousel {
+    &.title-alignment-left {
+        .heading-with-pagination {
+            .pagination_wrapper {
+                .owl-dots {
+                    text-align: left;
+                }
+            }
+        }
+    }
+    &.title-alignment-right {
+        .heading-with-pagination {
+            .pagination_wrapper {
+                .owl-dots {
+                    text-align: right;
+                }
+            }
+        }
+    }
+    &.title-alignment-center {
+        .heading-with-pagination {
+            .pagination_wrapper {
+                .owl-dots {
+                    text-align: center;
+                }
+            }
+        }
+    }    
+}
+.elementor-widget-industrium_image_carousel {
+    &.view-type-2 {
+        .owl-carousel {
+            .owl-stage-outer {
+                overflow: initial !important;
+            }
+            .owl-item {
+                opacity: .5;
+                @include transition(opacity .3s);
+            }
+            .owl-item.active {
+                opacity: 1;
+            }
+        }
+    }
+    .industrium-image-slider-widget {
+        .slider-item {
+            font-size: 0;
+            line-height: 1;
+            .slider-item-inner {
+                &:hover {
+                    .slider-item-arrow {
+                        &:before {
+                            @include transform(rotate(-45deg));
+                        }                        
+                    }
+                }
+            }
+            .slider-item-arrow {
+                @include transition(color .3s);
+                &:not(:first-child) {
+                    margin-top: 15px;
+                }
+                &:before {
+                    content: '\e82d';
+                    display: inline-block;
+                    font: 18px/18px 'fontello';
+                    @include transition(transform .3s);
+                }
+            }
+            .slider-item-inner {
+                @include flex(column, nowrap, stretch, stretch);
+                padding: 25px 35px 35px 40px;
+                @include transition(all .3s);
+            }
+            .slider-item-media {
+                &:not(:first-child) {
+                    margin: 25px 0 0;
+                }
+                img {
+                    @include align-self(initial);
+                    @include transition(all .3s);                    
+                }
+            }            
+            .slider-item-subtitle {
+                font-size: 16px;
+                line-height: 1.875em;
+            }
+            .slider-item-title {
+                font-size: 18px;
+                line-height: 1.4em;
+                font-weight: 700;
+                letter-spacing: -0.03em;
+                @include transition(color .3s);
+                &:not(:first-child) {
+                    margin: 18px 0 0;
+                }
+            }
+            .slider-item-description {
+                &:not(:first-child) {
+                    margin: 18px 0 0;
+                }
+            }
+        }
+    }
+    &.elementor-title-border-on {
+        .slider-item {
+            .slider-item-title {
+                &:before {
+                    content: '';
+                    display: block;
+                    height: 2px;
+                    margin-bottom: 0.6em;
+                    background-color: currentColor;
+                }
+            }
+        }
+    }
+    &.elementor-align-items-stretch {
+        .slider-item {
+            height: 100%;
+            .slider-item-inner {
+                height: 100%;
+                @include justify-content(space-between);
+            }
+        }
+    }
+    .industrium-heading.heading-with-pagination:not(:last-child) {
+        margin-bottom: 40px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .elementor-widget-industrium_image_carousel {
+        &,
+        &.title-alignment-left,
+        &.title-alignment-right,
+        &.title-alignment-center {
+            .heading-with-pagination {
+                .pagination_wrapper {
+                    .owl-dots {
+                        margin: -10px -20px 0 -10px !important;
+                        &:not(:first-child) {
+                            margin-left: 70px !important;
+                        }
+                    }
+                }
+            }
+        }    
+    }
+    .industrium-image-slider-widget {
+        .industrium-heading.heading-with-pagination {
+            .pagination_wrapper {
+                .owl-dots {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}
+@media only screen and (min-width: 1440px) {
+    .elementor-widget-industrium_image_carousel {
+        &.view-type-3 {
+            .slider-wrapper {
+                width: 107vw;
+            }
+        }    
+    }
+}

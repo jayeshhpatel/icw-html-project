@@ -1,0 +1,119 @@
+/********** WordPress Standard Categories Widget **********/
+.widget_categories ul,
+ul.wp-block-categories,
+.wc-block-product-categories {
+    list-style: none;
+    padding: 0;
+    position: relative;
+    margin: 0;    
+    li {
+    	padding: 0 0 0 1.3333em;
+        position: relative;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        @include transition(all .3s);        
+        &:not(:first-child) {
+            margin: 0.83333em 0 0;
+        }
+        .footer-widgets & {
+            &:not(:first-child) {
+                margin: 0.5em 0 0;
+            }
+        }
+        &.cat-item-hierarchical {
+            margin-right: 20px;
+            margin-left: 0;
+        }
+        .widget-archive-trigger,
+        .block-archive-trigger {
+            display: block;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            right: -20px;
+            left: auto;
+            text-align: right;
+            cursor: pointer;
+            font: 400 normal 12px/30px 'fontello';
+            width: 20px;
+            height: 30px;
+            @include transition(all .3s);
+            &:before {
+                content: '\e824';
+            }
+            &.active {
+                @include transform(rotate(90deg) translate(-6px, -4px));
+                -webkit-transform-origin: center center;
+                -moz-transform-origin: center center;
+                -ms-transform-origin: center center;
+                -o-transform-origin: center center;
+                transform-origin: center center;
+            }
+        }
+        > ul {
+            margin: 0 -20px 0 0;
+            padding: 6px 0 0;
+            list-style: none;
+            position: relative;
+        }
+    }   
+    > li {
+    	padding: 0;
+        ul {
+            li {
+                padding: 0 0 0 1.3333em;
+            }
+        }
+    } 
+}
+
+.sidebar {
+	.widget_categories .widget-wrapper > ul,
+	ul.wp-block-categories,
+    .wc-block-product-categories {
+	    li {       
+	    	&:before {
+	            display: block;
+	            left: 0;
+	            top: 0.15em;
+	            font-family: 'fontello';
+	            content: '\e82d';
+	            font-size: 55.5555%;
+	            font-weight: 400;
+                line-height: inherit;
+	            background: none;
+	            opacity: 0;
+	            @include transition(opacity .3s);
+	        }
+	        &:hover {
+	        	padding: 0 0 0 1.3333em;
+	            &:before {
+	                opacity: 1;
+	            }
+	        }
+	    }
+	}
+}
+.content {
+    .widget_categories .widget-wrapper > ul,
+    ul.wp-block-categories,
+    .wc-block-product-categories {
+        li {       
+            &:before {
+                display: none;
+            }
+        }
+    }
+}
+
+.wp-block-categories {
+    &:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+}
+
+.wc-block-product-categories {
+    li {
+        padding: 0;
+    }
+}

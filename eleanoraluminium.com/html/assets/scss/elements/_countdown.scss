@@ -1,0 +1,126 @@
+/********** Countdown Element **********/
+.industrium_countdown_widget {
+    font-size: 0;
+    line-height: 1;
+    &.display_inline {
+        .countdown_item,
+        .countdown_separator {
+            display: inline-block;
+            vertical-align: top;
+        }
+    }
+    &.display_block {
+        .countdown_inner {
+            @include flex(row, nowrap, space-between, flex-start);
+            .countdown_separator {
+                @include flex-shrink(0);
+                display: block;
+            }
+            .countdown_item {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+        }
+    }
+    &.display_stacked {
+        .countdown_item {
+            display: inline-block;
+            vertical-align: top;
+            &:not(:last-child) {
+                margin-right: -1px;
+            }
+        }
+        .countdown_separator {
+            display: none;
+        }
+    }
+    .countdown_inner {
+        white-space: nowrap;
+    }
+    .countdown_placeholder,
+    .hide {
+        display: none !important;
+    }
+    .countdown_item {
+        position: relative;
+        white-space: normal;
+    }
+    .countdown_digits {
+        font-size: 35px;
+        line-height: 50px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+        vertical-align: top;
+        &:before {
+            content: '';
+            position: absolute;
+            display: block;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+    }
+    .countdown_digits_placeholder {
+        font-size: 35px;
+        line-height: 50px;
+        opacity: 0;
+        display: inline-block;
+        vertical-align: top;
+        text-align: center;
+        width: 50px;
+        height: 50px;
+        position: relative;
+    }
+    .countdown_separator {
+        font-size: 80px;
+        line-height: 70px;
+        text-align: center;
+        width: 70px;
+        margin-top: -0.1em;
+        &:last-child {
+            display: none !important;
+            opacity: 0;
+            font-size: 0;
+            width: 0;
+        }
+    }
+    .countdown_label {
+        display: block;
+        font-size: 16px;
+        line-height: 30px;
+        font-weight: 700;
+        margin: 2px 0 0;
+        text-align: center;
+    }
+
+    .countdown_message {
+        display: none;
+        font-size: 48px;
+        font-weight: 500;
+        line-height: 60px;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 768px) {
+	.industrium_countdown_widget {
+		.countdown_digits {
+			width: 70px;
+        	height: 70px;
+            line-height: 66px;
+		}
+		.countdown_digits_placeholder {
+			width: 70px;
+			height: 70px;
+            line-height: 66px;
+		}
+	}
+}

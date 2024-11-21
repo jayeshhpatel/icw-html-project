@@ -1,0 +1,101 @@
+/*
+ *  Swiper Carousel
+ */
+
+.swiper-container .swiper-pagination-bullets {
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+    margin: 37px -13px 0;
+    width: auto !important;
+    position: relative;
+    bottom: initial;
+    left: initial;
+    right: initial;
+    @include transform(none);
+    font-size: 0;
+    line-height: 1;
+}
+.swiper-container .swiper-pagination-bullets .swiper-pagination-bullet {
+    display: inline-block;
+    zoom: 1;
+    margin: 13px 13px 0;
+    width: 17px;
+    height: 17px;
+    border: solid 1px transparent;
+    -webkit-backface-visibility: visible;
+    @include border-radius(50%);
+    position: relative;
+    @include transition(border-color .3s);
+    background: none;
+    opacity: 1;
+    &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 5px;
+        height: 5px;
+        left: 50%;
+        right: initial;
+        top: 50%;
+        margin: -2.5px 0 0 -2.5px;
+        border-width: 1px;
+        border-style: solid;
+        @include transition(border-color .3s);
+        @include border-radius(50%);
+        background: none !important;
+    }
+}
+.swiper-container .elementor-swiper-button,
+.swiper-container .swiper-pagination-bullets .swiper-pagination-bullet {
+    cursor: pointer;
+    cursor: hand;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+.swiper-container {
+    .elementor-swiper-button {
+        width: 50px;
+        height: 50px;
+    }
+    .elementor-swiper-button i {
+        width: 48px;
+        height: 48px;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        @include transition(all .3s);
+        @include border-radius(0);
+        text-decoration: none;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        overflow: hidden;
+        @include border-radius(50%);
+        border-style: solid;
+        border-width: 1px;
+        &:before {
+            font: 400 normal 15px/48px 'fontello';
+        }
+        &.disabled {
+            cursor: default;
+            opacity: .5;
+        }
+    }
+    .elementor-swiper-button-prev i {
+        padding: 0 2px 0 0;
+        &:before {
+            content: '\e80d';
+        }
+    }
+    .elementor-swiper-button-next i {
+        padding: 0 0 0 2px;
+        &:before {
+            content: '\e824';
+        }
+    }
+}

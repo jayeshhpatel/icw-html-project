@@ -1,0 +1,114 @@
+/********** WordPress Standard Navigation Menu Widget **********/
+.widget_nav_menu,
+.widget_industrium_nav_menu_widget {
+    ul {
+        list-style: none;
+        padding: 0;
+        &.columns-2,
+        &.columns-3 {
+            -webkit-column-count: 2;
+            column-count: 2;
+            -webkit-column-gap: 60px;
+            column-gap: 60px;
+        }
+        &.columns-3 {
+            -webkit-column-gap: 30px;
+            column-gap: 30px;
+        }
+        li {
+            position: relative;
+            font-weight: 500;
+            padding: 0;
+            &:before {
+                content: none;
+                display: none;
+            }
+            &:not(:first-child) {
+                margin: 6px 0 0;
+            }
+            .widget-menu-trigger {
+                display: block;
+                position: absolute;
+                z-index: 1;
+                top: 0;
+                right: -20px;
+                left: auto;
+                text-align: right;
+                cursor: pointer;
+                font: 400 normal 12px/30px 'fontello';
+                width: 20px;
+                height: 30px;
+                @include transition(all .3s);
+                &:before {
+                    content: '\e824';
+                }
+                &.active {
+                    @include transform(rotate(90deg) translate(-6px, -4px));
+                    -webkit-transform-origin: center center;
+                    -moz-transform-origin: center center;
+                    -ms-transform-origin: center center;
+                    -o-transform-origin: center center;
+                    transform-origin: center center;
+                }
+            }
+            > ul {
+                margin: 0 -20px 0 20px;
+                padding: 6px 20px 0 0;
+            }
+            > a {
+                position: relative;
+                display: inline-block;
+                vertical-align: top;
+                &:before {
+                    content: '';
+                    position: absolute;
+                    display: block;
+                    width: 0;
+                    height: 2px;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    @include transition(width .3s);
+                    opacity: 0;
+                }
+                &:hover {
+                    &:before {
+                        width: 100%;
+                        opacity: 1;
+                    }
+                }
+            }
+            &.current-menu-item,
+            &.current-menu-ancestor,
+            &.current-menu-parent,
+            &.current_page_item {
+                > a {
+                    &:before {
+                        width: 100%;
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+.footer-widgets {
+    .widget_nav_menu,
+    .widget_industrium_nav_menu_widget {
+        ul {
+            padding-top: 4px;
+        }
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .widget_nav_menu,
+    .widget_industrium_nav_menu_widget {
+        ul {
+            &.columns-3 {
+                -webkit-column-count: 3;
+                column-count: 3;
+            }
+        }
+    }
+}

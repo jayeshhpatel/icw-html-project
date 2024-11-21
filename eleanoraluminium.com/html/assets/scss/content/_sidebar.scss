@@ -1,0 +1,81 @@
+.sidebar {
+    margin: 0 20px;
+    max-width: 305px;
+    min-width: 260px;
+    width: calc(25% - 40px);
+}
+
+@media only screen and (max-width: 991px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: -320px;
+        left: auto;
+        @include transition(right .3s, left .3s, opacity .3s);
+        overflow-y: scroll;
+        z-index: 999999;
+        padding: 86px 20px 32px;
+        width: 280px;
+        max-width: none;
+        margin: 0 !important;
+        @include box-shadow(0 3px 49px rgba(0, 0, 0, 0.07));
+        background-color: #ffffff;
+        opacity: 0;
+        &.active {
+            right: 0;
+            left: auto;
+            opacity: 1;
+        }
+        .shop-hidden-sidebar-close {
+            position: absolute;
+            right: 20px;
+            left: initial;
+            top: 30px;
+            display: block;
+            width: 19px;
+            height: 19px;
+            font: 400 normal 19px/19px 'fontello';
+            cursor: pointer;
+            text-align: center;
+            @include transition(color 0.3s);
+            &:before {
+                content: '\e803';
+            }
+        }
+    }
+    .simple-sidebar-trigger {
+        position: fixed;
+        right: 0;
+        left: auto;
+        top: 50%;
+        width: 40px;
+        height: 60px;
+        margin: -30px 0 0;
+        cursor: pointer;
+        @include transition(all .3s);
+        font: 400 normal 18px/1 'fontello';
+        z-index: 9;
+        opacity: 1;
+        border: solid 1px;
+        border-right: none;
+        &:before {
+            content: '\e825';
+            position: absolute;
+            display: block;
+            width: 18px;
+            height: 18px;
+            top: 50%;
+            left: 50%;
+            right: auto;
+            margin: -9px 0 0 -9px;
+        }
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .sidebar {
+        margin: 0 20px;
+        width: calc(25% - 40px);
+    }
+}

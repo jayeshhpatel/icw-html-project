@@ -1,0 +1,137 @@
+/********** WordPress Standard Media Video Widget **********/
+.wp-video {
+    overflow: hidden;
+    .mejs-layers {
+        .mejs-poster {
+            z-index: 3;
+            background-blend-mode: luminosity;
+        }
+        .mejs-overlay-play {
+            z-index: 3;
+        }
+    }
+    .mejs-controls {
+        opacity: 0 !important;
+        @include transition(all .3s .3s);
+        &:hover {
+            opacity: 1 !important;
+        }
+    }
+    .mejs-mediaelement:hover {
+        & ~ .mejs-controls {
+            opacity: 1 !important;
+        }
+    }
+    .mejs-time-handle-content {
+        border: none;
+        left: -4px;
+        width: 1px;
+    }
+    .mejs-time {
+        padding-top: 15px;
+    }
+    .mejs-time-rail {
+        margin: 0;
+    }
+    .mejs-overlay-play {
+        .mejs-overlay-button {
+            @include transition(all .3s);
+            background-image: none;
+            text-align: center;
+            outline: none;
+            width: 75px;
+            height: 75px;
+            pointer-events: auto; 
+            position: absolute;
+            top: 0;
+            left: 0;           
+            svg {
+                stroke-width: 2px;
+                stroke-linejoin:round;
+                fill: none;
+                width: 25px;
+                height: 25px;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+                @include transition(stroke .3s);
+            }
+        }
+    }
+    .mejs-button {
+        width: 20px;
+        & + .mejs-button {
+            margin: 0 0 0 10px;
+        }
+        > button {
+            margin: 10px 0;
+            padding: 0;
+            border: none;
+            min-width: 0;
+            background: none !important;
+            &:before {
+                font: 700 normal 18px/20px 'Font Awesome 5 Free';
+            }
+            &:after {
+                content: none;
+                display: none;
+            }
+        }
+        &.mejs-play {
+            > button {
+                &:before {
+                    content: '\f04b';
+                }
+            }
+        }
+        &.mejs-pause {
+            > button {
+                &:before {
+                    content: '\f04c';
+                }
+            }
+        }
+        &.mejs-mute {
+            > button {
+                &:before {
+                    content: '\f028';
+                }
+            }
+        }
+        &.mejs-unmute {
+            > button {
+                &:before {
+                    content: '\f026';
+                }
+            }
+        }
+        &.mejs-fullscreen-button {
+            > button {
+                &:before {
+                    content: '\f0b2';
+                }
+            }
+        }
+        &.mejs-fullscreen-button.mejs-unfullscreen {
+            > button {
+                &:before {
+                    content: '\f066';
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .wp-video .mejs-overlay-play .mejs-overlay-button {
+        width: 108px;
+        height: 108px;
+        .grid-listing:not(.columns-1) & {
+            width: 75px;
+            height: 75px;
+        }
+    }
+}

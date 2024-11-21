@@ -1,0 +1,96 @@
+/********** WordPress Standard Recent Comments Widget **********/
+.widget_recent_comments {
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        &:not(:first-child) {
+            padding: 2px 0 0;
+        }
+        .recentcomments {
+            position: relative;
+            line-height: 1.38888em;
+            font-weight: 600;
+            padding: 0 0 0 1.3333em;
+            &:not(:first-child) {
+                margin: 1em 0 0;
+            }
+            &:before {
+                content: '\e82d';
+                position: absolute;
+                font-family: 'fontello';
+                font-weight: 400;
+                font-size: 66.6666%;
+                line-height: inherit;
+                display: block;
+                left: 0;
+                right: initial;
+                top: 0;
+                background: none;
+            }
+        }
+    }
+}
+
+body .content-wrapper .wp-block-latest-comments,
+.wp-block-latest-comments {
+    list-style: none;
+    margin: 0;
+    padding: 2px 0 0;
+    &:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+    li {
+        position: relative;
+        line-height: 1.3888em !important;
+        font-weight: 600;
+        padding: 0 0 0 1.3333em;
+        &:not(:first-child) {
+            margin: 1em 0 0;
+        }
+        &:before {
+            content: '\e82d';
+            position: absolute;
+            font-family: 'fontello';
+            font-size: 66.6666%;
+            font-weight: 400;
+            display: block;
+            left: 0;
+            right: initial;
+            top: 0;
+        }
+        .wp-block-latest-comments__comment-date {
+            display: block;
+            font-size: 87.5%;
+            line-height: 1.5em;
+            font-weight: 500;
+            margin: 8px 0 0;
+            letter-spacing: -0.02em;
+        }
+        .wp-block-latest-comments__comment-excerpt {
+            font-size: 15px;
+            line-height: 1.6667em;
+            margin: 5px 0 0;
+            p {
+                font-size: 15px;
+                line-height: 1.6667em;
+            }
+            p:last-child {
+                margin: 0;
+            }
+        }
+    }
+    &.has-avatars {
+        li {
+            padding: 0;
+            &:before,
+            &:after {
+                content: none;
+                display: none;
+            }
+            .wp-block-latest-comments__comment-excerpt {
+                margin-left: 52px;
+            }
+        }
+    }
+}

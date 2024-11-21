@@ -1,0 +1,667 @@
+
+/* ----------------------------- */
+/* ---------- General ---------- */
+/* ----------------------------- */
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+}
+
+code, kbd, pre, samp {
+    white-space: pre-wrap;
+    overflow: auto;
+}
+code {
+    display: inline-block;
+    overflow: auto;
+    max-width: 100%;
+    &:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+}
+pre {
+    display: block;
+    &:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+}
+address {
+    margin: 0;
+    &:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+}
+figure {
+    margin: 0;
+}
+abbr,
+acronym {
+    &[data-original-title],
+    &[title] {
+        text-decoration: none;
+        border-bottom: dotted 2px;
+    }
+}
+sup,
+sub {
+    line-height: 1.2em;
+}
+dt {
+    font-weight: 700;
+}
+p,
+li {
+    code,
+    pre {
+        &,
+        &:not(:last-child) {
+            margin-bottom: 0;
+            display: inline;
+        }
+    }
+    br + code,
+    br + pre {
+        &:not(:last-child) {
+            display: block;
+        }
+    }
+}
+
+a {
+    text-decoration: none;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.body-container {
+    position: relative;
+    overflow: hidden;
+    //overflow-x: hidden;
+    min-height: 100vh;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    min-height: auto;
+    display: block;
+    align-self: flex-start;
+}
+
+button,
+button:active,
+button:focus {
+    outline: none;
+}
+
+@media only screen and (min-width: 1280px) {
+    .container {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+.industrium_align-container {
+    display: table;
+    width: 100%
+}
+
+.industrium_align-container__item {
+    display: table-cell;
+    vertical-align: middle
+}
+
+.industrium_img--bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: top center;
+    object-position: top center;
+    z-index: -1
+}
+
+.industrium_img--contain {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    -o-object-fit: contain;
+    object-fit: contain;
+    -o-object-position: center center;
+    object-position: center center;
+    z-index: -1
+}
+
+.industrium_img--layout {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    pointer-events: none
+}
+
+form input,
+form textarea {
+    -webkit-appearance: none
+}
+
+.form__field,
+.search-form-field,
+body #give_checkout_user_info p input {
+    font-size: 16px;
+    font-weight: 400;
+    height: 56px;
+    width: 100%;
+    display: block;
+    padding: 0 19px;
+    @include transition(color .3s, background-color .3s, border-color .3s);
+    outline: 0;
+    margin: 10px 0 0;
+}
+
+.form__message {
+    height: 180px;
+    padding: 13px 16px;
+    margin: 0;
+}
+
+.form-submit {
+    margin: 41px 0 0;
+    .submit {
+        min-width: 160px !important;
+    }
+}
+
+//.comment-form-cookies-consent label {
+//    display: inline-block;
+//}
+//
+//#wp-comment-cookies-consent {
+//    display: inline-block;
+//    margin-right: 10px;
+//    margin-left: 0;
+//}
+//
+//.comment-form-cookies-consent {
+//    overflow: hidden;
+//    margin: 20px 0;
+//    position: relative;
+//}
+//
+//.comment-form-cookies-consent input[type="checkbox"]:checked,
+//.comment-form-cookies-consent input[type="checkbox"]:not(:checked) {
+//    position: absolute;
+//    left: -9999px;
+//}
+//
+//.comment-form-cookies-consent label {
+//    display: inline-block;
+//    margin: 0;
+//}
+//
+//.comment-form-cookies-consent input[type="checkbox"]:checked + label:before,
+//.comment-form-cookies-consent input[type="checkbox"]:not(:checked) + label:before {
+//    content: '';
+//    width: 17px;
+//    height: 17px;
+//    display: inline-block;
+//    margin: 2px 13px 0 0;
+//    cursor: pointer;
+//    vertical-align: text-top;
+//    position: static;
+//    border: solid 1px;
+//    @include border-radius(1px);
+//    opacity: 0.7;
+//}
+//
+//.comment-form-cookies-consent input[type="checkbox"]:checked + label:before {
+//    content: '\f00c';
+//    font-family: 'Font Awesome 5 Free', sans-serif;
+//    font-size: 14px;
+//    line-height: 16px;
+//    text-align: center;
+//}
+
+//.industrium_hidden_container {
+//    display: none;
+//}
+
+///* --------------------------- */
+///* ---------- Icons ---------- */
+///* --------------------------- */
+//.icon {
+//    display: inline-block;
+//    width: 1em;
+//    height: 1em;
+//    fill: currentColor
+//}
+//
+//.icon-bag {
+//    font-size: 1.6rem;
+//    width: .8em
+//}
+//
+//.icon-blood {
+//    font-size: 51.2rem;
+//    width: 1em
+//}
+//
+//.icon-bootstrap {
+//    font-size: 3.2rem;
+//    width: 5.4375em
+//}
+//
+//.icon-bread {
+//    font-size: 51.2rem;
+//    width: 1em
+//}
+//
+//.icon-charity {
+//    font-size: 51.2rem;
+//    width: 1em
+//}
+//
+//.icon-check {
+//    font-size: 48.888rem;
+//    width: 1em
+//}
+//
+//.icon-church {
+//    font-size: 51.2rem;
+//    width: 1em
+//}
+//
+//.icon-clock {
+//    font-size: 2.4rem;
+//    width: 1em
+//}
+//
+//.icon-close {
+//    font-size: 4.797rem;
+//    width: 1em
+//}
+//
+//.icon-comment {
+//    font-size: 51rem;
+//    width: 1em
+//}
+//
+//.icon-donate-1 {
+//    font-size: 51.2rem;
+//    width: 1em
+//}
+//
+//.icon-donation {
+//    font-size: 51.2rem;
+//    width: 1em
+//}
+//
+//.icon-envelope {
+//    font-size: 48.33rem;
+//    width: 1em
+//}
+//
+//.icon-gulp {
+//    font-size: 4.6rem;
+//    width: 1.65217em
+//}
+//
+//.icon-jquery {
+//    font-size: 3.8rem;
+//    width: 3.52632em
+//}
+//
+//.icon-location-pin {
+//    font-size: 47.7rem;
+//    width: 1em
+//}
+//
+//.icon-logo {
+//    font-size: 64.1rem;
+//    width: .83619em
+//}
+//
+//.icon-man {
+//    font-size: 51.2rem;
+//    width: 1em
+//}
+//
+//.icon-node {
+//    font-size: 4.4rem;
+//    width: 3.43182em
+//}
+//
+//.icon-phone-call {
+//    font-size: 47.381rem;
+//    width: 1em
+//}
+//
+//.icon-placeholder {
+//    font-size: 2.4rem;
+//    width: 1em
+//}
+//
+//.icon-previous {
+//    font-size: 1.6rem;
+//    width: 1em
+//}
+//
+//.icon-question {
+//    font-size: 3.1357rem;
+//    width: 1em
+//}
+//
+//.icon-remove {
+//    font-size: 34.8334rem;
+//    width: 1em
+//}
+//
+//.icon-share {
+//    font-size: 48.16rem;
+//    width: 1em
+//}
+//
+//.icon-shirt {
+//    font-size: 51.2rem;
+//    width: 1em
+//}
+//
+//.icon-warning {
+//    font-size: 48.942rem;
+//    width: 1em
+//}
+
+
+/********** WordPress default **********/
+.alignnone {
+    margin: 7px 0 30px;
+}
+
+p img.alignnone {
+    display: inline-block;
+    margin: 7px 0;
+}
+
+.aligncenter,
+div.aligncenter {
+    display: block;
+    margin: 7px auto;
+}
+
+.alignright {
+    float:right;
+    margin: 7px 0 30px 30px;
+}
+
+.alignleft {
+    float: left;
+    margin: 7px 30px 30px 0;
+}
+
+a img.alignright {
+    float: right;
+    margin: 7px 0 30px 30px;
+}
+
+a img.alignnone {
+    margin: 7px 0 30px;
+}
+
+a img.alignleft {
+    float: left;
+    margin: 7px 30px 30px 0;
+}
+
+a img.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+[class *= "wp-image-"] {
+    @include border-radius(4px);
+}
+p > .alignright:last-child {
+    clear: right;
+}
+
+iframe {
+    border: none;
+    overflow: auto;
+    max-width: 100%;
+}
+
+.wp-caption {
+    max-width: 96%; /* Image does not overflow the content area */
+    padding: 0;
+    text-align: center;
+    &,
+    &.alignnone {
+        margin: 7px 0 30px;
+    }
+    &.alignleft {
+        margin: 7px 30px 30px 0;
+    }
+    &.alignright {
+        margin: 7px 0 30px 30px;
+    }
+    &.aligncenter {
+        margin: 7px auto 30px;
+    }
+    img {
+        border: 0 none;
+        height: auto;
+        margin: 0;
+        max-width: 100%;
+        padding: 0;
+        width: auto;
+        @include border-radius(3px);
+    }
+    .wp-caption-text {
+        font-size: 14px;
+        line-height: 17px;
+        margin: 0;
+        padding: 7px 4px 0;
+    }
+}
+
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
+}
+.screen-reader-text:focus {
+    background-color: #eee;
+    clip: auto !important;
+    clip-path: none;
+    color: #444;
+    display: block;
+    font-size: 1em;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000;
+}
+*:not(.wp-block-embed__wrapper) {
+    > .video-embed {
+        iframe,
+        object,
+        embed {
+            height: 100%;
+        }
+    }
+}
+.video-embed {
+    position: relative;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    @include border-radius(4px);
+    &:not(:first-child) {
+        margin-top: 30px;
+    }
+    &:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    iframe,
+    object,
+    embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+    }
+    > div {
+        position: relative;
+        margin-bottom: -56.25% !important;
+    }
+}
+#querylist {
+    ul {
+        > li {
+            padding: 0;
+            &:before {
+                content: none;
+                display: none;
+            }
+        }
+    }
+}
+
+
+// Custom Motion Effects for Elementor
+@-webkit-keyframes fadeInUpCustom {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 40px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+@keyframes fadeInUpCustom {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 40px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none !important;
+    }
+}
+.content-wrapper .fadeInUp {
+    animation-name: fadeInUpCustom;
+}
+
+@-webkit-keyframes fadeInDownCustom {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -40px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+@keyframes fadeInDownCustom {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -40px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.content-wrapper .fadeInDown {
+    animation-name: fadeInDownCustom;
+}
+
+@-webkit-keyframes fadeInLeftCustom {
+    from {
+        opacity: 0;
+        transform: translate3d(-40px, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+@keyframes fadeInLeftCustom {
+    from {
+        opacity: 0;
+        transform: translate3d(-40px, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+.content-wrapper .fadeInLeft {
+    animation-name: fadeInLeftCustom;
+}
+
+@-webkit-keyframes fadeInRightCustom {
+    from {
+        opacity: 0;
+        transform: translate3d(40px, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+@keyframes fadeInRightCustom {
+    from {
+        opacity: 0;
+        transform: translate3d(40px, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+.content-wrapper .fadeInRight {
+    animation-name: fadeInRightCustom;
+}

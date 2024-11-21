@@ -1,0 +1,156 @@
+/********** WordPress Standard Recent Posts Widget **********/
+.widget_recent_entries {
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        &:not(:first-child) {
+            padding: 2px 0 0;
+        }
+        li {
+            position: relative;
+            line-height: 1.38888em;
+            padding: 0;
+            &:before {
+                content: none;
+                display: none;
+            }
+            &:not(:first-child) {
+                margin-top: 1.1111em;
+            }
+            a {
+                font-weight: 600;
+            }
+            .post-date {
+                display: block;
+                text-transform: uppercase;
+                font-size: 77.7777%;
+                line-height: 1.5em;
+                font-weight: 600;
+                margin: 20px 0 0;
+            }
+        }
+    }
+}
+
+body .content-wrapper .wp-block-latest-posts,
+.wp-block-latest-posts {
+    padding: 0;
+    &:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+    &.is-grid {
+        margin-top: -27px;
+        li:first-child {
+            margin-top: 27px;
+        }
+    }
+    li {
+        overflow: hidden;
+        padding: 0;
+        //@include flex(column, nowrap, flex-start, flex-start);
+        &:not(:last-of-type) {
+            margin-bottom: 0;
+        }
+        &:not(:first-child) {
+            margin-top: 1.1111em;
+            margin-bottom: 0;
+        }
+        &:before {
+            content: none;
+            display: none;
+        }
+        .wp-block-latest-posts__featured-image {
+            margin: 0 0 20px;
+            order: 0;
+            &.alignleft {
+                margin: 6px 15px 6px 0;
+            }
+            &.alignright {
+                margin: 6px 0 6px 15px;
+            }
+            &.aligncenter {
+                margin: 0 0 20px;
+                a {
+                    vertical-align: top;
+                }
+                img {
+                    margin: 0 auto;
+                }
+            }
+            @include flex-shrink(0);
+            img {
+                position: relative;
+            }
+            > a {
+                display: block;
+                font-size: 16ps;
+            }
+        }
+        > a,
+        > .item-wrapper > a {
+            display: block;
+            font-weight: 600;
+            position: relative;
+            line-height: 1.38888em;
+        }
+        .wp-block-latest-posts__post-date {
+            display: block;
+            text-transform: uppercase;
+            font-size: 77.7777%;
+            line-height: 1.5em;
+            font-weight: 600;
+            margin: 20px 0 0;
+        }
+        .wp-block-latest-posts__post-excerpt {
+            font-size: 15px;
+            line-height: 1.6667em;
+            margin: 5px 0 0;
+        }
+        .wp-block-latest-posts__post-author {
+            display: block;
+            margin: 5px 0 0;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 14px;
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    body .content-wrapper .wp-block-latest-posts,
+    .wp-block-latest-posts {
+        li {
+            > a {
+                font-size: 16px;
+            }
+            .wp-block-latest-posts__featured-image {
+                &.alignleft {
+                    margin: 6px 20px 6px 0;
+                }
+                &.alignright {
+                    margin: 6px 0 6px 20px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    body .content-wrapper .wp-block-latest-posts,
+    .wp-block-latest-posts {
+        li {
+            > a {
+                font-size: 18px;
+            }
+            .wp-block-latest-posts__featured-image {
+                &.alignleft {
+                    margin: 6px 35px 6px 0;
+                }
+                &.alignright {
+                    margin: 6px 0 6px 35px;
+                }
+            }
+        }
+    }
+}

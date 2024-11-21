@@ -1,0 +1,163 @@
+/* ---------- Header Page Title ---------- */
+.page-title-container {
+    position: relative;
+    @include flex(column, nowrap, center, flex-start);
+    padding: 50px 0;
+    @include box-sizing;
+    .page-title-row {
+        padding: 0 20px;
+        margin: 0 auto;
+        max-width: 1210px;
+        width: 100%;
+        @include box-sizing;
+        z-index: 2;
+    }
+    .page-title-box-icon {
+        margin-bottom: 13px;
+        display: none;
+    }
+    .page-title-box {
+        position: relative;
+    }
+    .page-title {
+        margin: 0;
+        -ms-word-wrap: break-word;
+        word-wrap: break-word;
+        position: relative;
+    }
+    &.page-title-decorated {
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            right: 0;
+            bottom: 0;
+            z-index: 3;
+            @include transition(height .5s cubic-bezier(0, 0, 0.15, 0.96));
+        }
+        &:after {
+            bottom: initial;
+            top: 100%;
+            @include transition(height .5s .3s cubic-bezier(0, 0, 0.15, 0.96));
+        }
+    }
+}
+.header-position-above {
+    & + .page-title-container {
+        .page-title {
+            margin: 0 0 30px;
+        }
+    }
+}
+.page-title-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: initial;
+    width: 100%;
+    height: 100%;
+    @include transform(translate(-50%, -50%));
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: initial;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-blend-mode: multiply;
+}
+.breadcrumbs {
+    font-size: 14px;
+    line-height: 26px;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    width: 100%;
+    .delimiter {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 6px 0 7px;
+        position: relative;
+        top: -1px;
+        width: 3px;
+        height: 3px;
+        @include border-radius(50%);
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .page-title-container {
+        .page-title-box {
+            .page-title {
+                margin: 25px 0;
+            }
+        }        
+    }
+}
+
+@media only screen and (min-width: 576px) {
+    .page-title-container {
+        min-height: 250px;
+        .page-title-box-icon {
+            display: block;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .page-title-container {
+        min-height: 330px;
+        .page-title-row {
+            padding: 0 30px;
+        }
+        &.page-title-decorated {
+            &:before,
+            &:after {
+                width: 70px;
+                right: 70px;
+                height: 70px;
+            }
+        }
+    }
+    .breadcrumbs {
+        font-size: 16px;
+        line-height: 30px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .page-title-container {
+        min-height: 480px;
+        .page-title-row {
+            padding: 0 40px;
+            max-width: 1420px;
+        }
+        &.page-title-decorated {
+            &:before,
+            &:after {
+                width: 108px;
+                right: 105px;
+                height: 108px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    .page-title-container {
+        &.page-title-decorated {
+            &.animated {
+                &:before,
+                &:after {
+                    height: 108px;
+                }
+            }
+            &:before,
+            &:after {
+                height: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,135 @@
+/********** WooCommerce Recent Product Reviews Widget **********/
+.sidebar,
+.footer-widgets,
+.slide-sidebar-content {
+    .wc-block-components-load-more {
+        text-align: initial;
+        .wp-block-button__link {
+            min-width: 123px;
+            padding: 13px 20px 12px;
+        }
+    }
+}
+
+.widget {
+    div[class*="wp-block-"] {
+        .wc-block-sort-select {
+            text-align: left;
+            .wc-block-components-sort-select__label {
+                margin: 0;
+            }
+            .wc-block-sort-select__select {
+                display: inline-block;
+                padding: 0 3px;
+                height: 30px;
+                outline: none;
+                @include box-sizing;
+                border: none;
+                text-indent: 1px;
+                background: none;
+                position: relative;
+                z-index: 2;
+                font-weight: 700;
+                text-transform: uppercase;
+                font-size: 14px;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                cursor: pointer;
+            }
+        }
+        .wc-block-review-list-item__item {
+            margin: 0;
+            &:before {
+                @include transition(background-color .3s);
+                top: 10px;
+            }
+            &:not(:first-child):before {
+                top: 32px;
+            }
+            .wc-block-review-list-item__info {
+                margin: 0;
+                @include flex(row, nowrap, flex-start, flex-start);
+            }
+            .wc-block-review-list-item__meta {
+                width: 100%;
+                @include flex(column, nowrap, flex-start, flex-start);
+            }
+            .wc-block-review-list-item__meta,
+            .wc-block-review-list-item__product {
+                font-weight: 500;
+            }
+            .wc-block-review-list-item__product {
+                line-height: 1.5em;
+            }
+            .wc-block-review-list-item__image {
+                width: 70px;
+                height: 70px;
+                margin: 0 25px 0 0;
+                @include flex-shrink(0);
+                img {
+                    @include border-radius(3px);
+                }
+            }
+            .wc-block-review-list-item__text {
+                &:not(:first-child) {
+                    margin: 12px 0 0;
+                }
+                p {
+                    line-height: 1.4em;
+                }
+            }
+            .wc-block-review-list-item__rating {
+                margin: 8px 0;
+                line-height: 1;
+            }
+            .wc-block-review-list-item__author,
+            .wc-block-review-list-item__published-date {
+                display: block;
+                font-size: 87.5%;
+                line-height: 1.5em;
+                font-weight: 500;
+                letter-spacing: -0.02em;
+                margin: 0;
+            }
+            .wc-block-review-list-item__published-date {
+                &:before {
+                    content: none;
+                    display: none;
+                }
+            }
+        }
+
+        &.has-image {
+            .wc-block-review-list-item__item {
+                padding: 0;
+                &:before {
+                    content: none;
+                    display: none;
+                }
+                .wc-block-review-list-item__meta {
+                    margin: -6px 0 0;
+                }
+            }
+        }
+        &[data-image-type="reviewer"] {
+            .wc-block-review-list-item__image {
+                width: 48px;
+                height: 48px;
+                margin: 0 20px 0 0;
+                img {
+                    @include border-radius(50%);
+                }
+            }
+        }
+        &.has-content {
+            .wc-block-review-list-item__item {
+                &:not(:first-child) {
+                    padding-top: 24px;
+                    margin: 20px 0 0;
+                    border-top-style: solid;
+                    border-top-width: 1px;
+                }
+            }
+        }
+    }
+}

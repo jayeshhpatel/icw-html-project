@@ -1,0 +1,102 @@
+/********** Vacancies Archive **********/
+.vacancy-listing-wrapper {
+    margin: -35px 0 -30px;
+    .vacancy-item-wrapper {
+        padding: 35px 0 0;
+        &:not(:last-child) {
+            .vacancy-item {
+                border-bottom: 2px solid;
+            }
+        }
+    }
+    .vacancy-item {
+        position: relative;
+        cursor: default;
+        padding: 0 0 30px;
+        @include flex(column, nowrap, flex-start, flex-start);
+        .vacancy-item-header,
+        .vacancy-item-excerpt,
+        .vacancy-item-salary,
+        .vacancy-item-button {
+            padding: 15px 0;
+            @include box-sizing;
+            &:first-child {
+                padding-left: 0;
+            }
+            &:last-child {
+                padding-right: 0;
+            }
+        }
+        .vacancy-item-header {
+            @include flex-shrink(0);
+        }
+        .vacancy-item-salary {
+            @include flex-shrink(0);
+        }
+        .vacancy-item-button {
+            padding-top: 10px;
+            font-size: 0;
+            line-height: 1;
+            @include flex-shrink(0);
+        }
+        .vacancy-post-title {
+            &:not(:first-child) {
+                margin-top: .9167em;
+            }
+        }
+        .vacancy-salary {
+            .vacancy-salary-value {
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 576px) {
+    .vacancy-listing-wrapper {
+        margin: -35px 0;
+        .vacancy-item {
+            padding: 0 0 35px;
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .vacancy-listing-wrapper {
+        margin: -35px 0 -40px;
+        .vacancy-item-wrapper {
+            &:not(:first-child):not(:last-child) {
+                padding-top: 60px;
+                .vacancy-item {
+                    padding-bottom: 60px;
+                }
+            }
+        }
+        
+        .vacancy-item {
+            padding: 0 0 40px;
+            @include flex(row, nowrap, space-between, flex-start);
+            .vacancy-item-header,
+            .vacancy-item-excerpt,
+            .vacancy-item-salary,
+            .vacancy-item-button {
+                padding: 0 20px;
+            }
+            .vacancy-item-header {
+                padding-top: 5px;
+                width: 21%;
+            }
+            .vacancy-item-excerpt {
+                width: 100%;
+            }
+            .vacancy-item-salary {
+                width: 31%;
+                padding-top: 5px;
+            }
+            .vacancy-item-button {
+                margin-top: -20px;
+                @include align-self(center);
+            }
+        }
+    }
+}

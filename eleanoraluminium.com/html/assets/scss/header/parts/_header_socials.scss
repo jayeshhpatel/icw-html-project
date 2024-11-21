@@ -1,0 +1,105 @@
+/* ---------- Header Social Buttons ---------- */
+.wrapper-socials {
+    padding: 0;
+    list-style: none;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: default;    
+    li {
+        margin: 0 0 10px;
+        border: 1px solid;
+        &:not(:first-child) {
+            border-left: none;
+        }
+        margin: 0;
+        display: inline-block;
+        vertical-align: middle;
+        padding: 0;        
+        &:before {
+            content: none;
+            display: none;
+        }  
+        a {
+            width: 43px;
+            height: 43px;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 43px;                    
+            text-align: center;
+            position: relative;
+            &:before {
+                position: relative;
+                z-index: 1;
+            }
+            &:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 0;
+                width: 100%;
+                @include transition(height .3s);
+                z-index: 0;
+            }
+            &:hover {
+                &:after {
+                    height: 100%;
+                }
+            }
+        }      
+    }
+    a {
+        text-align: center;
+        display: block;     
+        @include transition(color .3s, background-color .3s, border-color .3s);
+        font-family: 'Font Awesome 5 Brands';
+        &[class^='fontello'] {
+            font-family: 'fontello';
+        }
+    }
+    &.top-bar-socials {
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        height: calc(100% + 1px);
+        margin: 0;
+        &:not(:first-child) {
+            margin-left: 30px;
+        }
+        li {
+            margin: 0;
+            height: 100%;
+            border-top: none;
+            border-bottom: none;
+            a {
+                width: auto; 
+                line-height: initial;
+                font-size: 86%;
+                padding: 13px;
+                height: 100%;        
+                @include box-sizing;
+                @include flex(row, nowrap, center, center);
+            }
+        }
+    }
+}
+.slide-sidebar-wrapper {
+    .wrapper-socials {
+        li {
+            margin: 0 0 10px;
+            border: 1px solid;
+            &:not(:first-child) {
+                border-left: none;
+            }
+        }
+        a {
+            width: 43px;
+            height: 43px;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 43px;                    
+            text-align: center;
+            position: relative;
+        }
+    }
+}

@@ -1,0 +1,54 @@
+/********** Accordion Elementor Widget **********/
+.elementor-widget-accordion {
+    .elementor-accordion {
+        .elementor-accordion-item {
+            border: none;
+            padding: 0;
+            border-top: 2px solid !important;
+            &:last-child {
+                border-bottom: 2px solid;
+            }
+            .elementor-tab-content {
+                border-top: none;
+            }
+        }
+        .elementor-tab-title {
+            padding: 18px 0 18px 0;
+            @include flex(row, nowrap, flex-start, center);
+            font-size: 25px;
+            line-height: 1.6em;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            border: none;
+            @include transition(color .3s, background-color .3s);
+            .elementor-accordion-icon {
+                width: 26px;
+                height: 26px;
+                font-size: 16px;
+                line-height: 28px;
+                @include flex-shrink(0);
+                &.elementor-accordion-icon-right,
+                &.elementor-accordion-icon-left {
+                    text-align: center;
+                }
+                &.elementor-accordion-icon-right {
+                    margin-left: 20px;
+                    order: 2;
+                }
+                &.elementor-accordion-icon-left {
+                    margin-right: 20px;
+                    order: 0;
+                }
+                i {
+                    line-height: 26px;
+                }
+            }
+            .elementor-accordion-title {
+                width: 100%;
+            }
+        }
+        .elementor-tab-content {
+            padding: 0 0 20px;
+        }
+    }
+}

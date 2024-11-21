@@ -1,0 +1,66 @@
+/********** Image Elementor Widget **********/
+.elementor-widget-image {
+    .wp-caption {
+        max-width: 100%;
+    }
+    .elementor-image {
+        position: relative;
+        a {
+            position: relative;
+            &:hover {
+                .hovered-caption {
+                    clip-path: inset(0 0 0 0);
+                    -webkit-clip-path: inset(0 0 0 0);
+                }
+            }
+            .hovered-caption {
+                position: absolute;
+                left: 0;
+                bottom: 40px;
+                padding: 50px 26px 50px 23px;
+                font-size: 16px;
+                letter-spacing: -0.03em;
+                font-weight: 700;
+                clip-path: inset(0 100% 0 0);
+                -webkit-clip-path: inset(0 100% 0 0);
+                @include transition(all .3s);
+                &:after {
+                    content: '\e83d';
+                    position: absolute;
+                    right: 10px;
+                    bottom: 12px;
+                    font: 17px/17px 'fontello';
+                    width: 1em;
+                    height: 1em;
+                }
+            }
+        }
+        .elementor-image-badge {
+            font-size: 16px;
+            line-height: 2.125em;
+            padding: 0px 14px;
+            position: absolute;
+            top: -1.5625em;
+            left: 0;
+            z-index: 1;
+        }
+    }
+    &.add-hover-animation {
+        .elementor-image {
+            img {
+                @include transition(all .3s);
+                &:hover {
+                    @include transform(translateY(-15px));
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1500px) {
+    .elementor-widget-image.elementor-absolute {
+        &.elementor-hidden-tablet {
+            display: none;
+        }
+    }
+}

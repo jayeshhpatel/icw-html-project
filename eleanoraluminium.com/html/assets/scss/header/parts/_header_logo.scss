@@ -1,0 +1,59 @@
+/* ---------- Header Logo ---------- */
+.logo-container {
+    margin: 0;
+    margin-right: 15px;
+    width: 100%;
+    &:not(:first-child) {
+        margin-left: 0;
+    }
+    @media (max-width: 1365px) {
+        margin-left: 20px;
+        width: auto;
+    }
+}
+.mobile-header-row {
+    .logo-container {
+        width: 100%;
+    }
+}
+.logo {
+    font-size: 0;
+    line-height: 1;
+}
+.logo-link {
+    text-decoration: none;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    @media (max-width: 1365px) {
+        margin: 12px 0;
+    }
+    img {
+        max-height: 55px;
+    }
+    .logo-site-name {
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: .15em;
+    }
+}
+
+@media only screen and (min-width: 1365px) {
+    .logo-container {
+        margin: 0;
+        margin-right: 15px;
+    }
+    .logo-link {
+        .logo-site-name {
+            font-size: 22px;
+            font-weight: 700;
+        }
+    }
+    .header {
+        &.header-type-2 {
+            .logo {
+                @include flex-shrink(0);
+            }
+        }
+    }
+}

@@ -1,0 +1,155 @@
+/********** Step Carousel Elementor Widget **********/
+.elementor-widget-industrium_step_carousel {
+    .owl-dots {
+        margin: 20px -20px 30px;
+    }
+    .step-item {
+        position: relative;
+        margin: 0;
+        padding: 25px 35px 60px 45px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        &:hover {
+            .step-bg-number {
+                top: -0.65em;
+            }
+        }
+        .step-bg-number {
+            position: absolute;
+            font-size: 100px;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            font-weight: 700;
+            margin-left: -0.07em;
+            margin-right: -0.07em;
+            top: -0.32em;
+            right: initial;
+            left: 45px;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            @include transition(top .3s);
+        }
+        .step-number {
+            font-size: 16px;
+            line-height: 1.5em;
+            font-weight: 500;
+            text-align: right;
+            &:not(:last-child) {
+                margin-bottom: 50px;
+            }
+        }
+    }
+    .step-title {
+        margin: 0;
+        line-height: 1.16666em;
+        @include transition(color .3s);
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
+    .owl-stage-outer {
+        padding-top: 52px;
+    }
+    &.view_type-2 {
+        .step-carousel-wrapper {
+            max-width: 1265px;
+        }
+        .owl-stage-outer {
+            overflow: visible;
+            .owl-item {
+                opacity: 0.5;
+                @include transition(opacity .3s);
+                &.active {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    &.view_style-2 {
+        .step-item {
+            @include transition(transform .3s);
+            &:hover {
+                @include transform(translateY(-30px));
+            }
+            .step-bg-number {
+                top: -0.32em;
+                @include transition(all .3s);
+            }
+        }
+    }
+    &.view_style-3 {
+        .owl-item {
+            &.active {
+                & + .active,
+                & + .owl-item:not(.active) {
+                    .step-item {
+                        border-left-width: 2px;
+                        border-left-style: solid;
+                    }
+                }
+            }
+        }
+        &.view_type-2 {
+            .owl-item {
+                &.active {
+                    .step-item {
+                        border-right-width: 2px !important;
+                        border-right-style: solid !important;
+                    }                    
+                    & + .active,
+                    & + .owl-item:not(.active) {
+                        .step-item {
+                            border: none;                            
+                        }
+                    }
+                }
+            }
+        }
+        .step-item {
+            border: none;            
+            @include transition(transform .3s);
+            &:hover {
+                @include transform(translateY(-30px));
+            }
+            .step-number {
+                display: inline-block;
+                writing-mode: vertical-rl;
+                @include transform(rotate(180deg));
+                &:not(:last-child) {
+                    margin-bottom: 0;
+                }
+                &:not(:first-child) {
+                    margin-left: 20px;
+                }
+            }
+            .step-content {
+                &:not(:first-child) {
+                    margin-top: 50px;
+                }
+            }
+            .step-bg-number {
+                top: -0.32em;
+                position: static;
+                display: inline-block;
+                @include transition(all .3s);
+            }
+        }
+    }
+    .industrium-heading.heading-with-pagination:not(:last-child) {
+        margin-bottom: 20px;
+    }
+}
+
+.elementor-widget-industrium_step_carousel {
+    .steps-slider-container {
+        margin: 0;
+    }
+    .owl-stage {
+        @include align-items(stretch);
+        .owl-item {
+            .step-item {
+                height: 100%;
+            }
+        }
+    }
+}
