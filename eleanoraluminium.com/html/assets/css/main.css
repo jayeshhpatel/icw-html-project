@@ -477,3 +477,83 @@
             transform: none;
   }
 }
+.icw-tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.custom-tooltip {
+  position: absolute;
+  background-color: #1e282d;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+  z-index: 1000;
+  -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.2s ease, visibility 0.2s ease;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  line-height: normal;
+}
+
+.custom-tooltip::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.custom-tooltip.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Tooltip arrow when placed above */
+.custom-tooltip[data-placement="top"]::before {
+  border-width: 5px 5px 0 5px;
+  border-color: #1e282d transparent transparent transparent;
+  bottom: -5px;
+  /* Adjust for arrow size */
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+/* Tooltip arrow when placed below */
+.custom-tooltip[data-placement="bottom"]::before {
+  border-width: 0 5px 5px 5px;
+  border-color: transparent transparent #1e282d transparent;
+  top: -5px;
+  /* Adjust for arrow size */
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+/* Tooltip arrow when placed left */
+.custom-tooltip[data-placement="left"]::before {
+  border-width: 5px 0 5px 5px;
+  border-color: transparent transparent transparent #1e282d;
+  right: -5px;
+  /* Adjust for arrow size */
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+/* Tooltip arrow when placed right */
+.custom-tooltip[data-placement="right"]::before {
+  border-width: 5px 5px 5px 0;
+  border-color: transparent #1e282d transparent transparent;
+  left: -5px;
+  /* Adjust for arrow size */
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
