@@ -22168,6 +22168,7 @@ div.wpforms-container.wpforms-container-full .wpforms-form .wpforms-list-inline 
 .header-icons-container.icons-container-big {
   margin: 0;
   padding: 0 15px 0 10px;
+  background: transparent !important;
 }
 .header-icons-container.icons-container-big:first-child:last-child {
   margin-bottom: 0;
@@ -22343,7 +22344,16 @@ body.admin-bar .mobile-header.sticky-header {
 .mobile-header {
   border-bottom: solid 1px transparent;
   z-index: 4;
-  position: relative;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+.mobile-header.fixed-header {
+  background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  -webkit-box-shadow: 0 15px 38px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 38px rgba(0, 0, 0, 0.1);
 }
 .mobile-header.mobile-header-position-over {
   position: absolute;
@@ -22953,6 +22963,11 @@ body.admin-bar .slide-extra-wrapper {
 }
 @media (max-width: 1365px) {
   .logo-link {
+    margin: 8px 0;
+  }
+}
+@media (max-width: 992px) {
+  .logo-link {
     margin: 12px 0;
   }
 }
@@ -23339,7 +23354,7 @@ body.admin-bar .slide-extra-wrapper {
 }
 @media (max-width: 1365px) {
   .header .main-menu > li > a {
-    font-size: 14px;
+    font-size: 14px !important;
   }
 }
 .header .main-menu > li > a:before {
@@ -23424,6 +23439,26 @@ body.admin-bar .slide-extra-wrapper {
 }
 
 @media only screen and (min-width: 992px) {
+  .header {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    -webkit-transition: transform linear 0.3s;
+    -webkit-transition: -webkit-transform linear 0.3s;
+    transition: -webkit-transform linear 0.3s;
+    transition: transform linear 0.3s;
+    transition: transform linear 0.3s, -webkit-transform linear 0.3s;
+  }
+  .header.fixed-header {
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    -webkit-box-shadow: 0 15px 38px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 38px rgba(0, 0, 0, 0.1);
+  }
   .header .main-menu {
     display: -ms-inline-flexbox;
     display: -webkit-inline-box;

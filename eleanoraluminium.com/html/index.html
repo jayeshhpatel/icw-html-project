@@ -22,8 +22,7 @@
         <link rel="icon" href="uploads/favicon-32x32.png" sizes="32x32" />
         <link rel="icon" href="uploads/favicon-300x300.png" sizes="192x192" />
         <link rel="apple-touch-icon" href="uploads/favicon-300x300.png" />
-        <meta name="msapplication-TileImage" content="uploads/favicon-300x300.png" />
-        
+        <meta name="msapplication-TileImage" content="uploads/favicon-300x300.png" />        
     </head>
 
     <!-- Body -->
@@ -37,13 +36,7 @@
                     <img width="58" height="90" src="assets/img/preloader.png" alt="Page Loader Image" class="page-loader-logo" />
                 </div>
             </div>
-        </div>
-
-        <!-- Search Panel -->
-        <div class="site-search">
-            <div class="site-search-close"></div>
-            <form name="search_form" method="get" action="https://demo.artureanec.com/themes/industrium/" class="search-form" id="search-789"><span class="search-form-icon" onclick="javascript:document.getElementById(&quot;search-789&quot;).submit();"></span><input type="text" name="s" value="" placeholder="Search" title="Search" class="search-form-field"></form>
-        </div>
+        </div>      
 
         <!-- Mobile Menu Panel -->
         <div class="mobile-header-menu-container">
@@ -51,7 +44,6 @@
                 <!-- Icons Block -->
                 <div class="header-icons-container">
                     <div class="logo-container"><a class="logo-link" href="#"><img src="assets/img/logo.svg" alt="Eleanor Aluminium" /></a></div>
-                    <!-- <div class="header-icon search-trigger"><span class="search-trigger-icon"></span></div> -->
                     <div class="header-icon menu-close"><span class="menu-close-icon"></span></div>
                 </div>
             </div>
@@ -95,7 +87,7 @@
             <!-- Mobile Sticky Header -->
 
             <!-- Mobile Header -->
-            <div class="mobile-header mobile-header-position-above sticky-header-off mobile-header-type-1">
+            <div class="mobile-header mobile-header-position-above sticky-header-on mobile-header-type-1">
                 <div class="mobile-header-row">
                     <!-- Logo Block -->
                     <div class="logo-container">
@@ -117,7 +109,7 @@
             </div>
 
             <!-- Header -->
-            <header class="header header-type-1 header-position-above sticky-header-off">
+            <header class="header header-type-1 header-position-above sticky-header-on">
                 <div class="container">
                     <div class="header-row">
                         <!-- Left Info Block -->
@@ -353,6 +345,21 @@
                         }
                     }
                 );
+                if (jQuery('.header, .mobile-header').length) {
+                    if (jQuery(this).scrollTop() > 100) {
+                        jQuery(".header, .mobile-header").addClass("fixed-header");
+                    } else {
+                        jQuery(".header, .mobile-header").removeClass("fixed-header");
+                    }
+
+                    jQuery(window).scroll(function () {
+                        if (jQuery(this).scrollTop() > 100) {
+                            jQuery(".header, .mobile-header").addClass("fixed-header");
+                        } else {
+                            jQuery(".header, .mobile-header").removeClass("fixed-header");
+                        }
+                    });
+                }
             });
 
         </script>

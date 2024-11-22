@@ -311,7 +311,7 @@
                 font-weight: 600 !important;
                 font-size: 16px;
                 @media (max-width: 1365px) {
-                    font-size: 14px;
+                    font-size: 14px !important;
                 }
                 &:before {
                     content: '';
@@ -420,6 +420,20 @@
 
 @media only screen and (min-width: 992px) {
     .header {
+        position: fixed;
+        width: 100%;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 10;
+        @include transition(transform linear 0.3s);
+        
+        &.fixed-header {
+            background: rgba(255, 255, 255, 0.95);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);   
+            @include box-shadow(0 15px 38px rgba(0, 0, 0, 0.1));                  
+        }
         .main-menu {
             display: -ms-inline-flexbox;
             display: inline-flex;
