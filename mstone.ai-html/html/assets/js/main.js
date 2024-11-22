@@ -149,7 +149,8 @@ function updateProgressBars() {
         
         if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
             // Animate progress bar height to 100%
-            $('.image-block').find('.progress-content-img').removeClass('is-active');
+            $('.image-block').find('.progress-content-img:not(.image-static)').removeClass('is-active');
+
             $('[data-progress-id="' + progressBarId + '"]').css('height', '100%');
             $('.image-block').find('[data-id="' + progressBarId + '"]').addClass('is-active');
         // } else if (scrollPosition >= sectionAnimateContentTop && scrollPosition < sectionAnimateContentBottom) {
@@ -239,3 +240,64 @@ if ($('.thumbnail-slider-block').length) {
     main.mount();
     thumbnails.mount();
 }
+
+const tabsSectionImage = document.querySelectorAll('.tabs-section .image-block img');
+
+const observerImage = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const img = entry.target;
+      if (img.complete) {
+        img.closest('.image-block').classList.add('is-loaded');
+      } else {
+        img.onload = function() {
+          img.closest('.image-block').classList.add('is-loaded');
+        }
+      }
+      observer.unobserve(img);
+    }
+  });
+}, { threshold: 0.1 });
+
+tabsSectionImage.forEach(img => {
+  observerImage.observe(img);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    function animateCount(element, start, end, duration) {
+        const stepTime = Math.abs(Math.floor(duration / (end - start)));
+        let current = start;
+        const increment = end > start ? 1 : -1;
+
+        const timer = setInterval(() => {
+            current += increment;
+            element.textContent = current + "%";
+            if (current === end) {
+                clearInterval(timer);
+            }
+        }, stepTime);
+    }
+
+    const section = document.querySelector(".metrics-section");
+    const countElements = document.querySelectorAll(".count");
+
+    if (!section) { return; }
+
+    let hasAnimated = false;
+
+    const observerCount = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting && !hasAnimated) {
+                hasAnimated = true;
+                countElements.forEach((el) => {
+                    const target = parseInt(el.textContent, 10);
+                    el.textContent = "0";
+                    animateCount(el, 0, target, 2000);
+                });
+                observerCount.disconnect();
+            }
+        });
+    }, { threshold: 0.5 });
+
+    observerCount.observe(section);
+});
