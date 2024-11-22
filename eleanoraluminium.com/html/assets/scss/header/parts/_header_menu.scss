@@ -2,7 +2,7 @@
 .menu-trigger {
     position: relative;
     &:last-child {
-        margin-right: 20px;
+        margin-right: 15px !important;
     }
     .menu-trigger-icon {
         display: block;
@@ -309,6 +309,10 @@
                 overflow: hidden;
                 padding: 22px 0;
                 font-weight: 600 !important;
+                font-size: 16px;
+                @media (max-width: 1365px) {
+                    font-size: 14px;
+                }
                 &:before {
                     content: '';
                     display: block;
@@ -419,12 +423,12 @@
     }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (max-width: 1365px) {
     .header {
         .main-menu {
             li {
                 &:not(:last-of-type) {
-                    margin-right: 30px
+                    margin-right: 10px
                 }
             }
         }
@@ -453,8 +457,8 @@
                 position: absolute;
                 top: 100%;
                 left: -34px;
-                width: 300px;
-                padding: 31px 35px 31px 44px;
+                width: 260px;
+                padding: 20px;
                 opacity: 0;
                 visibility: hidden;
                 -webkit-transition: all .3s;
@@ -494,34 +498,106 @@
                         }
                     }
                     &:not(:last-of-type) {
-                        margin-bottom: 1px;
+                        margin-bottom: 5px;
                     }
                     > a {
                         display: block;
                         position: relative;
                         @include transition(all .3s);
-                        padding: 11px 33px 11px 0;
+                        padding: 12px 15px;
+                        font-size: 14px !important;
+                        background: rgba(255, 255, 255, 0.03);
                         &:before {
-                            content: '\e82d';
-                            font: 10px/10px 'fontello';
-                            position: absolute;
-                            display: block;
-                            top: 50%;
-                            margin-top: -4px;
-                            left: 0;
-                            right: initial;
-                            opacity: 0;
-                            color: #EE5D24 !important;
-                            @include transition(opacity .4s);
+                            content: none;
+                            // content: '\e82d';
+                            // font: 10px/10px 'fontello';
+                            // position: absolute;
+                            // display: block;
+                            // top: 50%;
+                            // margin-top: -4px;
+                            // left: 0;
+                            // right: initial;
+                            // opacity: 0;
+                            // color: #EE5D24 !important;
+                            // @include transition(opacity .4s);
                         }
                     }
                     &:hover,
                     &.current-menu-item {
                         > a {
                             color: #EE5D24 !important;
-                            padding: 11px 20px 11px 19px;
+                            background: rgba(255, 255, 255, 0.06);
                             &:before {
                                 opacity: 1;
+                            }
+                        }
+                    }                   
+                }
+            }
+            &.mega-menu {
+                & > ul.sub-menu {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    width: 560px;
+                    & > li {
+                        &.menu-item-has-children {
+                            border-right: 1px solid rgba(#EE5D24, 0.1);
+                            padding: 0 20px;
+                            &:first-child {
+                                padding-left: 0;
+                            }
+                            &:last-child {
+                                padding-right: 0;
+                                border-right: none;
+                            }
+                            & > a[rel] {
+                                font-size: 12px !important;
+                                color: #EE5D24;
+                                padding: 0 0 8px;
+                                background: transparent;
+                                &::after {
+                                    content: none;
+                                }
+                            }
+                            .sub-menu {
+                                opacity: 1;
+                                visibility: visible;
+                                @include transform(rotateX(0));
+                                position: relative;
+                                top: 0;
+                                left: 0;
+                                margin: 0;
+                                padding: 0;
+                                transform: unset;
+                                li {
+                                    opacity: 1;
+                                    visibility: visible;
+                                    @include transform(translateY(0));
+                                    &:nth-child(2n+1) {
+                                        @include transition-delay(0.1s);
+                                    }
+                                    &:nth-child(2n+2) {
+                                        @include transition-delay(0.15s);
+                                    }
+                                    &:nth-child(2n+3) {
+                                        @include transition-delay(0.2s);
+                                    }
+                                    &:nth-child(2n+4) {
+                                        @include transition-delay(0.25s);
+                                    }
+                                    &:nth-child(2n+5) {
+                                        @include transition-delay(0.3s);
+                                    }
+                                    &:nth-child(2n+6) {
+                                        @include transition-delay(0.35s);
+                                    }
+                                    &:nth-child(2n+7) {
+                                        @include transition-delay(0.4s);
+                                    }
+                                    &:nth-child(2n+8) {
+                                        @include transition-delay(0.45s);
+                                    }
+                                }
                             }
                         }
                     }
@@ -590,5 +666,19 @@
 @media only screen and (min-width: 992px) {
     .mobile-header-row {
         margin: 0 20px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .top-bar {
+        display: block;
+    }
+
+    .header {
+        display: block !important;
+    }
+
+    .mobile-header {
+        display: none !important;
     }
 }
