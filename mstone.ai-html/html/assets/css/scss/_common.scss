@@ -1414,6 +1414,30 @@ h5, .h5 {
 
 // UI
 .arrow-list {
+    &.is-dark {
+        li {
+            color: $dark;
+        }
+    }
+    &.is-sm {
+        li {
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 8px;
+            &::before {
+                width: 26px;
+                height: 26px;
+                flex: none;
+            }
+        }
+    }
+    &.is-no-border-icon {
+        li {
+            &::before {
+                background: url(../images/icons/icon-no-border-blue-arrow.svg) no-repeat center center; 
+            }
+        }
+    }
     li {
         @include flexbox;
         @include align-items(center);
@@ -1427,9 +1451,10 @@ h5, .h5 {
         &::before {
             content: '';
             background: url(../images/icons/icon-blue-arrow.svg) no-repeat center center;
-            background-size: contain;
+            background-size: contain !important;
             width: 42px;
             height: 42px;
+            flex: none;
             display: inline-block;
             margin-right: 24px;
             @media (max-width:992px) {
@@ -1441,7 +1466,31 @@ h5, .h5 {
     }
 } 
 
-
+.icon-list {
+    &.column-2 {
+        columns: 2;
+        column-gap: 100px;
+    }
+    li {
+        @include flexbox;
+        @include align-items(center);
+        font-size: 16px;
+        color: $dark;
+        margin-bottom: 25px;
+        .icon {
+            width: 40px;
+            height: 40px;
+            flex: none;
+            @include flexbox;
+            @include align-items(center);
+            @include justify-content(center);
+            margin-right: 24px;
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
 
 // 404
 .error-404-section {	

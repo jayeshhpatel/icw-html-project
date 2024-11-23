@@ -19,6 +19,7 @@
 .text-gray50    {color: $gray50 !important;}
 .text-gray      {color: $dark !important;}
 
+.bg-none
 
 .bg-white {
 	background-color: $white !important;
@@ -592,7 +593,16 @@
             height: 150px;
         }
     }
-
+    &.bg-none:not(.bg-custom) {
+        background-image:none !important;
+        background-color: transparent;
+        .page-title {
+            color: $dark;
+            .sort-info {
+                color: $gray500;
+            }
+        }
+    }
     .page-title {
         padding-top: 80px;
         @media (max-width: 992px) {
@@ -877,14 +887,19 @@
 }
 .tab-block, .thumbnail-slider-block {
     .tab-nav-block {
-        overflow: hidden;
-        overflow-x: auto;
         margin: 0 auto 40px;     
-        max-width: 750px;
+        max-width: fit-content;
         @media (max-width: 575px) {
             padding: 0 20px;
             margin-right: -20px;
             margin-left: -20px;
+        }
+        &.no-border {
+            .nav-tabs, .useCase-thumbnail-splide-slider { 
+                .tab-link, .thumbnail-btn {
+                    border: none;
+                }
+            }
         }
     }
     .nav-tabs, .useCase-thumbnail-splide-slider {
@@ -895,6 +910,8 @@
         @include align-items(center);
         @include flex-wrap(nowrap);
         gap: 12px;  
+        overflow: hidden;
+        overflow-x: auto;
         @media (max-width: 992px) {
             min-width: 690px;
         }
@@ -968,6 +985,9 @@
                         margin-bottom: 25px;
                     }
                 }
+            }
+            .icon-list { 
+                margin-top: 50px;
             }
         }
     }
@@ -1954,7 +1974,19 @@
 
 
 // Col Image + Text
-.image-content-block{
+.image-content-block {
+    .img-content-lists {
+		@media (min-width: 768px) {
+			padding-top: 100px;
+		}
+		
+		.row:not(:last-child) {
+			margin-bottom: 60px;
+		}
+        .section-title { 
+            max-width: 500px;
+        }
+	}
 	@media (min-width:1200px) {
 		.row-gap { 
 			--bs-gutter-y: 5rem;
@@ -1990,6 +2022,12 @@
 	}
 	.section-title {
 		margin: 0;
+        .h3 {
+            font-size: 32px;
+        }
+        .arrow-list {
+            margin-top: 24px;
+        }
 	}
 }
 
