@@ -547,9 +547,12 @@
                     &.current-menu-item {
                         > a {
                             color: #EE5D24;
-                            background: rgba(255, 255, 255, 0.06);
+                            background: #2F3F4A;
                             &:before {
                                 opacity: 1;
+                            }
+                            &::after {
+                                right: 10px !important; 
                             }
                         }
                     }                   
@@ -560,6 +563,7 @@
                     display: grid;
                     grid-template-columns: repeat(2, 1fr);
                     width: 560px;
+                    border-top: 3px solid #EE5D24;
                     & > li {
                         &.menu-item-has-children {
                             border-right: 1px solid rgba(#EE5D24, 0.1);
@@ -573,9 +577,11 @@
                             }
                             & > a[rel] {
                                 font-size: 12px !important;
+                                font-weight: 600;
                                 color: #EE5D24;
                                 padding: 0 0 8px;
                                 background: transparent;
+                                text-transform: uppercase;
                                 &::after {
                                     content: none;
                                 }
@@ -617,6 +623,25 @@
                                     }
                                     &:nth-child(2n+8) {
                                         @include transition-delay(0.45s);
+                                    }
+                                    a {
+                                        &::after {
+                                            content: '';
+                                            width: 12px;
+                                            height: 8px;
+                                            display: block;
+                                            position: absolute;
+                                            top: calc(50% - 4px);
+                                            right: 15px;
+                                            left: auto;
+                                            -webkit-transition: all 0.3s;
+                                            transition: all 0.3s;
+                                            background-color: transparent !important;
+                                            background-image: url('data:image/svg+xml,<svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.0776 1.49886L6.07764 5.49886L2.07764 1.49886" stroke="rgb(255 255 255)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+                                            background-repeat: no-repeat;
+                                            background-size: contain;
+                                            transform: rotate(270deg);
+                                        }
                                     }
                                 }
                             }
