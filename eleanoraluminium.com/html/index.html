@@ -191,46 +191,112 @@
             <!-- Page Title -->
             <main class="main-content-wrapper">
                 <section class="hero-section">
-                    <div class="owl-carousel">
+                    <div class="owl-carousel hero-owl-slider">
                         <div class="hero-slide" style="background-image: url(uploads/img-home-slide1.jpg);">
                             <div class="inner-content-wrapper">
                                 <div class="hero-title">
-                                    <div class="tag-line">
-                                        <h1><span>India's Premier</span> Aluminium Extrusion Supplier</h1>
-                                    </div>
+                                    <div class="tagline">Welcome to Eleanor Extrusion</div>
+                                    <h1><span>India's Premier</span> Aluminium Extrusion Supplier</h1>
+                                    <div class="sort-info">We supply custom aluminum profiles for diverse industries, including construction, transportation, packaging, and engineering.</div>
+                                    <a class="industrium-button" href="#" target="_blank"><span class="industrium-button-text">Enquire Now</span></a>
                                 </div>
                             </div>
                         </div>
                         <div class="hero-slide" style="background-image: url(uploads/img-home-slide1.jpg);">
                             <div class="inner-content-wrapper">
                                 <div class="hero-title">
-                                    <div class="tag-line">
-                                        <h1><span>India's Premier</span> Aluminium Extrusion Supplier 2</h1>
-                                    </div>
+                                    <div class="tagline">Welcome to Eleanor Extrusion</div>
+                                    <h1><span>India's Premier</span> Aluminium Extrusion Supplier 2</h1>
+                                    <div class="sort-info">We supply custom aluminum profiles for diverse industries, including construction, transportation, packaging, and engineering.</div>
+                                    <a class="industrium-button" href="#" target="_blank"><span class="industrium-button-text">Enquire Now</span></a>
                                 </div>
                             </div>
                         </div>
                         <div class="hero-slide" style="background-image: url(uploads/img-home-slide1.jpg);">
                             <div class="inner-content-wrapper">
                                 <div class="hero-title">
-                                    <div class="tag-line">
-                                        <h1><span>India's Premier</span> Aluminium Extrusion Supplier 3</h1>
-                                    </div>
+                                    <div class="tagline">Welcome to Eleanor Extrusion</div>
+                                    <h1><span>India's Premier</span> Aluminium Extrusion Supplier 3</h1>
+                                    <div class="sort-info">We supply custom aluminum profiles for diverse industries, including construction, transportation, packaging, and engineering.</div>
+                                    <a class="industrium-button" href="#" target="_blank"><span class="industrium-button-text">Enquire Now</span></a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="pagination-wrapper">
+                        <div class="slider-decoration"></div>
+                        <div class="owl-dots-wrapper">
+                            <div class="slider-progress-wrapper progress-direction-horizontal">
+                                <div class="slider-progress-current">01</div>
+                                <div class="slider-progress-track">
+                                    <div class="progress"></div>
+                                </div>
+                                <div class="slider-progress-all">03</div>
+                            </div>
+                            <div class="owl-dots"></div>
+                        </div>
+                    </div>
                     <script>
-                        jQuery(function() {
-                            // Owl Carousel
-                            var owl = jQuery(".owl-carousel");
-                            owl.owlCarousel({
-                                items: 1,
-                                margin: 10,
-                                loop: true,
-                                nav: true
-                            });
-                        });
+                        jQuery(document).ready(function () {  
+                            onPageLoad(); 
+                        });    
+                        function onPageLoad() {
+                            if(jQuery('.hero-section .slider-decoration').length) {
+                                jQuery('.hero-section .slider-decoration').removeClass('animated');
+                                setTimeout(function() {
+                                    jQuery('.hero-section .slider-decoration').addClass('animated');
+                                }, 800);
+                            }
+                            if(jQuery('.hero-owl-slider').length) {
+                                var $carousel = jQuery('.hero-owl-slider');     
+                                var progress_position = 'pagination'  
+                                jQuery('.hero-owl-slider').owlCarousel({
+                                    items: 1,
+                                    nav: false,
+                                    dots: true,
+                                    autoplayHoverPause: true,
+                                    autoplay: false,
+                                    autoplaySpeed: 5000,
+                                    autoplayTimeout: 5000,
+                                    loop: true,
+                                    speed: 1200,
+                                    dotsContainer:'.owl-dots',
+                                    progress: true,
+                                });
+                                // Function to update progress bar
+                                function updateProgressBar(event) {
+                                    let progress_wrapper = $carousel.parents('.hero-section'),
+                                        progress_current = jQuery('.slider-progress-current', progress_wrapper),
+                                        progress_all = jQuery('.slider-progress-all', progress_wrapper),
+                                        progress_line = jQuery('.progress', progress_wrapper);
+
+                                    // Total number of slides
+                                    progress_all.text(event.page.count < 10 ? '0' + event.page.count : event.page.count);
+
+                                    // Current slide number
+                                    progress_current.text((event.page.index + 1) < 10 ? '0' + (event.page.index + 1) : (event.page.index + 1));
+
+                                    // Calculate progress percentage
+                                    let progress_val = Math.round(((event.page.index + 1) / event.page.count) * 100);
+
+                                    // Update progress bar (horizontal or vertical)
+                                    if (progress_position === 'pagination') {
+                                        progress_line.css('width', progress_val + '%');
+                                    } else {
+                                        progress_line.css('height', progress_val + '%');
+                                    }
+                                }
+                                // Event listener for slide change
+                                $carousel.on('changed.owl.carousel', function (event) {
+                                    updateProgressBar(event);
+                                });
+
+                                // Set progress bar width on page load (for the first slide)
+                                $carousel.on('initialized.owl.carousel', function (event) {
+                                    updateProgressBar(event);
+                                });
+                            }
+                        }
                     </script>
                 </section>
             </main>
