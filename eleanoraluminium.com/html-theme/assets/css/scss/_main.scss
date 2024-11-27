@@ -53,12 +53,14 @@
 }
 
 .no-wrap-col {
-    overflow: hidden;
-    @include flex-wrap(nowrap);
-    overflow-x: auto;
-    & > * {
-        max-width: 300px;
-        width: 100%;
+    @media (max-width: 992px) {
+        overflow: hidden;
+        @include flex-wrap(nowrap);
+        overflow-x: auto;
+        & > * {
+            max-width: 300px;
+            width: 100%;
+        }
     }
 }
 
@@ -1016,6 +1018,14 @@
     z-index: -1;
     -webkit-text-stroke: 1px $primary;
     line-height: 0.8em;
-    letter-spacing: -8.4px;
+    letter-spacing: -8px;
     opacity: 1;
+    @media (max-width:992px) {
+        font-size: 130px;
+        letter-spacing: -4px;
+    }
+    @media (max-width:767px) {
+        font-size: 60px;
+        letter-spacing: -2px;
+    }
 }
