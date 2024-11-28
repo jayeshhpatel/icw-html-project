@@ -4,6 +4,7 @@
 var $ = jQuery.noConflict();
 
 jQuery(document).ready(function($) {
+    onPageLoad();
     $('[data-bs-toggle="tooltip"]').tooltip();
     $('[data-bs-toggle="popover"]').popover();
 
@@ -196,4 +197,12 @@ if ($('.counter').length) {
         observer.observe(this);    
     });
     
+}
+function onPageLoad() {
+    if(jQuery('.square-vector').length) {
+        jQuery('.square-vector').removeClass('animated');
+        setTimeout(function() {
+            jQuery('.square-vector').addClass('animated');
+        }, 800);
+    }
 }
