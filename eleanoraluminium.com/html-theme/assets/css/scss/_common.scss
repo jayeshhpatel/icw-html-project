@@ -258,19 +258,21 @@ img {
 		position: relative;
 		display: inline-block;
 		@include transform(none);
-		background: url('data:image/svg+xml,<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 16.5L16.5 1.5M16.5 1.5L5.25 1.5M16.5 1.5L16.5 12.75" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+		background: url('data:image/svg+xml,<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 16.5L16.5 1.5M16.5 1.5L5.25 1.5M16.5 1.5L16.5 12.75" stroke="rgb(238 93 36)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 		@include transition(0.3s, ease-in-out);
 		background-size: contain !important;
 		width: 15px;
 		height: 15px;
 		flex: none;
 		margin-left: 15px;
+		filter: brightness(0) invert(1);
 	}
     .btn-text {
        z-index: 2;
     }
-    &:hover, &:focus {
+    &:hover, &:focus, &:active {
 		text-decoration: none;
+		border-color: transparent;
 		&::before {
 			width: 100%;
 		}
@@ -286,11 +288,11 @@ img {
 	}
 	&.btn-primary {
 		color: $white !important;
-		border-color: transparent;
-		background-color: $primary;
+		border-color: transparent !important;
+		background-color: $primary !important;
 		&::before {
 			background-color: $dark;
-		} 
+		}
 	}
 	&.btn-outline-primary {
 		color: $primary !important;
@@ -299,55 +301,63 @@ img {
 		&::before {
 			background-color: $primary;
 		} 
+		&::after {
+			filter: unset;
+		}
+		&:hover, &:focus, &:active {
+			color: $white !important;
+			&::after {
+				filter: brightness(0) invert(1)
+			}
+		} 
 	}
 	&.btn-white {
-		color: $dark !important;
+		color: $primary !important;
 		background-color: $white;
-        &:hover, &:focus {
+		&::before {
+			background-color: $primary;
+		} 
+		&::after {
+			filter: unset;
+		}
+        &:hover, &:focus, &:active {
+			border-color: $primary;
             color: $white !important;
+			&::after {
+				filter: brightness(0) invert(1)
+			}
         }
 	}
 	&.btn-dark {
-		color: $white !important;
+		color: $primary !important;
 		border-color: transparent;
 		background-color: $dark;
 		&::before {
-			background-color: $dark;
+			background-color: $primary;
+		} 
+		&::after {
+			filter: unset;
+		}
+		&:hover, &:focus, &:active {
+			color: $white !important;
+			&::after {
+				filter: brightness(0) invert(1)
+			}
 		} 
 	}
 	&.btn-outline-gray {
-		color: $dark !important;
-		background-color: $white;
-        .arrow-icon { 
-            background: $white;
-            border-color: $dark;
-            @include box-shadow(0px 2px 4px rgba(11, 32, 55, 0.45));
-            background-image: url('data:image/svg+xml,<svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 6.99997H9.086L6.793 9.29297C6.69749 9.38522 6.62131 9.49556 6.5689 9.61757C6.51649 9.73957 6.4889 9.87079 6.48775 10.0036C6.4866 10.1363 6.5119 10.268 6.56218 10.3909C6.61246 10.5138 6.68671 10.6255 6.7806 10.7194C6.8745 10.8133 6.98615 10.8875 7.10905 10.9378C7.23194 10.9881 7.36362 11.0134 7.4964 11.0122C7.62918 11.0111 7.7604 10.9835 7.8824 10.9311C8.00441 10.8787 8.11475 10.8025 8.207 10.707L12.207 6.70697C12.3001 6.61408 12.374 6.50373 12.4244 6.38224C12.4748 6.26075 12.5008 6.1305 12.5008 5.99897C12.5008 5.86743 12.4748 5.73719 12.4244 5.6157C12.374 5.49421 12.3001 5.38386 12.207 5.29097L8.207 1.29097C8.01923 1.10346 7.76466 0.998226 7.49929 0.998413C7.23393 0.998601 6.97951 1.1042 6.792 1.29197C6.60449 1.47974 6.49926 1.73431 6.49944 1.99968C6.49963 2.26504 6.60523 2.51946 6.793 2.70697L9.086 4.99997H1.5C1.23478 4.99997 0.98043 5.10533 0.792893 5.29286C0.605357 5.4804 0.5 5.73475 0.5 5.99997C0.5 6.26519 0.605357 6.51954 0.792893 6.70708C0.98043 6.89461 1.23478 6.99997 1.5 6.99997Z" fill="rgb(9 10 12)"/></svg>');
-            background-size: 12px;
-            background-position: 22px center;
-            background-repeat: no-repeat;
-        }
-        &:hover, &:focus {
-            .arrow-icon {
-                background-position: 35px center;
-            }
-        } 
-        @media (max-width:767px) {
-            .arrow-icon { 
-                width: 40px;
-                height: 40px;
-                @include border-radius(8px);
-                background-position: 14px center;
-            }
-            .btn-text {
-                padding: 0 20px 0 55px;
-            }
-            &:hover, &:focus {
-                .arrow-icon {
-                    background-position: 25px center;
-                }
-            } 
-        }
+		color: $white !important;
+		border-color: $white;
+		background-color: transparent;
+		&::before {
+			background-color: $white;
+		} 
+        &:hover, &:focus, &:active {
+			color: $primary !important;
+			&::after {
+				filter: unset;
+			}
+		} 
 	}
 }
 
@@ -559,9 +569,8 @@ h2, .h2 {
     }
 }
 h3, .h3 {
-    font-size: 40px;
-    font-weight: 500;
-    line-height: 1.2;
+    font-size: 22px;
+    font-weight: 700;
     @media (max-width: 992px) { 
         font-size: 36px;
     }
@@ -594,7 +603,7 @@ h5, .h5 {
         width: 10px;
         height: 10px;
         flex: none;
-        @include border-radius(50%);
+        @include border-radius(5px);
         @include transform(scale(1));
         @include transition(0.3s, ease-in-out);
         opacity: 1;
@@ -603,15 +612,25 @@ h5, .h5 {
 		border: 1px solid transparent;
         &.is-active {
             background: transparent !important;
-			border-color: $primary;
+			border-color: $black;
             @include transform(scale(1));
+			width: 22px;
         }
     }
     &.is-dark {
         .splide__pagination__page {
-            background: $dark;
+            &.is-active {
+				border-color: $primary;
+			}
         }
     }
+	&.is-top {
+		bottom: auto;
+		top: -65px;
+		right: 0;
+		left: auto;
+		padding-right: 0;
+	}
 }
 .icw-arrows {
     .splide__arrow {
@@ -2018,125 +2037,3 @@ h5, .h5 {
 	.protected-post-form p {padding: 0px; margin: 0px;}
 }
 
-.square-vector {
-	position: absolute;
-    width: 70px;
-    height: 70px;
-	z-index: 3;
-	@media (max-width: 992px) {
-		width: 50px;
-    	height: 50px;
-	}
-	@media (max-width: 767px) {
-		display: none;
-	}
-	&::before {
-		content: '';
-		position: absolute;
-		height: 100%;
-		top: -70px;
-		left: 0;
-		width: 100%;
-		-webkit-transition: transform 0.5s cubic-bezier(0, 0, 0.15, 0.96);
-		transition: transform 0.5s cubic-bezier(0, 0, 0.15, 0.96);
-		transform-origin: bottom;
-		@include transform(scaleY(0));
-		@media (max-width: 992px) {
-			top: -50px;
-		}
-	}
-	&::after {
-		content: '';
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		-webkit-transition: transform 0.5s 0.3s cubic-bezier(0, 0, 0.15, 0.96);
-		transition: transform 0.5s 0.3s cubic-bezier(0, 0, 0.15, 0.96);
-		transform-origin: top;
-		@include transform(scaleY(0));
-	}
-	&.animated {
-		&::before, &::after {
-			@include transform(scaleY(1));
-		}
-	}
-	&.is-lb-vector {
-		left: 70px;
-		bottom: -70px;
-		@media (max-width: 992px) {
-			left: 50px;
-			bottom: -50px;
-		}
-	}
-	&.is-tr-vector {
-		right: 70px;
-		top: 0;
-		@media (max-width: 992px) {
-			right: 50px;
-		}
-	}
-	&.is-white-orange {
-		&::before {
-			background: $white;
-		}
-		&::after {
-			background: $primary;
-		}
-	}
-	&.is-white-black {
-		&::before {
-			background: $white;
-		}
-		&::after {
-			background: $black;
-		}
-	}
-	&.is-vector-style1 {		
-		&::before {
-			height: 200%;
-			left: 0;
-			bottom: 0;
-		}
-		&::after {
-			left: 100%;
-			top: 0;
-		}
-	}
-	&.is-vector-style2 {		
-		&::before {
-			left: -70px;
-			top: 0;
-			transform-origin: right;
-			@include transform(scaleX(0));
-			@media (max-width: 992px) {
-				left: -50px;
-			}
-		}
-		&::after {
-			left: 0;
-			top: 0;
-			transform-origin: left;
-			@include transform(scaleX(0));
-		}
-		&.animated {
-			&::before, &::after {
-				@include transform(scaleX(1));
-			}
-		}
-		&.is-lb-vector {
-			left: 0px;
-			bottom: 70px;
-			@media (max-width: 992px) {
-				bottom: 50px;
-			}
-		}
-		&.is-tr-vector {
-			right: -70px;
-			top: 70px;
-			@media (max-width: 992px) {
-				right: -50px;
-				top: 50px;
-			}
-		}
-	}
-}

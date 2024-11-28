@@ -4,7 +4,6 @@
 var $ = jQuery.noConflict();
 
 jQuery(document).ready(function($) {
-    onPageLoad();
     $('[data-bs-toggle="tooltip"]').tooltip();
     $('[data-bs-toggle="popover"]').popover();
 
@@ -198,11 +197,27 @@ if ($('.counter').length) {
     });
     
 }
-function onPageLoad() {
-    if(jQuery('.square-vector').length) {
-        jQuery('.square-vector').removeClass('animated');
-        setTimeout(function() {
-            jQuery('.square-vector').addClass('animated');
-        }, 800);
+// function onPageLoad() {
+//     if(jQuery('.square-vector').length) {
+//         jQuery('.square-vector').removeClass('animated');
+//         setTimeout(function() {
+//             jQuery('.square-vector').addClass('animated');
+//         }, 800);
+//     }
+// }
+if(jQuery('.square-vector').length) {
+    if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    $(entry.target).addClass('animated');
+                }
+            });
+        });
+
+        // Observe each '.square-vector' element
+        $('.square-vector').each(function () {
+            observer.observe(this);
+        });
     }
 }
