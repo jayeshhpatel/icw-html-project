@@ -77,7 +77,46 @@
                         </div>
                         <span class="splide-total-slide">03</span>
                         <div class="splide__pagination icw-pagination"></div>
-                    </div>                
+                    </div> 
+                    <script >
+                        if ($('.hero-splide-slider').length) {
+                            var heroSplide = new Splide( '.hero-splide-slider', {
+                                type: 'fade',          
+                                perPage: 1,             
+                                pagination: true,    
+                                arrows: false,        
+                                autoplay: true,    
+                                interval: 4000,     
+                                speed: 1200,          
+                                pauseOnHover: true,     
+                                rewind: true,
+                                classes: {
+                                    pagination: 'splide__pagination icw-pagination', 
+                                },
+                            } );
+
+                            function updateProgressBar(splide) {
+                                let totalSlides = splide.length; 
+                                let currentIndex = splide.index + 1; 
+                                let progressPercentage = (currentIndex / totalSlides) * 100; 
+                            
+                                // Update the numbers
+                                document.querySelector('.splide-current-slide').textContent = currentIndex < 10 ? '0' + currentIndex : currentIndex;
+                                document.querySelector('.splide-total-slide').textContent = totalSlides < 10 ? '0' + totalSlides : totalSlides;
+                            
+                                // Update the progress bar width
+                                document.querySelector('.splide-progress-bar .progress').style.width = progressPercentage + '%';
+                            }
+                            
+                            
+                            heroSplide.on('mounted move', function () {
+                                updateProgressBar(heroSplide); 
+                            });                            
+
+                            // Mount Splide
+                            heroSplide.mount();
+                        }
+                    </script>              
                 </div>
             </section>
             <section class="main-section content-icon-grid-list bg-dark">
@@ -90,6 +129,7 @@
                             </div>
                         </div>
                         <div class="col-12">
+                            <!-- 'no-wrap-col' use this -->
                             <div class="row no-wrap-col">
                                 <div class="col-lg-3">
                                     <div class="info-card is-flex-title bg-none is-hover">
@@ -100,6 +140,9 @@
                                             </div>
                                             <hr>
                                             <div class="card-info">Whether its supplying aluminium extrusions for a window & door system or a simple geometric section, Eleanor can provide the complete solution from placing the initial order to delivery and technical support.</div>
+                                        </div>
+                                        <div class="card-footer">                                            
+                                            <a class="btn-only-arrow" href="#" target="_blank">Read more<svg viewBox="0 0 13 20"><polyline points="0.5 19.5 3 19.5 12.5 10 3 0.5"></polyline></svg></a>
                                         </div>
                                     </div>
                                 </div>
@@ -113,6 +156,9 @@
                                             <hr>
                                             <div class="card-info">With a dedicated customer service team, wide range of distribution centres and technical support, you can count on Eleanor to get the right product to you on time.</div>
                                         </div>
+                                        <div class="card-footer">                                            
+                                            <a class="btn-only-arrow text-white" href="#" target="_blank">Read more<svg viewBox="0 0 13 20"><polyline points="0.5 19.5 3 19.5 12.5 10 3 0.5"></polyline></svg></a>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
@@ -124,6 +170,9 @@
                                             </div>
                                             <hr>
                                             <div class="card-info">Our Sales division can supply custom made aluminium extrusions and Eleanor can provide even more flexibility when it comes to product packaging special alloy grade. Speak to one of our head of department to find out more.</div>
+                                        </div>
+                                        <div class="card-footer">                                            
+                                            <a class="btn-link" href="#"><span class="btn-text">Read more</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -137,12 +186,16 @@
                                             <hr>
                                             <div class="card-info">Whether its supplying aluminium extrusions for a window & door system or a simple geometric section, Eleanor can provide the complete solution from placing the initial order to delivery and technical support.</div>
                                         </div>
+                                        <div class="card-footer">                                            
+                                            <a class="btn-link btn-link-white" href="#">Read more</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <spna class=""></spna>
             </section>
             <section class="main-section image-content-block bg-gray">         
                 <div class="container">
@@ -157,9 +210,9 @@
                                     <p>We are a renowned aluminium extrusion company in the country and pioneer in the innovation of aluminium extrusion products. We are well equipped with latest plant machinery and employs automated methodologies for implementing customized jobs.</p>
                                 </div>
                                 <div class="action">                                    
-                                    <a class="btn btn-arrow-animate" href="https://demo.artureanec.com/themes/industrium/services-page/" target="_blank">More About Eleanor<svg viewBox="0 0 13 20"><polyline points="0.5 19.5 3 19.5 12.5 10 3 0.5"></polyline></svg></a>
+                                    <a class="btn-only-arrow" href="#" target="_blank">More About Eleanor<svg viewBox="0 0 13 20"><polyline points="0.5 19.5 3 19.5 12.5 10 3 0.5"></polyline></svg></a>
                                 </div>
-                                <div class="special-text special-text-effect-stroke">Since 2017</div>
+                                <div class="special-text is-stroke">Since 2017</div>
                             </div>        
                         </div>
                         <div class="col-img col-md-6 col-lg-6">
