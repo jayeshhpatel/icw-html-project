@@ -5,18 +5,20 @@ var $ = jQuery.noConflict();
 
 jQuery(document).ready(function($) {
     $('[data-bs-toggle="tooltip"]').tooltip();
+    $('[data-bs-toggle="popover"]').popover();
 
-    $('.navbar-toggler').on('click', function (e) {
-        $('.navbar-toggler,body,.main-header').toggleClass('is-visible');
+    $('.toggle-sidebar,.bg-overly').on('click', function (e) {
+        $('.bg-overly,.toggle-sidebar,body,.main-header').toggleClass('is-visible');
         e.preventDefault();
     });
+
     if ($('.main-header').length) {
         if (jQuery(this).scrollTop() > 100) {
-            $(".main-header").addClass("fixed-header");
+           $(".main-header").addClass("fixed-header");
         } else {
-            $(".main-header").removeClass("fixed-header");
+           $(".main-header").removeClass("fixed-header");
         }
-
+  
         $(window).scroll(function () {
             if (jQuery(this).scrollTop() > 100) {
                 $(".main-header").addClass("fixed-header");
@@ -25,26 +27,16 @@ jQuery(document).ready(function($) {
             }
         });
     }
+
     if ($('li.menu-item-has-children').length) {
         $("li.menu-item-has-children > a").after('<i class="arrow"></i>');
     }
+    
     $('li.menu-item-has-children .arrow').on('click',function(event){
         event.preventDefault();
-        $(this).toggleClass('is-active');
-        $(this).parent().find('.sub-menu').first().toggle(300);
+        $(this).toggleClass('is-active');        
+        $(this).parent().find('.sub-menu').first().slideToggle(300);       
     });
-    if ($('.tab-block').length) {
-        $('.nav-tabs .tab-link').on('click', function(){
-            // get the data attribute
-            var tab_id = $(this).attr('data-tab');
-            // remove the default classes
-            $('.nav-tabs .tab-link').removeClass('active');
-            $('.tab-pane').hide();
-            // add new classes on mouse click
-            $(this).addClass('active');
-            $('#'+tab_id).fadeIn();
-        });
-    }
 
     if ($('.collapse-item').length) {
         $(document).on("click", ".collapse-item .collapse-title", function () {
@@ -67,6 +59,45 @@ jQuery(document).ready(function($) {
             return false;
         });
     }
+    
+
+    if ($(".icw-progress-goto").length > 0) {
+        var progressPath = document.querySelector('.icw-progress-goto path');
+        var pathLength = progressPath.getTotalLength();
+    
+        progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
+        progressPath.style.strokeDasharray = pathLength + ' ' + pathLength;
+        progressPath.style.strokeDashoffset = pathLength;
+        progressPath.getBoundingClientRect();
+        progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';
+    
+        var updateProgress = function() {
+            var scroll = $(window).scrollTop();
+            var height = $(document).height() - $(window).height();
+            var progress = pathLength - (scroll * pathLength / height);
+            progressPath.style.strokeDashoffset = progress;
+        }
+    
+        updateProgress();
+        $(window).scroll(updateProgress);
+    
+        var offset = 200;
+        var duration = 550;
+    
+        jQuery(window).on('scroll', function() {
+            if(jQuery(this).scrollTop() > offset) {
+                jQuery('.icw-progress-goto').addClass('active-progress');
+            } else {
+                jQuery('.icw-progress-goto').removeClass('active-progress');
+            }
+        });
+    
+        jQuery('.icw-progress-goto').on('click', function(event) {
+            event.preventDefault();
+            jQuery('html, body').animate({scrollTop: 0}, duration);
+            return false;
+        });
+    }
 
     const $logoBlock = $('.site-logo-block');
     if ($logoBlock.length) {
@@ -80,6 +111,45 @@ jQuery(document).ready(function($) {
     }
 });
 
+// Step Progress Section
+if ($('.progress-section').length) {
+    updateProgressBars();
+}
+function updateProgressBars() {
+    var scrollPosition = $(window).scrollTop();
+    // Loop through each section and check if it's in the viewport
+    $('.progress-content-step').each(function (index) {
+        var sectionTop = $(this).offset().top - $(window).height() / 1.2; // Mid-point trigger
+        var sectionHeight = $(this).outerHeight();
+        var sectionBottom = sectionTop + sectionHeight;
+        var progressBarId = $(this).attr('id'); // Target progress bar by ID
+        
+        // var sectionAnimateContentTop = $(this).offset().top - $(window).height() / 1;
+        // var sectionAnimateContentBottom = sectionAnimateContentTop + sectionHeight;
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            // Animate progress bar height to 100%
+            $('.image-block').find('.progress-content-img').removeClass('is-active');
+            $('[data-progress-id="' + progressBarId + '"]').css('height', '100%');
+            $('.image-block').find('[data-id="' + progressBarId + '"]').addClass('is-active');
+        // } else if (scrollPosition >= sectionAnimateContentTop && scrollPosition < sectionAnimateContentBottom) {
+            $('.progress-content-wrapper').find('.progress-content-step').removeClass('is-active');
+            $('.progress-content-wrapper').find('[id="' + progressBarId + '"]').addClass('is-active');
+            
+        } else if (scrollPosition <= sectionTop) {
+            // Reset progress bar height when section is not in view
+            $('[data-progress-id="' + progressBarId + '"]').css('height', '0');
+            
+        } 
+    });
+}
+
+// if ($('.splide').length) {
+//     var splide_sliders = $('.splide');
+//     for (var i = 0; i < splide_sliders.length; i++) {
+//         new Splide(splide_sliders[i]).mount();
+//     }
+// }
 
 // Splide Slider
 // if ($('.splide:not(.splide-js)').length) {
@@ -88,7 +158,6 @@ jQuery(document).ready(function($) {
 //         $(this).addClass('icw_splide-with-data'); // Mark as initialized
 //     });
 // }
-
 // Counter
 if ($('.counter').length) {
     let options = {
@@ -128,4 +197,3 @@ if ($('.counter').length) {
     });
     
 }
-

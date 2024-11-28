@@ -3,7 +3,7 @@
 .text-white     {color: #fff !important;}
 .text-black      {color: $black !important;}
 .text-dark      {color: $dark !important;}
-.text-gray      {color: $gray !important;}
+.text-gray      {color: $light !important;}
 
 .text-underline {
     position: relative;
@@ -33,17 +33,9 @@
     & > * {
         color: $white;
     }
-    .section-title {        
-        h1, h2, h3 {
-            color: $white;
-        }
-        .sort-info {
-            
-        }
-    }
 }
 .bg-gray {
-    background-color: $gray !important;
+    background-color: $light !important;
 }
 .bg-custom {
     background: var(--header-bg, none);
@@ -52,17 +44,6 @@
     background-size: cover;
 }
 
-.no-wrap-col {
-    @media (max-width: 992px) {
-        overflow: hidden;
-        @include flex-wrap(nowrap);
-        overflow-x: auto;
-        & > * {
-            max-width: 300px;
-            width: 100%;
-        }
-    }
-}
 
 .main-content-wrapper {
 }
@@ -70,28 +51,6 @@
     padding: 100px 0;
     @media (max-width: 992px) { 
         padding: 60px 0;
-    }
-    &.overide-top {
-        margin-top: -140px;
-        position: relative;
-        padding-top: 180px;
-        @media (max-width: 1350px) {
-            padding-top: 130px;
-        }
-        @media (max-width: 1050px) {
-            padding-top: 160px;
-        }
-        @media (min-width: 992px) {
-            &::before {
-                content: '';
-                filter: blur(40.25px);
-                height: 50px;
-                width: 100%;
-                display: block;
-                position: absolute;
-                top: -50px;
-            }
-        }
     }
     &.bg-none:not(.bg-custom) {
         background-image:none !important;
@@ -238,15 +197,12 @@
 
     h1, h2, h3 {
         margin-bottom: 25px;
-        color: $dark;
     }
-    
     .sort-info {
         a {
             color: $primary;
         }
     }
-
     .action {
         margin-top: 25px;
     }
@@ -263,6 +219,7 @@
 // Hero 
 .hero-header {
     position: relative;
+    background-color: $dark;
     .hero-splide-slider {
         padding: 0;
         .hero-slide {
@@ -298,7 +255,7 @@
             @include opacity(0);
             @include transform(translateY(30px));
             @include transition(0.6s, ease-in-out);
-            @include staggered-transition(4, 0.2s);
+            @include staggered-transition(5, 0.3s);
         }
         .tag-line {
             font-size: 30px;
@@ -385,7 +342,8 @@
 
 // Page header
 .page-header {
-    background-color: #010103;
+    background-color: rgb(18,28,34);
+    background: linear-gradient(45deg, rgba(18,28,34,1) 0%, rgba(18,28,34,1) 44%, rgba(238,93,36,1) 100%);
     background-repeat: no-repeat !important;
     background-position: bottom center !important;
     background-size: 100% 100% !important;
@@ -402,16 +360,7 @@
         padding: 80px 0 100px;
     }
   
-
-
     .page-title {
-        padding-top: 80px;
-        @media (max-width: 992px) {
-            padding-top: 60px;
-        }
-        @media (max-width: 767px) {
-            padding-top: 40px;
-        }
         .tagline {
             border: 1px solid $white;
             @include border-radius(25px);
@@ -443,9 +392,6 @@
     }
 
 }
-
-
-
 
 // Trusted-logo
 .logo-list-block {
@@ -582,7 +528,6 @@
 	.section-title {
 		margin: 0;
         position: relative;
-        height: 100%;
         z-index: 1;
         .special-text {
             margin-top: 70px;
@@ -599,9 +544,7 @@
 .trusted-logos-section {
 	
     .title {
-        
         text-transform: uppercase;
-        color: $white;
         letter-spacing: 1.8px;
         position: relative;
         z-index: 1;
@@ -1031,6 +974,7 @@
     line-height: 0.8em;
     letter-spacing: -8px;
     opacity: 1;
+    font-family: monospace;
     @media (max-width:992px) {
         font-size: 130px;
         letter-spacing: -4px;
