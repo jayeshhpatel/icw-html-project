@@ -2023,6 +2023,13 @@ h5, .h5 {
     width: 70px;
     height: 70px;
 	z-index: 3;
+	@media (max-width: 992px) {
+		width: 50px;
+    	height: 50px;
+	}
+	@media (max-width: 767px) {
+		display: none;
+	}
 	&::before {
 		content: '';
 		position: absolute;
@@ -2034,6 +2041,9 @@ h5, .h5 {
 		transition: transform 0.5s cubic-bezier(0, 0, 0.15, 0.96);
 		transform-origin: bottom;
 		@include transform(scaleY(0));
+		@media (max-width: 992px) {
+			top: -50px;
+		}
 	}
 	&::after {
 		content: '';
@@ -2053,10 +2063,17 @@ h5, .h5 {
 	&.is-lb-vector {
 		left: 70px;
 		bottom: -70px;
+		@media (max-width: 992px) {
+			left: 50px;
+			bottom: -50px;
+		}
 	}
 	&.is-tr-vector {
 		right: 70px;
 		top: 0;
+		@media (max-width: 992px) {
+			right: 50px;
+		}
 	}
 	&.is-white-orange {
 		&::before {
@@ -2091,6 +2108,9 @@ h5, .h5 {
 			top: 0;
 			transform-origin: right;
 			@include transform(scaleX(0));
+			@media (max-width: 992px) {
+				left: -50px;
+			}
 		}
 		&::after {
 			left: 0;
@@ -2106,10 +2126,17 @@ h5, .h5 {
 		&.is-lb-vector {
 			left: 0px;
 			bottom: 70px;
+			@media (max-width: 992px) {
+				bottom: 50px;
+			}
 		}
 		&.is-tr-vector {
 			right: -70px;
 			top: 70px;
+			@media (max-width: 992px) {
+				right: -50px;
+				top: 50px;
+			}
 		}
 	}
 }
