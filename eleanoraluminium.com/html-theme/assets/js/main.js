@@ -219,5 +219,8 @@ if(jQuery('.square-vector').length) {
         $('.square-vector').each(function () {
             observer.observe(this);
         });
+        $('.card-image-block .img-text').each(function () {
+            observer.observe(this);
+        });
     }
 }

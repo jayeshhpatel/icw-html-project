@@ -372,13 +372,15 @@ img {
 	@include inline-flex;
 	@include align-items(center);
 	@include transition(0.3s, ease-in-out);
-    text-underline-offset: 4px;   
-
+	background-image: linear-gradient(to right, $primary 0%, $primary 100%);
+	background-position: 0 100%;
+	background-repeat: no-repeat;
+	background-size: 0 1px;
 	&:hover, &:focus, &:active, &:focus-visible {
 		color: $primary;
 		box-shadow: none !important;
-		text-decoration: underline;
         text-decoration-color: $primary !important;
+		background-size: 100% 1px;
 	}
 	&:hover,&:focus{
 		color: $primary;
@@ -467,7 +469,7 @@ img {
 	}
 }
 
-.btn-only-arrow {
+.btn-link-arrow {
     display: block;
     @include border-radius(0);
     position: relative;
@@ -495,7 +497,7 @@ img {
 		line-height: 1;
 		width: 25px;
 		height: 30px;
-		margin-top: 1px;
+		margin-top: -1px;
 		position: absolute;
 		right: 0;
 		top: 50%;
@@ -2035,4 +2037,3 @@ h5, .h5 {
 
 	.protected-post-form p {padding: 0px; margin: 0px;}
 }
-
