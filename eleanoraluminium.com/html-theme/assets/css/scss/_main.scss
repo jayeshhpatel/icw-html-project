@@ -52,6 +52,7 @@
 }
 .main-section {
     padding: 100px 0;
+    position: relative;
     @media (max-width: 992px) { 
         padding: 60px 0;
     }
@@ -195,6 +196,23 @@
             @include border-radius(0 0 24px 24px);
         }
 	}
+
+    &.is-outside-contact-form {
+        padding-bottom: 0;
+        margin-bottom: 170px;
+        @media (max-width: 992px) {
+            margin-bottom: 120px;
+        }
+        @media (max-width: 768px) {
+            margin-bottom: 100px;
+        }
+        .form-content-block {
+            margin-bottom: -70px;
+            @media (max-width: 992px) {
+                margin-bottom: -50px;
+            }
+        }
+    }
     
     // Square Animation Vector
     .square-vector {
@@ -263,6 +281,18 @@
             }
             @media (max-width: 767px) {
                 right: 10px;
+            }
+        }
+        &.is-br-vector {
+            right: 70px;
+            bottom: -70px;
+            @media (max-width: 1200px) {
+                right: 30px;
+                bottom: -50px;
+            }
+            @media (max-width: 767px) {
+                right: 10px;
+                bottom: -30px;
             }
         }
         &.is-white-orange {
@@ -349,6 +379,24 @@
                     &::after {
                         left: -30px;
                         top: -30px;
+                    }
+                }
+            }
+            &.is-br-vector {
+                right: -70px;
+                bottom: 70px;
+                @media (max-width: 1200px) {
+                    bottom: 50px;
+                    right: -50px;
+                }
+                @media (max-width: 767px) {
+                    bottom: 0px;
+                    right: 0px;
+                     &::after {
+                        right: auto;
+                        left: -30px;
+                        top: auto;
+                        bottom: -30px;
                     }
                 }
             }
@@ -1232,12 +1280,6 @@
 		margin: 0;
         position: relative;
         z-index: 1;
-        .special-text {
-            margin-top: 70px;
-            @media (max-width: 767px) {            
-                margin-top: 40px;
-            }
-        }
 	}
 }
 
@@ -1665,22 +1707,111 @@
 // 
 .special-text {
     white-space: nowrap;
-    font-size: 200px;
+    font-family: monospace;
+    font-size: 120px;
     font-weight: 700;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     position: relative;
-    z-index: -1;
     -webkit-text-stroke: 1px $primary;
     line-height: 0.8em;
     letter-spacing: -8px;
     opacity: 1;
-    @media (max-width:992px) {
-        font-size: 130px;
+    margin-top: 70px;
+    @media (max-width: 1200px) {
+        font-size: 90px;
         letter-spacing: -4px;
     }
-    @media (max-width:767px) {
+    @media (max-width: 767px) {
         font-size: 60px;
         letter-spacing: -2px;
+        margin-top: 40px;
+    }
+    &.is-lg-text {
+        font-size: 200px;
+        @media (max-width: 1200px) {
+            font-size: 130px;
+            letter-spacing: -4px;
+        }
+        @media (max-width: 767px) {
+            font-size: 60px;
+            letter-spacing: -2px;
+        }
+    }
+}
+
+//
+.widget-grid-block {
+    .widget-block {
+        .widget-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #EE5D24;
+            @include flexbox;
+            @include align-items(center);
+            margin-bottom: 5px;
+            .icon {
+                margin-right: 10px;
+            }
+        }
+        .widget-content {
+            ul {
+                li {
+                    a {
+                        color: $dark;
+                        font-size: 16px;
+                        font-weight: 600;
+                        text-decoration: none;
+                        &:hover, &:focus {
+                            color: $primary;
+                        }
+                    }
+                }
+                &.social-list {
+                    @include flexbox;
+                    @include align-items(center);
+                    gap: 10px;
+                    li {
+                        a {
+                            border: 1px solid #28343B;
+                            width: 40px;
+                            height: 40px;
+                            @include inline-flex;
+                            @include align-items(center);
+                            @include justify-content(center);
+                            @include transition(0.3s, ease-in-out);
+                            svg {
+                                width: 18px;
+                                height: 18px;
+                                path {
+                                    @include transition(0.3s, ease-in-out);
+                                }
+                            }
+                            &:hover, &:focus {
+                                background: $dark;
+                                svg {
+                                    path {
+                                        fill: $white;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// Form Block
+.form-content-block {
+    position: relative;
+    padding: 50px;
+    @media (max-width: 992px) {
+        padding: 30px;
+    }
+    @media (max-width: 767px) {
+        padding: 30px 20px;
+        margin-left: -12px;
+        margin-right: -12px;
     }
 }
