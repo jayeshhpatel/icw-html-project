@@ -40,6 +40,9 @@
 .bg-light {
     background-color: $light !important;
 }
+.bg-lightgray {
+    background-color: #f3f3f3 !important;
+}
 .bg-custom {
     background: var(--header-bg, none);
     background-repeat: no-repeat;
@@ -987,6 +990,32 @@
         }
     }
 }
+.single-testimonials-splide {
+    padding: 0 0 60px;
+    max-width: 800px;
+    margin: 0 auto;
+    @media (max-width: 992px) {
+        padding: 0px 0 40px;
+    }
+    .splide__slide {  
+        .testimonial-card { 
+            border: none;
+            padding: 50px 70px 50px 50px;
+            @media (max-width: 992px) {
+                max-width: 100%;
+                padding: 30px 50px 30px 30px;
+            }
+            .card-icon {
+                margin-top: 0;
+                .icon-quote {
+                    width: 45px;
+                    height: 45px;
+                    background: url('data:image/svg+xml,<svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 42.5V0H18V32.5L0 42.5Z" fill="rgb(238 93 36)"/><path d="M43 9.5H25V40.5L43 29.5V9.5Z" fill="rgb(238 93 36)"/></svg>') no-repeat center center;
+                }
+            }
+        }
+    }
+}
 
 // Category Card
 .category-card {
@@ -1015,6 +1044,8 @@
         width: 100%;
         padding: 30px;
         background-color: $dark;
+        @include flexbox;
+        @include flex-direction(column);
         @include transition(0.3s, ease-in-out);
         @media (max-width: 767px) {
             padding: 20px;
@@ -1043,16 +1074,11 @@
         }
         .sort-info {
             overflow: hidden;
-            @include transition(0.3s, ease-in-out);
+            transition: height 0.3s ease-out;
             height: 0;
             color: $white;
             font-weight: 600;
             font-size: 16px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
             @media (max-width: 767px) {
                 font-size: 14px;
             }
@@ -1076,9 +1102,6 @@
             bottom: 0;
             .card-arrow-icon {
                 @include transform(rotate(90deg));
-            }
-            .sort-info {
-                height: 70px;
             }
         }
     }
@@ -1207,6 +1230,126 @@
     }
 }
 
+// Icon Grid List Block
+.icon-grid-list-block {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px 30px;
+    @media (max-width: 992px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 767px) {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 25px;
+    }
+    .grid-list-item {
+        @include flexbox;
+        @include align-items(center);
+        padding: 0 0 25px;
+        border-bottom: 2px solid $dark; 
+        position: relative;
+        text-decoration: none;
+        @include transition(0.3s, ease-in-out);
+        @media (max-width: 767px) {
+            padding: 0 0 15px;
+        }
+        &::before, &::after {
+            content: '';
+            width: 22px;
+            height: 22px;
+            flex: none;
+            display: inline-block;
+            background-size: contain !important;
+            position: absolute;
+            top: 11px;
+            right: 0;
+            @include transition(0.3s, ease-in-out);
+            @media (max-width: 992px) {                
+                width: 18px;
+                height: 18px;
+                top: 16px;
+            }
+            @media (max-width: 767px) {
+                width: 16px;
+                height: 16px;
+                top: 12px;
+            }
+        }
+        &::before {            
+            background: url('data:image/svg+xml,<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L20 18.5858V6C20 5.44772 20.4477 5 21 5C21.5523 5 22 5.44772 22 6V21C22 21.5523 21.5523 22 21 22H6C5.44772 22 5 21.5523 5 21C5 20.4477 5.44772 20 6 20H18.5858L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z" fill="rgb(171 175 181)" fill-opacity="0.6"/></svg>') no-repeat center center;            
+        }
+        &:after {
+            background: url('data:image/svg+xml,<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L20 18.5858V6C20 5.44772 20.4477 5 21 5C21.5523 5 22 5.44772 22 6V21C22 21.5523 21.5523 22 21 22H6C5.44772 22 5 21.5523 5 21C5 20.4477 5.44772 20 6 20H18.5858L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z" fill="rgb(238 93 36)" fill-opacity="1"/></svg>') no-repeat center center;
+            @include transform(translate(-150%, -150%));
+            @include opacity(0);
+        }
+        .icon-img {
+            margin-right: 50px;
+            width: 50px;
+            height: 50px;
+            flex: none;
+            @media (max-width: 1200px) {
+                margin-right: 20px;
+            }
+            @media (max-width: 767px) {
+                width: 40px;
+                height: 40px;
+            }
+            img {
+                max-height: 50px;
+                width: 100%;
+                @include transition(0.3s, ease-in-out);
+            }
+            &.is-icon {
+                img {
+                    filter: brightness(0);
+                }
+            }
+        }
+        .info {
+            margin-right: 20px;
+            h3 {
+                color: $dark;
+                font-size: 20px;
+                font-weight: 500;
+                margin-bottom: 0;
+                @include transition(0.3s, ease-in-out);
+                @media (max-width: 992px) {
+                    font-size: 18px;
+                }
+                @media (max-width: 767px) {
+                    font-size: 16px;
+                }
+            }
+            .sort-info {
+                font-size: 14px;
+                color: $dark;
+                margin-top: 8px;
+            }
+        }
+        &:hover, &:focus {
+            border-color: $primary;
+            &::before {
+                @include transform(translate(150%, 150%));
+                @include opacity(0);
+            }
+            &::after {
+                @include transform(translate(0, 0));
+                @include opacity(1);
+            }
+            .icon-img.is-icon {
+                img {
+                    filter: unset;
+                }
+            }
+            .info {
+                h3 {
+                    color: $primary;
+                }
+            }
+        }
+    }
+}
 
 // FAQ
 
@@ -1290,8 +1433,7 @@
 
 // Logos
 .trusted-logos-section {
-	
-    .title {
+	.title {
         text-transform: uppercase;
         letter-spacing: 1.8px;
         position: relative;
@@ -1607,9 +1749,14 @@
     .card-body {
         flex: 1 1 auto;
         padding: 0;
+        .special-text {
+            font-size: 100px;
+            margin-bottom: 15px;
+            margin-top: 0;
+        }
         h3 {
             margin-bottom: 15px;
-			font-weight: 600;
+			font-weight: 700;
 			font-size: 18px;
             @media (max-width: 767px) {
                 font-size: 16px;
@@ -1704,7 +1851,7 @@
 	}
 }
 
-// 
+// Special Text
 .special-text {
     white-space: nowrap;
     font-family: monospace;
@@ -1740,7 +1887,7 @@
     }
 }
 
-//
+// Widget Grid Block
 .widget-grid-block {
     .widget-block {
         .widget-title {
@@ -1802,6 +1949,7 @@
         }
     }
 }
+
 // Form Block
 .form-content-block {
     position: relative;
@@ -1813,5 +1961,66 @@
         padding: 30px 20px;
         margin-left: -12px;
         margin-right: -12px;
+    }
+}
+
+// Counter Box
+.counter-section{
+    &.bg-dark {
+        .counter-box {
+            .count-number { 
+                -webkit-text-fill-color: transparent;
+            }
+        }
+    }
+}
+.counter-box {
+    .count-number {
+        font-size: 45px;
+        font-weight: 500;
+        color: $primary;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: $primary;
+        position: relative;
+        -webkit-text-stroke: 1px $primary;
+        margin-bottom: 10px;
+        @media (max-width: 992px) {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+        @media (max-width: 767px) {
+            font-size: 28px;
+        }
+    }
+    .sort-info {
+        font-size: 16px;
+        @media (max-width: 767px) {
+            font-size: 14px;
+        }
+    }
+}
+
+// History Slider
+.history-splide {
+    .splide__track {
+        overflow: visible;
+    }
+    .splide__slide {
+        @include opacity(0.5);
+        @include transition(0.1s, ease-in-out);
+        .info-card {
+            .card-body {
+                h3 {
+                    font-size: 25px;
+                    font-weight: 700;
+                }
+            }
+        }
+        &.is-visible {
+            @include opacity(1);
+        }
+        &.is-active {
+                
+        }
     }
 }

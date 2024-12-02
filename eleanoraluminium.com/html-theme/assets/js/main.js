@@ -109,6 +109,15 @@ jQuery(document).ready(function($) {
             $logoBlock.toggleClass('is-animate', windowBottom >= logoBlockTop);
         });
     }
+    $('.category-card').hover(
+        function () {
+            let contentHeight = $(this).find('.sort-info').prop('scrollHeight');
+            $(this).find('.sort-info').css('height', contentHeight + 'px');
+        },
+        function () {
+            $(this).find('.sort-info').css('height', '0');
+        }
+    );
 });
 
 // Step Progress Section
