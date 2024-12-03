@@ -200,7 +200,7 @@
         }
 	}
 
-    &.is-outside-contact-form {
+    &.is-outside-section {
         padding-bottom: 0;
         margin-bottom: 170px;
         @media (max-width: 992px) {
@@ -1078,14 +1078,24 @@
             height: 0;
             color: $white;
             font-weight: 600;
-            font-size: 16px;
+            font-size: 16px;             
             @media (max-width: 767px) {
                 font-size: 14px;
             }
-            p {
+            & > * {
                 margin-top: 20px;
                 @media (max-width: 767px) {
                     margin-top: 15px;
+                }
+            }
+            ul {
+                li {
+                    &::before {
+                        content: '-';
+                        font-size: 16px;
+                        display: inline-block;
+                        margin-right: 5px;
+                    }
                 }
             }
         }
@@ -1255,15 +1265,15 @@
         }
         &::before, &::after {
             content: '';
-            width: 22px;
-            height: 22px;
+            width: 18px;
+            height: 18px;
             flex: none;
             display: inline-block;
             background-size: contain !important;
             position: absolute;
             top: 11px;
             right: 0;
-            @include transition(0.3s, ease-in-out);
+            transition: transform 0.3s,opacity 0.3s;
             @media (max-width: 992px) {                
                 width: 18px;
                 height: 18px;
@@ -1926,6 +1936,7 @@
                             border: 1px solid #28343B;
                             width: 40px;
                             height: 40px;
+                            @include border-radius(8px);
                             @include inline-flex;
                             @include align-items(center);
                             @include justify-content(center);
@@ -1933,17 +1944,9 @@
                             svg {
                                 width: 18px;
                                 height: 18px;
-                                path {
-                                    @include transition(0.3s, ease-in-out);
-                                }
                             }
                             &:hover, &:focus {
-                                background: $dark;
-                                svg {
-                                    path {
-                                        fill: $white;
-                                    }
-                                }
+                                background: rgba(#28343B, 0.2);
                             }
                         }
                     }
@@ -1985,7 +1988,7 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: $primary;
         position: relative;
-        -webkit-text-stroke: 1px $primary;
+        -webkit-text-stroke: 2px $primary;
         margin-bottom: 10px;
         @media (max-width: 992px) {
             font-size: 36px;
@@ -2004,7 +2007,18 @@
 }
 
 // History Slider
+.history-section {
+    &::after {
+        content: '';
+        width: 100%;
+        height: 1px;
+        background-color: $dark;
+        display: block;
+        margin-top: -12px;
+    }
+}
 .history-splide {
+    padding: 0;
     .splide__track {
         overflow: visible;
     }
@@ -2012,6 +2026,18 @@
         @include opacity(0.5);
         @include transition(0.1s, ease-in-out);
         .info-card {
+            @media (max-width: 992px) {
+                max-width: 300px;
+            }
+            &::after {
+                content: '';
+                display: block;
+                width: 23px;
+                height: 23px;
+                background-color: $primary;
+                @include border-radius(50%);
+                margin-top: 25px;
+            }
             .card-body {
                 h3 {
                     font-size: 25px;
@@ -2023,7 +2049,7 @@
             @include opacity(1);
         }
         &.is-active {
-                
+            @include opacity(1);
         }
     }
 }
