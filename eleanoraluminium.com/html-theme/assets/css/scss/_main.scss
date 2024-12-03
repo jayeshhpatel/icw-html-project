@@ -1364,6 +1364,149 @@
     }
 }
 
+// Team Card
+.team-card {
+    position: relative;
+    @include flexbox;
+    @include flex-direction(column);
+    height: 100%;
+    .card-img {
+        position: relative;
+        margin-bottom: 20px;
+        @media (max-width: 992px) {
+            margin-bottom: 15px;
+        }
+        img {
+            max-height: 360px;
+            width: 100%;
+            object-fit: cover;
+            object-position: top center;
+            filter: grayscale(1);
+            @include transition(0.3s, ease-in-out);
+        }
+        .social-list {
+            position: absolute;
+            width: 63px;
+            height: 100%;
+            right: 0;
+            bottom: -7px;
+            overflow: hidden;
+            z-index: 2;
+            @include transition(0.3s, ease-in-out);
+            text-align: center;
+            padding-bottom: 7px;
+            @media (max-width: 992px) {
+                width: 50px;
+            }
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                height: 7px;
+                width: 100%;
+                bottom: 0;
+                z-index: 2;
+                background-color: $dark;
+            }
+            ul {
+                background: $primary;
+                @include flexbox;
+                @include justify-content(flex-end);
+                @include align-items(center);
+                @include flex-direction(column);
+                @include flex-wrap(nowrap);
+                position: absolute;
+                bottom: 7px;
+                width: 100%;
+                padding: 8px 0;
+                @media (max-width: 992px) {
+                    padding: 5px 0;
+                }
+                li {
+                    margin: 5px 0;
+                    a {
+                        width: 36px;
+                        height: 36px;
+                        @include flexbox;
+                        @include justify-content(center);
+                        @include align-items(center);
+                        @media (max-width: 992px) {
+                            width: 30px;
+                            height: 30px;
+                        }
+                        svg {
+                            path {
+                                @include transition(0.1s, ease-in-out);
+                            }
+                        }
+                        &:hover, &:focus {
+                            svg {
+                                path {
+                                    fill: $white;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .card-content {
+        .desigantion {
+            font-size: 14px;
+            color: $primary;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .name {
+            font-size: 20px;
+            font-weight: 600;
+            color: $dark;
+            @include transition(0.3s, ease-in-out);
+            a {
+                color: $dark;
+                text-decoration: none;
+                @include transition(0.3s, ease-in-out);
+            }
+            @media (max-width: 992px) {
+                font-size: 18px;
+            }
+        }
+    }
+    &:hover, &:focus {
+        .card-img {
+            img {
+                filter: unset;
+            }
+        }
+    }
+}
+.team-section {
+    .content-info-block {
+        max-width: 350px;
+        margin: 0 auto;
+        .special-text {
+            @media (max-width: 1200px) {
+                .special-text.is-lg-text {
+                    font-size: 80px;
+                }
+            }
+        }
+        .sort-info {
+            font-size: 30px;
+            font-weight: 700;
+            line-height: normal;
+            margin: 20px 0;
+            @media (max-width: 992px) {
+                font-size: 20px;
+            }
+            @media (max-width: 767px) {
+                font-size: 18px;
+            }
+        }
+    }
+}
+
 // FAQ
 
 
@@ -1454,15 +1597,12 @@
         font-size: 14px;
         margin-bottom: 0px
     }
-
 	.trusted-logos {
-
 		@include align-items(center);
 		@include justify-content(center);
 		@include flexbox;
 		gap: 15px 60px;
 		@include flex-wrap(wrap);
-
 		.logo-item {
 			img {
 				width: auto;
@@ -1524,17 +1664,17 @@
 			@include justify-content(center);
 
 			img {
-				max-height:50px;
 				width: auto;
-
+				max-height: 180px;
 				@media (min-width:992px) {
-				flex: none;
-				-webkit-box-flex: 1;
-				-ms-flex: 1 1 auto;
-				flex: 1 1 auto;
-				aspect-ratio: 3/2;
-				object-fit: contain;
-				// mix-blend-mode: color-burn;
+                    max-height: 215px;
+				    flex: none;
+                    -webkit-box-flex: 1;
+                    -ms-flex: 1 1 auto;
+                    flex: 1 1 auto;
+                    // aspect-ratio: 3/4;
+                    object-fit: contain;
+                    // mix-blend-mode: color-burn;
 				}
 			}
 		}
