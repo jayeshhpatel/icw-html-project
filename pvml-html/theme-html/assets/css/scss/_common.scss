@@ -2285,7 +2285,7 @@ body ._data-btn-info {
 		}
 	}
 }
-.hs-work_e_mail {
+.hs-work_e_mail, .hs_company_status {
 	.input {
 		margin-right: 0 !important;
 	}
@@ -2342,7 +2342,24 @@ body ._data-btn-info {
 	}
 }
 
-.hs-your_company_status, .hs-building_ai {
+.hs_company_status { 
+	.hs-form-radio {
+		width: 100%;
+		@media (min-width: 992px) {
+			width: calc(50% - 4px);
+		}
+		@media (max-width: 992px) {
+			.hs-form-radio-display { 
+				span {
+					text-align: left;
+					@include justify-content(flex-start);
+				}
+			}
+		}
+	}
+}
+
+.hs-building_ai {
 	.input {
 		margin-right: 0 !important;
 	}
@@ -2381,12 +2398,12 @@ body ._data-btn-info {
 				z-index: 90;
 				line-height: normal;
 				@include inline-flex;
-				@include justify-content(flex-start);
+				@include justify-content(center);
 				@include align-items(center);
 				padding: 6px 15px;
 				font-size: 14px;
 				font-weight: 400;
-				text-align: left;
+				text-align: center;
 				white-space: nowrap;
 				vertical-align: middle;
 				border: 1px solid rgba($primary, 0.5);
@@ -2394,6 +2411,10 @@ body ._data-btn-info {
 				color: rgba(255, 255, 255, 0.6);
 				@media (min-width: 1400px) {
 					padding: 6px 20px;
+				}
+				@media (max-width: 992px) {
+					text-align: left;
+					@include justify-content(flex-start);
 				}
 			}
 			.hs-input:checked + span { 
