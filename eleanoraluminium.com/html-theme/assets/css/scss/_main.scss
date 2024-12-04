@@ -749,10 +749,14 @@
         @media (max-width: 1200px) {
             width: 50px;
             height: 50px;
+            bottom: -50px;
+            left: 50px;
         }
         @media (max-width: 767px) {
             width: 30px;
             height: 30px;
+            bottom: -30px;
+            left: 15px;
         }
         &::before {
             content: '';
@@ -1508,7 +1512,82 @@
 }
 
 // FAQ
+.collapse-item {
+	padding: 20px 0;
+	border-top: 1px solid $black;
 
+	&.is-open {
+		.collapse-title{
+			h3 {
+				color: $primary;
+				font-weight: 700;
+			}
+			&:after {
+				@include transform(rotate(-45deg));
+                filter: unset;
+				-webkit-filter: unset;
+			}
+		}
+	}
+	&:hover, &:focus {
+		.collapse-title {
+			h3 {
+				color: $primary;
+			}
+			&:after {
+				filter: unset;
+				-webkit-filter: unset;
+            }
+		}
+	}
+
+	.collapse-title {
+		@include flexbox();
+		@include align-items(center);
+		text-align: left;
+		cursor: pointer;
+		background-color: transparent;
+		border: none;
+		width: 100%;
+		padding: 0;
+		@include border-radius(4px);		
+		&:after {
+			content: "";
+			width: 18px;
+			height: 18px;
+			-webkit-box-flex: 0;
+			-ms-flex: none;
+			flex: none;
+			margin-left: auto;
+			background: url('data:image/svg+xml,<svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.00244 1.8418L20.6809 22.1583M20.6809 22.1583L20.9201 7.16017M20.6809 22.1583L5.6828 21.919" stroke="rgb(238 93 36)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
+			background-size: contain;
+            filter: brightness(0);
+			@include transition(0.2s, ease-in-out);
+		}
+		h3 {
+			font-size: 25px;
+			font-weight: 600;
+			margin-bottom: 0;
+			@media (max-width:767px) {
+				font-size: 16px;
+				padding-right: 50px;
+			}
+		}
+	}
+	.card-content {
+		color: #4A5257;
+		a {
+			font-size: 16px;
+			text-decoration: underline;
+			text-underline-offset: 4px;
+		}
+	}
+	.collapse-body {
+		margin-top: 12px;
+		padding-right: 40px;
+		
+	}
+}
 
 // Hero CTA
 
@@ -1531,9 +1610,6 @@
 	}
 	.card-image-block {	
 		position: relative;	
-        img {
-            width: 100%;
-        }
 		@media (max-width: 767px) {
 			// max-width: 80%;
 			// margin: 0 auto;
@@ -1552,34 +1628,40 @@
 				text-align: right;
 			}
 		}
-        .img-text {
-            @include transition(0.6s, ease-in-out);
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            padding: 15px;
-            max-width: 160px;
-            min-height: 180px;
-            background: $primary;
-            @include flexbox;
-            @include align-items(center);
-            @include justify-content(center);
-            color: $white;
-            font-size: 16px;
-            font-weight: 700;
-            text-align: center;
-            transform: scaleY(0);
-            transform-origin: bottom;
-            &.animated {
-                transform: scaleY(1);
-            }
-        }
 	}
 	.section-title {
 		margin: 0;
         position: relative;
         z-index: 1;
 	}
+}
+.card-image-block {	
+    position: relative;	
+    img {
+        width: 100%;
+    }  
+    .img-text {
+        @include transition(0.6s, ease-in-out);
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        padding: 15px;
+        max-width: 160px;
+        min-height: 180px;
+        background: $primary;
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+        color: $white;
+        font-size: 16px;
+        font-weight: 700;
+        text-align: center;
+        transform: scaleY(0);
+        transform-origin: bottom;
+        &.animated {
+            transform: scaleY(1);
+        }
+    }
 }
 
 
