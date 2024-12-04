@@ -1563,13 +1563,18 @@
 			background-size: contain;
             filter: brightness(0);
 			@include transition(0.2s, ease-in-out);
+            @media (max-width: 992px) {
+				font-size: 20px;
+				padding-right: 50px;
+			}
 		}
 		h3 {
 			font-size: 25px;
 			font-weight: 600;
 			margin-bottom: 0;
-			@media (max-width:767px) {
-				font-size: 16px;
+			@include transition(0.2s, ease-in-out);
+			@media (max-width: 992px) {
+				font-size: 20px;
 				padding-right: 50px;
 			}
 		}
@@ -1716,6 +1721,38 @@
 
 		}
 	}
+    .logo-item {
+        @include flexbox();
+        @include align-items(center);
+        @include justify-content(center);
+
+        img {
+            width: auto;
+            // max-height: 200px;
+            @media (min-width:992px) {
+                // max-height: 260px;
+                flex: none;
+                -webkit-box-flex: 1;
+                -ms-flex: 1 1 auto;
+                flex: 1 1 auto;
+                // aspect-ratio: 3/4;
+                object-fit: contain;
+                // mix-blend-mode: color-burn;
+            }
+        }
+    }
+    a.logo-item {
+        img {
+            @include transition(0.3s, ease-in-out);
+            opacity: 0.75;
+        }
+        &:hover, &:focus {
+            img {
+                opacity: 1;
+                @include transform(scale(1.03));	
+            }
+        }
+    }
 	.logo-style-slider {
 		-webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 10%, rgb(0, 0, 0)90%, rgba(0, 0, 0, 0) 100%);
 		mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 10%, rgb(0, 0, 0)90%, rgba(0, 0, 0, 0) 100%);
@@ -1740,39 +1777,24 @@
 			@include justify-content(center);
 		}
 
-		.logo-item {
-			@include flexbox();
-			@include align-items(center);
-			@include justify-content(center);
-
-			img {
-				width: auto;
-				max-height: 180px;
-				@media (min-width:992px) {
-                    max-height: 215px;
-				    flex: none;
-                    -webkit-box-flex: 1;
-                    -ms-flex: 1 1 auto;
-                    flex: 1 1 auto;
-                    // aspect-ratio: 3/4;
-                    object-fit: contain;
-                    // mix-blend-mode: color-burn;
-				}
-			}
-		}
-		a.logo-item {
-			img {
-				@include transition(0.3s, ease-in-out);
-				opacity: 0.75;
-			}
-			&:hover, &:focus {
-				img {
-					opacity: 1;
-					@include transform(scale(1.03));	
-				}
-			}
-		}
+		
 	}
+
+    .logo-grid {
+        display: grid;
+        grid-template-columns: repeat(var(--grid-col, 5), 1fr);
+        grid-gap: 30px;
+        @media (max-width: 1200px) {
+            grid-template-columns: repeat(4, 1fr) !important;
+        }
+        @media (max-width: 992px) {
+            grid-template-columns: repeat(3, 1fr) !important;
+        }
+        @media (max-width: 575px) {
+            grid-template-columns: repeat(2, 1fr) !important;
+            grid-gap: 20px;
+        }
+    }
 
 }
 
@@ -1985,9 +2007,10 @@
         flex: 1 1 auto;
         padding: 0;
         .special-text {
-            font-size: 100px;
+            font-size: 95px;
             margin-bottom: 15px;
             margin-top: 0;
+            letter-spacing: -1px;
         }
         h3 {
             margin-bottom: 15px;
@@ -2095,7 +2118,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     position: relative;
-    -webkit-text-stroke: 1px $primary;
+    -webkit-text-stroke: 2px $primary;
     line-height: 0.8em;
     letter-spacing: -8px;
     opacity: 1;
@@ -2245,7 +2268,7 @@
         overflow: visible;
     }
     .splide__slide {
-        @include opacity(0.5);
+        @include opacity(0.2);
         @include transition(0.1s, ease-in-out);
         .info-card {
             @media (max-width: 992px) {
@@ -2264,6 +2287,9 @@
                 h3 {
                     font-size: 25px;
                     font-weight: 700;
+                }
+                .sort-info {
+                    font-size: 16px
                 }
             }
         }
