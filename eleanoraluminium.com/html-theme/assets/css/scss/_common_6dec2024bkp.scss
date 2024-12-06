@@ -771,7 +771,6 @@ h5, .h5 {
 	}	
 	.navbar {
 		padding: 0;
-		position: unset;
 		>.container {
 			display: block; 
 			// padding-left:1.5rem; 
@@ -788,7 +787,7 @@ h5, .h5 {
 				&:hover, 
 				&:focus, 
 				&:focus-visible {
-					> .sub-menu {
+					> ul.sub-menu {
 						@include opacity(1); 
 						visibility: visible; 
 						@include transform(translateY(0px)); 
@@ -1120,7 +1119,6 @@ h5, .h5 {
 	}
 
 	.mega-menu {
-		position: unset !important;	
 		&:hover, &:focus {
 			& > .sub-menu {
 				@media (min-width: 1080px) {
@@ -1130,180 +1128,146 @@ h5, .h5 {
 			.sub-menu .sub-menu {display: block !important;}
 		}
 		& > .sub-menu {
-			min-width: 100%;	
+			min-width: 600px;	
 			@include border-radius(2px);
-			padding: 0 !important;
+			padding: 30px !important;
 			// left: -18rem;
-			left: 0;	
-			background: $white;		
+			left: -30px;
+			
 			@media (min-width: 1080px) {
-				border-top: 1px solid $black;
-				border-bottom: 4px solid $black;
-				background: linear-gradient(92deg, #ffffff 70%, #f6f7f9 0%);	
+				display: none;
+    				grid-template-columns: 50% 50%;
 			}
 			@media (max-width: 1080px) {
-				padding: 0 0 10px !important;
+				min-width: auto;
+				grid-template-columns: 100%;
+				padding: 15px !important;
+				margin-left: 0 !important;
 			}
-			.sub-menu-inner {
-				display: grid;
-				grid-template-columns: 1fr 300px;
-				grid-gap: 80px;
-				max-width: 1320px;
-				width: 100%;
-				padding: 0 12px;
-				margin: 0 auto !important;
-				@media (max-width: 1440px) {
-					max-width: 1140px;
-					grid-gap: 30px;
-				}
+			& > li {
+				border-right: 1px solid #e9e9e9  !important;
+				padding-bottom: 0 !important;
+				
 				@media (max-width: 1080px) {
-					grid-template-columns: 1fr;
-					padding: 0;
-					grid-gap: 0;
+					border-right: none !important;
+					border-bottom: 0px  !important;
 				}
-				.sub-menu-list-block {
-					padding: 40px 0;
-					@include flexbox;
+				@media (min-width: 1080px) {
+					padding-left: 30px !important;
+					padding-right: 30px !important;
+				}
+				&:first-child {
+					padding-left: 0px !important;
 					@media (min-width: 1080px) {
-						gap: 80px;
-					}
-					@media (max-width: 1440px) {
-						gap: 30px;
-					}
-					@media (max-width: 1080px) {
-						@include flex-direction(column);
-						gap: 20px;
-						padding: 10px 0;
-					}
-					.menu-list-grid {
-						.menu-title {
-							font-size: 14px;
-							font-weight: 600;
-							color: rgba(0, 0, 0, 0.7);
-							text-transform: uppercase;
-							letter-spacing: 0.08em;
-							margin-bottom: 20px;
-							@media (max-width: 1440px) {
-								font-size: 12px;
-								margin-bottom: 10px;
-							}
-							@media (max-width: 1080px) {
-								margin-bottom: 5px;
-							}
-						}
-						.menu-grid {
-							display: grid;
-							grid-template-columns: repeat(1, 1fr);							
-							grid-gap: 0 60px;
-							@media (max-width: 1440px) {
-								grid-gap: 0 20px;
-							}
-							&.grid-col-2 {
-								grid-template-columns: repeat(2, 1fr);
-							}
-							&.grid-col-3 {
-								grid-template-columns: repeat(3, 1fr);
-							}
-							@media (max-width: 1080px) {
-								grid-template-columns: repeat(1, 1fr) !important;
-							}
-							li {
-								padding: 0 !important;
-							}
-							a {
-								display: flex !important;
-								@include align-items(flex-start);
-								padding: 12px;
-								@include border-radius(8px);
-								text-decoration: none;
-								.icon {
-									width: 25px;
-									height: 25px;
-									flex: none;
-									margin-right: 15px;
-									margin-top: 5px;
-									@media (max-width: 1080px) {
-										margin-right: 12px;
-									}
-									img {
-										max-width: 100%;
-									}
-								}
-								.menu-info {
-									.name {
-										font-size: 16px;
-										font-weight: 700;
-										color: $dark;
-										@media (max-width: 1440px) {
-											font-size: 14px;
-										}
-									}
-									.info {
-										font-size: 14px;
-										font-weight: 400;
-										color: rgba(0, 0, 0, 0.6);
-										@media (max-width: 1440px) {
-											font-size: 12px;
-										}
-									}
-								}	
-								&:hover, &:focus {
-									background: #F6F7F9;
-								}
-							}
-						}
+						padding-right: 30px !important;
 					}
 				}
-				.img-content-menu-block {
-					border-left: 1px solid rgba(0, 0, 0, 0.1);
-					background: #F6F7F9;
-					padding: 40px 20px 40px 30px;
-					@media (max-width: 1080px) {
-						padding: 15px;
-						border: 1px solid rgba(0, 0, 0, 0.1);
+				&:last-child {
+					border-right: none !important;
+					border-bottom: none !important;
+					@media (min-width: 1080px) {
+						padding-right: 0px !important;
 					}
-					.img-block {
-						margin-bottom: 20px;
-						img {
-							@include border-radius(6px);
-						}
-					}
-					.content-info {
-						@include flexbox;
-						@include flex-direction(column);
-						gap: 10px;
-						.title {
-							font-weight: 700;
-							font-size: 16px;
-							text-transform: uppercase;
-							color: #000000;
-							@media (max-width: 1080px) {
-								font-size: 14px;
-							}
+				}
 
-						}
-						.sort-info {
-							color: rgba(0, 0, 0, 0.6);
-							font-size: 14px;
-							@media (max-width: 1080px) {
-								font-size: 12px;
+				@media (max-width: 1080px) {
+					margin-bottom: 15px !important;
+					&:last-child {
+						margin-bottom: 0px !important;
+					}
+				}
+				& > a {
+					color: $white;
+				}
+				& > ul {
+					display: block !important;
+					li {
+						@media (max-width: 1080px) {
+							border-left: none !important;
+							border-bottom: 1px solid rgba(235,235,235,0.3) !important;
+							padding-left: 0;
+							&:last-child {
+								border-bottom: none !important;
+								margin-bottom: 15px !important;
+								a {
+									padding-bottom: 0;
+								}
+							}
+							&:first-child {
+								a {
+									padding-top: 0;
+								}
 							}
 						}
 						a {
-							max-width: fit-content;
-							color: rgba(0, 0, 0, 0.8);
-							padding: 0;
-							&.btn-link-arrow {								
-								background-image: none;
-								padding: 0 20px 3px 0;
-								&::after {
-									filter: brightness(0);
-									margin-top: -2px;
-									background-size: 10px !important;
+							@media (max-width: 1080px) {
+								padding: 10px 0;
+								
+								&:hover, &:focus {
+									color: $primary;
+									background-color: unset;
 								}
+							}
+						}
+					}
+				}
+			}
+			& > .menu-item-has-children {
+				& > a:not([rel]) {
+					display: none !important;
+				}
+				& > a[rel] {
+					position: relative;
+					pointer-events: none;
+					color: #7a7a7a !important;
+					text-transform: uppercase;
+					font-size: 12px;
+					font-weight: 500;
+					letter-spacing: 1px;
+					background: transparent !important;
+					padding: 0 0 5px !important;
+					margin-bottom: 10px;
+					border-bottom: 1px solid #e9e9e9;
+					border-radius: 0;
+					@media (max-width: 1080px) {
+						font-size: 10px;
+						display: block;
+					}
+				}
+				& > .arrow {
+					display: none;
+				}
+				.sub-menu {
+					position: static;
+					visibility: visible;
+					opacity: 1;
+					border-left: 0;
+					background: transparent;
+					padding: 0 !important;
+					display: none;
+					margin-left: 0 !important;
+					li {
+						a {
+							display: flex !important;
+							align-items: center;
+							
+							&::after {
+								content: '' !important;
+								display: inline-block !important;
+								background: url(../images/icons/next.svg) no-repeat center right; 
+								background-size: contain;
+								width: 8px;
+								height: 8px;
+								position: absolute;
+								right: 12px;
+								// filter: brightness(0) invert(1);
+								@include transition(0.2s, ease-in-out);
 							}
 							&:hover, &:focus {
 								color: $primary;
+								&::after {
+									right: 10px;
+								}
 							}
 						}
 					}
@@ -1356,7 +1320,7 @@ h5, .h5 {
 		@include flexbox(); 
 		@include align-items(center); 
 		@include justify-content(space-between); 
-		// position: relative;
+		position: relative;
 		min-height: 47px;
 	}
 	.action-btn {
