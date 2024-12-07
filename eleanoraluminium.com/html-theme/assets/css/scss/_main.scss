@@ -1423,14 +1423,22 @@
                 bottom: 7px;
                 width: 100%;
                 padding: 8px 0;
+                @include transform(scaleY(0));
+                transform-origin: bottom;
+                @include transition(0.3s, ease-in-out);
                 @media (max-width: 992px) {
                     padding: 5px 0;
                 }
                 li {
                     margin: 5px 0;
+                    width: 100%;
+                    @include flexbox;
+                    @include justify-content(center);
+                    @include align-items(center);
                     a {
                         width: 36px;
                         height: 36px;
+                        flex: none;
                         @include flexbox;
                         @include justify-content(center);
                         @include align-items(center);
@@ -1481,6 +1489,11 @@
         .card-img {
             img {
                 filter: unset;
+            }
+            .social-list { 
+                ul {
+                    @include transform(scaleY(1));
+                }
             }
         }
     }
@@ -1711,7 +1724,9 @@
 			}
 		}
 	}
-
+    .splide {
+        padding-bottom: 0;
+    }
 	// Slider
 	&.trusted-logo-slider-full {
 		& > .container-logos {
@@ -1779,6 +1794,16 @@
 
 		
 	}
+    .logo-sm-slider {
+        .logo-item {
+			img {
+				width: auto;
+				max-height: 80px;
+				aspect-ratio: 3/4;
+				object-fit: contain;
+			}
+		}
+    }
 
     .logo-grid {
         display: grid;
@@ -2041,32 +2066,30 @@
     }
 
 	&.only-icon-title-card {
-		padding: 30px;
-		@media (max-width: 992px) {
-			padding: 20px;
-		}
 		.card-img {
-			margin-bottom: 30px;
+			margin-bottom: 20px;
+            img {
+                max-height: 42px;
+            }
 			@media (max-width: 992px) {
-				margin-bottom: 20px;
+				margin-bottom: 15px;
 			}
 		}
 		h3 {
-			font-weight: 400;
-			font-size: 18px;
-			margin-bottom: 0;
+            font-size: 22px;
+            font-weight: 600;
 			&.font-lg {
 				font-size: 24px;
 			}
 			@media (max-width: 992px) {
-				font-size: 16px;
+				font-size: 18px;
 				&.font-lg {
 					font-size: 20px;
 				}
 			}
 			@media (max-width: 767px) {
 				&.font-lg {
-					font-size: 16px;
+					font-size: 18px;
 				}
 			}
 		}
@@ -2096,6 +2119,10 @@
 			}
 		}
 	}
+    &.with-bg {
+        background: rgba(225, 230, 233, 0.6);
+        padding: 20px;
+    }
 
 	&.is-hover {
 		&:hover, &:focus {

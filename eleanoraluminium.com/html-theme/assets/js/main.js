@@ -26,6 +26,16 @@ jQuery(document).ready(function($) {
                 $(".main-header").removeClass("fixed-header");
             }
         });
+        if ($(window).width() > 1080) {
+            $('.mega-menu').hover(
+                function () {
+                    $('.bg-overly').addClass('is-visible');
+                },
+                function () {
+                    $('.bg-overly').removeClass('is-visible');
+                }
+            );
+        }
     }
 
     if ($('li.menu-item-has-children').length) {
@@ -119,6 +129,21 @@ jQuery(document).ready(function($) {
         }
     );
 });
+
+$(window).resize(function(){ 
+    if ($('.main-header').length) {
+        if ($(window).width() > 1080) {
+            $('.mega-menu').hover(
+                function () {
+                    $('.bg-overly').addClass('is-visible');
+                },
+                function () {
+                    $('.bg-overly').removeClass('is-visible');
+                }
+            );
+        }
+    }
+})
 
 // Step Progress Section
 if ($('.progress-section').length) {

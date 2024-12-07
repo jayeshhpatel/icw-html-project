@@ -1139,7 +1139,7 @@ h5, .h5 {
 			@media (min-width: 1080px) {
 				border-top: 1px solid $black;
 				border-bottom: 4px solid $black;
-				background: linear-gradient(92deg, #ffffff 70%, #f6f7f9 0%);	
+				background: linear-gradient(92deg, #ffffff 80%, #f6f7f9 0%);	
 			}
 			@media (max-width: 1080px) {
 				padding: 0 0 10px !important;
@@ -1165,10 +1165,10 @@ h5, .h5 {
 					padding: 40px 0;
 					@include flexbox;
 					@media (min-width: 1080px) {
-						gap: 60px;
+						gap: 30px;
 					}
 					@media (max-width: 1440px) {
-						gap: 30px;
+						gap: 10px;
 					}
 					@media (max-width: 1080px) {
 						@include flex-direction(column);
@@ -1194,7 +1194,7 @@ h5, .h5 {
 						.menu-grid {
 							display: grid;
 							grid-template-columns: repeat(1, 1fr);							
-							grid-gap: 0 60px;
+							grid-gap: 0 30px;
 							@media (min-width: 1440px) {
 								min-width: 280px;
 							}
@@ -1211,7 +1211,8 @@ h5, .h5 {
 								grid-template-columns: repeat(1, 1fr) !important;
 							}
 							li {
-								padding: 0 !important;
+								padding: 0 0 5px!important;
+								border-bottom: transparent;
 							}
 							a {
 								display: flex !important;
@@ -1234,17 +1235,19 @@ h5, .h5 {
 								}
 								.menu-info {
 									.name {
-										font-size: 16px;
+										font-size: 15px;
 										font-weight: 700;
 										color: $dark;
+										line-height: normal;
 										@media (max-width: 1440px) {
 											font-size: 14px;
 										}
 									}
 									.info {
-										font-size: 14px;
+										font-size: 12px;
 										font-weight: 400;
 										color: rgba(0, 0, 0, 0.6);
+										line-height: normal;
 										@media (max-width: 1440px) {
 											font-size: 12px;
 										}
@@ -1260,26 +1263,83 @@ h5, .h5 {
 				.img-content-menu-block {
 					border-left: 1px solid rgba(0, 0, 0, 0.1);
 					background: #F6F7F9;
-					padding: 40px 20px 40px 30px;
+					padding: 40px 0 55px 30px;
+					position: relative;
+					// Square Animation Vector
+					.square-vector {
+						position: absolute;
+						width: 45px;
+						height: 45px;
+						left: 0;
+						bottom: 0;
+						@media (max-width: 1080px) {
+							display: none;
+						}
+						&::before {
+							content: '';
+							position: absolute;
+							height: 100%;
+							top: 0;
+							left: -45px;
+							width: 100%;
+							-webkit-transition: transform 0.5s cubic-bezier(0, 0, 0.15, 0.96);
+							transition: transform 0.5s cubic-bezier(0, 0, 0.15, 0.96);
+							transform-origin: bottom;
+							background: $dark;
+						}
+						&::after {
+							content: '';
+							position: absolute;
+							width: 100%;
+							height: 100%;
+							-webkit-transition: transform 0.5s 0.3s cubic-bezier(0, 0, 0.15, 0.96);
+							transition: transform 0.5s 0.3s cubic-bezier(0, 0, 0.15, 0.96);
+							transform-origin: top;
+							background: $white;
+						}
+					}
 					@media (max-width: 1080px) {
 						padding: 15px;
 						border: 1px solid rgba(0, 0, 0, 0.1);
 					}
 					.img-block {
-						margin-bottom: 20px;
+						margin-bottom: 15px;
 						img {
 							@include border-radius(6px);
+							width: 100%;
+						}
+						&.is-video {
+							position: relative;
+							.play-icon {
+								background: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c-7.6 4.2-12.3 12.3-12.3 20.9l0 176c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88c-7.4-4.5-16.7-4.7-24.3-.5z" fill="white" /></svg>') no-repeat center center;
+								background-size: contain;
+								width: 40px;
+								height: 40px;
+								flex: none;
+								display: inline-block;
+								position: absolute;
+								top: 50%;
+								left: 50%;
+								@include transform(translate(-50%, -50%));
+								@include transition(0.3s, ease-in-out);
+								cursor: pointer;
+							}
+							&:hover, &:focus {
+								.play-icon {
+									@include transform(translate(-50%, -50%) scale(1.1));
+								}
+							}
 						}
 					}
 					.content-info {
 						@include flexbox;
 						@include flex-direction(column);
-						gap: 10px;
 						.title {
 							font-weight: 700;
 							font-size: 16px;
 							text-transform: uppercase;
 							color: #000000;
+							margin-bottom: 5px;
 							@media (max-width: 1080px) {
 								font-size: 14px;
 							}
@@ -1288,6 +1348,7 @@ h5, .h5 {
 						.sort-info {
 							color: rgba(0, 0, 0, 0.6);
 							font-size: 14px;
+							margin-bottom: 10px;
 							@media (max-width: 1080px) {
 								font-size: 12px;
 							}
@@ -1296,6 +1357,7 @@ h5, .h5 {
 							max-width: fit-content;
 							color: rgba(0, 0, 0, 0.8);
 							padding: 0;
+							margin-top: 5px;
 							&.btn-link-arrow {								
 								background-image: none;
 								padding: 0 20px 3px 0;
@@ -1305,8 +1367,23 @@ h5, .h5 {
 									background-size: 10px !important;
 								}
 							}
+							&.btn-link {
+								@include inline-flex;
+								.icon.icon-pdf {
+									margin-left: 5px;
+									width: 16px;
+									height: 15px;
+									background: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M64 464c-8.8 0-16-7.2-16-16L48 64c0-8.8 7.2-16 16-16l160 0 0 80c0 17.7 14.3 32 32 32l80 0 0 288c0 8.8-7.2 16-16 16L64 464zM64 0C28.7 0 0 28.7 0 64L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-293.5c0-17-6.7-33.3-18.7-45.3L274.7 18.7C262.7 6.7 246.5 0 229.5 0L64 0zm56 256c-13.3 0-24 10.7-24 24s10.7 24 24 24l144 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-144 0zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24l144 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-144 0z" fill="rgba(0,0,0,0.8)" /></svg>') no-repeat center center;
+									background-size: contain;
+								}
+							}
 							&:hover, &:focus {
 								color: $primary;
+								&.btn-link {
+									.icon.icon-pdf {
+										background: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M64 464c-8.8 0-16-7.2-16-16L48 64c0-8.8 7.2-16 16-16l160 0 0 80c0 17.7 14.3 32 32 32l80 0 0 288c0 8.8-7.2 16-16 16L64 464zM64 0C28.7 0 0 28.7 0 64L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-293.5c0-17-6.7-33.3-18.7-45.3L274.7 18.7C262.7 6.7 246.5 0 229.5 0L64 0zm56 256c-13.3 0-24 10.7-24 24s10.7 24 24 24l144 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-144 0zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24l144 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-144 0z" fill="rgb(238 93 36)" /></svg>') no-repeat center center;
+									}
+								}
 							}
 						}
 					}
@@ -1420,7 +1497,8 @@ h5, .h5 {
 	bottom: 0; 
 	right: 0; 
 	z-index: 9; 
-	background-color: rgba(0, 0, 0, 0.5); 
+	background: rgba(18, 28, 34, 0.3);
+	backdrop-filter: blur(5px);
 	visibility: hidden; 
 	@include opacity(0); 
 	@include transition(0.3s, ease-in-out);
