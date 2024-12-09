@@ -957,7 +957,7 @@ h5, .h5 {
 		@media (min-width:1080px) {
 			visibility: hidden; 
 			@include opacity(0); 
-			@include transition(0.2s, ease-in-out); 
+			@include transition(0.1s, ease-in-out); 
 			// background: #FFFFFF;
 			// -webkit-backdrop-filter: blur(10px);
 			// backdrop-filter: blur(10px);
@@ -1121,6 +1121,17 @@ h5, .h5 {
 
 	.mega-menu {
 		position: unset !important;	
+		@media (min-width: 1080px) {
+			&::before {
+				content: '';
+				width: 5%;
+				height: 20px;
+				background: transparent;
+				display: block;
+				position: absolute;
+				bottom: 0;
+			}
+		}
 		&:hover, &:focus {
 			& > .sub-menu {
 				@media (min-width: 1080px) {
@@ -1213,6 +1224,11 @@ h5, .h5 {
 							li {
 								padding: 0 0 5px!important;
 								border-bottom: transparent;
+								&.current-menu-item {
+									a {
+										background: #F6F7F9 !important;
+									}
+								}
 							}
 							a {
 								display: flex !important;
@@ -1263,41 +1279,8 @@ h5, .h5 {
 				.img-content-menu-block {
 					border-left: 1px solid rgba(0, 0, 0, 0.1);
 					background: #F6F7F9;
-					padding: 40px 0 55px 30px;
-					position: relative;
-					// Square Animation Vector
-					.square-vector {
-						position: absolute;
-						width: 45px;
-						height: 45px;
-						left: 0;
-						bottom: 0;
-						@media (max-width: 1080px) {
-							display: none;
-						}
-						&::before {
-							content: '';
-							position: absolute;
-							height: 100%;
-							top: 0;
-							left: -45px;
-							width: 100%;
-							-webkit-transition: transform 0.5s cubic-bezier(0, 0, 0.15, 0.96);
-							transition: transform 0.5s cubic-bezier(0, 0, 0.15, 0.96);
-							transform-origin: bottom;
-							background: $dark;
-						}
-						&::after {
-							content: '';
-							position: absolute;
-							width: 100%;
-							height: 100%;
-							-webkit-transition: transform 0.5s 0.3s cubic-bezier(0, 0, 0.15, 0.96);
-							transition: transform 0.5s 0.3s cubic-bezier(0, 0, 0.15, 0.96);
-							transform-origin: top;
-							background: $white;
-						}
-					}
+					padding: 40px 0 40px 30px;
+					position: relative;					
 					@media (max-width: 1080px) {
 						padding: 15px;
 						border: 1px solid rgba(0, 0, 0, 0.1);
@@ -1501,7 +1484,7 @@ h5, .h5 {
 	backdrop-filter: blur(5px);
 	visibility: hidden; 
 	@include opacity(0); 
-	@include transition(0.3s, ease-in-out);
+	@include transition(0.1s, ease-in-out);
 	&.is-visible {
 		@include opacity(1); 
 		visibility: visible;
