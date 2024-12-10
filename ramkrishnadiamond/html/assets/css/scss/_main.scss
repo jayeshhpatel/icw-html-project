@@ -195,24 +195,29 @@
     &.overide-top {
         margin-top: -140px;
         position: relative;
-        padding-top: 180px;
+        padding-top: 220px !important;
+        padding-bottom: 200px;
+        z-index: 1;
         @media (max-width: 1350px) {
             padding-top: 130px;
         }
         @media (max-width: 1050px) {
             padding-top: 160px;
-        }
-        @media (min-width: 992px) {
-            &::before {
-                content: '';
-                background: $black;
-                filter: blur(40.25px);
-                height: 50px;
-                width: 100%;
-                display: block;
-                position: absolute;
-                top: -50px;
-            }
+        }       
+    }
+    &.with-radius {
+        border-top-left-radius: 100px;
+        border-top-right-radius: 100px;
+    }
+    &.is-sticky {
+        position: sticky;
+        top: 88px;
+        z-index: 2;
+        padding-bottom: 200px;
+        margin-top: -100px;
+        .container {
+            position: sticky;
+            top: 88px;
         }
     }
     &.bg-none:not(.bg-custom) {
@@ -346,11 +351,12 @@
 	}
 }
 
+
 .section-title {
     // max-width: 750px;
-    margin-bottom: 50px;
+    margin-bottom: 50px !important;
     @media (max-width: 767px) { 
-        margin-bottom: 40px;
+        margin-bottom: 40px !important;
     }
     &.text-center {
         margin: 0 auto 50px;
@@ -377,13 +383,24 @@
 
 // Hero 
 .hero-header {
-    padding: 135px 0 180px;
+    padding: 135px 0 150px;
     position: relative;
     // overflow: hidden;
-    background: $black;
+    /* image */
+    background: linear-gradient(180deg, rgba(22, 52, 108, 0.6) 0%, #000000 86.37%);
+    &::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(180deg, rgba(22, 52, 108, 0.6) 0%, #000000 86.37%);
+        z-index: 1;
+    }
     @media (min-width: 768px) {
         // @include border-radius(24px 24px 0 0);
-        border: 10px solid $black;
+        // border: 10px solid $black;
     }
     @media (max-width: 992px) { 
         padding: 120px 0 70px;
@@ -403,7 +420,7 @@
             background: $black;
             object-fit: cover;
             @media (min-width: 768px) {
-                @include border-radius(24px);
+                // @include border-radius(24px);
             }
             @media (max-width: 992px) {
                 height: calc(100% - 400px);
@@ -425,12 +442,12 @@
             margin-bottom: 20px;
         }
         .sort-info {
-            color: $gray;
+            color: $white;
             margin-bottom: 30px;
         }
     }
     .hero-slider-block {
-        z-index: 2;
+        z-index: 3;
         position: relative;
         padding-bottom: 50px;
         width: 50%;
@@ -481,16 +498,14 @@
             padding-top: 70px;
         }
         .title {
-            font-family: $font-lora;
             text-transform: uppercase;
             color: $white;
-            letter-spacing: 1.8px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1.4px;
             padding-bottom: 20px;
             position: relative;
             z-index: 1;
-            span {
-                color: $pacificBlue;
-            }
             @media (max-width: 992px) {
                 text-align: center;
             }
@@ -776,7 +791,7 @@
                 img {
                     // aspect-ratio: 3/2;
                     @include transition(0.3s, ease-in-out);
-                    max-height: 28px;
+                    max-height: 30px;
                     &:hover, &:focus {
                         @include transform(scale(1.05));
                     }
@@ -974,81 +989,11 @@
     }
 }
 
-// Modern Grid
-.benefits-section {
-    position: relative;
-    overflow: hidden;
-    // .section-title {
-    //     margin-bottom: 100px;
-    //     @media (max-width: 992px) {
-    //         margin-bottom: 50px;
-    //     }
-    //     @media (max-width: 767px) {
-    //         margin-bottom: 40px;
-    //     }
-    // }
-    .info-card {
-        background-color: #090A0C;
-        border: unset;
-        h2,
-        h3 {
-          color: #fff;
-        }
-        .sort-info {
-            color: #EBEDF0;
-  
-            @media (min-width: 1200px) {
-              max-width: 90%;
-            }
-          }
-        .card-body {
-            @include flexbox;
-            @include flex-direction(column);
-            @include justify-content(flex-end);
-
-            h2, h3 {
-                color: #fff;
-            }
-            .sort-info {
-                color: #EBEDF0;
-            }
-        }
-    }
-    .benefits-splide-slider {
-        @media (min-width: 767px) {
-            .splide__slide {
-                margin-bottom: 24px;
-            }
-        }
-        @media (max-width: 767px) { 
-            .splide__track {
-                overflow: visible;
-            }
-            .row {
-                max-width: 280px;
-            }
-        }
-        .info-card {
-            @media (max-width: 767px) {
-                max-height: 300px;
-                min-height: 280px;
-                padding: 15px;
-            } 
-        }
-        .image-block {
-            img {
-                width: 100%;
-                border: unset !important;
-                box-shadow: 0px 2px 0px #E1E2E5;
-            }
-        }
-    }
-}
+// Info Card
 .info-card {
-    padding: 40px;
+    padding: 30px;
     background: $white;
-    border: 1px solid $gray;
-    @include box-shadow(0px 8px 12px rgba(29, 32, 38, 0.05));
+    border: 1px solid rgba($primary, 0.2);
     @include border-radius(24px);
     height: 100%;
     @include flexbox;
@@ -1057,35 +1002,36 @@
         padding: 25px;
     }
     .card-icon {
-        margin-bottom: 25px;
+        margin-bottom: 20px;
         img {
-            width: 95px;
-            height: 95px;
+            width: auto;
+            max-height: 60px;
             flex: none;
-            @media (max-width: 1200px) {
-                width: 75px;
-                height: 75px;
-            }
-            @media (max-width: 992px) {
-                width: 65px;
-                height: 65px;
-            }
         }
     }
     .card-body {        
         h3 {
             margin-bottom: 15px;
             color: $black;
+            font-size: 22px;
+            font-weight: 700;
+            font-family: $bodyfont;
             @media (max-width: 992px) {
                 font-size: 24px;
                 margin-bottom: 10px;
             }
         }
         .sort-info {
+            font-size: 18px;
             @media (max-width: 992px) {
                 font-size: 14px;
             }
         }
+    }
+}
+a.info-card {
+    &:hover, &:focus {        
+        @include box-shadow(0px 8px 12px rgba(29, 32, 38, 0.05));
     }
 }
 
