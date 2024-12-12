@@ -2328,3 +2328,148 @@
         }
     }
 }
+
+// Tab Block
+.tab-block {
+    @include flexbox;
+    @media (max-width: 767px) {
+       @include flex-direction(column);
+    }
+    .tab-nav-block {
+        width: 100%;
+        max-width: 300px;
+        @media (max-width: 992px) {
+            max-width: 250px;
+        }
+        @media (max-width: 767px) {
+            max-width: 100%;
+        }
+        .nav-tabs {
+            border: none;
+            @media (max-width: 767px) {
+                @include flexbox;
+                @include flex-wrap(nowrap);
+                width: 100%;
+            }
+            .tab-link {
+                width: 100%;
+                height: 65px;
+                background: transparent;
+                border: none;
+                border-bottom: 1px solid rgba($primary, 0.2);
+                text-align: left;
+                font-size: 18px;
+                font-weight: 700;
+                color: $dark;
+                padding: 10px;
+                margin-bottom: 10px;
+                @include flexbox;
+                @include align-items(center);
+                gap: 12px;
+                @media (max-width: 992px) {
+                    font-size: 15px;
+                    gap: 8px;
+                }
+                @media (max-width: 767px) {
+                    @include flex-direction(column);
+                    @include align-items(flex-start);
+                    @include justify-content(flex-start);
+                    height: auto;
+                    padding: 8px;
+                    font-size: 14px;
+                }
+                @media (max-width: 480px) {
+                    white-space: nowrap;
+                }
+                &.active {
+                    background: #E1E6E9;
+                    border-color: #E1E6E9;
+                }
+                .title {
+                    @include inline-flex;
+                    @include align-items(center);
+                    gap: 12px;
+                    @media (max-width: 992px) {
+                        gap: 5px;
+                    }
+                }
+                .icon {
+                    margin-left: 0;
+                    min-width: 16px;
+                    width: 16px;
+                    height: 16px;
+                    line-height: 0.7;
+                    @media (max-width: 767px) {
+                        min-width: 14px;
+                        width: 14px;
+                        height: 14px;
+                    }
+                }
+                .area {
+                    color: $primary;
+                    font-size: 16px;
+                    font-weight: 500;
+                    display: inline-block;
+                    margin-left: auto;
+                    @media (max-width: 992px) {
+                        font-size: 13px;
+                    }
+                    @media (max-width: 767px) {
+                        margin-left: 0;
+                        padding-left: 21px;
+                    }
+                }
+            }
+        }
+    }
+    .tab-content {
+        background: #E1E6E9;
+        padding: 20px;
+        width: 100%;
+        .contact-details-block {
+            background: $white;
+            padding: 20px;
+            @include flexbox;
+            @include flex-direction(column);
+            height: 100%;
+            @media (max-width: 1200px) {
+                margin-bottom: 20px;
+                height: auto;
+            }
+            h3 {
+                font-size: 16px;
+                font-weight: 700;
+                color: $primary;
+                text-transform: uppercase;
+            }
+            .contact-info {
+                margin-top: 20px;
+                flex: 1 1 auto;
+                li {
+                    font-size: 14px;
+                    margin-bottom: 10px;
+                    a {
+                        color: $dark;
+                        text-decoration: none;
+                        @include transition(0.2s, ease-in-out);
+                        &:hover, &:focus {
+                            color: $primary;
+                            text-decoration: underline;
+                        }
+                    }
+                    span {
+                        display: block;
+                        font-size: 16px;
+                        font-weight: 700;
+                        color: $primary;
+                        margin-bottom: 5px;
+                        line-height: normal;
+                    }
+                }
+            }
+            .qr-img {
+                margin-top: 20px;
+            }
+        }
+    }
+}

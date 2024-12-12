@@ -128,7 +128,25 @@ jQuery(document).ready(function($) {
             $(this).find('.sort-info').css('height', '0');
         }
     );
+    
+    if ($('.tab-block').length) {
+
+        // Handle click and hover events
+        $('.nav-tabs .tab-link').on('click mouseenter', function () {
+            activateTab(this);
+        });
+    }
 });
+
+function activateTab(tab) {
+    var tab_id = $(tab).attr('data-tab');
+    // Remove active classes and hide all tabs
+    $('.nav-tabs .tab-link').removeClass('active');
+    $('.tab-pane').hide();
+    // Add active class and show the selected tab
+    $(tab).addClass('active');
+    $('#' + tab_id).fadeIn();
+}
 
 $(window).resize(function(){ 
     if ($('.main-header').length) {
