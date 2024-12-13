@@ -866,6 +866,8 @@ h5, .h5 {
 					&.is-active {
 						&:after {
         					@include transform(rotate(180deg));
+							animation: .3s menuArrowMoveIn ease-in-out forwards;
+							filter: unset;
                         }
 					}
 					&:after {
@@ -878,6 +880,8 @@ h5, .h5 {
 						margin-left: 7px; 
 						display: inline-block; 
 						@include transition(0.3s, ease-in-out);
+						filter: brightness(0);
+						animation: .3s menuArrowMoveOut ease-in-out;
                     }
 					@media (min-width:1200px) {
 						display: none;
@@ -898,6 +902,8 @@ h5, .h5 {
 							display: inline-block; 
 							@include transition(0.3s, ease-in-out);
 							opacity: 0.8;
+							animation: .3s menuArrowMoveOut ease-in-out;
+							filter: brightness(0);
 						}
 					}
 					&:hover, &:focus {
@@ -907,10 +913,11 @@ h5, .h5 {
 								width: 50%; left: 0;
 							}
 							&:after {
-								@include transform(rotate(180deg)); 
 								filter: inherit; 
 								-webkit-filter: inherit;
 								opacity: 1;
+								animation: .3s menuArrowMoveIn ease-in-out forwards;
+								filter: unset;
 							}
 						}
 					}
@@ -1491,6 +1498,49 @@ h5, .h5 {
 		@include opacity(1); 
 		visibility: visible;
 	}
+}
+@keyframes menuArrowMoveIn {
+    0% {
+        transform: none;
+        opacity: 1
+    }
+
+    49% {
+        transform: translateY(15px) scaleX(.5);
+        opacity: 0.5
+    }
+
+    50% {
+        transform: translateY(15px) scale(.5,-1);
+        opacity: 0.5
+    }
+
+    to {
+        transform: translateY(0) scaleY(-1);
+        opacity: 1
+    }
+}
+
+@keyframes menuArrowMoveOut {
+    0% {
+        transform: translateY(0) scaleY(-1);
+        opacity: 1
+    }
+
+    49% {
+        transform: translateY(-15px) scale(.5,-1);
+        opacity: 0
+    }
+
+    50% {
+        transform: translateY(-15px) scaleX(.5);
+        opacity: 0
+    }
+
+    to {
+        transform: none;
+        opacity: 1
+    }
 }
 
 .header-note {
