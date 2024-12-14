@@ -2198,8 +2198,37 @@
     }
     @media (max-width: 767px) {
         font-size: 60px;
-        letter-spacing: -2px;
+        letter-spacing: 1px;
         margin-top: 40px;
+    }
+    &.is-image {
+        background: url(../../uploads/img-about-info.jpg);
+        background-position: center;
+        background-size: cover;
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        -webkit-text-stroke: 0 $primary;
+        position: relative;
+        display: inline-block;
+        &::after{
+            content: var(--name);
+            color: transparent;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 6px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            -webkit-text-stroke:2px $primary;
+            z-index: -1;
+            @media (max-width: 767px) {
+                left: 4px;
+                -webkit-text-stroke: 1px $primary;
+            }
+        }
     }
     &.is-lg-text {
         font-size: 200px;
@@ -2208,7 +2237,7 @@
             letter-spacing: -4px;
         }
         @media (max-width: 767px) {
-            font-size: 60px;
+            font-size: 70px;
             letter-spacing: -2px;
         }
     }
@@ -2536,6 +2565,36 @@
                 width: 100%;
                 height: 100%;
             }
+        }
+    }
+}
+
+// Thank You Block
+.thank-you-block {
+    padding: 100px 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    @media (max-width: 992px) {
+        padding: 70px 0;
+    }
+    @media (max-width: 767px) {
+        background-size: cover;
+        padding: 50px 0;
+    }
+    .special-text-block {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        margin-bottom: 80px;
+        @media (max-width: 1200px) {
+            margin-bottom: 50px;
+        }
+        @media (max-width: 767px) {
+            margin-bottom: 30px;
+        }
+        .special-text {
+            margin: 0;
         }
     }
 }
