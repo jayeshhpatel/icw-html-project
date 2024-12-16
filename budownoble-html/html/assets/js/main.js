@@ -115,26 +115,18 @@ jQuery(document).ready(function($) {
         });
     }
 
-    if ($('.collapse-block').length) {
-        $(".collapse-item").first().addClass("is-open").find(".collapse-body").show();
-        $(".collapse-item .collapse-title").click(function () {
-            if ($(this).closest(".collapse-item").hasClass("is-open")) {
-                $(this).closest(".collapse-item").stop(true,true).removeClass("is-open");
-                $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).hide("fast");
-            } else {
-                $(".collapse-item").removeClass("is-open");
-                $(".collapse-item").find(".collapse-body").stop(true,true).hide();
-                $(this).closest(".collapse-item").stop(true,true).addClass("is-open");
-                $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).slideDown("fast");
-        
-                var collapsetop = $(this);
-                    $('html,body').animate({
-                    scrollTop: collapsetop.offset().top-150
-                }, 10);
+    $(window).on('scroll', function() {
+        $('.footer-note-section').each(function() {
+            var elementTop = $(this).offset().top;
+            var elementBottom = elementTop + $(this).outerHeight();
+            var viewportTop = $(window).scrollTop();
+            var viewportBottom = viewportTop + $(window).height();
+    
+            if (elementBottom > viewportTop && elementTop < viewportBottom) {
+                $(this).addClass('animate');
             }
-            return false;
         });
-    }
+    });
 });
 
 var overlay_height = 0;

@@ -345,13 +345,12 @@
     background-color: #90bcd9;
     background-image: var(--header-bg, none);
     background-repeat: no-repeat;
-    background-position: center center;
-    // background-size: cover;
+    background-position: center right;
+    background-size: cover;
     padding: 300px 0 150px;
     @include flexbox;
     @include align-items(center);
     min-height: 600px;
-    animation: bg_zoomOut 2.5s ease-in-out forwards;    
     @media (max-width: 1200px) {
         padding: 250px 0 100px;
     }
@@ -403,11 +402,6 @@
             }
         }
     }
-}
-
-@keyframes bg_zoomOut {
-    0% { background-size: 112%; }
-    100% { background-size: 100%; }
 }
 
 blockquote {
@@ -606,7 +600,7 @@ $info_card_hover_padding:20px;
 
 a.info-card {
     &.is-hover-animation {
-        &:hover, &:focus {
+        &:hover, &:focus { 
             .hover-text {               
                 .content {
                     height: 100%;
@@ -666,8 +660,8 @@ a.info-card {
         position: sticky;
         top: 120px;
         height: calc(100vh - 130px);
-        overflow: hidden;
-        overflow-y: auto;
+        overflow: auto;
+
         @media (max-width: 767px) {
             top: 100px;
             height: calc(100vh - 110px);
@@ -675,7 +669,7 @@ a.info-card {
         .info-card {
             .card-image {
                 img {    
-                    filter: none !important;
+                    filter: grayscale(0);
                 }
             }
             &.is-hover-animation {
@@ -694,7 +688,7 @@ a.info-card {
     &:hover, &:focus, &.is-active { 
         .card-image {
             img {    
-                filter: none !important;
+                filter: grayscale(0);
             }
         }
     }
@@ -907,10 +901,7 @@ a.info-card {
 
 .footer-note-section {
     background-color: #90bcd9;
-    background-position: center center;
-    &.animate {
-        animation: bg_zoomOut 2.5s ease-in-out forwards;    
-    }
+
     .blockquote-block {
         max-width: 650px;
         padding: 0 30px;
@@ -1192,9 +1183,6 @@ a.info-card {
 		margin-top: 20px;
         .card-content {
             font-size: 16px;
-            border-top: 1px solid rgba($secondary, 0.2);
-            padding-top: 20px;
-
             @media (max-width:767px) {
                 font-size: 14px;
             }
