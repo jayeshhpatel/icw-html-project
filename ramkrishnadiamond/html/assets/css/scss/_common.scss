@@ -269,19 +269,20 @@ img {
         background-color: $primary;     
         @include border-radius(8px);
         position: absolute;
-        transition: all 0.3s cubic-bezier(0.65, 0, 0.076, 1);
+        @include transition(0.3s, ease-in-out);
         right: 3px;
         top: 3px;
         &::before {
             content: '';   
-            background-image: url('data:image/svg+xml,<svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.02761 10.759L9.38594 5.63016L8.71204 9.40463C8.68177 9.55868 8.68247 9.71722 8.71412 9.871C8.74577 10.0248 8.80773 10.1707 8.89639 10.3003C8.98504 10.4299 9.09861 10.5405 9.23047 10.6257C9.36233 10.7109 9.50984 10.769 9.6644 10.7966C9.81895 10.8242 9.97746 10.8207 10.1307 10.7864C10.2839 10.7521 10.4287 10.6876 10.5567 10.5967C10.6847 10.5058 10.7934 10.3904 10.8763 10.257C10.9592 10.1237 11.0147 9.97521 11.0396 9.8202L12.2152 3.23586C12.2427 3.0828 12.2398 2.92581 12.2065 2.77388C12.1733 2.62195 12.1104 2.47807 12.0215 2.35048C11.9326 2.2229 11.8193 2.11411 11.6883 2.03035C11.5572 1.94659 11.411 1.8895 11.2578 1.86236L4.6735 0.686781C4.36459 0.631853 4.04651 0.701888 3.78924 0.881481C3.53196 1.06107 3.35657 1.33551 3.30164 1.64442C3.24671 1.95334 3.31675 2.27141 3.49634 2.52869C3.67594 2.78596 3.95038 2.96135 4.25929 3.01628L8.03376 3.69018L0.675418 8.81903C0.418161 8.99835 0.242672 9.27251 0.187556 9.58121C0.13244 9.88991 0.202212 10.2079 0.381524 10.4651C0.560835 10.7224 0.834997 10.8979 1.1437 10.953C1.4524 11.0081 1.77035 10.9383 2.02761 10.759Z" fill="white"/></svg>');
+            background-image: url('data:image/svg+xml,<svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.02761 10.759L9.38594 5.63016L8.71204 9.40463C8.68177 9.55868 8.68247 9.71722 8.71412 9.871C8.74577 10.0248 8.80773 10.1707 8.89639 10.3003C8.98504 10.4299 9.09861 10.5405 9.23047 10.6257C9.36233 10.7109 9.50984 10.769 9.6644 10.7966C9.81895 10.8242 9.97746 10.8207 10.1307 10.7864C10.2839 10.7521 10.4287 10.6876 10.5567 10.5967C10.6847 10.5058 10.7934 10.3904 10.8763 10.257C10.9592 10.1237 11.0147 9.97521 11.0396 9.8202L12.2152 3.23586C12.2427 3.0828 12.2398 2.92581 12.2065 2.77388C12.1733 2.62195 12.1104 2.47807 12.0215 2.35048C11.9326 2.2229 11.8193 2.11411 11.6883 2.03035C11.5572 1.94659 11.411 1.8895 11.2578 1.86236L4.6735 0.686781C4.36459 0.631853 4.04651 0.701888 3.78924 0.881481C3.53196 1.06107 3.35657 1.33551 3.30164 1.64442C3.24671 1.95334 3.31675 2.27141 3.49634 2.52869C3.67594 2.78596 3.95038 2.96135 4.25929 3.01628L8.03376 3.69018L0.675418 8.81903C0.418161 8.99835 0.242672 9.27251 0.187556 9.58121C0.13244 9.88991 0.202212 10.2079 0.381524 10.4651C0.560835 10.7224 0.834997 10.8979 1.1437 10.953C1.4524 11.0081 1.77035 10.9383 2.02761 10.759Z" fill="rgb(22 52 108)"/></svg>');
             background-size: 12px !important;
             background-position: 13px center !important;
             background-repeat: no-repeat !important;  
-            transition: all 0.3s cubic-bezier(0.65, 0, 0.076, 1);
+            @include transition(0.3s, ease-in-out);
             @include border-radius(8px); 
             width: 40px;
             height: 40px;  
+            transform-origin: center center;
         }
     }
     .btn-text {
@@ -290,24 +291,6 @@ img {
         display: inline-block;
         line-height: normal;
     }
-	@media (max-width:767px) {
-		min-height: 48px;
-        @include border-radius(12px);
-        .arrow-icon { 
-            width: 40px;
-            height: 40px;
-            @include border-radius(8px);
-            background-position: 14px center;
-        }
-        .btn-text {
-            padding: 0 20px 0 55px;
-        }
-        &:hover, &:focus {
-            .arrow-icon {
-                background-position: 25px center;
-            }
-        } 
-	}
     &:hover, &:focus {
         .arrow-icon {
             width: calc(100% - 6px) !important;
@@ -338,11 +321,22 @@ img {
 		color: $white !important;
 		border-color: transparent;
 		background-color:$primary;
+        .arrow-icon {
+            background-color: $white;  
+        }
+        &:hover, &:focus {
+            color: $primary !important;
+        }
 	}
 	&.btn-white {
 		color: $black !important;
 		border-color: $gray;
 		background-color: $white;
+        .arrow-icon {
+            &::before {
+                filter: brightness(0) invert(1);
+            }
+        }
         &:hover, &:focus {
             color: $white !important;
         }
@@ -658,6 +652,9 @@ img {
 
 
 .image-block {
+    img {
+        @include border-radius(24px);
+    }
     &.with-border {
         img {
             @include border-radius(24px);
@@ -738,32 +735,30 @@ h1, .h1 {
 h2, .h2 {
     font-size: 45px;
     font-weight: 500;
-    line-height: 1;
     @media (max-width: 1200px) { 
-        font-size: 42px;
+        font-size: 36px;
     }
     @media (max-width: 767px) { 
-        font-size: 38px;
+        font-size: 28px;
     }
 }
 h3, .h3 {
     font-size: 30px;
     font-weight: 500;
-    line-height: 1.2;
     @media (max-width: 992px) { 
-        font-size: 36px;
+        font-size: 24px;
     }
     @media (max-width: 767px) { 
-        font-size: 30px;
+        font-size: 20px;
     }
 }
 h4, .h4 {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 500;
     line-height: 1;
 }
 h5, .h5 {
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 500;
     line-height: 1;
 }
@@ -1178,18 +1173,31 @@ h5, .h5 {
     margin-top: -100px;
     text-align: center;
     @media (max-width: 992px) {
-        padding: 70px 0 0;
+        padding: 70px 0 20px;
+        border-top-left-radius: 50px;
+        border-top-right-radius: 50px;
     }
     @media (max-width: 767px) {
-        padding: 50px 0 0;
+        padding: 50px 0 20px;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
     }
     a {
         text-decoration: none;
+        padding-bottom: 2px;
+        background-image: linear-gradient(to right, $white 0%, $white 100%);
+        background-position: 0 100%;
+        background-repeat: no-repeat;
+        background-size: 0 1px;
+        &:hover, &:focus {
+            background-size: 100% 1px;
+        }
     }
 
     .footer-logo {
         display: inline-block;  
         margin-bottom: 20px;
+        background-image: none;
         img {
             pointer-events: none;
             -webkit-user-select: none;
@@ -1197,6 +1205,9 @@ h5, .h5 {
             -ms-user-select: none;
             user-select: none;
             max-height: 70px;
+            @media (max-width: 767px) {
+                max-height: 40px;
+            }
         }
         &:hover, &:focus {
             opacity: 0.8;
@@ -1205,6 +1216,9 @@ h5, .h5 {
     .sort-info {
         font-size: 16px;
         color: $white;
+        @media (max-width: 992px) {
+            font-size: 14px;
+        }  
     }
 
     .social-list {
@@ -1224,6 +1238,7 @@ h5, .h5 {
                 flex: none;
                 @include inline-flex;
                 @include transition(0.1s, ease-in-out);
+                background-image: none;
                 svg {
                     width: 20px;
                     height: 20px; 
@@ -1237,12 +1252,21 @@ h5, .h5 {
 
     .footer-menu-block {
         margin: 40px 0;
-
+        @media (max-width: 767px) {
+            margin: 20px 0;
+        }
         .footer-menu {   
             @include flexbox;
             @include align-items(center);
             @include justify-content(center); 
             gap: 30px;
+            @media (max-width: 992px) {
+                gap: 20px;
+            }  
+            @media (max-width: 767px) {
+                @include flex-wrap(wrap);
+                gap: 10px 20px;
+            }
             li {
                 line-height: 1;
                 &:last-child {
@@ -1254,15 +1278,18 @@ h5, .h5 {
                     font-size: 18px;
                     font-weight: 400;
                     @include transition(0.1s, ease-in-out);
-                    &:hover, &:focus {
-                        color: rgba($white, 0.7);
-                    }
+                    @media (max-width: 992px) {
+                        font-size: 16px;
+                    }  
+                    @media (max-width: 992px) {
+                        font-size: 14px;
+                    }              
                 }
     
                 &.current-menu-item,
                 body.single-post &.current_page_parent {
                     & > a {
-                        color: rgba($white, 0.7);
+                        background-size: 100% 1px;
                     }
                 }
             }
@@ -1276,6 +1303,13 @@ h5, .h5 {
             @include align-items(center);
             @include justify-content(center); 
             gap: 30px;
+            @media (max-width: 992px) {
+                gap: 20px;
+            }   
+            @media (max-width: 767px) {
+                @include flex-wrap(wrap);
+                gap: 10px 20px;
+            }
             li {
                 line-height: 1;
                 &:last-child {
@@ -1283,12 +1317,29 @@ h5, .h5 {
                 }
                 a {
                     @include inline-flex;
+                    @include align-items(center);
                     color: $white;
                     font-size: 18px;
                     font-weight: 400;
                     @include transition(0.1s, ease-in-out);
-                    &:hover, &:focus {
-                        color: rgba($white, 0.7);
+                    @media (max-width: 992px) {
+                        font-size: 16px;
+                    }  
+                    @media (max-width: 767px) {
+                        font-size: 14px;
+                    }  
+                    .icon {
+                        margin-right: 8px;
+                        @include inline-flex;
+                        @include transition(0.1s, ease-in-out);
+                        svg {
+                            max-height: 15px;
+                        }
+                        @media (max-width: 767px) {
+                            svg {
+                                max-height: 12px;
+                            }
+                        }  
                     }
                 }
     
@@ -1307,6 +1358,13 @@ h5, .h5 {
         @include align-items(center);
         @include justify-content(center); 
         gap: 40px;
+        @media (max-width: 992px) {
+            gap: 30px;
+        }  
+        @media (max-width: 767px) {
+            @include flex-wrap(wrap);
+            gap: 20px;
+        }
         .logo-item {
             img {
                 width: auto;
@@ -1320,29 +1378,40 @@ h5, .h5 {
         @include flexbox;
         @include align-items(center);
         @include justify-content(center); 
+        @media (max-width: 767px) {
+           @include flex-direction(column-reverse);
+        }  
         .copyright-text {
             color: rgba($white, 0.8);
             font-size: 13px;
             margin-right: 15px;
             line-height: normal;
-            @media (max-width: 992px) {
-                text-align: center;
-                margin-top: 25px;
-            }
             @media (max-width: 767px) {
+                text-align: center;
+                margin-right: 0;
                 font-size: 12px;
-            }
+            } 
         }
     }
 
     .footer-menu-inline {
         @include flexbox;
         @include align-items(center);
+        @media (max-width: 767px) {
+            margin-bottom: 10px;
+        } 
         li {
             line-height: 0.7;
             border-left: 1px solid rgba($white, 0.7);
             padding-left: 15px;
             margin-right: 15px;
+            @media (max-width: 767px) {
+                &:first-child {
+                    border-left: none;
+                }
+                padding-left: 10px;
+                margin-right: 10px;
+            }  
             a {
                 @include inline-flex;
                 color: rgba($white, 0.8);
@@ -1352,7 +1421,7 @@ h5, .h5 {
                 @include transition(0.1s, ease-in-out);
                 text-decoration: none;
                 @media (max-width: 767px) {
-                    font-size: 10px;
+                    font-size: 12px;
                 }
                 &:hover, &:focus {
                     color: $white;
@@ -1469,29 +1538,30 @@ h5, .h5 {
 
 
 // UI
-.arrow-list {
+.check-list {
     li {
         @include flexbox;
-        @include align-items(center);
-        font-size: 24px;
-        font-weight: 500;
-        margin-bottom: 20px;
-        color: $white;
+        @include align-items(flex-start);
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 10px;
+        color: $black;
         @media (max-width:992px) {
-            font-size: 20px;
+            font-size: 16px;
         }
         &::before {
             content: '';
-            background: url(../images/icons/icon-blue-arrow.svg) no-repeat center center;
+            background: url(../images/icons/icon-check-arrow.svg) no-repeat center center;
             background-size: contain;
-            width: 42px;
-            height: 42px;
+            width: 18px;
+            height: 18px;
+            flex: none;
             display: inline-block;
-            margin-right: 24px;
+            margin-right: 8px;
+            margin-top: 4px;
             @media (max-width:992px) {
-                width: 34px;
-                height: 34px;
-                margin-right: 20px;
+                width: 16px;
+                height: 16px;
             }
         }
     }
