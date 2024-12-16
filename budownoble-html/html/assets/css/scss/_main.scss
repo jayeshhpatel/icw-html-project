@@ -105,6 +105,15 @@
 	&.hr-top {border-top: 1px solid #f0f7ff;}
 	&.hr-bottom {border-bottom: 1px solid #f0f7ff;}
 
+    &.section-container {
+        @media (min-width: 1400px) {
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 50px;
+            max-width: 1620px;
+        } 
+    }
+
     &.bg-pb {
         margin-bottom: -300px;
         padding-bottom: 400px;
@@ -347,19 +356,47 @@
     background-repeat: no-repeat;
     background-position: center center;
     // background-size: cover;
-    padding: 300px 0 150px;
+    padding: 150px 0 50px;
     @include flexbox;
     @include align-items(center);
-    min-height: 600px;
+    min-height: 550px;
     animation: bg_zoomOut 2.5s ease-in-out forwards;    
+
+    &.header-radius {
+        border-radius: 0 0 80px 80px;
+        overflow: hidden;
+
+        @media (max-width: 767px) {     
+            border-radius: 0 0 50px 50px;
+        }
+        
+
+        & + .main-section:not(.footer-note-section) {
+            margin-top: -300px;
+            padding-top: 400px;
+            @media (max-width: 1200px) {       
+                margin-top: -150px;
+                padding-top: 250px;
+            }
+            @media (max-width: 992px) {     
+                padding-top: 210px;
+            }
+            @media (max-width: 767px) {     
+                margin-top: -100px;
+                padding-top: 150px;
+            }
+        }
+    }
+    
+
     @media (max-width: 1200px) {
-        padding: 250px 0 100px;
+        // padding: 250px 0 100px;
     }
     @media (max-width: 992px) {
         min-height: 450px;
     }
     @media (max-width: 767px) {
-        padding: 150px 0 70px;
+        // padding: 150px 0 70px;
         min-height: 300px;
     }
     & > * {
@@ -405,18 +442,19 @@
     }
 }
 
+
 @keyframes bg_zoomOut {
-    0% { background-size: 112%; }
-    100% { background-size: 100%; }
+    0% { background-size: 112% auto; }
+    100% { background-size: 100% auto; }
 }
 
 blockquote {
-    font-size: 45px;
+    font-size: 28px;
     font-style: italic;
     margin: 0;
-    @media (max-width: 1200px) {        
-        font-size: 35px;
-    }
+    // @media (max-width: 1200px) {        
+    //     font-size: 35px;
+    // }
     @media (max-width: 767px) {        
         font-size: 25px;
     }
@@ -424,6 +462,12 @@ blockquote {
         color: $primary !important;
         font-weight: 700;
         text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    em {
+        margin-top: 15px;
+        display: inline-block;
+        font-size: 20px;
     }
 }
 
@@ -462,7 +506,7 @@ $info_card_hover_padding:20px;
             @include transition(0.3s, ease-in-out);
             @include align-items(flex-end);
             .content {
-                background: rgba($primary, 0.8);
+                background: rgba($primary, 1);
                 // color: $secondary;
                 // font-weight: 700;
                 // letter-spacing: 0.5px;
@@ -471,7 +515,7 @@ $info_card_hover_padding:20px;
                 // line-height: normal;
                 padding: 10px;
                 width: 100%;
-                height: 65px;
+                min-height: 65px;
                 @include transition(0.3s, ease-in-out);
                 @include flexbox;
                 @include align-items(center);
@@ -609,7 +653,7 @@ a.info-card {
         &:hover, &:focus {
             .hover-text {               
                 .content {
-                    height: 100%;
+                    // height: 100%;
                     background: rgba($primary, 0.9);
                     .card-info {
                         display: block;
@@ -622,7 +666,7 @@ a.info-card {
                 .hover-text {
                     .content {
                         background: rgba($primary, 0.98);
-                        height: calc(50% + #{2 * ($info_card_hover_padding + 1)});
+                        // height: calc(50% + #{2 * ($info_card_hover_padding + 1)});
                     }
                 }
             }
@@ -648,14 +692,25 @@ a.info-card {
         .card-image {
             img {    
                 filter: grayscale(1);
+                @include transition(0.3s, ease-in-out);
             }
         }
         &.is-hover-animation {
+            overflow: hidden;
             .hover-text {
                 border: 1px solid #B9D1E9;
+                
                 .content {
                     background: #B9D1E9;
+                    // height: 95px !important;
                 }
+            }
+            &:hover{
+                .card-image {
+                    img {    
+                        @include transform(scale(1.05));
+                    }
+               } 
             }
         }
     }
@@ -668,6 +723,30 @@ a.info-card {
         height: calc(100vh - 130px);
         overflow: hidden;
         overflow-y: auto;
+
+        /* Custom Scrollbar Styles for WebKit (Chrome, Safari) */
+        scrollbar-width: thin;         /* For Firefox */
+        scrollbar-color: #888 #f1f1f1; /* Thumb and Track color for Firefox */
+
+        &::-webkit-scrollbar {
+            background-color: transparent;
+            width: 5px;
+            height: 5px;
+            border-radius: 16px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: #333;
+            border-radius: 16px;
+        }
+        &::-webkit-scrollbar-track {
+            background-color: #eeeeee;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: #555;    /* Thumb color on hover */
+        }
+
+
         @media (max-width: 767px) {
             top: 100px;
             height: calc(100vh - 110px);
@@ -701,14 +780,17 @@ a.info-card {
 }
 
 .info-card-details {
-    padding: 15px;
-    text-align: center;
+    padding: 15px 10px;
+    line-height: 1.5;
+    // p, div {
+    //     text-align: center;
+    // }
     @media (max-width: 992px) {
         padding: 15px 0;
     }
     .sort-info {
         color: $secondary;
-        font-size: 22px;
+        font-size: 20px;
         font-weight: 400;
         line-height: normal;
         padding: 0;
@@ -727,18 +809,41 @@ a.info-card {
         color: $white;
         text-transform: uppercase;
         font-weight: 500;
-        margin: 15px 0;
+        margin-top: 15px;
+        font-size: 14px;
+    }
+    .detail-info {
+        margin-top: 15px;
+        color: $secondary;
     }
     ul {
         li {
-            padding: 5px 0;
+            list-style:disc;
+            list-style-type: disc;
+        }
+    }
+    ol {
+        li {
+            list-style:decimal;
+            list-style-type: decimal;
+        }
+    }
+   
+    ul, ol {
+        font-size: 16px;
+        padding: 0 0 0 18px;
+        text-align: left;
+        li {
+            padding: 0 0 10px;
             color: $secondary;
-            font-weight: 700;
             a {
                 color: $secondary;
+                font-weight: 700;
                 @include transition(0.3s, ease-in-out);
+                text-underline-offset: 4px;
                 &:hover, &:focus {
                     color: $primary;
+                    text-decoration: underline;
                 }
             }
         }
@@ -907,10 +1012,26 @@ a.info-card {
 
 .footer-note-section {
     background-color: #90bcd9;
-    background-position: center center;
+    min-height: 450px;
+
     &.animate {
         animation: bg_zoomOut 2.5s ease-in-out forwards;    
     }
+
+    &.footer-radius {
+        border-radius: 80px 80px 0 0;
+        overflow: hidden;
+        padding-bottom: 180px;
+        margin-bottom: -80px;
+        position: relative;
+        z-index: 1;
+
+        @media (max-width: 767px) {
+            border-radius: 50px 50px 0 0;
+            padding-bottom: 100px;
+        }
+    }
+
     .blockquote-block {
         max-width: 650px;
         padding: 0 30px;
@@ -919,14 +1040,7 @@ a.info-card {
         line-height: 1.1;
         margin-left: auto;
 
-        em {
-            margin-top: 25px;
-            display: inline-block;
-            font-size: 30px;
-            @media (max-width: 767px) {        
-                font-size: 20px;
-            }
-        }
+        
         @media (max-width: 1200px) {        
             max-width: 450px;
             padding: 0 20px;
@@ -1176,6 +1290,16 @@ a.info-card {
                 margin-right: 20px;
             }
 		}
+        .icw-admin {
+            font-size: 13px;
+            font-weight: 500;
+            display: inline-flex;
+            gap: 5px;
+            align-items: center;
+            &:focus, &:hover {
+                text-decoration: underline;
+            }
+        }
         .collapse-btn {
             width: 15px;
             height: 15px;
