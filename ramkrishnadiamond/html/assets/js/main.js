@@ -110,6 +110,16 @@ jQuery(document).ready(function($) {
             } else {
                 jQuery('.icw-progress-goto').removeClass('active-progress');
             }
+            let targetDiv = $('.progress-content-block'); // Replace with your target div class
+            let offsetTop = targetDiv.offset().top;
+            let scrollPosition = $(window).scrollTop();
+
+            if (scrollPosition >= offsetTop - 50) {
+                console.log('Div reached 100px from the top!');
+                targetDiv.addClass('is-icon-sticky');
+            } else {
+                targetDiv.removeClass('is-icon-sticky');
+            }
         });
     
         jQuery('.icw-progress-goto').on('click', function(event) {
@@ -156,13 +166,13 @@ function updateProgressBars() {
         // } else if (scrollPosition >= sectionAnimateContentTop && scrollPosition < sectionAnimateContentBottom) {
             $('.progress-content-wrapper').find('.progress-content-step').removeClass('is-active');
             $('.progress-content-wrapper').find('[id="' + progressBarId + '"]').addClass('is-active');
-            
         } else if (scrollPosition <= sectionTop) {
             // Reset progress bar height when section is not in view
             $('[data-progress-id="' + progressBarId + '"]').css('height', '0');
             
         } 
     });
+    
 }
 
 // if ($('.splide').length) {
@@ -219,27 +229,6 @@ if ($('.counter').length) {
     
 }
 
-if ($('.thumbnail-slider-block').length) {
-    var main = new Splide( '.use-case-splide-slider', {
-        type      : 'fade',
-        rewind    : true,
-        pagination: false,
-        arrows    : false,
-    } );
-    
-    var thumbnails = new Splide( '.useCase-thumbnail-splide-slider', {       
-        gap         : 8,
-        rewind      : true,
-        pagination  : false,
-        arrows  : false,
-        isNavigation: true,
-        autoWidth: true,
-    } );
-    
-    main.sync( thumbnails );
-    main.mount();
-    thumbnails.mount();
-}
 
 const tabsSectionImage = document.querySelectorAll('.tabs-section .image-block img');
 
