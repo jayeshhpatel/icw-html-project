@@ -638,58 +638,30 @@ h5, .h5 {
 }
 .icw-arrows {
     .splide__arrow {
-        width: 68px;
-        height: 68px;
+        width: 35px;
+        height: 35px;
         background: $white;
-        @include border-radius(16px);
-        @media (max-width: 767px) {
-            bottom: -60px;
-            top: auto;
-            left: calc(50% - 65px);
-            width: 58px;
-            height: 58px;
-        }
-        &::before {
-            content: '';
-            width: 60px;
-            height: 60px;
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            border: 1px solid $dark;
-            background: $white;
-            @include box-shadow(0px 2px 4px rgba(11, 32, 55, 0.45));
-            @include border-radius(12px);
-            @include transition(0.3s, ease-in-out);
-            @media (max-width: 767px) {
-                width: 50px;
-                height: 50px;
-            }
-        }
+        @include border-radius(50%); 
+		opacity: 1;
+		@include transition(0.2s, ease-in-out);
         &::after {
             content: '';
             width: 12px;
             height: 12px;
             display: inline-block;
             z-index: 2;
-            background: url('data:image/svg+xml,<svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 6.00009H3.414L5.707 8.29309C5.80251 8.38534 5.87869 8.49568 5.9311 8.61769C5.98351 8.73969 6.0111 8.87091 6.01225 9.00369C6.0134 9.13647 5.9881 9.26815 5.93782 9.39105C5.88754 9.51394 5.81329 9.62559 5.7194 9.71949C5.6255 9.81338 5.51385 9.88763 5.39095 9.93791C5.26806 9.98819 5.13638 10.0135 5.0036 10.0123C4.87082 10.0112 4.7396 9.9836 4.6176 9.93119C4.49559 9.87878 4.38525 9.8026 4.293 9.70709L0.293 5.70709C0.199874 5.6142 0.125988 5.50385 0.0755749 5.38236C0.0251617 5.26087 -0.000787735 5.13063 -0.000787735 4.99909C-0.000787735 4.86756 0.0251617 4.73731 0.0755749 4.61582C0.125988 4.49433 0.199874 4.38398 0.293 4.29109L4.293 0.291092C4.48077 0.103583 4.73534 -0.00165213 5.00071 -0.00146459C5.26607 -0.00127706 5.52049 0.104318 5.708 0.292092C5.89551 0.479865 6.00074 0.734435 6.00056 0.999799C6.00037 1.26516 5.89477 1.51958 5.707 1.70709L3.414 4.00009H11C11.2652 4.00009 11.5196 4.10545 11.7071 4.29298C11.8946 4.48052 12 4.73488 12 5.00009C12 5.26531 11.8946 5.51966 11.7071 5.7072C11.5196 5.89473 11.2652 6.00009 11 6.00009Z" fill="rgba(9 10 12)"/></svg>') center center;
+            background: url('data:image/svg+xml,<svg width="31" height="24" viewBox="0 0 31 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.72656 12.3938L29.9999 11.6061M29.9999 11.6061L19.102 1.29903M29.9999 11.6061L19.6927 22.504" stroke="rgb(18, 28, 34)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>') center center;
             background-size: contain !important;
             background-repeat: no-repeat !important;
-            @include transition(0.3s, ease-in-out);
+            @include transition(0.2s, ease-in-out);
         }
-        &.splide__arrow--next {
+        &.splide__arrow--prev {
             &::after { 
                 @include transform(rotate(180deg));
             }
-            @media (max-width: 767px) {
-                left: auto;
-                right: calc(50% - 65px);
-            }
         }
         &:hover, &:focus {
-            &::before {
-                background: $dark;
-            }
+			background: $primary;
             &::after {
                 filter: invert(1);
             }

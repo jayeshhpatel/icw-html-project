@@ -1204,7 +1204,7 @@
             color: #4A5257;
             font-size: 16px;
             display: -webkit-box;
-            -webkit-line-clamp: 2;
+            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -1241,6 +1241,14 @@
                     transition-delay: 0s;
                 }
             }
+        }
+    }
+}
+
+.product-splide {
+    .product-card { 
+        @media (max-width: 1200px) {
+            max-width: 280px;
         }
     }
 }
@@ -1537,7 +1545,7 @@
 				font-weight: 700;
 			}
 			&:after {
-				@include transform(rotate(-45deg));
+				@include transform(rotate(-90deg));
                 filter: unset;
 				-webkit-filter: unset;
 			}
@@ -1573,39 +1581,155 @@
 			-ms-flex: none;
 			flex: none;
 			margin-left: auto;
-			background: url('data:image/svg+xml,<svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.00244 1.8418L20.6809 22.1583M20.6809 22.1583L20.9201 7.16017M20.6809 22.1583L5.6828 21.919" stroke="rgb(238 93 36)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
+			background: url('data:image/svg+xml,<svg width="24" height="31" viewBox="0 0 24 31" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.8552 1.71875L12.1514 30.0015M12.1514 30.0015L22.6464 19.2844M12.1514 30.0015L1.43432 19.5065" stroke="rgb(238 93 36)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
 			background-size: contain;
             filter: brightness(0);
 			@include transition(0.2s, ease-in-out);
-            @media (max-width: 992px) {
-				font-size: 20px;
-				padding-right: 50px;
-			}
-		}
+		}        
+        .icon {
+            width: 60px;
+            height: 60px;
+            flex: none;
+            margin-right: 20px;
+            @media (max-width: 767px) {
+                width: 40px;
+                height: 40px;
+                margin-right: 10px;
+            }
+            img {
+                width: 100%;
+            }
+        }
 		h3 {
-			font-size: 25px;
+			font-size: 22px;
 			font-weight: 600;
 			margin-bottom: 0;
+            margin-right: 10px;
+            @include flexbox;
+            @include align-items(center);
 			@include transition(0.2s, ease-in-out);
+            width: 100%;
 			@media (max-width: 992px) {
 				font-size: 20px;
-				padding-right: 50px;
 			}
+            @media (max-width: 767px) {
+                font-size: 18px;
+            }
 		}
+        .download-pdf {
+            width: 20px;
+            height: 20px;
+            flex: none;
+            display: inline-block;
+            margin-left: auto;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M64 464l48 0 0 48-48 0c-35.3 0-64-28.7-64-64L0 64C0 28.7 28.7 0 64 0L229.5 0c17 0 33.3 6.7 45.3 18.7l90.5 90.5c12 12 18.7 28.3 18.7 45.3L384 304l-48 0 0-144-80 0c-17.7 0-32-14.3-32-32l0-80L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16zM176 352l32 0c30.9 0 56 25.1 56 56s-25.1 56-56 56l-16 0 0 32c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-48 0-80c0-8.8 7.2-16 16-16zm32 80c13.3 0 24-10.7 24-24s-10.7-24-24-24l-16 0 0 48 16 0zm96-80l32 0c26.5 0 48 21.5 48 48l0 64c0 26.5-21.5 48-48 48l-32 0c-8.8 0-16-7.2-16-16l0-128c0-8.8 7.2-16 16-16zm32 128c8.8 0 16-7.2 16-16l0-64c0-8.8-7.2-16-16-16l-16 0 0 96 16 0zm80-112c0-8.8 7.2-16 16-16l48 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 32 32 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 48c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-64 0-64z" fill="rgb(238 93 36)"/></svg>') no-repeat center center;
+            background-size: contain;
+            margin-right: 15px;
+            z-index: 3;
+            position: relative;
+			@include transition(0.2s, ease-in-out);
+            cursor: pointer;
+            filter: brightness(0);
+            &:hover, &:focus {
+                filter: brightness(1);
+            }
+        }
 	}
 	.card-content {
 		color: #4A5257;
-		a {
-			font-size: 16px;
+        overflow: hidden;
+        overflow-x: auto;
+        a {
+            color: $primary;
 			text-decoration: underline;
 			text-underline-offset: 4px;
-		}
+            @include transition(0.3s, ease-in-out);
+            &:hover, &:focus {
+                color: $dark;
+            }
+        }
 	}
 	.collapse-body {
 		margin-top: 12px;
 		padding-right: 40px;
-		
+        table {
+            width: 100%;
+            white-space: nowrap;
+            thead {
+                border-bottom: 1px solid #DADBDD;
+                tr {
+                    th {
+                        padding: 10px 20px;
+                        font-size: 18px;
+                        font-weight: 600;
+                        @media (max-width: 992px) {  
+                            padding: 8px 15px;
+                        }
+                        @media (max-width: 767px) {                            
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+            tbody {                        
+                tr {
+                    &:not(:last-child) {
+                        border-bottom: 1px solid #DADBDD;
+                    }
+                    td {
+                        padding: 10px 20px;
+                        font-size: 16px;
+                        font-weight: 500;
+                        @media (max-width: 992px) {  
+                            padding: 8px 15px;
+                        }
+                        @media (max-width: 767px) {                            
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+		.action {
+            margin-top: 30px;
+            a {
+                text-decoration: none;
+            }
+        }
 	}
+}
+.collapse-block {
+    &.modern-collapse {
+        .collapse-item {
+            border-top: none;   
+            background: #F3F3F3; 
+            padding: 10px 15px 10px 10px;   
+            &:not(:last-child) {
+                margin-bottom: 20px; 
+            }
+            &.is-open {
+                .collapse-title{
+                    h3 {
+                        color: $dark;
+                    }
+                }
+            }
+            &:hover, &:focus {
+                .collapse-title {
+                    h3 {
+                        color: $primary;
+                    }
+                }
+            } 
+            .card-content {
+                color: #4A5257;
+            }
+            .collapse-body {
+                margin-top: 12px;
+                padding-right: 40px;
+            }
+        }
+    }
 }
 
 // Hero CTA
@@ -2595,6 +2719,116 @@
         }
         .special-text {
             margin: 0;
+        }
+    }
+}
+
+
+// Product Details
+.product-image-block {
+    max-width: 580px;
+    @media (max-width: 992px) {
+        margin: 0 auto 50px;
+    }
+    .product-img-splide {
+        border: 1px solid #f4f4f4;
+        padding: 0;
+        .image-block {
+            img {
+                max-width: 580px;
+                width: 100%;
+                aspect-ratio: 1 / 1;
+            }
+        }
+    }
+    .thumbnails {
+        @include flexbox;
+        @include justify-content(center);
+        gap: 20px;
+        margin-top: 20px;
+        .thumbnail {
+            border: 1px solid #f4f4f4;
+            overflow: hidden;
+            img {
+                width: 100%;
+                max-width: 100px;
+                aspect-ratio: 1 / 1;
+                @include transition(0.1s, ease-in-out);
+            }
+            &:hover, &:focus {
+                img {
+                    @include transform(scale(1.05));
+                }
+            }
+            &.is-active {
+                border-color: $primary;
+                box-shadow: 0 0 0 1px $primary;
+            }
+        }
+    }
+} 
+.product-content-details {
+    margin-top: 50px;
+    h2 {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+    .sort-info {
+        color: #4A5257;       
+        .check-list {
+            li {
+                font-size: 18px;
+                @media (max-width: 992px) {
+                    font-size: 16px;
+                    &::before {
+                        margin-top: 4px;
+                    }
+                }
+            }
+        }
+        a {
+            color: $primary;
+			text-decoration: underline;
+			text-underline-offset: 4px;
+            @include transition(0.3s, ease-in-out);
+            &:hover, &:focus {
+                color: $dark;
+                text-decoration: underline;
+            }
+        }
+    }
+    .action {
+        .btn {
+            @media (max-width: 575px) {
+                width: 100%;
+            }
+            &:not(:last-child) {
+                @media (min-width: 575px) {
+                    margin-right: 20px;
+                }
+                @media (max-width: 575px) {
+                    margin-bottom: 15px;
+                }
+            }
+            &.btn-download {
+                &::after {
+                    background: url('data:image/svg+xml,<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.25 13.75V17.4167C19.25 17.9029 19.0568 18.3692 18.713 18.713C18.3692 19.0568 17.9029 19.25 17.4167 19.25H4.58333C4.0971 19.25 3.63079 19.0568 3.28697 18.713C2.94315 18.3692 2.75 17.9029 2.75 17.4167V13.75" stroke="rgb(238 93 36)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.41699 9.16669L11.0003 13.75L15.5837 9.16669" stroke="rgb(238 93 36)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 13.75V2.75" stroke="rgb(238 93 36)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+                    width: 22px;
+                    height: 22px;
+                }
+                &:hover, &:focus, &:active {
+                    &::after {
+                        @include transform(unset);
+                    }
+                }
+            }
+        }
+    }
+    .collapse-block {
+        margin-top: 30px;
+        .collapse-item .collapse-body {
+            padding-right: 0;
         }
     }
 }
