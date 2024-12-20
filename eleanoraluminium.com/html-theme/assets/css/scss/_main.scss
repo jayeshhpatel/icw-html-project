@@ -803,6 +803,37 @@
     }
 }
 
+// User Info 
+.user-info {
+    @include flexbox;
+    @include align-items(center);
+    .user-img {
+        @include border-radius(50%);
+        margin-right: 15px;
+        img {
+            @include border-radius(50%);
+            width: 40px;
+            height: 40px;
+            flex: none;
+            @media (max-width: 767px) {
+                width: 32px;
+                height: 32px;
+            }
+        }
+    }
+    .user-detail {
+        .name {
+            font-size: 16px;
+            color: $dark;
+            font-weight: 500;
+        }
+        span {
+            font-size: 14px;
+            color: #65717F;
+        }
+    }
+}
+
 // Trusted-logo
 .logo-list-block {
     margin-top: 50px;
@@ -1537,7 +1568,7 @@
 .collapse-item {
 	padding: 20px 0;
 	border-top: 1px solid $black;
-
+    position: relative;
 	&.is-open {
 		.collapse-title{
 			h3 {
@@ -1563,6 +1594,67 @@
 		}
 	}
 
+    &.is-extra-link {
+        & > div {
+            @include flexbox;
+            @include align-items(center);
+            position: relative;
+            .collapse-title {
+                h3 {
+                    padding-right: 45px;
+                }
+            }
+        }
+        .collapse-extra-link {
+            position: absolute;
+            right: 35px;
+            top: 50%;
+            @include transform(translateY(-50%));
+            line-height: 0.7;
+            .download-pdf {
+                width: 20px;
+                height: 20px;
+                flex: none;
+                display: inline-block;
+                margin-left: auto;
+                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M64 464l48 0 0 48-48 0c-35.3 0-64-28.7-64-64L0 64C0 28.7 28.7 0 64 0L229.5 0c17 0 33.3 6.7 45.3 18.7l90.5 90.5c12 12 18.7 28.3 18.7 45.3L384 304l-48 0 0-144-80 0c-17.7 0-32-14.3-32-32l0-80L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16zM176 352l32 0c30.9 0 56 25.1 56 56s-25.1 56-56 56l-16 0 0 32c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-48 0-80c0-8.8 7.2-16 16-16zm32 80c13.3 0 24-10.7 24-24s-10.7-24-24-24l-16 0 0 48 16 0zm96-80l32 0c26.5 0 48 21.5 48 48l0 64c0 26.5-21.5 48-48 48l-32 0c-8.8 0-16-7.2-16-16l0-128c0-8.8 7.2-16 16-16zm32 128c8.8 0 16-7.2 16-16l0-64c0-8.8-7.2-16-16-16l-16 0 0 96 16 0zm80-112c0-8.8 7.2-16 16-16l48 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 32 32 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 48c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-64 0-64z" fill="rgb(238 93 36)"/></svg>') no-repeat center center;
+                background-size: contain;
+                z-index: 3;
+                position: relative;
+                @include transition(0.2s, ease-in-out);
+                cursor: pointer;
+                filter: brightness(0);
+                &:hover, &:focus {
+                    filter: brightness(1);
+                }
+            }
+            .btn {
+                font-size: 14px;
+                min-height: 30px;
+                padding: 0 10px;
+                &::after {
+                    width: 10px;
+                    height: 10px;
+                    margin-left: 8px;
+                }
+            }
+        }
+    }
+	.card-content {
+		color: #4A5257;
+        overflow: hidden;
+        overflow-x: auto;
+        width: 100%;
+        a {
+            color: $primary;
+			text-decoration: underline;
+			text-underline-offset: 4px;
+            @include transition(0.3s, ease-in-out);
+            &:hover, &:focus {
+                color: $dark;
+            }
+        }
+	}
 	.collapse-title {
 		@include flexbox();
 		@include align-items(center);
@@ -1616,38 +1708,6 @@
                 font-size: 18px;
             }
 		}
-        .download-pdf {
-            width: 20px;
-            height: 20px;
-            flex: none;
-            display: inline-block;
-            margin-left: auto;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M64 464l48 0 0 48-48 0c-35.3 0-64-28.7-64-64L0 64C0 28.7 28.7 0 64 0L229.5 0c17 0 33.3 6.7 45.3 18.7l90.5 90.5c12 12 18.7 28.3 18.7 45.3L384 304l-48 0 0-144-80 0c-17.7 0-32-14.3-32-32l0-80L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16zM176 352l32 0c30.9 0 56 25.1 56 56s-25.1 56-56 56l-16 0 0 32c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-48 0-80c0-8.8 7.2-16 16-16zm32 80c13.3 0 24-10.7 24-24s-10.7-24-24-24l-16 0 0 48 16 0zm96-80l32 0c26.5 0 48 21.5 48 48l0 64c0 26.5-21.5 48-48 48l-32 0c-8.8 0-16-7.2-16-16l0-128c0-8.8 7.2-16 16-16zm32 128c8.8 0 16-7.2 16-16l0-64c0-8.8-7.2-16-16-16l-16 0 0 96 16 0zm80-112c0-8.8 7.2-16 16-16l48 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 32 32 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 48c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-64 0-64z" fill="rgb(238 93 36)"/></svg>') no-repeat center center;
-            background-size: contain;
-            margin-right: 15px;
-            z-index: 3;
-            position: relative;
-			@include transition(0.2s, ease-in-out);
-            cursor: pointer;
-            filter: brightness(0);
-            &:hover, &:focus {
-                filter: brightness(1);
-            }
-        }
-	}
-	.card-content {
-		color: #4A5257;
-        overflow: hidden;
-        overflow-x: auto;
-        a {
-            color: $primary;
-			text-decoration: underline;
-			text-underline-offset: 4px;
-            @include transition(0.3s, ease-in-out);
-            &:hover, &:focus {
-                color: $dark;
-            }
-        }
 	}
 	.collapse-body {
 		margin-top: 12px;
@@ -1962,13 +2022,13 @@
         margin-top: 25px;
     }
     h2, .h2 {
-        font-size: 40px;
+        font-size: 36px;
         line-height: 1.2;
         @media (max-width: 1200px) { 
-            font-size: 36px;
+            font-size: 30px;
         }
         @media (max-width: 767px) { 
-            font-size: 30px;
+            font-size: 24px;
         }
         &.font-sm {
             font-size: 24px;
@@ -1978,7 +2038,7 @@
         }
     }
     h3, .h3 {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     ol:not(.splide__list), ul:not(.splide__list) {
@@ -1992,6 +2052,23 @@
         li {
             list-style-type: disc;
             margin-bottom: 8px;
+            &::marker {
+                color: $primary;
+                font-weight: 600;
+            }
+        }
+    }
+    ol:not(.splide__list) {
+        list-style-type: decimal;
+        padding-left: 20px;
+        margin-bottom: 30px;
+        li {
+            list-style-type: decimal;
+            margin-bottom: 8px;
+            &::marker {
+                color: $primary;
+                font-weight: 600;
+            }
         }
     }
     a {
@@ -2097,17 +2174,65 @@
             }
         }
     }
-    
+    img {
+        width: auto;
+        @include border-radius(16px);
+        -o-object-fit: cover;
+        object-fit: cover;
+        margin-bottom: 20px;
+        &.size-full {
+            width: 100%;
+            max-width: 560px;
+        }
+    }
+    .wp-caption {
+        width: 100% !important;
+        padding-top: 10px;
+        &.aligncenter {
+            text-align: center;
+        }
+        img {
+            margin-bottom: 10px;
+        }
+        .wp-caption-text {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.8);
+            padding-top: 0px;
+            margin-bottom: 20px; 
+            a {
+                font-weight: 500;
+                color: $primary;
+            }
+        }
+    }
     .post-sticky-content {  
         .sort-info {
             h3, .h3 {
-                font-size: 18px;
+                font-size: 22px;
                 font-weight: 600;
             }
         }   
     }
 }
 
+.post-form {
+    margin-top: 60px;
+    @media (min-width: 992px) {
+        margin-top: 50px;
+    }
+    .post-form__title {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 27px;
+        margin: 0 0 15px;
+    }
+    .post-form__info {
+        font-size: 14px;
+        line-height: 20px;
+        margin-top: 7px;
+    }
+}
 
 // Info Card
 .info-card {

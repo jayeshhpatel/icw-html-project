@@ -27,19 +27,18 @@
     gap: 15px;
     margin-bottom: 15px;
     .blog-meta-badge {
-        color: $dark;
-        font-size: 12px;
-        font-weight: 500;
-        background: $gray;
-        border: 1px solid $gray75;
-        font-family: $font-jetbrains;
-        text-transform: uppercase;
-        padding: 7px 16px 5px;
-        @include border-radius(8px);
+        color: $primary;
+        font-size: 16px;
+        font-weight: 600;
+        background: transparent;
+        border: 1px solid transparent;
+        text-transform: capitalize;
+        padding: 0;
+        @include border-radius(0);
         @include inline-flex;
         width: max-content;
         text-decoration: none;
-        letter-spacing: 1.2px;
+        // letter-spacing: 1.2px;
         @media (max-width:767px) {
             font-size: 10px;
         } 
@@ -50,7 +49,7 @@
         position: relative;   
         @include transition(0.3s, ease-in-out);  
         &:hover, &:focus {
-            background: $gray75;
+            background: $gray;
         }
     }
 }
@@ -107,7 +106,7 @@
             @include justify-content(space-between);
             margin-bottom: 10px;
             .date {
-                color: $dark300;
+                color: $dark;
                 font-size: 14px;
                 padding-right: 20px;
             }
@@ -130,31 +129,14 @@
         }
     }
     .card-footer {
-        border-top: 1px solid $gray75;
+        border-top: 1px solid $gray;
         padding-top: 25px;
         .written-by {
-            font-family: $font-jetbrains;
             text-transform: uppercase;
             font-size: 12px;
             letter-spacing: 1.8px;
-            color: $dark300;
+            color: $dark;
             margin-bottom: 8px;
-        }
-        .user-info {
-            .user-img {
-                margin-right: 12px;
-                img {
-                    width: 32px;
-                    height: 32px;
-                    max-width: 32px;
-                }
-            }
-            .user-detail {
-                .name {
-                    font-size: 16px;
-                    font-weight: 500;
-                }
-            }
         }
     }
     &:hover, &:focus {
@@ -193,18 +175,18 @@
                 margin-bottom: 25px;
             }
             .blog-meta-badge {
-                border-color: $gray75;
+                border-color: $gray;
                 background: transparent;
                 color: $white;
             }
             a.blog-meta-badge {
                 &:hover, &:focus {
-                    background: $gray75;
+                    background: $gray;
                     color: $dark;
                 }
             }
             .date {
-                color: $gray75;
+                color: $gray;
             }
             .post-title {
                 font-size: 40px;
@@ -221,12 +203,12 @@
             }
         }
         .card-footer {
-            border-top: 1px solid $gray600;
+            border-top: 1px solid $gray;
             @media (max-width: 767px) {
                 border-top-color: rgba(#fff, 0.1);
             }
             .written-by {
-                color: $gray75;
+                color: $gray;
             }
             .user-info {
                 .user-detail {
@@ -241,20 +223,31 @@
 
 // Blog Details Page
 .page-header.single-header {
+    background: #f3f3f3;
+    padding: 100px 0;
     &:not(.is-dark) {
         border-color: $gray;
         background-image: none;
-        @include border-radius(24px 24px 0 0);
 
         .breadcrumb-nav .breadcrumb {
+            margin-bottom: 30px;
             .breadcrumb-item {
-                color: #3E4751;
+                color: $dark;
+                font-weight: 600;
+                font-size: 16px;
                 a {
-                    color: #3E4751;
+                    color: $dark;
+                    text-decoration: none;
+                    @include transition(0.2s, ease-in-out);
+                    font-weight: 500;
+                    &:hover, &:focus {
+                        color: $primary;
+                        text-decoration: underline;
+                    }
                 }
             }
             .breadcrumb-item +.breadcrumb-item::before {
-                color: #3E4751;
+                color: $dark;
             }
         }
     }
@@ -285,7 +278,7 @@
             color: #fff;
             &:hover, &:focus {
                 color: #000;
-                background: $gray75;
+                background: $gray;
             }
         }
     }
@@ -293,20 +286,14 @@
 
 .blog-header-title {
     .post-content-detail {
-        .blog-meta-info {
-            margin-bottom: 30px;
-            @media (max-width: 767px) {
-                margin-bottom: 15px;
-            }
-        }
         .post-title {
-            font-size: 52px;
+            font-size: 45px;
             color: $dark;
             @media (max-width: 1200px) { 
-                font-size: 42px;
+                font-size: 36px;
             }
             @media (max-width: 767px) { 
-                font-size: 38px;
+                font-size: 28px;
             }
         }
         .post-sort-info {
@@ -329,27 +316,12 @@
                 padding-top: 25px;
             }
             .written-by {
-                font-family: $font-jetbrains;
-                text-transform: uppercase;
+                text-transform: capitalize;
                 font-size: 12px;
-                letter-spacing: 1.8px;
-                color: #65717F;
+                font-weight: 500;
+                letter-spacing: 1px;
+                color: $dark;
                 margin-bottom: 8px;
-            }
-            .user-info {
-                .user-img {
-                    margin-right: 12px;
-                    img {
-                        width: 32px;
-                        height: 32px;
-                    }
-                }
-                .user-detail {
-                    .name {
-                        font-size: 16px;
-                        font-weight: 500;
-                    }
-                }
             }
         }
     }
@@ -360,48 +332,44 @@
         }
         img {
             @include border-radius(16px);
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            width: 100%;
         }
     }
 }
 
 .share-socials {
     margin-bottom: 40px;
-        .share-title {
-            font-size: 12px;
-            font-family: $font-jetbrains;
-            font-weight: 500;
-            color: #65717F;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            display: block;
-        }
+    .share-title {
+        font-size: 12px;
+        font-weight: 500;
+        color: #65717F;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        display: block;
+    }
     
     .social-lists {
         @include flexbox;
         @include align-items(center);
         gap: 8px;
         a {
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             flex: none;
             @include flexbox;
             @include align-items(center);
             @include justify-content(center);
-            border: 1px solid #C8D0D9;
-            @include border-radius(12px);
+            border: 1px solid rgba($dark, 0.1);
+            @include border-radius(8px);
             @include transition(0.3s, ease-in-out);
             svg {
-                path {
-                    @include transition(0.3s, ease-in-out);
-                }
+                width: 16px;
+                height: 16px;
             }
             &:hover, &:focus {
-                background: $dark;
-                svg {
-                    path {
-                        fill: $white;
-                    }
-                }
+                background: rgba($dark, 0.1);
             }
         }
     }
@@ -425,10 +393,9 @@
     }
     .widget-area {
         .widget-title {
-            color: #090A0C;
-            font-weight: 400;
+            color: $dark;
+            font-weight: 600;
             font-size: 16px;
-            font-family: $font-jetbrains;
             padding-bottom: 15px;
             border-bottom: 1px solid #C8D0D9;
             margin-bottom: 25px;
@@ -436,7 +403,7 @@
         .navbar-list {
             .nav-item {
                 .nav-link {
-                    color: #3E4751;
+                    color: #4A5257;
                     margin-bottom: 20px;
                     font-size: 16px;
                     display: -webkit-box;
@@ -479,9 +446,9 @@
             margin-top: 0;
         }
         h3 {
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
     }
     
@@ -500,7 +467,6 @@
         }
         .written-by {
             font-size: 12px;
-            font-family: $font-jetbrains;
             font-weight: 500;
             color: #65717F;
             margin-bottom: 15px;
@@ -510,18 +476,20 @@
             height: 100%;
             .user-img {
                 margin-right: 12px;
+                border: 1px solid rgba(18,28,34,0.1);
                 img {
-                    width: 64px;
-                    height: 64px;
+                    width: 60px;
+                    height: 60px;
                     margin: 0;
                 }
             }
             .user-detail {
                 .name {
-                    font-size: 24px;
+                    font-size: 20px;
+                    font-weight: 600;
                 }
                 span {
-                    font-size: 16px;
+                    font-size: 14px;
                     display: block;
                 }
             }
@@ -544,6 +512,11 @@
                 @media (max-width: 767px) { 
                     margin-bottom: 15px;
                 }
+            }
+        }
+        @media (min-width: 768px) {
+            .post-form {
+                display: none;
             }
         }
     }
@@ -582,7 +555,6 @@
                 height: 48px;
                 @include flexbox;
                 @include align-items(center);
-                font-family: $font-jetbrains;
                 &:hover,
                 &:focus {
                     background-color: #090A0C;
