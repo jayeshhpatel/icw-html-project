@@ -87,14 +87,48 @@
     @include flex-direction(column);
     text-align: left;
     .card-img {
-        @include border-radius(16px);
+        @include border-radius(0);
         margin-bottom: 25px;
-        overflow: hidden;
+        position: relative;
+        .image {
+            overflow: hidden;
+            border: 1px solid #f4f4f4;
+        }
         img {
             width: 100%;
-            max-height: 240px;
-            @include border-radius(16px);
+            aspect-ratio: 3/4;
+            max-height: 380px;
+            @include border-radius(0);
             @include transition(0.3s, ease-in-out);
+        }
+        .post-date {
+            width: 60px;
+            @include inline-flex;
+            @include flex-direction(column);
+            position: absolute;
+            bottom: -22px;
+            right: 0;
+            .day {
+                font-size: 35px;
+                font-weight: 600;
+                color: $white;
+                background: $primary;
+                width: 100%;                
+                aspect-ratio: 1 / 1;
+                @include inline-flex;
+                @include align-items(center);
+                @include justify-content(center);
+            }
+            .month-year {
+                font-size: 12px;
+                color: $white;
+                width: 100%;              
+                @include inline-flex;
+                @include align-items(center);
+                @include justify-content(center);
+                background: $dark;
+                padding: 2px 5px;
+            }
         }
     }
     .card-body {
@@ -104,16 +138,16 @@
             @include flexbox;
             @include align-items(center);
             @include justify-content(space-between);
-            margin-bottom: 10px;
-            .date {
-                color: $dark;
-                font-size: 14px;
-                padding-right: 20px;
-            }
+            margin-bottom: 8px;
+            // .date {
+            //     color: $dark;
+            //     font-size: 14px;
+            //     padding-right: 20px;
+            // }
         }
         .post-title, h3 {
-            font-size: 32px;
-            letter-spacing: 0.8px;
+            font-size: 20px;
+            font-weight: 600;
             margin: 0;
             @media (max-width: 992px) {
                 font-size: 28px;
@@ -124,7 +158,12 @@
             a {
                 color: $dark;
                 text-decoration: none;
-                @include transition(0.3s, ease-in-out);
+                line-height: normal;
+                transition: all 0.3s,background-size 0.8s;
+                background-image: linear-gradient(to right, #EE5D24 0%, #EE5D24 100%);
+                background-position: 0 100%;
+                background-repeat: no-repeat;
+                background-size: 0 1px;
             }
         }
     }
@@ -149,6 +188,8 @@
             h3 {
                 a {
                     color: $primary;
+                    text-decoration-color: #EE5D24 !important;
+                    background-size: 100% 1px;
                 }
             }
         }
@@ -157,12 +198,13 @@
 .is-hero-blog-post {
     .card-img { 
         display: block;
+        overflow: hidden;
         img {
             max-height: 100%;
         }
     }
     .card-content {
-        padding: 50px 0 50px 40px;
+        padding: 0px 0 50px 30px;
         height: 100%;
         @include flexbox;
         @include flex-direction(column);
@@ -172,12 +214,12 @@
         .card-body {
             flex: 1 1 auto;
             .blog-meta-info {                
-                margin-bottom: 25px;
+                margin-bottom: 10px;
             }
             .blog-meta-badge {
-                border-color: $gray;
+                // border-color: $gray;
                 background: transparent;
-                color: $white;
+                color: $primary;
             }
             a.blog-meta-badge {
                 &:hover, &:focus {
@@ -189,13 +231,15 @@
                 color: $gray;
             }
             .post-title {
-                font-size: 40px;
+                font-size: 45px;
                 color: $white;
+                margin-bottom: 20px;
                 @media (max-width: 767px) {
                     font-size: 24px; 
                 }
                 a {
-                    color: $white;
+                    color: $dark;
+                    line-height: 1.2;
                     &:hover, &:focus {
                         color: $primary;
                     }
