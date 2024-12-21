@@ -1592,7 +1592,7 @@
 				font-weight: 700;
 			}
 			&:after {
-				@include transform(rotate(-90deg));
+				@include transform(rotate(45deg));
                 filter: unset;
 				-webkit-filter: unset;
 			}
@@ -1670,6 +1670,19 @@
                 color: $dark;
             }
         }
+        
+    table {
+        border: none;
+        margin-bottom: 0px;
+        margin-top: 0;
+        thead {
+            tr {
+                th {
+                    background: transparent;
+                }
+            }
+        }
+    }
 	}
 	.collapse-title {
 		@include flexbox();
@@ -1683,13 +1696,13 @@
 		@include border-radius(4px);		
 		&:after {
 			content: "";
-			width: 18px;
-			height: 18px;
+			width: 16px;
+			height: 16px;
 			-webkit-box-flex: 0;
 			-ms-flex: none;
 			flex: none;
 			margin-left: auto;
-			background: url('data:image/svg+xml,<svg width="24" height="31" viewBox="0 0 24 31" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.8552 1.71875L12.1514 30.0015M12.1514 30.0015L22.6464 19.2844M12.1514 30.0015L1.43432 19.5065" stroke="rgb(238 93 36)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
+			background: url('data:image/svg+xml,<svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.00244 1.8418L20.6809 22.1583M20.6809 22.1583L20.9201 7.16017M20.6809 22.1583L5.6828 21.919" stroke="rgb(238 93 36)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
 			background-size: contain;
             filter: brightness(0);
 			@include transition(0.2s, ease-in-out);
@@ -2184,9 +2197,11 @@
             }
         }
     }
-    
     table {
         width: 100%;
+        border: 1px solid #DADBDD;
+        margin-bottom: 20px;
+        margin-top: 20px;
         // white-space: nowrap;
         thead {
             border-bottom: 1px solid #DADBDD;
@@ -2195,6 +2210,7 @@
                     padding: 10px 20px;
                     font-size: 18px;
                     font-weight: 600;
+                    background: #DADBDD;
                     @media (max-width: 992px) {  
                         padding: 8px 15px;
                     }
@@ -2956,24 +2972,39 @@
                     margin-bottom: 15px;
                 }
             }
-            &.btn-download {
-                &::after {
-                    background: url('data:image/svg+xml,<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.25 13.75V17.4167C19.25 17.9029 19.0568 18.3692 18.713 18.713C18.3692 19.0568 17.9029 19.25 17.4167 19.25H4.58333C4.0971 19.25 3.63079 19.0568 3.28697 18.713C2.94315 18.3692 2.75 17.9029 2.75 17.4167V13.75" stroke="rgb(238 93 36)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.41699 9.16669L11.0003 13.75L15.5837 9.16669" stroke="rgb(238 93 36)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 13.75V2.75" stroke="rgb(238 93 36)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-                    width: 22px;
-                    height: 22px;
-                }
-                &:hover, &:focus, &:active {
-                    &::after {
-                        @include transform(unset);
-                    }
-                }
-            }
         }
     }
     .collapse-block {
         margin-top: 30px;
         .collapse-item .collapse-body {
             padding-right: 0;
+        }
+    }
+}
+
+.enquire-now-offcanvas {
+    .offcanvas-header {
+        border-bottom: 1px solid #f4f4f4;
+        .offcanvas-title {
+            font-weight: 700;
+        }
+    }
+    .offcanvas-body {
+        .section-title {
+            .divider {
+                font-size: 14px;
+                color: rgba($dark, 0.5);
+                text-align: center;
+                margin: 15px 0;
+            }
+            .action {
+                margin-top: 0;
+            }
+        }
+        .frm-fluent-form  {
+            .ff-btn-submit[type=submit] {
+                width: 100%;
+            }
         }
     }
 }

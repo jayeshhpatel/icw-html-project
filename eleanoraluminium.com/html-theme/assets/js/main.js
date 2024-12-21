@@ -145,7 +145,7 @@ function activateTab(tab) {
     $('.tab-pane').hide();
     // Add active class and show the selected tab
     $(tab).addClass('active');
-    $('#' + tab_id).fadeIn();
+    $('#' + tab_id).stop().fadeIn();
 }
 
 $(window).resize(function(){ 
