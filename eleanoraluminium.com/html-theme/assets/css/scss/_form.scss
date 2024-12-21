@@ -1,0 +1,206 @@
+.subscribe-section {
+    .fluentform  {
+        margin-top: 30px;
+    }
+    .top-view {
+        .sort-info p {
+            text-align: center; 
+        }
+    }
+    .sponsored-block .sponsored-info .h2 {
+        font-size: 36px;
+        font-weight: 500;
+        letter-spacing: -0.03em;
+        margin: 0;
+        line-height: 1.3;
+        @media (max-width: 992px) {
+            font-size: 30px;
+        }
+        @media (max-width: 767px) {
+            font-size: 28px;
+        }
+    }
+
+    .frm-fluent-form .ff-t-cell .ff_submit_btn_wrapper_custom {margin: 0 !important;}
+
+    @media (min-width: 768px) {
+        .sponsored-block .sponsored-info {
+            width: 80%;
+        } 
+    }
+    @media (max-width: 767px) {
+        .sponsored-block .sponsored-info {
+            width: 100%;
+        }
+    }
+    
+    
+}
+
+.icw-ff-subscribe {
+    --fluentform-danger: #DF0A0A;
+
+    background: #3C376F;
+    padding: 12px;
+    border-radius: 8px;
+
+    @media(min-width: 768px){
+        min-width: 660px;
+        display: flex;
+        .ff-el-group {margin: 0px !important;}
+    }
+
+    .ff-t-column-1 {flex-basis:100% !important}
+    .ff-t-column-2 {flex-basis:content !important}
+    
+    
+    .ff-btn-submit {margin: 0px !important;}
+
+    .ff-el-input--content {position: relative;}
+    .ff-el-is-error .error {
+        margin-top: 0 !important;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: var(--fluentform-danger);
+        color: #fff !important;
+        font-size: 10px !important;
+        padding: 2px 5px;
+        border-radius: 3px;
+    }
+
+   
+}
+
+.frm-fluent-form {
+    .ff-el-group {
+        .ff-el-input--label {
+            line-height: normal;  
+            label {
+                font-size: 14px;
+                font-weight: 400;
+            }          
+            &.ff-el-is-required {
+                label::after {
+                    color: #DF0A0A !important;
+                }
+            }
+        }
+        .ff-el-input--content {
+            input, textarea {
+                @include border-radius(0);
+                border-color: #C8D0D9;
+                background: $white;
+                color: $dark;
+                font-size: 14px;
+                font-weight: 500;
+                height: 40px;
+                line-height: 40px;
+                padding: 0 15px;
+            }
+            textarea {
+                height: auto;
+                line-height: normal;
+                padding: 10px 15px;
+            }
+        }
+        &.ff-el-is-error {
+            .error {
+                color: #DF0A0A !important;
+                font-weight: 600;
+            }
+        }
+    }
+    .ff-btn-submit[type=submit]  {
+        white-space: nowrap;
+        color: $white !important;
+        background-color: $primary;
+        border:1px solid $primary;
+        height: 48px;
+        min-height: 48px;
+        padding: 0 25px;
+        font-weight: 600;
+        font-size: 16px;
+        min-width: 120px;
+        margin-bottom: 0px;
+        line-height: 1;
+        opacity: 1 !important;
+        position: relative;
+        z-index: 1;
+        @include transition(0.3s, ease-in-out);
+        @include border-radius(0px !important);
+        @include inline-flex;
+        @include align-items(center);
+        @include justify-content(center); 
+        &::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            right: 0;
+            top: 0;
+            height: 100%;
+            z-index: -1;
+            @include transition(0.3s, ease-in-out);
+            background-color: transparent;
+        }  
+        &::after {
+            content: '';
+            position: relative;
+            display: inline-block;
+            -webkit-transform: none;
+            transform: none;
+            background: url('data:image/svg+xml,<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 16.5L16.5 1.5M16.5 1.5L5.25 1.5M16.5 1.5L16.5 12.75" stroke="rgb(238 93 36)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+            -webkit-transition: all .3s ease-in-out;
+            transition: all .3s ease-in-out;
+            background-size: contain !important;
+            width: 15px;
+            height: 15px;
+            -webkit-box-flex: 0;
+            -ms-flex: none;
+            flex: none;
+            margin-left: 10px;
+            -webkit-filter: brightness(0) invert(1);
+            filter: brightness(0) invert(1);
+        }
+        @media (max-width: 992px) {       
+            font-size: 16px; 
+            min-height: 50px;
+            height: 50px;
+        }
+        &:hover, &:focus, &:active {
+            text-decoration: none;
+            border-color: transparent;
+            &::before {
+                width: 100%;
+                background-color: $dark; 
+            }
+            &::after {
+                @include transform(rotate(45deg));
+            }
+        } 
+    }
+}
+
+.ff-message-success {
+    border: 1px solid #8BC34A;
+    background: #4CAF50;
+    border-radius: 8px;
+    text-align: center;
+}
+
+
+.form-content-block {
+    &.bg-dark {
+        .frm-fluent-form {
+            .ff-el-group {
+                .ff-el-input--content {
+                    input, textarea {
+                        border-color: rgba($white, 0.2);
+                        background: #1A242B;
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+}

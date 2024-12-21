@@ -254,7 +254,7 @@
         <div class="bg-overly"></div>
         <main id="main-content" class="main-content-wrapper">
             <section class="hero-header">   
-                <div class="splide hero-splide-slider">
+                <div class="splide hero-splide-slider splide-js">
                     <div class="splide__track">
                         <ul class="splide__list">
                             <li class="splide__slide hero-slide" style="background-image: url(uploads/img-home-slide1.jpg);">
@@ -511,7 +511,7 @@
                         <div class="tag-line">Category</div>
                         <h2>Huge Selection of Products on our Website</h2>
                     </div>  
-                    <div class="splide category-splide">
+                    <div class="splide category-splide" data-splide='{"type": "slide","perPage": 3,"perMove": 1,"pagination": true,"arrows": false,"pauseOnHover": true,"gap": 30,"focus": "center","classes": {"pagination": "splide__pagination icw-pagination is-bottom"},"breakpoints": {"992": {"perPage": 2,"autoWidth": true},"767": {"perPage": 1,"autoWidth": true,"gap": 20}}}'>
                         <div class="splide__track">
                             <ul class="splide__list">
                                 <li class="splide__slide">
@@ -579,35 +579,6 @@
                             </ul>
                         </div> 
                     </div>
-                    <script >
-                        if (jQuery('.category-splide').length) {
-                            var categorySplide = new Splide( '.category-splide', {
-                                type: 'slide',      
-                                perPage: 3,   
-                                perMove: 1,          
-                                pagination: true,    
-                                arrows: false,  
-                                pauseOnHover: true,
-                                gap: 30,   
-                                focus      : 'center',
-                                classes: {
-                                    pagination: 'splide__pagination icw-pagination is-bottom', 
-                                },
-                                breakpoints: {
-                                    992: {
-                                        perPage: 2,
-                                        autoWidth: true,
-                                    },
-                                    767: {
-                                        perPage: 1,
-                                        autoWidth: true, 
-                                        gap: 20, 
-                                    },
-                                }
-                            } );
-                            categorySplide.mount();
-                        }
-                    </script>           
                 </div>
             </section>
             <section class="main-section counter-section bg-lightgray">
@@ -711,7 +682,7 @@
                             <p>See how our premium aluminum products and solutions have exceeded expectations and delivered outstanding results.</p>
                         </div>
                     </div>  
-                    <div class="splide testimonials-splide">
+                    <div class="splide testimonials-splide" data-splide='{"type": "slide","perPage": 3,"perMove": 1,"pagination": true,"arrows": false,"pauseOnHover": true,"gap": 30,"classes": {"pagination": "splide__pagination icw-pagination is-top"},"breakpoints": {"992": {"perPage": 2,"autoWidth": true},"767": {"perPage": 1,"autoWidth": true,"gap": 20}}}'>
                         <div class="splide__track">
                             <ul class="splide__list">
                                 <li class="splide__slide">
@@ -877,34 +848,6 @@
                             </ul>
                         </div> 
                     </div>
-                    <script >
-                        if (jQuery('.testimonials-splide').length) {
-                            var testimonialsSplide = new Splide( '.testimonials-splide', {
-                                type: 'slide',      
-                                perPage: 3,   
-                                perMove: 1,          
-                                pagination: true,    
-                                arrows: false,
-                                pauseOnHover: true,
-                                gap: 30,   
-                                classes: {
-                                    pagination: 'splide__pagination icw-pagination is-top', 
-                                },
-                                breakpoints: {
-                                    992: {
-                                        perPage: 2,
-                                        autoWidth: true,
-                                    },
-                                    767: {
-                                        perPage: 1,
-                                        autoWidth: true, 
-                                        gap: 20, 
-                                    },
-                                }
-                            } );
-                            testimonialsSplide.mount();
-                        }
-                    </script>           
                 </div>
             </section>
             <section class="main-section section-title-mw-700 overflow-hidden p-0">
@@ -913,7 +856,7 @@
                         <div class="tag-line">Testimonials</div>
                         <h2>What Our Clients Say About Us</h2>
                     </div>  
-                    <div class="splide single-testimonials-splide">
+                    <div class="splide single-testimonials-splide" data-splide='{"type": "fade","perPage": 1,"perMove": 1,"pagination": true,"arrows": false,"autoplay": true,"interval": 4000,"speed": 1200,"pauseOnHover": true,"gap": 70,"rewind": true,"classes": {"pagination": "splide__pagination icw-pagination is-bottom"}}'>
                         <div class="splide__track">
                             <ul class="splide__list">
                                 <li class="splide__slide">
@@ -1080,27 +1023,6 @@
                         </div>                         
                         <span class="square-vector is-tr-vector is-white-orange is-vector-style2"></span>
                     </div>
-                    <script >
-                        if (jQuery('.single-testimonials-splide').length) {
-                            var singleTestimonialsSplide = new Splide( '.single-testimonials-splide', {
-                                type: 'fade',      
-                                perPage: 1,   
-                                perMove: 1,          
-                                pagination: true,    
-                                arrows: false,        
-                                autoplay: true,    
-                                interval: 4000,     
-                                speed: 1200,          
-                                pauseOnHover: true,
-                                gap: 70,   
-                                rewind: true, 
-                                classes: {
-                                    pagination: 'splide__pagination icw-pagination is-bottom', 
-                                },
-                            } );
-                            singleTestimonialsSplide.mount();
-                        }
-                    </script>           
                 </div>
             </section>
             <section class="main-section section-title-mw-700">
@@ -1171,7 +1093,7 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="form-content-block bg-dark">
+                            <!-- <div class="form-content-block bg-dark">
                                 <div class="section-title">
                                     <h2>Get in Touch</h2>
                                 </div>
@@ -1179,6 +1101,72 @@
                                     <form action="" method="post" style="height: 400px;"></form>
                                 </div>
                                 <span class="square-vector is-br-vector is-white-black is-vector-style2"></span>
+                            </div> -->
+                            <link rel='stylesheet' id='fluent-form-styles-css' href='https://llmops.space/wp-content/plugins/fluentform/assets/css/fluent-forms-public.css' type='text/css' media='all' />
+                            <link rel='stylesheet' id='fluentform-public-default-css' href='https://llmops.space/wp-content/plugins/fluentform/assets/css/fluentform-public-default.css' type='text/css' media='all' />
+                            <div class="form-content-block bg-dark">
+                                <div class="section-title">
+                                    <h2>Get in Touch</h2>
+                                </div>
+                                <div class="icw-form-block">
+                                    <div class="fluentform ff-default fluentform_wrapper_1 ffs_default_wrap">
+                                        <form data-form_id="1" id="fluentform_1" class="frm-fluent-form fluent_form_1 ff-el-form-top ff_form_instance_1_1 ffs_default ff-form-loaded" data-form_instance="ff_form_instance_1_1" method="POST">
+                                            <fieldset style="border: none!important;margin: 0!important;padding: 0!important;background-color: transparent!important;box-shadow: none!important;outline: none!important; min-inline-size: 100%;">
+                                                <legend class="ff_screen_reader_title"  style="display: block; margin: 0!important;padding: 0!important;height: 0!important;text-indent: -999999px;width: 0!important;overflow:hidden;"> Contact Form Demo</legend>
+                                                <input type="hidden" name="__fluent_form_embded_post_id" value="20"><input type="hidden" id="_fluentform_1_fluentformnonce" name="_fluentform_1_fluentformnonce" value="7108221dd2"><input type="hidden" name="_wp_http_referer" value="/contact-us/">
+                                                <div data-type="name-element" data-name="names" class=" ff-field_container ff-name-field-wrapper">
+                                                    <div class="ff-t-container">
+                                                        <div class="ff-t-cell ">
+                                                            <div class="ff-el-group">
+                                                                <div class="ff-el-input--label asterisk-right"><label for="ff_1_names_first_name_">First Name</label></div>
+                                                                <div class="ff-el-input--content">
+                                                                    <input type="text" name="names[first_name]" id="ff_1_names_first_name_" class="ff-el-form-control" placeholder="First Name" aria-invalid="false" aria-required="false">
+                                                                    <div data-lastpass-icon-root="" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ff-t-cell ">
+                                                            <div class="ff-el-group">
+                                                                <div class="ff-el-input--label asterisk-right"><label for="ff_1_names_last_name_">Last Name</label></div>
+                                                                <div class="ff-el-input--content">
+                                                                    <input type="text" name="names[last_name]" id="ff_1_names_last_name_" class="ff-el-form-control" placeholder="Last Name" aria-invalid="false" aria-required="false">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ff-el-group">
+                                                    <div class="ff-el-input--label ff-el-is-required asterisk-right"><label for="ff_1_email" aria-label="Email">Email</label></div>
+                                                    <div class="ff-el-input--content">
+                                                        <input type="email" name="email" id="ff_1_email" class="ff-el-form-control" placeholder="Email Address" data-name="email" aria-invalid="false" aria-required="true">
+                                                    </div>
+                                                </div>
+                                                <div class="ff-el-group">
+                                                    <div class="ff-el-input--label asterisk-right"><label for="ff_1_subject" aria-label="Subject">Subject</label></div>
+                                                    <div class="ff-el-input--content">
+                                                        <input type="text" name="subject" class="ff-el-form-control" placeholder="Subject" data-name="subject" id="ff_1_subject" aria-invalid="false" aria-required="false">
+                                                    </div>
+                                                </div>
+                                                <div class="ff-el-group">
+                                                    <div class="ff-el-input--label ff-el-is-required asterisk-right"><label for="ff_1_message" aria-label="Your Message">Your Message</label></div>
+                                                    <div class="ff-el-input--content">
+                                                        <textarea aria-invalid="false" aria-required="true" name="message" id="ff_1_message" class="ff-el-form-control" placeholder="Your Message" rows="4" cols="2" data-name="message"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="ff-el-group ff-text-left ff_submit_btn_wrapper"><button type="submit" class="ff-btn ff-btn-submit ff-btn-md ff_btn_style">Submit Form</button></div>
+                                            </fieldset>
+                                        </form>
+                                        <div id="fluentform_1_errors"
+                                            class="ff-errors-in-stack ff_form_instance_1_1 ff-form-loading_errors ff_form_instance_1_1_errors">
+                                        </div>
+                                    </div>
+                                    <script type="text/javascript">
+                                        window.fluent_form_ff_form_instance_1_1 = { "id": "1", "settings": { "layout": { "labelPlacement": "top", "helpMessagePlacement": "with_label", "errorMessagePlacement": "inline", "cssClassName": "", "asteriskPlacement": "asterisk-right" }, "restrictions": { "denyEmptySubmission": { "enabled": false } } }, "form_instance": "ff_form_instance_1_1", "form_id_selector": "fluentform_1", "rules": { "names[first_name]": { "required": { "value": false, "message": "This field is required" } }, "names[middle_name]": { "required": { "value": false, "message": "This field is required" } }, "names[last_name]": { "required": { "value": false, "message": "This field is required" } }, "email": { "required": { "value": true, "message": "This field is required" }, "email": { "value": true, "message": "This field must contain a valid email" } }, "subject": { "required": { "value": false, "message": "This field is required" } }, "message": { "required": { "value": true, "message": "This field is required" } } }, "debounce_time": 300 };
+                                    </script>
+                            
+                                    <script type="text/javascript" src="https://llmops.space/wp-content/plugins/fluentform/assets/js/form-submission.js" id="fluent-form-submission-js"></script>
+                                </div>
+                                <span class="square-vector is-br-vector is-white-black is-vector-style2 animated"></span>
                             </div>
                         </div>
                     </div>

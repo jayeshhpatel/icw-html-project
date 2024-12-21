@@ -449,6 +449,18 @@
     }
 }
 
+
+@keyframes bg_zoomOut {
+    0% {
+        background-size: 112% auto
+    }
+
+    100% {
+        background-size: 100% auto
+    }
+}
+
+
 // Hero 
 .hero-header {
     position: relative;
@@ -458,6 +470,7 @@
         padding: 0;
         .hero-slide {
             &.is-active {
+                background-size: 100% auto;
                 .hero-title.is-animate {
                     & > * {
                         @include opacity(1);
@@ -468,9 +481,11 @@
         }
     }
     .hero-slide {
-        background-size: cover;
+        // background-size: cover;
+        background-size: 112% auto;
         background-position: center center;
         padding: 150px 0;
+        transition: opacity 1200ms cubic-bezier(0.25, 1, 0.5, 1), background-size 2.5s ease-in !important;
         @media (max-width: 1200px) {            
             padding: 100px 0 150px;
         }
@@ -696,11 +711,12 @@
     background: linear-gradient(45deg, rgba(18,28,34,1) 0%, rgba(18,28,34,1) 44%, rgba(238,93,36,1) 100%);
     background-repeat: no-repeat !important;
     background-position: bottom center !important;
-    background-size: 100% 100% !important;
+    // background-size: 100% 100% !important;
     border: none;
     color: $white;
     padding: 130px 0;
-    position: relative;
+    position: relative;    
+    animation: bg_zoomOut 2.5s ease-in-out forwards;
     .container {
         position: relative;
         z-index: 2;
@@ -2560,6 +2576,9 @@
         padding: 30px 20px;
         margin-left: -12px;
         margin-right: -12px;
+    }
+    .section-title {
+        margin-bottom: 30px;
     }
 }
 
