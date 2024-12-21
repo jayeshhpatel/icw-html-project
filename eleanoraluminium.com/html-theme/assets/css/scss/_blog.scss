@@ -26,6 +26,9 @@
     @include flex-wrap(wrap);
     gap: 15px;
     margin-bottom: 15px;
+    @media (max-width:767px) {
+        margin-bottom: 10px;
+    } 
     .blog-meta-badge {
         color: $primary;
         font-size: 16px;
@@ -40,7 +43,7 @@
         text-decoration: none;
         // letter-spacing: 1.2px;
         @media (max-width:767px) {
-            font-size: 10px;
+            font-size: 14px;
         } 
         
     }
@@ -279,6 +282,9 @@
                 color: $dark;
                 font-weight: 600;
                 font-size: 16px;
+                @media (max-width: 767px) {                    
+                    font-size: 14px;
+                }
                 a {
                     color: $dark;
                     text-decoration: none;
@@ -297,7 +303,7 @@
     }
     margin: 0;
     @media (max-width: 767px) {
-        padding-bottom: 60px;
+        padding: 60px 0;
     }
     &::after {
         content: none;
@@ -370,12 +376,12 @@
         }
     }
     .post-image {
-        @include border-radius(16px);
+        @include border-radius(8px);
         @media (max-width: 767px) {
             margin-top: 15px;
         }
         img {
-            @include border-radius(16px);
+            @include border-radius(8px);
             aspect-ratio: 16 / 9;
             object-fit: cover;
             width: 100%;
@@ -508,6 +514,9 @@
             @include flex-direction(column);
             @include align-items(flex-start);
             border-bottom: none;
+            margin-top: 40px;
+            padding-top: 30px;
+            padding-bottom: 0px;
         }
         .written-by {
             font-size: 12px;
@@ -575,43 +584,48 @@
         @include flex-direction(column-reverse);
     }
     @media (max-width: 767px) { 
-        margin: 0px auto 40px;
+        margin: 0px auto 20px;
     }
     ul.nav-filter {
         @include flexbox();
+        @include align-items(center);
         @include flex-wrap(wrap);
-        gap: 8px;
+        gap: 25px;
         margin: 0;
         padding: 0px;
+        height: 44px;
         li {
             a {
-                border: 1px solid #C8D0D9;
-                @include border-radius(8px);
+                // border: 1px solid #C8D0D9;
+                // @include border-radius(8px);
                 color: #65717F;
-                padding: 10px 15px;
-                text-transform: uppercase;
+                // padding: 10px 15px;
+                text-transform: capitalize;
                 font-weight: 500;
-                font-size: 12px;
+                font-size: 16px;
                 display: block;
                 @include transition(0.2s, ease-in-out);
                 white-space: nowrap;
                 text-decoration: none;
-                height: 48px;
+                // height: 48px;
                 @include flexbox;
                 @include align-items(center);
                 &:hover,
                 &:focus {
-                    background-color: #090A0C;
-                    color: $white;
+                    // background-color: #090A0C;
+                    color: $dark;
+                    text-decoration: underline;
                 }
             }
             a.active {
-                background: #090A0C;
-                color: #ffffff;
+                // background: #090A0C;
+                color: $dark;
+                text-decoration: underline;
             }
             &.active > a {
-                background: #090A0C;
-                color: #ffffff;
+                // background: #090A0C;
+                color: $dark;
+                text-decoration: underline;
             }
         }
         @media (max-width: 992px) {
@@ -624,14 +638,14 @@
             padding-bottom: 10px;
         }
         @media (max-width: 767px) {
-            margin-left: -20px;
-            margin-right: -20px;
+            margin-left: -12px;
+            margin-right: -12px;
             li {
                 &:first-child {
-                    padding-left: 20px;
+                    padding-left: 12px;
                 }
                 &:last-child {
-                    padding-right: 20px;
+                    padding-right: 12px;
                 }
             }
         }
@@ -688,14 +702,14 @@
 
 .post-search {
     position: relative;
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     font-size: 0;
     cursor: pointer;
     background-color: #F7F8F9;
     @include flexbox();
     @include transition(0.3s, ease-in-out);
-    @include border-radius(8px);
+    @include border-radius(0);
     overflow: hidden;
     @media (max-width: 992px) {
         width: 100%;
@@ -703,12 +717,12 @@
     }
     input[type='search'] {        
         border: 1px solid #C8D0D9;
-        width: 48px;
-        height: 48px;
+        width: 44px;
+        height: 44px;
         cursor: pointer;
         color: $dark;
         font-size: 14px;
-        @include border-radius(8px);
+        @include border-radius(0);
         &::-webkit-search-decoration,
         &::-webkit-search-cancel-button,
         &::-webkit-search-results-button,
@@ -728,13 +742,13 @@
         position: absolute;
         right: 0px;
         top: 0px;
-        width: 48px;
-        height: 48px;
+        width: 44px;
+        height: 44px;
         display: none;
         z-index: -1;
         border: 1px solid #C8D0D9;
         background-color: #F7F8F9;
-        @include border-radius(8px);
+        @include border-radius(0);
 
         .icw-loading {
             margin-top: 15px;
@@ -753,11 +767,11 @@
         position: absolute;
         right: 0;
         top: 0;
-        width: 48px;
-        height: 48px;
+        width: 44px;
+        height: 44px;
         background: #F7F8F9;
         cursor: pointer;
-        @include border-radius(8px);
+        @include border-radius(0);
         outline: none;
         @include transition(0.3s, ease-in-out);
         padding: 0;
