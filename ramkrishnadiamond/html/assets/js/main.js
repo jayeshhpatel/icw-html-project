@@ -141,6 +141,14 @@ jQuery(document).ready(function($) {
     }
 });
 
+/* WOW Animation - Init */
+try {
+    new WOW().init();
+} catch (e) {
+    //
+};
+
+
 // Step Progress Section
 if ($('.progress-section').length) {
     updateProgressBars();
