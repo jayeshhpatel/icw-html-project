@@ -276,3 +276,36 @@ if(jQuery('.square-vector').length) {
         });
     }
 }
+
+// Video Player
+if ($('.play-iframe').length){
+    $('.play-iframe').click(function(ev){	
+        videourl = $(this).data('videosrc')+"?api=1&autoplay=1&muted=1&rel=0&enablejsapi=1";
+        if($(this).data('ext') == 'mp4'){
+            video = '<div class="video-wrap ratio ratio-16x9"><video class="embed-responsive-item" controls autoplay controlsList="nodownload" oncontextmenu="return false;"><source src="'+videourl+'" type="video/mp4"></video></div>';
+        } else {
+            video = '<div class="video-wrap ratio ratio-16x9"><iframe class="embed-responsive-item play-in_iframe" src="'+videourl+'" controls="0" scrolling="no" autoplay="false" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
+        }
+        
+        $(this).parents('.play-video-inline').html(video);
+        ev.preventDefault();
+    });
+}
+
+if ($('.is-play-icon').length){
+    $('.video-player-block').each(function() {
+        var $videoBlock = $(this);
+        var $video = $videoBlock.find('video');
+        var $playIcon = $videoBlock.find('.is-play-icon');
+
+        $playIcon.click(function() {
+            if ($video.get(0).paused) {
+                $video.get(0).play();
+                $playIcon.hide();
+            } else {
+                $video.get(0).pause();
+                $playIcon.show();
+            }
+        });
+    });
+}
