@@ -110,15 +110,16 @@ jQuery(document).ready(function($) {
             } else {
                 jQuery('.icw-progress-goto').removeClass('active-progress');
             }
-            let targetDiv = $('.progress-content-block'); // Replace with your target div class
-            let offsetTop = targetDiv.offset().top;
-            let scrollPosition = $(window).scrollTop();
+            if ($('.progress-section').length) {
+                let targetDiv = $('.progress-content-block'); // Replace with your target div class
+                let offsetTop = targetDiv.offset().top;
+                let scrollPosition = $(window).scrollTop();
 
-            if (scrollPosition >= offsetTop - 50) {
-                console.log('Div reached 100px from the top!');
-                targetDiv.addClass('is-icon-sticky');
-            } else {
-                targetDiv.removeClass('is-icon-sticky');
+                if (scrollPosition >= offsetTop - 50) {
+                    targetDiv.addClass('is-icon-sticky');
+                } else {
+                    targetDiv.removeClass('is-icon-sticky');
+                }
             }
         });
     
