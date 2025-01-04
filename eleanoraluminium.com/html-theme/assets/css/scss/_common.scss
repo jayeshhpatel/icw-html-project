@@ -2397,3 +2397,132 @@ body .with-video-play {
 		}
 	}
 }
+
+.sticky-action {
+	position: fixed;
+	top: 50%;
+	right: 20px;
+	z-index: 10;
+	@include border-radius(50px);
+	ul {
+		@include flexbox;
+		@include flex-direction(column);
+		background: $dark;
+		@include border-radius(50px);
+		li {
+			position: relative;
+			@include flexbox;
+			@include justify-content(center);
+			@include border-radius(50px);
+			margin: 2px;
+			.contact-info {
+				width: 40px;
+				height: 40px;
+				@include border-radius(50px);
+				flex: none;
+				padding: 10px;
+				@include flexbox;
+				@include align-items(center);
+				@include justify-content(center);
+				z-index: 2;
+				position: relative;
+				.icon {
+					width: 13px;
+					min-width: 13px;
+					background-size: contain;
+					filter: brightness(0) invert(1);
+					line-height: 0.7;
+					@include transition(0.2s, ease-in-out);
+				}
+			}
+			.hover-info {
+				position: absolute;
+				top: 0;
+				right: 0;
+				height: 40px;
+				min-width: 40px;
+				padding: 10px 40px 10px 15px;
+				@include flexbox;
+				@include align-items(center);
+				@include transform(scaleX(0));
+				transform-origin: right;
+				background: $primary;
+				white-space: nowrap;
+				visibility: hidden;
+				@include transition(0.2s, ease-in-out);				
+				@include border-radius(50px);
+				z-index: -1;
+				a {
+					font-size: 14px;
+					color: $white;
+					text-decoration: none;
+					&:hover, &:focus {
+						text-decoration: underline;
+					}
+				}
+			}
+			.icw-progress-goto {
+				position: relative;
+				right: unset;
+				bottom: unset;
+				height: 30px;
+				width: 30px;
+				&::after {
+					height: 30px;
+					width: 30px;			
+					@include flexbox;
+					@include align-items(center);
+					@include justify-content(center);
+					filter: brightness(0) invert(1);
+					@include transition(0.2s, ease-in-out);	
+				}
+				.progress-circle {
+					height: 30px;
+					width: 30px;
+					path {
+						stroke: $white;
+						@include transition(0.2s, ease-in-out);	
+					}
+				}
+			}
+			&.page-progress-info {
+				opacity: 0;
+				max-height: 0;
+				@include transition(0.3s, ease-in-out);
+				&.is-active {
+					opacity: 1;
+					max-height: 60px;
+				}
+				.icw-progress-goto {
+					margin-bottom: 10px;
+					margin-top: 10px;
+				}
+			}
+			&:hover {
+				.contact-info {
+					.icon {
+						// @include transform(scale(1.15));
+						// background-size: 27px;
+						// transform-origin: center;
+					}
+				}
+				.icw-progress-goto {
+					&::after {
+						filter: unset;
+					}
+					.progress-circle {
+						path {
+							stroke: $primary;
+						}
+					}
+				}
+				.hover-info {
+					z-index: 1;
+					right: 0;
+					visibility: visible;						
+					@include transform(scaleX(1));
+				}
+			}
+		}
+	}
+}

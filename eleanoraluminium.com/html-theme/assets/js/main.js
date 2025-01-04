@@ -97,8 +97,14 @@ jQuery(document).ready(function($) {
         jQuery(window).on('scroll', function() {
             if(jQuery(this).scrollTop() > offset) {
                 jQuery('.icw-progress-goto').addClass('active-progress');
+                if(jQuery('.icw-progress-goto').parent('li').length) {
+                    jQuery('.icw-progress-goto').parent('li').addClass('is-active');
+                }
             } else {
                 jQuery('.icw-progress-goto').removeClass('active-progress');
+                if(jQuery('.icw-progress-goto').parent('li').length) {
+                    jQuery('.icw-progress-goto').parent('li').removeClass('is-active');
+                }
             }
         });
     
