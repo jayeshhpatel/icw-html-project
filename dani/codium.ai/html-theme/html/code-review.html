@@ -1,0 +1,1346 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <meta name="theme-color" content="#0f8ed6">
+    <meta charset="utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name='robots' content='noindex, nofollow' />
+    <title>Codium (now Qodo) vs. ChatGPT 4: What&#039;s the Difference? | Qodo</title>
+    <meta name="description" content="An AI code review is similar to a traditional code review." />
+    
+    <link rel='stylesheet' href='assets/css/style.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='assets/lib/swiperjs/swiper-bundle.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='assets/lib/glightbox/glightbox.css' type='text/css' media='all' />
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    
+    <style>
+        @font-face {
+            font-family: "CentraNo1";
+            font-weight: 400;
+            font-display: swap;
+            font-fallback: Serif;
+            src: url("/wp-content/themes/codium/assets/css/fonts/CentraNo1-Book.woff2") format("woff2"),
+                url("/wp-content/themes/codium/assets/css/fonts/CentraNo1-Book.woff") format("woff"),
+                url("/wp-content/themes/codium/assets/css/fonts/CentraNo1-Book.eot?#iefix") format("embedded-opentype");
+        }
+
+        @font-face {
+            font-family: "CentraNo1";
+            font-weight: 700;
+            font-display: swap;
+            font-fallback: Serif;
+            src: url("/wp-content/themes/codium/assets/css/fonts/CentraNo1-Bold.woff2") format("woff2"),
+                url("/wp-content/themes/codium/assets/css/fonts/CentraNo1-Bold.woff") format("woff"),
+                url("/wp-content/themes/codium/assets/css/fonts/CentraNo1-Bold.eot?#iefix") format("embedded-opentype");
+        }
+    </style>
+    <link rel="icon" href="https://www.qodo.ai/wp-content/uploads/2024/09/favicon.png" sizes="32x32" />
+    <link rel="icon" href="https://www.qodo.ai/wp-content/uploads/2024/09/favicon.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="https://www.qodo.ai/wp-content/uploads/2024/09/favicon.png" />
+    <meta name="msapplication-TileImage" content="https://www.qodo.ai/wp-content/uploads/2024/09/favicon.png" />
+</head>
+
+<body>
+
+    <div class="popup-overlay"></div>
+    <header id="site-header" class="site-header main-navigation nav-down">
+        <div class="header-note" style="display: block;">
+            <div class="container">
+                <div class="note-info d-inline-flex justify-content-center">
+                    <div class="note-text">
+                        <div style="text-underline-offset:3px">We are now Qodo (pronounced koh-doh), <a href="https://www.qodo.ai/blog/introducing-qodo-a-new-name-the-same-commitment-to-quality/" style="text-decoration: underline;text-underline-offset: 4px;">formerly Codium</a>.
+                        </div>
+                        <style>
+                            @media (max-width: 767px) {
+                                body .header-note {
+                                    padding: 8px 0;
+                                }
+
+                                body .header-note .note-info {
+                                    font-size: 14px;
+                                }
+                            }
+
+                            @media (max-width: 370px) {
+                                body .header-note {
+                                    padding: 8px 0;
+                                }
+
+                                body .header-note .note-info {
+                                    font-size: 12px !important;
+                                    letter-spacing: -0.04rem;
+                                }
+                            }
+
+                            .header-note {
+                                background: #6347ff !important;
+                            }
+                        </style>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container container-100">
+            <div class="site-header--wrapper">
+                <div class="site-header--menu">
+                    <div class="header-flex">
+                        <div class="site-header--menu-logo">
+                            <div class="image-wrapper">
+                                <a href="https://www.qodo.ai/" rel="home" aria-label="qodo">
+                                    <svg width="116" height="56" viewBox="0 0 116 56" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_13837_52635)">
+                                            <path
+                                                d="M46.3153 28.5714C41.6199 28.5714 37.7999 24.7514 37.7999 20.056C37.7999 15.3606 41.6199 11.5406 46.3153 11.5406C51.0107 11.5406 54.8306 15.3606 54.8306 20.056C54.8306 24.7514 51.0107 28.5714 46.3153 28.5714ZM46.3153 15.1545C43.6126 15.1545 41.4137 17.3533 41.4137 20.056C41.4137 22.7587 43.6126 24.9575 46.3153 24.9575C49.018 24.9575 51.2168 22.7587 51.2168 20.056C51.2168 17.3533 49.018 15.1545 46.3153 15.1545Z"
+                                                fill="#7968FA" />
+                                            <path
+                                                d="M66.6671 28.5714C61.9717 28.5714 58.1517 24.7514 58.1517 20.056C58.1517 15.3606 61.9717 11.5406 66.6671 11.5406C71.3625 11.5406 75.1824 15.3606 75.1824 20.056C75.1824 24.7514 71.3625 28.5714 66.6671 28.5714ZM66.6671 15.1545C63.9644 15.1545 61.7655 17.3533 61.7655 20.056C61.7655 22.7587 63.9644 24.9575 66.6671 24.9575C69.3698 24.9575 71.5686 22.7587 71.5686 20.056C71.5686 17.3533 69.3698 15.1545 66.6671 15.1545Z"
+                                                fill="#7968FA" />
+                                            <path
+                                                d="M87.0189 28.5714C82.3235 28.5714 78.5036 24.7514 78.5036 20.056C78.5036 15.3606 82.3235 11.5406 87.0189 11.5406C91.7144 11.5406 95.5343 15.3606 95.5343 20.056C95.5343 24.7514 91.7144 28.5714 87.0189 28.5714ZM87.0189 15.1545C84.3162 15.1545 82.1174 17.3533 82.1174 20.056C82.1174 22.7587 84.3162 24.9575 87.0189 24.9575C89.7217 24.9575 91.9205 22.7587 91.9205 20.056C91.9205 17.3533 89.7217 15.1545 87.0189 15.1545Z"
+                                                fill="#7968FA" />
+                                            <path
+                                                d="M107.373 28.5714C102.678 28.5714 98.858 24.7514 98.858 20.056C98.858 15.3606 102.678 11.5406 107.373 11.5406C112.069 11.5406 115.889 15.3606 115.889 20.056C115.889 24.7514 112.069 28.5714 107.373 28.5714ZM107.373 15.1545C104.671 15.1545 102.472 17.3533 102.472 20.056C102.472 22.7587 104.671 24.9575 107.373 24.9575C110.076 24.9575 112.275 22.7587 112.275 20.056C112.275 17.3533 110.076 15.1545 107.373 15.1545Z"
+                                                fill="#7968FA" />
+                                            <path d="M54.8306 9.80499H51.2168V36H54.8306V9.80499Z" fill="#7968FA" />
+                                            <path d="M95.5343 4H91.9205V30.195H95.5343V4Z" fill="#7968FA" />
+                                            <path
+                                                d="M27.9357 20.0585C27.9357 25.8152 26.1263 30.4826 23.8918 30.4826C22.9757 30.4826 22.1384 29.6962 21.4538 28.3678C23.1894 26.4692 24.3092 23.456 24.3092 20.0611C24.3092 16.6661 23.1894 13.6453 21.4538 11.7468C22.1358 10.4183 22.9757 9.63449 23.8918 9.63449C26.1263 9.63449 27.9357 14.2994 27.9357 20.0611"
+                                                fill="#5AE3AE" />
+                                            <path
+                                                d="M24.3118 20.0611C24.3118 23.4586 23.192 26.4718 21.4538 28.3677C20.4842 26.4692 19.8556 23.456 19.8556 20.0611C19.8556 16.6661 20.4842 13.6453 21.4538 11.7468C23.192 13.6453 24.3118 16.6636 24.3118 20.0611Z"
+                                                fill="#7968FA" />
+                                            <path
+                                                d="M14.0938 29.5155C12.8239 30.1314 11.4166 30.48 9.92524 30.48C4.44345 30.48 0 25.8126 0 20.056C0 14.2993 4.44345 9.62939 9.92524 9.62939C11.4166 9.62939 12.8239 9.97551 14.0938 10.5939C11.6278 12.2405 9.91252 15.8594 9.91252 20.0585C9.91252 24.2577 11.6253 27.8715 14.0938 29.5181"
+                                                fill="#5AE3AE" />
+                                            <path
+                                                d="M19.8556 20.0611C19.8556 24.2551 17.4964 27.874 14.0913 29.5206C11.6253 27.874 9.90997 24.2551 9.90997 20.0611C9.90997 15.867 11.6227 12.2456 14.0913 10.5965C17.4939 12.2481 19.8556 15.8619 19.8556 20.0611Z"
+                                                fill="#7968FA" />
+                                            <path
+                                                d="M21.4564 28.3652C20.2526 29.6937 18.7486 30.48 17.1147 30.48C16.0357 30.48 15.01 30.1365 14.0939 29.5155C17.4964 27.8664 19.8581 24.2475 19.8581 20.056C19.8581 23.4535 20.4867 26.4667 21.4564 28.3627"
+                                                fill="#5AE3AE" />
+                                            <path
+                                                d="M21.4564 11.7442C20.4867 13.6428 19.8581 16.6611 19.8581 20.0585C19.8581 15.8594 17.499 12.2456 14.0939 10.5939C15.01 9.97043 16.0357 9.62686 17.1147 9.62686C18.7511 9.62686 20.2526 10.4132 21.4564 11.7417"
+                                                fill="#5AE3AE" />
+                                            <path
+                                                d="M1.63987 53.8971H0.327311V43.5735H5.94626V44.7829H1.63987V47.9389H5.71029V49.1335H1.63987V53.8971ZM10.798 46.5674C11.3387 46.5674 11.8352 46.6657 12.2875 46.8623C12.7496 47.059 13.1478 47.3293 13.4821 47.6735C13.8164 48.0077 14.0769 48.401 14.2637 48.8533C14.4505 49.3056 14.5439 49.7922 14.5439 50.3133C14.5439 50.8344 14.4505 51.3211 14.2637 51.7734C14.0769 52.2256 13.8164 52.6238 13.4821 52.9679C13.1478 53.3022 12.7496 53.5677 12.2875 53.7643C11.8352 53.961 11.3387 54.0593 10.798 54.0593C10.2572 54.0593 9.75579 53.961 9.29369 53.7643C8.84142 53.5677 8.44814 53.3022 8.11386 52.9679C7.77957 52.6238 7.51902 52.2256 7.33222 51.7734C7.14541 51.3211 7.05201 50.8344 7.05201 50.3133C7.05201 49.7922 7.14541 49.3056 7.33222 48.8533C7.51902 48.401 7.77957 48.0077 8.11386 47.6735C8.44814 47.3293 8.84142 47.059 9.29369 46.8623C9.75579 46.6657 10.2572 46.5674 10.798 46.5674ZM10.798 47.7324C10.444 47.7324 10.1147 47.8013 9.80986 47.9389C9.51491 48.0667 9.25436 48.2486 9.02823 48.4846C8.81192 48.7206 8.63986 48.9958 8.51205 49.3105C8.39407 49.6251 8.33507 49.9594 8.33507 50.3133C8.33507 50.6673 8.39407 51.0016 8.51205 51.3162C8.63986 51.6308 8.81192 51.9061 9.02823 52.1421C9.25436 52.378 9.51491 52.5648 9.80986 52.7025C10.1147 52.8303 10.444 52.8942 10.798 52.8942C11.1519 52.8942 11.4764 52.8303 11.7713 52.7025C12.0761 52.5648 12.3367 52.378 12.553 52.1421C12.7791 51.9061 12.9512 51.6308 13.0692 51.3162C13.197 51.0016 13.2609 50.6673 13.2609 50.3133C13.2609 49.9594 13.197 49.6251 13.0692 49.3105C12.9512 48.9958 12.7791 48.7206 12.553 48.4846C12.3367 48.2486 12.0761 48.0667 11.7713 47.9389C11.4764 47.8013 11.1519 47.7324 10.798 47.7324ZM20.1283 47.9094C20.1087 47.9094 20.0792 47.9045 20.0398 47.8947C20.0103 47.8947 19.971 47.8947 19.9219 47.8947C19.8727 47.8848 19.8235 47.8799 19.7744 47.8799C19.1058 47.8799 18.5798 48.1208 18.1963 48.6026C17.8227 49.0843 17.6359 49.7136 17.6359 50.4903V53.8971H16.3824V46.7296H17.6212V47.9979C17.6998 47.7914 17.8129 47.6046 17.9604 47.4375C18.1177 47.2605 18.2947 47.113 18.4913 46.995C18.6879 46.8771 18.8993 46.7837 19.1255 46.7148C19.3516 46.646 19.5827 46.6116 19.8186 46.6116C19.8678 46.6116 19.9071 46.6165 19.9366 46.6263C19.9759 46.6263 20.0103 46.6263 20.0398 46.6263C20.0792 46.6362 20.1087 46.6411 20.1283 46.6411V47.9094ZM22.9651 53.8971H21.6968V46.7296H22.9504V47.7619C23.147 47.3883 23.4223 47.0983 23.7762 46.8918C24.1302 46.6755 24.5579 46.5674 25.0593 46.5674C25.5902 46.5674 26.0425 46.6903 26.4161 46.9361C26.7996 47.1819 27.0994 47.526 27.3157 47.9684C27.4042 47.8209 27.5173 47.6636 27.6549 47.4965C27.7926 47.3293 27.9597 47.1769 28.1564 47.0393C28.3628 46.9016 28.5939 46.7886 28.8495 46.7001C29.115 46.6116 29.4198 46.5674 29.7639 46.5674C30.5996 46.5674 31.2485 46.8377 31.7106 47.3785C32.1727 47.9192 32.4038 48.6517 32.4038 49.5759V53.8971H31.1354V49.7971C31.1354 49.1581 30.9978 48.6566 30.7225 48.2929C30.457 47.9192 30.0539 47.7324 29.5132 47.7324C28.9528 47.7324 28.5054 47.9487 28.1711 48.3813C27.8467 48.814 27.6844 49.399 27.6844 50.1363V53.8971H26.4161V49.8266C26.4161 49.1777 26.2785 48.6665 26.0032 48.2929C25.7279 47.9192 25.3248 47.7324 24.7938 47.7324C24.2334 47.7324 23.7861 47.9487 23.4518 48.3813C23.1273 48.814 22.9651 49.399 22.9651 50.1363V53.8971ZM40.6759 53.1449C40.2728 53.43 39.8353 53.6562 39.3634 53.8233C38.8915 53.9806 38.4048 54.0593 37.9033 54.0593C37.3331 54.0593 36.8169 53.9659 36.3548 53.7791C35.8927 53.5824 35.4945 53.317 35.1602 52.9827C34.8358 52.6386 34.5851 52.2404 34.4081 51.7881C34.2311 51.3358 34.1426 50.8442 34.1426 50.3133C34.1426 49.7824 34.2311 49.2908 34.4081 48.8385C34.5851 48.3764 34.8259 47.9782 35.1307 47.644C35.4454 47.3097 35.819 47.0491 36.2516 46.8623C36.6842 46.6657 37.161 46.5674 37.6821 46.5674C38.1836 46.5674 38.6407 46.6657 39.0537 46.8623C39.4666 47.0491 39.8206 47.3097 40.1155 47.644C40.4203 47.9782 40.6514 48.3715 40.8087 48.8238C40.9758 49.2662 41.0594 49.7431 41.0594 50.2543C41.0594 50.333 41.0545 50.4018 41.0446 50.4608C41.0446 50.51 41.0446 50.5542 41.0446 50.5935C41.0348 50.6329 41.0299 50.6722 41.0299 50.7115H35.4109C35.4404 51.0065 35.5191 51.2916 35.6469 51.5669C35.7846 51.8324 35.9615 52.0634 36.1778 52.26C36.404 52.4567 36.6694 52.614 36.9742 52.732C37.279 52.85 37.6182 52.909 37.9918 52.909C38.9062 52.909 39.8009 52.5304 40.6759 51.7734V53.1449ZM39.7763 49.6644C39.7468 49.3793 39.6731 49.1187 39.5551 48.8828C39.447 48.637 39.2995 48.4256 39.1127 48.2486C38.9357 48.0716 38.7194 47.934 38.4638 47.8357C38.218 47.7275 37.9476 47.6735 37.6526 47.6735C37.3577 47.6735 37.0775 47.7324 36.812 47.8504C36.5564 47.9684 36.3302 48.1208 36.1336 48.3076C35.937 48.4944 35.7747 48.7058 35.6469 48.9418C35.5289 49.1777 35.4601 49.4186 35.4404 49.6644H39.7763ZM46.5708 47.9094C46.5512 47.9094 46.5217 47.9045 46.4824 47.8947C46.4529 47.8947 46.4135 47.8947 46.3644 47.8947C46.3152 47.8848 46.2661 47.8799 46.2169 47.8799C45.5483 47.8799 45.0223 48.1208 44.6389 48.6026C44.2653 49.0843 44.0784 49.7136 44.0784 50.4903V53.8971H42.8249V46.7296H44.0637V47.9979C44.1424 47.7914 44.2554 47.6046 44.4029 47.4375C44.5602 47.2605 44.7372 47.113 44.9338 46.995C45.1305 46.8771 45.3419 46.7837 45.568 46.7148C45.7941 46.646 46.0252 46.6116 46.2611 46.6116C46.3103 46.6116 46.3496 46.6165 46.3791 46.6263C46.4184 46.6263 46.4529 46.6263 46.4824 46.6263C46.5217 46.6362 46.5512 46.6411 46.5708 46.6411V47.9094ZM49.4076 43.5735V53.8971H48.1393V43.5735H49.4076ZM54.438 54.9884C54.1136 55.7651 53.7744 56.3157 53.4204 56.6402C53.0665 56.9745 52.6191 57.1416 52.0784 57.1416C51.7834 57.1416 51.5229 57.0924 51.2967 56.9941V55.8733C51.3754 55.9028 51.4737 55.9274 51.5917 55.947C51.7097 55.9765 51.8375 55.9913 51.9751 55.9913C52.2603 55.9913 52.4962 55.8979 52.683 55.7111C52.8797 55.5242 53.0763 55.1998 53.273 54.7377L53.7006 53.7053L50.8543 46.7296H52.2111L54.3643 52.26L56.5765 46.7296H57.8891L54.438 54.9884ZM62.5319 48.7353C62.5319 47.9881 62.6646 47.29 62.9301 46.6411C63.2054 45.9922 63.579 45.4269 64.0509 44.9451C64.5327 44.4633 65.0931 44.0848 65.7322 43.8095C66.3811 43.5342 67.0742 43.3966 67.8116 43.3966C68.8931 43.3966 69.9009 43.7063 70.8349 44.3257V45.7857C69.8419 45.0385 68.8243 44.6649 67.7821 44.6649C67.2315 44.6649 66.7203 44.773 66.2483 44.9893C65.7764 45.1958 65.3635 45.4809 65.0095 45.8447C64.6654 46.2085 64.3901 46.6411 64.1836 47.1425C63.987 47.6341 63.8887 48.165 63.8887 48.7353C63.8887 49.2957 63.987 49.8266 64.1836 50.3281C64.3901 50.8197 64.6654 51.2474 65.0095 51.6111C65.3635 51.9749 65.7764 52.265 66.2483 52.4813C66.7203 52.6877 67.2315 52.791 67.7821 52.791C68.8243 52.791 69.8517 52.4272 70.8644 51.6996V53.1597C69.9009 53.7594 68.8784 54.0593 67.7969 54.0593C67.0595 54.0593 66.3712 53.9216 65.7322 53.6463C65.0931 53.3711 64.5327 52.9974 64.0509 52.5255C63.579 52.0437 63.2054 51.4784 62.9301 50.8295C62.6646 50.1806 62.5319 49.4825 62.5319 48.7353ZM75.9969 46.5674C76.5377 46.5674 77.0342 46.6657 77.4865 46.8623C77.9486 47.059 78.3468 47.3293 78.6811 47.6735C79.0153 48.0077 79.2759 48.401 79.4627 48.8533C79.6495 49.3056 79.7429 49.7922 79.7429 50.3133C79.7429 50.8344 79.6495 51.3211 79.4627 51.7734C79.2759 52.2256 79.0153 52.6238 78.6811 52.9679C78.3468 53.3022 77.9486 53.5677 77.4865 53.7643C77.0342 53.961 76.5377 54.0593 75.9969 54.0593C75.4562 54.0593 74.9548 53.961 74.4927 53.7643C74.0404 53.5677 73.6471 53.3022 73.3128 52.9679C72.9785 52.6238 72.718 52.2256 72.5312 51.7734C72.3444 51.3211 72.251 50.8344 72.251 50.3133C72.251 49.7922 72.3444 49.3056 72.5312 48.8533C72.718 48.401 72.9785 48.0077 73.3128 47.6735C73.6471 47.3293 74.0404 47.059 74.4927 46.8623C74.9548 46.6657 75.4562 46.5674 75.9969 46.5674ZM75.9969 47.7324C75.643 47.7324 75.3136 47.8013 75.0088 47.9389C74.7139 48.0667 74.4533 48.2486 74.2272 48.4846C74.0109 48.7206 73.8388 48.9958 73.711 49.3105C73.593 49.6251 73.534 49.9594 73.534 50.3133C73.534 50.6673 73.593 51.0016 73.711 51.3162C73.8388 51.6308 74.0109 51.9061 74.2272 52.1421C74.4533 52.378 74.7139 52.5648 75.0088 52.7025C75.3136 52.8303 75.643 52.8942 75.9969 52.8942C76.3509 52.8942 76.6753 52.8303 76.9703 52.7025C77.2751 52.5648 77.5356 52.378 77.7519 52.1421C77.9781 51.9061 78.1501 51.6308 78.2681 51.3162C78.3959 51.0016 78.4598 50.6673 78.4598 50.3133C78.4598 49.9594 78.3959 49.6251 78.2681 49.3105C78.1501 48.9958 77.9781 48.7206 77.7519 48.4846C77.5356 48.2486 77.2751 48.0667 76.9703 47.9389C76.6753 47.8013 76.3509 47.7324 75.9969 47.7324ZM88.5259 43.5735V53.8971H87.2723V52.7615C87.0167 53.1548 86.6627 53.4694 86.2104 53.7053C85.7582 53.9413 85.2666 54.0593 84.7356 54.0593C84.2244 54.0593 83.7475 53.9659 83.3051 53.7791C82.8725 53.5824 82.494 53.317 82.1695 52.9827C81.8451 52.6484 81.5894 52.2551 81.4026 51.8029C81.2256 51.3408 81.1372 50.8442 81.1372 50.3133C81.1372 49.7824 81.2256 49.2908 81.4026 48.8385C81.5894 48.3863 81.8451 47.993 82.1695 47.6587C82.494 47.3146 82.8725 47.0491 83.3051 46.8623C83.7475 46.6657 84.2244 46.5674 84.7356 46.5674C85.2666 46.5674 85.7533 46.6755 86.1957 46.8918C86.648 47.1081 87.0068 47.4129 87.2723 47.8062V43.5735H88.5259ZM87.346 50.3133C87.346 49.9495 87.2821 49.6103 87.1543 49.2957C87.0363 48.9811 86.8643 48.7107 86.6381 48.4846C86.4218 48.2486 86.1613 48.0667 85.8565 47.9389C85.5615 47.8013 85.2371 47.7324 84.8831 47.7324C84.5292 47.7324 84.1998 47.8013 83.895 47.9389C83.6001 48.0667 83.3395 48.2486 83.1134 48.4846C82.8971 48.7107 82.725 48.9811 82.5972 49.2957C82.4792 49.6103 82.4202 49.9495 82.4202 50.3133C82.4202 50.6771 82.4792 51.0163 82.5972 51.3309C82.725 51.6456 82.8971 51.9208 83.1134 52.1568C83.3395 52.3829 83.6001 52.5648 83.895 52.7025C84.1998 52.8303 84.5292 52.8942 84.8831 52.8942C85.2371 52.8942 85.5615 52.8303 85.8565 52.7025C86.1613 52.5648 86.4218 52.3829 86.6381 52.1568C86.8643 51.9208 87.0363 51.6456 87.1543 51.3309C87.2821 51.0163 87.346 50.6771 87.346 50.3133ZM92.3747 44.6059C92.3747 44.8419 92.2911 45.0434 92.124 45.2106C91.9569 45.3777 91.7553 45.4613 91.5193 45.4613C91.2834 45.4613 91.0818 45.3777 90.9147 45.2106C90.7475 45.0434 90.664 44.8419 90.664 44.6059C90.664 44.3699 90.7475 44.1684 90.9147 44.0012C91.0818 43.8341 91.2834 43.7505 91.5193 43.7505C91.7553 43.7505 91.9569 43.8341 92.124 44.0012C92.2911 44.1684 92.3747 44.3699 92.3747 44.6059ZM92.1535 46.7296V53.8971H90.8852V46.7296H92.1535ZM99.5436 46.7296H100.812V53.8971H99.5436V52.8647C99.3174 53.2187 99.0176 53.5087 98.644 53.7348C98.2703 53.9511 97.8132 54.0593 97.2724 54.0593C96.358 54.0593 95.6501 53.7791 95.1487 53.2187C94.6571 52.6484 94.4113 51.8864 94.4113 50.9327V46.7296H95.6796V50.7853C95.6796 51.4342 95.8369 51.9454 96.1516 52.319C96.4662 52.6927 96.9283 52.8795 97.5379 52.8795C98.1474 52.8795 98.6341 52.6632 98.9979 52.2306C99.3617 51.7979 99.5436 51.2129 99.5436 50.4756V46.7296ZM104.655 53.8971H103.386V46.7296H104.64V47.7619C104.837 47.3883 105.112 47.0983 105.466 46.8918C105.82 46.6755 106.247 46.5674 106.749 46.5674C107.28 46.5674 107.732 46.6903 108.106 46.9361C108.489 47.1819 108.789 47.526 109.005 47.9684C109.094 47.8209 109.207 47.6636 109.344 47.4965C109.482 47.3293 109.649 47.1769 109.846 47.0393C110.052 46.9016 110.283 46.7886 110.539 46.7001C110.805 46.6116 111.109 46.5674 111.453 46.5674C112.289 46.5674 112.938 46.8377 113.4 47.3785C113.862 47.9192 114.093 48.6517 114.093 49.5759V53.8971H112.825V49.7971C112.825 49.1581 112.687 48.6566 112.412 48.2929C112.147 47.9192 111.743 47.7324 111.203 47.7324C110.642 47.7324 110.195 47.9487 109.861 48.3813C109.536 48.814 109.374 49.399 109.374 50.1363V53.8971H108.106V49.8266C108.106 49.1777 107.968 48.6665 107.693 48.2929C107.417 47.9192 107.014 47.7324 106.483 47.7324C105.923 47.7324 105.476 47.9487 105.141 48.3813C104.817 48.814 104.655 49.399 104.655 50.1363V53.8971Z"
+                                                fill="#7968FA" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_13837_52635">
+                                                <rect width="116" height="56" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+
+                                </a>
+                            </div>
+                        </div>
+                        <nav class="site-header--menu-nav desktop">
+                            <div class="menu-header-container">
+                                <ul id="main-menu" class="main-menu">
+                                    <li id="menu-item-2118"
+                                        class="sub-menu-wider menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2118">
+                                        <a rel="PRODUCTS" href="https://www.qodo.ai/products/ide-plugin/">Products</a>
+                                        <ul class="sub-menu">
+                                            <li id="menu-item-2473"
+                                                class="menu-item-btn menu-item menu-item-type-post_type menu-item-object-page menu-item-2473">
+                                                <a href="https://www.qodo.ai/products/ide-plugin/"><span><img
+                                                            src="https://www.qodo.ai/wp-content/uploads/2023/05/ides.svg"
+                                                            alt="Qodo Gen: IDE Plugin" /> <span class="menu-name">Qodo
+                                                            Gen: IDE Plugin</span></span></a></li>
+                                            <li id="menu-item-5532"
+                                                class="menu-item-btn menu-item menu-item-type-custom menu-item-object-custom menu-item-5532">
+                                                <a href="/products/git-plugin/"><span><img
+                                                            src="https://www.qodo.ai/wp-content/uploads/2023/04/icon-team.svg"
+                                                            alt="Qodo Merge: Git Agent" /> <span class="menu-name">Qodo
+                                                            Merge: Git Agent</span></span></a></li>
+                                            <li id="menu-item-9625"
+                                                class="menu-item-btn menu-item menu-item-type-post_type menu-item-object-page menu-item-9625">
+                                                <a href="https://www.qodo.ai/products/qodo-cover/"><span><img
+                                                            src="https://www.qodo.ai/wp-content/uploads/2024/05/icon-cover-agent-new.svg"
+                                                            alt="Qodo Cover: CLI Agent " /> <span class="menu-name">Qodo
+                                                            Cover: CLI Agent </span></span></a></li>
+                                            <li id="menu-item-8823"
+                                                class="menu-item-btn menu-item menu-item-type-custom menu-item-object-custom menu-item-8823">
+                                                <a href="/products/alphacodium/"><span><img
+                                                            src="https://www.qodo.ai/wp-content/uploads/2023/09/icon-alpha-codium.svg"
+                                                            alt="AlphaCodium RESEARCH" /> <span
+                                                            class="menu-name">AlphaCodium <span
+                                                                class="coming-soon-label">RESEARCH</span></span></span></a>
+                                            </li>
+                                            <li id="menu-item-4069"
+                                                class="menu-item-label menu-item menu-item-type-post_type menu-item-object-page menu-item-4069">
+                                                <a href="https://www.qodo.ai/products/qodo-api/"><span><img
+                                                            src="https://www.qodo.ai/wp-content/uploads/2023/09/icon-code-agent.svg"
+                                                            alt="Qodo API CONTACT US" /> <span class="menu-name">Qodo
+                                                            API <span class="coming-soon-label">CONTACT
+                                                                US</span></span></span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li id="menu-item-3249"
+                                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3249">
+                                        <a href="https://www.qodo.ai/pricing/">Pricing</a></li>
+                                    <li id="menu-item-6577"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6577">
+                                        <a target="_blank" rel="noopener" href="https://docs.qodo.ai">Docs</a></li>
+                                    <li id="menu-item-134"
+                                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-134">
+                                        <a href="https://www.qodo.ai/blog/">Blog</a></li>
+                                    <li id="menu-item-17"
+                                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-17">
+                                        <a rel="ABOUT US" href="https://www.qodo.ai/about/">About</a>
+                                        <ul class="sub-menu">
+                                            <li id="menu-item-1232"
+                                                class="hash-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-1232">
+                                                <a href="/about/#our-mission"><span><img
+                                                            src="https://www.qodo.ai/wp-content/uploads/2023/04/icon-mission.svg"
+                                                            alt="Our Mission" /> <span class="menu-name">Our
+                                                            Mission</span></span></a></li>
+                                            <li id="menu-item-1568"
+                                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1568">
+                                                <a href="https://www.qodo.ai/install/"><span><img
+                                                            src="https://www.qodo.ai/wp-content/uploads/2023/05/ides.svg"
+                                                            alt="IDE Integrations" /> <span class="menu-name">IDE
+                                                            Integrations</span></span></a></li>
+                                            <li id="menu-item-1233"
+                                                class="hash-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-1233">
+                                                <a href="/about/#about-team"><span><img
+                                                            src="https://www.qodo.ai/wp-content/uploads/2023/04/icon-team.svg"
+                                                            alt="Meet the Team" /> <span class="menu-name">Meet the
+                                                            Team</span></span></a></li>
+                                            <li id="menu-item-1234"
+                                                class="hash-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-1234">
+                                                <a href="/about/#backed-by"><span><img
+                                                            src="https://www.qodo.ai/wp-content/uploads/2023/04/icon-backed-by.svg"
+                                                            alt="Backed by" /> <span class="menu-name">Backed
+                                                            by</span></span></a></li>
+                                            <li id="menu-item-2224"
+                                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2224">
+                                                <a href="https://www.qodo.ai/resources/"><span><img
+                                                            src="https://www.qodo.ai/wp-content/uploads/2023/07/icon-code.svg"
+                                                            alt="Useful Resources" /> <span class="menu-name">Useful
+                                                            Resources</span></span></a></li>
+                                            <li id="menu-item-1235"
+                                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1235">
+                                                <a href="https://www.qodo.ai/careers/"><span><img
+                                                            src="https://www.qodo.ai/wp-content/uploads/2023/04/icon-careers.svg"
+                                                            alt="Careers" /> <span
+                                                            class="menu-name">Careers</span></span></a></li>
+                                            <li id="menu-item-7688"
+                                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7688">
+                                                <a href="https://www.qodo.ai/contact/"><span><img
+                                                            src="https://www.qodo.ai/wp-content/uploads/2024/07/icon-contact-us.svg"
+                                                            alt="Contact Us" /> <span class="menu-name">Contact
+                                                            Us</span></span></a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="site-header--menu-cta-right">
+                        <div class="user-profile-menu menu-item-has-children ajax-codium-user-data"
+                            style="display:none"><button type="button" class="profile-name btn btn-link">ACCOUNT<span
+                                    class="arrow"></span></button></div>
+                        <div class="ajax-codium-user-data-logout"><a href="https://app.qodo.ai/" target="_blank"
+                                class="btn btn-link text-uppercase"
+                                data-info="Failed to decode codium_user cookie data.">LOG IN</a></div><a
+                            href="/book-a-demo" class="btn btn-grey text-uppercase desktop">BOOK A DEMO</a><a
+                            href="/get-started" class="btn btn-green text-uppercase icw-h-xs">GET STARTED</a>
+                    </div>
+                    <div class="mobile-menu-lines mobile-menu-trigger mobile">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main id="main" role="main">
+        <section class="cms-page-header themebg">
+            <div class="container">
+                <div class="section-title text-center">
+                    <h1 class="gradient-text">Codium (now Qodo) vs. ChatGPT 4</h1>
+                    <div class="sort-info">See the difference between Codium (now Qodo) and ChatGPT for generating
+                        unit-tests</div>
+                </div>
+            </div>
+        </section>
+        <!-- <section class="main-sections"> -->
+        <section class="main-section main-full-section nobg">
+            <div class="container">
+                <div class="campare-table-section">
+                    <div class="table-block">
+                        <div class="table-header">
+                            <div class="col-parameter">Parameter</div>
+                            <div class="col-inner-grid">
+                                <div class="col-codium">
+                                    <span class="img"><em class="logo-codium"></em><small>Qodo Gen</small></span>
+                                </div>
+                                <div class="col-chatgpt">
+                                    <span class="img"><em class="logo-chatgpt"></em></span>
+                                </div>
+                                <div class="col-notes">Notes</div>
+                            </div>
+                        </div>
+                        <div class="table-body">
+                            <div class="table-row table-row-first-child">
+                                <div class="col-parameter active">
+                                    <span>Free-text chat interface</span>
+                                    <button type="button" class="collapse-action is-tr-toggle"><em
+                                            class="icon-arrow"></em></button>
+                                </div>
+                                <div class="col-inner-grid">
+                                    <div class="col-codium">
+                                        <span class="img"><em class="logo-codium"></em><small>Qodo Gen</small></span>
+                                        <span class="info"><em class="icon-check"></em></span>
+                                    </div>
+                                    <div class="col-chatgpt">
+                                        <span class="img"><em class="logo-chatgpt"></em></span>
+                                        <span class="info"><em class="icon-check"></em></span>
+                                    </div>
+                                    <div class="col-notes">ChatGPT’s prominent chat interface is enabled within Codium’s
+                                        (now Qodo) plugin to allow natural language interactions with the overall test
+                                        suite as well as each test separately.</div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-parameter">
+                                    <span>Testing-specific UI/UX</span>
+                                    <button type="button" class="collapse-action is-tr-toggle"><em
+                                            class="icon-arrow"></em></button>
+                                </div>
+                                <div class="col-inner-grid">
+                                    <div class="col-codium">
+                                        <span class="img"><em class="logo-codium"></em><small>Qodo Gen</small></span>
+                                        <span class="info"><em class="icon-check"></em></span>
+                                    </div>
+                                    <div class="col-chatgpt">
+                                        <span class="img"><em class="logo-chatgpt"></em></span>
+                                        <span class="info"><em class="icon-close"></em></span>
+                                    </div>
+                                    <div class="col-notes">Codium’s (now Qodo) proprietary Interface allows you to
+                                        easily manage and interact with individual tests and make automatic fixes to
+                                        your code.</div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-parameter">
+                                    <span>Supported IDEs</span>
+                                    <button type="button" class="collapse-action is-tr-toggle"><em
+                                            class="icon-arrow"></em></button>
+                                </div>
+                                <div class="col-inner-grid">
+                                    <div class="col-codium">
+                                        <span class="img"><em class="logo-codium"></em><small>Qodo Gen</small></span>
+                                        <span class="info text-green">VSCode, Jetbrains</span>
+                                    </div>
+                                    <div class="col-chatgpt">
+                                        <span class="img"><em class="logo-chatgpt"></em></span>
+                                        <span class="info">3rd Party</span>
+                                    </div>
+                                    <div class="col-notes">ChatGPT is enabled within IDEs using a non-official
+                                        third-party that imports ChatGPT's chat interface to your IDE but does not add
+                                        code context.</div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-parameter">
+                                    <span>Multiple calls/multiple functionalities in one call</span>
+                                    <button type="button" class="collapse-action is-tr-toggle"><em
+                                            class="icon-arrow"></em></button>
+                                </div>
+                                <div class="col-inner-grid">
+                                    <div class="col-codium">
+                                        <span class="img"><em class="logo-codium"></em><small>Qodo Gen</small></span>
+                                        <span class="info"><em class="icon-check"></em></span>
+                                    </div>
+                                    <div class="col-chatgpt">
+                                        <span class="img"><em class="logo-chatgpt"></em></span>
+                                        <span class="info"><em class="icon-close"></em></span>
+                                    </div>
+                                    <div class="col-notes">While ChatGPT can accommodate several requests in one prompt,
+                                        it is not equivalent to having multiple and chained structured calls to the
+                                        models. Codium (now Qodo) can handle these, which allows the output to be
+                                        consistent. It can also include multiple functionalities in a single click, such
+                                        as unit-test generation, documentation, and code suggestions.</div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-parameter">
+                                    <span>Fit for prompting novice</span>
+                                    <button type="button" class="collapse-action is-tr-toggle"><em
+                                            class="icon-arrow"></em></button>
+                                </div>
+                                <div class="col-inner-grid">
+                                    <div class="col-codium">
+                                        <span class="img"><em class="logo-codium"></em><small>Qodo Gen</small></span>
+                                        <span class="info"><em class="icon-check"></em></span>
+                                    </div>
+                                    <div class="col-chatgpt">
+                                        <span class="img"><em class="logo-chatgpt"></em></span>
+                                        <span class="info"><em class="icon-close"></em></span>
+                                    </div>
+                                    <div class="col-notes">Like most generative AI models, novice developers will find
+                                        it hard to write the right prompt to get structured and consistent output.
+                                        Codium’s (now Qodo) backend takes care of this, so you can get high-value
+                                        results from click one.</div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-parameter">
+                                    <span>Out-of-the-box naive sanity unit-tests</span>
+                                    <button type="button" class="collapse-action is-tr-toggle"><em
+                                            class="icon-arrow"></em></button>
+                                </div>
+                                <div class="col-inner-grid">
+                                    <div class="col-codium">
+                                        <span class="img"><em class="logo-codium"></em><small>Qodo Gen</small></span>
+                                        <span class="info"><em class="icon-check"></em></span>
+                                    </div>
+                                    <div class="col-chatgpt">
+                                        <span class="img"><em class="logo-chatgpt"></em></span>
+                                        <span class="info"><em class="icon-check"></em></span>
+                                    </div>
+                                    <div class="col-notes">Both Codium (now Qodo) and ChatGPT allow you to get naive
+                                        sanity tests right away</div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-parameter">
+                                    <span>High-quality unit tests that leverage code context</span>
+                                    <button type="button" class="collapse-action is-tr-toggle"><em
+                                            class="icon-arrow"></em></button>
+                                </div>
+                                <div class="col-inner-grid">
+                                    <div class="col-codium">
+                                        <span class="img"><em class="logo-codium"></em><small>Qodo Gen</small></span>
+                                        <span class="info"><em class="icon-check"></em></span>
+                                    </div>
+                                    <div class="col-chatgpt">
+                                        <span class="img"><em class="logo-chatgpt"></em></span>
+                                        <span class="info">Need to manually collect context</span>
+                                    </div>
+                                    <div class="col-notes">Including code context (i.e., including packages, called and
+                                        calling components, etc.) has a profound effect on the quality of results. While
+                                        ChatGPT allows you to paste the context, finding relevant code snippets and
+                                        pasting them to the chat is a complicated and tedious task. qodo does all that
+                                        for you behind the scenes.</div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-parameter">
+                                    <span>Testing best practices</span>
+                                    <button type="button" class="collapse-action is-tr-toggle"><em
+                                            class="icon-arrow"></em></button>
+                                </div>
+                                <div class="col-inner-grid">
+                                    <div class="col-codium">
+                                        <span class="img"><em class="logo-codium"></em><small>Qodo Gen</small></span>
+                                        <span class="info"><em class="icon-check"></em></span>
+                                    </div>
+                                    <div class="col-chatgpt">
+                                        <span class="img"><em class="logo-chatgpt"></em></span>
+                                        <span class="info"><em class="icon-close"></em></span>
+                                    </div>
+                                    <div class="col-notes">We embed testing experts' knowledge within our prompts so you
+                                        can get not only good tests but also the right tests, supporting mocking, and
+                                        numerous testing frameworks right out of the box.</div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-parameter">
+                                    <span>Running tests & Self-healing code</span>
+                                    <button type="button" class="collapse-action is-tr-toggle"><em
+                                            class="icon-arrow"></em></button>
+                                </div>
+                                <div class="col-inner-grid">
+                                    <div class="col-codium">
+                                        <span class="img"><em class="logo-codium"></em><small>Qodo Gen</small></span>
+                                        <span class="info"><em class="icon-check"></em></span>
+                                    </div>
+                                    <div class="col-chatgpt">
+                                        <span class="img"><em class="logo-chatgpt"></em></span>
+                                        <span class="info"><em class="icon-close"></em></span>
+                                    </div>
+                                    <div class="col-notes">With the unique ability to run generated tests within the IDE
+                                        plugin, qodo allows you to directly apply and review fixes to your original code
+                                        or your tests and apply code suggestions.</div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-parameter">
+                                    <span>Level of confidence</span>
+                                    <button type="button" class="collapse-action is-tr-toggle"><em
+                                            class="icon-arrow"></em></button>
+                                </div>
+                                <div class="col-inner-grid">
+                                    <div class="col-codium">
+                                        <span class="img"><em class="logo-codium"></em><small>Qodo Gen</small></span>
+                                        <span class="info"><em class="icon-check"></em></span>
+                                    </div>
+                                    <div class="col-chatgpt">
+                                        <span class="img"><em class="logo-chatgpt"></em></span>
+                                        <span class="info"><em class="icon-close"></em></span>
+                                    </div>
+                                    <div class="col-notes">Codium (now Qodo) maps the component’s behaviors and provides
+                                        a metric that evaluates how much of the overall behaviors are covered, providing
+                                        users with the feedback and confidence needed to move forward.</div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-parameter">
+                                    <span>Price</span>
+                                    <button type="button" class="collapse-action is-tr-toggle"><em
+                                            class="icon-arrow"></em></button>
+                                </div>
+                                <div class="col-inner-grid">
+                                    <div class="col-codium">
+                                        <span class="img"><em class="logo-codium"></em><small>Qodo Gen</small></span>
+                                        <span class="info text-green">Free</span>
+                                    </div>
+                                    <div class="col-chatgpt">
+                                        <span class="img"><em class="logo-chatgpt"></em></span>
+                                        <span class="info text-danger">Only ChatGPT plus plan at $20</span>
+                                    </div>
+                                    <div class="col-notes">Codium (now Qodo) is free and will remain free for end
+                                        developers</div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-parameter">
+                                    <span>On-Prem solution</span>
+                                    <button type="button" class="collapse-action is-tr-toggle"><em
+                                            class="icon-arrow"></em></button>
+                                </div>
+                                <div class="col-inner-grid">
+                                    <div class="col-codium">
+                                        <span class="img"><em class="logo-codium"></em><small>Qodo Gen</small></span>
+                                        <span class="info"><em class="icon-close"></em></span>
+                                    </div>
+                                    <div class="col-chatgpt">
+                                        <span class="img"><em class="logo-chatgpt"></em></span>
+                                        <span class="info"><em class="icon-close"></em></span>
+                                    </div>
+                                    <div class="col-notes">Currently, none of the solutions offer “On Premise”
+                                        deployment.</div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-parameter">
+                                    <span>Stated Security & Privacy Policies</span>
+                                    <button type="button" class="collapse-action is-tr-toggle"><em
+                                            class="icon-arrow"></em></button>
+                                </div>
+                                <div class="col-inner-grid">
+                                    <div class="col-codium">
+                                        <span class="img"><em class="logo-codium"></em><small>Qodo Gen</small></span>
+                                        <span class="info text-green">Opt-out for code snippet telemetry</span>
+                                    </div>
+                                    <div class="col-chatgpt">
+                                        <span class="img"><em class="logo-chatgpt"></em></span>
+                                        <span class="info text-green">Opt-out for code snippet telemetry</span>
+                                    </div>
+                                    <div class="col-notes">Both solutions allow you to opt out of keeping your data
+                                        and/or training models with that data.</div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-parameter">
+                                    <span>Supported languages</span>
+                                    <button type="button" class="collapse-action is-tr-toggle"><em
+                                            class="icon-arrow"></em></button>
+                                </div>
+                                <div class="col-inner-grid">
+                                    <div class="col-codium">
+                                        <span class="img"><em class="logo-codium"></em><small>Qodo Gen</small></span>
+                                        <span class="info text-green">Multiple</span>
+                                    </div>
+                                    <div class="col-chatgpt">
+                                        <span class="img"><em class="logo-chatgpt"></em></span>
+                                        <span class="info text-green">Multiple</span>
+                                    </div>
+                                    <div class="col-notes">While ChatGPT allows you to generate unit tests in multiple
+                                        languages, there is no support in code context and multiple calls and
+                                        functionalities, which can only be supported through a dedicated inside-IDE
+                                        developer tool.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </br>
+                    <p>As of 9/2023, the information in this comparison table is up-to-date to the best of our
+                        knowledge. However, the industry is rapidly evolving, and there may be updates that we have not
+                        yet captured. We strive for accuracy and fairness; if you have any updates or corrections, even
+                        if it shows a competitor in a more favorable light, we encourage you to share them with us at <a
+                            class="a-link" href="/cdn-cgi/l/email-protection#2754525757485553675648434809464e"><span
+                                class="__cf_email__"
+                                data-cfemail="4b383e3b3b24393f0b3a242f24652a22">[email&#160;protected]</span></a>.</p>
+                </div>
+                <script data-cfasync="false"
+                    src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+                <script>
+                    jQuery(document).ready(function () {
+                        jQuery(".is-tr-toggle").on("click", function () {
+                            jQuery(this).closest(".col-parameter").stop(true, true).toggleClass("active");
+                            jQuery(this).closest(".table-row").find(".col-inner-grid").stop(true, true).slideToggle();
+                        });
+                        if (jQuery(window).width() < 767) {
+                            console.log("1111");
+                            jQuery(".table-row:not(.table-row-first-child) .col-parameter").removeClass("active");
+                            jQuery(".table-row:not(.table-row-first-child) .col-inner-grid").hide();
+                        } else {
+                            jQuery(".table-row .col-parameter").removeClass("active");
+                            jQuery(".table-row .col-inner-grid").show();
+                        }
+                    });
+                    jQuery(window).resize(function () {
+                        if (jQuery(window).width() < 767) {
+                            jQuery(".table-row:not(.table-row-first-child) .col-parameter").removeClass("active");
+                            jQuery(".table-row:not(.table-row-first-child) .col-inner-grid").hide();
+                        } else {
+                            jQuery(".table-row .col-parameter").removeClass("active");
+                            jQuery(".table-row .col-inner-grid").show();
+                        }
+                    });
+                </script>
+            </div>
+        </section><!-- </section> -->
+    </main>
+    <footer id="site-footer" class="site-footer site-footer-light">
+        <div class="ellipse ">
+            <div class="overlay"></div>
+            <div class="ellipse-inner">
+                <div class="container">
+                    <div class="site-footer--grid">
+                        <div class="footer-menu1">
+                            <h3 class="footer-menu-title">Qodo</h3>
+                            <nav>
+                                <div class="menu-footer-codium-ai-container">
+                                    <ul id="menu-footer-codium-ai" class="footer-menu">
+                                        <li class="menu-item">
+                                            <a target="_blank" rel="noopener" href="https://discord.com/invite/SgSxuQ65GF">Community</a></li>
+                                        <li id="menu-item-2223"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2223">
+                                            <a href="https://www.qodo.ai/resources/">Useful Resources</a></li>
+                                        <li id="menu-item-3257"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3257">
+                                            <a href="https://www.qodo.ai/software-development-tips/">Developer’s
+                                                Tips</a></li>
+                                        <li id="menu-item-3158"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3158">
+                                            <a href="https://www.qodo.ai/developers-hub/">Developer’s Hub</a></li>
+                                        <li id="menu-item-2383"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-2218 current_page_item menu-item-2383">
+                                            <a href="https://www.qodo.ai/codiumai-vs-chatgpt-4/"
+                                                aria-current="page">Qodo vs. ChatGPT 4</a></li>
+                                        <li id="menu-item-3739"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3739">
+                                            <a href="https://www.qodo.ai/codiumai-vs-github-copilot/">Qodo vs. GitHub
+                                                Copilot</a></li>
+                                        <li id="menu-item-9514"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9514">
+                                            <a href="https://www.qodo.ai/qodo-vs-tabnine/">Qodo vs Tabnine</a></li>
+                                        <li id="menu-item-5892"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5892">
+                                            <a
+                                                href="https://www.qodo.ai/codiumai-pr-agent-vs-github-copilot-for-pull-requests/"><span
+                                                    style="max-width:190px;display:block;">Qodo Merge vs. GitHub Copilot
+                                                    for PR</span></a></li>
+                                        <li id="menu-item-3714"
+                                            class="menu-item menu-item-type-post_type menu-item-object-post menu-item-3714">
+                                            <a
+                                                href="https://www.qodo.ai/blog/qodo-security-our-commitment-to-data-privacy-and-security/">Data
+                                                Privacy and Security</a></li>
+                                        <li id="menu-item-92"
+                                            class="hash-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-92">
+                                            <a href="/#faq">Qodo&#8217;s FAQs</a></li>
+                                        <li id="menu-item-4168"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4168">
+                                            <a href="https://www.qodo.ai/questions/">General Q&#038;A’s</a></li>
+                                        <li id="menu-item-4287"
+                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4287">
+                                            <a href="/programming-language-support/">Supported Languages</a></li>
+                                        <li id="menu-item-3267"
+                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3267">
+                                            <a target="_blank" rel="noopener" href="https://status.codium.ai">Status
+                                                🔗</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="footer-menu2">
+                            <h3 class="footer-menu-title">Products</h3>
+                            <nav>
+                                <div class="menu-footer-product-container">
+                                    <ul id="menu-footer-product" class="footer-menu">
+                                        <li id="menu-item-3253"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3253">
+                                            <a href="https://www.qodo.ai/products/ide-plugin/">Qodo Gen: IDE Plugin</a>
+                                        </li>
+                                        <li id="menu-item-5536"
+                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5536">
+                                            <a href="/products/git-plugin/">Qodo Merge: Git Agent</a></li>
+                                        <li id="menu-item-9626"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9626">
+                                            <a href="https://www.qodo.ai/products/qodo-cover/">Qodo Cover: CLI Agent
+                                            </a></li>
+                                        <li id="menu-item-8824"
+                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8824">
+                                            <a href="/products/alphacodium/">AlphaCodium</a></li>
+                                        <li id="menu-item-4076"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4076">
+                                            <a href="https://www.qodo.ai/products/qodo-api/">Qodo API <span
+                                                    class="coming-soon-label">CONTACT US</span></a></li>
+                                        <li id="menu-item-85"
+                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-85">
+                                            <a href="/blog/tests-are-not-enough-why-code-integrity-matters/">Why Code
+                                                Integrity?</a></li>
+                                        <li id="menu-item-3256"
+                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3256">
+                                            <a target="_blank" rel="noopener" href="https://trust.qodo.ai">Trust
+                                                Center</a></li>
+                                        <li id="menu-item-3255"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3255">
+                                            <a href="https://www.qodo.ai/pricing/">Pricing</a></li>
+                                        <li id="menu-item-87"
+                                            class="hash-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-87">
+                                            <a href="/report-issues/">Report an issue</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="footer-menu3">
+                            <h3 class="footer-menu-title">About</h3>
+                            <nav>
+                                <div class="menu-footer-about-container">
+                                    <ul id="menu-footer-about" class="footer-menu">
+                                        <li id="menu-item-78"
+                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-78">
+                                            <a href="/about/#our-mission">Our Mission</a></li>
+                                        <li id="menu-item-1570"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1570">
+                                            <a href="https://www.qodo.ai/install/">IDE Integrations</a></li>
+                                        <li id="menu-item-79"
+                                            class="hash-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-79">
+                                            <a href="/about/#about-team">Meet the Team</a></li>
+                                        <li id="menu-item-80"
+                                            class="hash-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-80">
+                                            <a href="/about/#backed-by">Backed by</a></li>
+                                        <li id="menu-item-1236"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1236">
+                                            <a href="https://www.qodo.ai/careers/">Careers</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="footer-menu4">
+                            <h3 class="footer-menu-title">Navigation</h3>
+                            <nav>
+                                <div class="menu-footer-about-container">
+                                    <ul class="footer-menu">
+                                        <li><a href="https://www.qodo.ai/blog">Blog</a></li>
+                                        <li><a href="https://docs.qodo.ai" target="_blank">Docs</a></li>
+                                        <li><a href="https://www.qodo.ai/glossary">Glossary</a></li>
+                                        <li><a href="https://www.qodo.ai/contact">Contact</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="footer-social">
+                                <a href="https://github.com/Codium-ai" target="_blank" data-title="GitHub"
+                                    aria-label="Visit GitHub"><svg style="--icon-hover-color:#000"
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M12.0099 0.529297C5.36875 0.529297 0 6.02927 0 12.8335C0 18.2725 3.43994 22.8765 8.21205 24.5059C8.80869 24.6284 9.02724 24.2412 9.02724 23.9155C9.02724 23.6302 9.00757 22.6525 9.00757 21.6337C5.6667 22.3672 4.97099 20.167 4.97099 20.167C4.43409 18.741 3.63858 18.3745 3.63858 18.3745C2.54511 17.6207 3.71823 17.6207 3.71823 17.6207C4.93117 17.7022 5.56763 18.8837 5.56763 18.8837C6.64118 20.7577 8.37111 20.2282 9.06706 19.9022C9.16638 19.1077 9.48473 18.5577 9.82275 18.2522C7.15817 17.967 4.35469 16.9077 4.35469 12.1815C4.35469 10.837 4.8316 9.73701 5.58729 8.88151C5.46807 8.57601 5.0504 7.31277 5.70677 5.62203C5.70677 5.62203 6.72083 5.29603 9.00732 6.88502C9.98625 6.61569 10.9958 6.47868 12.0099 6.47752C13.024 6.47752 14.0577 6.62027 15.0123 6.88502C17.299 5.29603 18.3131 5.62203 18.3131 5.62203C18.9695 7.31277 18.5515 8.57601 18.4323 8.88151C19.2079 9.73701 19.6652 10.837 19.6652 12.1815C19.6652 16.9077 16.8617 17.9465 14.1772 18.2522C14.6148 18.6392 14.9924 19.3725 14.9924 20.5337C14.9924 22.1837 14.9727 23.508 14.9727 23.9152C14.9727 24.2412 15.1915 24.6284 15.7879 24.5062C20.56 22.8762 23.9999 18.2725 23.9999 12.8335C24.0196 6.02927 18.6312 0.529297 12.0099 0.529297Z"
+                                            fill="#A0A0B8" />
+                                    </svg></a>
+                                <a href="https://discord.gg/SgSxuQ65GF" t arget="_blank" data-title="Discord"
+                                    aria-label="Visit Discord"><svg style="--icon-hover-color:#5865f2"
+                                        xmlns="http://www.w3.org/2000/svg" width="27" height="21" viewBox="0 0 27 21"
+                                        fill="none">
+                                        <path
+                                            d="M22.8716 1.99614C21.0976 1.18254 19.2249 0.605343 17.3013 0.279297C17.038 0.750712 16.7999 1.23574 16.5877 1.73234C14.5387 1.42301 12.4549 1.42301 10.4058 1.73234C10.1936 1.23579 9.95539 0.750769 9.69227 0.279297C7.76737 0.608097 5.89343 1.18666 4.11772 2.00039C0.592475 7.22538 -0.363163 12.3206 0.114656 17.3435C2.17913 18.8715 4.48986 20.0336 6.9464 20.7793C7.49954 20.034 7.989 19.2434 8.40959 18.4157C7.61075 18.1168 6.83972 17.7481 6.10544 17.3137C6.29869 17.1733 6.4877 17.0286 6.67033 16.8882C8.80692 17.8948 11.1389 18.4167 13.5 18.4167C15.861 18.4167 18.193 17.8948 20.3296 16.8882C20.5143 17.0393 20.7033 17.1839 20.8945 17.3137C20.1588 17.7488 19.3863 18.1182 18.5861 18.4178C19.0061 19.2451 19.4956 20.0351 20.0493 20.7793C22.5079 20.0366 24.8204 18.8751 26.8852 17.3456C27.4459 11.5207 25.9275 6.47227 22.8716 1.99614ZM9.01483 14.2544C7.68331 14.2544 6.58326 13.0439 6.58326 11.5547C6.58326 10.0655 7.64508 8.84436 9.01058 8.84436C10.3761 8.84436 11.4676 10.0655 11.4443 11.5547C11.4209 13.0439 10.3718 14.2544 9.01483 14.2544ZM17.9851 14.2544C16.6514 14.2544 15.5556 13.0439 15.5556 11.5547C15.5556 10.0655 16.6175 8.84436 17.9851 8.84436C19.3527 8.84436 20.4358 10.0655 20.4124 11.5547C20.389 13.0439 19.3421 14.2544 17.9851 14.2544Z"
+                                            fill="#A0A0B8" />
+                                    </svg></a>
+                                <a href="https://www.youtube.com/@QodoAI" target="_blank" data-title="YouTube"
+                                    aria-label="Visit YouTube"><svg style="--icon-hover-color:#FF0000"
+                                        xmlns="http://www.w3.org/2000/svg" width="33" height="24" viewBox="0 0 33 24"
+                                        fill="none">
+                                        <path
+                                            d="M25.7079 0.85498H7.29215C3.67902 0.85498 0.75 3.784 0.75 7.39713V16.603C0.75 20.2162 3.67902 23.1452 7.29215 23.1452H25.7079C29.321 23.1452 32.25 20.2162 32.25 16.603V7.39713C32.25 3.784 29.321 0.85498 25.7079 0.85498ZM21.2834 12.448L12.6698 16.5562C12.4403 16.6656 12.1752 16.4983 12.1752 16.244V7.77089C12.1752 7.51301 12.4473 7.34588 12.6773 7.46245L21.2909 11.8274C21.547 11.9572 21.5426 12.3244 21.2834 12.448Z"
+                                            fill="#A0A0B8" />
+                                    </svg></a>
+                                <a href="https://www.linkedin.com/company/qodoai" target="_blank" data-title="LinkedIn"
+                                    aria-label="Visit LinkedIn"><svg style="--icon-hover-color:#0072b1"
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
+                                        fill="none">
+                                        <path
+                                            d="M19 0.529297H5C2.239 0.529297 0 2.7683 0 5.5293V19.5293C0 22.2903 2.239 24.5293 5 24.5293H19C21.762 24.5293 24 22.2903 24 19.5293V5.5293C24 2.7683 21.762 0.529297 19 0.529297ZM8 19.5293H5V8.5293H8V19.5293ZM6.5 7.2613C5.534 7.2613 4.75 6.4713 4.75 5.4973C4.75 4.5233 5.534 3.7333 6.5 3.7333C7.466 3.7333 8.25 4.5233 8.25 5.4973C8.25 6.4713 7.467 7.2613 6.5 7.2613ZM20 19.5293H17V13.9253C17 10.5573 13 10.8123 13 13.9253V19.5293H10V8.5293H13V10.2943C14.396 7.7083 20 7.5173 20 12.7703V19.5293Z"
+                                            fill="#A0A0B8" />
+                                    </svg></a>
+                                <a href="https://x.com/QodoAI" target="_blank" data-title="Twitter"
+                                    aria-label="Visit Twitter"><svg style="--icon-hover-color:#00acee" width="20"
+                                        height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M11.9103 8.70883L19.3508 0.239258H17.5882L11.125 7.59177L5.96664 0.239258H0.015625L7.81776 11.3586L0.015625 20.2392H1.77815L8.5991 12.473L14.0479 20.2392H19.9989M2.41428 1.54083H5.12202L17.5869 19.0015H14.8785"
+                                            fill="#A0A0B8"></path>
+                                    </svg></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="two-cols-grid">
+
+                        <div class="footer-info"><svg width="118" height="24" viewBox="0 0 118 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <mask id="mask0_14725_69785" style="mask-type:luminance" maskUnits="userSpaceOnUse"
+                                    x="0" y="0" width="26" height="19">
+                                    <path d="M25.3755 0.548096H0V18.842H25.3755V0.548096Z" fill="white" />
+                                </mask>
+                                <g mask="url(#mask0_14725_69785)">
+                                    <path
+                                        d="M21.7503 0.548096C20.8738 0.548096 20.0702 1.33145 19.4434 2.63521C20.8524 4.30964 21.7503 6.84305 21.7503 9.67808C21.7503 12.5131 20.8524 15.0465 19.4434 16.7209C20.0702 18.0247 20.8738 18.8081 21.7503 18.8081C23.7525 18.8081 25.3754 14.7204 25.3754 9.67808C25.3754 4.63579 23.7525 0.548096 21.7503 0.548096Z"
+                                        fill="url(#paint0_radial_14725_69785)" />
+                                    <path
+                                        d="M19.4432 2.63521C18.3466 1.33145 16.9401 0.548096 15.4064 0.548096C14.4631 0.548096 13.5681 0.84464 12.7637 1.37601C15.9236 2.80211 18.1252 5.99797 18.1252 9.71204C18.1252 13.4261 15.9519 16.5803 12.8249 18.02C13.6134 18.5261 14.487 18.8081 15.4064 18.8081C16.9401 18.8081 18.3466 18.0247 19.4432 16.7209C18.6381 15.0465 18.1252 12.5131 18.1252 9.67808C18.1252 6.84305 18.6381 4.30964 19.4432 2.63521Z"
+                                        fill="#05E5AD" />
+                                    <path
+                                        d="M19.4431 2.63525C18.6379 4.30968 18.125 6.84309 18.125 9.67812C18.125 12.5132 18.6379 15.0466 19.4431 16.721C20.8521 15.0466 21.7501 12.5132 21.7501 9.67812C21.7501 6.84309 20.8521 4.30968 19.4431 2.63525Z"
+                                        fill="#7962FE" />
+                                    <path
+                                        d="M9.06266 9.67806C9.06266 5.99318 10.5797 2.81852 12.7638 1.37598C11.6336 0.86616 10.3811 0.582031 9.06266 0.582031C4.05753 0.582036 0 4.66972 0 9.71202C0 14.7543 4.05753 18.842 9.06266 18.842C10.405 18.842 11.6792 18.5477 12.8251 18.0199C10.608 16.5968 9.06266 13.3973 9.06266 9.67806Z"
+                                        fill="url(#paint1_radial_14725_69785)" />
+                                    <path
+                                        d="M18.1252 9.71201C18.1252 5.99794 15.9236 2.80208 12.7637 1.37598C10.5796 2.81851 9.0625 5.99318 9.0625 9.67805C9.0625 13.3629 10.6079 16.5968 12.825 18.0199C15.9519 16.5803 18.1252 13.402 18.1252 9.71201Z"
+                                        fill="#7962FE" />
+                                </g>
+                                <path
+                                    d="M77.2754 12.2092C77.2754 8.39983 80.2555 5.47156 84.2203 5.47156C88.1851 5.47156 91.1652 8.39983 91.1652 12.2092C91.1652 16.0185 88.1851 18.9468 84.2203 18.9468C80.2555 18.9468 77.2754 16.0185 77.2754 12.2092ZM81.007 12.2092C81.007 14.049 82.4582 15.5002 84.2203 15.5002C85.9824 15.5002 87.4336 14.049 87.4336 12.2092C87.4336 10.3693 85.9824 8.9181 84.2203 8.9181C82.4582 8.9181 81.007 10.3693 81.007 12.2092Z"
+                                    fill="#7962FE" />
+                                <path
+                                    d="M72.0304 0.470215H75.7879V18.6099H72.0304V16.8996C71.1493 18.1953 69.5686 18.9209 67.8842 18.9209C64.4376 18.9209 61.8203 16.0185 61.8203 12.2092C61.8203 8.42577 64.4376 5.4975 67.8842 5.4975C69.5686 5.4975 71.1493 6.14535 72.0304 7.46696V0.470215ZM65.5778 12.2092C65.5778 14.0491 67.029 15.5262 68.8689 15.5262C70.7088 15.5262 72.1599 14.0491 72.1599 12.2092C72.1599 10.3693 70.7088 8.89222 68.8689 8.89222C67.029 8.89222 65.5778 10.3693 65.5778 12.2092Z"
+                                    fill="#7962FE" />
+                                <path
+                                    d="M47.4355 12.2092C47.4355 8.39983 50.4156 5.47156 54.3805 5.47156C58.3453 5.47156 61.3254 8.39983 61.3254 12.2092C61.3254 16.0185 58.3453 18.9468 54.3805 18.9468C50.4156 18.9468 47.4355 16.0185 47.4355 12.2092ZM51.1671 12.2092C51.1671 14.049 52.6183 15.5002 54.3805 15.5002C56.1426 15.5002 57.5938 14.049 57.5938 12.2092C57.5938 10.3693 56.1426 8.9181 54.3805 8.9181C52.6183 8.9181 51.1671 10.3693 51.1671 12.2092Z"
+                                    fill="#7962FE" />
+                                <path
+                                    d="M42.5255 5.80853H46.283V24.0001H42.5255V16.8997C41.6444 18.1954 40.0637 18.9209 38.3793 18.9209C34.9327 18.9209 32.3154 16.0186 32.3154 12.2093C32.3154 8.42583 34.9327 5.49756 38.3793 5.49756C40.0637 5.49756 41.6444 6.14541 42.5255 7.46701V5.80853ZM36.0729 12.2093C36.0729 14.0491 37.5241 15.5262 39.364 15.5262C41.2039 15.5262 42.6551 14.0491 42.6551 12.2093C42.6551 10.3694 41.2039 8.89227 39.364 8.89227C37.5241 8.89227 36.0729 10.3694 36.0729 12.2093Z"
+                                    fill="#7962FE" />
+                                <defs>
+                                    <radialGradient id="paint0_radial_14725_69785" cx="0" cy="0" r="1"
+                                        gradientUnits="userSpaceOnUse"
+                                        gradientTransform="translate(18.1319 9.64861) scale(5.81327 10.9228)">
+                                        <stop stop-color="#684BFE" />
+                                        <stop offset="1" stop-color="#05E5AD" />
+                                    </radialGradient>
+                                    <radialGradient id="paint1_radial_14725_69785" cx="0" cy="0" r="1"
+                                        gradientUnits="userSpaceOnUse"
+                                        gradientTransform="translate(15.2715 9.74132) scale(11.2575 13.1344)">
+                                        <stop stop-color="#684BFE" />
+                                        <stop offset="1" stop-color="#05E5AD" />
+                                    </radialGradient>
+                                </defs>
+                            </svg>
+                            <p>Qodo (<a
+                                    href="https://www.qodo.ai/blog/introducing-qodo-a-new-name-the-same-commitment-to-quality/"
+                                    data-title="View More">formerly Codium</a>) is a quality-first generative AI coding
+                                platform that helps developers write, test, and review code within IDE and Git. Our AI
+                                code generation offers automated code reviews, contextual suggestions, and comprehensive
+                                test generation, ensuring robust, reliable software. Seamless integration maintains high
+                                standards of code quality and integrity throughout development.</p>
+                        </div>
+
+                        <div class="footer-software-block footer-flex-column">
+                            <div class="footer-item">
+                                <span class="title-text">Available now on</span>
+                                <div class="footer-software" data-info="Tools"><a href="vscode:extension/Codium.codium"
+                                        target="_blank" data-title="VS Code"><img
+                                            src="/wp-content/uploads/2023/03/visual-studio-icon.svg" alt="VS Code"
+                                            decoding="async" loading="lazy" /></a><a
+                                        href="https://plugins.jetbrains.com/plugin/21206-codiumai--meaningful-tests-powered-by-testgpt-1-and-gpt-3-5-4"
+                                        target="_blank" data-title="WebStorm"><img
+                                            src="/wp-content/uploads/2023/03/webstorm-icon.svg" alt="WebStorm"
+                                            decoding="async" loading="lazy" /></a><a
+                                        href="https://plugins.jetbrains.com/plugin/21206-codiumai--meaningful-tests-powered-by-testgpt-1-and-gpt-3-5-4"
+                                        target="_blank" data-title="IntelliJ IDEA"><img
+                                            src="/wp-content/uploads/2023/03/intellij-idea-icon.svg" alt="IntelliJ IDEA"
+                                            decoding="async" loading="lazy" /></a><a
+                                        href="https://plugins.jetbrains.com/plugin/21206-codiumai--meaningful-tests-powered-by-testgpt-1-and-gpt-3-5-4"
+                                        target="_blank" data-title="CLion"><img
+                                            src="/wp-content/uploads/2023/05/Clion-logo-32.svg" alt="CLion"
+                                            decoding="async" loading="lazy" /></a><a
+                                        href="https://plugins.jetbrains.com/plugin/21206-codiumai--meaningful-tests-powered-by-testgpt-1-and-gpt-3-5-4"
+                                        target="_blank" data-title="PyCharm"><img
+                                            src="/wp-content/uploads/2023/03/pycharm-icon.svg" alt="PyCharm"
+                                            decoding="async" loading="lazy" /></a><a
+                                        href="https://plugins.jetbrains.com/plugin/21206-codiumai--meaningful-tests-powered-by-testgpt-1-and-gpt-3-5-4"
+                                        target="_blank" data-title="JetBrains"><img
+                                            src="/wp-content/uploads/2023/05/jetbrains-logo.svg" alt="JetBrains"
+                                            decoding="async" loading="lazy" /></a><a
+                                        href="https://plugins.jetbrains.com/plugin/21206-codiumai--meaningful-tests-powered-by-testgpt-1-and-gpt-3-5-4"
+                                        target="_blank" data-title="GO"><img src="/wp-content/uploads/2024/11/Logo.svg"
+                                            alt="GO" decoding="async" loading="lazy" /></a></div>
+                            </div>
+                            <div class="footer-item">
+                                <span class="title-text"><a href="/programming-language-support/">We support all major
+                                        programming languages</a></span>
+                                <div class="footer-software" data-info="Technology"><a
+                                        href="/programming-language-support/" target="_blank"
+                                        data-title="Python (VS Code &amp; JetBrains)"><img
+                                            src="/wp-content/uploads/2023/03/python-icon.svg"
+                                            alt="Python (VS Code &amp; JetBrains)" decoding="async"
+                                            loading="lazy" /></a><a href="/programming-language-support/"
+                                        target="_blank" data-title="TypeScript (VS Code &amp; JetBrains)"><img
+                                            src="/wp-content/uploads/2023/03/typescript-icon.svg"
+                                            alt="TypeScript (VS Code &amp; JetBrains)" decoding="async"
+                                            loading="lazy" /></a><a href="/programming-language-support/"
+                                        target="_blank" data-title="JavaScript (VS Code &amp; JetBrains)"><img
+                                            src="/wp-content/uploads/2023/03/javascript-icon.svg"
+                                            alt="JavaScript (VS Code &amp; JetBrains)" decoding="async"
+                                            loading="lazy" /></a><a href="/programming-language-support/"
+                                        target="_blank" data-title="Java (VS Code &amp; JetBrains)"><img
+                                            src="/wp-content/uploads/2023/09/icon-java-logo.svg"
+                                            alt="Java (VS Code &amp; JetBrains)" decoding="async"
+                                            loading="lazy" /></a><a href="/programming-language-support/"
+                                        target="_blank" data-title="Kotlin (VS Code)"><img
+                                            src="/wp-content/uploads/2023/09/icon-kotlin.svg" alt="Kotlin (VS Code)"
+                                            decoding="async" loading="lazy" /></a><a
+                                        href="/programming-language-support/" target="_blank"
+                                        data-title="Go Programming (VS Code)"><img
+                                            src="/wp-content/uploads/2023/07/icon-go-programming.png"
+                                            alt="Go Programming (VS Code)" decoding="async" loading="lazy" /></a><a
+                                        href="/programming-language-support/" target="_blank"
+                                        data-title="PHP (VS Code)"><img src="/wp-content/uploads/2023/09/icon-php.svg"
+                                            alt="PHP (VS Code)" decoding="async" loading="lazy" /></a><a
+                                        href="/programming-language-support/" target="_blank"
+                                        data-title="C++ (VS Code)"><img
+                                            src="/wp-content/uploads/2023/09/icon-c-plus.svg" alt="C++ (VS Code)"
+                                            decoding="async" loading="lazy" /></a><a
+                                        href="/programming-language-support/" target="_blank"
+                                        data-title="Swift (VS Code)"><img
+                                            src="/wp-content/uploads/2023/09/icon-swift.svg" alt="Swift (VS Code)"
+                                            decoding="async" loading="lazy" /></a><a
+                                        href="/programming-language-support/" target="_blank"
+                                        data-title="C# (VS Code)"><img src="/wp-content/uploads/2023/09/icon-c-hash.svg"
+                                            alt="C# (VS Code)" decoding="async" loading="lazy" /></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-software-block footer-bottom">
+                        <div class="footer-item m-order-3">
+                            <div class="site-footer--content">
+                                <div class="footer-copyright">
+                                    <p>@
+                                        <script>
+                                            var CurrentYear = new Date().getFullYear();
+                                            document.write(CurrentYear);
+                                        </script> Qodo. All Rights Reserved.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-item m-order-2">
+                            <div class="site-footer--content">
+                                <div class="footer-menu">
+                                    <a href="https://www.qodo.ai/terms">Terms of Use</a>
+                                    <a href="https://www.qodo.ai/privacy-policy">Privacy Policy</a>
+                                    <a href="https://www.qodo.ai/data-processing-addendum">Data Processing Addendum</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-item m-order-1">
+                            <div class="site-footer--logos">
+                                <img class="lazy" src="/wp-content/uploads/2024/11/icon-aws-1.svg" alt="AWS"
+                                    decoding="async" loading="lazy">
+                                <img class="lazy" src="/wp-content/uploads/2024/11/icon-deloitte-1.svg" alt="Deloitte"
+                                    decoding="async" loading="lazy">
+                                <img class="lazy" srcset="/wp-content/themes/codium/assets/images/logo-microsoft.png"
+                                    alt="Microsoft" decoding="async" loading="lazy" />
+                                <img class="lazy" srcset="/wp-content/themes/codium/assets/images/logo-nvidia.png"
+                                    alt="Nvidia" decoding="async" loading="lazy" />
+                                <img class="lazy" srcset="/wp-content/themes/codium/assets/images/logo-aicpa-sco2.png"
+                                    alt="AICPA-SCO2" decoding="async" loading="lazy" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript">
+        (() => {
+            // automatically track all anchor click events:
+            // also track all elements that have this class
+            const trackClassName = "ga-event";
+            // page context class detection (change if needed):
+            const topNavLinkClass = "nav-link";
+            const footerLinkClass = "footer-link";
+            const buttonClass = "w-button";
+
+            const trackClickEvent = function () {
+                const eventCategory = this.getAttribute("data-event-category") || this.classList.contains(topNavLinkClass) ? "topnav" : this.classList.contains(footerLinkClass) ? "footer" : "";
+                const eventAction = this.getAttribute("data-event-action") || this.classList.contains(buttonClass) ? "button click" : "click";
+                const eventLabel = this.getAttribute("data-event-label") || this.href;
+                const eventValue = this.getAttribute("data-event-value");
+                if ("gtag" in window) {
+                    gtag("event", eventAction, { "event_category": eventCategory, "event_label": eventLabel, "value": eventValue });
+                }
+            };
+
+            // Find all anchor tags
+            let elementsToTrack = document.getElementsByTagName("a");
+            if (trackClassName) {
+                elementsToTrack = [...new Set([...elementsToTrack, ...document.getElementsByClassName(trackClassName)])];
+            }
+            // Add an event listener to each of the elements you found
+            elementsToTrack.forEach((el) => {
+                el.addEventListener("click", trackClickEvent);
+            });
+        })();
+    </script>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M6PJSFV" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="mobile-menu-wrapper">
+        <div class="mobile-header-flex">
+            <div class="mobile-menu-trigger">&times;</div>
+            <div class="mobile-header-logo">
+                <a href="https://www.qodo.ai">
+                    <svg width="116" height="56" viewBox="0 0 116 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_13837_52635)">
+                            <path
+                                d="M46.3153 28.5714C41.6199 28.5714 37.7999 24.7514 37.7999 20.056C37.7999 15.3606 41.6199 11.5406 46.3153 11.5406C51.0107 11.5406 54.8306 15.3606 54.8306 20.056C54.8306 24.7514 51.0107 28.5714 46.3153 28.5714ZM46.3153 15.1545C43.6126 15.1545 41.4137 17.3533 41.4137 20.056C41.4137 22.7587 43.6126 24.9575 46.3153 24.9575C49.018 24.9575 51.2168 22.7587 51.2168 20.056C51.2168 17.3533 49.018 15.1545 46.3153 15.1545Z"
+                                fill="#7968FA" />
+                            <path
+                                d="M66.6671 28.5714C61.9717 28.5714 58.1517 24.7514 58.1517 20.056C58.1517 15.3606 61.9717 11.5406 66.6671 11.5406C71.3625 11.5406 75.1824 15.3606 75.1824 20.056C75.1824 24.7514 71.3625 28.5714 66.6671 28.5714ZM66.6671 15.1545C63.9644 15.1545 61.7655 17.3533 61.7655 20.056C61.7655 22.7587 63.9644 24.9575 66.6671 24.9575C69.3698 24.9575 71.5686 22.7587 71.5686 20.056C71.5686 17.3533 69.3698 15.1545 66.6671 15.1545Z"
+                                fill="#7968FA" />
+                            <path
+                                d="M87.0189 28.5714C82.3235 28.5714 78.5036 24.7514 78.5036 20.056C78.5036 15.3606 82.3235 11.5406 87.0189 11.5406C91.7144 11.5406 95.5343 15.3606 95.5343 20.056C95.5343 24.7514 91.7144 28.5714 87.0189 28.5714ZM87.0189 15.1545C84.3162 15.1545 82.1174 17.3533 82.1174 20.056C82.1174 22.7587 84.3162 24.9575 87.0189 24.9575C89.7217 24.9575 91.9205 22.7587 91.9205 20.056C91.9205 17.3533 89.7217 15.1545 87.0189 15.1545Z"
+                                fill="#7968FA" />
+                            <path
+                                d="M107.373 28.5714C102.678 28.5714 98.858 24.7514 98.858 20.056C98.858 15.3606 102.678 11.5406 107.373 11.5406C112.069 11.5406 115.889 15.3606 115.889 20.056C115.889 24.7514 112.069 28.5714 107.373 28.5714ZM107.373 15.1545C104.671 15.1545 102.472 17.3533 102.472 20.056C102.472 22.7587 104.671 24.9575 107.373 24.9575C110.076 24.9575 112.275 22.7587 112.275 20.056C112.275 17.3533 110.076 15.1545 107.373 15.1545Z"
+                                fill="#7968FA" />
+                            <path d="M54.8306 9.80499H51.2168V36H54.8306V9.80499Z" fill="#7968FA" />
+                            <path d="M95.5343 4H91.9205V30.195H95.5343V4Z" fill="#7968FA" />
+                            <path
+                                d="M27.9357 20.0585C27.9357 25.8152 26.1263 30.4826 23.8918 30.4826C22.9757 30.4826 22.1384 29.6962 21.4538 28.3678C23.1894 26.4692 24.3092 23.456 24.3092 20.0611C24.3092 16.6661 23.1894 13.6453 21.4538 11.7468C22.1358 10.4183 22.9757 9.63449 23.8918 9.63449C26.1263 9.63449 27.9357 14.2994 27.9357 20.0611"
+                                fill="#5AE3AE" />
+                            <path
+                                d="M24.3118 20.0611C24.3118 23.4586 23.192 26.4718 21.4538 28.3677C20.4842 26.4692 19.8556 23.456 19.8556 20.0611C19.8556 16.6661 20.4842 13.6453 21.4538 11.7468C23.192 13.6453 24.3118 16.6636 24.3118 20.0611Z"
+                                fill="#7968FA" />
+                            <path
+                                d="M14.0938 29.5155C12.8239 30.1314 11.4166 30.48 9.92524 30.48C4.44345 30.48 0 25.8126 0 20.056C0 14.2993 4.44345 9.62939 9.92524 9.62939C11.4166 9.62939 12.8239 9.97551 14.0938 10.5939C11.6278 12.2405 9.91252 15.8594 9.91252 20.0585C9.91252 24.2577 11.6253 27.8715 14.0938 29.5181"
+                                fill="#5AE3AE" />
+                            <path
+                                d="M19.8556 20.0611C19.8556 24.2551 17.4964 27.874 14.0913 29.5206C11.6253 27.874 9.90997 24.2551 9.90997 20.0611C9.90997 15.867 11.6227 12.2456 14.0913 10.5965C17.4939 12.2481 19.8556 15.8619 19.8556 20.0611Z"
+                                fill="#7968FA" />
+                            <path
+                                d="M21.4564 28.3652C20.2526 29.6937 18.7486 30.48 17.1147 30.48C16.0357 30.48 15.01 30.1365 14.0939 29.5155C17.4964 27.8664 19.8581 24.2475 19.8581 20.056C19.8581 23.4535 20.4867 26.4667 21.4564 28.3627"
+                                fill="#5AE3AE" />
+                            <path
+                                d="M21.4564 11.7442C20.4867 13.6428 19.8581 16.6611 19.8581 20.0585C19.8581 15.8594 17.499 12.2456 14.0939 10.5939C15.01 9.97043 16.0357 9.62686 17.1147 9.62686C18.7511 9.62686 20.2526 10.4132 21.4564 11.7417"
+                                fill="#5AE3AE" />
+                            <path
+                                d="M1.63987 53.8971H0.327311V43.5735H5.94626V44.7829H1.63987V47.9389H5.71029V49.1335H1.63987V53.8971ZM10.798 46.5674C11.3387 46.5674 11.8352 46.6657 12.2875 46.8623C12.7496 47.059 13.1478 47.3293 13.4821 47.6735C13.8164 48.0077 14.0769 48.401 14.2637 48.8533C14.4505 49.3056 14.5439 49.7922 14.5439 50.3133C14.5439 50.8344 14.4505 51.3211 14.2637 51.7734C14.0769 52.2256 13.8164 52.6238 13.4821 52.9679C13.1478 53.3022 12.7496 53.5677 12.2875 53.7643C11.8352 53.961 11.3387 54.0593 10.798 54.0593C10.2572 54.0593 9.75579 53.961 9.29369 53.7643C8.84142 53.5677 8.44814 53.3022 8.11386 52.9679C7.77957 52.6238 7.51902 52.2256 7.33222 51.7734C7.14541 51.3211 7.05201 50.8344 7.05201 50.3133C7.05201 49.7922 7.14541 49.3056 7.33222 48.8533C7.51902 48.401 7.77957 48.0077 8.11386 47.6735C8.44814 47.3293 8.84142 47.059 9.29369 46.8623C9.75579 46.6657 10.2572 46.5674 10.798 46.5674ZM10.798 47.7324C10.444 47.7324 10.1147 47.8013 9.80986 47.9389C9.51491 48.0667 9.25436 48.2486 9.02823 48.4846C8.81192 48.7206 8.63986 48.9958 8.51205 49.3105C8.39407 49.6251 8.33507 49.9594 8.33507 50.3133C8.33507 50.6673 8.39407 51.0016 8.51205 51.3162C8.63986 51.6308 8.81192 51.9061 9.02823 52.1421C9.25436 52.378 9.51491 52.5648 9.80986 52.7025C10.1147 52.8303 10.444 52.8942 10.798 52.8942C11.1519 52.8942 11.4764 52.8303 11.7713 52.7025C12.0761 52.5648 12.3367 52.378 12.553 52.1421C12.7791 51.9061 12.9512 51.6308 13.0692 51.3162C13.197 51.0016 13.2609 50.6673 13.2609 50.3133C13.2609 49.9594 13.197 49.6251 13.0692 49.3105C12.9512 48.9958 12.7791 48.7206 12.553 48.4846C12.3367 48.2486 12.0761 48.0667 11.7713 47.9389C11.4764 47.8013 11.1519 47.7324 10.798 47.7324ZM20.1283 47.9094C20.1087 47.9094 20.0792 47.9045 20.0398 47.8947C20.0103 47.8947 19.971 47.8947 19.9219 47.8947C19.8727 47.8848 19.8235 47.8799 19.7744 47.8799C19.1058 47.8799 18.5798 48.1208 18.1963 48.6026C17.8227 49.0843 17.6359 49.7136 17.6359 50.4903V53.8971H16.3824V46.7296H17.6212V47.9979C17.6998 47.7914 17.8129 47.6046 17.9604 47.4375C18.1177 47.2605 18.2947 47.113 18.4913 46.995C18.6879 46.8771 18.8993 46.7837 19.1255 46.7148C19.3516 46.646 19.5827 46.6116 19.8186 46.6116C19.8678 46.6116 19.9071 46.6165 19.9366 46.6263C19.9759 46.6263 20.0103 46.6263 20.0398 46.6263C20.0792 46.6362 20.1087 46.6411 20.1283 46.6411V47.9094ZM22.9651 53.8971H21.6968V46.7296H22.9504V47.7619C23.147 47.3883 23.4223 47.0983 23.7762 46.8918C24.1302 46.6755 24.5579 46.5674 25.0593 46.5674C25.5902 46.5674 26.0425 46.6903 26.4161 46.9361C26.7996 47.1819 27.0994 47.526 27.3157 47.9684C27.4042 47.8209 27.5173 47.6636 27.6549 47.4965C27.7926 47.3293 27.9597 47.1769 28.1564 47.0393C28.3628 46.9016 28.5939 46.7886 28.8495 46.7001C29.115 46.6116 29.4198 46.5674 29.7639 46.5674C30.5996 46.5674 31.2485 46.8377 31.7106 47.3785C32.1727 47.9192 32.4038 48.6517 32.4038 49.5759V53.8971H31.1354V49.7971C31.1354 49.1581 30.9978 48.6566 30.7225 48.2929C30.457 47.9192 30.0539 47.7324 29.5132 47.7324C28.9528 47.7324 28.5054 47.9487 28.1711 48.3813C27.8467 48.814 27.6844 49.399 27.6844 50.1363V53.8971H26.4161V49.8266C26.4161 49.1777 26.2785 48.6665 26.0032 48.2929C25.7279 47.9192 25.3248 47.7324 24.7938 47.7324C24.2334 47.7324 23.7861 47.9487 23.4518 48.3813C23.1273 48.814 22.9651 49.399 22.9651 50.1363V53.8971ZM40.6759 53.1449C40.2728 53.43 39.8353 53.6562 39.3634 53.8233C38.8915 53.9806 38.4048 54.0593 37.9033 54.0593C37.3331 54.0593 36.8169 53.9659 36.3548 53.7791C35.8927 53.5824 35.4945 53.317 35.1602 52.9827C34.8358 52.6386 34.5851 52.2404 34.4081 51.7881C34.2311 51.3358 34.1426 50.8442 34.1426 50.3133C34.1426 49.7824 34.2311 49.2908 34.4081 48.8385C34.5851 48.3764 34.8259 47.9782 35.1307 47.644C35.4454 47.3097 35.819 47.0491 36.2516 46.8623C36.6842 46.6657 37.161 46.5674 37.6821 46.5674C38.1836 46.5674 38.6407 46.6657 39.0537 46.8623C39.4666 47.0491 39.8206 47.3097 40.1155 47.644C40.4203 47.9782 40.6514 48.3715 40.8087 48.8238C40.9758 49.2662 41.0594 49.7431 41.0594 50.2543C41.0594 50.333 41.0545 50.4018 41.0446 50.4608C41.0446 50.51 41.0446 50.5542 41.0446 50.5935C41.0348 50.6329 41.0299 50.6722 41.0299 50.7115H35.4109C35.4404 51.0065 35.5191 51.2916 35.6469 51.5669C35.7846 51.8324 35.9615 52.0634 36.1778 52.26C36.404 52.4567 36.6694 52.614 36.9742 52.732C37.279 52.85 37.6182 52.909 37.9918 52.909C38.9062 52.909 39.8009 52.5304 40.6759 51.7734V53.1449ZM39.7763 49.6644C39.7468 49.3793 39.6731 49.1187 39.5551 48.8828C39.447 48.637 39.2995 48.4256 39.1127 48.2486C38.9357 48.0716 38.7194 47.934 38.4638 47.8357C38.218 47.7275 37.9476 47.6735 37.6526 47.6735C37.3577 47.6735 37.0775 47.7324 36.812 47.8504C36.5564 47.9684 36.3302 48.1208 36.1336 48.3076C35.937 48.4944 35.7747 48.7058 35.6469 48.9418C35.5289 49.1777 35.4601 49.4186 35.4404 49.6644H39.7763ZM46.5708 47.9094C46.5512 47.9094 46.5217 47.9045 46.4824 47.8947C46.4529 47.8947 46.4135 47.8947 46.3644 47.8947C46.3152 47.8848 46.2661 47.8799 46.2169 47.8799C45.5483 47.8799 45.0223 48.1208 44.6389 48.6026C44.2653 49.0843 44.0784 49.7136 44.0784 50.4903V53.8971H42.8249V46.7296H44.0637V47.9979C44.1424 47.7914 44.2554 47.6046 44.4029 47.4375C44.5602 47.2605 44.7372 47.113 44.9338 46.995C45.1305 46.8771 45.3419 46.7837 45.568 46.7148C45.7941 46.646 46.0252 46.6116 46.2611 46.6116C46.3103 46.6116 46.3496 46.6165 46.3791 46.6263C46.4184 46.6263 46.4529 46.6263 46.4824 46.6263C46.5217 46.6362 46.5512 46.6411 46.5708 46.6411V47.9094ZM49.4076 43.5735V53.8971H48.1393V43.5735H49.4076ZM54.438 54.9884C54.1136 55.7651 53.7744 56.3157 53.4204 56.6402C53.0665 56.9745 52.6191 57.1416 52.0784 57.1416C51.7834 57.1416 51.5229 57.0924 51.2967 56.9941V55.8733C51.3754 55.9028 51.4737 55.9274 51.5917 55.947C51.7097 55.9765 51.8375 55.9913 51.9751 55.9913C52.2603 55.9913 52.4962 55.8979 52.683 55.7111C52.8797 55.5242 53.0763 55.1998 53.273 54.7377L53.7006 53.7053L50.8543 46.7296H52.2111L54.3643 52.26L56.5765 46.7296H57.8891L54.438 54.9884ZM62.5319 48.7353C62.5319 47.9881 62.6646 47.29 62.9301 46.6411C63.2054 45.9922 63.579 45.4269 64.0509 44.9451C64.5327 44.4633 65.0931 44.0848 65.7322 43.8095C66.3811 43.5342 67.0742 43.3966 67.8116 43.3966C68.8931 43.3966 69.9009 43.7063 70.8349 44.3257V45.7857C69.8419 45.0385 68.8243 44.6649 67.7821 44.6649C67.2315 44.6649 66.7203 44.773 66.2483 44.9893C65.7764 45.1958 65.3635 45.4809 65.0095 45.8447C64.6654 46.2085 64.3901 46.6411 64.1836 47.1425C63.987 47.6341 63.8887 48.165 63.8887 48.7353C63.8887 49.2957 63.987 49.8266 64.1836 50.3281C64.3901 50.8197 64.6654 51.2474 65.0095 51.6111C65.3635 51.9749 65.7764 52.265 66.2483 52.4813C66.7203 52.6877 67.2315 52.791 67.7821 52.791C68.8243 52.791 69.8517 52.4272 70.8644 51.6996V53.1597C69.9009 53.7594 68.8784 54.0593 67.7969 54.0593C67.0595 54.0593 66.3712 53.9216 65.7322 53.6463C65.0931 53.3711 64.5327 52.9974 64.0509 52.5255C63.579 52.0437 63.2054 51.4784 62.9301 50.8295C62.6646 50.1806 62.5319 49.4825 62.5319 48.7353ZM75.9969 46.5674C76.5377 46.5674 77.0342 46.6657 77.4865 46.8623C77.9486 47.059 78.3468 47.3293 78.6811 47.6735C79.0153 48.0077 79.2759 48.401 79.4627 48.8533C79.6495 49.3056 79.7429 49.7922 79.7429 50.3133C79.7429 50.8344 79.6495 51.3211 79.4627 51.7734C79.2759 52.2256 79.0153 52.6238 78.6811 52.9679C78.3468 53.3022 77.9486 53.5677 77.4865 53.7643C77.0342 53.961 76.5377 54.0593 75.9969 54.0593C75.4562 54.0593 74.9548 53.961 74.4927 53.7643C74.0404 53.5677 73.6471 53.3022 73.3128 52.9679C72.9785 52.6238 72.718 52.2256 72.5312 51.7734C72.3444 51.3211 72.251 50.8344 72.251 50.3133C72.251 49.7922 72.3444 49.3056 72.5312 48.8533C72.718 48.401 72.9785 48.0077 73.3128 47.6735C73.6471 47.3293 74.0404 47.059 74.4927 46.8623C74.9548 46.6657 75.4562 46.5674 75.9969 46.5674ZM75.9969 47.7324C75.643 47.7324 75.3136 47.8013 75.0088 47.9389C74.7139 48.0667 74.4533 48.2486 74.2272 48.4846C74.0109 48.7206 73.8388 48.9958 73.711 49.3105C73.593 49.6251 73.534 49.9594 73.534 50.3133C73.534 50.6673 73.593 51.0016 73.711 51.3162C73.8388 51.6308 74.0109 51.9061 74.2272 52.1421C74.4533 52.378 74.7139 52.5648 75.0088 52.7025C75.3136 52.8303 75.643 52.8942 75.9969 52.8942C76.3509 52.8942 76.6753 52.8303 76.9703 52.7025C77.2751 52.5648 77.5356 52.378 77.7519 52.1421C77.9781 51.9061 78.1501 51.6308 78.2681 51.3162C78.3959 51.0016 78.4598 50.6673 78.4598 50.3133C78.4598 49.9594 78.3959 49.6251 78.2681 49.3105C78.1501 48.9958 77.9781 48.7206 77.7519 48.4846C77.5356 48.2486 77.2751 48.0667 76.9703 47.9389C76.6753 47.8013 76.3509 47.7324 75.9969 47.7324ZM88.5259 43.5735V53.8971H87.2723V52.7615C87.0167 53.1548 86.6627 53.4694 86.2104 53.7053C85.7582 53.9413 85.2666 54.0593 84.7356 54.0593C84.2244 54.0593 83.7475 53.9659 83.3051 53.7791C82.8725 53.5824 82.494 53.317 82.1695 52.9827C81.8451 52.6484 81.5894 52.2551 81.4026 51.8029C81.2256 51.3408 81.1372 50.8442 81.1372 50.3133C81.1372 49.7824 81.2256 49.2908 81.4026 48.8385C81.5894 48.3863 81.8451 47.993 82.1695 47.6587C82.494 47.3146 82.8725 47.0491 83.3051 46.8623C83.7475 46.6657 84.2244 46.5674 84.7356 46.5674C85.2666 46.5674 85.7533 46.6755 86.1957 46.8918C86.648 47.1081 87.0068 47.4129 87.2723 47.8062V43.5735H88.5259ZM87.346 50.3133C87.346 49.9495 87.2821 49.6103 87.1543 49.2957C87.0363 48.9811 86.8643 48.7107 86.6381 48.4846C86.4218 48.2486 86.1613 48.0667 85.8565 47.9389C85.5615 47.8013 85.2371 47.7324 84.8831 47.7324C84.5292 47.7324 84.1998 47.8013 83.895 47.9389C83.6001 48.0667 83.3395 48.2486 83.1134 48.4846C82.8971 48.7107 82.725 48.9811 82.5972 49.2957C82.4792 49.6103 82.4202 49.9495 82.4202 50.3133C82.4202 50.6771 82.4792 51.0163 82.5972 51.3309C82.725 51.6456 82.8971 51.9208 83.1134 52.1568C83.3395 52.3829 83.6001 52.5648 83.895 52.7025C84.1998 52.8303 84.5292 52.8942 84.8831 52.8942C85.2371 52.8942 85.5615 52.8303 85.8565 52.7025C86.1613 52.5648 86.4218 52.3829 86.6381 52.1568C86.8643 51.9208 87.0363 51.6456 87.1543 51.3309C87.2821 51.0163 87.346 50.6771 87.346 50.3133ZM92.3747 44.6059C92.3747 44.8419 92.2911 45.0434 92.124 45.2106C91.9569 45.3777 91.7553 45.4613 91.5193 45.4613C91.2834 45.4613 91.0818 45.3777 90.9147 45.2106C90.7475 45.0434 90.664 44.8419 90.664 44.6059C90.664 44.3699 90.7475 44.1684 90.9147 44.0012C91.0818 43.8341 91.2834 43.7505 91.5193 43.7505C91.7553 43.7505 91.9569 43.8341 92.124 44.0012C92.2911 44.1684 92.3747 44.3699 92.3747 44.6059ZM92.1535 46.7296V53.8971H90.8852V46.7296H92.1535ZM99.5436 46.7296H100.812V53.8971H99.5436V52.8647C99.3174 53.2187 99.0176 53.5087 98.644 53.7348C98.2703 53.9511 97.8132 54.0593 97.2724 54.0593C96.358 54.0593 95.6501 53.7791 95.1487 53.2187C94.6571 52.6484 94.4113 51.8864 94.4113 50.9327V46.7296H95.6796V50.7853C95.6796 51.4342 95.8369 51.9454 96.1516 52.319C96.4662 52.6927 96.9283 52.8795 97.5379 52.8795C98.1474 52.8795 98.6341 52.6632 98.9979 52.2306C99.3617 51.7979 99.5436 51.2129 99.5436 50.4756V46.7296ZM104.655 53.8971H103.386V46.7296H104.64V47.7619C104.837 47.3883 105.112 47.0983 105.466 46.8918C105.82 46.6755 106.247 46.5674 106.749 46.5674C107.28 46.5674 107.732 46.6903 108.106 46.9361C108.489 47.1819 108.789 47.526 109.005 47.9684C109.094 47.8209 109.207 47.6636 109.344 47.4965C109.482 47.3293 109.649 47.1769 109.846 47.0393C110.052 46.9016 110.283 46.7886 110.539 46.7001C110.805 46.6116 111.109 46.5674 111.453 46.5674C112.289 46.5674 112.938 46.8377 113.4 47.3785C113.862 47.9192 114.093 48.6517 114.093 49.5759V53.8971H112.825V49.7971C112.825 49.1581 112.687 48.6566 112.412 48.2929C112.147 47.9192 111.743 47.7324 111.203 47.7324C110.642 47.7324 110.195 47.9487 109.861 48.3813C109.536 48.814 109.374 49.399 109.374 50.1363V53.8971H108.106V49.8266C108.106 49.1777 107.968 48.6665 107.693 48.2929C107.417 47.9192 107.014 47.7324 106.483 47.7324C105.923 47.7324 105.476 47.9487 105.141 48.3813C104.817 48.814 104.655 49.399 104.655 50.1363V53.8971Z"
+                                fill="#7968FA" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_13837_52635">
+                                <rect width="116" height="56" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+
+                </a>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="menu-header-container">
+                <ul id="menu-header" class="menu">
+                    <li
+                        class="sub-menu-wider menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2118">
+                        <a rel="PRODUCTS" href="https://www.qodo.ai/products/ide-plugin/">Products</a>
+                        <ul class="sub-menu">
+                            <li
+                                class="menu-item-btn menu-item menu-item-type-post_type menu-item-object-page menu-item-2473">
+                                <a href="https://www.qodo.ai/products/ide-plugin/"><span><img
+                                            src="https://www.qodo.ai/wp-content/uploads/2023/05/ides.svg"
+                                            alt="Qodo Gen: IDE Plugin" /> <span class="menu-name">Qodo Gen: IDE
+                                            Plugin</span></span></a></li>
+                            <li
+                                class="menu-item-btn menu-item menu-item-type-custom menu-item-object-custom menu-item-5532">
+                                <a href="/products/git-plugin/"><span><img
+                                            src="https://www.qodo.ai/wp-content/uploads/2023/04/icon-team.svg"
+                                            alt="Qodo Merge: Git Agent" /> <span class="menu-name">Qodo Merge: Git
+                                            Agent</span></span></a></li>
+                            <li
+                                class="menu-item-btn menu-item menu-item-type-post_type menu-item-object-page menu-item-9625">
+                                <a href="https://www.qodo.ai/products/qodo-cover/"><span><img
+                                            src="https://www.qodo.ai/wp-content/uploads/2024/05/icon-cover-agent-new.svg"
+                                            alt="Qodo Cover: CLI Agent " /> <span class="menu-name">Qodo Cover: CLI
+                                            Agent </span></span></a></li>
+                            <li
+                                class="menu-item-btn menu-item menu-item-type-custom menu-item-object-custom menu-item-8823">
+                                <a href="/products/alphacodium/"><span><img
+                                            src="https://www.qodo.ai/wp-content/uploads/2023/09/icon-alpha-codium.svg"
+                                            alt="AlphaCodium RESEARCH" /> <span class="menu-name">AlphaCodium <span
+                                                class="coming-soon-label">RESEARCH</span></span></span></a></li>
+                            <li
+                                class="menu-item-label menu-item menu-item-type-post_type menu-item-object-page menu-item-4069">
+                                <a href="https://www.qodo.ai/products/qodo-api/"><span><img
+                                            src="https://www.qodo.ai/wp-content/uploads/2023/09/icon-code-agent.svg"
+                                            alt="Qodo API CONTACT US" /> <span class="menu-name">Qodo API <span
+                                                class="coming-soon-label">CONTACT US</span></span></span></a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3249"><a
+                            href="https://www.qodo.ai/pricing/">Pricing</a></li>
+                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6577"><a
+                            target="_blank" rel="noopener" href="https://docs.qodo.ai">Docs</a></li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-134"><a
+                            href="https://www.qodo.ai/blog/">Blog</a></li>
+                    <li
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-17">
+                        <a rel="ABOUT US" href="https://www.qodo.ai/about/">About</a>
+                        <ul class="sub-menu">
+                            <li
+                                class="hash-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-1232">
+                                <a href="/about/#our-mission"><span><img
+                                            src="https://www.qodo.ai/wp-content/uploads/2023/04/icon-mission.svg"
+                                            alt="Our Mission" /> <span class="menu-name">Our Mission</span></span></a>
+                            </li>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1568"><a
+                                    href="https://www.qodo.ai/install/"><span><img
+                                            src="https://www.qodo.ai/wp-content/uploads/2023/05/ides.svg"
+                                            alt="IDE Integrations" /> <span class="menu-name">IDE
+                                            Integrations</span></span></a></li>
+                            <li
+                                class="hash-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-1233">
+                                <a href="/about/#about-team"><span><img
+                                            src="https://www.qodo.ai/wp-content/uploads/2023/04/icon-team.svg"
+                                            alt="Meet the Team" /> <span class="menu-name">Meet the
+                                            Team</span></span></a></li>
+                            <li
+                                class="hash-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-1234">
+                                <a href="/about/#backed-by"><span><img
+                                            src="https://www.qodo.ai/wp-content/uploads/2023/04/icon-backed-by.svg"
+                                            alt="Backed by" /> <span class="menu-name">Backed by</span></span></a></li>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2224"><a
+                                    href="https://www.qodo.ai/resources/"><span><img
+                                            src="https://www.qodo.ai/wp-content/uploads/2023/07/icon-code.svg"
+                                            alt="Useful Resources" /> <span class="menu-name">Useful
+                                            Resources</span></span></a></li>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1235"><a
+                                    href="https://www.qodo.ai/careers/"><span><img
+                                            src="https://www.qodo.ai/wp-content/uploads/2023/04/icon-careers.svg"
+                                            alt="Careers" /> <span class="menu-name">Careers</span></span></a></li>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7688"><a
+                                    href="https://www.qodo.ai/contact/"><span><img
+                                            src="https://www.qodo.ai/wp-content/uploads/2024/07/icon-contact-us.svg"
+                                            alt="Contact Us" /> <span class="menu-name">Contact Us</span></span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="marketplace-download-plan ">
+            <a href="vscode:extension/Codium.codium" class="marketplace-value -value-desktop" target="_blank"
+                data-title="Qodo | VS Code Extension"><em class="m-icon"><svg width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.88">
+                            <mask id="mask0_10597_25709" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="2"
+                                y="2" width="20" height="20">
+                                <path d="M22 2H2V22H22V2Z" fill="white" />
+                            </mask>
+                            <g mask="url(#mask0_10597_25709)">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M16.1824 21.8626C16.4974 21.9853 16.8566 21.9775 17.1745 21.8245L21.2922 19.8431C21.7248 19.635 22 19.1971 22 18.7166V5.28187C22 4.80147 21.7249 4.36357 21.2922 4.15537L17.1745 2.17396C16.7572 1.97318 16.2689 2.02236 15.9027 2.2886C15.8504 2.32663 15.8006 2.36909 15.7538 2.41589L7.87102 9.60751L4.43744 7.00112C4.1178 6.75851 3.67072 6.77839 3.37387 7.04842L2.27261 8.05019C1.90949 8.38051 1.90907 8.95176 2.27171 9.28264L5.24942 11.9992L2.27171 14.7158C1.90907 15.0467 1.90949 15.6179 2.27261 15.9483L3.37387 16.95C3.67072 17.2201 4.1178 17.2399 4.43744 16.9973L7.87102 14.3909L15.7538 21.5826C15.8785 21.7073 16.0249 21.8013 16.1824 21.8626ZM17.0031 7.45899L11.0218 11.9992L17.0031 16.5394V7.45899Z"
+                                    fill="white" />
+                                <path
+                                    d="M21.2927 4.15828L17.1718 2.17415C16.6948 1.94449 16.1248 2.04136 15.7504 2.41571L2.26015 14.7157C1.8973 15.0465 1.89772 15.6178 2.26105 15.9481L3.36298 16.9498C3.66003 17.2199 4.10738 17.2398 4.42719 16.9971L20.6726 4.67302C21.2176 4.25956 22.0004 4.64828 22.0004 5.33238V5.28454C22.0004 4.80434 21.7254 4.3666 21.2927 4.15828Z"
+                                    fill="white" />
+                                <path
+                                    d="M21.2927 19.8403L17.1718 21.8245C16.6948 22.0541 16.1248 21.9572 15.7504 21.5829L2.26015 9.28295C1.8973 8.95208 1.89772 8.38083 2.26105 8.05051L3.36298 7.04875C3.66003 6.77871 4.10738 6.75884 4.42719 7.00145L20.6726 19.3256C21.2176 19.739 22.0004 19.3503 22.0004 18.6662V18.7141C22.0004 19.1943 21.7254 19.632 21.2927 19.8403Z"
+                                    fill="white" />
+                                <path
+                                    d="M17.1716 21.8245C16.6944 22.054 16.1244 21.957 15.75 21.5826C16.2112 22.0438 17 21.7171 17 21.0648V2.93366C17 2.28131 16.2112 1.95461 15.75 2.41589C16.1244 2.04151 16.6944 1.9445 17.1716 2.17396L21.2917 4.15537C21.7247 4.36357 22 4.80147 22 5.28187V18.7166C22 19.1971 21.7247 19.635 21.2917 19.8431L17.1716 21.8245Z"
+                                    fill="white" />
+                            </g>
+                        </g>
+                    </svg></em><strong class="download"><span class="vs--download">512.7K</span><em
+                        class="icon-star"></em></strong></a><a
+                href="https://marketplace.visualstudio.com/items?itemName=Codium.codium"
+                class="marketplace-value -value-mobile" target="_blank" data-title="Qodo | VS Code Extension"><em
+                    class="m-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.88">
+                            <mask id="mask0_10597_25709" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="2"
+                                y="2" width="20" height="20">
+                                <path d="M22 2H2V22H22V2Z" fill="white" />
+                            </mask>
+                            <g mask="url(#mask0_10597_25709)">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M16.1824 21.8626C16.4974 21.9853 16.8566 21.9775 17.1745 21.8245L21.2922 19.8431C21.7248 19.635 22 19.1971 22 18.7166V5.28187C22 4.80147 21.7249 4.36357 21.2922 4.15537L17.1745 2.17396C16.7572 1.97318 16.2689 2.02236 15.9027 2.2886C15.8504 2.32663 15.8006 2.36909 15.7538 2.41589L7.87102 9.60751L4.43744 7.00112C4.1178 6.75851 3.67072 6.77839 3.37387 7.04842L2.27261 8.05019C1.90949 8.38051 1.90907 8.95176 2.27171 9.28264L5.24942 11.9992L2.27171 14.7158C1.90907 15.0467 1.90949 15.6179 2.27261 15.9483L3.37387 16.95C3.67072 17.2201 4.1178 17.2399 4.43744 16.9973L7.87102 14.3909L15.7538 21.5826C15.8785 21.7073 16.0249 21.8013 16.1824 21.8626ZM17.0031 7.45899L11.0218 11.9992L17.0031 16.5394V7.45899Z"
+                                    fill="white" />
+                                <path
+                                    d="M21.2927 4.15828L17.1718 2.17415C16.6948 1.94449 16.1248 2.04136 15.7504 2.41571L2.26015 14.7157C1.8973 15.0465 1.89772 15.6178 2.26105 15.9481L3.36298 16.9498C3.66003 17.2199 4.10738 17.2398 4.42719 16.9971L20.6726 4.67302C21.2176 4.25956 22.0004 4.64828 22.0004 5.33238V5.28454C22.0004 4.80434 21.7254 4.3666 21.2927 4.15828Z"
+                                    fill="white" />
+                                <path
+                                    d="M21.2927 19.8403L17.1718 21.8245C16.6948 22.0541 16.1248 21.9572 15.7504 21.5829L2.26015 9.28295C1.8973 8.95208 1.89772 8.38083 2.26105 8.05051L3.36298 7.04875C3.66003 6.77871 4.10738 6.75884 4.42719 7.00145L20.6726 19.3256C21.2176 19.739 22.0004 19.3503 22.0004 18.6662V18.7141C22.0004 19.1943 21.7254 19.632 21.2927 19.8403Z"
+                                    fill="white" />
+                                <path
+                                    d="M17.1716 21.8245C16.6944 22.054 16.1244 21.957 15.75 21.5826C16.2112 22.0438 17 21.7171 17 21.0648V2.93366C17 2.28131 16.2112 1.95461 15.75 2.41589C16.1244 2.04151 16.6944 1.9445 17.1716 2.17396L21.2917 4.15537C21.7247 4.36357 22 4.80147 22 5.28187V18.7166C22 19.1971 21.7247 19.635 21.2917 19.8431L17.1716 21.8245Z"
+                                    fill="white" />
+                            </g>
+                        </g>
+                    </svg></em><strong class="download"><span class="vs--download">512.7K</span><em
+                        class="icon-star"></em></strong></a>
+            <style>
+                @media (max-width: 1199px) {
+                    .marketplace-value.-value-desktop {
+                        display: none;
+                    }
+                }
+
+                @media (min-width: 1200px) {
+                    .marketplace-value.-value-mobile {
+                        display: none;
+                    }
+
+                    .marketplace-value.-value-desktop {
+                        display: inline-flex;
+                    }
+                }
+            </style><span class="hline"><svg width="2" height="12" viewBox="0 0 2 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.09961 0V12" stroke="white" stroke-opacity="0.25" />
+                </svg></span><a
+                href="https://plugins.jetbrains.com/plugin/21206-codiumai--meaningful-tests-in-python-powered-by-testgpt"
+                class="marketplace-value" target="_blank" data-title="Qodo | JetBrains Extension"><em
+                    class="m-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.88">
+                            <mask id="mask0_10597_25718" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="2"
+                                y="2" width="20" height="20">
+                                <path d="M22 2H2V22H22V2Z" fill="white" />
+                            </mask>
+                            <g mask="url(#mask0_10597_25718)">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M22 2H2V22H22V2ZM11.2266 18.25H3.72656V19.5H11.2266V18.25ZM3.64062 7.26615L4.22268 6.71665C4.38103 6.90757 4.53006 7.01935 4.73494 7.01935C4.95846 7.01935 5.10285 6.86568 5.10285 6.563V4.5H6.00163V6.56763C6.00163 6.97743 5.89917 7.26615 5.68031 7.48505C5.46603 7.6993 5.15877 7.81565 4.7862 7.81565C4.21806 7.81565 3.87346 7.57815 3.64062 7.26615ZM8.83271 4.5H6.21094V7.75975H8.85601V6.9914H7.10506V6.47448H8.66971V5.762H7.10506V5.26372H8.83271V4.5ZM10.0123 5.29166H9.03906V4.5H11.8937V5.29166H10.9158V7.75975H10.0123V5.29166ZM6.49725 9.35249C6.49725 9.72969 6.28313 9.95324 5.99439 10.0789C6.39025 10.2092 6.6417 10.4327 6.64168 10.8751V10.8844C6.64168 11.4432 6.1853 11.7832 5.40765 11.7832H3.72656V8.52344H5.39819C5.80799 8.52344 6.09673 8.62589 6.28765 8.81219C6.3563 8.88219 6.41021 8.96524 6.44621 9.05644C6.48221 9.14764 6.49957 9.24514 6.49725 9.34319V9.35249ZM5.1981 9.25004H4.60668V9.82284H5.17482C5.44956 9.82284 5.6079 9.72969 5.6079 9.53879V9.52944C5.6079 9.34784 5.46353 9.25004 5.1981 9.25004ZM5.30522 11.0569C5.58462 11.0569 5.7383 10.9498 5.7383 10.7588V10.7495C5.7383 10.5725 5.59859 10.4561 5.2959 10.4561H4.60668V11.0569H5.30522ZM11.593 8.5H10.7223L9.50429 11.3913L8.99474 10.6468C9.39989 10.4744 9.66529 10.1439 9.66529 9.64095V9.6316C9.66529 9.3103 9.56754 9.06345 9.37674 8.87255C9.15784 8.65365 8.81324 8.5233 8.31494 8.5233H6.77344V11.7831H7.67684V10.7959H8.07734L8.73394 11.7831H10.2844L10.5173 11.1964H11.7792L12.0121 11.7831H12.9806L11.593 8.5ZM8.76174 9.70145C8.76174 9.93895 8.58014 10.088 8.27744 10.088H7.67689V9.30095H8.27299C8.57104 9.30095 8.76194 9.43135 8.76194 9.69215L8.76174 9.70145ZM10.7828 10.493L11.1507 9.571L11.5139 10.493H10.7828ZM13.9932 8.52344H13.0898V11.7832H13.9932V8.52344ZM14.2148 8.52344H15.0577L16.3989 10.2465V8.52344H17.293V11.7832H16.506L15.109 9.99504V11.7832H14.2148V8.52344ZM17.8544 10.6954L17.3516 11.2962C17.7567 11.6547 18.3015 11.8363 18.879 11.8362C19.6706 11.8362 20.1969 11.4404 20.1969 10.7744V10.7651C20.1969 10.1551 19.7312 9.91284 18.9861 9.74999C18.5297 9.64759 18.418 9.58234 18.418 9.43334V9.42414C18.418 9.30314 18.5251 9.21459 18.7439 9.21459C19.0327 9.21459 19.3586 9.32159 19.6567 9.53589L20.1081 8.89794C19.7542 8.61389 19.3213 8.46484 18.767 8.46484C17.9846 8.46484 17.505 8.90259 17.505 9.50799V9.51729C17.505 10.1832 18.0405 10.3788 18.7344 10.5371C19.1816 10.6442 19.2887 10.7141 19.2887 10.8538V10.8631C19.2887 11.0028 19.1584 11.0866 18.9116 11.0866C18.5344 11.0866 18.1804 10.9516 17.8544 10.6954Z"
+                                    fill="white" />
+                            </g>
+                        </g>
+                    </svg></em><strong class="download"><span class="jetbrains--download">397.4K</span><em
+                        class="icon-star"></em></strong></a><span class="hline"><svg width="2" height="12"
+                    viewBox="0 0 2 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.09961 0V12" stroke="white" stroke-opacity="0.25" />
+                </svg></span><a href="https://github.com/Codium-ai/pr-agent" class="marketplace-value" target="_blank"
+                data-title="Qodo | Qodo Merge"><em class="m-icon"><svg width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.88">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M11.6079 2C6.295 2 2 6.39998 2 11.8434C2 16.1946 4.75195 19.8778 8.56964 21.1813C9.04695 21.2793 9.22179 20.9695 9.22179 20.709C9.22179 20.4807 9.20606 19.6986 9.20606 18.8835C6.53336 19.4703 5.97679 17.7102 5.97679 17.7102C5.54727 16.5694 4.91086 16.2762 4.91086 16.2762C4.03609 15.6731 4.97458 15.6731 4.97458 15.6731C5.94494 15.7383 6.4541 16.6835 6.4541 16.6835C7.31294 18.1827 8.69689 17.7591 9.25365 17.4983C9.33311 16.8627 9.58778 16.4227 9.8582 16.1783C7.72654 15.9502 5.48375 15.1027 5.48375 11.3218C5.48375 10.2462 5.86528 9.36617 6.46983 8.68177C6.37446 8.43737 6.04032 7.42678 6.56542 6.07419C6.56542 6.07419 7.37666 5.81339 9.20586 7.08458C9.989 6.86911 10.7966 6.75951 11.6079 6.75858C12.4192 6.75858 13.2462 6.87278 14.0098 7.08458C15.8392 5.81339 16.6505 6.07419 16.6505 6.07419C17.1756 7.42678 16.8412 8.43737 16.7458 8.68177C17.3663 9.36617 17.7322 10.2462 17.7322 11.3218C17.7322 15.1027 15.4894 15.9338 13.3418 16.1783C13.6918 16.4879 13.9939 17.0746 13.9939 18.0035C13.9939 19.3235 13.9782 20.383 13.9782 20.7087C13.9782 20.9695 14.1532 21.2793 14.6303 21.1815C18.448 19.8775 21.1999 16.1946 21.1999 11.8434C21.2157 6.39998 16.905 2 11.6079 2Z"
+                                fill="white" />
+                        </g>
+                    </svg></em><strong class="download"><span class="github--download">6.4K</span><em
+                        class="icon-star"></em></strong></a>
+        </div>
+        <div class="mobile-header-cta"><a href="https://app.qodo.ai" target="_blank"
+                class="btn btn-grey text-uppercase">LOG IN</a><a href="/book-a-demo"
+                class="btn btn-grey text-uppercase">BOOK A DEMO</a><a href="/get-started"
+                class="btn btn-green text-uppercase">GET STARTED</a></div>
+    </div>
+    <!-- HFCM by 99 Robots - Snippet # 12: LinkedIn Insight Tag -->
+    <script
+        type="text/javascript"> _linkedin_partner_id = "4646812"; window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || []; window._linkedin_data_partner_ids.push(_linkedin_partner_id); </script>
+    <script
+        type="text/javascript"> (function (l) { if (!l) { window.lintrk = function (a, b) { window.lintrk.q.push([a, b]) }; window.lintrk.q = [] } var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript"; b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s); })(window.lintrk); </script>
+    <noscript> <img height="1" width="1" style="display:none;" alt=""
+            src="https://px.ads.linkedin.com/collect/?pid=4646812&fmt=gif" /> </noscript>
+    <!-- /end HFCM by 99 Robots -->
+    <script type="text/javascript" src="https://www.qodo.ai/wp-includes/js/hoverintent-js.min.js?ver=2.2.1"
+        id="hoverintent-js-js"></script>
+    <script type="text/javascript" src="https://www.qodo.ai/wp-includes/js/admin-bar.min.js?ver=6.6.1"
+        id="admin-bar-js"></script>
+    <script type="text/javascript"
+        src="https://www.qodo.ai/wp-content/themes/codium/assets/lib/swiperjs/swiper-bundle.min.js?ver=1735800814"
+        id="script_0-js"></script>
+    <script type="text/javascript"
+        src="https://www.qodo.ai/wp-content/themes/codium/assets/lib/highlightjs/highlight-icw.js?ver=1735800814"
+        id="script_1-js"></script>
+    <script type="text/javascript"
+        src="https://www.qodo.ai/wp-content/themes/codium/assets/lib/lottie/lottie-player.js?ver=1735800814"
+        id="script_2-js"></script>
+    <script type="text/javascript"
+        src="https://www.qodo.ai/wp-content/themes/codium/assets/lib/glightbox/glightbox.min.js?ver=1735800814"
+        id="script_3-js"></script>
+    <script type="text/javascript"
+        src="https://www.qodo.ai/wp-content/themes/codium/assets/js/get-app-codium-user-info-ajax.js?v4&amp;ver=6.6.1"
+        id="main-get-app-codium-user-info-ajax-js"></script>
+    <script type="text/javascript" id="main-js-js-extra">
+        /* <![CDATA[ */
+        var icw_download = { "ajax_url": "https:\/\/www.qodo.ai\/wp-admin\/admin-ajax.php", "vscode_rating_count": "295", "vscode_review_count": "4.7", "vscode_download_count": "512.7K", "github_download_count": "6.4K", "jetbrains_download_count": "397.4K", "ajax_url_app_codium_user_data": "https:\/\/www.qodo.ai\/wp-content\/themes\/codium\/function\/icw-get-app-codium-user-info-ajax-hook.php" };
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="https://www.qodo.ai/wp-content/themes/codium/assets/js/main.js?ver=6.6.1"
+        id="main-js-js"></script>
+    <script type="text/javascript" src="https://www.qodo.ai/wp-content/plugins/page-links-to/dist/new-tab.js?ver=3.3.7"
+        id="page-links-to-js"></script>
+    <script type="text/javascript" id="wpassetcleanup-script-js-extra">
+        /* <![CDATA[ */
+        var wpacu_object = { "plugin_prefix": "wpassetcleanup", "plugin_slug": "wp-asset-clean-up-pro", "plugin_title": "Asset CleanUp Pro", "reload_icon": "<svg aria-hidden=\"true\" role=\"img\" focusable=\"false\" class=\"dashicon dashicons-cloud\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\"><path d=\"M14.9 9c1.8.2 3.1 1.7 3.1 3.5 0 1.9-1.6 3.5-3.5 3.5h-10C2.6 16 1 14.4 1 12.5 1 10.7 2.3 9.3 4.1 9 4 8.9 4 8.7 4 8.5 4 7.1 5.1 6 6.5 6c.3 0 .7.1.9.2C8.1 4.9 9.4 4 11 4c2.2 0 4 1.8 4 4 0 .4-.1.7-.1 1z\"><\/path><\/svg>", "reload_msg": "Reloading <strong style=\"margin: 0 4px;\">Asset CleanUp Pro<\/strong> area", "dom_get_type": "direct", "list_show_status": "default", "start_del_e": "BEGIN WPACU PLUGIN JSON ENQUEUED", "end_del_e": "END WPACU PLUGIN JSON ENQUEUED", "start_del_h": "BEGIN WPACU PLUGIN JSON HARDCODED", "end_del_h": "END WPACU PLUGIN JSON HARDCODED", "post_id": "2218", "ajax_url": "https:\/\/www.qodo.ai\/wp-admin\/admin-ajax.php", "page_url": "https:\/\/www.qodo.ai\/codiumai-vs-chatgpt-4\/", "is_frontend_view": "1", "source_load_error_msg": "The source might not be reachable", "current_post_type": "page", "wpacu_ajax_get_post_type_terms_nonce": "6161b221a9", "clear_other_caches": "", "clear_cache_via_ajax": "", "server_returned_404_not_found": "When accessing this page the server responded with a status of <strong>404 (Not Found)<\/strong>. If this page is meant to return this status, you can ignore this message, otherwise you might have a problem with this page if it is meant to return a standard 200 OK status.", "autoptimize_not_active": "1", "cache_enabler_not_active": "1", "wpacu_update_specific_settings_nonce": "3f907741ff", "wpacu_update_asset_row_state_nonce": "445e4eb504", "wpacu_area_update_assets_row_state_nonce": "7b95aedf2f", "wpacu_print_loaded_hardcoded_assets_nonce": "6986b5f247", "wpacu_ajax_check_remote_file_size_nonce": "935ef28748", "wpacu_ajax_check_external_urls_nonce": "05ce2da7b3", "wpacu_ajax_get_loaded_assets_nonce": "45b75b2d33", "wpacu_ajax_load_page_restricted_area_nonce": "bc882089a8", "wpacu_ajax_clear_cache_nonce": "ab740ae0aa", "wpacu_ajax_preload_url_nonce": "220ae0333c", "wpacu_update_plugin_setting_nonce": "a66c18c975", "wpacu_update_plugin_row_state_nonce": "472e62d2a7", "wpacu_area_update_plugins_row_state_nonce": "926acfd342", "ajax_direct_fetch_error": "<div class=\"ajax-direct-call-error-area\">\n    <p class=\"note\"><strong>Note:<\/strong> The checked URL returned an error when fetching the assets via AJAX call. This could be because of a firewall that is blocking the AJAX call, a redirect loop or an error in the script that is retrieving the output which could be due to an incompatibility between the plugin and the WordPress setup you are using.<\/p>\n    <p>Here is the response from the call:<\/p>\n\n    <table>\n        <tr>\n            <td width=\"135\"><strong>Status Code Error:<\/strong><\/td>\n            <td><span class=\"error-code\">{wpacu_status_code_error}<\/span> * for more information about client and server errors, <a target=\"_blank\" href=\"https:\/\/en.wikipedia.org\/wiki\/List_of_HTTP_status_codes\">check this link<\/a><\/td>\n        <\/tr>\n        <tr>\n            <td valign=\"top\"><span class=\"dashicons dashicons-lightbulb\" style=\"color: orange;\"><\/span> <strong>Suggestion:<\/strong><\/td>\n            <td>Select \"WP Remote POST\" as a method of retrieving the assets from the \"Settings\" page. If that doesn't fix the issue, just use \"Manage in Front-end\" option which should always work and <a target=\"_blank\" href=\"https:\/\/www.gabelivan.com\/contact\/?utm_source=wpacu_plugin_user&utm_medium=wpacu_ajax_direct_call_error\">submit a ticket<\/a> about your problem.<\/td>\n        <\/tr>\n        <tr>\n            <td valign=\"top\"><strong>Output:<\/strong><\/td>\n            <td valign=\"top\">{wpacu_output}<\/td>\n        <\/tr>\n    <\/table>\n<\/div>", "ajax_direct_fetch_error_with_success_response": "<div style=\"overflow-y: scroll; max-height: 290px;\" class=\"ajax-direct-call-error-area\">\n    <p class=\"note\"><strong>Note:<\/strong> The assets could not be fetched via the AJAX call. Here is the response:<\/p>\n    <table>\n        <tr>\n            <td valign=\"top\"><strong>Suggestion:<\/strong><\/td>\n            <td>Select \"WP Remote POST\" as a method of retrieving the assets from the \"Settings\" page. If that doesn't fix the issue, just use \"Manage in Front-end\" option which should always work and <a target=\"_blank\" href=\"https:\/\/www.gabelivan.com\/contact\/?utm_source=wpacu_plugin_user&utm_medium=wpacu_ajax_direct_call_error\">submit a ticket<\/a> about your problem.<\/td>\n        <\/tr>\n        <tr>\n            <td valign=\"top\"><strong>Output:<\/strong><\/td>\n            <td valign=\"top\">{wpacu_output}<\/td>\n        <\/tr>\n    <\/table>\n<\/div>", "jquery_migration_disable_confirm_msg": "Make sure to properly test your website if you unload the jQuery migration library.\n\nIn some cases, due to old jQuery code triggered from plugins or the theme, unloading this migration library could cause those scripts not to function anymore and break some of the front-end functionality.\n\nIf you are not sure about whether activating this option is right or not, it is better to leave it as it is (to be loaded by default) and consult with a developer.\n\nConfirm this action to enable the unloading or cancel to leave it loaded by default.", "comment_reply_disable_confirm_msg": "This is worth disabling if you are NOT using the default WordPress comment system (e.g. you are using the website for business purposes, to showcase your products and you are not using it as a blog where people leave comments to your posts).\n\nIf you are not sure about whether activating this option is right or not, it is better to leave it as it is (to be loaded by default).\n\nConfirm this action to enable the unloading or cancel to leave it loaded by default.", "reset_settings_confirm_msg": "Are you sure you want to reset the settings to their default values?\n\nThis is an irreversible action.\n\nPlease confirm to continue or \"Cancel\" to abort it", "reset_critical_css_confirm_msg": "Are you sure you want to remove all the critical CSS information?\n\nThis is an irreversible action.\n\nPlease confirm to continue or \"Cancel\" to abort it", "reset_everything_except_settings_confirm_msg": "Are you sure you want to reset everything (unloads, load exceptions etc.) except settings?\n\nThis is an irreversible action.\n\nPlease confirm to continue or \"Cancel\" to abort it.", "reset_everything_confirm_msg": "Are you sure you want to reset everything (settings, unloads, load exceptions etc.) to the same point it was when you first activated the plugin?\n\nThis is an irreversible action.\n\nPlease confirm to continue or \"Cancel\" to abort it.", "import_confirm_msg": "This process is NOT reversible.\n\nPlease make sure you have a backup (e.g. an exported JSON file) before proceeding.\n\nPlease confirm to continue or \"Cancel\" to abort it.", "mark_license_valid_confirm_msg": "Please note that you should continue only if you already tried \"Activate License\" button and it did not work to validate the license and you followed the alternative steps that were just mentioned on points 1 and 2.\n\nConfirm this action or cancel it!", "inline_auto_js_files_confirm_msg": "If you automatically want to inline all JavaScript (.js) files smaller than the chosen size in KB, please make sure to test your website after you enable this option.\n\nThis can lead to broken functionality as, some JavaScript code could be meant to load later during the page load, so extra attention needs to be paid.\n\nThe feature should be used mostly by advanced users (e.g. developers) who know what they are doing. Do not worry, your website can be fast, even if you do not enable this feature.\n\nTo continue, please confirm by pressing \"OK\", or cancel to avoid enabling this option if you are not sure if it is the right thing to do.", "script_is_parent_alert": "This JavaScript is having the following \"children\" that depend on it (at least that's how it was marked): {wpacu_script_child_handles}.\n\nIf this file is loaded AFTER its \"children\" (e.g. by either applying \"async\" or \"defer\"), then you might end up with broken functionality as it is likely the order of the loaded files would be changed.\n\nPlease test carefully if you decided to continue OR make sure its \"children\" handles are also having the same attribute applied.", "parent_asset_media_query_load_alert": "This [asset_type] has other \"children\" files connected to it that might not load in the same way if you apply any media query rule.\n\nPlease test the page in both mobile and desktop view if you decide to add a rule, making sure everything is loading fine.\n\nClick \"OK\" to continue and set the rule or \"Cancel\" if you have any doubts about taking this action.", "jquery_unload_alert": "jQuery library is a WordPress library that it is used in WordPress plugins\/themes most of the time.\n\nThere are currently other JavaScript \"children\" files connected to it, that will stop working, if this library is unloaded\n\nIf you are positive this page does not require jQuery (very rare cases), then you can continue by pressing \"OK\"\n\nOtherwise, it is strongly recommended to keep this library loaded by pressing \"Cancel\" to avoid breaking the functionality of the website.", "woo_js_cookie_unload_alert": "Please be careful when unloading \"js-cookie\" as there are other JS files that depend on it which will also be unloaded, including \"wc-cart-fragments\" which is required for the functionality of the WooCommerce mini cart.\n\nClick \"OK\" to continue or \"Cancel\" if you have any doubts about unloading this file", "woo_wc_cart_fragments_unload_alert": "Please be careful when unloading \"wc-cart-fragments\" as it's required for the functionality of the WooCommerce mini cart. Unless you are sure you do not need it on this page, it is advisable to leave it loaded.\n\nClick \"OK\" to continue or \"Cancel\" if you have any doubts about unloading this file.", "sensitive_library_unload_alert": "Please make sure to properly test this page after this particular JavaScript file is unloaded as it is usually loaded for a reason.\n\nIf you are not sure whether it is used or not, then consider using the \"Cancel\" button to avoid taking ay chances in breaking the website's functionality.\n\nIt is advised to check the browser's console via right-click and \"Inspect\" to check for any reported errors.", "dashicons_unload_alert_ninja_forms_alert": "It looks like you are using \"Ninja Forms\" plugin which is sometimes loading Dashicons for the forms' styling.\n\nIf you are sure your forms do not use Dashicons, please use the following option 'Ignore dependency rule and keep the \"children\" loaded' to avoid the unloading of the \"nf-display\" handle.\n\nClick \"OK\" to continue or \"Cancel\" if you have any doubts about unloading the Dashicons. It is better to have Dashicons loaded, then take a chance and break the forms' layout." };
+        /* ]]> */
+    </script>
+    <script type="text/javascript" data-wpacu-skip data-wpacu-plugin-script
+        src="https://www.qodo.ai/wp-content/plugins/wp-asset-clean-up-pro/assets/script.min.js?wpacuversion=1727226540"
+        id="wpassetcleanup-script-js"></script>
+    <script type="text/javascript"
+        src="https://www.qodo.ai/wp-content/plugins/enlighter/cache/enlighterjs.min.js?ver=5XyZbxkB3DEdk75"
+        id="enlighterjs-js"></script>
+    <script type="text/javascript"
+        src="https://www.qodo.ai/wp-content/plugins/wp-rocket/assets/js/heartbeat.js?ver=3.17.2.1"
+        id="heartbeat-js"></script>
+    <script>window.lazyLoadOptions = [{ elements_selector: "img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]", data_src: "lazy-src", data_srcset: "lazy-srcset", data_sizes: "lazy-sizes", class_loading: "lazyloading", class_loaded: "lazyloaded", threshold: 300, callback_loaded: function (element) { if (element.tagName === "IFRAME" && element.dataset.rocketLazyload == "fitvidscompatible") { if (element.classList.contains("lazyloaded")) { if (typeof window.jQuery != "undefined") { if (jQuery.fn.fitVids) { jQuery(element).parent().fitVids() } } } } } }, { elements_selector: ".rocket-lazyload", data_src: "lazy-src", data_srcset: "lazy-srcset", data_sizes: "lazy-sizes", class_loading: "lazyloading", class_loaded: "lazyloaded", threshold: 300, }]; window.addEventListener('LazyLoad::Initialized', function (e) {
+            var lazyLoadInstance = e.detail.instance; if (window.MutationObserver) {
+                var observer = new MutationObserver(function (mutations) {
+                    var image_count = 0; var iframe_count = 0; var rocketlazy_count = 0; mutations.forEach(function (mutation) {
+                        for (var i = 0; i < mutation.addedNodes.length; i++) {
+                            if (typeof mutation.addedNodes[i].getElementsByTagName !== 'function') { continue }
+                            if (typeof mutation.addedNodes[i].getElementsByClassName !== 'function') { continue }
+                            images = mutation.addedNodes[i].getElementsByTagName('img'); is_image = mutation.addedNodes[i].tagName == "IMG"; iframes = mutation.addedNodes[i].getElementsByTagName('iframe'); is_iframe = mutation.addedNodes[i].tagName == "IFRAME"; rocket_lazy = mutation.addedNodes[i].getElementsByClassName('rocket-lazyload'); image_count += images.length; iframe_count += iframes.length; rocketlazy_count += rocket_lazy.length; if (is_image) { image_count += 1 }
+                            if (is_iframe) { iframe_count += 1 }
+                        }
+                    }); if (image_count > 0 || iframe_count > 0 || rocketlazy_count > 0) { lazyLoadInstance.update() }
+                }); var b = document.getElementsByTagName("body")[0]; var config = { childList: !0, subtree: !0 }; observer.observe(b, config)
+            }
+        }, !1)</script>
+    <script data-no-minify="1" async
+        src="https://www.qodo.ai/wp-content/plugins/wp-rocket/assets/js/lazyload/17.8.3/lazyload.min.js"></script>
+    <script>function lazyLoadThumb(e, alt, l) { var t = '<img data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>', a = '<button class="play" aria-label="play Youtube video"></button>'; if (l) { t = t.replace('data-lazy-', ''); t = t.replace('loading="lazy"', ''); t = t.replace(/<noscript>.*?<\/noscript>/g, ''); } t = t.replace('alt=""', 'alt="' + alt + '"'); return t.replace("ID", e) + a } function lazyLoadYoutubeIframe() { var e = document.createElement("iframe"), t = "ID?autoplay=1"; t += 0 === this.parentNode.dataset.query.length ? "" : "&" + this.parentNode.dataset.query; e.setAttribute("src", t.replace("ID", this.parentNode.dataset.src)), e.setAttribute("frameborder", "0"), e.setAttribute("allowfullscreen", "1"), e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"), this.parentNode.parentNode.replaceChild(e, this.parentNode) } document.addEventListener("DOMContentLoaded", function () { var exclusions = []; var e, t, p, u, l, a = document.getElementsByClassName("rll-youtube-player"); for (t = 0; t < a.length; t++)(e = document.createElement("div")), (u = 'https://i.ytimg.com/vi/ID/hqdefault.jpg'), (u = u.replace('ID', a[t].dataset.id)), (l = exclusions.some(exclusion => u.includes(exclusion))), e.setAttribute("data-id", a[t].dataset.id), e.setAttribute("data-query", a[t].dataset.query), e.setAttribute("data-src", a[t].dataset.src), (e.innerHTML = lazyLoadThumb(a[t].dataset.id, a[t].dataset.alt, l)), a[t].appendChild(e), (p = e.querySelector(".play")), (p.onclick = lazyLoadYoutubeIframe) });</script>
+    <div id="wpacu-main-loading-spinner" class="wpacu_hide">
+        <div id="wpacu-main-loading-spinner-content">
+            <div>
+                <img src="https://www.qodo.ai/wp-content/plugins/wp-asset-clean-up-pro/assets/icons/loader-horizontal.svg"
+                    alt="" />
+                <!-- Depending on the situation, the text will be shown from one of the DIVs below -->
+                <div id="wpacu-main-loading-spinner-text"></div>
+
+                <div data-wpacu-clear-cache-text="1" class="wpacu_hide">
+                    Clearing CSS/JS assets&#039; cache... Please wait until this notice disappears...
+                </div>
+                <div data-wpacu-updating-text="1" class="wpacu_hide">
+                    Updating... Please wait...
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
