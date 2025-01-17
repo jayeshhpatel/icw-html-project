@@ -784,14 +784,45 @@ body.post-type-archive-case-study .blog-page--content .posts-archive-list ul li 
     }
   }
 }
+
+/* Blog Table Content Style - Ekta */ 
 .blog-article-sidebar-mobile {
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     &.d-none {
       display: block !important;
     }
-    .collapse-arrow {
-
+    .blog-article-sidebar-links {
+      margin-bottom: 40px;
+      .blog-article-sidebar-link {
+        color: #01012a !important;
+        text-decoration: none !important;
+      }
     }
+    .blog-article-sidebar-table-content {
+      margin-bottom: 40px;
+      .blog-article-sidebar-title {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 0;
+      }
+      ol {
+        margin-top: 20px !important;
+      }
+      .collapse-arrow {
+        width: 15px;
+        height: 15px;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="17" viewBox="0 0 28 17" fill="none"><path d="M1.99994 1.98193L13.9999 13.9819L25.9999 1.98193" stroke="rgb(83 83 123)" stroke-width="3.18512" stroke-miterlimit="10"></path></svg>') no-repeat center center;
+        background-size: contain;
+        display: inline-block;
+        margin-left: auto;
+        transition: all 0.3s ease-in-out;
+        &.show {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
 }
 .blog-article-sidebar-table-content {
   background-color: #faf9ff; 
@@ -801,6 +832,8 @@ body.post-type-archive-case-study .blog-page--content .posts-archive-list ul li 
   line-height: 24px; 
   border-radius: 16px; 
   margin-bottom: 48px;  
+  @media (max-width: 992px) {
+    padding: 15px;
   }
   ol {
     padding: 0; 
@@ -808,12 +841,11 @@ body.post-type-archive-case-study .blog-page--content .posts-archive-list ul li 
     padding-left: 30px !important; 
     padding-right: 8px; 
     min-height: 100px; 
-    max-height: 150px; 
-    overflow: hidden; 
-    overflow-y: auto; 
     list-style-type: decimal-leading-zero !important;
-    @media (max-width: 992px) {      
-      max-height: 100%; 
+    @media(min-width: 768px) {
+      overflow: hidden; 
+      overflow-y: auto;
+      max-height: 150px;      
     }
     &::-webkit-scrollbar {
       background-color: transparent;
@@ -831,7 +863,11 @@ body.post-type-archive-case-study .blog-page--content .posts-archive-list ul li 
     li {
       line-height: normal; 
       margin: 0 0 15px; 
+      padding-left: 0 !important;
       list-style-type: decimal-leading-zero !important;
+      @media (max-width: 992px) {
+        margin: 0 0 10px; 
+      }
       &:last-child {
         margin-bottom: 0;
       }
@@ -843,7 +879,7 @@ body.post-type-archive-case-study .blog-page--content .posts-archive-list ul li 
         color: #53537B !important; 
         font-size: 16px;
         transition: all 0.3s ease-in-out;
-        text-decoration: none !important;        
+        text-decoration: none !important; 
       }      
       &:hover, &:focus {
         &::marker {
