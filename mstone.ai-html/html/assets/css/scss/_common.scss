@@ -596,7 +596,7 @@ img {
     background-image: var(--bg-image, none);
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: cover;   
+    background-size: cover;
     @media (max-width: 992px) {
         padding: 70px 0;
     }
@@ -604,17 +604,6 @@ img {
         @include border-radius(16px);
         padding: 50px 0;  
         margin: 0;
-    }
-    &.is-sm-full-width {
-        max-width: 1408px;
-        margin-left: auto;
-        margin-right: auto;
-        .section-title {
-            .sort-info {
-                max-width: 680px;
-                margin: 0 auto;
-            }
-        }
     }
     &.py-50 {
         padding: 50px 0;
@@ -712,7 +701,7 @@ img {
 h1, .h1 {
     font-size: 64px;
     font-weight: 500;
-    line-height: 1;
+    line-height: 1.2;
     @media (max-width: 992px) { 
         font-size: 54px;
     }
@@ -723,7 +712,7 @@ h1, .h1 {
 h2, .h2 {
     font-size: 52px;
     font-weight: 500;
-    line-height: 1;
+    line-height: 1.2;
     @media (max-width: 1200px) { 
         font-size: 42px;
     }
@@ -1425,30 +1414,6 @@ h5, .h5 {
 
 // UI
 .arrow-list {
-    &.is-dark {
-        li {
-            color: $dark;
-        }
-    }
-    &.is-sm {
-        li {
-            font-size: 16px;
-            font-weight: 400;
-            margin-bottom: 8px;
-            &::before {
-                width: 26px;
-                height: 26px;
-                flex: none;
-            }
-        }
-    }
-    &.is-no-border-icon {
-        li {
-            &::before {
-                background: url(../images/icons/icon-no-border-blue-arrow.svg) no-repeat center center; 
-            }
-        }
-    }
     li {
         @include flexbox;
         @include align-items(center);
@@ -1462,7 +1427,7 @@ h5, .h5 {
         &::before {
             content: '';
             background: url(../images/icons/icon-blue-arrow.svg) no-repeat center center;
-            background-size: contain !important;
+            background-size: contain;
             width: 42px;
             height: 42px;
             flex: none;
@@ -1476,46 +1441,27 @@ h5, .h5 {
         }
     }
 } 
-
 .icon-list {
-    &.column-2 {
-        columns: 2;
-        column-gap: 100px;
-        @media (max-width: 992px) {
-            column-gap: 30px;
-        }
-        @media (max-width: 767px) {
-            columns: 1;
-        }
-    }
     li {
         @include flexbox;
-        @include align-items(center);
-        font-size: 16px;
-        color: $dark;
-        margin-bottom: 25px;
-        @media (max-width: 767px) {
-            margin-bottom: 15px;
+        @include align-items(flex-start);
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 20px;
+        color: $white;
+        @media (max-width:992px) {
+            font-size: 20px;
         }
-        .icon {
-            width: 40px;
-            height: 40px;
+        .tag-icon {
+            width: 50px;
+            height: 50px;
             flex: none;
-            @include flexbox;
-            @include align-items(center);
-            @include justify-content(center);
-            margin-right: 24px;
-            @media (max-width: 767px) {
-                width: 30px;
-                height: 30px;
-                margin-right: 15px;
-            }
-            img {
-                width: 100%;
-            }
+            margin-right: 25px;
         }
     }
-}
+} 
+
+
 
 // 404
 .error-404-section {	

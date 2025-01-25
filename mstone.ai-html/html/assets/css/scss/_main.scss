@@ -360,9 +360,9 @@
 
 .section-title {
     // max-width: 750px;
-    margin-bottom: 50px;
+    margin-bottom: 50px !important;
     @media (max-width: 767px) { 
-        margin-bottom: 40px;
+        margin-bottom: 40px !important;
     }
     &.text-center {
         margin: 0 auto 50px;
@@ -774,10 +774,11 @@
     .logo-list {
         @include flexbox;
         @include flex-direction(row);
-        gap: 65px;
-        @media (max-width: 1200px) {
-            gap: 25px;
-        }
+        gap: 25px;
+        // gap: 65px;
+        // @media (max-width: 1200px) {
+        //     gap: 25px;
+        // }
         .logo-item {  
             flex: none;
             display: inline;
@@ -815,9 +816,9 @@
         flex-shrink: 0;
         @include justify-content(space-around);
         animation: scrollx 25s linear infinite; 
-        gap: 0;
+        gap: 10px;
         .logo-item {            
-            padding: 0 30px;
+            padding: 0 10px;
             span {
                 img {
                     aspect-ratio: unset;
@@ -2369,6 +2370,9 @@
 }
 
 .single-content {
+    p:not(:last-child) {
+        margin-bottom: 20px;
+    }
     h2, h3, h4, h5 {
         color: $dark;
         margin-bottom: 15px;
@@ -2397,6 +2401,19 @@
     ol:not(.splide__list), ul:not(.splide__list) {
         margin: 0;
         padding: 0;
+    }
+    ol:not(.splide__list) {
+        list-style-type: decimal;
+        padding-left: 20px;
+        margin-bottom: 30px;
+        li {
+            list-style-type: decimal;
+            margin-bottom: 8px;
+
+            &::marker {
+                font-weight: 500;
+            }
+        }
     }
     ul:not(.splide__list) {
         list-style-type: disc;
@@ -2580,4 +2597,36 @@
             }
         }   
     }
+}
+.product {
+    .hero-header {
+        padding: 170px 0 100px;
+        background-color: #010103;
+        background-image: url(../images/bg-product.png);
+        background-repeat: no-repeat;
+        background-position: bottom right;
+        background-size: auto;
+        .hero-header-fix {
+            img, video {
+                height: 100%;
+            }
+        }
+        .hero-bottom-content {
+            padding-top: 120px;
+            @include border-radius(24px);
+            .sort-info {
+                max-width: 700px;
+                margin: 0 auto;
+                font-size: 32px;
+                text-align: center;
+                .text-light {
+                    color: rgba(#fff, 0.6) !important;
+                }
+            }
+        }
+    }
+}
+.card-block {
+    background: #F7F8F9;
+    @include border-radius(24px);
 }
