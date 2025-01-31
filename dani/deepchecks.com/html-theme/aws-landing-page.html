@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Continuous Validation of LLMs &amp; AI | Deepchecks</title>
+        <meta name="theme-color" content="#1e0052">
+        <meta charset="utf-8">
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name='robots' content='noindex, nofollow' />
+        <meta name="description" content="Continuous validation for LLMs &amp; AI. Validate and monitor your data and models during training, production and new version releases." class="yoast-seo-meta-tag" />
+    
+        <link rel='stylesheet' id='style-main-css' href='assets/css/main.css' type='text/css' media='screen' />        
+        <script type="text/javascript" src="assets/js/jquery.min.js" id="jquery-core-js"></script>
+        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script> 
+
+        <link rel="icon" href="assets/favicons/favicon.png" sizes="32x32">
+        <link rel="icon" href="assets/favicons/apple-touch-icon.png" sizes="192x192">
+        <link rel="shortcut icon" href="assets/favicons/favicon.ico">
+        <link rel="icon" href="upload/cropped-favicon-150x150.png" sizes="32x32" />
+        <link rel="icon" href="upload/cropped-favicon-300x300.png" sizes="192x192" />
+        <link rel="apple-touch-icon" href="upload/cropped-favicon-300x300.png" />
+        <meta name="msapplication-TileImage" content="upload/cropped-favicon-300x300.png" />    
+    </head>
+
+    <body class="aws-landing">
+        <header class="main-header">
+            <div class="header-note">
+                <div class="container">
+                    <div class="note-text">
+                        <div class="d-inline-flex justify-content-center align-items-center text-left">What’s new <span class="line">|</span> <a href="https://deepchecks.com/deepchecks-new-major-release-evaluation-for-llm-based-apps/"><span class="text text-left">Deepchecks’ New Major Release: Evaluation for LLM-Based Apps! <span class="btn-icon"><svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.25 9H14.75" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /><path d="M9.5 3.75L14.75 9L9.5 14.25" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg></span></span></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-nav-wrap">
+                <nav class="navbar navbar-expand-xl navbar-light">
+                    <div class="container">
+                        <div class="header-first-block">
+                            <button class="sidebar-icon toggle-sidebar d-inline-block d-xl-none"><span class="line1"></span><span class="line2"></span><span class="line3"></span></button>
+                            <a class="header-logo" href="/" title="Deepchecks | Continuous Validation for Machine Learning" rel="home"><img src="https://deepchecks.com/wp-content/themes/deepchecks/assets/images/logo.svg" alt="Deepchecks" /></a>
+                            <div class="menu-list">
+                                <ul id="menu-header-menu-new-2024" class="mainMenu navbar-nav me-auto">
+                                    <li class="menu-item-has-children"><a href="/ml-monitoring/">Products</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="/llm-evaluation/">LLM Evaluation</a></li>
+                                            <li><a href="/ml-monitoring/">ML Monitoring</a></li>
+                                            <li><a href="/open-source/">Open Source Testing</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children"><a href="/solutions/testing/">Solutions</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="/solutions/testing/">Testing</a></li>
+                                            <li><a href="/solutions/ci-cd/">CI/CD</a></li>
+                                            <li><a href="/solutions/monitoring/">Monitoring</a></li>
+                                            <li><a href="/solutions/analysis/">Root Cause Analysis</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/pricing/">Pricing</a></li>
+                                    <li class="menu-item-has-children"><a href="/about/">Company</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="/about/">About Us</a></li>
+                                            <li><a href="/careers/">Careers</a></li>
+                                            <li><a href="/contact-us/">Contact Us</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children"><a href="/blog/">Resources</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="/docs/">Docs</a></li>
+                                            <li><a href="/blog/">Blog</a></li>
+                                            <li><a target="_blank" rel="noopener" href="https://checks-demo.deepchecks.com/?check=Train+Test+Label+Drift+%28distribution%29">Checks Demo 🔗</a></li>
+                                            <li><a href="/llm-tools/">LLM Tools</a></li>
+                                            <li><a href="/glossary/">Glossary</a></li>
+                                            <li><a href="/events/">Events</a></li>
+                                            <li><a href="/questions/">FAQs</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <ul class="navbar-nav navbar-nav-right">
+                                    <li class="nav-item"><a href="https://github.com/deepchecks/deepchecks" class="btn btn-dark-outline github-btn _ga-github-event _ga-hero-github-event" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Open source ML Testing"><img class="btn-icon" src="https://deepchecks.com/wp-content/uploads/2021/12/github-icon.svg" alt="[gitcount]" /><span class="review-text">3.2K</span></a></li>
+                                    <li class="nav-item"><a href="/llm-evaluation/" class="btn btn-primary  _ga-top-get-started-event " target="_parent">Try LLM Evaluation</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div class="bg-overly"></div>
+        <main class="main-content-wrapper">
+            <section class="html-section bgnone-section aws-landing-section">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-12">
+                            <div class="main-title mb-0 text-center">
+                                <div class="mb-5"><img src="upload/deepcheck-aws.svg" alt="Deepcheck + AWS"></div>
+                                    <h1 class="h1-lg mb-4 mb-md-5">Deepchecks LLM Evaluation</h1>
+                                    <div class="sort-info mb-4 mb-md-5 text-uppercase">NOW AVAILABLE NATIVELY WITHIN</div>
+                                    <div class="mb-4 mb-md-5"><img src="upload/logo-SageMaker-AI.svg" alt="SageMaker AI"></div>
+                                    <div class="action-btn mt-4 d-sm-flex justify-content-center align-items-center" style="gap:30px">
+                                        <a href="/contact-us/" class="btn btn-primary btn-svg  mb-4 mb-sm-0">Contact Us<span class="btn-icon"><svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.83325 6H15.1666M15.1666 6L10.1666 1M15.1666 6L10.1666 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+                                        <a href="/docs/" class="btn-line-arrow mb-0">Documentation</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="html-section logo-slider-section pt-0">
+                    <div class="container">
+                        <h2 class="h5 mb-2 mb-md-5 text-center" style="color:#303245">Leading AI Teams Love &amp; Trust Deepchecks
+                        </h2>
+                        <div class="logo-sliders logo-mask-slider logo-sliders-sm"
+                            style="margin-bottom: 0 !important;padding-top: 24px;">
+                            <div class="logo-slider auto-slider">
+                                <div class="logo-item"><span><img src="https://deepchecks.com/wp-content/uploads/2024/07/logo-mit.svg" alt="Massachusetts Institute of Technology"></span></div>
+                                <div class="logo-item"><span><img src="https://deepchecks.com/wp-content/uploads/2024/07/logo-anthem.svg" alt="Anthem Inc"></span></div>
+                                <div class="logo-item"><span><img src="https://deepchecks.com/wp-content/uploads/2024/07/logo-america-first.svg" alt="America First Credit Union"></span></div>
+                                <div class="logo-item"><span><img src="https://deepchecks.com/wp-content/uploads/2024/07/logo-booking.svg" alt="Booking.com"></span></div>
+                                <div class="logo-item"><span><img src="https://deepchecks.com/wp-content/uploads/2024/07/logo-wix.svg" alt="Wix"></span></div>
+                                <div class="logo-item"><span><img src="https://deepchecks.com/wp-content/uploads/2024/07/logo-aws.svg" alt="Amazon Web Services"></span></div>
+                                <div class="logo-item"><span><img src="https://deepchecks.com/wp-content/uploads/2024/07/logo-auxmoney.svg" alt="auxmoney GmbH"></span></div>
+                                <div class="logo-item"><span><img src="https://deepchecks.com/wp-content/uploads/2024/07/logo-gigaverse.svg" alt="Gigaverse"></span></div>
+                                <div class="logo-item"><span><img src="https://deepchecks.com/wp-content/uploads/2024/07/logo-bravado.svg?v1" alt="Bravado Inc"></span></div>
+                                <div class="logo-item"><span><img src="https://deepchecks.com/wp-content/uploads/2024/07/logo-takeda.svg" alt="Takeda Pharmaceutical"></span></div>
+                            </div>
+                            <div aria-hidden="true" class="logo-slider auto-slider">
+                                <div class="logo-item"><span><img src="https://deepchecks.com/wp-content/uploads/2024/07/logo-mit.svg" alt="Massachusetts Institute of Technology"></span></div>
+                                <div class="logo-item"><span><img src="https://deepchecks.com/wp-content/uploads/2024/07/logo-anthem.svg" alt="Anthem Inc"></span></div>
+                                <div class="logo-item"><span><img src="https://deepchecks.com/wp-content/uploads/2024/07/logo-america-first.svg" alt="America First Credit Union"></span></div>
+                                <div class="logo-item"><span><img src="https://deepchecks.com/wp-content/uploads/2024/07/logo-booking.svg" alt="Booking.com"></span></div>
+                                <div class="logo-item"><span><img src="https://deepchecks.com/wp-content/uploads/2024/07/logo-wix.svg" alt="Wix"></span></div>
+                                <div class="logo-item"><span><img src="https://deepchecks.com/wp-content/uploads/2024/07/logo-aws.svg" alt="Amazon Web Services"></span></div>
+                                <div class="logo-item"><span><img src="https://deepchecks.com/wp-content/uploads/2024/07/logo-auxmoney.svg" alt="auxmoney GmbH"></span></div>
+                                <div class="logo-item"><span><img src="https://deepchecks.com/wp-content/uploads/2024/07/logo-gigaverse.svg" alt="Gigaverse"></span></div>
+                                <div class="logo-item"><span><img src="https://deepchecks.com/wp-content/uploads/2024/07/logo-bravado.svg?v1" alt="Bravado Inc"></span></div>
+                                <div class="logo-item"><span><img src="https://deepchecks.com/wp-content/uploads/2024/07/logo-takeda.svg" alt="Takeda Pharmaceutical"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="html-section card-content-section bg-darkblue bg-image" style="background-image: url(upload/ai-progress-bg.png);">
+                    <div class="container">
+                        <div class="main-title">
+                            <h2>Integrated Experience to <span class="text-purple">Define, Measure and Validate</span> AI Progress</h2>
+                        </div>
+                        <div class="card-block mw-820">
+                            <div class="row g-4 g-md-5">
+                                <div class="col-md-4">
+                                    <div class="service-item text-center">
+                                        <div class="img-block">
+                                            <img src="upload/icon-service.svg" alt="AWS Managed Service">
+                                        </div>
+                                        <div class="content-block">
+                                            <h3 class="title-h-auto">AWS Managed Service</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="service-item text-center">
+                                        <div class="img-block">
+                                            <img src="upload/icon-service.svg" alt="On-prem:100% Data Locality">
+                                        </div>
+                                        <div class="content-block">
+                                            <h3 class="title-h-auto">On-prem:100% Data Locality</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="service-item text-center">
+                                        <div class="img-block">
+                                            <img src="upload/icon-service.svg" alt="Best-in-breed LLMOps Stack">
+                                        </div>
+                                        <div class="content-block">
+                                            <h3 class="title-h-auto">Best-in-breed LLMOps Stack</h3>
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="image-block text-right">
+                            <img src="upload/img-ai-progress.svg" alt="AI Progress">
+                        </div>
+                    </div>
+                </section>
+                    <section class="html-section icon-card-content-section">
+                        <div class="container">
+                            <div class="row g-4 g-md-5">
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="service-item text-left">
+                                        <div class="img-block">
+                                            <img src="upload/icon-one-click.svg" alt="Once Click Away">
+                                        </div>
+                                        <div class="content-block">
+                                            <h3 class="title-h-auto">Once Click Away</h3>
+                                            <p class="sort-info">Streamline LLM evaluation with clear, actionable insights to optimize your LLM projects. Effortlessly assess and refine your LLM applications, identify key areas of success and opportunities for improvement. Prepare your LLM applications for production.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="service-item text-left">
+                                        <div class="img-block">
+                                            <img src="upload/icon-security.svg" alt="Meets Your Enterprise Security Needs">
+                                        </div>
+                                        <div class="content-block">
+                                            <h3 class="title-h-auto">Meets Your Enterprise Security Needs</h3>
+                                            <p class="sort-info">Ensure enterprise security with built-in governance throughout the entire LLM application lifecycle. Control access to the right data, models, and development artifacts by the right user for the right purpose. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="service-item text-left">
+                                        <div class="img-block">
+                                            <img src="upload/icon-seemless-experience.svg" alt="Seemless Experience">
+                                        </div>
+                                        <div class="content-block">
+                                            <h3 class="title-h-auto">Seemless Experience</h3>
+                                            <p class="sort-info">Deepchecks' seamless integration with SageMaker AI, a part of the SageMaker Unified Studio, ensures a flawless experience across the entire LLM lifecycle-from proof of concept and beta releases to production monitoring.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="html-section tab-section mb-0 bg-gray">
+                        <div class="container">
+                            <div class="main-title">
+                                <h2>Evaluate and Monitor <br>Your End-to-End LLM Workflow </h2>
+                            </div>
+                            <div class="icw-tab-block">
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <button class="nav-link active" id="nav-version-comparison-tab" data-toggle="tab" data-target="#nav-version-comparison" type="button" role="tab" aria-controls="nav-version-comparison" aria-selected="true">Version Comparison</button>
+                                    <button class="nav-link" id="nav-ai-assisted-annotations-tab" data-toggle="tab" data-target="#nav-ai-assisted-annotations" type="button" role="tab" aria-controls="nav-ai-assisted-annotations" aria-selected="false">AI-Assisted Annotations</button>
+                                    <button class="nav-link" id="nav-evalset-management-tab" data-toggle="tab" data-target="#nav-evalset-management" type="button" role="tab" aria-controls="nav-evalset-management" aria-selected="false">EvalSet Management</button>
+                                    <button class="nav-link" id="nav-properties-tab" data-toggle="tab" data-target="#nav-properties" type="button" role="tab" aria-controls="nav-properties" aria-selected="false">Properties</button>
+                                </div>
+                                <div class="content-block">
+                                    <div class="tab-content" id="nav-tabContent">
+                                        <div class="tab-pane fade show active" id="nav-version-comparison" role="tabpanel" aria-labelledby="nav-version-comparison-tab">                                                    
+                                            <div class="row">
+                                                <div class="col-md-6 order-2 order-md-1">
+                                                    <div class="tab-details">
+                                                        <h3>Compare Versions of Your LLM Apps</h3>
+                                                        <div class="sort-info">
+                                                            <ul>
+                                                                <li>Experiment with different prompts, models, RAG setup, routing mechanism or any other parameters. </li>
+                                                                <li>Get a high-level overview of the performance differences. </li>
+                                                                <li>Find the key differences of between each versions.</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 order-2 order-md-1">
+                                                    <div class="image-block">
+                                                        <div class="logo-img-block">
+                                                            <img src="https://deepchecks.com/wp-content/uploads/2023/07/LLM-Evaluation.svg" alt="Deepchecks For LLM Evaluation">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="nav-ai-assisted-annotations" role="tabpanel" aria-labelledby="nav-ai-assisted-annotations-tab">                                                    
+                                            <div class="row">
+                                                <div class="col-md-6 order-2 order-md-1">
+                                                    <div class="tab-details">
+                                                        <h3>Compare Versions of Your LLM Apps</h3>
+                                                        <div class="sort-info">
+                                                            <ul>
+                                                                <li>Experiment with different prompts, models, RAG setup, routing mechanism or any other parameters. </li>
+                                                                <li>Get a high-level overview of the performance differences. </li>
+                                                                <li>Find the key differences of between each versions.</li>
+                                                                <li>Experiment with different prompts, models, RAG setup, routing mechanism or any other parameters. </li>
+                                                                <li>Get a high-level overview of the performance differences. </li>
+                                                                <li>Find the key differences of between each versions.</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 order-2 order-md-1">
+                                                    <div class="image-block">
+                                                        <div class="logo-img-block">
+                                                            <img src="https://deepchecks.com/wp-content/uploads/2023/07/LLM-Evaluation.svg" alt="Deepchecks For LLM Evaluation">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="nav-evalset-management" role="tabpanel" aria-labelledby="nav-evalset-management-tab">                                                    
+                                            <div class="row">
+                                                <div class="col-md-6 order-2 order-md-1">
+                                                    <div class="tab-details">
+                                                        <h3>Compare Versions of Your LLM Apps</h3>
+                                                        <div class="sort-info">
+                                                            <ul>
+                                                                <li>Experiment with different prompts, models, RAG setup, routing mechanism or any other parameters. </li>
+                                                                <li>Find the key differences of between each versions.</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 order-2 order-md-1">
+                                                    <div class="image-block">
+                                                        <div class="logo-img-block">
+                                                            <img src="https://deepchecks.com/wp-content/uploads/2023/07/LLM-Evaluation.svg" alt="Deepchecks For LLM Evaluation">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="nav-properties" role="tabpanel" aria-labelledby="nav-properties-tab">                                                    
+                                            <div class="row">
+                                                <div class="col-md-6 order-2 order-md-1">
+                                                    <div class="tab-details">
+                                                        <h3>Compare Versions of Your LLM Apps</h3>
+                                                        <div class="sort-info">
+                                                            <ul>
+                                                                <li>Experiment with different prompts, models, RAG setup, routing mechanism or any other parameters. </li>
+                                                                <li>Get a high-level overview of the performance differences. </li>
+                                                                <li>Find the key differences of between each versions.</li>
+                                                                <li>Find the key differences of between each versions.</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 order-2 order-md-1">
+                                                    <div class="image-block">
+                                                        <div class="logo-img-block">
+                                                            <img src="https://deepchecks.com/wp-content/uploads/2023/07/LLM-Evaluation.svg" alt="Deepchecks For LLM Evaluation">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="html-section ">
+                        <div class="container">
+                            <div class="main-title">
+                                <h2>Use Cases</h2>
+                            </div>
+                            <div class="collapse-block">
+                                <div class="collapse-item ">
+                                    <button type="button" class="collapse-title"><h3>Text Generation</h3></button>
+                                    <div class="collapse-body" style="display: none;">
+                                        <div class="card-content">
+                                            <p>Assess multi-step AI agents on their ability to process and execute complex task sequences effectively. This includes evaluating decision-making processes and the agent's ability to handle dynamic inputs and transitions between tasks.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="collapse-item is-open">
+                                    <button type="button" class="collapse-title"><h3>Multi-Step AI Agents</h3></button>
+                                    <div class="collapse-body">
+                                        <div class="card-content">
+                                            <p>Assess multi-step AI agents on their ability to process and execute complex task sequences effectively. This includes evaluating decision-making processes and the agent's ability to handle dynamic inputs and transitions between tasks.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="collapse-item ">
+                                    <button type="button" class="collapse-title"><h3>RAG</h3></button>
+                                    <div class="collapse-body" style="display: none;">
+                                        <div class="card-content">
+                                            <p>Assess multi-step AI agents on their ability to process and execute complex task sequences effectively. This includes evaluating decision-making processes and the agent's ability to handle dynamic inputs and transitions between tasks.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="collapse-item ">
+                                    <button type="button" class="collapse-title"><h3>Text Summarization</h3></button>
+                                    <div class="collapse-body" style="display: none;">
+                                        <div class="card-content">
+                                            <p>Assess multi-step AI agents on their ability to process and execute complex task sequences effectively. This includes evaluating decision-making processes and the agent's ability to handle dynamic inputs and transitions between tasks.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="collapse-item ">
+                                    <button type="button" class="collapse-title"><h3>Natural Language to Code</h3></button>
+                                    <div class="collapse-body" style="display: none;">
+                                        <div class="card-content">
+                                            <p>Assess multi-step AI agents on their ability to process and execute complex task sequences effectively. This includes evaluating decision-making processes and the agent's ability to handle dynamic inputs and transitions between tasks.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="collapse-item ">
+                                    <button type="button" class="collapse-title"><h3>Classification</h3></button>
+                                    <div class="collapse-body" style="display: none;">
+                                        <div class="card-content">
+                                            <p>Assess multi-step AI agents on their ability to process and execute complex task sequences effectively. This includes evaluating decision-making processes and the agent's ability to handle dynamic inputs and transitions between tasks.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                             
+                        </div>
+                    </section>
+                    <section class="blog-section">
+                        <div class="container">
+                            <div class="main-title">
+                                <h2 class="h1-title">Featured Content</h2>
+                            </div>
+                            <div class="post-list home-post-list post-slider slick-initialized slick-slider">
+                                <div class="slick-list draggable">
+                                    <div class="slick-track" style="opacity: 1; width: 1305px; transform: translate3d(0px, 0px, 0px);">
+                                        <div class="blog-item slick-slide slick-current slick-active" data-slick-index="0"
+                                            aria-hidden="false" style="width: 435px;">
+                                            <div class="slide-blog-post">
+                                                <a class="post-thumb-img" href="/improving-inter-rater-reliability-practices-strategies/" tabindex="-1"><img src="https://deepchecks.com/wp-content/uploads/2025/01/post-improving-inter-rater-reliability-best-practices-strategies-400x180.jpg" alt="Improving Inter-Rater Reliability: Best Practices and Strategies"> </a>
+                                                <div class="blog-post-inner">
+                                                    <div class="post-date">January 27, 2025</div>
+                                                    <div class="post-title"><a href="/improving-inter-rater-reliability-practices-strategies/" class="stretched-link">Improving Inter-Rater Reliability: Best Practices and Strategies</a></div>
+                                                    <div class="post-meta">
+                                                        <img alt="Deepchecks Community Blog" src="https://deepchecks.com/wp-content/uploads/2022/04/avatar-96x96.png">
+                                                        Deepchecks Community Blog
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="blog-item slick-slide slick-active" data-slick-index="1" aria-hidden="false"
+                                            style="width: 435px;">
+                                            <div class="slide-blog-post">
+                                                <a class="post-thumb-img" href="/best-10-open-source-mlops-tools-to-optimize-manage-ml/" tabindex="-1"><img src="https://deepchecks.com/wp-content/uploads/2023/04/hal-gatewood-tZc3vjPCk-Q-unsplash-400x180.jpg" alt="Best 10 Open-source MLOps Tools to Optimize &amp; Manage ML"></a>
+                                                <div class="blog-post-inner">
+                                                    <div class="post-date">January 23, 2025</div>
+                                                    <div class="post-title"><a href="/best-10-open-source-mlops-tools-to-optimize-manage-ml/" class="stretched-link">Best 10 Open-source MLOps Tools to Optimize &amp; Manage ML</a></div>
+                                                    <div class="post-meta">
+                                                        <img alt="Brain John Aboze" src="https://deepchecks.com/wp-content/uploads/2022/04/avatar-96x96.png">
+                                                        Brain John Aboze
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="blog-item slick-slide slick-active" data-slick-index="2" aria-hidden="false"
+                                            style="width: 435px;">
+                                            <div class="slide-blog-post">
+                                                <a class="post-thumb-img" href="/best-tools-for-testing-machine-learning-algorithms/" tabindex="-1"><img src="https://deepchecks.com/wp-content/uploads/2024/02/post-testing-machine-400x180.jpg" alt="Best 10 Tools for Testing Machine Learning Algorithms in 2024" > </a>
+                                                <div class="blog-post-inner">
+                                                    <div class="post-date">January 23, 2025</div>
+                                                    <div class="post-title"><a href="/best-tools-for-testing-machine-learning-algorithms/" class="stretched-link">Best 10 Tools for Testing Machine Learning Algorithms in 2025</a></div>
+                                                    <div class="post-meta">
+                                                        <img alt="Deepchecks Community Blog" src="https://deepchecks.com/wp-content/uploads/2022/04/avatar-96x96.png"> Deepchecks Community Blog
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                
+                    <section class="html-section cta-section bg-purple-gradient pb-0">
+                        <div class="container">
+                            <div class="main-title">
+                                <h2>Define, Measure and Validate <br class="d-none d-md-block">AI Progress</h2>
+                                <div class="action-btn mt-4 d-flex justify-content-center align-items-center" style="gap:30px">
+                                    <a data-toggle="modal" data-target="#popup-llm" href="#" class="btn btn-white btn-svg">Try LLM Evaluation<span class="btn-icon"><svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.83325 6H15.1666M15.1666 6L10.1666 1M15.1666 6L10.1666 11" stroke="#9D60FB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+                                </div>
+                            </div>
+                            <div class="image-block">
+                                <img src="upload/img-ai-progress-bottom.png" alt="AI Progress">
+                            </div>
+                        </div>
+                    </section>
+                </main>
+        <!-- FOOTER SECTION -->
+        <footer class="main-footer">
+            <img src="assets/images/logo-white.svg" alt="Deepchecks" class="footer-bg-logo" />
+            <div class="container">
+                <div class="footer-link-section">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-2 col-lg-1">
+                            <a href="/" title="Deepchecks | Continuous Validation for Machine Learning" rel="home" class="footer-logo wow fadeInUp"><img src="assets/images/logo-white.svg" alt="Deepchecks"></a>
+                        </div>
+                        <div class="col-md-10 col-lg-8">
+                            <div class="row gutters-5">
+                                <div class="col-6 col-md-3 widget widget_nav_menu">
+                                    <div class="menu-products-footer-container">
+                                        <ul id="menu-products-footer" class="menu">
+                                            <li class="footer-title"><a href="/deepchecks-hub/">Products</a></li>
+                                            <li><a href="/solutions/llm-evaluation/">LLM Evaluation</a></li>
+                                            <li><a href="/deepchecks-hub/">Deepchecks Hub</a></li>
+                                            <li><a href="/open-source/">Open Source</a></li>
+                                            <li><a href="/pricing/">Pricing</a></li>
+                                            <li><a href="/book-demo/">Book a Demo</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3 widget widget_nav_menu">
+                                    <div class="menu-solutions-footer-container">
+                                        <ul id="menu-solutions-footer" class="menu">
+                                            <li class="footer-title"><a href="/solutions/testing/">Solutions</a></li>
+                                            <li><a href="/solutions/testing/">Testing</a></li>
+                                            <li><a href="/solutions/ci-cd/">CI/CD</a></li>
+                                            <li><a href="/solutions/monitoring/">Monitoring</a></li>
+                                            <li><a href="/solutions/analysis/">Root Cause Analysis</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3 widget widget_nav_menu">                                    
+                                    <div class="menu-company-footer-container">
+                                        <ul id="menu-company-footer" class="menu">
+                                            <li class="footer-title"><a href="/about/">Company</a></li>
+                                            <li><a href="/about/">About Us</a></li>
+                                            <li><a href="/careers/">Careers</a></li>
+                                            <li><a href="/contact-us/">Contact Us</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3 widget widget_nav_menu">
+                                    <div class="menu-resources-footer-container">
+                                        <ul id="menu-resources-footer" class="menu">
+                                            <li class="footer-title"><a href="/blog/">Resources</a></li>
+                                            <li><a href="/docs/">Docs</a></li>
+                                            <li><a href="/blog/">Blog</a></li>
+                                            <li><a target="_blank" rel="noopener" href="https://checks-demo.deepchecks.com/?check=Train+Test+Label+Drift+%28distribution%29">Checks Demo 🔗</a></li>
+                                            <li><a href="/llm-tools/">LLM Tools</a></li>
+                                            <li><a href="/glossary/">Glossary</a></li>
+                                            <li><a href="/events/">Events</a></li>
+                                            <li><a href="/questions/">FAQs</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-3">
+                            <ul class="social-icon">
+                                <li><a href="https://github.com/deepchecks/deepchecks" target="_blank" title="GitHub" data-bs-toggle="tooltip"><img src="assets/images/github.svg" alt="github" /></a></li>
+                                <li><a href="https://www.linkedin.com/company/deepchecks/" target="_blank" title="LinkedIn" data-bs-toggle="tooltip"><img src="assets/images/linkedin.svg" alt="linkedin" /></a></li>
+                                <li><a href="https://twitter.com/deepchecks" target="_blank" title="Twitter" data-bs-toggle="tooltip"><img src="assets/images/twitter.svg" alt="twitter" /></a></li>
+                                <li><a href="https://www.facebook.com/deepchecks/" target="_blank" title="Facebook" data-bs-toggle="tooltip"><img src="assets/images/facbook.svg" alt="Facebook" /></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul id="menu-footer-menu" class="footer-links">
+                                <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                                <li><a href="/cookies-policy/">Cookies Policy</a></li>
+                                <li><a href="/terms-and-conditions/">Terms &#038; Conditions</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 text-md-right">
+                            <p>© 2024 Deepchecks AI. All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="modal icw-modal modal-hbspt fade" id="popup-llm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-size-hbspt modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title"><small>FREE TRIAL FOR DEEPCHECKS' LLM EVALUATION SOLUTION</small><strong>Fill Out Your Details Here</strong></h2>
+                        <button type="button" class="btn-close close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-with-slider-labels" id="llm_hubspotFormContainer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            @media (min-width: 768px) {body #popup-llm .modal-title small {font-size: 14px;}}@media (max-width: 1199px) {body #popup-llm .modal-title small {font-size: 12px;}}@media (max-width: 767px) {body #popup-llm .modal-title small {font-size: 8px;}}
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var formContainer = document.getElementById('llm_hubspotFormContainer');
+                function initializeHubSpotForm() {
+                if (typeof hbspt !== 'undefined') {hbspt.forms.create({target: '#llm_hubspotFormContainer',css: '', region: "na1", portalId: "8338627", formId: "f7da1fc3-958c-444a-b11a-2ed8f1b716a3", css: " ", redirectUrl: "/thank-you/#llm-evaluation", locale: "en", translations: {en: { submitText: "Submit" } }, onFormReady: function ($form, ctx) { hubspot_labels(); }});}
+                }
+                initializeHubSpotForm();
+                jQuery('#popup-llm').on('hidden.bs.modal', function () {
+                if (typeof hbspt !== 'undefined' && typeof hbspt.forms !== 'undefined' && typeof hbspt.forms[0] !== 'undefined') { hbspt.forms[0].destroy(); } initializeHubSpotForm();});
+            });
+        </script>
+        <a href="#top" class="back-to-top"><em class="icon-arrow-up"></em></a>
+        <script type="text/javascript" src="assets/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="assets/js/all-jquery.js"></script>       
+        <script type="text/javascript" src="assets/js/main.js"></script>  
+        <script>
+            $(".collapse-item .collapse-title").click(function () {
+                if ($(this).closest(".collapse-item").hasClass("is-open")) {
+                    $(this).closest(".collapse-item").stop(true,true).removeClass("is-open");
+                    $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).hide("fast");
+                } else {
+                    $(".collapse-item").removeClass("is-open");
+                    $(".collapse-item").find(".collapse-body").stop(true,true).hide();
+                    $(this).closest(".collapse-item").stop(true,true).addClass("is-open");
+                    $(this).closest(".collapse-item").find(".collapse-body").stop(true,true).slideDown("fast");
+                }
+                return false;
+            });
+        </script>    
+    </body>
+</html>
