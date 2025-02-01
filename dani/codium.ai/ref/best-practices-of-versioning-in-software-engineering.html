@@ -1,0 +1,58 @@
+<h2>What is versioning in software engineering?</h2>
+Over time a software package can be developed and changed so much that it becomes unrecognizable. To deal with this and avoid chaos software versioning is used. Versioning is a process of assigning unique identifiers or labels to different releases or versions of software. It helps in distinguishing and managing software package revisions during development, deployment, and lifecycle maintenance stages.
+<h2>Why versioning is needed?</h2>
+Versioning is a crucial aspect of software engineering that helps manage changes, track releases, and facilitate collaboration among developers. It solves the following tasks of software development and maintenance:
+
+<strong>1. Tracking Changes -</strong> Versioning allows developers to track changes made to the software over time. It helps identify what features, enhancements, or bug fixes have been added in each release. This is crucial for maintaining a historical record of the software's evolution and understanding the state of the codebase at different points in time. Moreover, it allows users to choose the most useful state (for example, with some functionality or compatible with a specific OS).
+
+<strong>2. Collaboration -</strong> Versioning facilitates collaboration among developers working on the same project. It allows multiple developers to work concurrently on different features or bug fixes by providing a way to merge and synchronize their changes. It helps avoid conflicts and ensures that everyone is working on the latest version of the code.
+
+<strong>3. Code Stability -</strong> By following versioning practices, developers can designate certain versions as stable or production-ready. This provides a clear distinction between stable releases and ongoing development work. It allows users and stakeholders to rely on specific versions of the software for their production environments, ensuring stability and minimizing the risk of introducing new bugs or breaking changes.
+
+<strong>4. Dependency Management -</strong> Many projects rely on external libraries, frameworks, or components. By specifying compatible version ranges or using dependency lock files, developers can ensure that the software works correctly with the required dependencies. Versioning helps maintain consistency and avoids compatibility issues.
+
+<strong>5. Bug Fixing and Maintenance -</strong> Versioning enables efficient bug fixing and maintenance. By identifying the version in which a bug was introduced, developers can trace it back to its source and apply the necessary fixes. Additionally, versioning helps prioritize bug fixes and allocate resources to address issues based on their impact on different versions.
+<h2>Why should you follow versioning standards and best practices?</h2>
+<img class="size-full aligncenter b-radius-20" src="https://www.qodo.ai/wp-content/uploads/2023/09/best-practices-versioning-img1.jpg" alt="Why should you follow versioning standards and best practices?" width="650" height="609" />
+
+Following software versioning standards promotes consistency, compatibility, communication, predictability, and integration within the software development community. Here are main reasons why you not only have to implement versioning in a project but should also follow some standards and best practices:
+
+<strong>1. Consistency and Compatibility -</strong> Following versioning standards ensures that different components of a software ecosystem (libraries, modules, APIs, etc.) are consistent and compatible with each other. It helps developers understand the impact of changes and make informed decisions when integrating different software components.
+
+<strong>2. Communication -</strong> Versioning standards provide a common language for developers, users, and stakeholders to communicate about software releases. When everyone follows the same conventions, it becomes easier to understand the significance of a version change, identify breaking changes, and track the progress of the software.
+
+<strong>3. Predictability and Reliability -</strong> When developers and users understand the rules and expectations of version numbers, it becomes easier to anticipate the impact of changes, plan for upgrades, and ensure compatibility between different software systems.
+
+<strong>4. Community Integration -</strong> Following versioning standards facilitates integration with the wider software development community. It allows developers to leverage existing tools, libraries, and ecosystems that rely on standardized versioning. It also improves interoperability and encourages collaboration with other projects.
+
+[blog-subscribe]
+<h2>Release versioning best practices.</h2>
+<h3>Choose and follow a specific naming convention.</h3>
+Defining versioning strategy starts with setting up a naming convention. Naming convention or versioning scheme is used for determining the version number of new software releases. Most often a number is used as a name but some words or a mixture of both can also be used, for example, 1.3-beta.
+
+Some common naming conventions include semantic versioning, sequential numbering, date-based and some others. Below we will explain the semantic version in more detail.
+
+Semantic Versioning (or SemVer) is a widely adopted versioning scheme that provides clear rules for version numbers. The standard helps software users understand the severity of changes in each new distribution. It was created to address problems caused by incompatibilities in versioning practices between software packages used as dependencies. By "package" and "dependency" we mean a code library intended for use in another software project and distributed by a package manager.
+
+A project that uses semantic versioning announces a major version number (major), a minor version number (minor), and a patch number (patch) for each release. The version string 1.2.3 indicates major version 1, minor version 2, and fix 3. Major is Incremented when incompatible API changes are made, the minor version when you add backward-compatible functionality, and the patch version for backward-compatible bug fixes.
+
+Version numbers in this format are widely used by both software packages and end-user executables such as applications and games. However, not every project follows exactly the standard set by semver.org. It often makes sense to extend the version with some name, for example, alpha. This is done for additional semantic grouping of changes, or for confidentiality.
+<h3>Use Version Control Systems (VCS).</h3>
+<img class="aligncenter size-full b-radius-20" src="https://www.qodo.ai/wp-content/uploads/2023/09/best-practices-versioning-img2.jpg" alt="Use Version Control Systems (VCS). " width="700" height="477" />
+
+VCS allows you to manage your codebase, i.e. track changes, create branches, and revert to previous versions when needed. It also enables collaboration and concurrent development. One of the mostly widely used VCS is Git. If you use Git, there is a branching model called Git Flow. It defines specific branch names and their purposes, helping teams collaborate effectively and maintain a well-organized versioning system. The combination of Git Flow and Semantic Versioning can provide a powerful framework for versioning and release management: SemVer can be applied to label different releases or versions in Git Flow. When a new release is ready, the version number is incremented according to the SemVer rules, indicating the nature of the changes included in that release.
+<h3>Document changelogs.</h3>
+Changelog files describe edits grouped by a version. When a new version of the software is released, this file is extended with the changes corresponding to this version. Each group in this file usually consists of four subgroups:
+<ul>
+ 	<li><strong>Added -</strong> for new features,</li>
+ 	<li><strong>Deprecated -</strong> for deprecated features that will be removed in future versions,</li>
+ 	<li><strong>Removed -</strong> for removed functions,</li>
+ 	<li><strong>Fixed -</strong> for fixed bugs and refactoring.</li>
+</ul>
+A comprehensive changelog that lists all changes made in each version should be maintained to help developers, users, and stakeholders understand what has been added, modified, or fixed in each release. All relevant details and any breaking changes should also be included. You can check a detailed manifest here: <a href="https://keepachangelog.com/en/1.1.0/" target="_blank" rel="noopener">https://keepachangelog.com/</a>. It can also be easily combined with SemVer guidelines.
+<h3>Handle dependency management.</h3>
+When your software depends on external libraries or components, clearly define and manage those dependencies. Specify compatible version ranges or use dependency lock files to ensure consistent and reproducible builds.
+<h3>Notify about the new version.</h3>
+Clearly communicate new releases to users, stakeholders, and other developers. A previously created changelog can be used at this step. This keeps everyone informed and reduces potential confusion or compatibility issues.
+
+Following versioning best practices, you can establish a robust system that helps you manage software releases effectively and ensure smooth collaboration within your development team and with users.

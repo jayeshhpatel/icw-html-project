@@ -10942,9 +10942,11 @@ body .icw-gallery-imgs {
                 background: transparent;
                 border-color: transparent;
                 white-space: nowrap;
+                width: auto;
                 @include border-radius(15px);
                 @media (max-width:575px) {
                     font-size: 16px;
+                    padding: 10px 15px;
                 }
                 &.active {
                     background: linear-gradient(236.27deg, #C960FB 0%, #9D60FB 98.28%); 
@@ -10965,6 +10967,9 @@ body .icw-gallery-imgs {
                     font-weight: 700; 
                     color: $purple;
                     letter-spacing: -0.02em;
+                    @media (max-width:767px) {
+                        font-size: 24px; 
+                    }
                 }
                 .sort-info {
                     font-size: 20px;
@@ -11412,7 +11417,25 @@ section.aws-landing-section {
     padding-top: 170px;
     margin-top: -100px;
     background-size: contain;
-    .main-title {
+    @media (max-width: 767px) {
+        background-position: center top;
+        padding-top: 50px;
+        margin-top: 0px;
+    }
+    .main-title {        
+        .aws-logo {
+            img {
+                @media (max-width: 767px) {
+                    max-width: 60%;
+                    margin: 0 auto;
+                }
+            }
+        }
+        img {
+            @media (max-width: 767px) {
+                max-width: 70%;
+            }
+        }
         .sort-info {
             font-size: 28px;
             font-weight: 600;
@@ -11492,7 +11515,7 @@ section.aws-landing-section {
 	padding: 24px;
 	border-bottom: 1px solid #E1E1E1;
     @media (max-width: 767px) {
-        padding: 20px;
+        padding: 15px;
     }
 	&:first-child {
 		padding-top: 0px;

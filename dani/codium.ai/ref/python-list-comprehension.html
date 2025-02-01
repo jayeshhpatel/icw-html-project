@@ -1,0 +1,194 @@
+<!--<img class="aligncenter size-large wp-image-3913" src="https://www.qodo.ai/wp-content/uploads/2023/10/image1-1024x377.png" alt="Python List Comprehension" width="1024" height="377" /><span data-mce-type="bookmark" style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;" class="mce_SELRES_start"></span>-->
+
+Python is known as a popular and widely-used programming language in this fast-emerging world due to its simplicity, large community support, built-in libraries, and support for many features and libraries. In the context of simplicity, Python is known as a programming language that we can easily understand and learn because of its simple syntax and human-friendly nature.
+
+In this article, we will learn about one of the valuable features that Python provides us: List comprehension, along with the definitions, syntax, advantages, some use cases, and how we can nest them, and a similar approach for creating dictionaries: Dictionary comprehension.
+
+Before moving on to list comprehension, let's refresh our knowledge of lists in Python.
+<h2>What is a list in Python?</h2>
+A list is a collection of data encapsulated between the square brackets ([ ]), and commas separate these data (,). We can use these lists to store different types of data, such as integers, floats, strings, etc., and lists are dynamically sized, meaning we can extend a list's length as needed.
+
+Below is an example of a list in Python.
+<pre class="EnlighterJSRAW" data-enlighter-language="python">my_list = ["John", 21, "Hello World", 0.1234]
+</pre>
+<img class="aligncenter size-full wp-image-3916 b-radius-20" src="https://www.qodo.ai/wp-content/uploads/2023/10/image4.jpg" alt="Code" width="524" height="83" />There are several ways for list generation in Python.
+<ul>
+ 	<li aria-level="1"><b>Using a for-loop</b>We often use 'for loops' to iterate over a range of numbers, a string, or another list. We can create a list by appending the elements into the list individually in each iteration. To append the elements, we use the 'append()' method.Below are some examples of using 'for loops' to create a list.<b>Example 1: Iterate over a range of numbers (1 to 10) and append them to a list called '</b><b>my_num</b><b>'.</b>
+<pre class="EnlighterJSRAW" data-enlighter-language="python">my_num = []
+
+        for i in range(1,10):
+
+            my_num.append(i)
+
+        print (my_num)</pre>
+<img class="aligncenter size-full wp-image-3917 b-radius-20" src="https://www.qodo.ai/wp-content/uploads/2023/10/image3.jpg" alt="Code" width="468" height="70" />
+
+<b>Example 2: Iterate over a string and append the characters into a list called '</b><b>my_char</b><b>.'</b>
+<pre class="EnlighterJSRAW" data-enlighter-language="python">my_name = []
+
+        for i in 'John':
+
+            my_name.append(i)
+
+        print (my_name)</pre>
+<img class="aligncenter size-full wp-image-3918 b-radius-20" src="https://www.qodo.ai/wp-content/uploads/2023/10/image6.jpg" alt="Code" width="442" height="71" />
+
+As shown in the above examples, we can use 'for loops' to create a list in Python.</li>
+ 	<li aria-level="1"><b>Using map() function</b>The 'map()' function applies a specified function to each item in an iterable and provides a map object. We can convert this map object into a list using the 'list()' constructor to create a list.Below is a simple example of using the map() function to create a list.<b>Example: Create a list that contains square values of a given set of numbers.</b>
+<pre class="EnlighterJSRAW" data-enlighter-language="python">def squareNum(num):
+
+            return num ** 2
+
+        numbersList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+        squared_numbers = list(map(squareNum, numbersList))
+
+        print (squared_numbers)</pre>
+<img class="aligncenter size-full wp-image-3919 b-radius-20" src="https://www.qodo.ai/wp-content/uploads/2023/10/image5.jpg" alt="Code" width="554" height="77" />
+
+As you can see, the 'map()' function also helps us to create a list in Python.</li>
+</ul>
+Apart from these popular methods, we can use list comprehension to build a list.
+
+First, let's see what a list comprehension is in Python.
+<h2>What is list comprehension in Python?</h2>
+In Python, list comprehension is a method or construct that can be used to define and create a list from a string or another existing list. Besides creating lists, we can filter and transform data using list comprehension, which has a more human-readable and concise syntax.
+
+Now, let's go through the syntax of a list comprehension.
+<h3>Syntax of list comprehension</h3>
+[<b>expression</b> for <b>item </b>in <b>iterable conditionals</b>]
+
+Above is the format for declaring a Python list comprehension. There are four crucial sections in this format, and let's go through them one by one.
+
+<img class="alignright wp-image-3920 size-medium b-radius-20" src="https://www.qodo.ai/wp-content/uploads/2023/10/image12-300x300.png" alt="" width="300" height="300" />
+<ul>
+ 	<li><b>expression</b>: expression is like a small program that we run on each item in the old list or any other iterable we use. Basically, It tells us what to do with each item to get the corresponding item in our new list.
+Let's say we want to have the square of each number included in our newly created list. To get this customized value, our expression would be 'x * 2,' where 'x' represents each item.</li>
+ 	<li><b>item</b>: This represents each item in the iterable. For example, let's say we have a list with numbers from 1 to 10. So, each number in this list is an item.</li>
+ 	<li><b>iterable</b>: iterable can be a list, set, range, or any other object through which we will be iterating. Simply, It's our existing list.</li>
+ 	<li><b>conditionals </b><b>(optional)</b>: This is quite important because we can use these conditionals to filter out unwanted values, which normally require a call to 'filter()' method.
+Let's say we have a list of numbers from 1 to 10. But our new list must contain only the even numbers from the old list. To filter out the even numbers, we can use conditionals.</li>
+</ul>
+Now, let's discuss the process inside this list comprehension.
+
+[blog-subscribe]
+<h3>How list comprehension works.</h3>
+Since we now understand the syntax well, let's learn how this list comprehension actually works when creating a list.
+<ul>
+ 	<li>First, it will create a new list upon the execution of the defined list comprehension code line.</li>
+ 	<li>Then, it iterates through the iterable while evaluating the expression on each element in each iteration.</li>
+ 	<li>If the condition is specified and evaluated to True, the result of the expression is added to the new list.</li>
+ 	<li>Once the iteration is complete, the new list is returned to us.</li>
+</ul>
+To understand this process easily, let's see some examples.
+<h3>Sample use cases of using list comprehension.</h3>
+<strong>Example 1: Create a list that contains numbers from 0 to 10 as elements.</strong>
+
+For this example, we will create a list called 'newList' using list comprehension, including numbers from 0 to 10. We can do as below.
+<pre class="EnlighterJSRAW" data-enlighter-language="python">newList = [i for i in range(0,10)]
+print(newList)
+</pre>
+Here, we have set 'i' as the expression, meaning that we are appending the same value into our new list, 'my_num.'
+
+We can see our newly created list as shown below.
+
+<img class="aligncenter size-full wp-image-3924 b-radius-20" src="https://www.qodo.ai/wp-content/uploads/2023/10/image7.jpg" alt="code" width="476" height="70" />
+<strong>Example 2: Create a list that contains characters of a given string as elements.</strong>
+
+Let's extract the characters from a given string and append them to a new list. See the code snippet below.
+
+Here, we are using the string 'John Doe' as the iterable, and when we run the code, it will go over all the characters (including spaces) and append them into our new list called 'my_char.'
+
+We can see our list below.
+
+<img class="aligncenter size-full wp-image-3927 b-radius-20" src="https://www.qodo.ai/wp-content/uploads/2023/10/image9.jpg" alt="Code" width="565" height="70" />
+
+<strong>Example 3: Create a list that only includes odd numbers from a given number list.</strong>
+
+Let's say we have a list called 'current_list,' which contains numbers from 0 to 10. Now, we want to create a new list called 'odd_list,' which must only include all the odd numbers between the given numbers.
+
+So, in simple terms, we need to filter out the odd numbers. On this occasion, we can use an if condition to select the odd numbers.
+
+Refer to the below code.
+<pre class="EnlighterJSRAW" data-enlighter-language="python">current_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+new = [i for i in current_list if i % 2 == 1]
+print(new)
+</pre>
+We have used an if condition (i % 2 == 1) to filter out only the odd numbers. Then, those numbers will be appended to the new list.
+
+Below is the output.
+<img class="aligncenter size-full wp-image-3928 b-radius-20" src="https://www.qodo.ai/wp-content/uploads/2023/10/image8.jpg" alt="Code" width="381" height="65" />
+<h2>Nesting list comprehensions in Python</h2>
+Rather than using a single list comprehension, Python allows us to nest them, which means we can use one or more list comprehensions inside another list comprehension. This feature will enable us to create lists of lists or do operations on nested data structures easily.
+
+Here's the basic syntax for nested list comprehension.
+
+<span style="font-weight: 400;">[inner_expression for inner_item in inner_iterable] for outer_item in outer_iterable]</span>
+
+<img class="alignright size-medium wp-image-3929 b-radius-20" src="https://www.qodo.ai/wp-content/uploads/2023/10/image13-300x192.png" alt="" width="300" height="192" />
+<ul>
+ 	<li style="font-weight: 400;" aria-level="1"><b>inner_expression, inner_item, inner_iterable:</b><span style="font-weight: 400;"> These terms have the same meanings as we learned earlier. But the difference is they are used for the inner iteration.</span></li>
+ 	<li style="font-weight: 400;" aria-level="1"><b>outer_item:</b><span style="font-weight: 400;"> This variable represents each element in the outer iterable, and we use it to control the iteration of the inner list comprehension. This value remains the same during the execution of the inner comprehension.</span></li>
+ 	<li style="font-weight: 400;" aria-level="1"><b>outer_iterable:</b><span style="font-weight: 400;"> This outer iterable handles the iteration of the entire nested list comprehension. The inner list comprehension runs once for each element in this outer iterable.</span></li>
+</ul>
+<strong>Example: Create a simple 4x4 matrix.</strong>
+Let's say we need to create a 4x4 matrix; each row must have 2, 4, 6, 8. Refer to the below code.
+<pre class="EnlighterJSRAW" data-enlighter-language="python">my_matrix = [[j * 2 for j in range (1,5)] for i in range (1,5)]
+print (my_matrix)
+</pre>
+<ul>
+ 	<li style="font-weight: 400;" aria-level="1"><b>Inner list comprehension</b><span style="font-weight: 400;">: Here, it will create a list (1st row of the matrix), and the required elements are 2, 4, 6, and 8. Those numbers can be generated by multiplying the 1st four numbers by 2. So, as the inner iterable, we define a range of numbers from 1 to 5. Then, we specify '</span><span style="font-weight: 400;">j</span><span style="font-weight: 400;">' and '</span><span style="font-weight: 400;">j * 2</span><span style="font-weight: 400;">' as the inner item and expression. Therefore, we can generate the required values for the matrix.</span></li>
+ 	<li style="font-weight: 400;" aria-level="1"><b>Outer list comprehension</b><span style="font-weight: 400;">: This will take the inner list comprehension as the expression and create a new list (4x4 matrix) by iterating over the outer iterable, a range of numbers from 1 to 5.</span></li>
+</ul>
+<span style="font-weight: 400;">When we print the list, we can see it as below.</span>
+
+<img class="aligncenter size-full wp-image-3932 b-radius-20" src="https://www.qodo.ai/wp-content/uploads/2023/10/image10.jpg" alt="Code" width="761" height="66" />
+<h3>When to use nested list comprehensions</h3>
+Here are some use cases where we can nest list comprehensions and use.
+<ul>
+ 	<li style="font-weight: 400;" aria-level="1"><b>Creating Matrices:</b><span style="font-weight: 400;"> We can use nested list comprehensions to create matrices or 2D arrays with specific values, such as zeros, ones, or a pattern.</span></li>
+ 	<li style="font-weight: 400;" aria-level="1"><b>Matrix Transposition:</b><span style="font-weight: 400;"> Besides creating matrices, we can transpose a matrix (swapping rows with columns) through this feature.</span></li>
+ 	<li aria-level="1"><b>Matrix Multiplication:</b><span style="font-weight: 400;"> In numerical computing, we can use this feature for matrix multiplication and other mathematical operations.</span></li>
+</ul>
+<b>Filtering and Transforming Nested Data:</b><span style="font-weight: 400;"> This feature allows us to easily filter and transform data within nested structures.</span>
+<h2>Python list comprehension for dictionary.</h2>
+So far, we have learned about list comprehension in Python and nesting them to perform more complex tasks. Just like we create list comprehensions, we can do the same for creating dictionaries. This process is called dictionary comprehension.
+
+As we interacted with lists earlier, we can create dictionaries from existing ones and filter and transform the data stored in dictionaries.
+
+Let's see the syntax for Python dictionary list comprehension.
+
+<b>{key_expression: value_expression for element in iterable if condition}</b>
+<ul>
+ 	<li><b>key_expression</b>: We use this expression to define the actions/tasks to be performed with the elements in the iterable to produce the keys of the dictionary.
+For example, if we want to use the square value of the numbers as keys, key_expression could be 'item ** 2.'</li>
+</ul>
+<ul>
+ 	<li><b>value_expression</b>: Same as the key_expression, but it will provide the dictionary's values.
+For example, if we want to have the cubic value of the numbers and use those as values, we can specify the value_expression as 'item * item * item.'</li>
+</ul>
+Below is a simple example of dictionary comprehension in Python.
+
+<b>Example: Creating a dictionary from an existing list called </b><b>'my_list'</b><b>.</b>
+<pre class="EnlighterJSRAW" data-enlighter-language="python">my_list = [1, 2, 3, 4, 5]
+my_dictionary = {i: i * i for i in my_list}
+
+print(my_dictionary)
+</pre>
+<img class="aligncenter size-full wp-image-3933 b-radius-20" src="https://www.qodo.ai/wp-content/uploads/2023/10/image11.jpg" alt="Code" width="584" height="65" />
+
+Here, we have a list called 'my_list,' which has values from 1 to 5 (including 5), and we are creating a new dictionary called 'my_dictionary' where keys are the elements in the list and values are the cubic values of each component.
+
+Dictionary comprehension use cases are similar to the list comprehensions but only used to interact with the dictionaries.
+
+Now let's discuss some advantages of using list comprehensions.
+<h3>Advantages of using list comprehensions in Python.</h3>
+<ul>
+ 	<li><b>Simplifies the readability: </b>As we saw earlier, list comprehensions are more concise and readable code lines than traditional loops. They let us create a list in a single line, which can be easier to understand, especially for simple operations.</li>
+ 	<li><b>Simplicity of the code: </b>List comprehensions simplify code by encapsulating the iteration and item creation logic in a single place. Therefore, we can reduce the usage of extra variables and code lines, making the codebase clean.</li>
+ 	<li><b>Enhanced performance: </b>We can often use list comprehensions more efficiently than for loops as they are optimized at the CPython interpreter level. This will enhance the performance, especially for large datasets.</li>
+</ul>
+<h3>Conclusion</h3>
+Today, we learned about one of Python's coolest features: List comprehensions. As we discussed, list comprehensions in Python can be used to create a list from an existing list or any other source, such as a range of numbers or a string. It eases the creation process and avoids the complexities of traditional list-generating methods.
+
+It is always good to have an idea when to use these features and when to not because some developers find it difficult when there is a usage of list comprehensions and similar approaches, which can lead to poor code understanding and reading.
