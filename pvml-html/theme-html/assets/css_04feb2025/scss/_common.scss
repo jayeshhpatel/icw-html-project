@@ -252,6 +252,14 @@ img{
 			background-color: $primary;
 			color: $dark !important;
 			border: 1px solid $primary;
+
+			.icons {
+				// filter: brightness(0) contrast(1) invert(1);
+				// @include transition(0.3s, ease-in-out);
+				path {
+					stroke:$dark !important; 
+				}
+			}
 		}
 	}
 	&.btn-secondary{
@@ -2251,6 +2259,169 @@ body ._data-btn-info {
 			@media (max-width: 767px) {
 				padding: 3px 15px 20px;
 				font-size: 18px !important;
+			}
+		}
+	}
+}
+.icw-lego-hs-form {
+	.form-columns-1 {
+		max-width: 100% !important;
+		.input {
+			margin-right: 0 !important;
+		}
+	}
+	.form-columns-2 {
+		@include flexbox;
+		gap: 8px;
+		max-width: 100% !important;
+		.hs-form-field {
+			width: calc(50% - 4px);
+		}
+		.input {
+			margin-right: 0 !important;
+		}
+		.hs-input {
+			width: 100% !important;
+		}
+	}
+}
+.hs-work_e_mail, .hs_company_status {
+	.input {
+		margin-right: 0 !important;
+	}
+	.multi-container {
+		@include flexbox;
+		@include flex-wrap(wrap);
+		gap: 8px;
+		margin-top: 10px;
+	}
+	.hs-form-radio {
+		width: calc(50% - 4px);
+		.hs-form-radio-display {
+			position: relative;
+			height: 56px;
+			width: 100%;
+			margin-bottom: 0 !important;
+			.hs-input, span {
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				height: 100%;
+			}
+			.hs-input {
+				opacity: 0.011;
+  				z-index: 100;
+				cursor: pointer;
+			}
+			span {
+				cursor: pointer;
+				z-index: 90;
+				line-height: normal;
+				@include inline-flex;
+				@include justify-content(center);
+				@include align-items(center);
+				padding: 6px 12px;
+				font-size: 14px;
+				font-weight: 400;
+				text-align: center;
+				white-space: nowrap;
+				vertical-align: middle;
+				border: 1px solid rgba($primary, 0.5);
+				color: rgba(255, 255, 255, 0.6);
+				@include border-radius(30px);
+			}
+			.hs-input:checked + span { 
+				background: $primary url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z" fill="white"/></svg>') no-repeat calc(100% - 10px) center;
+				background-size: 14px;
+				color: #002B31;
+			}
+		}
+	}
+}
+
+.hs_company_status { 
+	.hs-form-radio {
+		width: 100%;
+		@media (min-width: 992px) {
+			width: calc(50% - 4px);
+		}
+		@media (max-width: 992px) {
+			.hs-form-radio-display { 
+				span {
+					text-align: left;
+					@include justify-content(flex-start);
+				}
+			}
+		}
+	}
+}
+
+.hs-building_ai {
+	.input {
+		margin-right: 0 !important;
+	}
+	.multi-container {
+		@include flexbox;
+		@include flex-wrap(wrap);
+		gap: 8px;
+		margin-top: 10px;
+	}
+	.hs-form-checkbox {
+		width: 100%;
+		@media (min-width: 992px) {
+			width: calc(50% - 4px);
+		}
+		.hs-form-checkbox-display {
+			position: relative;
+			height: 56px;
+			width: 100%;
+			margin-bottom: 0 !important;
+			.hs-input, span {
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				height: 100%;
+			}
+			.hs-input {
+				opacity: 0.011;
+  				z-index: 100;
+				cursor: pointer;
+			}
+			span {
+				cursor: pointer;
+				z-index: 90;
+				line-height: normal;
+				@include inline-flex;
+				@include justify-content(center);
+				@include align-items(center);
+				padding: 6px 15px;
+				font-size: 14px;
+				font-weight: 400;
+				text-align: center;
+				white-space: nowrap;
+				vertical-align: middle;
+				border: 1px solid rgba($primary, 0.5);
+				@include border-radius(30px);
+				color: rgba(255, 255, 255, 0.6);
+				@media (min-width: 1400px) {
+					padding: 6px 20px;
+				}
+				@media (max-width: 992px) {
+					text-align: left;
+					@include justify-content(flex-start);
+				}
+			}
+			.hs-input:checked + span { 
+				background: $primary url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z" fill="white"/></svg>') no-repeat calc(100% - 10px) center;
+				background-size: 14px;
+				color: #002B31;
+				font-weight: 700;
 			}
 		}
 	}
