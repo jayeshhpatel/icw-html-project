@@ -191,13 +191,7 @@ function updateProgressBars() {
 //     }
 // }
 
-// Splide Slider
-if ($('.splide:not(.splide-js)').length) {
-    $('.splide:not(.splide-js)').each(function() {
-        new Splide(this).mount();
-        $(this).addClass('icw_splide-with-data'); // Mark as initialized
-    });
-}
+
 // Counter
 if ($('.counter').length) {
     let options = {
