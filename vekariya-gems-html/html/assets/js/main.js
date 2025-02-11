@@ -6,10 +6,24 @@ var $ = jQuery.noConflict();
 jQuery(document).ready(function($) {
     $('[data-bs-toggle="tooltip"]').tooltip();
 
-    $('.navbar-toggler').on('click', function (e) {
-        $('.navbar-toggler,body,.main-header').toggleClass('is-visible');
-        e.preventDefault();
+    // $('.navbar-toggler').on('click', function (e) {
+    //     $('.navbar-toggler,body,.main-header').toggleClass('is-visible');
+    //     e.preventDefault();
+    // });
+
+    $(".sidebar-toggler").click(function () {
+        $(this).toggleClass("is-visible");
+        $('body,.main-header').toggleClass('is-visible');
+
+        if ($(this).hasClass("is-visible")) {
+            setTimeout(() => {
+                $(".header-collapse-menu").addClass("height-expanded").stop();
+            }, 800);
+        } else {
+            $(".header-collapse-menu").removeClass("height-expanded").stop();
+        }
     });
+
     if ($('.main-header').length) {
         if (jQuery(this).scrollTop() > 100) {
             $(".main-header").addClass("fixed-header");
@@ -69,17 +83,6 @@ jQuery(document).ready(function($) {
     }
     
 
-    // Step Progress Section
-    if ($('.progress-section').length) {
-        $(window).on('scroll', function() {
-            updateProgressBars();
-        });
-    }
-    
-    // Step Progress Section
-    if ($('.progress-section').length) {
-        $('.progress-section').on('scroll', updateProgressBars);
-    }
 
     if ($(".icw-progress-goto").length > 0) {
         var progressPath = document.querySelector('.icw-progress-goto path');
@@ -128,18 +131,7 @@ jQuery(document).ready(function($) {
             jQuery('html, body').animate({scrollTop: 0}, duration);
             return false;
         });
-    }
-
-    const $logoBlock = $('.site-logo-block');
-    if ($logoBlock.length) {
-        $(window).on('scroll', function() {
-            const logoBlockTop = $logoBlock.offset().top;
-            const windowBottom = $(window).scrollTop() + $(window).height();
-
-            // Toggle class based on footer visibility
-            $logoBlock.toggleClass('is-animate', windowBottom >= logoBlockTop);
-        });
-    }
+    }   
 });
 
 /* WOW Animation - Init */
@@ -149,47 +141,6 @@ try {
     //
 };
 
-
-// Step Progress Section
-if ($('.progress-section').length) {
-    updateProgressBars();
-}
-function updateProgressBars() {
-    var scrollPosition = $(window).scrollTop();
-    // Loop through each section and check if it's in the viewport
-    $('.progress-content-step').each(function (index) {
-        var sectionTop = $(this).offset().top - $(window).height() / 1.2; // Mid-point trigger
-        var sectionHeight = $(this).outerHeight();
-        var sectionBottom = sectionTop + sectionHeight;
-        var progressBarId = $(this).attr('id'); // Target progress bar by ID
-        
-        // var sectionAnimateContentTop = $(this).offset().top - $(window).height() / 1;
-        // var sectionAnimateContentBottom = sectionAnimateContentTop + sectionHeight;
-        
-        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-            // Animate progress bar height to 100%
-            $('.image-block').find('.progress-content-img:not(.image-static)').removeClass('is-active');
-
-            $('[data-progress-id="' + progressBarId + '"]').css('height', '100%');
-            $('.image-block').find('[data-id="' + progressBarId + '"]').addClass('is-active');
-        // } else if (scrollPosition >= sectionAnimateContentTop && scrollPosition < sectionAnimateContentBottom) {
-            $('.progress-content-wrapper').find('.progress-content-step').removeClass('is-active');
-            $('.progress-content-wrapper').find('[id="' + progressBarId + '"]').addClass('is-active');
-        } else if (scrollPosition <= sectionTop) {
-            // Reset progress bar height when section is not in view
-            $('[data-progress-id="' + progressBarId + '"]').css('height', '0');
-            
-        } 
-    });
-    
-}
-
-// if ($('.splide').length) {
-//     var splide_sliders = $('.splide');
-//     for (var i = 0; i < splide_sliders.length; i++) {
-//         new Splide(splide_sliders[i]).mount();
-//     }
-// }
 
 
 // Counter
@@ -255,41 +206,118 @@ tabsSectionImage.forEach(img => {
   observerImage.observe(img);
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    function animateCount(element, start, end, duration) {
-        const stepTime = Math.abs(Math.floor(duration / (end - start)));
-        let current = start;
-        const increment = end > start ? 1 : -1;
+// Make ScrollTrigger available for use in GSAP animations
+gsap.registerPlugin(ScrollTrigger);
+if($('.scroll-content-animation-block').length) {            
+    // Select the HTML elements needed for the animation
+    const scrollSection = document.querySelectorAll(".scroll-content-animation-block");
 
-        const timer = setInterval(() => {
-            current += increment;
-            element.textContent = current + "%";
-            if (current === end) {
-                clearInterval(timer);
-            }
-        }, stepTime);
-    }
+    scrollSection.forEach((section) => {
+        const wrapper = section.querySelector(".scroll-content-wrapper");
+        const items = wrapper.querySelectorAll(".process-card");
 
-    const section = document.querySelector(".metrics-section");
-    const countElements = document.querySelectorAll(".count");
+        // Initialize
+        let direction = null;
 
-    if (!section) { return; }
+        if (section.classList.contains("vertical-section")) {
+            direction = "vertical";
+        } else if (section.classList.contains("horizontal-section")) {
+            direction = "horizontal";
+        }
 
-    let hasAnimated = false;
+        initScroll(section, items, direction);
+    });
 
-    const observerCount = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting && !hasAnimated) {
-                hasAnimated = true;
-                countElements.forEach((el) => {
-                    const target = parseInt(el.textContent, 10);
-                    el.textContent = "0";
-                    animateCount(el, 0, target, 2000);
-                });
-                observerCount.disconnect();
+    function initScroll(section, items, direction) {
+        // Initial states
+        items.forEach((item, index) => {
+            if (index !== 0) {
+            direction == "horizontal"
+                ? gsap.set(item, { xPercent: 100 })
+                : gsap.set(item, { yPercent: 100 });
             }
         });
-    }, { threshold: 0.5 });
 
-    observerCount.observe(section);
-});
+        const timeline = gsap.timeline({
+            scrollTrigger: {
+            trigger: section,
+            pin: true,
+            start: "top top",
+            end: () => `+=${items.length * 100}%`,
+            scrub: 1,
+            invalidateOnRefresh: true
+            // markers: true,
+            },
+            defaults: { ease: "none" }
+        });
+        items.forEach((item, index) => {
+            timeline.to(item, {
+            scale: 0.9,
+            borderRadius: "10px"
+            });
+
+            direction == "horizontal"
+            ? timeline.to(
+                items[index + 1],
+                {
+                    xPercent: 0
+                },
+                "<"
+                )
+            : timeline.to(
+                items[index + 1],
+                {
+                    yPercent: 0
+                },
+                "<"
+            );
+        });
+    }
+}
+if($('.animation-text').length) {            
+    const textElements = document.querySelectorAll('.animation-text');
+    textElements.forEach(textElement => {
+        let lines = textElement.innerHTML.split("<br>").map(line =>
+        `<span class="animation-line">${line.trim()}</span>`).join('<br>');
+
+        textElement.innerHTML = lines;
+        const lineElements = textElement.querySelectorAll('.animation-line');
+
+        lineElements.forEach(line => {
+            gsap.fromTo(line, 
+                { backgroundSize: '0% 100%' }, 
+                {
+                    backgroundSize: '100% 100%', 
+                    ease: 'power1.out',
+                    scrollTrigger: {
+                        trigger: line,
+                        start: 'top 80%',
+                        end: 'top 20%',
+                        scrub: true,
+                    }
+                }
+            );
+        });
+    });
+}
+if($('.swap-card').length) {
+    gsap.to(".swap-card.is-left-card", {
+        rotate: "-6deg", 
+        scrollTrigger: {
+            trigger: ".is-left-card",
+            start: "top 60%",
+            end: "top 20%",
+            scrub: true,
+        }
+    });
+
+    gsap.to(".swap-card.is-right-card", {
+        rotate: "6deg", 
+        scrollTrigger: {
+            trigger: ".is-right-card",
+            start: "top 60%",
+            end: "top 20%",
+            scrub: true,
+        }
+    });
+}
