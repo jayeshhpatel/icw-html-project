@@ -131,7 +131,7 @@ jQuery(document).ready(function($) {
             jQuery('html, body').animate({scrollTop: 0}, duration);
             return false;
         });
-    }   
+    }  
 });
 
 /* WOW Animation - Init */
@@ -242,7 +242,7 @@ if($('.scroll-content-animation-block').length) {
             scrollTrigger: {
             trigger: section,
             pin: true,
-            start: "top 150px",
+            start: "top 100px",
             end: () => `+=${items.length * 100}%`,
             scrub: 1,
             invalidateOnRefresh: true
@@ -321,3 +321,31 @@ if($('.swap-card').length) {
         }
     });
 }
+$(document).ready(function () {
+    // Function to check if element is in viewport
+    function isInViewport(element) {
+        var elementTop = element.offset().top + 150;
+        var elementBottom = elementTop + element.outerHeight();
+        var viewportTop = $(window).scrollTop();
+        var viewportBottom = viewportTop + $(window).height();
+        return elementBottom > viewportTop && elementTop < viewportBottom;
+    }
+
+    // Check visibility on scroll and page load
+    function checkVisibility() {
+        $('.section-title, .process-card .card-body .tag-line').each(function () {
+            var $title = $(this);
+            var $processCard_tagLine = $title.next('.tag-line'); // Get the next .tag-line for each title
+
+            if (isInViewport($title)) {
+               $title.addClass('is-animated');
+            } else {
+               $title.removeClass('is-animated');
+            }
+        });
+    }
+
+    // Trigger check on scroll and on page load
+    $(window).on('scroll resize', checkVisibility);
+    checkVisibility(); // Initial check on page load
+});
