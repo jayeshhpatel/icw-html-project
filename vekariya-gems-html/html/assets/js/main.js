@@ -242,7 +242,7 @@ if($('.scroll-content-animation-block').length) {
             scrollTrigger: {
             trigger: section,
             pin: true,
-            start: "top top",
+            start: "top 150px",
             end: () => `+=${items.length * 100}%`,
             scrub: 1,
             invalidateOnRefresh: true

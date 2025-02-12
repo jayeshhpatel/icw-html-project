@@ -988,6 +988,9 @@
         background-clip: text;
         background-size: 0%;
         transition: background-size cubic-bezier(.1,.5,.5,1) 0.5s;
+        & > span {
+            color: $skyblue;
+        }
     }
 }
 
@@ -1101,6 +1104,7 @@
     }
 }
 .swap-card-section {
+    overflow: hidden;
     .swap-card-block {
         overflow: hidden;
         overflow-x: auto;
@@ -1109,10 +1113,24 @@
         @include justify-content(center);
         @include flex-wrap(nowrap);
         gap: 20px;
+        &::-webkit-scrollbar {
+            background-color: transparent;
+            width: 5px;
+            height: 5px;
+            @include border-radius(16px);
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: #9b9b9b;
+            @include border-radius(16px);
+        }
+        &::-webkit-scrollbar-track {
+            background-color: #eeeeee;
+            @include border-radius(16px);
+        }     
         @media (max-width: 767px) {            
             @include justify-content(flex-start);
             padding: 0 30px;
-            margin: 0 -30px;
+            margin: 0 -15px;
         }
         & > div {
             padding: 30px 0px;
