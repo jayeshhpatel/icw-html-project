@@ -54,40 +54,20 @@
     background-size: cover;
 }
 
-.bg-pink-glow {
+.bg-line {
     position: relative;
     &::before {
         content: '';
+        background-image: url(../images/bg-line.png);
+        background-position: top right;
+        background-size: contain;
+        width: 525px;
+        height: 100%;
+        display: block;
         position: absolute;
-        width: 650px;
-        height: 450px;
-        background: rgba(57, 49, 133, 0.6);
-        filter: blur(280px);
-        @include border-radius(1900px);
-    }
-    &.is-tl-pink {        
-        &::before {
-            left: -6%;
-            top: -35%;
-        }
-    }
-}
-.bg-blue-glow {
-    position: relative;
-    &::after {
-        content: '';
-        position: absolute;
-        width: 650px;
-        height: 450px;
-        background: rgba(0, 160, 227, 0.6);
-        filter: blur(280px);
-        @include border-radius(1900px);
-    }
-    &.is-tr-blue {        
-        &::after {
-            right: -6%;
-            top: -35%;
-        }
+        right: 20%;
+        top: 0;
+        z-index: 1;
     }
 }
 
@@ -546,7 +526,13 @@
 
     .hero-header-fix {
         img, video {        
-           
+            position: absolute;
+            top: 0;
+            left: 0;   
+            height: calc(100% - 130px);
+            width: 100%; 
+            background: $black;
+            object-fit: cover;
             @media (min-width: 768px) {
                 // @include border-radius(24px);
             }
@@ -559,15 +545,13 @@
     .hero-title {
         position: relative;
         z-index: 3;
+        max-width: 900px;
         &.text-center {           
             margin: 0 auto 50px;
         }
-        .tag-line {
-            color: $primary;
-            margin-bottom: 10px;
-        }
         h1 {
-            margin-bottom: 0px;
+            color: $white;
+            margin-bottom: 20px;
         }
         .sort-info {
             color: $white;
@@ -615,32 +599,6 @@
             }
         }
     } 
-    .hero-header-full-bg-block {
-        margin-top: 100px;
-        height: 100%;
-        max-height: 600px;
-        min-height: 600px;
-        position: relative;
-        .bg-block {
-            position: absolute;
-            top: 0;
-            left: 0;   
-            height: 100%;
-            width: 100%; 
-            background: $black;
-            object-fit: cover;
-        }
-    }
-    .hero-logo-img {
-        position: absolute;
-        top: -75px;
-        right: 30px;
-        width: 410px;
-        height: 200px;
-        background: url(../images/img-hero-top-logo.svg) no-repeat top right;
-        background-size: contain;
-        display: inline-block;
-    }
     .trusted-logo-block {  
         padding-top: 100px; 
         @media (max-width: 992px) { 

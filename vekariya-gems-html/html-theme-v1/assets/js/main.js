@@ -17,22 +17,22 @@ jQuery(document).ready(function($) {
 
         if ($(this).hasClass("is-visible")) {
             setTimeout(() => {
-                $(".navbar-collapse").addClass("height-expanded").stop();
-            }, 300);
+                $(".header-collapse-menu").addClass("height-expanded").stop();
+            }, 800);
         } else {
-            $(".navbar-collapse").removeClass("height-expanded").stop();
+            $(".header-collapse-menu").removeClass("height-expanded").stop();
         }
     });
 
     if ($('.main-header').length) {
-        if (jQuery(this).scrollTop() > 10) {
+        if (jQuery(this).scrollTop() > 100) {
             $(".main-header").addClass("fixed-header");
         } else {
             $(".main-header").removeClass("fixed-header");
         }
 
         $(window).scroll(function () {
-            if (jQuery(this).scrollTop() > 10) {
+            if (jQuery(this).scrollTop() > 100) {
                 $(".main-header").addClass("fixed-header");
             } else {
                 $(".main-header").removeClass("fixed-header");
