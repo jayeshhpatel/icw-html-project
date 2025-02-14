@@ -61,7 +61,7 @@
         position: absolute;
         width: 650px;
         height: 450px;
-        background: rgba(57, 49, 133, 0.6);
+        background: rgba(57, 49, 133, 0.5);
         filter: blur(280px);
         @include border-radius(1900px);
     }
@@ -79,7 +79,7 @@
         position: absolute;
         width: 650px;
         height: 450px;
-        background: rgba(0, 160, 227, 0.6);
+        background: rgba(0, 160, 227, 0.3);
         filter: blur(280px);
         @include border-radius(1900px);
     }
@@ -87,6 +87,18 @@
         &::after {
             right: -6%;
             top: -35%;
+        }
+    }
+    &.is-tl-blue {        
+        &::after {
+            left: -100px;
+            top: 100px;
+        }
+    }
+    &.is-cl-blue {        
+        &::after {
+            left: -300px;
+            top: 30%;
         }
     }
 }
@@ -181,15 +193,15 @@
     }
 }
 .main-section {
-    padding-top: 150px;
-    padding-bottom: 150px;
+    padding-top: 100px;
+    padding-bottom: 100px;
     @media (max-width: 992px) { 
         padding-top: 80px;
         padding-bottom: 80px;
     }
     @media (max-width: 767px) { 
-        padding-top: 40px;
-        padding-bottom: 40px;
+        padding-top: 50px;
+        padding-bottom: 50px;
     }
     & > * {
         z-index: 2;
@@ -435,48 +447,19 @@
             }
         }
     }
-    &.is-right-line {
-        h2 {
-            &::after {
-                content: '';
-                width: 0;
-                height: 1px;
-                background: $black;
-                display: inline-block;
-                margin-left: 10px;
-                @include transition(0.5s, ease-in-out);
-            }
-        }
-    }
-    &.no-line-tag {
-        .tag-line {
-            &::after {
-                content: none;
-            }
-        }
-    }
     .tag-line {
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 600;
-        color: $darkblack;
-        margin-bottom: 20px;
+        color: $primary;
+        margin-bottom: 10px;
         @media (max-width: 767px) { 
             margin-bottom: 10px;
             font-size: 18px;
         }
-        &::after {
-            content: '';
-            width: 0;
-            height: 1px;
-            background: $black;
-            display: inline-block;
-            margin-left: 5px;
-            @include transition(0.5s, ease-in-out);
-        }
     }
 
     h1, h2, h3 {
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         color: $black;
         span {
             color: $primary;
@@ -629,7 +612,11 @@
             height: 100%;
             width: 100%; 
             background: $black;
-            object-fit: cover;
+            img,video {
+                height: 100%;
+                width: 100%; 
+                object-fit: cover;
+            }
         }
     }
     .hero-logo-img {
@@ -983,7 +970,7 @@
     height: 100%;
     padding: 40px;
     @include border-radius(6px);
-    background: $white;
+    background: $lightgray;
     @include transition(0.3s, ease-in-out);
     position: relative;
     @media (max-width: 992px) {
@@ -1009,7 +996,7 @@
             }
         }
         .sort-info {
-            color: #121C22;
+            color: $black;
             font-weight: 500;
             margin-bottom: 10px;
             flex: 1 1 auto;
@@ -1029,8 +1016,6 @@
         }
         .card-body {
             .card-title {
-                color: $primary;
-                font-weight: 600;
                 a {
                     color: $primary;
                     font-weight: 600;
