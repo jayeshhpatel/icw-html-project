@@ -491,27 +491,6 @@ img {
             display: none;
         }
     }
-
-    &.is-logovideo {
-        @media (max-width: 767px) {
-            display: none;
-        }
-        img, video {
-            max-width: 860px;
-            height: 600px;
-            object-position: top center;
-            left: calc(50% - 430px);
-            z-index: -1;
-            top: 220px;
-            opacity: 0.5;
-            @media (max-width: 992px) {
-                max-width: 650px;
-                height: 400px;
-                top: 150px;
-                left: calc(50% - 325px);
-            }
-        }
-    }
 }
 
 .full-width-block {
@@ -680,10 +659,10 @@ h1, .h1 {
     font-size: 65px;
     font-weight: 700;
     @media (max-width: 1200px) { 
-        font-size: 54px;
+        font-size: 45px;
     }
     @media (max-width: 767px) { 
-        font-size: 40px;
+        font-size: 32px;
     }
 }
 h2, .h2 {
@@ -697,8 +676,8 @@ h2, .h2 {
     }
 }
 h3, .h3 {
-    font-size: 32px;
-    font-weight: 600;
+    font-size: 34px;
+    font-weight: 700;
     @media (max-width: 1200px) { 
         font-size: 24px;
     }
@@ -719,6 +698,9 @@ h5, .h5 {
 
 .splide {
     padding-bottom: 45px;
+    @media (max-width: 767px) {
+        padding-bottom: 35px;
+    }
 }
 
 .icw-pagination {
@@ -736,11 +718,11 @@ h5, .h5 {
         @include transition(0.3s, ease-in-out);
         opacity: 1;
         margin: 0;
-        background: $primary;
+        background: $secondary;
         border: 1px solid transparent;
         &.is-active {
             width: 22px;
-            border-color: $primary;
+            border-color: $secondary;
             background: transparent !important;
             @include transform(scale(1));
         }
@@ -756,6 +738,12 @@ h5, .h5 {
         right: 0;
         left: auto;
         padding-right: 0;
+        @media (max-width: 767px) {
+            bottom: -40px;
+            top: auto;
+            left: 0;
+            right: 0;
+        }
     }
 }
 .icw-arrows {
@@ -1687,32 +1675,29 @@ body.is-visible {
     display: grid;
     &.grid-col-2 {
         grid-template-columns: repeat(2, 1fr);
-        @media (max-width:992px) {
+        @media (max-width: 767px) {
             grid-template-columns: repeat(1, 1fr);
         }
     }
 }
 .check-list {
+    margin-top: 20px;
     li {
         @include flexbox;
         @include align-items(flex-start);
-        font-size: 20px;
         font-weight: 500;
         margin-bottom: 10px;
         color: $black;
-        @media (max-width:992px) {
-            font-size: 18px;
-        }
         &::before {
             content: '';
             background: url(../images/icons/icon-check-circle.svg) no-repeat center center;
             background-size: contain;
-            width: 21px;
-            height: 21px;
+            width: 20px;
+            height: 20px;
             flex: none;
             display: inline-block;
             margin-right: 8px;
-            margin-top: 5px;
+            margin-top: 4px;
             @media (max-width:992px) {
                 width: 18px;
                 height: 18px;
