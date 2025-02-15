@@ -40,6 +40,9 @@
 .bg-lightgray {
     background-color: rgba(#F3F4F9, 0.6) !important;
 }
+.bg-lightblue {
+    background-color: $lightblue !important;
+}
 .bg-custom {
     background: var(--header-bg, none);
     background-repeat: no-repeat;
@@ -280,12 +283,12 @@
     // max-width: 750px;
     margin-bottom: 50px;
     @media (max-width: 767px) { 
-        margin-bottom: 40px;
+        margin-bottom: 30px;
     }
     &.text-center {
         margin: 0 auto 50px ;
         @media (max-width: 767px) { 
-            margin: 0 auto 40px;
+            margin: 0 auto 30px;
         }
     }
     &.sticky-title {
@@ -626,10 +629,14 @@
         position: relative;
         @include flexbox;
         @include align-items(center);
-        @media (max-width: 767px) { 
+        @media (max-width: 992px) { 
             margin-top: 70px;            
-            max-height: 250px;
-            min-height: 250px;
+            max-height: 300px;
+            min-height: 300px;
+        }
+        @media (max-width: 767px) {  
+            max-height: 200px;
+            min-height: 200px;
         }
         .bg-block {
             position: absolute;
@@ -654,6 +661,12 @@
         background: url(../images/img-hero-top-logo.svg) no-repeat top right;
         background-size: contain;
         display: inline-block;
+        z-index: 12;
+        @media (max-width: 992px) { 
+            width: 250px;
+            height: 125px;
+            top: -50px;
+        }
         @media (max-width: 767px) {
             width: 190px;
             height: 95px;
@@ -706,6 +719,16 @@
         &:last-child {
             margin-bottom: 0
         }
+    }
+    h4 {
+        margin-bottom: 20px;
+    }
+    img {
+        @include border-radius(24px);
+        margin-top: 20px;
+    }
+    .d-flex {
+        gap: 30px;
     }
     ul, ol {
         margin-top: 20px;
@@ -1204,79 +1227,37 @@ a.icon-info-card {
     }
 }
 
-// Process Card
-.process-card {
-    @include flexbox;
-    gap: 25px;
-    position: absolute;
-    inset: 0%;
-    background: $white;
-    border: 1px solid #E8E8E8;
-    padding: 100px;
-    @include border-radius(30px);
-    overflow: hidden;
-    margin-bottom: 100px;
-    z-index: 2;
-    @media (max-width: 992px) {  
-        padding: 50px;  
-        margin-bottom: 50px;
+// Process Sticky Content Section
+.process-sticky-content-block {
+    
+}
+.process-sticky-card {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    grid-gap: 40px;
+    padding: 100px 0;
+    &:last-child {
+        padding-bottom: 0;
     }
-    @media (max-width: 767px) {      
-        padding: 30px;    
-        @include flex-direction(column);
-        border: 1px solid transparent;
+    .section-title {
     }
-    .card-body {
-        width: 50%;
-        height: 100%;
+    .icon {
+        width: 60px;
+        height: 60px;
+        flex: none;
         @include flexbox;
-        @include flex-direction(column);
+        @include align-items(center);
         @include justify-content(center);
-        gap: 20px;
-        @media (max-width: 767px) {        
-            width: 100%;
-            order: 2;            
-            @include justify-content(flex-start);
-        }
-        .tag-line {
-            font-size: 20px;
-            font-weight: 600;
-            color: #636363;
-            &::after {
-                content: '';
-                width: 0;
-                height: 1px;
-                background: $black;
-                display: inline-block;
-                margin-left: 5px;
-                @include transition(0.5s, ease-in-out);
-            }    
-            &.is-animated {
-                &::after {
-                    width: 60px;
-                }
-            }
-        }
-        .card-title {
-            span {
-                color: $primary;
-            }
-        }
+        background: #e5f5fc;
+        @include border-radius(50%);
+        // position: sticky;
+        // top: 0;
     }
-    .card-img {
-        width: 50%;  
-        text-align: right;        
-        @media (max-width: 767px) {        
-            width: 100%;
-            text-align: center;
-            order: 1;
-        }
-        img { 
-            object-fit: cover;
-        }
+    .left-col, .center-col {
+        position: sticky;
+        top: 150px;
     }
 }
-
 
 
 // Morden Card
