@@ -248,7 +248,7 @@ img {
 	font-size: 14px;
     position: relative;
     border: 1px solid transparent;
-	@include transition(0.2s, ease-in-out);
+	@include transition(0.3s, ease-in-out);
 	@include inline-flex;
 	@include align-items(center);
 	@include justify-content(center);	
@@ -256,29 +256,27 @@ img {
 	@include border-radius(6px);
     padding: 4px 25px;
     white-space: nowrap;
-    text-transform: uppercase;   
-    &.with-arrow-icon {       
-        &::after {
-            content: '';   
-            background-image: url('data:image/svg+xml; utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M23.1646 3.02658H7.46094V0.783203H23.1646V3.02658Z" fill="rgb(0 160 227)"/><path fill-rule="evenodd" clip-rule="evenodd" d="M23.1634 0.783203L23.1632 16.4869H20.9199V0.783215L23.1634 0.783203Z" fill="rgb(0 160 227)"/><path fill-rule="evenodd" clip-rule="evenodd" d="M22.4953 3.49894L2.77922 23.2149L0.857422 21.2932L20.5734 1.57715L22.4953 3.49894Z" fill="rgb(0 160 227)"/></svg>');
-            background-size: contain !important;
-            background-position: center center !important;
-            background-repeat: no-repeat !important;  
-            @include transition(0.3s, ease-in-out);
-            width: 14px;
-            height: 14px;  
-            flex: none;
-            transform-origin: center center;
-            margin-left: 10px;
+    text-transform: uppercase;
+    overflow: hidden;
+    z-index: 1;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $black;
+        @include transform(translate(0, -100%));
+        transform-origin: top;
+        @include transition(0.3s, cubic-bezier(.4,0,.2,1));
+        z-index: -1;
+    }    
+    &:hover, &:focus, &:active {
+        &::before {
+            @include transform(translate(0, 0));
         }
     }
-    &:hover, &:focus, &:active {
-        &.with-arrow-icon {
-            &::after {
-                @include transform(rotate(45deg));
-            }
-        }
-    } 	
 	&.btn-sm {
 		min-height: 40px;
 	}
@@ -286,75 +284,83 @@ img {
 		color: $white !important;
 		border-color: transparent;
 		background-color:$primary;
-        &::after {
-            filter: brightness(0) invert(1);
-            -webkit-filter: brightness(0) invert(1);
+        &::before {
+            background: $white;
         }
         &:hover, &:focus, &:active {
-            background-color: #1a135f !important;
+           color: $primary !important;
+        }
+	}
+	&.btn-secondary {
+		color: $white !important;
+		border-color: transparent;
+		background-color: $secondary;
+        &::before {
+            background: $white;
+        }
+        &:hover, &:focus, &:active {
+            color: $secondary !important;
         }
 	}
 	&.btn-white {
 		color: $black !important;
-		border-color: $white;
+		border: none;
 		background-color: $white;
-        &::after {
-            filter: brightness(0);
-            -webkit-filter: brightness(0);
-        }
         &:hover, &:focus, &:active {
-            border-color: $white;
-            color: $black !important;            
-            background-color: rgba($white, 0.8);
+            color: $white !important;
         }
 	}
 	&.btn-dark {
 		color: $white !important;
 		border-color: $darkblack;
 		background-color: $darkblack;
-        &::after {
-            filter: brightness(0) invert(1);
-            -webkit-filter: brightness(0) invert(1);
+        &::before {
+            background: $white;
         }
         &:hover, &:focus, &:active {
-            background: transparent;
-            color: $darkblack !important;
-            &::after {
-                filter: brightness(0);
-                -webkit-filter: brightness(0);
-            }
+           color: $primary !important;
         }
 	}
 	&.btn-outline-dark {
 		color: $darkblack !important;
 		border-color: $darkblack;
 		background-color: $white;
-        &::after {
-            filter: brightness(0);
-            -webkit-filter: brightness(0);
+        &::before {
+            background: $darkblack;
         }
         &:hover, &:focus, &:active {
-            color: $white !important;
-            background-color: $darkblack;
-            &::after {
-                filter: brightness(0) invert(1);
-                -webkit-filter: brightness(0) invert(1);
-            }
-        } 
+           color: $white !important;
+        }
 	}
 	&.btn-outline-primary {
 		color: $primary !important;
 		border-color: $primary;
 		background-color: $white;
+        &::before {
+            background: $primary;
+        }
         &:hover, &:focus, &:active {
-            color: $white !important;        
+           color: $white !important;
+        }
+	}
+	&.btn-outline-secondary {
+		color: $secondary !important;
+		border-color: $secondary;
+		background-color: $white;
+        &::before {
+            background: $secondary;
+        }
+        &:hover, &:focus, &:active {
+           color: $white !important;
         }
 	}
 }
 
 .btn-link {
 	color: $primary;
-	font-weight: bold;
+    font-size: 16px;
+	font-weight: 600;
+    line-height: 1;
 	position: relative;
 	z-index: 3;
 	text-decoration: none;
@@ -362,18 +368,9 @@ img {
 	@include inline-flex;
 	@include align-items(center);
 	@include transition(0.3s, ease-in-out);
-    text-underline-offset: 5px;    
-
 	&:hover, &:focus, &:active, &:focus-visible {
-        color: $primary !important;
-        text-decoration: underline;
-        text-decoration-color:$primary !important;
-        -moz-text-decoration-color:$primary !important;
+        color: $secondary;
     }
-	&:hover,&:focus{
-		color: $primary;
-	}
-
 	&.text-sm {
 		font-size: 14px;
 		&.with-icon {
@@ -383,21 +380,20 @@ img {
 			}
 		}
 	}
-
-	&.btn-link-primary {
-		color: $primary;
+	&.btn-link-secondary {
+		color: $secondary;
+        &::after { 
+            background: url('data:image/svg+xml; utf8,<svg width="8" height="11" viewBox="0 0 8 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.03516 1L6.40579 5.60335L1.03516 10.2067" stroke="rgba(0, 160, 227, 1)" stroke-width="1.56643" stroke-linecap="round"/></svg>') no-repeat center center;
+        }
 		&:hover, &:focus, &:active, &:focus-visible {
-			color: red;
-		}
-		&:hover,&:focus{
-			color: red;
+			color: $primary;
 		}
 	}
     &.with-underline {
         overflow: hidden;
         &::before {
             content: '';
-            background-color: $primary;
+            background-color: $secondary;
             justify-content: flex-end;
             align-items: flex-start;
             width: 100%;
@@ -425,18 +421,18 @@ img {
 		&::after {
 			content: "";
 			display: block;
-			margin-left: 8px;
-			width: 12px;
-			height: 12px;
-            background: url('data:image/svg+xml; utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M23.1646 3.02658H7.46094V0.783203H23.1646V3.02658Z" fill="rgb(0 160 227)"/><path fill-rule="evenodd" clip-rule="evenodd" d="M23.1634 0.783203L23.1632 16.4869H20.9199V0.783215L23.1634 0.783203Z" fill="rgb(0 160 227)"/><path fill-rule="evenodd" clip-rule="evenodd" d="M22.4953 3.49894L2.77922 23.2149L0.857422 21.2932L20.5734 1.57715L22.4953 3.49894Z" fill="rgb(0 160 227)"/></svg>') no-repeat center center;
-			background-size: contain;
+			margin-left: 5px;
+            margin-top: 2px;
+			width: 10px;
+			height: 10px;
+            background: url('data:image/svg+xml; utf8,<svg width="8" height="11" viewBox="0 0 8 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.03516 1L6.40579 5.60335L1.03516 10.2067" stroke="rgba(57, 49, 133, 1)" stroke-width="1.56643" stroke-linecap="round"/></svg>') no-repeat center center;
+			background-size: contain !important;
 			@include transition(0.3s, ease-in-out);
-            filter: brightness(0);
 		}
 		&:hover, &:focus, &:active, &:focus-visible {
 			&::after {
-				@include transform(rotate(45deg));
-				filter: unset;
+				@include transform(translateX(5px));
+                background: url('data:image/svg+xml; utf8,<svg width="8" height="11" viewBox="0 0 8 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.03516 1L6.40579 5.60335L1.03516 10.2067" stroke="rgba(0, 160, 227, 1)" stroke-width="1.56643" stroke-linecap="round"/></svg>') no-repeat center center;
 			}
 		}
 	}
@@ -698,7 +694,7 @@ h5, .h5 {
 
 .splide {
     padding-bottom: 45px;
-    @media (max-width: 767px) {
+    @media (max-width: 992px) {
         padding-bottom: 35px;
     }
 }
@@ -1326,7 +1322,6 @@ body.is-visible {
         }
     }
 }
-
 
 // Footer
 .main-footer {

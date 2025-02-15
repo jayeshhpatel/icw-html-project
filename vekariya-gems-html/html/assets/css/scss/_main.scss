@@ -737,10 +737,10 @@
         h3 {
             margin-bottom: 10px;
             color: $black;
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 600;
             @media (max-width: 992px) {
-                font-size: 18px;
+                font-size: 20px;
             }
         }
         .sort-info {
@@ -748,6 +748,9 @@
             @media (max-width: 992px) {
                 font-size: 14px;
             }
+        }
+        .action {
+            margin-top: 10px;
         }
     }
     &.only-img {
@@ -766,6 +769,37 @@
                 object-fit: cover;
                 object-position: center;
                 @include border-radius(6px);
+            }
+        }
+    }
+    &.no-bg {
+        background: transparent;
+        padding: 0;
+        @include border-radius(0);            
+        &:hover, &:focus {        
+            @include transform(translateY(0));
+            @include box-shadow(unset);
+        }
+    }
+    &.is-left-icon {
+        @include flex-direction(row);
+        gap: 25px;
+        @media (max-width: 992px) {
+            @include flex-direction(column);
+            gap: 0;
+        }
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            flex: none;
+            @include flexbox;
+            @include align-items(center);
+            @include justify-content(center);
+            background: #e5f5fc;
+            @include border-radius(50%);
+            @media (max-width: 992px) {
+                width: 50px;
+                height: 50px;
             }
         }
     }
@@ -867,6 +901,102 @@ a.icon-info-card {
                     &:hover, &:focus {
                         @include transform(scale(1.05));
                     }
+                }
+            }
+        }
+    }
+}
+
+// Diamond Process Slider Section 
+.diamond-process-slider-section {
+    .process-img-slider {
+        position: relative;
+        max-width: 540px;
+        @include border-radius(6px);
+        @media (max-width: 992px) {                
+            max-width: 100%;
+        }
+        img {
+            width: 100%;
+            max-height: 600px;
+            object-fit: cover;
+            object-position: center;
+            @include border-radius(6px);
+            @media (max-width: 992px) {                
+                width: 100%;
+                max-height: 360px;
+            }
+        }
+        .site-logo-img {
+            position: absolute;
+            bottom: 0;
+            left: -50%;
+            @include transform(translateX(50%));
+            max-width: 275px;
+            @media (max-width: 992px) {
+                display: none;
+            }
+        }
+    }
+    .process-content-slider {
+        .icon-info-card {
+            .card-icon {
+                position: relative;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: -9px;
+                    left: 0;
+                    width: 100%;
+                    height: calc(100% + 18px);
+                    background: $white;
+                    z-index: -1;
+                    @media (max-width: 992px) {
+                        content: none;
+                    }
+                }  
+            }
+        }
+        .splide__slide {
+            border: none !important;
+            &:last-child {
+                margin-bottom: 0 !important;
+            }
+            &.is-active, &.is-complete {
+                .icon-info-card {
+                    .card-icon {
+                        background: $secondary;
+                        img {
+                            filter: brightness(0) invert(1);
+                        }
+                    }
+                }
+            }
+        }
+        .splide__progress {
+            background: #BEBEBE;
+            width: 2px;
+            min-height: 80%;
+            position: absolute;
+            top: 2px;
+            left: 30px;
+            @media (max-width: 992px) {                
+                width: calc(100% - 60px);
+                min-height: 2px;
+                height: 2px;
+                top: 25px;
+                left: 60px;
+            }
+            .splide__progress__bar {
+                width: 2px;
+                height: 0;
+                transition: height 1s ease-in-out;
+                background: $secondary;
+                position: absolute;
+                @media (max-width: 992px) {                
+                    width: 0;
+                    min-height: 2px;
+                    height: 2px;
                 }
             }
         }
@@ -1074,76 +1204,11 @@ a.icon-info-card {
     }
 }
 
-
-
-
-
-// Morden Card
-.morden-card {
-    @include flexbox;
-    @include flex-direction(column);
-    height: 100%;
-    @include border-radius(24px);
-    min-height: 380px;
-    padding: 30px;
-    background-color: var(--bg-color, #E8F8FF);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 100%;
-    @include transition(0.3s, ease-in-out);
-    @media (max-width: 992px) {
-        min-height: 300px;
-    }
-    &.is-bg-img {
-        background-image: var(--bg-img);
-    }
-    .card-body {
-        @include flexbox;
-        @include flex-direction(column);
-        color: var(--text-color, $darkblack);
-        .card-title {
-            margin-bottom: 20px
-        }
-        .sort-info {
-            margin-top: auto;
-            font-size: 20px;
-            font-weight: 500
-        }
-    }
-    &:hover, &:focus {
-        background-size: 105%;
-    }
-}
-
-// Scroll Content Animation
-.scroll-content-animation-block  {
-    overflow: hidden;
-    // @include border-radius(30px);
-    @media (min-width: 768px) {
-        // padding: 20px !important;
-        // margin: 0 -20px !important;
-    }
-    .scroll-content-wrapper {
-        height: calc(100vh - 80px);
-    }
-    .process-card-content {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        @include flexbox;
-        @include justify-content(flex-start);
-        @include align-items(center);
-    }
-}
-
 // Process Card
 .process-card {
-    width: 100%;
-    height: 100%;
     @include flexbox;
-    gap: 45px;
+    gap: 25px;
     position: absolute;
-    @include align-items(center);
     inset: 0%;
     background: $white;
     border: 1px solid #E8E8E8;
@@ -1211,6 +1276,68 @@ a.icon-info-card {
         }
     }
 }
+
+
+
+// Morden Card
+.morden-card {
+    @include flexbox;
+    @include flex-direction(column);
+    height: 100%;
+    @include border-radius(24px);
+    min-height: 380px;
+    padding: 30px;
+    background-color: var(--bg-color, #E8F8FF);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100%;
+    @include transition(0.3s, ease-in-out);
+    @media (max-width: 992px) {
+        min-height: 300px;
+    }
+    &.is-bg-img {
+        background-image: var(--bg-img);
+    }
+    .card-body {
+        @include flexbox;
+        @include flex-direction(column);
+        color: var(--text-color, $darkblack);
+        .card-title {
+            margin-bottom: 20px
+        }
+        .sort-info {
+            margin-top: auto;
+            font-size: 20px;
+            font-weight: 500
+        }
+    }
+    &:hover, &:focus {
+        background-size: 105%;
+    }
+}
+
+// Scroll Content Animation
+.scroll-content-animation-block  {
+    overflow: hidden;
+    // @include border-radius(30px);
+    @media (min-width: 768px) {
+        // padding: 20px !important;
+        // margin: 0 -20px !important;
+    }
+    .scroll-content-wrapper {
+        height: calc(100vh - 80px);
+    }
+    .process-card-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        @include flexbox;
+        @include justify-content(flex-start);
+        @include align-items(center);
+    }
+}
+
+
 
 // Animation Text
 .animation-text {    

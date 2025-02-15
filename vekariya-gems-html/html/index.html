@@ -247,6 +247,166 @@
                         </div>
                     </div>
                 </div>
+            </section>            
+            <section class="main-section diamond-process-slider-section bg-blue-glow is-br-blue">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Diamond Manufacturing <br class="d-none d-lg-block">Process</h2>
+                    </div>
+                    <div class="row g-lg-5">
+                        <div class="col-lg-6">
+                            <div class="splide process-img-slider pb-lg-0" id="process-img-slider">
+                                <div class="splide__track">
+                                    <ul class="splide__list">
+                                        <li class="splide__slide">
+                                            <img src="uploads/img-procuring-diamond.jpg" alt="Procuring">
+                                        </li>
+                                        <li class="splide__slide">
+                                            <img src="uploads/img-new-post1.jpg" alt="Manufacturing">
+                                        </li>
+                                        <li class="splide__slide">
+                                            <img src="uploads/img-new-post6.jpg" alt="Polishing">
+                                        </li>
+                                    </ul>
+                                </div>                                
+                                <div class="site-logo-img">
+                                    <img src="assets/images/img-hero-top-logo.svg" alt="Vekariya Gems Exports">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="splide process-content-slider pb-lg-0" id="process-content-slider">
+                                <div class="splide__track">
+                                    <!-- Progress Bar Element -->
+                                    <div class="splide__progress">
+                                        <div class="splide__progress__bar"></div>
+                                    </div>
+                                    <ul class="splide__list">
+                                        <li class="splide__slide">
+                                            <div class="icon-info-card is-left-icon no-bg">
+                                                <div class="card-icon">
+                                                    <img src="uploads/icon-procuring.svg" alt="Procuring">
+                                                </div>
+                                                <div class="card-body">
+                                                    <h3>Procuring</h3>
+                                                    <div class="sort-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras vehicula, risus eget viverra tincidunt, lorem nulla.</div>
+                                                    <div class="action"><a href="#" class="btn-link with-back-arrow">Learn More</a></div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="splide__slide">
+                                            <div class="icon-info-card is-left-icon no-bg">
+                                                <div class="card-icon">
+                                                    <img src="uploads/icon-manufacturing.svg" alt="Manufacturing">
+                                                </div>
+                                                <div class="card-body">
+                                                    <h3>Manufacturing</h3>
+                                                    <div class="sort-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras vehicula, risus eget viverra tincidunt, lorem nulla.</div>
+                                                    <div class="action"><a href="#" class="btn-link with-back-arrow">Learn More</a></div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="splide__slide">
+                                            <div class="icon-info-card is-left-icon no-bg">
+                                                <div class="card-icon">
+                                                    <img src="uploads/icon-polishing.svg" alt="Polishing">
+                                                </div>
+                                                <div class="card-body">
+                                                    <h3>Polishing</h3>
+                                                    <div class="sort-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras vehicula, risus eget viverra tincidunt, lorem nulla.</div>
+                                                    <div class="action"><a href="#" class="btn-link with-back-arrow">Learn More</a></div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        var processImg = new Splide('#process-img-slider', {
+                            type: 'fade',
+                            rewind: true,
+                            pagination: false,
+                            arrows: false,
+                            autoplay: true,
+                            interval: 5000, // Duration for each slide in ms
+                            pauseOnHover: false,
+                            pauseOnFocus: false,
+                            height: '100%',
+                        });
+
+                        function initProcessContent() {
+                            if (window.innerWidth <= 992) {
+                                return new Splide('#process-content-slider', {
+                                    type: 'fade',
+                                    perPage: 1,
+                                    direction: 'ltr',
+                                    rewind: true,
+                                    pagination: true,
+                                    arrows: false,
+                                    height: '100%',
+                                    gap: '80px',
+                                    classes: {
+                                        pagination: 'splide__pagination icw-pagination', 
+                                    },
+                                });
+                            } else {
+                                return new Splide('#process-content-slider', {
+                                    direction: 'ttb',
+                                    isNavigation: true,
+                                    perPage: 3,
+                                    pagination: false,
+                                    arrows: false,
+                                    height: '100%',
+                                    gap: '80px'
+                                });
+                            }
+                        }                      
+
+                        var processContent = initProcessContent();
+                        var bar = processContent.root.querySelector('.splide__progress__bar');
+
+                        // Function to update the progress bar based on the main slider's current index.
+                        function updateProgress() {
+                            var totalSlides = processImg.Components.Controller.getEnd() + 1;
+                            var currentSlide = processImg.index + 1;
+                            var rate = Math.min(currentSlide / totalSlides, 1);
+                            if(jQuery(window).width() <= 992) {
+                                bar.style.width = (100 * rate) + '%';
+                            } else {
+                                bar.style.height = (100 * rate) + '%';
+                            }
+                        }
+
+                        // Function to update "is-complete" classes on processContent slides.
+                        function updateCompleteSlides() {
+                            var slides = processContent.Components.Elements.slides;
+                            var activeIndex = processImg.index;
+
+                            slides.forEach(function(slide, index) {
+                                if (index < activeIndex) {
+                                    slide.classList.add('is-complete');
+                                } else {
+                                    slide.classList.remove('is-complete');
+                                }
+                            });
+                        }
+                        function updateAll() {
+                            updateProgress();
+                            if(jQuery(window).width() <= 992) {
+                                updateCompleteSlides();
+                            }
+                        }
+                        
+                        processImg.on('moved', updateAll);
+                        processContent.on('mounted moved', updateAll);
+                        processImg.sync(processContent);      
+                        processImg.mount();
+                        processContent.mount();
+
+                    </script>
+                </div>
             </section>
             <section class="main-section counter-section py-70">
                 <div class="container">
