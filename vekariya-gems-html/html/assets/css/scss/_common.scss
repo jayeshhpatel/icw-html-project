@@ -50,6 +50,10 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    &.overflow-hidden {
+        overflow: hidden !important;
+        overflow-y: auto !important;
+    }
 }
 
 body ::selection {
@@ -686,7 +690,7 @@ h3, .h3 {
 h4, .h4 {
     font-size: 24px;
     font-weight: 600;
-    line-height: 1;
+    line-height: 1.5;
     @media (max-width: 1200px) { 
         font-size: 20px;
     }
@@ -901,7 +905,7 @@ body.is-visible {
     backdrop-filter: blur(7px);
     @include transition(0.3s, ease-in-out);
     &.fixed-header {
-        @include box-shadow(0 2px 12px 0 rgba(0,0,0,.3));
+        // @include box-shadow(0 2px 12px 0 rgba(0,0,0,.3));
         top: 0;
     }
     @media (max-width: 992px) {
@@ -1335,6 +1339,13 @@ body.is-visible {
     background: #F3F4F9;
     overflow: hidden;
     padding: 50px 0 20px;
+    background-image: url(../images/img-footer-bg-logo.svg);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 400px;
+    @media (max-width: 767px) {   
+        background-size: 260px;
+    } 
     &::before {
         content: '';
         position: absolute;
@@ -1356,6 +1367,7 @@ body.is-visible {
         background: rgba(0, 160, 227, 0.4);
         filter: blur(225px);
         border-radius: 1920px;
+        z-index: -1;
     }
     a {
         font-size: 16px;
@@ -1366,7 +1378,6 @@ body.is-visible {
         overflow: hidden;
         position: relative;
         padding-bottom: 2px;
-        overflow: hidden;
         @include inline-flex;
         @include align-items(center);
         @media (max-width: 1200px) {
@@ -1389,7 +1400,7 @@ body.is-visible {
             will-change: transform;
             @include transition(0.1s, ease-in-out);
         }  
-        &:hover, &:focus, &.current-menu-item {
+        &:hover, &:focus {
             color: $secondary;
             &::before {
                 transform: translate3d(150%, 0px, 0px);
@@ -1432,9 +1443,13 @@ body.is-visible {
     
     .social-list {
         gap: 15px;
-        @media (max-width: 992px) and (min-width: 767px) {
+        @media (max-width: 992px) {
             @include justify-content(center);
-            margin-bottom: 40px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        @media (max-width: 767px) {
+            margin-bottom: 0px;
         }
         li {
             line-height: 0.7;
@@ -1471,8 +1486,17 @@ body.is-visible {
         } 
         .footer-menu {
             li {
-                line-height: 1;
-                margin-bottom: 15px;
+                line-height: normal;
+                margin-bottom: 10px; 
+                &.current-menu-item {
+                    a {
+                        color: $secondary;
+                        &::before {
+                            transform: translate3d(150%, 0px, 0px);
+                            transform-style: preserve-3d;
+                        }
+                    }
+                }
             }
             @media (max-width: 767px) {   
                 display: grid;
@@ -1548,8 +1572,9 @@ body.is-visible {
         padding-top: 20px;
         @media (max-width: 767px) {   
             @include flex-direction(column-reverse);
-            @include align-items(flex-start);
+            @include align-items(center);
             gap: 10px;
+            margin-top: 20px;
         } 
     }
     .copyright-text {
@@ -1565,7 +1590,7 @@ body.is-visible {
             
         }
         li {
-            line-height: 1;
+            line-height: normal;
             a {
                 font-size: 12px;
                 font-weight: 500;
