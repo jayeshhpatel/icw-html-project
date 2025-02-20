@@ -308,6 +308,10 @@
         @include align-items(flex-start);
         flex: 1;
         gap: 30px;
+        @media (max-width: 992px) { 
+            @include flex-direction(column);
+            gap: 20px;
+        }
         & > * {
             flex-grow: 1;
             flex-basis: 0;
@@ -572,6 +576,7 @@
     color: $black;
     padding: 180px 0 0;
     position: relative;
+    overflow: hidden;
     .container {
         position: relative;
         z-index: 2;
@@ -581,7 +586,10 @@
         padding: 120px 0 0;
     }
     &.no-full-bg-video {
-        padding-bottom: 180px;
+        padding-bottom: 100px;
+        @media (max-width: 992px) {
+            padding-bottom: 70px;
+        }
     }
 
     .page-title {       
@@ -1456,83 +1464,142 @@
 }
 
 // Scroll Circle Progress Section
-.scroll-container {
-    height: calc(100vh - 80px);
-    position: relative;
-    top: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.circle-progress-svg {
-    width: 100%;
-    height: 100%;
-    max-width: 700px;
-    max-height: 700px;
-    aspect-ratio: 1 / 1;
-    border: 1px solid #E5E5E5;
-    @include border-radius(50%);
-    /* For smooth stroke animation */
-    svg {
-        transition: stroke-dashoffset 0.4s ease;
-        stroke: #e54051;
-    }
-}
-.scroll-circle-progress-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    max-width: 700px;
-    max-height: 700px;
-}
-.inner-scroll-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    @include flexbox;
-    @include align-items(center);
-    @include justify-content(center);
-}
-.progress-content-block {    
-    .progress-content-step {
-        display: none;
-        &.is-active {
-            @include flexbox;
-        }
-    }
-}
 .collection-card {
     @include flexbox;
     @include flex-direction(column);
     @include justify-content(center);
+    @include align-items(center);
     text-align: center;
-    height: 100%;
     max-width: 500px;
     margin: 0 auto;
     .card-icon {
         width: 100%;
         height: 100%;
         flex: none;
+        margin-bottom: 30px; 
+        @media (max-width: 767px) { 
+            margin-bottom: 15px; 
+        }
+        img {
+            max-height: 100px;
+            @media (max-width: 992px) {
+                max-height: 70px;
+            }
+            @media (max-width: 767px) { 
+                max-height: 50px;
+            }
+        }
     }
     .card-body {
         h3 {
             color: $secondary;
             font-size: 48px;
             font-weight: 700;
+            @media (max-width: 992px) {
+                font-size: 36px;
+            }
+            @media (max-width: 767px) { 
+                font-size: 24px;
+            }
         }
         .sort-info {
             font-size: 20px;
+            @media (max-width: 992px) {
+                font-size: 18px;
+            }
+            @media (max-width: 767px) { 
+                font-size: 16px;
+            }
+            @media (max-width: 575px) { 
+                font-size: 14px;
+            }
             strong {
                 font-size: 24px;
                 font-weight: 600;
+                @media (max-width: 992px) {
+                    font-size: 20px;
+                }
+                @media (max-width: 767px) { 
+                    font-size: 18px;
+                }
+                @media (max-width: 575px) { 
+                    font-size: 16px;
+                }
             }
         }
     }
 }
-
-
+.circle-container {    
+    width: 700px;
+    height: 700px;
+    flex: none;
+    position: relative;
+    border: 1px solid #E5E5E5;
+    @include border-radius(50%);
+    @media (max-width: 992px) { 
+        width: 600px;
+        height: 600px;
+    }
+    @media (max-width: 767px) { 
+        width: 500px;
+        height: 500px;
+    }
+    @media (max-width: 575px) { 
+        width: 350px;
+        height: 350px;
+    }
+    &::before, &::after {
+        content: '';
+        width: 1px;
+        height: 100px;
+        background-color: #E5E5E5;
+        display: inline-block;
+        position: absolute;
+        top: -100px;
+        left: 50%;
+    }
+    &::after {
+        top: auto;
+        bottom: -100px;
+    }
+    .progress-circle {
+        circle {
+            stroke: $secondary;
+            transition: stroke-dashoffset 0.4s ease;
+        }
+    }
+}
+.pinned-circle-section {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .progress-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        position: absolute;
+    }
+    .progress-content-step {
+        position: absolute;
+        top: 0; 
+        left: 0; 
+        right: 0;
+        opacity: 0 !important;
+        transition: opacity 0.1s ease-out;
+        top: 50%;
+        left: 50%;
+        width: 65%;
+        @include transform(translate(-50%, -50%));
+        &.active {
+            opacity: 1 !important;
+        }
+    }
+}
+  
+  
 // User Info 
 .user-info {
     @include flexbox;
