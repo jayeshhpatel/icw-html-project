@@ -527,7 +527,7 @@
                 let dotsContainer = document.querySelector(".dots");
                 let navDots = [];
 
-                // Create navigation dots for each content element
+                
                 contentElements.forEach((content, i) => {
                     let newDot = document.createElement("div");
                     newDot.className = "dot";
@@ -538,27 +538,23 @@
                     navDots.push(newDot);
                     dotsContainer.appendChild(newDot);
                 });
-    
-                // Center the dots container vertically
+                
                 gsap.set(".dots", { yPercent: -50 });
-
-                // Main timeline with ScrollTrigger
+                
                 const tl = gsap.timeline({
                     scrollTrigger: {
                         trigger: ".scroll-container",
-                        start: startValue, // Trigger when container's top reaches 80px from viewport top
+                        start: startValue, 
                         end: "+=300%",
                         pin: true,
                         scrub: true,
                         markers: false,
-                        snap: 1 / (images.length - 0.5), // Snap based on the number of images
+                        snap: 1 / (images.length - 0.5), 
                         onUpdate: self => {
                             const total = contentElements.length;
                             let index = Math.floor(self.progress * total);
                             index = Math.min(Math.max(index, 0), total - 1);
                             
-                            // Update dots: dots before the active one get 'complete',
-                            // the active one gets 'active', and dots after are reset.
                             navDots.forEach((dot, i) => {
                                 if (i < index) {
                                     dot.classList.add("complete");
@@ -571,7 +567,6 @@
                                 }
                             });
                             
-                            // Update the active content element
                             contentElements.forEach((el, i) => {
                                 el.classList.toggle("active", i === index);
                             });
@@ -579,8 +574,6 @@
                     }
                 });
                 
-                // Animate images: current image slides upward out of view, 
-                // and the next image slides in from below.
                 images.forEach((img, i) => {
                     if (images[i + 1]) {
                         tl.to(img, { 
@@ -598,7 +591,6 @@
                     }
                 });
                 
-                // Optional pause at the end of the timeline
                 tl.to({}, { duration: 0.5 });
             }
 
