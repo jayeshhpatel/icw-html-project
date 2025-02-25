@@ -922,7 +922,7 @@
         font-weight: 600;
 		margin-bottom: 5px;
         font-size: 18px;
-		@media (max-width: 767px) {
+		@media (max-width: 992px) {
 			font-size: 16px;
 		}
 
@@ -967,8 +967,9 @@
 	.card-info {
 		font-size: 16px;
         padding-bottom: 15px;
-		@media (max-width:575px) {
+		@media (max-width: 992px) {
 			font-size: 14px;
+            padding-bottom: 5px;
 		}
         p:not(:last-child) {
             margin-bottom: 5px;
@@ -1583,7 +1584,10 @@
     width: 100%;
     height: calc(100vh - 80px);
     overflow: hidden;
-    display: flex;     
+    display: flex; 
+    @media (max-width: 992px) {
+        @include flex-direction(column-reverse);
+    }    
     .image-wrapper
     .content-wrapper {
         height: calc(100vh - 80px);
@@ -1596,12 +1600,32 @@
         @include flexbox;
         @include align-items(center);
         @include justify-content(center);
+        @media (max-width: 1400px) {
+            max-width: 500px;
+        }
+        @media (max-width: 1200px) {
+            max-width: 450px;
+        }
+        @media (max-width: 992px) {
+            max-width: 100%;
+            height: calc(40vh - 25px);
+        }
+        @media (max-width: 767px) {
+            height: calc(30vh - 25px);
+        }
         .image-content-block {
             width: 100%;
             max-width: 100%;
             height: 100%;
             max-height: calc(100vh - 80px);
             position: relative;
+            overflow: hidden;
+            @media (max-width: 992px) {
+                max-height: calc(40vh - 25px);
+            }
+            @media (max-width: 767px) {
+                max-height: calc(30vh - 25px);
+            }
             img {
                 position: absolute;
                 top: 0;
@@ -1610,54 +1634,147 @@
                 object-fit: cover;
                 width: 100%;
                 height: 100%;
-                opacity: 0;
-                &:first-child {
-                    opacity: 1;
-                }
+                transform: translateY(0);
+                &:not(:first-child) {
+                    /* subsequent images start off the bottom */
+                    transform: translateY(100%);
+                  }
             }
         }
     }
     .content-wrapper {
         width: 100%;
+        position: relative;
+        @media (max-width: 992px) {
+            height: calc(60vh - 25px);
+        }
+        @media (max-width: 767px) {
+            height: calc(70vh - 25px);
+        }
         .scroll-content-block {   
             width: 100%;
             max-width: 100%;
             height: 100%;
-            max-height: calc(100vh - 80px);
+            max-height: 100%;
             position: relative;
             overflow: hidden;
+            @media (max-width: 992px) {
+                height: calc(60vh - 25px);
+            }
+            @media (max-width: 767px) {
+                height: calc(70vh - 25px);
+            }
             .scroll-content {     
                 width: 100%;
-                height: calc(100vh - 80px);
+                height: 100%;
                 @include flexbox;
                 @include align-items(center);
                 @include justify-content(center);
+                opacity: 0;
+                @include transform(unset);
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                @media (max-width: 767px) {
+                    @include align-items(flex-start);
+                }
+                &.active {
+                    opacity: 1;
+                }
                 .section-title {
                     max-width: 580px;
+                    margin-bottom: 0;
+                    @media (max-width: 1200px) {
+                        max-width: 450px;
+                    }
+                    @media (max-width: 992px) {
+                        max-width: 100%;
+                        padding: 30px 15px;
+                    }
+                    @media (max-width: 767px) {
+                        padding: 50px 15px 30px;
+                        h2 {
+                            font-size: 24px;
+                        }
+                    }
+                    .sort-info {
+                        @media (max-width: 575px) {
+                            p {
+                                font-size: 14px;
+                            }
+                        }
+                    }
                 }
             }
         }
     }
-} 
-.scroll-content-block {
+    .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 100%;
+        margin: 25px;
+        position: relative;
+        border: 1px solid $black;
+        background-color: $white;
+        @include transition(0.3s, ease-in-out);
+        @media (max-width: 992px) {            
+            margin: 25px 10px;
+        }
+        @media (min-width: 767px) {            
+            &:first-child {
+                margin-top: 0;
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        @media (max-width: 767px) {            
+            &:first-child {
+                margin-left: 0;
+            }
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+        
+        &.active, &.complete {
+            background-color: $black;
+        }
+      }      
+    .dots {
+        position: absolute;
+        z-index: 100;
+        top: 50%;
+        right: 16px;
+        &::after {
+            content: '';
+            width: 1px;
+            height: 100%;
+            background: $black;
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: calc(50% - 1px);
+            z-index: -1;
+            @media (max-width: 767px) {
+                width: 100%;
+                height: 1px; 
+                top: calc(50% - 1px);
+                left: 0;
+            }
+        }
+        @media (max-width: 767px) {
+            top: -5px;
+            right: auto;
+            left: 50%;
+            @include transform(translateX(-50%) !important);
+            @include flexbox;
+            @include align-items(center);
+        }
+    }
 }
-.scroll-content {
-    
-}
-.image-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.image-content-block {
-    
-}  
-.image-content-block 
-.image-content-block img
-  
 
-
-  
 // User Info 
 .user-info {
     @include flexbox;
