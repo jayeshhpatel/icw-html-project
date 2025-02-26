@@ -365,6 +365,18 @@
                 </div> -->
             </section>
         </main>
+        
+        <div class="loader">
+            <div class="container">
+                <div class="loader-content">
+                    <div class="header-logo" data-aos="fade-down" data-aos-duration="1000"><img src="assets/images/logo.svg" alt="Vekariya Gems Exports"></div>
+                    <div class="loader-footer" data-aos="fade-up" data-aos-duration="1000">
+                        <div class="footer-logo"><img src="assets/images/site-logo.svg" alt="Vekariya Gems Exports"></div>
+                        <div class="counter">Loading <span class="number">0</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <footer class="main-footer">
             <div class="container">
                 <div class="row justify-content-md-between">
@@ -537,7 +549,20 @@
                         }
                     }
                 });
-                
+                $(".image-block").each(function () {
+                    gsap.from($(this), {
+                        opacity: 0,
+                        scale: 1.1,
+                        duration: 1.5,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: $(this),
+                            start: "top 80%",
+                            end: "bottom 60%",
+                            scrub: true,
+                        },
+                    });
+                });
                 images.forEach((img, i) => {
                     if (images[i + 1]) {
                         tl.to(img, { 

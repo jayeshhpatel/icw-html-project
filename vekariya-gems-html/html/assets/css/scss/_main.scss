@@ -681,6 +681,69 @@
     }
 }
 
+.loader {
+    background: $black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
+    .container {
+        height: 100%;
+    }
+    .loader-content {
+        padding: 15px 0;
+        height: 100%;  
+        @include flexbox;
+        @include flex-direction(column);
+        .header-logo {
+            img {
+                max-height: 70px;
+                @media (max-width: 992px) {
+                    max-height: 45px;
+                }
+            }
+        }
+        .loader-footer {
+            margin-top: auto;
+            @include flexbox;
+            @include align-items(flex-end);
+            @include justify-content(space-between);
+            .counter {
+                color: $white;
+                .number {
+                    display: inline-block;
+                    width: 46px;
+                }
+            }
+        }
+    }
+}
+.img-overlay-block {
+    @include flexbox;
+    @include align-items(center);
+    flex-grow: 1;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 20;
+    span {
+        background: $primary;
+        width: 100%;
+        height: 100%;
+        @include transition(0.5s, ease);
+    }
+    &.is-animated {
+        span {
+            @include transform(translateY(-100%));
+            
+        }
+    }
+}
+
 // Info Card
 .info-card {
 	position: relative;
@@ -889,6 +952,10 @@
 			}
 		}
 	}
+    &.with-bg {
+        background: rgba(#F3F4F9, 0.6);
+        padding: 20px;
+    }
 
     &.only-card-title {
         .card-content {
@@ -1577,7 +1644,7 @@
     }
 }
  
-// 
+// Scroll images section
 .scroll-container {
     width: 100%;
     height: calc(100vh - 80px);
@@ -1689,11 +1756,12 @@
                         }
                     }
                     .sort-info {
-                        @media (max-width: 575px) {
+                        @media (max-width: 767px) {
                             p {
                                 font-size: 14px;
                             }
                         }
+                        
                     }
                 }
             }

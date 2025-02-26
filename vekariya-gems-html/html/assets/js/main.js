@@ -81,9 +81,35 @@ jQuery(document).ready(function($) {
             return false;
         });
     }
-    
 
+    $(window).on("load", function () {
+        var $counterText = $(".loader-content .counter .number");
+        var counter = 0;
+        var i = setInterval(function () {
+            if (counter <= 100) {
+                $counterText.html(counter + "%");                
+                counter++;
+            } else {
+                clearInterval(i); 
+            }
+        }, 25); 
+        $("body").addClass('overflow-hidden');
+        setTimeout(function () {
+            var $loader = $(".loader");            
+            $loader.slideUp('300', function(){
+                $("body").removeClass('overflow-hidden');
+            });    
+            setTimeout(function () {
+                $loader.css("display", "none");
+            }, 500);
+        }, 3000);
+    });
 
+    if ($(".img-overlay-block").length > 0) {
+        for (let i = 0; i < 5; i++) {
+            $(".img-overlay-block").append("<span></span>");
+        }
+    }
     if ($(".icw-progress-goto").length > 0) {
         var progressPath = document.querySelector('.icw-progress-goto path');
         var pathLength = progressPath.getTotalLength();
@@ -134,9 +160,30 @@ jQuery(document).ready(function($) {
     }  
 });
 
+$(window).on("scroll", function () {
+    $(".img-overlay-block").each(function () {
+        if ($(this).is(":visible") && isInViewport($(this))) {
+            $(this).addClass("is-animated");
+            $(this).find("span").each(function (index) {
+                $(this).css("transition-delay", index * 0.05 + "s"); // Adjust delay as needed
+            });
+        }
+    });
+});
+
+// Helper function to check if element is in viewport
+function isInViewport($el) {
+    var elementTop = $el.offset().top;
+    var elementBottom = elementTop + $el.outerHeight();
+    var viewportTop = $(window).scrollTop();
+    var viewportBottom = viewportTop + $(window).height();
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+}
+
 /* WOW Animation - Init */
+     
 try {
-    new WOW().init();
+    AOS.init();
 } catch (e) {
     //
 };
