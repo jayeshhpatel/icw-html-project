@@ -1587,6 +1587,9 @@
         @include flex-direction(column-reverse);
         background: transparent !important;
     }    
+    @media (max-width: 767px) {
+        height: calc(100vh - 80px);
+    }    
     .image-wrapper
     .content-wrapper {
         height: calc(100vh - 80px);
@@ -1610,21 +1613,14 @@
             height: calc(40vh - 25px);
         }
         @media (max-width: 767px) {
-            height: calc(30vh - 25px);
+            height: calc(25vh - 25px);
         }
         .image-content-block {
             width: 100%;
             max-width: 100%;
             height: 100%;
-            max-height: calc(100vh - 80px);
             position: relative;
             overflow: hidden;
-            @media (max-width: 992px) {
-                max-height: calc(40vh - 25px);
-            }
-            @media (max-width: 767px) {
-                max-height: calc(30vh - 25px);
-            }
             img {
                 position: absolute;
                 top: 0;
@@ -1648,7 +1644,7 @@
             height: calc(60vh - 25px);
         }
         @media (max-width: 767px) {
-            height: calc(70vh - 25px);
+            height: calc(75vh - 25px);
         }
         .scroll-content-block {   
             width: 100%;
@@ -1657,12 +1653,6 @@
             max-height: 100%;
             position: relative;
             overflow: hidden;
-            @media (max-width: 992px) {
-                height: calc(60vh - 25px);
-            }
-            @media (max-width: 767px) {
-                height: calc(70vh - 25px);
-            }
             .scroll-content {     
                 width: 100%;
                 height: 100%;
@@ -1674,7 +1664,8 @@
                 position: absolute;
                 top: 0;
                 left: 0;
-                right: 0;
+                right: 0;                
+                @include transition(0.3s, ease-in-out);
                 @media (max-width: 767px) {
                     @include align-items(flex-start);
                 }
@@ -1694,7 +1685,7 @@
                     @media (max-width: 767px) {
                         padding: 50px 15px 30px;
                         h2 {
-                            font-size: 24px;
+                            font-size: 20px;
                         }
                     }
                     .sort-info {
