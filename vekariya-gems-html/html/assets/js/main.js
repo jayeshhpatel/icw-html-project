@@ -82,28 +82,28 @@ jQuery(document).ready(function($) {
         });
     }
 
-    $(window).on("load", function () {
-        var $counterText = $(".loader-content .counter .number");
-        var counter = 0;
-        var i = setInterval(function () {
-            if (counter <= 100) {
-                $counterText.html(counter + "%");                
-                counter++;
-            } else {
-                clearInterval(i); 
-            }
-        }, 25); 
-        $("body").addClass('overflow-hidden');
-        setTimeout(function () {
-            var $loader = $(".loader");            
-            $loader.slideUp('300', function(){
-                $("body").removeClass('overflow-hidden');
-            });    
-            setTimeout(function () {
-                $loader.css("display", "none");
-            }, 500);
-        }, 3000);
-    });
+    // $(window).on("load", function () {
+    //     var $counterText = $(".loader-content .counter .number");
+    //     var counter = 0;
+    //     var i = setInterval(function () {
+    //         if (counter <= 100) {
+    //             $counterText.html(counter + "%");                
+    //             counter++;
+    //         } else {
+    //             clearInterval(i); 
+    //         }
+    //     }, 25); 
+    //     $("body").addClass('overflow-hidden');
+    //     setTimeout(function () {
+    //         var $loader = $(".loader");            
+    //         $loader.slideUp('300', function(){
+    //             $("body").removeClass('overflow-hidden');
+    //         });    
+    //         setTimeout(function () {
+    //             $loader.css("display", "none");
+    //         }, 500);
+    //     }, 3000);
+    // });
 
     if ($(".img-overlay-block").length > 0) {
         for (let i = 0; i < 5; i++) {
@@ -158,6 +158,14 @@ jQuery(document).ready(function($) {
             return false;
         });
     }  
+    $(".img-overlay-block").each(function () {
+        if ($(this).is(":visible") && isInViewport($(this))) {
+            $(this).addClass("is-animated");
+            $(this).find("span").each(function (index) {
+                $(this).css("transition-delay", index * 0.05 + "s"); // Adjust delay as needed
+            });
+        }
+    });
 });
 
 $(window).on("scroll", function () {
