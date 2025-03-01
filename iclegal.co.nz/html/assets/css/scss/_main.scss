@@ -392,20 +392,32 @@ img{
 		color: $white !important;
 		border: 1px solid transparent;
 		background-color:$primary;
+		&.btn-with-arrow::after {
+			filter: brightness(0) invert(1);
+		}
 		&:hover, &:focus, &:active{
 			background-color: $white;
 			color: $primary !important;
 			border: 1px solid $primary;
+			&.btn-with-arrow::after {
+				filter: unset;
+			}
 		}
 	}
 	&.btn-secondary{
 		color: $black !important;
 		border: 1px solid transparent;
 		background-color:$secondary;
+		&.btn-with-arrow::after {
+			filter: brightness(0);
+		}
 		&:hover, &:focus, &:active{
 			background-color: $white;
 			color: $black !important;
 			border: 1px solid $secondary;
+			&.btn-with-arrow::after {
+				filter: unset;
+			}
 		}
 	}
 	&.btn-white{
@@ -416,6 +428,26 @@ img{
 			background-color: $primary;
 			color: $white !important;
 			border: 1px solid $primary;
+			&.btn-with-arrow::after {
+				filter: brightness(0) invert(1);
+			}
+		}
+	}
+	&.btn-with-arrow {
+		&:after {
+			content: "";
+			display: block;
+			margin-left: 8px;
+			width: 10px;
+			height: 10px;
+			background: url(../images/icons/next.svg) no-repeat center;
+			background-size: contain;
+			@include transition(0.3s, ease-in-out);
+		}
+		&:hover, &:focus, &:active {
+			&:after {
+				@include transform(translatex(5px));
+			}
 		}
 	}
 }
@@ -1601,8 +1633,8 @@ h4, .h4 {
 						.menu-content {
 							.menu-inner-content {
 								display: grid;
-								grid-gap: 30px;
-								grid-template-columns: repeat(auto-fill, minmax(calc(33.33% - 30px), 1fr));
+								grid-gap: 0;
+								grid-template-columns: repeat(auto-fill, minmax(calc(33.33%), 1fr));
 								@media (max-width: 1200px) {
 									grid-template-columns: 100%;
 									grid-gap: 15px;
@@ -1614,10 +1646,12 @@ h4, .h4 {
 								@include flexbox;
 								@include flex-direction(column);
 								height: 100%;
+								position: relative;
+								padding: 15px;
+								@include border-radius(6px);
+								@include transition(0.3s, ease-in-out);
 								@media (max-width: 1200px) {
-									background: #f7f7f7;
-									@include border-radius(6px);
-									padding: 15px;
+									background: #F9F9FF;
 								}
 								.card-img {
 									margin-bottom: 15px;
@@ -1657,8 +1691,13 @@ h4, .h4 {
 											a {												
 												font-size: 18px;
 												font-weight: 500;
+												position: unset;
 												&::before {
-													bottom: -1;
+													content: none;
+												}
+												&::after {
+													content: "" !important;
+													display: block !important;
 												}
 												@media (max-width: 1200px) {
 													font-size: 14px;
@@ -1703,6 +1742,9 @@ h4, .h4 {
 											background: url(../images/icons/next.svg) no-repeat center right;
 											background-size: 6px;
 											padding-right: 12px;
+											&:hover, &:focus {
+												padding-right: 15px;
+											}
 										}
 										@media (max-width: 1200px) {
 											font-size: 14px;
@@ -1714,11 +1756,15 @@ h4, .h4 {
 										}
 									}
 								}
-								&:hover, &:focus {
-									.card-action {
-										.btn-link {
-											@media (min-width: 1200px) {
-												padding-right: 15px;
+								&:hover, &:focus {	
+									background: #F9F9FF;
+									@include box-shadow(0 5px 5px 0px rgba($black, 0.1));
+									.card-img {
+										.user-info {
+											.name {
+												a {
+													color: $primary;
+												}
 											}
 										}
 									}
@@ -2460,6 +2506,38 @@ body.is-header-transparent {
 			}
 		}
 	}
+	&.with-border {
+		border: 1px solid rgba(#232536, 0.17);
+		height: 100%;
+		@include border-radius(0 !important);
+		position: relative;
+		&.border-bottom {
+			&::before{
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 5px;
+				background: linear-gradient(to right, $primary 0%, $primary 85%, $secondary 85%, $secondary 100%);
+			}
+		}
+		&.border-top {
+			&::before{
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 5px;
+				background: linear-gradient(to right, $primary 0%, $primary 85%, $secondary 85%, $secondary 100%);
+			}
+		}
+	}
+	&.no-bg {
+		background: transparent !important;
+		@include box-shadow(unset !important);
+	}
 	.card-icon{
 		margin-bottom: 25px;
 		max-height: 60px;
@@ -2570,6 +2648,59 @@ body.is-header-transparent {
 			}
 		}
 
+	}
+}
+.with-right-border-info-card {
+	.row {
+		& > .col-sm-6:nth-child(even) {
+			@media (max-width:992px) {
+				.info-card {
+					border-right: 0;
+					padding-right: 0;
+				}
+			}
+		} 
+		& > .col-sm-6:nth-child(odd) {
+			@media (max-width:992px) {
+				.info-card {
+					padding-left: 0;
+				}
+			}
+		} 
+	}
+	.info-card {
+		@include border-radius(0 !important);
+		border-right: 1px solid rgba($black, 0.17);
+		padding: 0 35px;
+		height: 100%;
+		@media (max-width: 1200px) {
+			padding: 0 20px;
+		}
+		@media (max-width: 575px) {
+			border-right: 0;
+			padding: 0;
+		}
+		&.border-right-0 {
+			border-right: 0;
+		}
+		&.highlight-border-right {
+			position: relative;
+			&::before{
+				content: '';
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 5px;
+				height: 100%;
+				background: linear-gradient(to top, $primary 0%, $primary 80%, $secondary 80%, $secondary 100%);
+				@media (max-width: 575px) {
+					content: none;
+				}
+			}
+		}
+		h3 {
+			font-size: 22px;
+		}
 	}
 }
 
@@ -4517,6 +4648,9 @@ body .main-content-wrapper .form-section {
 				margin-right: -15px !important;
 				margin-left: -15px !important;
 				padding-left: 10px !important;
+				@media (max-width: 575px) {
+					margin-top: 10px;
+				}
 				.contact-item {
 					-webkit-box-flex: 0;
 					-ms-flex: none;
@@ -4546,6 +4680,79 @@ body .main-content-wrapper .form-section {
 			}
 			&:last-child {
 				margin-right: 0;
+			}
+		}
+	}
+
+	.footer-content {
+		h2 {
+			font-size: 30px;
+		}
+	}
+
+	.footer-action {
+		@include flexbox;
+		@include align-items(center);
+		gap: 30px;
+		@media (min-width: 1200px) {
+			@include justify-content(flex-end);
+		}
+		@media (max-width: 767px) {
+			margin-bottom: 30px;
+		}
+		@media (max-width: 575px) {
+			@include flex-direction(column);
+			@include align-items(flex-start);
+			gap: 20px;
+		}
+		.contact-action {
+			@include flexbox;
+			@include align-items(center);
+			font-size: 14px;
+			@media (max-width: 767px) {
+				font-size: 12px;
+			}
+			.icons {
+				width: 48px;
+				height: 48px;
+				background-size: 25px !important;
+				background-color: $white;
+				margin-right: 15px;
+				@media (max-width: 767px) {
+					width: 44px;
+					height: 44px;
+					background-size: 20px !important;
+				}
+			}
+			strong {
+				display: block;
+				font-size: 20px;
+				font-weight: 500;
+				position: relative;
+				z-index: 1;
+				@include transition(0.3s, ease-in-out);
+				@media (max-width: 767px) {
+					font-size: 18px;
+				}
+				&::before {
+					content: "";
+					position: absolute;
+					z-index: -1;
+					left: 0;
+					bottom: 0;
+					background: #3CACE4;
+					width: 0;
+					height: 1px;
+					@include transition(0.3s, ease-in-out);
+				}
+			}
+			&:hover, &:focus {
+				strong {
+					color: $secondary;
+					&::before {
+						width: 50%;
+					}
+				}
 			}
 		}
 	}
@@ -4679,6 +4886,7 @@ body .main-content-wrapper .form-section {
 		border-top: 1px solid rgba($white, 0.2);
 		margin-top: 50px;
 		padding: 30px 0;
+		gap: 20px;
 		@media (min-width:1400px) {
 			.social-media-icons {margin-left: auto !important;}
 		}
@@ -4836,4 +5044,125 @@ body .main-content-wrapper .form-section {
         font-size: 18px;
         margin-bottom: 30px;
     }
+}
+
+
+// New CSS for New Page - 01 March 2025
+.hero-section {
+	&.py-150 {
+		padding-top: 150px;
+		padding-bottom: 100px;
+		@media (max-width: 1350px) {
+			padding-top: 50px;
+			padding-bottom: 0px;
+		}
+	}
+	.section-title {
+		.d-flex {
+			gap: 80px;
+			@media (max-width: 992px) {
+				@include flex-direction(column);
+				gap: 30px;
+			}
+		}
+		.action-block {
+			.btn {
+				&::before {
+					content: none;
+				}
+			}
+		}
+		.left-content {
+			max-width: 870px;
+			@media (max-width: 1200px) {
+				max-width: 570px;
+			}
+		}
+		.right-content {
+			ul {
+				@media (max-width: 992px) {
+					margin-bottom: 20px !important;
+				}
+				li {
+					margin-bottom: 15px;
+					font-size: 18px;
+					font-weight: 500;
+					@media (max-width: 1200px) {
+						font-size: 16px;
+						margin-bottom: 10px;
+					}
+				}
+			}
+		}		
+		.user-info {
+			@include flexbox;
+			@include align-items(center);
+			margin-bottom: 40px;
+			margin-top: 30px;
+			.user-img {
+				width: 90px;
+				height: 90px;
+				flex: none;
+				@include border-radius(50%);
+				margin-right: 15px;
+				@media (max-width: 1200px) {
+					width: 60px;
+					height: 60px;
+				}
+				img {
+					@include border-radius(50%);
+				}
+			}
+			.user-data {
+				font-size: 16px;
+				@media (max-width: 1200px) {
+					font-size: 14px;
+				}
+				.name {												
+					font-size: 20px;
+					font-weight: 500;
+					@media (max-width: 1200px) {
+						font-size: 18px;
+					}
+				}
+			}
+		}
+	}
+}
+.feedback-section {
+	.review-users-block {
+		.users-img {
+			@include flexbox;
+			@include align-items(center);
+			margin-bottom: 15px;
+			gap: 12px;
+			img {
+				width: 48px;
+				height: 48px;
+				flex: none;
+				@include border-radius(50px);
+			}
+		}
+		span {
+			font-size: 12px;
+			color: $black;
+			strong {
+				font-size: 16px;
+				font-weight: 500;
+			}
+		}
+	}
+	.highlight-border-left {
+		position: relative;
+		line-height: 0.7;
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 5px;
+			height: 100%;
+			background: linear-gradient(to top, $primary 0%, $primary 80%, $secondary 80%, $secondary 100%);
+		}
+	}
 }
