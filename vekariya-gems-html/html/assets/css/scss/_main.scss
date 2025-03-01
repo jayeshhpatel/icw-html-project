@@ -1,8 +1,8 @@
 .text-blue,
 .text-primary   {color: $primary !important;}
+.text-secondary   {color: $secondary !important;}
 .text-white     {color: $white !important;}
 
-.text-primary   {color: $primary !important;}
 .text-darkred     {color: $darkred !important;}
 .text-yellow     {color: $yellow !important;}
 
@@ -984,12 +984,18 @@
         img { vertical-align: baseline; margin-top: 4px;}
 	}
 	.card-title {
-        font-weight: 600;
+        font-weight: 700;
 		margin-bottom: 5px;
         font-size: 18px;
 		@media (max-width: 992px) {
 			font-size: 16px;
 		}
+        .font-lg {
+            font-size: 30px;
+            @media (max-width: 992px) {
+                font-size: 24px;
+            }
+        }
 
 		a {
 			color: $primary;
@@ -1040,6 +1046,19 @@
             margin-bottom: 5px;
         }
 	}
+}
+.info-list-cards.is-same-height-cards {
+    .info-list-card { 
+        aspect-ratio: 4 / 3;
+        max-height: 210px;
+        height: 100%;
+        width: 100%;
+    } 
+    .col-12 {
+        .info-list-card {
+            aspect-ratio: unset;
+        }
+    }
 }
 
 // Trusted Logo Section
@@ -1837,6 +1856,65 @@
     }
 }
 
+// img-text-box-list-section
+.img-text-box-list-section {
+	.img-text-box-lists {		
+		.row:not(:last-child) {
+			margin-bottom: 0;            
+            @media (max-width: 767px) {
+                padding-top: 0;
+            }
+		}
+	}
+	.card-image-block {
+		@include transition(0.3s, ease-in-out);
+		img {
+			width: 100%;
+		}
+	}
+	.card-title-block {        
+        background: #FAFAFA;
+        padding: 50px;
+        height: 100%;
+		h3, .h3 {
+			font-size: 32px;
+			margin-bottom: 20px;
+			line-height: 1.2;
+			@media (max-width: 991px) {
+				font-size: 26px;
+			}	
+		}
+	}
+}
+.card-image-block {	
+    position: relative;	
+    img {
+        width: 100%;
+    }  
+    .img-caption {
+        @include transition(0.6s, ease-in-out);
+        position: absolute;
+        right: 0;
+        bottom: 0px;
+        padding: 15px;
+        max-width: 220px;
+        // min-height: 180px;
+        background: $primary;
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+        color: $white;
+        font-size: 16px;
+        font-weight: 700;
+        text-align: center;
+        transform: scaleY(0);
+        transform-origin: bottom;
+        &.animated {
+            transform: scaleY(1);
+        }
+    }
+}
+
 // User Info 
 .user-info {
     @include flexbox;
@@ -2026,22 +2104,6 @@
 
 
 
-.img-text-box-lists {
-    @media (min-width: 992px) {
-        .section-title {
-            margin-left: 50px;
-        }
-    }
-    .flex-reverse {
-        @media (min-width: 992px) {
-            flex-direction: row-reverse; 
-            .section-title {
-                margin-right: 50px;
-            }
-        }
-    }
-}
-
 // FAQ
 .collapse-item {
 	padding: 25px 30px;
@@ -2158,56 +2220,6 @@
     }
 }
 
-// Col Image + Text
-.image-content-block {
-    .row:not(:last-child) {
-        margin-bottom: 100px;
-        @media (max-width: 992px) { 
-            margin-bottom: 70px;
-        }
-        @media (max-width: 767px) { 
-            margin-bottom: 50px;
-        }
-    }
-	@media (min-width:1200px) {
-		.row-gap { 
-			--bs-gutter-y: 5rem;
-			--bs-gutter-x: 5rem;
-		}
-        // .col-info {
-        //     .sort-info {
-        //         max-width: 465px;  
-        //     }
-        // }
-	}
-	.card-image-block {	
-		position: relative;	
-		@media (max-width: 767px) {
-			// max-width: 80%;
-			// margin: 0 auto;
-		}
-		& + .content-info {
-			margin-top: 30px;
-		}
-		img {
-			@include border-radius(24px);
-		}
-		@media (max-width:767px) {
-			margin-bottom: 30px;
-		}
-		&.right-image {
-			@media (min-width:768px) {
-				text-align: right;
-			}
-		}
-	}
-	.section-title {
-		margin: 0;
-        @media (max-width: 767px) { 
-            margin-bottom: 40px;
-        }
-	}
-}
 
 // About Us
 .counter-content-block {
