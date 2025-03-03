@@ -6,11 +6,6 @@ var $ = jQuery.noConflict();
 jQuery(document).ready(function($) {
     $('[data-bs-toggle="tooltip"]').tooltip();
 
-    // $('.navbar-toggler').on('click', function (e) {
-    //     $('.navbar-toggler,body,.main-header').toggleClass('is-visible');
-    //     e.preventDefault();
-    // });
-
     $(".sidebar-toggler").click(function () {
         $(this).toggleClass("is-visible");
         $('body,.main-header').toggleClass('is-visible');

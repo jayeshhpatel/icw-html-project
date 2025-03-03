@@ -80,8 +80,8 @@
                 </nav>
             </div>
         </header>
-        <main class="main-content-wrapper">
-            <section class="page-header bg-pink-glow is-tl-pink bg-blue-glow is-tr-blue no-full-bg-video">
+        <main class="main-content-wrapper bg-glow">
+            <section class="page-header no-full-bg-video">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -504,9 +504,10 @@
                     });
                 });      
             }
+            
             if ($('.scroll-container').length) {
                 const startValue = window.innerWidth <= 767 ? "top 60px" : "top 80px";
-                const images = gsap.utils.toArray(".image-content-block .image-block");
+                const images = gsap.utils.toArray(".image-content-block img");
                 const contentElements = gsap.utils.toArray(".content-wrapper .scroll-content");
                 let dotsContainer = document.querySelector(".dots");
                 let navDots = [];
@@ -529,7 +530,7 @@
                     scrollTrigger: {
                         trigger: ".scroll-container",
                         start: startValue, 
-                        // end: "+=300%",
+                        end: "+=300%",
                         pin: true,
                         scrub: true,
                         markers: false,
@@ -557,34 +558,39 @@
                         }
                     }
                 });
+                $(".image-block").each(function () {
+                    gsap.from($(this), {
+                        opacity: 0,
+                        scale: 1.1,
+                        duration: 1.5,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: $(this),
+                            start: "top 80%",
+                            end: "bottom 60%",
+                            scrub: true,
+                        },
+                    });
+                });
                 images.forEach((img, i) => {
                     if (images[i + 1]) {
                         tl.to(img, { 
-                            duration: 1,
-                            ease: "power1.inOut",
-                            clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)"
+                            y: "-100%",  
+                            ease: "none",
+                            duration: 1
                         });
                         
                         tl.fromTo(
                             images[i + 1],
-                            {
-                            clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"
-                        },
-                        {
-                            duration: 1,
-                            ease: "power1.inOut",
-                            clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-                            onComplete: () => {
-                                isTweening = true;
-                            }
-                        }
+                            { y: "100%" },  
+                            { y: "0%", ease: "none", duration: 1 },
+                            "<"
                         );
                     }
                 });
                 
                 tl.to({}, { duration: 0.5 });
             }
-
         </script>
           
     </body>

@@ -62,20 +62,11 @@
 
 .bg-pink-glow {
     position: relative;
-    &::before {
-        content: '';
-        position: absolute;
-        width: 650px;
-        height: 450px;
-        background: rgba(57, 49, 133, 0.5);
-        filter: blur(280px);
-        @include border-radius(1900px);
-    }
+    background-size: auto;
+    background-repeat: no-repeat;
     &.is-tl-pink {        
-        &::before {
-            left: -6%;
-            top: -35%;
-        }
+        background-image: url(../images/bg-pink-blow-tl.svg);  
+        background-position: left top; 
     }
 }
 .bg-blue-glow {
@@ -110,6 +101,11 @@
     }
     body.bg-gray & {
         background: $black;
+    }
+    &.bg-glow {
+        background-image: url(../images/bg-blue-blow-tr.svg), url(../images/bg-pink-blow-tl.svg);
+        background-repeat: no-repeat;
+        background-position: top right, top left;
     }
 }
 .main-section {
@@ -329,6 +325,12 @@
             }
             &.is-sm {
                 width: auto;
+            }
+        }
+        .collapse-block {
+            margin-top: 50px;
+            @media (max-width: 767px) {
+                margin-top: 30px;
             }
         }
     }
@@ -1053,6 +1055,9 @@
         max-height: 210px;
         height: 100%;
         width: 100%;
+        @media (max-width: 575px) {            
+            aspect-ratio: unset;
+        }
     } 
     .col-12 {
         .info-list-card {
@@ -1876,14 +1881,27 @@
         background: #FAFAFA;
         padding: 50px;
         height: 100%;
+        margin-bottom: 0;
+        @media (max-width: 992px) {
+            padding: 30px;
+        }	
+        @media (max-width: 575px) {
+            padding: 20px;
+        }	
 		h3, .h3 {
 			font-size: 32px;
 			margin-bottom: 20px;
 			line-height: 1.2;
-			@media (max-width: 991px) {
+			@media (max-width: 992px) {
 				font-size: 26px;
 			}	
 		}
+        .sort-info {
+            margin-bottom: 0;
+        }
+        .action {
+            margin-top: 30px;
+        }
 	}
 }
 .card-image-block {	
@@ -1913,6 +1931,136 @@
             transform: scaleY(1);
         }
     }
+}
+
+// Collapse Block
+.collapse-item {
+	padding: 20px 0;
+    @include border-radius(0);
+    border: none;
+    border-bottom: 2px solid rgba(#BDBBBB, 0.1);
+    @media (max-width:767px) {
+        padding: 15px 0;
+    }
+    &:last-child {
+        border-bottom: 0;
+    }
+	.collapse-title {
+		@include flexbox();
+		@include align-items(center);
+		text-align: left;
+		cursor: pointer;
+		background-color: transparent;
+		border: none;
+		width: 100%;
+		padding: 0;
+		@include border-radius(0);
+        @include transition(0.3s, ease-in-out);
+		h3 {
+			font-size: 18px;
+			margin-bottom: 0;
+            color: $darkblack;
+            margin-right: 30px;
+            font-weight: 600;
+            @include transition(0.3s, ease-in-out);
+		}
+        .collapse-btn {
+            width: 12px;
+            height: 12px;
+            flex: none;
+            background: url('data:image/svg+xml,<svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.92969 7H13.9297M7.92969 1V13" stroke="rgb(0 160 227)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
+            background-size: contain !important;
+            position: relative;
+            z-index: 1;
+            margin-right: 10px;
+            @include transition(0.3s, ease-in-out);
+        }
+	}
+	.card-content {
+        font-size: 16px;
+		a {
+			text-decoration: underline;
+			text-underline-offset: 4px;
+		}
+	}
+	.collapse-body {
+		margin-top: 12px;
+		padding-left: 22px;		
+	}
+    &:hover, &:focus {
+        .collapse-title {
+            h3 {
+                color: $secondary;
+            }
+            .collapse-btn {
+                filter: brightness(0);
+            }
+        }
+    }
+    &.is-open {
+        .collapse-title {
+            h3 {
+                color: $darkblack;
+            }
+            .collapse-btn {
+                background: url('data:image/svg+xml,<svg width="15" height="2" viewBox="0 0 15 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.92969 1H13.9297" stroke="rgb(0 160 227)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
+            }
+        }
+        &:hover, &:focus { 
+            .collapse-btn {
+                filter: brightness(1);
+            }
+        }
+    }
+}
+
+// Tabs Section
+.sticky-scrollspy-nav {
+    position: sticky;
+    top: 90px;
+    z-index: 100;
+    @include flexbox;
+    @include justify-content(center);
+    margin-bottom: 60px;
+    @include border-radius(30px);
+    overflow: hidden;
+    overflow-x: auto;
+    @media (max-width: 767px) {
+        @include justify-content(flex-start);
+    }
+    ul {
+        @include flexbox;
+        @include align-items(center);
+        background: #EBEBEB;
+        padding: 3px;
+        @include border-radius(30px);
+        width: max-content;
+        gap: 10px;
+        li {
+            a {
+                padding: 12px 40px;
+                display: block;
+                text-decoration: none;
+                font-size: 16px;
+                font-weight: 700;
+                @include border-radius(60px);
+                white-space: nowrap;
+                @media (max-width: 767px) {
+                    padding: 8px 25px;
+                    font-size: 14px;
+                }
+                &.active {
+                    background: #FFFFFF;
+                    @include box-shadow(3px 0px 14px rgba(0, 0, 0, 0.15));
+                }
+            }
+        }
+    }
+}
+
+.scrollspy-content {
+    scroll-margin-top: 80px;
+    scroll-margin-bottom: 100px;
 }
 
 // User Info 
@@ -2104,121 +2252,7 @@
 
 
 
-// FAQ
-.collapse-item {
-	padding: 25px 30px;
-	border: 1px solid $gray;
-    @include border-radius(16px);
-    margin-bottom: 15px;
-    @media (max-width:767px) {
-        padding: 24px;
-    }
-	.collapse-title {
-		@include flexbox();
-		@include align-items(center);
-		text-align: left;
-		cursor: pointer;
-		background-color: transparent;
-		border: none;
-		width: 100%;
-		padding: 0;
-		@include border-radius(4px);
-		h3 {
-			font-size: 32px;
-			margin-bottom: 0;
-            color: $black;
-            margin-right: 30px;
-            // max-width: 530px;
-            @media (max-width:767px) {
-                font-size: 24px;
-            }
-		}
-        .collapse-btn {
-            width: 68px;
-            height: 68px;
-            flex: none;
-            background: $white;
-            border: 1px solid $gray;
-            @include border-radius(16px);
-            position: relative;
-            z-index: 1;
-            margin-left: auto;
-            @media (max-width: 767px) {
-                width: 48px;
-                height: 48px;
-            }
-            &::before {
-                content: '';
-                width: 60px;
-                height: 60px;
-                position: absolute;
-                top: 3px;
-                left: 3px;
-                border: 1px solid $black;
-                background: $white;
-                @include box-shadow(0px 2px 4px rgba(11, 32, 55, 0.45));
-                @include border-radius(12px);
-                @include transition(0.3s, ease-in-out);
-                @media (max-width: 767px) {
-                    width: 40px;
-                    height: 40px;
-                }
-            }
-            &::after {
-                content: '';
-                width: 12px;
-                height: 12px;
-                display: inline-block;
-                z-index: 2;
-                background: url('data:image/svg+xml,<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 7H9V1C9 0.4 8.6 0 8 0C7.4 0 7 0.4 7 1V7H1C0.4 7 0 7.4 0 8C0 8.6 0.4 9 1 9H7V15C7 15.6 7.4 16 8 16C8.6 16 9 15.6 9 15V9H15C15.6 9 16 8.6 16 8C16 7.4 15.6 7 15 7Z" fill="rgb(9 10 12)"/></svg>') center center;
-                background-size: contain !important;
-                background-repeat: no-repeat !important;
-                @include transition(0.3s, ease-in-out);
-                position: absolute;
-                top: calc(50% - 6px);
-                left: calc(50% - 6px);
-            }
-        }
-	}
-	.card-content {
-        // max-width: 530px;
-		a {
-			text-decoration: underline;
-			text-underline-offset: 4px;
-		}
-	}
-	.collapse-body {
-		margin-top: 12px;
-		padding-right: 80px;		
-	}
-    &:hover, &:focus {
-        .collapse-btn {
-            &::before {
-                background: $black;
-            }
-            &::after {
-                filter: invert(1);
-            }
-        }
-    }
-    &.is-open {
-        .collapse-btn {
-            &::before {
-                background: $black;
-            }
-            &::after {
-                background: url('data:image/svg+xml,<svg width="16" height="2" viewBox="0 0 16 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 0H1C0.4 0 0 0.4 0 1C0 1.6 0.4 2 1 2H15C15.6 2 16 1.6 16 1C16 0.4 15.6 0 15 0Z" fill="white"/></svg>') center center;
-            }
-        }
-        &:hover, &:focus { 
-            .collapse-btn {
-                &::after {
-                    filter: invert(0);
-                }
-            }
-        }
-    }
-}
+
 
 
 // About Us
