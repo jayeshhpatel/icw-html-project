@@ -587,6 +587,9 @@
         .sort-info {
             color: $darkblack;
             max-width: 800px;
+            &.font-lg {
+                font-size: 45px;
+            }
         }
         .action {            
             margin-top: 30px;
@@ -1872,9 +1875,12 @@
 		}
 	}
 	.card-image-block {
+        height: 100%;
 		@include transition(0.3s, ease-in-out);
 		img {
+            object-fit: cover;
 			width: 100%;
+            height: 100%;
 		}
 	}
 	.card-title-block {        
@@ -2061,6 +2067,94 @@
 .scrollspy-content {
     scroll-margin-top: 80px;
     scroll-margin-bottom: 100px;
+}
+
+// 
+.contact-form-section {
+    padding-top: 180px;
+    .section-title {
+        .sort-info {
+            .font-lg {
+                font-size: 42px;
+                line-height: 1;
+                strong {
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
+
+// Widget Grid Block
+.widget-grid-block {
+    margin-top: 40px;
+    .widget-block {
+        .widget-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: $primary;
+            @include flexbox;
+            @include align-items(center);
+            margin-bottom: 10px;
+            .icon {
+                margin-right: 10px;
+            }
+        }
+        .widget-content {
+            p {
+                font-size: 16px;
+                max-width: 270px;
+            }
+            ul {
+                li {
+                    a {
+                        color: $darkblack;
+                        font-size: 16px;
+                        font-weight: 600;
+                        text-decoration: none;
+                        &.sm-link {
+                            font-size: 12px;
+                            font-weight: 500;
+                            svg {
+                                margin-right: 5px;
+                            }
+                        }
+                        &:hover, &:focus {
+                            color: $secondary;
+                        }
+                    }
+                }
+                &.social-list {
+                    @include flexbox;
+                    @include align-items(center);
+                    gap: 10px;
+                    li {
+                        a {
+                            border: 1px solid #DFDFDF;
+                            width: 40px;
+                            height: 40px;
+                            @include border-radius(4px);
+                            @include inline-flex;
+                            @include align-items(center);
+                            @include justify-content(center);
+                            @include transition(0.3s, ease-in-out);
+                            svg {
+                                width: 18px;
+                                height: 18px;
+                            }
+                            &:hover, &:focus {
+                                border-color: $primary;
+                                background: $primary;
+                                svg {
+                                    filter: invert(1)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 // User Info 
