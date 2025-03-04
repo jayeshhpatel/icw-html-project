@@ -255,7 +255,7 @@ img {
 	font-size: 14px;
     position: relative;
     border: 1px solid transparent;
-	@include transition(0.2s, ease-in-out);
+	@include transition(0.3s, ease-in-out);
 	@include inline-flex;
 	@include align-items(center);
 	@include justify-content(center);	
@@ -266,99 +266,106 @@ img {
     text-transform: uppercase;
     overflow: hidden;
     z-index: 1;
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: $black;
-        @include transform(translate(0, -100%));
-        transform-origin: top;
-        @include transition(0.2s, cubic-bezier(.4,0,.2,1));
-        z-index: -1;
-    }    
+    // &::before {
+    //     content: '';
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     width: 100%;
+    //     height: 100%;
+    //     background: $black;
+    //     @include transform(translate(0, 100%));
+    //     transform-origin: top;
+    //     @include transition(0.1s, cubic-bezier(.4,0,.2,1));
+    //     z-index: -1;
+    // }    
     &:hover, &:focus {
-        &::before {
-            @include transform(translate(0, 0));
-        }
+        // &::before {
+        //     @include transform(translate(0, 0));
+        // }
     }
 	&.btn-sm {
 		min-height: 40px;
 	}
 	&.btn-primary {
 		color: $white !important;
-		border-color: transparent;
+		border-color: $primary;
 		background-color:$primary;
-        &::before {
-            background: $white;
-        }
+        // &::before {
+        //     background: $white;
+        // }
         &:hover, &:focus {
-           color: $primary !important;
+            // background-color: #241d66;
+            background-color: transparent;
+            color: $primary !important;
         }
 	}
 	&.btn-secondary {
 		color: $white !important;
-		border-color: transparent;
+		border-color: $secondary;
 		background-color: $secondary;
-        &::before {
-            background: $white;
-        }
+        // &::before {
+        //     background: $white;
+        // }
         &:hover, &:focus {
             color: $secondary !important;
+            background-color: transparent;
         }
 	}
 	&.btn-white {
 		color: $black !important;
-		border: none;
+		border-color: $white;
 		background-color: $white;
         &:hover, &:focus {
             color: $white !important;
+            background-color: transparent;
         }
 	}
 	&.btn-dark {
 		color: $white !important;
 		border-color: $darkblack;
 		background-color: $darkblack;
-        &::before {
-            background: $white;
-        }
+        // &::before {
+        //     background: $white;
+        // }
         &:hover, &:focus {
-           color: $primary !important;
+           color: $darkblack !important;
+           background-color: transparent;
         }
 	}
 	&.btn-outline-dark {
 		color: $darkblack !important;
 		border-color: $darkblack;
 		background-color: $white;
-        &::before {
-            background: $darkblack;
-        }
+        // &::before {
+        //     background: $darkblack;
+        // }
         &:hover, &:focus {
-           color: $white !important;
+           color: $white !important;background: $darkblack;
         }
 	}
 	&.btn-outline-primary {
 		color: $primary !important;
 		border-color: $primary;
 		background-color: $white;
-        &::before {
-            background: $primary;
-        }
+        // &::before {
+        //     background: $primary;
+        // }
         &:hover, &:focus {
            color: $white !important;
+           background: $primary;
         }
 	}
 	&.btn-outline-secondary {
 		color: $secondary !important;
 		border-color: $secondary;
 		background-color: $white;
-        &::before {
-            background: $secondary;
-        }
+        // &::before {
+        //     background: $secondary;
+        // }
         &:hover, &:focus {
            color: $white !important;
+           background: $secondary;
         }
 	}
 }

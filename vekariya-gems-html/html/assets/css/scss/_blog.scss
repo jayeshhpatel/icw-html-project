@@ -26,6 +26,14 @@
         .splide__track {
             overflow: visible
         }
+        .post-card {            
+            max-width: 300px;
+            @media (max-width: 767px) {
+                @media (max-width: 767px) {
+                    max-width: 280px;
+                }
+            }
+        }
         .icw-pagination {
             left: 0;
             right: auto;
@@ -41,11 +49,11 @@
     gap: 15px;
     margin-bottom: 15px;
     .blog-meta-badge {
-        color: var(--cat-color, $primary);
+        color: var(--cat-color, #00A0E3);
         font-size: 11px;
         font-weight: 400;
-        background: var(--cat-color-bg, $gray);
-        border: 1px solid transparent;
+        background: var(--cat-color-bg, #D9F4FF);
+        border: 1px solid rgba(0,160,227,0.37);
         text-transform: uppercase;
         padding: 5px 8px;
         @include border-radius(5px);
@@ -77,8 +85,9 @@
 
 // Blog Page
 .page-header.blog-page-header {
-    @media (max-width: 767px) {
-        padding-bottom: 40px;
+    padding: 180px 0 100px;
+    @media (max-width: 992px) {
+        padding: 120px 0 60px;
     }
 }
 
@@ -103,12 +112,10 @@
     text-align: left;
     @include border-radius(6px);
     min-height: 430px;
-    max-width: 300px;
     padding: 30px;
     @include transition(0.3s, ease-in-out);
     @media (max-width: 767px) {
         min-height: 380px;
-        max-width: 280px;
         padding: 25px;
     }
     .card-overlay {
@@ -182,47 +189,58 @@
     }
 }
 .is-hero-blog-post {
+    max-width: 100%;
+    padding: 0;
+    min-height: auto;
+    &:hover, &:focus {
+        @include transform(unset);
+    }
     .card-img { 
         display: block;
+        position: relative;
+        @include border-radius(24px);
+        max-height: 380px;
         img {
             max-height: 100%;
         }
     }
     .card-content {
-        padding: 50px 0 50px 40px;
+        padding: 0;
         height: 100%;
         @include flexbox;
         @include flex-direction(column);
-        @media (max-width: 992px) {
-            padding: 25px 0 0;
-        }
         .card-body {
             flex: 1 1 auto;
+            display: block;
             .blog-meta-info {                
-                margin-bottom: 25px;
+                margin-bottom: 20px;
             }
             .blog-meta-badge {
-                border-color: $primary;
-                background: transparent;
-                color: $white;
+                border-color: rgba($secondary, 0.37);
+                background: #D9F4FF;
+                color: $secondary;
             }
             a.blog-meta-badge {
                 &:hover, &:focus {
-                    background: $primary;
-                    color: $primary;
+                    background: $secondary;
+                    color: $white;
                 }
             }
-            .date {
-                color: $gray;
+            .date-time {
+                color: $black;
             }
             .post-title {
-                font-size: 40px;
-                color: $white;
+                font-size: 48px;
+                color: $black;
+                margin-bottom: 15px;
+                @media (max-width: 1200px) {
+                    font-size: 36px; 
+                }
                 @media (max-width: 767px) {
                     font-size: 24px; 
                 }
                 a {
-                    color: $white;
+                    color: $black;
                     &:hover, &:focus {
                         color: $primary;
                     }
@@ -230,17 +248,32 @@
             }
         }
         .card-footer {
-            border-top: 1px solid $primary;
-            @media (max-width: 767px) {
-                border-top-color: rgba(#fff, 0.1);
-            }
+            border-top: 1px solid #E5E5E5;
+            padding-top: 25px;
             .written-by {
-                color: $primary;
+                font-size: 12px;
+                font-weight: 600;
+                color: #4E4E4E;
+                margin-bottom: 8px;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
             }
             .user-info {
+                .user-img {
+                    margin-right: 10px;
+                    img {
+                        width: 32px;
+                        height: 32px;
+                    }
+                }
                 .user-detail {
                     .name {
-                        color: $white;
+                        font-size: 16px;
+                        color: $black;
+                        font-weight: 600;
+                        @media (max-width: 767px) {
+                            font-size: 14px; 
+                        }
                     }
                 }
             }
@@ -250,54 +283,7 @@
 
 // Blog Details Page
 .page-header.single-header {
-    &:not(.is-dark) {
-        border-color: $gray;
-        background-image: none;
-        @include border-radius(24px 24px 0 0);
-
-        .breadcrumb-nav .breadcrumb {
-            .breadcrumb-item {
-                color: #3E4751;
-                a {
-                    color: #3E4751;
-                }
-            }
-            .breadcrumb-item +.breadcrumb-item::before {
-                color: #3E4751;
-            }
-        }
-    }
-    margin: 0;
-    @media (max-width: 767px) {
-        padding-bottom: 60px;
-    }
-    &::after {
-        content: none;
-    }
     
-
-    &.is-dark {
-        *:not(a, a > *) {
-            color: #fff;
-        }
-		.section-title {
-			*:not(a, a > *) {
-				color: #fff;
-			}
-			.sort-info {
-				color: rgba(#fff, 0.6) !important;
-			}
-		}
-
-        a.blog-meta-badge {
-            background: transparent;
-            color: #fff;
-            &:hover, &:focus {
-                color: #000;
-                background: $gray;
-            }
-        }
-    }
 }
 
 .blog-header-title {
@@ -506,9 +492,9 @@
         }
         .written-by {
             font-size: 12px;
-            font-weight: 500;
-            color: #65717F;
-            margin-bottom: 15px;
+            font-weight: 600;
+            color: #4E4E4E;
+            margin-bottom: 8px;
             text-transform: uppercase;
         }
         .user-info {
@@ -568,38 +554,33 @@
     ul.nav-filter {
         @include flexbox();
         @include flex-wrap(wrap);
-        gap: 8px;
+        gap: 25px;
         margin: 0;
         padding: 0px;
         li {
             a {
-                border: 1px solid #C8D0D9;
-                @include border-radius(8px);
-                color: #65717F;
-                padding: 10px 15px;
-                text-transform: uppercase;
-                font-weight: 500;
-                font-size: 12px;
+                color: $black;
+                font-weight: 600;
+                font-size: 18px;
                 display: block;
                 @include transition(0.2s, ease-in-out);
                 white-space: nowrap;
                 text-decoration: none;
-                height: 48px;
+                text-underline-offset: 6px;
                 @include flexbox;
                 @include align-items(center);
                 &:hover,
-                &:focus {
-                    background-color: #090A0C;
-                    color: $white;
+                &:focus {                   
+                    color: $secondary;
                 }
             }
             a.active {
-                background: #090A0C;
-                color: #ffffff;
+                color: $secondary;
+                text-decoration: underline;
             }
             &.active > a {
-                background: #090A0C;
-                color: #ffffff;
+                color: $secondary;
+                text-decoration: underline;
             }
         }
         @media (max-width: 992px) {
@@ -676,14 +657,13 @@
 
 .post-search {
     position: relative;
-    width: 48px;
-    height: 48px;
+    height: 44px;
     font-size: 0;
     cursor: pointer;
     background-color: #F7F8F9;
     @include flexbox();
     @include transition(0.3s, ease-in-out);
-    @include border-radius(8px);
+    @include border-radius(30px);
     overflow: hidden;
     @media (max-width: 992px) {
         width: 100%;
@@ -691,17 +671,25 @@
     }
     input[type='search'] {        
         border: 1px solid #C8D0D9;
-        width: 48px;
-        height: 48px;
-        cursor: pointer;
-        color: $primary;
-        font-size: 14px;
-        @include border-radius(8px);
+        width: 100%;
+        max-width: 250px;
+        min-width: 250px;
+        height: 44px;
+        // cursor: pointer;
+        color: $black;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 5px 50px 5px 15px;
+        background-color: #F7F8F9;
+        @include border-radius(30px);
         &::-webkit-search-decoration,
         &::-webkit-search-cancel-button,
         &::-webkit-search-results-button,
         &::-webkit-search-results-decoration {
             display: none;
+        }
+        &::placeholder {
+            color: #C5C5C5;
         }
         @media (max-width: 992px) {
             width: 100%;
@@ -714,13 +702,13 @@
     }  
     .q-loader {
         position: absolute;
-        right: 0px;
-        top: 0px;
-        width: 48px;
-        height: 48px;
+        right: 1px;
+        top: 1px;
+        width: 42px;
+        height: 42px;
         display: none;
         z-index: -1;
-        border: 1px solid #C8D0D9;
+        border: 1px solid transparent;
         background-color: #F7F8F9;
         @include border-radius(8px);
 
@@ -739,33 +727,31 @@
     }  
     .q-search-btn {
         position: absolute;
-        right: 0;
-        top: 0;
-        width: 48px;
-        height: 48px;
+        right: 1px;
+        top: 1px;
+        width: 42px;
+        height: 42px;
         background: #F7F8F9;
         cursor: pointer;
-        @include border-radius(8px);
+        @include border-radius(30px);
         outline: none;
         @include transition(0.3s, ease-in-out);
         padding: 0;
-        border: 1px solid #C8D0D9;
+        border: 1px solid transparent;
         &:hover,
         &:focus {
             outline: none;
-            background-color: $primary;
-            border-color:  $primary;
             .q-icon-search {
                 svg {
                     path {
-                        stroke: $white;
+                        stroke: $secondary;
                     }
                 }
             }
             .q-icon-close {
                 svg {
                     path {
-                        fill: $white;
+                        fill: $secondary;
                     }
                 }
             }
@@ -801,10 +787,7 @@
 
 .posts-archive-list {
     .content {
-        --bs-gutter-y: 5rem; 
-        @media (max-width: 767px) {
-            --bs-gutter-y: 3rem; 
-        }
+        --bs-gutter-y: 30px; 
     }
 }
 
