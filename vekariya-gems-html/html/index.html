@@ -81,12 +81,12 @@
             </div>
         </header>
         <main class="main-content-wrapper bg-glow">
-            <section class="hero-header is-animate-content">
+            <section class="hero-header">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
                             <div class="hero-title mb-0">
-                                <div class="animtext line-up tag-line">Welcome to Vekariya Gems</div>
+                                <div class="tag-line">Welcome to Vekariya Gems</div>
                                 <h1 class="animtext line-up">Discover Exquisite <br>Diamonds, Unmatched Brilliance</h1>
                             </div>
                         </div> 
@@ -203,6 +203,7 @@
                                     <div class="info-card only-img">
                                         <div class="card-img-icon">
                                             <img src="uploads/img-diamonds.jpg" alt="Vekariya Gems Exports">
+                                            <div class="img-overlay-block"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -292,22 +293,26 @@
                                 <div class="splide__track">
                                     <ul class="splide__list">
                                         <li class="splide__slide">
-                                            <img src="uploads/img-procuring-diamond.jpg" alt="Procuring">
-                                            <div class="slideImg-overlay-block"></div>
+                                            <div class="image-block">
+                                                <img src="uploads/img-procuring-diamond.jpg" alt="Procuring">
+                                            </div>
                                         </li>
                                         <li class="splide__slide">
-                                            <img src="uploads/img-new-post1.jpg" alt="Manufacturing">
-                                            <div class="slideImg-overlay-block"></div>
+                                            <div class="image-block">
+                                                <img src="uploads/img-new-post1.jpg" alt="Manufacturing">
+                                            </div>
                                         </li>
                                         <li class="splide__slide">
-                                            <img src="uploads/img-new-post6.jpg" alt="Polishing">
-                                            <div class="slideImg-overlay-block"></div>
+                                            <div class="image-block">
+                                                <img src="uploads/img-new-post6.jpg" alt="Polishing">
+                                            </div>
                                         </li>
                                     </ul>
                                 </div>                                
                                 <div class="site-logo-img">
                                     <img src="assets/images/img-hero-top-logo.svg" alt="Vekariya Gems Exports">
-                                </div>
+                                </div>                                
+                                <div class="img-overlay-block"></div>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -321,7 +326,7 @@
                                         <li class="splide__slide">
                                             <div class="info-card icon-left-card">
                                                 <div class="card-img-icon mb-3">
-                                                    <img src="uploads/icon-procuring.svg" alt="Procuring">
+                                                    <span class="icon"><img src="uploads/icon-procuring.svg" alt="Procuring"></span>
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="card-title-flex">
@@ -339,7 +344,7 @@
                                         <li class="splide__slide">
                                             <div class="info-card icon-left-card">
                                                 <div class="card-img-icon mb-3">
-                                                    <img src="uploads/icon-manufacturing.svg" alt="Manufacturing">
+                                                    <span class="icon"><img src="uploads/icon-manufacturing.svg" alt="Manufacturing"></span>
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="card-title-flex">
@@ -357,7 +362,7 @@
                                         <li class="splide__slide">
                                             <div class="info-card icon-left-card">
                                                 <div class="card-img-icon mb-3">
-                                                    <img src="uploads/icon-polishing.svg" alt="Polishing">
+                                                    <span class="icon"><img src="uploads/icon-polishing.svg" alt="Polishing"></span>
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="card-title-flex">
@@ -383,7 +388,7 @@
                             rewind: true,
                             pagination: true,
                             arrows: false,
-                            autoplay: true,
+                            // autoplay: true,
                             interval: 5000, // Duration for each slide in ms
                             pauseOnHover: false,
                             pauseOnFocus: false,
@@ -392,6 +397,11 @@
                             classes: {
                                 pagination: 'splide__pagination icw-pagination', 
                             },
+                            breakpoints: {
+                                992: { 
+                                    pagination: false,
+                                },
+                            }
                         });
 
                         function initProcessContent() {
@@ -452,27 +462,27 @@
                             });
                         }
                         // Function to update "is-complete" classes on processContent slides.
-                        function updateCurrentSlides() {
-                            var slides = processImg.Components.Elements.slides;
-                            var activeIndex = processImg.index;
+                        // function updateCurrentSlides() {
+                        //     var slides = processImg.Components.Elements.slides;
+                        //     var activeIndex = processImg.index;
 
-                            slides.forEach(function(slide, index) {
-                                var currentImgSlide = slide.querySelector('.slideImg-overlay-block');
-                                currentImgSlide.querySelectorAll("span").forEach((element, index) => {
-                                    element.style.transitionDelay = index * 0.05 + "s"; // Adjust delay as needed
-                                });
-                                if (index == activeIndex) {
-                                    console.log(currentImgSlide);                                    
-                                    currentImgSlide.classList.add('is-animated');
-                                } else {
-                                    currentImgSlide.classList.remove('is-animated');
-                                }
-                            });
-                        }
+                        //     slides.forEach(function(slide, index) {
+                        //         var currentImgSlide = slide.querySelector('.slideImg-overlay-block');
+                        //         currentImgSlide.querySelectorAll("span").forEach((element, index) => {
+                        //             element.style.transitionDelay = index * 0.05 + "s"; // Adjust delay as needed
+                        //         });
+                        //         if (index == activeIndex) {
+                        //             console.log(currentImgSlide);                                    
+                        //             currentImgSlide.classList.add('is-animated');
+                        //         } else {
+                        //             currentImgSlide.classList.remove('is-animated');
+                        //         }
+                        //     });
+                        // }
 
                         function updateAll() {
                             updateProgress();
-                            updateCurrentSlides();
+                            // updateCurrentSlides();
                             if(jQuery(window).width() >= 992) {
                                 updateCompleteSlides();
                             }
@@ -551,7 +561,8 @@
                                         </div>
                                         <div class="card-footer">
                                             <a href="#" data-bs-toggle="tooltip" title="LinkedIn"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.478491 7.34362H4.98386V21.8351H0.478491V7.34362ZM2.7313 0.140137C4.17127 0.140137 5.3415 1.31037 5.3415 2.75276C5.3415 4.19369 4.17127 5.36393 2.7313 5.36393C1.28795 5.36393 0.121094 4.19369 0.121094 2.75276C0.121094 1.31037 1.28795 0.140137 2.7313 0.140137Z" fill="#007EBB"/><path d="M7.80859 7.34371H12.1287V9.32533H12.1903C12.7916 8.18552 14.2613 6.98486 16.4518 6.98486C21.0127 6.98486 21.8545 9.98531 21.8545 13.8872V21.8352H17.3525V14.7879C17.3525 13.107 17.3233 10.9454 15.0121 10.9454C12.6682 10.9454 12.3106 12.7776 12.3106 14.6672V21.8352H7.80859V7.34371Z" fill="#007EBB"/></svg></a>
-                                        </div>
+                                        </div>                                        
+                                        <div class="img-overlay-block is-secondary-bg"></div>
                                     </div>
                                 </li>
                                 <li class="splide__slide">
@@ -567,7 +578,8 @@
                                         </div>
                                         <div class="card-footer">
                                             <a href="#" data-bs-toggle="tooltip" title="LinkedIn"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.478491 7.34362H4.98386V21.8351H0.478491V7.34362ZM2.7313 0.140137C4.17127 0.140137 5.3415 1.31037 5.3415 2.75276C5.3415 4.19369 4.17127 5.36393 2.7313 5.36393C1.28795 5.36393 0.121094 4.19369 0.121094 2.75276C0.121094 1.31037 1.28795 0.140137 2.7313 0.140137Z" fill="#007EBB"/><path d="M7.80859 7.34371H12.1287V9.32533H12.1903C12.7916 8.18552 14.2613 6.98486 16.4518 6.98486C21.0127 6.98486 21.8545 9.98531 21.8545 13.8872V21.8352H17.3525V14.7879C17.3525 13.107 17.3233 10.9454 15.0121 10.9454C12.6682 10.9454 12.3106 12.7776 12.3106 14.6672V21.8352H7.80859V7.34371Z" fill="#007EBB"/></svg></a>
-                                        </div>
+                                        </div>                                     
+                                        <div class="img-overlay-block"></div>
                                     </div>
                                 </li>
                                 <li class="splide__slide">
@@ -584,6 +596,7 @@
                                         <div class="card-footer">
                                             <a href="#" data-bs-toggle="tooltip" title="LinkedIn"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.478491 7.34362H4.98386V21.8351H0.478491V7.34362ZM2.7313 0.140137C4.17127 0.140137 5.3415 1.31037 5.3415 2.75276C5.3415 4.19369 4.17127 5.36393 2.7313 5.36393C1.28795 5.36393 0.121094 4.19369 0.121094 2.75276C0.121094 1.31037 1.28795 0.140137 2.7313 0.140137Z" fill="#007EBB"/><path d="M7.80859 7.34371H12.1287V9.32533H12.1903C12.7916 8.18552 14.2613 6.98486 16.4518 6.98486C21.0127 6.98486 21.8545 9.98531 21.8545 13.8872V21.8352H17.3525V14.7879C17.3525 13.107 17.3233 10.9454 15.0121 10.9454C12.6682 10.9454 12.3106 12.7776 12.3106 14.6672V21.8352H7.80859V7.34371Z" fill="#007EBB"/></svg></a>
                                         </div>
+                                        <div class="img-overlay-block"></div>
                                     </div>
                                 </li>
                                 <li class="splide__slide">
@@ -600,6 +613,7 @@
                                         <div class="card-footer">
                                             <a href="#" data-bs-toggle="tooltip" title="LinkedIn"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.478491 7.34362H4.98386V21.8351H0.478491V7.34362ZM2.7313 0.140137C4.17127 0.140137 5.3415 1.31037 5.3415 2.75276C5.3415 4.19369 4.17127 5.36393 2.7313 5.36393C1.28795 5.36393 0.121094 4.19369 0.121094 2.75276C0.121094 1.31037 1.28795 0.140137 2.7313 0.140137Z" fill="#007EBB"/><path d="M7.80859 7.34371H12.1287V9.32533H12.1903C12.7916 8.18552 14.2613 6.98486 16.4518 6.98486C21.0127 6.98486 21.8545 9.98531 21.8545 13.8872V21.8352H17.3525V14.7879C17.3525 13.107 17.3233 10.9454 15.0121 10.9454C12.6682 10.9454 12.3106 12.7776 12.3106 14.6672V21.8352H7.80859V7.34371Z" fill="#007EBB"/></svg></a>
                                         </div>
+                                        <div class="img-overlay-block"></div>
                                     </div>
                                 </li>
                                 <li class="splide__slide">
@@ -616,6 +630,7 @@
                                         <div class="card-footer">
                                             <a href="#" data-bs-toggle="tooltip" title="LinkedIn"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.478491 7.34362H4.98386V21.8351H0.478491V7.34362ZM2.7313 0.140137C4.17127 0.140137 5.3415 1.31037 5.3415 2.75276C5.3415 4.19369 4.17127 5.36393 2.7313 5.36393C1.28795 5.36393 0.121094 4.19369 0.121094 2.75276C0.121094 1.31037 1.28795 0.140137 2.7313 0.140137Z" fill="#007EBB"/><path d="M7.80859 7.34371H12.1287V9.32533H12.1903C12.7916 8.18552 14.2613 6.98486 16.4518 6.98486C21.0127 6.98486 21.8545 9.98531 21.8545 13.8872V21.8352H17.3525V14.7879C17.3525 13.107 17.3233 10.9454 15.0121 10.9454C12.6682 10.9454 12.3106 12.7776 12.3106 14.6672V21.8352H7.80859V7.34371Z" fill="#007EBB"/></svg></a>
                                         </div>
+                                        <div class="img-overlay-block"></div>
                                     </div>
                                 </li>
                                 <li class="splide__slide">
@@ -632,6 +647,7 @@
                                         <div class="card-footer">
                                             <a href="#" data-bs-toggle="tooltip" title="LinkedIn"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.478491 7.34362H4.98386V21.8351H0.478491V7.34362ZM2.7313 0.140137C4.17127 0.140137 5.3415 1.31037 5.3415 2.75276C5.3415 4.19369 4.17127 5.36393 2.7313 5.36393C1.28795 5.36393 0.121094 4.19369 0.121094 2.75276C0.121094 1.31037 1.28795 0.140137 2.7313 0.140137Z" fill="#007EBB"/><path d="M7.80859 7.34371H12.1287V9.32533H12.1903C12.7916 8.18552 14.2613 6.98486 16.4518 6.98486C21.0127 6.98486 21.8545 9.98531 21.8545 13.8872V21.8352H17.3525V14.7879C17.3525 13.107 17.3233 10.9454 15.0121 10.9454C12.6682 10.9454 12.3106 12.7776 12.3106 14.6672V21.8352H7.80859V7.34371Z" fill="#007EBB"/></svg></a>
                                         </div>
+                                        <div class="img-overlay-block"></div>
                                     </div>
                                 </li>
                             </ul>
@@ -683,6 +699,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="img-overlay-block"></div>
                 <!-- <div class="video-bg-block pointer-events-none">
                     <img src="uploads/img-cta.jpg" alt="CTA">
                     <video class="videoembed" autoplay="" muted="" loop="" playsinline=""><source src="uploads/img-cta.jpg" type="video/mp4"></video>
@@ -700,7 +717,7 @@
                                 <li class="splide__slide">
                                     <div class="post-card h-100">
                                         <div class="card-overlay"></div>
-                                        <div class="card-img" style="background-image: url(uploads/img-new-post1.jpg);"></div>
+                                        <div class="card-img" style="background-image: url(uploads/img-new-post1.jpg);"><div class="img-overlay-block"></div></div>
                                         <div class="card-body">
                                             <h3><a href="#" class="stretched-link">High-Quality Diamonds by Vekariya Gems Exports</a></h3>
                                             <div class="blog-meta-info mb-0">  
@@ -712,7 +729,7 @@
                                 <li class="splide__slide">
                                     <div class="post-card h-100">
                                         <div class="card-overlay"></div>
-                                        <div class="card-img" style="background-image: url(uploads/img-new-post2.jpg);"></div>
+                                        <div class="card-img" style="background-image: url(uploads/img-new-post2.jpg);"><div class="img-overlay-block"></div></div>
                                         <div class="card-body">
                                             <h3><a href="#" class="stretched-link">The Story of Vekariya Gems Exports</a></h3>
                                             <div class="blog-meta-info mb-0">  
@@ -724,7 +741,7 @@
                                 <li class="splide__slide">
                                     <div class="post-card h-100">
                                         <div class="card-overlay"></div>
-                                        <div class="card-img" style="background-image: url(uploads/img-new-post3.jpg);"></div>
+                                        <div class="card-img" style="background-image: url(uploads/img-new-post3.jpg);"><div class="img-overlay-block"></div></div>
                                         <div class="card-body">
                                             <h3><a href="#" class="stretched-link">The Story of Vekariya Gems Exports</a></h3>
                                             <div class="blog-meta-info mb-0">  
@@ -736,7 +753,7 @@
                                 <li class="splide__slide">
                                     <div class="post-card h-100">
                                         <div class="card-overlay"></div>
-                                        <div class="card-img" style="background-image: url(uploads/img-new-post4.jpg);"></div>
+                                        <div class="card-img" style="background-image: url(uploads/img-new-post4.jpg);"><div class="img-overlay-block"></div></div>
                                         <div class="card-body">
                                             <h3><a href="#" class="stretched-link">High-Quality Diamonds by Vekariya Gems Exports</a></h3>
                                             <div class="blog-meta-info mb-0">  
@@ -748,7 +765,7 @@
                                 <li class="splide__slide">
                                     <div class="post-card h-100">
                                         <div class="card-overlay"></div>
-                                        <div class="card-img" style="background-image: url(uploads/img-new-post5.jpg);"></div>
+                                        <div class="card-img" style="background-image: url(uploads/img-new-post5.jpg);"><div class="img-overlay-block"></div></div>
                                         <div class="card-body">
                                             <h3><a href="#" class="stretched-link">The Story of Vekariya Gems Exports</a></h3>
                                             <div class="blog-meta-info mb-0">  
@@ -760,7 +777,7 @@
                                 <li class="splide__slide">
                                     <div class="post-card h-100">
                                         <div class="card-overlay"></div>
-                                        <div class="card-img" style="background-image: url(uploads/img-new-post6.jpg);"></div>
+                                        <div class="card-img" style="background-image: url(uploads/img-new-post6.jpg);"><div class="img-overlay-block"></div></div>
                                         <div class="card-body">
                                             <h3><a href="#" class="stretched-link">High-Quality Diamonds by Vekariya Gems Exports</a></h3>
                                             <div class="blog-meta-info mb-0">  
@@ -772,7 +789,7 @@
                                 <li class="splide__slide">
                                     <div class="post-card h-100">
                                         <div class="card-overlay"></div>
-                                        <div class="card-img" style="background-image: url(uploads/img-new-post1.jpg);"></div>
+                                        <div class="card-img" style="background-image: url(uploads/img-new-post1.jpg);"><div class="img-overlay-block"></div></div>
                                         <div class="card-body">
                                             <h3><a href="#" class="stretched-link">High-Quality Diamonds by Vekariya Gems Exports</a></h3>
                                             <div class="blog-meta-info mb-0">  
@@ -784,7 +801,7 @@
                                 <li class="splide__slide">
                                     <div class="post-card h-100">
                                         <div class="card-overlay"></div>
-                                        <div class="card-img" style="background-image: url(uploads/img-new-post2.jpg);"></div>
+                                        <div class="card-img" style="background-image: url(uploads/img-new-post2.jpg);"><div class="img-overlay-block"></div></div>
                                         <div class="card-body">
                                             <h3><a href="#" class="stretched-link">The Story of Vekariya Gems Exports</a></h3>
                                             <div class="blog-meta-info mb-0">  

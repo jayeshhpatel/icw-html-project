@@ -312,8 +312,14 @@
     .sort-info {
         margin-bottom: 30px;
         color: $darkblack;
-        img {
+        
+        .image-block {            
             margin-top: 30px;
+            .img-overlay-block {
+                @include border-radius(24px);
+            }
+        }
+        img {
             @include border-radius(24px);
             @media (max-width: 767px) { 
                 margin-top: 20px;
@@ -482,7 +488,7 @@
         background: url(../images/img-hero-top-logo.svg) no-repeat top right;
         background-size: contain;
         display: inline-block;
-        z-index: 99;
+        z-index: 10;
         @media (max-width: 767px) {
             width: 190px;
             height: 95px;
@@ -578,7 +584,7 @@
         }
         .tag-line {
             color: $primary;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             font-weight: 600;
         }
         .sort-info {
@@ -733,10 +739,11 @@
     flex-grow: 1;
     position: absolute;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: 20;
+    z-index: 9;
     span {
         background: $primary;
         width: calc(100% + 1px);
@@ -749,6 +756,11 @@
             @include transform(translateY(-100%));            
         }
     }
+    &.is-secondary-bg {
+        span {
+            background: $secondary;
+        }
+    }
 }
 .slideImg-overlay-block {
     span {
@@ -758,18 +770,19 @@
 
 // Text Animation 
 .animtext {
-    line-height: 1.2;
+    line-height: 1.3;
     .line {
-      display: inline-block;
+      display: block;
       overflow: hidden;
-      line-height: 1;
+      line-height: inherit;
+      margin-top: -10px;
     }
     &.line-up {
         .word {
             opacity: 0;
             overflow: hidden;
             animation: none;
-            line-height: 1;
+            line-height: inherit;
             padding-left: 6px;
             animation: animtext-up 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
             animation-delay: calc(0.075s * var(--line-index));
@@ -919,7 +932,7 @@
             @include flex-direction(row);
         }
 		.card-img-icon {
-			margin-right: 15px;
+			margin-right: 24px;
 			margin-bottom: 0;
 			flex: none;
             background: #e5f5fc;
@@ -1205,19 +1218,26 @@
         position: relative;
         max-width: 540px;
         @include border-radius(6px);
-        margin-bottom: 40px;
         @media (max-width: 992px) {                
             max-width: 100%;
         }
-        img {
+        .image-block {
             width: 100%;
+            height: 100%;
             max-height: 600px;
-            object-fit: cover;
-            object-position: center;
-            @include border-radius(6px);
-            @media (max-width: 992px) {                
-                width: 100%;
+            @media (max-width: 992px) {
                 max-height: 360px;
+            }
+            img {              
+                width: 100%;
+                height: 100%;
+                min-height: 600px;
+                object-fit: cover;
+                object-position: center;
+                @include border-radius(6px);
+                @media (max-width: 992px) {
+                    min-height: 360px;
+                }
             }
         }
         .site-logo-img {
@@ -1225,8 +1245,9 @@
             bottom: 0;
             left: -50%;
             @include transform(translateX(50%));
+            min-height: auto;
             max-width: 275px;
-            z-index: 99;
+            z-index: 10;
             @media (max-width: 992px) {
                 display: none;
             }
@@ -1235,7 +1256,9 @@
             @include border-radius(6px);
         }
         .icw-pagination {
-            bottom: -40px;
+            bottom: 20px;
+            right: 20px;
+            left: auto;
             padding: 0;
         }
     }
@@ -1262,6 +1285,13 @@
             border: none !important;
             &:last-child {
                 margin-bottom: 0 !important;
+                .info-card {
+                    .card-img-icon {
+                        &::before {
+                            content: none;
+                        }
+                    }
+                }
             }
             &.is-active, &.is-complete {
                 .info-card {
@@ -1277,7 +1307,7 @@
         .splide__progress {
             background: #BEBEBE;
             width: 2px;
-            min-height: 80%;
+            min-height: 73.5%;
             position: absolute;
             top: 2px;
             left: 30px;
@@ -1338,13 +1368,13 @@
     @include flexbox;
     @include flex-direction(column);
     height: 100%;
-    padding: 40px;
     @include border-radius(6px);
     background: $white;
     @include transition(0.3s, ease-in-out);
     position: relative;
     border: 1px solid #E5E5E5;
     max-width: 575px;
+    padding: 40px;
     @media (max-width: 992px) {
         max-width: 300px;
     }
@@ -1355,6 +1385,7 @@
         margin-bottom: 30px;
         overflow: hidden;
         text-align: center;
+        position: relative;
         img {
             @include transition(0.2s, ease-in-out);
         }
@@ -1382,19 +1413,21 @@
         z-index: 3;
         position: relative;
     }
-    &:hover, &:focus {
-        @include transform(translateY(-10px));
-        @include box-shadow(0 10px 20px rgba(0, 0, 0, 0.05));
-        .card-img {
-            img {
-                @include transform(scale(1.05));
+    &.is-hover {        
+        &:hover, &:focus {
+            @include transform(translateY(-10px));
+            @include box-shadow(0 10px 20px rgba(0, 0, 0, 0.05));
+            .card-img {
+                img {
+                    @include transform(scale(1.05));
+                }
             }
-        }
-        .card-body {
-            .card-title {
-                a {
-                    color: $secondary;
-                    font-weight: 600;
+            .card-body {
+                .card-title {
+                    a {
+                        color: $secondary;
+                        font-weight: 600;
+                    }
                 }
             }
         }
@@ -1404,18 +1437,22 @@
 // CTA Section
 .cta-section {
     padding: 0;
+    position: relative;
     @media (max-width: 767px) {
         background-image: linear-gradient(267.71deg, rgba(0,160,227,0.3) 50.64%, #393185 100%),var(--bg-img, none);
     }
 }
 .cta-block {
     padding: 100px 0;
+    z-index: 10;
+    position: relative;
     @media (max-width: 992px) {         
         padding: 80px 0;
     }
     .site-logo-img {
         position: absolute;
         top: -75px;
+        z-index: 10;
         @media (max-width: 767px) { 
             top: -40px;
         }

@@ -154,7 +154,9 @@ jQuery(document).ready(function($) {
         });
     } 
     if ($(".img-overlay-block").length > 0) {
-        animateVisibleElements();
+        setTimeout(() => {
+            animateVisibleElements();
+        }, 100);
     }
 });
 
@@ -190,10 +192,13 @@ $(window).on("scroll", function () {
 // Helper function to check if element is in viewport
 function isInViewport($el) {
     var elementTop = $el.offset().top;
-    var elementBottom = elementTop + $el.outerHeight();
+    var elementHeight = $el.outerHeight();
+    var elementThreshold = elementTop + (elementHeight * 0.6); // 30% of the element
+
     var viewportTop = $(window).scrollTop();
     var viewportBottom = viewportTop + $(window).height();
-    return elementBottom > viewportTop && elementTop < viewportBottom;
+
+    return elementThreshold < viewportBottom && elementTop < viewportBottom;
 }
 // Image Overlay Animation
 function animateVisibleElements() {
@@ -203,6 +208,9 @@ function animateVisibleElements() {
             $(this).find("span").each(function (index) {
                 $(this).css("transition-delay", index * 0.05 + "s"); // Adjust delay as needed
             });
+            setTimeout(() => {
+                $(this).css("z-index", "-1");
+            }, 1000);
         }
     });
 }

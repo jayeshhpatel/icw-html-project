@@ -198,6 +198,20 @@ img {
     }
 }
 
+.grid {
+    display: grid;
+    grid-gap: 30px;
+    &.grid-col-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    &.grid-col-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    &.grid-col-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 .b-radius{
     @include border-radius(24px);
 }
@@ -304,9 +318,9 @@ img {
 		color: $white !important;
 		border-color: $secondary;
 		background-color: $secondary;
-        // &::before {
-        //     background: $white;
-        // }
+        &::before {
+            background: $secondary;
+        }
         &:hover, &:focus {
             color: $secondary !important;
             background-color: transparent;
@@ -316,6 +330,9 @@ img {
 		color: $black !important;
 		border-color: $white;
 		background-color: $white;
+        &::before {
+            background: $white;
+        }
         &:hover, &:focus {
             color: $white !important;
             background-color: transparent;
@@ -325,9 +342,9 @@ img {
 		color: $white !important;
 		border-color: $darkblack;
 		background-color: $darkblack;
-        // &::before {
-        //     background: $white;
-        // }
+        &::before {
+            background: $darkblack;
+        }
         &:hover, &:focus {
            color: $darkblack !important;
            background-color: transparent;
@@ -337,35 +354,32 @@ img {
 		color: $darkblack !important;
 		border-color: $darkblack;
 		background-color: $white;
-        // &::before {
-        //     background: $darkblack;
-        // }
+        &::before {
+            background: $darkblack;
+        }
         &:hover, &:focus {
-           color: $white !important;background: $darkblack;
+           background: transparent;
         }
 	}
 	&.btn-outline-primary {
 		color: $primary !important;
 		border-color: $primary;
-		background-color: $white;
-        // &::before {
-        //     background: $primary;
-        // }
+        &::before {
+            background: $primary;
+        }
         &:hover, &:focus {
-           color: $white !important;
-           background: $primary;
+           background: transparent;
         }
 	}
 	&.btn-outline-secondary {
 		color: $secondary !important;
 		border-color: $secondary;
 		background-color: $white;
-        // &::before {
-        //     background: $secondary;
-        // }
+        &::before {
+            background: $secondary;
+        }
         &:hover, &:focus {
-           color: $white !important;
-           background: $secondary;
+           background: transparent;
         }
 	}
 }
@@ -605,6 +619,8 @@ img {
 }
 
 .image-block {
+    position: relative;
+    overflow: hidden;
     img {
         @include border-radius(0px);
         width: 100%;

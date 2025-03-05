@@ -109,10 +109,29 @@
         @include inline-flex;
         @include align-items(center);
         @include justify-content(center); 
+        position: relative;
+        overflow: hidden;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 10px;
+            height: 100%;
+            background: $primary;
+            @include transform(translate(-100%, 0));
+            @include border-radius(0);
+            transform-origin: top;
+            @include transition(0.3s, cubic-bezier(.4,0,.2,1));
+            z-index: -1;
+        }   
         &:hover, &:focus, &:active {
             text-decoration: none;
             background-color: transparent; 
             color: $primary !important;
+            &::before {
+                @include transform(translate(0, 0));
+            }
         } 
     }
 }
