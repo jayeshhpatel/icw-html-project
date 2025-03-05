@@ -486,6 +486,7 @@
         background: url(../images/img-hero-top-logo.svg) no-repeat top right;
         background-size: contain;
         display: inline-block;
+        z-index: 99;
         @media (max-width: 767px) {
             width: 190px;
             height: 95px;
@@ -728,7 +729,9 @@
         }
     }
 }
-.img-overlay-block {
+
+// Image Overlay Animation
+.img-overlay-block, .slideImg-overlay-block {
     @include flexbox;
     @include align-items(center);
     flex-grow: 1;
@@ -740,17 +743,58 @@
     z-index: 20;
     span {
         background: $primary;
-        width: 100%;
+        width: calc(100% + 1px);
         height: 100%;
+        margin-left: -1px;
         @include transition(0.5s, ease);
     }
     &.is-animated {
         span {
-            @include transform(translateY(-100%));
-            
+            @include transform(translateY(-100%));            
         }
     }
 }
+.slideImg-overlay-block {
+    span {
+        @include transition(1s, ease);
+    }
+}
+
+// Text Animation 
+.animtext {
+    line-height: 1.2;
+    .line {
+      display: inline-block;
+      overflow: hidden;
+      line-height: 1;
+    }
+    &.line-up {
+        .word {
+            opacity: 0;
+            overflow: hidden;
+            animation: none;
+            line-height: 1;
+            padding-left: 6px;
+            animation: animtext-up 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+            animation-delay: calc(0.075s * var(--line-index));
+            &:first-child {
+                padding-left: 0;
+            }
+        }
+    }
+}
+
+@keyframes animtext-up {
+    from {
+        transform: translateY(100%) translateZ(0);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) translateZ(0);
+        opacity: 1;
+    }
+}
+  
 
 // Info Card
 .info-card {
@@ -1165,6 +1209,7 @@
         position: relative;
         max-width: 540px;
         @include border-radius(6px);
+        margin-bottom: 40px;
         @media (max-width: 992px) {                
             max-width: 100%;
         }
@@ -1185,12 +1230,17 @@
             left: -50%;
             @include transform(translateX(50%));
             max-width: 275px;
+            z-index: 99;
             @media (max-width: 992px) {
                 display: none;
             }
         }
         .splide__track {
             @include border-radius(6px);
+        }
+        .icw-pagination {
+            bottom: -40px;
+            padding: 0;
         }
     }
     .process-content-slider {

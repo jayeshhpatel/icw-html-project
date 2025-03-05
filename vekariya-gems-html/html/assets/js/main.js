@@ -102,7 +102,7 @@ jQuery(document).ready(function($) {
 
     if ($(".img-overlay-block").length > 0) {
         for (let i = 0; i < 5; i++) {
-            $(".img-overlay-block").append("<span></span>");
+            $(".img-overlay-block, .slideImg-overlay-block").append("<span></span>");
         }
     }
     if ($(".icw-progress-goto").length > 0) {
@@ -152,26 +152,39 @@ jQuery(document).ready(function($) {
             jQuery('html, body').animate({scrollTop: 0}, duration);
             return false;
         });
-    }  
-    $(".img-overlay-block").each(function () {
-        if ($(this).is(":visible") && isInViewport($(this))) {
-            $(this).addClass("is-animated");
-            $(this).find("span").each(function (index) {
-                $(this).css("transition-delay", index * 0.05 + "s"); // Adjust delay as needed
-            });
-        }
-    });
+    } 
+    if ($(".img-overlay-block").length > 0) {
+        animateVisibleElements();
+    }
 });
 
-$(window).on("scroll", function () {
-    $(".img-overlay-block").each(function () {
-        if ($(this).is(":visible") && isInViewport($(this))) {
-            $(this).addClass("is-animated");
-            $(this).find("span").each(function (index) {
-                $(this).css("transition-delay", index * 0.05 + "s"); // Adjust delay as needed
-            });
-        }
+if($('.animtext').length > 0) {
+    const animtextLine = Splitting({ 
+        target: $(".animtext.line-up"),
+        by: 'lines'
     });
+
+    animtextLine.forEach((splitResult) => {
+        let lineIndex = 0;
+    
+        const wrappedLines = splitResult.lines.map((wordsArr, i) =>`<div class="line" style="--line-index: ${i};">${wordsArr.map((word) => `${word.outerHTML}<span class="whitespace"></span>`).join('')}</div>`).join('');
+        splitResult.el.innerHTML = wrappedLines;
+    });
+    var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutationRecord) {
+            console.log('style changed!');
+        });    
+    });
+    var targets = document.getElementsByClassName('word');
+        Array.from(targets).forEach((el) => {
+        observer.observe(el, { attributes : true, attributeFilter : ['style'] });
+    });
+}
+
+$(window).on("scroll", function () {
+    if ($(".img-overlay-block").length > 0) {
+        animateVisibleElements();
+    }
 });
 
 // Helper function to check if element is in viewport
@@ -182,16 +195,17 @@ function isInViewport($el) {
     var viewportBottom = viewportTop + $(window).height();
     return elementBottom > viewportTop && elementTop < viewportBottom;
 }
-
-/* WOW Animation - Init */
-     
-try {
-    AOS.init();
-} catch (e) {
-    //
-};
-
-
+// Image Overlay Animation
+function animateVisibleElements() {
+    $(".img-overlay-block").each(function () {
+        if ($(this).is(":visible") && isInViewport($(this))) {
+            $(this).addClass("is-animated");
+            $(this).find("span").each(function (index) {
+                $(this).css("transition-delay", index * 0.05 + "s"); // Adjust delay as needed
+            });
+        }
+    });
+}
 
 // Counter
 if ($('.counter').length) {
