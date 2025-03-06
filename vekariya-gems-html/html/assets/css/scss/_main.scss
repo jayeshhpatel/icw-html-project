@@ -775,7 +775,9 @@
       display: block;
       overflow: hidden;
       line-height: inherit;
-      margin-top: -10px;
+      & + .line {
+        margin-top: -15px;
+      }
     }
     &.line-up {
         .word {
@@ -2190,7 +2192,7 @@
     background: $white;
     border: 1px solid #E5E5E5;
     @include border-radius(20px);
-    padding: 50px;
+    padding: 40px;
     @media (max-width: 1200px) {
         padding: 30px;
     }
@@ -2236,6 +2238,13 @@
             }
             ul {
                 li {
+                    @include flexbox;
+                    @include align-items(flex-start);
+                    margin-bottom: 10px;
+                    .icon {
+                        margin-right: 10px;
+                        margin-top: 3px;
+                    }
                     a {
                         color: $darkblack;
                         font-size: 16px;
@@ -2268,16 +2277,38 @@
                             @include align-items(center);
                             @include justify-content(center);
                             @include transition(0.3s, ease-in-out);
+                            position: relative;
+                            overflow: hidden;
+                            &::before {
+                                content: '';
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 5px;
+                                height: 100%;
+                                background: $primary;
+                                @include transform(translate(-100%, 0));
+                                @include border-radius(0);
+                                transform-origin: top;
+                                @include transition(0.3s, cubic-bezier(.4,0,.2,1));
+                                z-index: -1;
+                            }    
                             svg {
                                 width: 18px;
                                 height: 18px;
-                                @include transition(0.3s, ease-in-out);
+                                path {
+                                    @include transition(0.3s, ease-in-out);
+                                }
                             }
                             &:hover, &:focus {
                                 border-color: $primary;
-                                background: $primary;
                                 svg {
-                                    filter: invert(1)
+                                    path {
+                                        fill: $primary;
+                                    }
+                                }
+                                &::before {
+                                    @include transform(translate(0, 0));
                                 }
                             }
                         }
