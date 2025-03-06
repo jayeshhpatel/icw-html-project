@@ -627,26 +627,28 @@
                 
                 tl.to({}, { duration: 0.5 });
             }
-            if ($('.scroll-content-block').length) {
-                $(document).on("click", ".info-list-card .card-title", function () {
-                    var $this = $(this).closest(".info-list-card");
-                    
-                    if ($this.hasClass("active")) {
-                        $this.removeClass("active");
-                        $this.find(".card-info").stop(true, true).slideUp(300); // Slide up with a smooth animation (300ms)
-                    } else {
-                        $(".info-list-card").removeClass("active");
-                        $(".info-list-card").find(".card-info").stop(true, true).slideUp(300); // Slide up other items smoothly
-                        $this.addClass("active");
-                        $this.find(".card-info").stop(true, true).slideDown(300); // Slide down with a smooth animation (300ms)
+            if ($(window).width() < 767) {
+                if ($('.scroll-content-block').length) {
+                    $(document).on("click", ".info-list-card .card-title", function () {
+                        var $this = $(this).closest(".info-list-card");
                         
-                        // var collapsetop = $this.find(".collapse-title");
-                        // $('html, body').animate({
-                        //     scrollTop: collapsetop.offset().top - 115
-                        // }, 300); // Smooth scroll to the item
-                    }
-                    return false;
-                });
+                        if ($this.hasClass("active")) {
+                            $this.removeClass("active");
+                            $this.find(".card-info").stop(true, true).slideUp(300); // Slide up with a smooth animation (300ms)
+                        } else {
+                            $(".info-list-card").removeClass("active");
+                            $(".info-list-card").find(".card-info").stop(true, true).slideUp(300); // Slide up other items smoothly
+                            $this.addClass("active");
+                            $this.find(".card-info").stop(true, true).slideDown(300); // Slide down with a smooth animation (300ms)
+                            
+                            // var collapsetop = $this.find(".collapse-title");
+                            // $('html, body').animate({
+                            //     scrollTop: collapsetop.offset().top - 115
+                            // }, 300); // Smooth scroll to the item
+                        }
+                        return false;
+                    });
+                }    
             }
         </script>
           
