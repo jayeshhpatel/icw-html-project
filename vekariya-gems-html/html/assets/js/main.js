@@ -96,6 +96,12 @@ jQuery(document).ready(function($) {
                 });    
                 setTimeout(function () {
                     $loader.css("display", "none");
+                    if ($(".img-overlay-block").length > 0) {
+                        animateVisibleElements();
+                    }
+                    if ($(".animtext").length > 0) {
+                        checkAnimations();
+                    }
                 }, 500);
             }, 3000);
         });
@@ -154,57 +160,96 @@ jQuery(document).ready(function($) {
             return false;
         });
     } 
-    if ($(".img-overlay-block").length > 0) {
+    if ($(".img-overlay-block").length > 0 && !$(".loader-content").length > 0 ) {
         setTimeout(() => {
             animateVisibleElements();
         }, 100);
     }
+    if ($(".animtext").length > 0 && !$(".loader-content").length > 0) {
+        checkAnimations();
+    }
 });
 
-if($('.animtext').length > 0) {
-    
-    const animtextLine = Splitting({ 
-        target: $(".animtext.line-up,.animtext.line-left,.animtext.word-up,.animtext.word-left"),
-        by: 'lines'
-    });
-    const animtextChar = Splitting({ 
-        target: $(".animtext.char-up, .animtext.char-left"),
-        by: 'chars'
-    });
-    animtextLine.forEach((splitResult) => {
-        let lineIndex = 0;
-    
-        const wrappedLines = splitResult.lines.map((wordsArr, i) =>`<div class="line" style="--line-index: ${i};">${wordsArr.map((word) => `${word.outerHTML}<span class="whitespace"></span>`).join('')}</div>`).join('');
-        splitResult.el.innerHTML = wrappedLines;
-    });
-    var observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutationRecord) {
-            console.log('style changed!');
-        });    
-    });
-    var targets = document.getElementsByClassName('word');
-        Array.from(targets).forEach((el) => {
-        observer.observe(el, { attributes : true, attributeFilter : ['style'] });
-    });
-}
+
 
 $(window).on("scroll", function () {
     if ($(".img-overlay-block").length > 0) {
         animateVisibleElements();
     }
+    if ($(".animtext").length > 0) {
+        checkAnimations();
+    }
 });
 
 // Helper function to check if element is in viewport
 function isInViewport($el) {
+    // var elementTop = $el.offset().top;
+    // var elementHeight = $el.outerHeight();
+    // var elementThreshold = elementTop + (elementHeight * 0.6); // 30% of the element
+
+    // var viewportTop = $(window).scrollTop();
+    // var viewportBottom = viewportTop + $(window).height();
+
+    // return elementThreshold < viewportBottom && elementTop < viewportBottom;
+
     var elementTop = $el.offset().top;
-    var elementHeight = $el.outerHeight();
-    var elementThreshold = elementTop + (elementHeight * 0.6); // 30% of the element
+    var elementBottom = elementTop + $el.outerHeight();
 
     var viewportTop = $(window).scrollTop();
     var viewportBottom = viewportTop + $(window).height();
 
-    return elementThreshold < viewportBottom && elementTop < viewportBottom;
+    // Ensure the element is within viewport (not just partially visible)
+    return elementBottom > viewportTop && elementTop < viewportBottom;
 }
+
+// Text Animation
+if ($(".animtext").length > 0) {
+    // Splitting text into lines and characters
+    const animtextLine = Splitting({
+        target: $(".animtext.line-up,.animtext.line-left,.animtext.word-up,.animtext.word-left"),
+        by: "lines"
+    });
+    const animtextChar = Splitting({
+        target: $(".animtext.char-up, .animtext.char-left"),
+        by: "chars"
+    });
+
+    // Wrap split words into lines with spacing
+    animtextLine.forEach((splitResult) => {
+        const wrappedLines = splitResult.lines.map((wordsArr, i) =>
+            `<div class="line" style="--line-index: ${i};">${wordsArr.map((word) => `${word.outerHTML}<span class="whitespace"></span>`).join("")}</div>`
+        ).join("");
+        splitResult.el.innerHTML = wrappedLines;
+    });   
+
+    // Function to trigger animations when elements appear in viewport
+    function checkAnimations() {
+        $(".animtext").each(function () {
+            var $this = $(this);
+            if (isInViewport($this)) {                
+                $this.addClass("animated");
+                
+            } else {
+                $this.removeClass("animated");
+            }
+        });
+    }
+
+    // Observe changes in styles of word elements
+    var observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutationRecord) {
+            console.log("Style changed!", mutationRecord);
+        });
+    });
+
+    var targets = document.getElementsByClassName("word");
+    Array.from(targets).forEach((el) => {
+        observer.observe(el, { attributes: true, attributeFilter: ["style"] });
+    });  
+   
+}
+
+
 // Image Overlay Animation
 function animateVisibleElements() {
     $(".img-overlay-block").each(function () {
