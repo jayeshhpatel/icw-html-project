@@ -1492,6 +1492,8 @@
 
 // History Card
 .history-card {
+    padding-bottom: 50px;
+    position: relative;
     &::after {
         content: '';
         display: block;
@@ -1499,7 +1501,10 @@
         height: 23px;
         background-color: $secondary;
         @include border-radius(50%);
-        margin-top: 25px
+        margin-top: 25px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
     }
     @media (max-width: 992px) {
         max-width:300px
@@ -2017,7 +2022,7 @@
       -webkit-transform: none;
       transform: none;
     }
-  }
+}
 
 // img-text-box-list-section
 .img-text-box-list-section {
@@ -2043,6 +2048,8 @@
         padding: 50px;
         height: 100%;
         margin-bottom: 0;
+        @include flexbox;
+        @include flex-direction(column);
         @media (max-width: 992px) {
             padding: 30px;
         }	
@@ -2059,6 +2066,7 @@
 		}
         .sort-info {
             margin-bottom: 0;
+            flex: 1 1 auto;
         }
         .action {
             margin-top: 30px;
@@ -2323,9 +2331,7 @@
                         text-decoration: none;
                         @include flexbox;
                         width: max-content;
-                        &:not(:first-child) {
-                            margin-top: 5px;
-                        }
+                        margin-bottom: 5px;
                         &.sm-link {
                             font-size: 12px;
                             font-weight: 500;
@@ -2582,11 +2588,6 @@
         }
     }
 }
-
-
-
-
-
 
 // About Us
 .counter-content-block {

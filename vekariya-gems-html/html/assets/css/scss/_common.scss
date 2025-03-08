@@ -310,7 +310,7 @@ img {
             background: $primary;
         }
         &:hover, &:focus {           
-            background-color: transparent;
+            background-color: $white;
             color: $primary !important;
         }
 	}
@@ -323,7 +323,7 @@ img {
         }
         &:hover, &:focus {
             color: $secondary !important;
-            background-color: transparent;
+            background-color: $white;
         }
 	}
 	&.btn-white {
@@ -335,7 +335,7 @@ img {
         }
         &:hover, &:focus {
             color: $white !important;
-            background-color: transparent;
+            background-color: $secondary;
         }
 	}
 	&.btn-dark {
@@ -347,7 +347,7 @@ img {
         }
         &:hover, &:focus {
            color: $darkblack !important;
-           background-color: transparent;
+           background-color: $white;
         }
 	}
 	&.btn-outline-dark {
@@ -358,7 +358,7 @@ img {
             background: $darkblack;
         }
         &:hover, &:focus {
-           background: transparent;
+           background: $white;
         }
 	}
 	&.btn-outline-primary {
@@ -368,7 +368,7 @@ img {
             background: $primary;
         }
         &:hover, &:focus {
-           background: transparent;
+           background: $white;
         }
 	}
 	&.btn-outline-secondary {
@@ -379,7 +379,7 @@ img {
             background: $secondary;
         }
         &:hover, &:focus {
-           background: transparent;
+           background: $white;
         }
 	}
 }
@@ -487,6 +487,87 @@ img {
         background: $black;
         .arrow-icon {
            filter: invert(1);
+        }
+    }
+}
+
+.btn-link-arrow {
+    display: block;
+    @include border-radius(0);
+    position: relative;
+    box-shadow: none;
+    text-decoration: none;
+    @include inline-flex;
+    @include justify-content(stretch);
+    @include align-items(center);
+    @include flex-wrap(nowrap);
+    position: relative;
+    text-align: center;
+    padding: 0 20px 3px 0;
+    text-decoration: none;
+    border: none;
+    background-color: transparent;
+    background-image: linear-gradient(0deg, $primary 0%, $primary 100%);
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 1px;
+    transition: all 0.3s, background-size 0.2s linear 0.15s;
+    color: $primary;
+    font-size: 16px;
+    font-weight: 500;
+    svg {
+        line-height: 1;
+        width: 25px;
+        height: 30px;
+        margin-top: -1px;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        @include transform(translateY(-50%));
+        fill: none;
+        stroke: $secondary;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1px;
+        stroke-dasharray: 7.95 30;
+        stroke-dashoffset: var(--stroke-dashoffset, 46);
+        transition: stroke-dashoffset var(--stroke-duration, 0.15s) var(--stroke-easing, linear) var(--stroke-delay, 0s);
+    }
+    &::after {
+        content: '';
+        position: relative;
+        display: inline-block;
+        background: url('data:image/svg+xml,<svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.1875 1.6875L11.8125 12.3125M11.8125 12.3125V4.34375M11.8125 12.3125H3.84375" stroke="rgb(57 49 133)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center right;
+        @include transition(0.3s, ease-in-out);
+        background-size: 12px !important;
+        width: 25px;
+        height: 12px;
+        position: absolute;
+        top: 50%;
+        @include transform(translateY(-50%));
+        right: 0;
+        transition: opacity 0.3s .15s;
+    }
+    &.text-white {
+        color: $white;
+        background-image: linear-gradient(0deg, $white 0%, $white 100%);
+        svg {
+            stroke: $white;
+        }
+        &::after {
+            background: url('data:image/svg+xml,<svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.1875 1.6875L11.8125 12.3125M11.8125 12.3125V4.34375M11.8125 12.3125H3.84375" stroke="rgb(255 255 255)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center right;
+        }
+    }
+    &:hover, &:focus {
+        background-size: 0% 1px;
+        transition-delay: 0s;
+        --stroke-dashoffset: 26;
+        --stroke-duration: .3s;
+        --stroke-easing: cubic-bezier(0.3, 1.5, 0.5, 1);
+        --stroke-delay: .195s;
+        &::after {
+            opacity: 0;
+            transition-delay: 0s;
         }
     }
 }

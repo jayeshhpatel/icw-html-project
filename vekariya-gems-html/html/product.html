@@ -164,7 +164,6 @@
                         </div>
                     </div>
                 </div>
-                </div>
             </section>
             <section class="main-section full-width-section bg-blue-glow is-br-blue pt-0">
                 <div class="container">
@@ -216,7 +215,7 @@
                                             </div>
                                         </div>
                                         <div class="action">
-                                            <a href="#" class="btn btn-outline-dark">Contact Us</a>
+                                            <a href="http://vekariyagems.local/contact-us/" class=" btn-link-arrow" target="_self">Contact Us<svg viewBox="0 0 13 20"><polyline points="0.5 19.5 3 19.5 12.5 10 3 0.5"></polyline></svg></a>
                                         </div>
                                     </div>
                                 </div>
@@ -265,7 +264,7 @@
                                             </div>
                                         </div>
                                         <div class="action">
-                                            <a href="#" class="btn btn-outline-dark">Contact Us</a>
+                                            <a href="http://vekariyagems.local/contact-us/" class=" btn-link-arrow" target="_self">Contact Us<svg viewBox="0 0 13 20"><polyline points="0.5 19.5 3 19.5 12.5 10 3 0.5"></polyline></svg></a>
                                         </div>
                                     </div>
                                 </div>
@@ -314,7 +313,7 @@
                                             </div>
                                         </div>
                                         <div class="action">
-                                            <a href="#" class="btn btn-outline-dark">Contact Us</a>
+                                            <a href="http://vekariyagems.local/contact-us/" class=" btn-link-arrow" target="_self">Contact Us<svg viewBox="0 0 13 20"><polyline points="0.5 19.5 3 19.5 12.5 10 3 0.5"></polyline></svg></a>
                                         </div>
                                     </div>
                                 </div>
@@ -363,7 +362,7 @@
                                             </div>
                                         </div>
                                         <div class="action">
-                                            <a href="#" class="btn btn-outline-dark">Contact Us</a>
+                                            <a href="http://vekariyagems.local/contact-us/" class=" btn-link-arrow" target="_self">Contact Us<svg viewBox="0 0 13 20"><polyline points="0.5 19.5 3 19.5 12.5 10 3 0.5"></polyline></svg></a>
                                         </div>
                                     </div>
                                 </div>
@@ -548,8 +547,8 @@
                 const images = gsap.utils.toArray(".image-content-block img");
                 const contentElements = gsap.utils.toArray(".content-wrapper .scroll-content");
                 let dotsContainer = document.querySelector(".dots");
-                let navDots = [];
-                
+                let navDots = [];             
+
                 contentElements.forEach((content, i) => {
                     let newDot = document.createElement("div");
                     newDot.className = "dot";
@@ -567,7 +566,7 @@
                     scrollTrigger: {
                         trigger: ".scroll-container",
                         start: startValue, 
-                        end: "+=300%",
+                        end: "+=800%",
                         pin: true,
                         scrub: true,
                         markers: false,
@@ -594,32 +593,18 @@
                         }
                     }
                 });
-                $(".image-block").each(function () {
-                    gsap.from($(this), {
-                        opacity: 0,
-                        scale: 1.1,
-                        duration: 1.5,
-                        ease: "power2.out",
-                        scrollTrigger: {
-                            trigger: $(this),
-                            start: "top 80%",
-                            end: "bottom 60%",
-                            scrub: true,
-                        },
-                    });
-                });
                 images.forEach((img, i) => {
                     if (images[i + 1]) {
                         tl.to(img, { 
                             y: "-100%",  
-                            ease: "none",
+                            ease: "power2.inOut", // Smooth easing for transitions
                             duration: 1
                         });
                         
                         tl.fromTo(
                             images[i + 1],
                             { y: "100%" },  
-                            { y: "0%", ease: "none", duration: 1 },
+                            { y: "0%", ease: "power2.inOut", duration: 1 },
                             "<"
                         );
                     }
