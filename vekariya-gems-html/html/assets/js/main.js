@@ -76,29 +76,30 @@ jQuery(document).ready(function($) {
             return false;
         });
     }
-
-    // $(window).on("load", function () {
-    //     var $counterText = $(".loader-content .counter .number");
-    //     var counter = 0;
-    //     var i = setInterval(function () {
-    //         if (counter <= 100) {
-    //             $counterText.html(counter + "%");                
-    //             counter++;
-    //         } else {
-    //             clearInterval(i); 
-    //         }
-    //     }, 25); 
-    //     $("body").addClass('overflow-hidden');
-    //     setTimeout(function () {
-    //         var $loader = $(".loader");            
-    //         $loader.slideUp('300', function(){
-    //             $("body").removeClass('overflow-hidden');
-    //         });    
-    //         setTimeout(function () {
-    //             $loader.css("display", "none");
-    //         }, 500);
-    //     }, 3000);
-    // });
+    if ($(".loader-content").length > 0) {
+        $(window).on("load", function () {
+            var $counterText = $(".loader-content .counter .number");
+            var counter = 0;
+            var i = setInterval(function () {
+                if (counter <= 100) {
+                    $counterText.html(counter + "%");                
+                    counter++;
+                } else {
+                    clearInterval(i); 
+                }
+            }, 25); 
+            $("body").addClass('overflow-hidden');
+            setTimeout(function () {
+                var $loader = $(".loader");            
+                $loader.slideUp('300', function(){
+                    $("body").removeClass('overflow-hidden');
+                });    
+                setTimeout(function () {
+                    $loader.css("display", "none");
+                }, 500);
+            }, 3000);
+        });
+    }
 
     if ($(".img-overlay-block").length > 0) {
         for (let i = 0; i < 5; i++) {
@@ -161,11 +162,15 @@ jQuery(document).ready(function($) {
 });
 
 if($('.animtext').length > 0) {
+    
     const animtextLine = Splitting({ 
-        target: $(".animtext.line-up"),
+        target: $(".animtext.line-up,.animtext.line-left,.animtext.word-up,.animtext.word-left"),
         by: 'lines'
     });
-
+    const animtextChar = Splitting({ 
+        target: $(".animtext.char-up, .animtext.char-left"),
+        by: 'chars'
+    });
     animtextLine.forEach((splitResult) => {
         let lineIndex = 0;
     
