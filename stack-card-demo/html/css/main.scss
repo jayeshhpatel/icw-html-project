@@ -1,0 +1,21 @@
+html,
+body {
+  heigth: 100%;
+}
+
+@mixin translateY {
+  @for $i from 0 through 15 {
+    &:nth-child(#{$i}) {
+      transform: translateY(#{$i * 16}px);
+    }
+  }
+}
+
+.card {
+  position: sticky;
+  top: 5em;
+  transform-origin: center top;
+  margin: 0.5em;
+  height: 300px;
+  @include translateY;
+}
