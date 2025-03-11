@@ -229,9 +229,10 @@ if ($(".animtext").length > 0) {
             if (isInViewport($this)) {                
                 $this.addClass("animated");
                 
-            } else {
-                $this.removeClass("animated");
-            }
+            } 
+            // else {
+            //     $this.removeClass("animated");
+            // }
         });
     }
 
