@@ -304,61 +304,61 @@
         <script type="text/javascript" src="assets/js/main.js"></script>
         <script>
           (function () {
-    class StackCards {
-        constructor(element) {
-            this.element = element;
-            this.cards = Array.from(this.element.getElementsByClassName("stack-card"));
-            this.addPaginationClickEvent();
-            window.addEventListener("scroll", () => this.applyScaleAnimation());
-        }
+                class StackCards {
+                    constructor(element) {
+                        this.element = element;
+                        this.cards = Array.from(this.element.getElementsByClassName("stack-card"));
+                        this.addPaginationClickEvent();
+                        window.addEventListener("scroll", () => this.applyScaleAnimation());
+                    }
 
-        addPaginationClickEvent() {
-            const paginationDots = this.element.querySelectorAll(".pagination-dot");
-            paginationDots.forEach(dot => {
-                dot.addEventListener("click", (event) => {
-                    event.stopPropagation();
-                    const targetCardNumber = dot.getAttribute("data-stack-dot");
-                    this.scrollToCard(targetCardNumber);
-                });
-            });
-        }
+                    addPaginationClickEvent() {
+                        const paginationDots = this.element.querySelectorAll(".pagination-dot");
+                        paginationDots.forEach(dot => {
+                            dot.addEventListener("click", (event) => {
+                                event.stopPropagation();
+                                const targetCardNumber = dot.getAttribute("data-stack-dot");
+                                this.scrollToCard(targetCardNumber);
+                            });
+                        });
+                    }
 
-        scrollToCard(cardNumber) {
-            const targetCard = this.cards.find(card => card.getAttribute("data-stack-card") === cardNumber);
-            if (targetCard) {
-                targetCard.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
+                    scrollToCard(cardNumber) {
+                        const targetCard = this.cards.find(card => card.getAttribute("data-stack-card") === cardNumber);
+                        if (targetCard) {
+                            targetCard.scrollIntoView({
+                                behavior: "smooth",
+                                block: "center"
+                            });
 
-                setTimeout(() => this.applyScaleAnimation(), 500); // Wait for scroll to settle
-            }
-        }
+                            setTimeout(() => this.applyScaleAnimation(), 500); // Wait for scroll to settle
+                        }
+                    }
 
 
-        applyScaleAnimation() {
-            const top = this.element.getBoundingClientRect().top;
-            const offsetTop = 150;
-            const cardHeight = 300;
-            const marginY = 15;
+                    applyScaleAnimation() {
+                        const top = this.element.getBoundingClientRect().top;
+                        const offsetTop = 150;
+                        const cardHeight = 300;
+                        const marginY = 15;
 
-            this.cards.forEach((card, i, array) => {
-                const scrolling = offsetTop - top - i * (cardHeight + marginY);
-                let scaleValue = (cardHeight - Math.max(scrolling * 0.03, 0)) / cardHeight;
+                        this.cards.forEach((card, i, array) => {
+                            const scrolling = offsetTop - top - i * (cardHeight + marginY);
+                            let scaleValue = (cardHeight - Math.max(scrolling * 0.03, 0)) / cardHeight;
 
-                if (i === array.length - 1) {
-                    scaleValue = Math.max(scaleValue, 1);
+                            if (i === array.length - 1) {
+                                scaleValue = Math.max(scaleValue, 1);
+                            }
+
+                            card.style.transform = `translateY(${marginY * i}px) scale(${scaleValue})`;
+                        });
+                    }
                 }
 
-                card.style.transform = `translateY(${marginY * i}px) scale(${scaleValue})`;
-            });
-        }
-    }
-
-    if (document.querySelector(".stack-card-block")) {
-        new StackCards(document.querySelector(".stack-card-block"));
-    }
-})();
+                if (document.querySelector(".stack-card-block")) {
+                    new StackCards(document.querySelector(".stack-card-block"));
+                }
+            })();
 
  
         </script>
