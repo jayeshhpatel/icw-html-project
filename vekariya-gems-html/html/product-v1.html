@@ -101,7 +101,7 @@
                         <div class="sort-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras vehicula, risus eget viverra tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
                     </div> 
                     <div class="stack-card-block">
-                        <div class="stack-card" style="transform: translateY(0px);">
+                        <div class="stack-card" data-stack-card="1" style="transform: translateY(0px);" >
                             <div class="card-body">
                                 <div class="tag-line">Product</div>
                                 <h2>Product 1</h2>
@@ -118,13 +118,13 @@
                                 <img src="uploads/img-csr.jpg" class="CSR">
                             </div>
                             <div class="stack-card-pagination">
-                                <span class="pagination-dot is-active"></span>
-                                <span class="pagination-dot"></span>
-                                <span class="pagination-dot"></span>
-                                <span class="pagination-dot"></span>
+                                <span class="pagination-dot is-active" data-stack-dot="1"></span>
+                                <span class="pagination-dot" data-stack-dot="2"></span>
+                                <span class="pagination-dot" data-stack-dot="3"></span>
+                                <span class="pagination-dot" data-stack-dot="4"></span>
                             </div>
                         </div>
-                        <div class="stack-card">
+                        <div class="stack-card" data-stack-card="2">
                             <div class="card-body">
                                 <div class="tag-line">Product</div>
                                 <h2>Product 2</h2>
@@ -141,13 +141,15 @@
                                 <img src="uploads/img-csr.jpg" class="CSR">
                             </div>
                             <div class="stack-card-pagination">
-                                <span class="pagination-dot"></span>
-                                <span class="pagination-dot is-active"></span>
-                                <span class="pagination-dot"></span>
-                                <span class="pagination-dot"></span>
+                                <div class="stack-card-pagination">
+                                    <span class="pagination-dot" data-stack-dot="1"></span>
+                                    <span class="pagination-dot is-active" data-stack-dot="2"></span>
+                                    <span class="pagination-dot" data-stack-dot="3"></span>
+                                    <span class="pagination-dot" data-stack-dot="4"></span>
+                                </div>
                             </div>
                         </div>
-                        <div class="stack-card">
+                        <div class="stack-card" data-stack-card="3">
                             <div class="card-body">
                                 <div class="tag-line">Product</div>
                                 <h2>Product 3</h2>
@@ -164,13 +166,15 @@
                                 <img src="uploads/img-csr.jpg" class="CSR">
                             </div>                            
                             <div class="stack-card-pagination">
-                                <span class="pagination-dot"></span>
-                                <span class="pagination-dot"></span>
-                                <span class="pagination-dot is-active"></span>
-                                <span class="pagination-dot"></span>
+                                <div class="stack-card-pagination">
+                                    <span class="pagination-dot" data-stack-dot="1"></span>
+                                    <span class="pagination-dot" data-stack-dot="2"></span>
+                                    <span class="pagination-dot is-active" data-stack-dot="3"></span>
+                                    <span class="pagination-dot" data-stack-dot="4"></span>
+                                </div>
                             </div>
                         </div>
-                        <div class="stack-card">
+                        <div class="stack-card" data-stack-card="4">
                             <div class="card-body">
                                 <div class="tag-line">Product</div>
                                 <h2>Product 4</h2>
@@ -187,10 +191,12 @@
                                 <img src="uploads/img-csr.jpg" class="CSR">
                             </div>                           
                             <div class="stack-card-pagination">
-                                <span class="pagination-dot"></span>
-                                <span class="pagination-dot"></span>
-                                <span class="pagination-dot"></span>
-                                <span class="pagination-dot is-active"></span>
+                                <div class="stack-card-pagination">
+                                    <span class="pagination-dot" data-stack-dot="1"></span>
+                                    <span class="pagination-dot" data-stack-dot="2"></span>
+                                    <span class="pagination-dot" data-stack-dot="3"></span>
+                                    <span class="pagination-dot is-active" data-stack-dot="4"></span>
+                                </div>
                             </div>
                         </div>                        
                     </div>                  
@@ -297,58 +303,63 @@
         <script type="text/javascript" src="assets/js/glightbox.min.js"></script>
         <script type="text/javascript" src="assets/js/main.js"></script>
         <script>
-            (function () {
-                class StackCards {
-                    constructor(element) {
-                        this.element = element;
-                        this.items = this.element.getElementsByClassName("stack-card");
-                        this.scrolling = false;
-                        this.scrollingListener = null;
-                        this.observer = new IntersectionObserver(this.stackCardsCallback.bind(this));
-                        this.observer.observe(this.element);
-                    }
+          (function () {
+    class StackCards {
+        constructor(element) {
+            this.element = element;
+            this.cards = Array.from(this.element.getElementsByClassName("stack-card"));
+            this.addPaginationClickEvent();
+            window.addEventListener("scroll", () => this.applyScaleAnimation());
+        }
 
-                    stackCardsCallback(entries) {
-                        if (entries[0].isIntersecting) {
-                            if (!this.scrollingListener) {
-                                this.scrollingListener = this.stackCardsScrolling.bind(this);
-                                window.addEventListener("scroll", this.scrollingListener);
-                            }
-                        } else {
-                            if (this.scrollingListener) {
-                                window.removeEventListener("scroll", this.scrollingListener);
-                                this.scrollingListener = null;
-                            }
-                        }
-                    }
+        addPaginationClickEvent() {
+            const paginationDots = this.element.querySelectorAll(".pagination-dot");
+            paginationDots.forEach(dot => {
+                dot.addEventListener("click", (event) => {
+                    event.stopPropagation();
+                    const targetCardNumber = dot.getAttribute("data-stack-dot");
+                    this.scrollToCard(targetCardNumber);
+                });
+            });
+        }
 
-                    stackCardsScrolling() {
-                        if (!this.scrolling) {
-                            this.scrolling = true;
-                            requestAnimationFrame(() => this.animateStackCards());
-                        }
-                    }
+        scrollToCard(cardNumber) {
+            const targetCard = this.cards.find(card => card.getAttribute("data-stack-card") === cardNumber);
+            if (targetCard) {
+                targetCard.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
 
-                    animateStackCards() {
-                    const top = this.element.getBoundingClientRect().top;
-                    const offsetTop = 150;
-                    const cardHeight = 300;
-                    const marginY = 15;
+                setTimeout(() => this.applyScaleAnimation(), 500); // Wait for scroll to settle
+            }
+        }
 
-                        Array.from(this.items).forEach((card, i) => {
-                            const scrolling = offsetTop - top - i * (cardHeight + marginY);
-                            if (scrolling > 0) {
-                                card.style.transform = `translateY(${marginY * i}px) scale(${(cardHeight - scrolling * 0.04) / cardHeight})`;
-                            }                            
-                        });
-                        this.scrolling = false;
-                    }
+
+        applyScaleAnimation() {
+            const top = this.element.getBoundingClientRect().top;
+            const offsetTop = 150;
+            const cardHeight = 300;
+            const marginY = 15;
+
+            this.cards.forEach((card, i, array) => {
+                const scrolling = offsetTop - top - i * (cardHeight + marginY);
+                let scaleValue = (cardHeight - Math.max(scrolling * 0.03, 0)) / cardHeight;
+
+                if (i === array.length - 1) {
+                    scaleValue = Math.max(scaleValue, 1);
                 }
 
-                if ("IntersectionObserver" in window && document.getElementsByClassName("stack-card-block").length > 0) {
-                    Array.from(document.getElementsByClassName("stack-card-block")).forEach(deck => new StackCards(deck));
-                }
-            })();
+                card.style.transform = `translateY(${marginY * i}px) scale(${scaleValue})`;
+            });
+        }
+    }
+
+    if (document.querySelector(".stack-card-block")) {
+        new StackCards(document.querySelector(".stack-card-block"));
+    }
+})();
+
  
         </script>
     </body>
