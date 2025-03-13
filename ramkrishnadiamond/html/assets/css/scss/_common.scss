@@ -731,15 +731,28 @@ h5, .h5 {
 
 // Header CSS
 .main-header {
-    background: transparent;
     position: fixed;
     top: 0;
     z-index: 99;
     width: 100%;
-    max-width: 100vw;
+    max-width: 100vw;  
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: $primary;        
+        transition: height 0.3s ease-in-out;
+        z-index: -1;
+    }
     &.fixed-header {
-        background: $primary;
         backdrop-filter: blur(100px);
+        &::after {
+            height: 100%; 
+        }
+        
     }
     .navbar {
         padding: 20px 0;
