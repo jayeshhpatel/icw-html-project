@@ -8,7 +8,6 @@ jQuery(document).ready(function($) {
 
     $('.navbar-toggler').on('click', function (e) {
         $('.navbar-toggler,body,.main-header').toggleClass('is-visible');
-        $('.menu-sidebar').toggleClass('show');
         e.preventDefault();
     });
     if ($('.main-header').length) {
