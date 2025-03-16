@@ -81,20 +81,31 @@ jQuery(document).ready(function($) {
                     $playIcon.show();
                 }
             });
+            
+            $video.click(function () {
+                if (!$video.get(0).paused) {
+                    $video.get(0).pause();
+                    $playIcon.show();
+                }
+            });
+
+            $video.on('ended', function () {
+                $playIcon.show();
+            });
         });
     }
     
 
     // Step Progress Section
-    if ($('.progress-section').length) {
+    if ($('.process-content-wrapper').length) {
         $(window).on('scroll', function() {
             updateProgressBars();
         });
     }
     
     // Step Progress Section
-    if ($('.progress-section').length) {
-        $('.progress-section').on('scroll', updateProgressBars);
+    if ($('.process-content-section').length) {
+        $('.process-content-section').on('scroll', updateProgressBars);
     }
 
     if ($(".icw-progress-goto").length > 0) {
@@ -126,12 +137,12 @@ jQuery(document).ready(function($) {
             } else {
                 jQuery('.icw-progress-goto').removeClass('active-progress');
             }
-            if ($('.progress-section').length) {
-                let targetDiv = $('.progress-content-block'); // Replace with your target div class
+            if ($('.process-content-section').length) {
+                let targetDiv = $('.process-content-wrapper'); // Replace with your target div class
                 let offsetTop = targetDiv.offset().top;
                 let scrollPosition = $(window).scrollTop();
 
-                if (scrollPosition >= offsetTop - 50) {
+                if (scrollPosition >= offsetTop - 150) {
                     targetDiv.addClass('is-icon-sticky');
                 } else {
                     targetDiv.removeClass('is-icon-sticky');
@@ -158,47 +169,30 @@ jQuery(document).ready(function($) {
     }
 });
 
-/* WOW Animation - Init */
-try {
-    new WOW().init();
-} catch (e) {
-    //
-};
-
-
 // Step Progress Section
-if ($('.progress-section').length) {
-    updateProgressBars();
-}
 function updateProgressBars() {
     var scrollPosition = $(window).scrollTop();
-    // Loop through each section and check if it's in the viewport
-    $('.progress-content-step').each(function (index) {
-        var sectionTop = $(this).offset().top - $(window).height() / 1.2; // Mid-point trigger
-        var sectionHeight = $(this).outerHeight();
-        var sectionBottom = sectionTop + sectionHeight;
-        var progressBarId = $(this).attr('id'); // Target progress bar by ID
-        
-        // var sectionAnimateContentTop = $(this).offset().top - $(window).height() / 1;
-        // var sectionAnimateContentBottom = sectionAnimateContentTop + sectionHeight;
-        
-        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-            // Animate progress bar height to 100%
-            $('.image-block').find('.progress-content-img:not(.image-static)').removeClass('is-active');
+    var windowHeight = $(window).height();
+    var totalCards = $('.process-card').length;
+    var activeCount = 0;
 
-            $('[data-progress-id="' + progressBarId + '"]').css('height', '100%');
-            $('.image-block').find('[data-id="' + progressBarId + '"]').addClass('is-active');
-        // } else if (scrollPosition >= sectionAnimateContentTop && scrollPosition < sectionAnimateContentBottom) {
-            $('.progress-content-wrapper').find('.progress-content-step').removeClass('is-active');
-            $('.progress-content-wrapper').find('[id="' + progressBarId + '"]').addClass('is-active');
-        } else if (scrollPosition <= sectionTop) {
-            // Reset progress bar height when section is not in view
-            $('[data-progress-id="' + progressBarId + '"]').css('height', '0');
-            
-        } 
+    $('.process-card').each(function (index) {
+        var cardTop = $(this).offset().top - windowHeight * 0.4; // 40% from top trigger
+        var cardHeight = $(this).outerHeight();
+        var cardBottom = cardTop + cardHeight;
+
+        if (scrollPosition >= cardTop) {
+            $(this).addClass('active');
+        } else {
+            $(this).removeClass('active'); // Remove when scrolling up
+        }
     });
-    
+
+    activeCount = $('.process-card.active').length;
+    var progressHeight = (activeCount / totalCards) * 100;
+    $('.progress-bar').css('height', progressHeight + '%');
 }
+
 
 // Splide Slider
 if ($('.splide:not(.splide-js)').length) {

@@ -335,7 +335,7 @@ img {
 		stroke-dashoffset: var(--stroke-dashoffset, 46);
 		transition: stroke-dashoffset var(--stroke-duration, 0.15s) var(--stroke-easing, linear) var(--stroke-delay, 0s);
     }        
-	&::after {
+	&::before {
 		content: '';
 		position: relative;
 		display: inline-block;
@@ -356,7 +356,7 @@ img {
 		svg {			
 			stroke: $white;
 		}
-		&::after {
+		&::before {
 			background: url('data:image/svg+xml,<svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.1875 1.6875L11.8125 12.3125M11.8125 12.3125V4.34375M11.8125 12.3125H3.84375" stroke="rgb(255 255 255)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center right;
 		}
 	}
@@ -368,7 +368,7 @@ img {
         --stroke-easing: cubic-bezier(0.3, 1.5, 0.5, 1);
         --stroke-delay: .195s;
         color: $primary;
-    	&::after {
+    	&::before {
     		opacity: 0;
             transition-delay: 0s;
     	}
@@ -655,6 +655,32 @@ h5, .h5 {
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
+}
+
+.bg-multi-circle-vector {
+    position: relative;
+    z-index: 1;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(../images/img-bg-multi-circle-bg.svg);
+        background-repeat: no-repeat;
+        background-position: center;        
+        background-size: auto;
+        z-index: -1;
+        @media (max-width: 767px) {
+            background-image: url(../images/img-bg-multi-circle-mobile-bg.svg);       
+            background-size: 100% 100%;
+        }
+    }
+    &.is-bottom {
+        &::before {
+            background-position: top;   
+        }
+    }
 }
 
 // Social Icon List
@@ -962,7 +988,7 @@ h5, .h5 {
             background: $primary url(../images/img-menu-sidebar-bg.svg) no-repeat right bottom;
             backdrop-filter: blur(12px);
             @include box-shadow(0px 4px 20px rgba(0, 0, 0, 0.04));
-            transform: translateX(100%);
+            transform: translateX(200%);
             transition: all 0.3s cubic-bezier(.8, 0, .33, 1) !important;
             border-radius: 0% 0% 0% 70%;
             @media (max-width: 992px) {
