@@ -61,57 +61,36 @@
     &.section-title-mw-400 {
         .section-title {
             max-width: 400px;
-            &.text-center {
-                margin: auto;
-            }
         }
     }
     &.section-title-mw-500 {
         .section-title {
             max-width: 520px;
-            &.text-center {
-                margin: auto;
-            }
         }
     }
     &.section-title-mw-560 {
         .section-title {
             max-width: 560px;
-            &.text-center {
-                margin: auto;
-            }
         }
     }
     &.section-title-mw-600 {
         .section-title {
             max-width: 600px;
-            &.text-center {
-                margin: auto;
-            }
         }
     }
     &.section-title-mw-700 {
         .section-title {
             max-width: 700px;
-            &.text-center {
-                margin: auto;
-            }
         }
     }
     &.section-title-mw-800 {
         .section-title {
             max-width: 800px;
-            &.text-center {
-                margin: auto;
-            }
         }
     }
     &.section-title-mw-90 {
         .section-title {
             max-width: 90%;
-            &.text-center {
-                margin: auto;
-            }
         }
     }
 
@@ -139,10 +118,11 @@
 	}
 }
 
+// Section Title CSS
 .section-title {
     margin-bottom: 50px;
     &.text-center {
-        margin: 0 auto 50px;
+        margin: 0 auto 50px !important;
     }
     &.sticky-title {
         position: sticky;
@@ -191,6 +171,53 @@
 
     .action {
         margin-top: 30px;
+    }
+}
+
+// User Info CSS
+.user-info {
+    @include flexbox;
+    @include align-items(center);
+    .user-img {
+        @include border-radius(50%);
+        margin-right: 25px;
+        @media (max-width: 992px) {
+            margin-right: 15px;
+        }
+        img {
+            @include border-radius(50%);
+            width: 80px;
+            height: 80px;
+            flex: none;
+            @media (max-width: 992px) {
+                width: 50px;
+                height: 50px;
+            }
+            @media (max-width: 767px) {
+                width: 32px;
+                height: 32px;
+            }
+        }
+    }
+    .user-detail {
+        .name {
+            font-size: 24px;
+            color: $black;
+            font-weight: 500;
+            @media (max-width: 992px) {
+                font-size: 20px;
+            }
+            @media (max-width: 767px) {
+                font-size: 16px;
+            }
+        }
+        span {
+            font-size: 16px;
+            color: $black;
+            @media (max-width: 992px) {
+                font-size: 14px;
+            }
+        }
     }
 }
 

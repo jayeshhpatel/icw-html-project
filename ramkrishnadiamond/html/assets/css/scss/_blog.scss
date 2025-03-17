@@ -1,0 +1,135 @@
+// Post Meta Info
+.blog-meta-info {
+    @include flexbox;
+    @include align-items(center);
+    @include flex-wrap(wrap);
+    gap: 15px;
+    margin-bottom: 15px;
+    @media (max-width:767px) {
+        margin-bottom: 10px;
+    } 
+    .blog-meta-badge {
+        color: $black;
+        font-size: 12px;
+        font-weight: 600;
+        background: transparent;
+        border: 1px solid transparent;
+        text-transform: uppercase;
+        padding: 0;
+        @include border-radius(0);
+        @include inline-flex;
+        width: max-content;
+        text-decoration: none;
+        letter-spacing: 1.2px;        
+        @media (max-width:767px) {
+            font-size: 14px;
+        } 
+        
+    }
+    a.blog-meta-badge {
+        z-index: 3; 
+        position: relative;   
+        @include transition(0.3s, ease-in-out);  
+        &:hover, &:focus {
+            color: $secondary;
+        }
+    }
+}
+
+// Post Card CSS
+.post-card {
+    position: relative;
+    @include flexbox;
+    @include flex-direction(column);
+    text-align: left;
+    .card-img {
+        @include border-radius(0);
+        margin-bottom: 25px;
+        position: relative;
+        overflow: hidden;
+        img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            max-height: 300px;
+            @include border-radius(0);
+            @include transition(0.3s, ease-in-out);
+        }
+    }
+    .card-body {
+        flex: 1 1 auto;
+        margin-bottom: 20px;
+        .blog-meta-info {
+            @include flexbox;
+            @include align-items(center);
+            @include justify-content(space-between);
+            margin-bottom: 15px;
+            .post-date {
+                color: #9E9E9E;
+                font-size: 12px;
+                font-weight: 500;
+                padding-left: 20px;
+            }
+        }
+        .post-title, h3 {
+            font-size: 20px;
+            font-weight: 400;
+            font-family: $bodyfont;
+            margin: 0;
+            a {
+                color: $black;
+                text-decoration: none;
+                line-height: normal;
+                transition: all 0.3s,background-size 0.8s;
+                background-image: linear-gradient(to right, $primary 0%, $primary 100%);
+                background-position: 0 100%;
+                background-repeat: no-repeat;
+                background-size: 0 1px;
+            }
+        }
+    }
+    .card-footer {
+        border-top: 1px solid $gray;
+        padding-top: 20px;
+        .written-by {
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            color: #9E9E9E;
+            margin-bottom: 8px;
+        }
+        .user-info {
+            .user-img {
+                margin-right: 12px;
+                img {
+                    width: 32px;
+                    height: 32px;
+                }
+            }
+            .user-detail {
+                .name {
+                    font-size: 12px;
+                }
+                span {
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+    &:hover, &:focus {
+        .card-img {
+            img {
+                @include transform(scale(1.05));
+            }
+        }
+        .card-body {
+            h3 {
+                a {
+                    color: $primary;
+                    text-decoration-color: $primary !important;
+                    background-size: 100% 1px;
+                }
+            }
+        }
+    }
+}
