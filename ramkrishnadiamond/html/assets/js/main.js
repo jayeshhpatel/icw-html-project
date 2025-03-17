@@ -64,38 +64,9 @@ jQuery(document).ready(function($) {
             }
             return false;
         });
-    }
-
-    if ($('.is-play-icon').length){
-        $('.media-block').each(function() {
-            var $videoBlock = $(this);
-            var $video = $videoBlock.find('video');
-            var $playIcon = $videoBlock.find('.is-play-icon');
+    }  
+       
     
-            $playIcon.click(function() {
-                if ($video.get(0).paused) {
-                    $video.get(0).play();
-                    $playIcon.hide();
-                } else {
-                    $video.get(0).pause();
-                    $playIcon.show();
-                }
-            });
-            
-            $video.click(function () {
-                if (!$video.get(0).paused) {
-                    $video.get(0).pause();
-                    $playIcon.show();
-                }
-            });
-
-            $video.on('ended', function () {
-                $playIcon.show();
-            });
-        });
-    }
-    
-
     // Step Progress Section
     if ($('.process-content-wrapper').length) {
         $(window).on('scroll', function() {
@@ -170,6 +141,8 @@ jQuery(document).ready(function($) {
             }
         }
     });
+
+    Splitting();
 });
 
 // Step Progress Section
@@ -244,6 +217,66 @@ if ($('.counter').length) {
     });
     
 }
+
+// Video Player
+const playIcons = document.querySelectorAll(".is-play-icon");
+
+if (playIcons.length) {
+    document.querySelectorAll(".media-block").forEach((videoBlock) => {
+        const video = videoBlock.querySelector("video");
+        const playIcon = videoBlock.querySelector(".is-play-icon");
+
+        if (!video || !playIcon) return;
+
+        // Play/Pause when clicking the play icon
+        playIcon.addEventListener("click", function () {
+            if (video.paused) {
+                video.play();
+                playIcon.style.display = "none";
+            } else {
+                video.pause();
+                playIcon.style.display = "flex";
+            }
+        });
+
+        // Pause when clicking on the video itself
+        video.addEventListener("click", function () {
+            if (!video.paused) {
+                video.pause();
+                playIcon.style.display = "flex";
+            }
+        });
+
+        // Show play icon when video ends
+        video.addEventListener("ended", function () {
+            playIcon.style.display = "flex";
+        });
+    });
+}
+
+// Play Video on Observer
+document.addEventListener("DOMContentLoaded", function () {
+    const videos = document.querySelectorAll(".media-block.is-video video");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            const video = entry.target;
+            const playIcon = video.closest(".media-block").querySelector(".play-icon.is-play-icon");
+
+            if (entry.intersectionRatio >= 0.5) {
+                video.play();
+                if (playIcon) playIcon.style.display = "none"; // Hide play icon
+            } else {
+                video.pause();
+                if (playIcon) playIcon.style.display = "flex"; // Show play icon
+            }
+        });
+    }, { threshold: [0.5] });
+
+    videos.forEach((video) => observer.observe(video));
+});
+
+
 
 
 const tabsSectionImage = document.querySelectorAll('.tabs-section .image-block img');

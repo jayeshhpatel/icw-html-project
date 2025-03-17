@@ -196,6 +196,10 @@ img {
 .g-50 {
     --bs-gutter-y: 100px;
     --bs-gutter-x: 100px;
+    @media (max-width: 1400px) {
+        --bs-gutter-y: 50px;
+        --bs-gutter-x: 50px;  
+    }
     @media (max-width: 767px) {
         --bs-gutter-y: 1.5rem;
         --bs-gutter-x: 1.5rem;  
@@ -244,7 +248,8 @@ img {
     }
 	&.btn-primary {
 		color: $white !important;
-		background-color: $primary;
+        border-color: $primary !important;
+		background-color: $primary !important;
         box-shadow: 5px 5px 0px rgba($primary, 0.3);
         &:hover, &:focus {
             box-shadow: 3px 3px 0px rgba($primary, 0.3);
@@ -252,7 +257,8 @@ img {
 	}
 	&.btn-white {
 		color: $black !important;
-		background-color: $white;
+        border-color: $white !important;
+		background-color: $white !important;
         box-shadow: 5px 5px 0px rgba($white, 0.4);
         &:hover, &:focus {
             box-shadow: 3px 3px 0px rgba($white, 0.4);
@@ -260,7 +266,8 @@ img {
 	}
 	&.btn-dark {
 		color: $white !important;
-		background-color: $black;
+        border-color: $black !important;
+		background-color: $black !important;
         box-shadow: 5px 5px 0px rgba($black, 0.3);
         &:hover, &:focus {
             box-shadow: 3px 3px 0px rgba($black, 0.4);
@@ -507,8 +514,13 @@ img {
 	@include border-radius(0);
 	position: relative;
 	overflow: hidden;
-    @media (max-width: 992px) {
-        margin-bottom: 50px;
+  
+    img {
+        &.mw-50 {
+            @media (max-width: 992px) {
+                max-width: 50%;
+            } 
+        }
     }
 	&.is-video {
         .play-icon {
@@ -731,7 +743,7 @@ h5, .h5 {
             height: 20px;   
             flex: none;
             @include inline-flex;
-            @include transition(0.1s, ease-in-out);
+            @include transition(0.2s, ease-in-out);
             background-image: none;
             &::before {
                 content: none !important;
@@ -739,9 +751,16 @@ h5, .h5 {
             svg {
                 width: 16px;
                 height: 16px; 
+                path {
+                    @include transition(0.2s, ease-in-out);
+                }
             }
             &:hover, &:focus {
-                @include opacity(0.7);
+                svg {
+                    path {
+                        fill: $secondary
+                    }
+                }
             }
         }
     }
@@ -788,6 +807,10 @@ h5, .h5 {
 }
 
 // Header CSS
+@keyframes menu_toggle_btn {
+    from { transform: scale(1) rotate(0deg); }
+    to { transform: scale(1.08) rotate(180deg); }
+}
 .main-header {
     position: fixed;
     top: 0;
@@ -860,7 +883,7 @@ h5, .h5 {
                             @include inline-flex;
                             @include justify-content(flex-end);
                             @include align-items(flex-start);
-                            background-color: $white;
+                            background-color: $secondary;
                             width: 100%;
                             height: 1.5px;
                             margin-left: -110%;
@@ -872,6 +895,7 @@ h5, .h5 {
                     }
                     &.current-menu-item, &:hover, &:focus {
                         a {
+                            color: $secondary;
                             &::before {            
                                 @include transform(translate3d(150%, 0px, 0px));
                                 transform-style: preserve-3d;
@@ -898,6 +922,7 @@ h5, .h5 {
                             & > a {
                                 @media (min-width: 992px) {
                                     &::after {
+                                        background: url('data:image/svg+xml,<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 1L5 4.5L1.5 1" stroke="rgb(7 162 199)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
                                         @include transform(rotate(180deg));
                                     }
                                 }
@@ -916,12 +941,13 @@ h5, .h5 {
                                 position: absolute;
                                 top: -10px;
                                 display: block;
-                                min-width: 200px;
-                                padding: 10px;
+                                min-width: 180px;
+                                padding: 0;
                                 margin-top: 15px;
                                 opacity: 0;
                                 pointer-events: none;
                                 background: $white;
+                                @include box-shadow(4px 5px 0px rgba(255, 255, 255, 0.3));
                                 @include transition(0.3s, ease-in-out);
                                 @include transform(rotateX(-20deg) translate3d(0, 37px, 0));
                                 transform-origin: 50% 0;
@@ -944,16 +970,24 @@ h5, .h5 {
                                 display: none;
                                 padding-top: 5px;
                             }
-                            li {
+                            li {                                
+                                &:not(:last-child) {
+                                    a {
+                                        border-bottom: 1px solid #F9F9F9;
+                                    }
+                                }
                                 a {
-                                    color: $primary;
+                                    color: $black;
                                     font-size: 14px;
-                                    padding: 8px 15px;
+                                    font-weight: 500;
+                                    padding: 15px;
+                                    width: 100%;
+                                    display: block;
                                     &::before {
                                         content: none;
                                     }
                                     &:hover, &:focus {
-                                        background-color: rgba($primary, 0.1);
+                                        background-color: #F6F6F6;
                                     }
                                 }
                             }
@@ -975,35 +1009,39 @@ h5, .h5 {
         }
         .navbar-toggler {
             display: inline-block;
-			height: 40px;
-			width: 40px;
+			height: 50px;
+			width: 50px;
             flex: none;  
 			padding: 6px 0px; 
 			background-color: $white; 
 			border: none; 
 			@include border-radius(50%);
 			z-index: 1050;
-			cursor: pointer;			
+			cursor: pointer;	
+            @include transition(0.3s, ease-in-out);		
 			span {
-				width: 20px; 
+				width: 22px; 
 				height: 2px; 
-				margin: 5px auto; 
+				margin: 4px auto; 
 				background-color: $black; 
 				@include border-radius(2px); 
 				display: block; 				
 				position: relative; 
 				@include transition(0.2s, ease-in-out);
 			}
+            &:hover {
+                animation: menu_toggle_btn 0.3s ease-in-out alternate;
+            }
 			&.is-visible {
 				span {
 					&:nth-child(1) {
-						@include transform(rotate(135deg)); width: 20px; top: 7px;
+						@include transform(rotate(135deg)); width: 22px; top: 6px;
 					}
 					&:nth-child(2) {
-						@include opacity(0); left: 0px; width: 20px;
+						@include opacity(0); left: 0px; width: 22px;
 					}
 					&:nth-child(3) {
-						@include transform(rotate(-135deg)); width: 20px; top: -7px;
+						@include transform(rotate(-135deg)); width: 22px; top: -6px;
 					}
 				}				
 			}
@@ -1013,37 +1051,27 @@ h5, .h5 {
             top: 0;
             right: 0;
             width: 100%;
-            height: 100vh;
             max-width: 970px;
-            padding: 110px 100px 40px 60px;
-            overflow: hidden;
-            background: $primary url(../images/img-menu-sidebar-bg.svg) no-repeat right bottom;
+            height: 100vh;                          
+            padding: 110px 100px 40px 60px;  
+            background: $primary url(../images/img-menu-sidebar-bg.svg) no-repeat right bottom;          
             backdrop-filter: blur(12px);
-            @include box-shadow(0px 4px 20px rgba(0, 0, 0, 0.04));
-            transform: translateX(200%);
-            transition: all 0.3s cubic-bezier(.8, 0, .33, 1) !important;
-            border-radius: 0% 0% 0% 70%;
+            @include box-shadow(0px 4px 20px rgba(0, 0, 0, 0.04));  
+            transform: translateX(100%);   
+            @include transition(0.3s,  cubic-bezier(.47, 0, .74, .71)); 
             @media (max-width: 992px) {
                 max-width: 100%;
                 padding: 90px 0 20px;
             }
-            &.show {
-                transform: translateX(0px);
-                border-radius: 0% 0% 0% 0%;
-                .sidebar-content {
-                    opacity: 1;
-                    transform: translateX(0px);
-                }
+            &.show {                
+                transform: translateX(0%);                
             }
             .sidebar-content {
-                transform: translateX(300px);
-                transition-delay: 1s;
-                opacity: 0;
-                transition: all 0.3s cubic-bezier(.9, 0, .33, 1);
                 @include flexbox;
                 @include flex-direction(column);
                 height: 100%;
-                padding: 0 15px;
+                overflow: hidden;
+                padding: 0 15px;   
                 @media (max-width: 992px) {
                     max-width: 720px;
                     margin: 0 auto;
@@ -1068,43 +1096,63 @@ h5, .h5 {
                 }
                 ul {
                     li {
+                        @include transition(0.3s, ease); 
+                        position: relative;    
                         &:not(:last-child) {
                             margin-bottom: 15px;
                         }
                         a {
-                            color: $white;
-                            font-size: 40px;
+                            font-size: 42px;
                             font-weight: 300;
-                            font-family: $font-merriweather;
-                            line-height: normal;
                             text-decoration: none;
-                            position: relative;
-                            overflow: hidden;
-                            padding-bottom: 2px;
-                            @include inline-flex;
-                            @include align-items(center);
-                            @media (max-width: 1200px) {
-                                font-size: 32px;
-                            }
-                            @media (max-width: 992px) {
+                            color: $white;
+                            display: grid;
+                            @media (max-width: 767px) {
                                 font-size: 28px;
                             }
-                            &::before {
-                                content: '';
-                                position: absolute;
-                                bottom: 1px;
-                                left: 0;
-                                @include inline-flex;
-                                @include justify-content(flex-end);
-                                @include align-items(flex-start);
-                                background-color: $white;
-                                width: 100%;
-                                height: 1.5px;
-                                margin-left: -110%;
-                                @include transition(0.3s, ease-in-out);
-                                @include transform(translate3d(0%, 0px, 0px));
-                                transform-style: preserve-3d;
-                                will-change: transform;
+                            .animate-text {
+                                grid-area: 1/1;
+                                transition: opacity 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95), transform 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+                                &:nth-child(1) {
+                                    font-family: $font-merriweather;
+                                    font-weight: 500;
+                                }
+                                &:nth-child(2) {
+                                    font-family: $bodyfont;
+                                    font-weight: 500;
+                                    opacity: 0;
+                                    .char {
+                                        transform: rotate3d(1, -0.5, 0, 90deg);
+                                    }
+                                }
+                                .word {
+                                    white-space: nowrap;
+                                }
+                                .char {
+                                    display: inline-block;
+                                    transform-origin: 50% 50% 0.4em;
+                                    transition: transform 0.5s cubic-bezier(0.5, 0, 0, 1);
+                                    transition-delay: calc(0ms + var(--char-index) * 25ms);
+                                    backface-visibility: hidden;
+                                    margin: 0 -0.02em;
+                                }
+                            }
+                            &:hover, &:focus {
+                                .animate-text {
+                                    transform: translateX(var(--link-translate-x));
+                                    &:nth-child(1) {
+                                        opacity: 0;
+                                        .char {
+                                            transform: rotate3d(1, 0.3, 0, -90deg);
+                                        }
+                                    }
+                                    &:nth-child(2) {
+                                        opacity: 1;
+                                        .char {
+                                            transform: rotate3d(0, 0, 0, 90deg);
+                                        }
+                                    }
+                                }
                             }
                         }
                         &.menu-item-has-children {                                                    
@@ -1114,33 +1162,64 @@ h5, .h5 {
                                 display: inline-block;
                                 width: 30px;
                                 height: 30px;
-                                float: right;
-                                margin-left: auto;
-                                margin-top: 3px;    
+                                position: absolute;
+                                top: 17px;
+                                right: 0;
+                                cursor: pointer;   
                                 @include transition(0.3s, ease-in-out);
-                                &.is-active {       
+                                @media (max-width: 767px) {
+                                    top: 10px;
+                                }
+                                &:hover {
+                                    background: url('data:image/svg+xml,<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 1L5 4.5L1.5 1" stroke="rgb(7 162 199)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
+                                }
+                                &.is-active {   
+                                    background: url('data:image/svg+xml,<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 1L5 4.5L1.5 1" stroke="rgb(7 162 199)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
                                     @include transform(rotate(180deg));
                                 }
                             }
                             .sub-menu {                                
                                 display: none;
                                 min-width: 100%;
-                                padding: 5px;
                                 margin-top: 10px;
                                 margin-bottom: 30px;
-                                background: rgba($white, 0.1);
+                                background: $white;
+                                @include box-shadow(4px 5px 0px rgba(255, 255, 255, 0.3));
                                 li {
                                     margin-bottom: 0;
+                                    &:not(:last-child) {
+                                        border-bottom: 1px solid #F9F9F9;
+                                    }
                                     a {
-                                        color: $white;
+                                        color: $black;
                                         font-size: 14px;
-                                        padding: 8px 15px;
+                                        font-weight: 500;
+                                        padding: 15px;
                                         width: 100%;
                                         &::before {
                                             content: none;
                                         }
                                         &:hover, &:focus {
-                                            background-color: rgba($primary, 0.5);
+                                            background-color: #F6F6F6;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        &.current-menu-item {
+                            a {
+                                .animate-text {
+                                    transform: translateX(var(--link-translate-x));
+                                    &:nth-child(1) {
+                                        opacity: 0;
+                                        .char {
+                                            transform: rotate3d(1, 0.3, 0, -90deg);
+                                        }
+                                    }
+                                    &:nth-child(2) {
+                                        opacity: 1;
+                                        .char {
+                                            transform: rotate3d(0, 0, 0, 90deg);
                                         }
                                     }
                                 }
@@ -1201,6 +1280,7 @@ h5, .h5 {
     background-repeat: no-repeat;
     background-position: bottom right;
     background-size: cover;
+    z-index: 2;
     @media (max-width: 767px) {
         background-image: url(../images/img-mobile-footer-bg.jpg);
     }
@@ -1210,6 +1290,7 @@ h5, .h5 {
         .site-vertical-logo {
             @include flexbox;
             @include align-items(center);
+            position: absolute;
             @media (max-width: 992px) {
                 display: none;
             }
@@ -1243,7 +1324,7 @@ h5, .h5 {
                 @include inline-flex;
                 @include justify-content(flex-end);
                 @include align-items(flex-start);
-                background-color: $white;
+                background-color: $secondary;
                 width: 100%;
                 height: 1.5px;
                 margin-left: -110%;
@@ -1253,6 +1334,7 @@ h5, .h5 {
                 will-change: transform;
             }
             &:hover, &:focus {
+                color: $secondary;
                 &::before {            
                     @include transform(translate3d(150%, 0px, 0px));
                     transform-style: preserve-3d;
@@ -1303,6 +1385,7 @@ h5, .h5 {
                     }
                     &.current-menu-item {
                         a {
+                            color: $secondary;
                             &::before {            
                                 @include transform(translate3d(150%, 0px, 0px));
                                 transform-style: preserve-3d;

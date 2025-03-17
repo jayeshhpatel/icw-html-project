@@ -121,8 +121,14 @@
 // Section Title CSS
 .section-title {
     margin-bottom: 50px;
+    @media (max-width: 767px) { 
+        margin-bottom: 30px;
+    }
     &.text-center {
         margin: 0 auto 50px !important;
+        @media (max-width: 767px) { 
+            margin: 0 auto 30px !important;
+        }
     }
     &.sticky-title {
         position: sticky;
@@ -277,13 +283,6 @@
         .title {
             color: $white;
         }
-        .logo-item {
-            opacity: 0.5;
-            @include transition(0.3s, ease-in-out);
-            &:hover {
-                opacity: 1;
-            }
-        }
     }
 }
 
@@ -364,6 +363,13 @@
                     }
                 }
             }
+        }        
+        a.logo-item {
+            opacity: 0.5;
+            @include transition(0.3s, ease-in-out);
+            &:hover {
+                opacity: 1;
+            }
         }
     }
 }
@@ -383,14 +389,23 @@
     }
     .section-title {
         max-width: 1000px;
-        margin: 1px auto 0;
+        margin: 1px auto 0 !important;
         @media (max-width: 992px) {
-            margin: 2px auto 0;
+            margin: 2px auto 0 !important;
         }       
         h2 {
             font-size: 45px;
             @media (max-width: 992px) {
                 font-size: 55px;
+            }
+        }
+    }
+    .logo-block + .section-title {
+        &.text-center {
+            @media (max-width: 767px) {
+                .sort-info, .action {
+                    text-align: left;
+                }
             }
         }
     }
@@ -401,6 +416,7 @@
 	position: relative;
 	height: 100%;
     border: none;
+    overflow: hidden;
 	@include border-radius(0);
 	@include flexbox;
 	@include flex-direction(column);
@@ -434,6 +450,26 @@
 		}
         .card-action {
             margin-top: 15px;
+            opacity: 0;
+            visibility: hidden;
+            @include transform(translateY(30px)); 
+            @include transition(0.3s, ease-in-out);           
+            a {            
+                &:hover, &:focus, &:active {
+                    .btn-link-arrow {
+                        background-size: 0% 1px;
+                        transition-delay: 0s;
+                        --stroke-dashoffset: 26;
+                        --stroke-duration: .3s;
+                        --stroke-easing: cubic-bezier(0.3, 1.5, 0.5, 1);
+                        --stroke-delay: .195s;
+                        &::before {
+                            opacity: 0;
+                            transition-delay: 0s;
+                        }
+                    }
+                }
+            }
         }
     }
     .card-footer{
@@ -505,17 +541,10 @@
             .card-title {
                 color: $primary;
             }
-            .btn-link-arrow {
-                background-size: 0% 1px;
-                transition-delay: 0s;
-                --stroke-dashoffset: 26;
-                --stroke-duration: .3s;
-                --stroke-easing: cubic-bezier(0.3, 1.5, 0.5, 1);
-                --stroke-delay: .195s;
-                &::before {
-                    opacity: 0;
-                    transition-delay: 0s;
-                }
+            .card-action {
+                opacity: 1;
+                visibility: visible;
+                @include transform(translateY(0px));
             }
 		}
 	}
@@ -741,6 +770,9 @@
     background-repeat: no-repeat;
     color: $white;
     @include transition(0.3s, ease-in-out);
+    @media (max-width: 767px) {
+        padding: 20px;
+    }
     &.bg-blue-gradient {
         background-image: url(../images/img-process-card-bg.png), linear-gradient(102.56deg, #24B6DB -2.44%, #007B9A 95.63%);
     }
@@ -759,20 +791,33 @@
     }
     .card-action {
         margin-top: 25px;
-    }
-    &:hover, &:focus {
-        @include box-shadow(0 10px 20px rgba(0,0,0,0.2));
-        .btn-link-arrow {
-            background-size: 0% 1px;
-            transition-delay: 0s;
-            --stroke-dashoffset: 26;
-            --stroke-duration: .3s;
-            --stroke-easing: cubic-bezier(0.3, 1.5, 0.5, 1);
-            --stroke-delay: .195s;
-            &::before {
-                opacity: 0;
-                transition-delay: 0s;
+        opacity: 0;
+        visibility: hidden;
+        @include transform(translateY(30px)); 
+        @include transition(0.3s, ease-in-out);           
+        a {            
+            &:hover, &:focus, &:active {
+                .btn-link-arrow {
+                    background-size: 0% 1px;
+                    transition-delay: 0s;
+                    --stroke-dashoffset: 26;
+                    --stroke-duration: .3s;
+                    --stroke-easing: cubic-bezier(0.3, 1.5, 0.5, 1);
+                    --stroke-delay: .195s;
+                    &::before {
+                        opacity: 0;
+                        transition-delay: 0s;
+                    }
+                }
             }
+        }
+    }
+    &:hover, &:focus, &.active {
+        @include box-shadow(0 10px 20px rgba(0,0,0,0.2));
+        .card-action { 
+            opacity: 1;
+            visibility: visible;
+            @include transform(translateY(0px));
         }
     }
 }
@@ -784,7 +829,7 @@
         padding: 50px;
     }
     @media (max-width: 767px) {
-        padding: 50px 20px;
+        padding: 50px 15px;
         margin: 0 -15px;
     }
     &.bg-white {

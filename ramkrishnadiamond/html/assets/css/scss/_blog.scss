@@ -1,3 +1,24 @@
+.blog-post-slider-section {
+    .post-content {
+        @media (max-width: 1400px) {
+            .row {
+                @include flex-wrap(nowrap);
+                overflow: hidden;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory; 
+                scroll-padding: 10px;
+                padding-bottom: 15px;
+                & > .col {
+                    max-width: 300px;
+                    scroll-snap-align: center;
+                    flex: 0 0 auto; 
+                    min-width: 300px;
+                }
+            }
+        }
+    }
+}
+
 // Post Meta Info
 .blog-meta-info {
     @include flexbox;
@@ -49,8 +70,7 @@
         overflow: hidden;
         img {
             width: 100%;
-            aspect-ratio: 4 / 3;
-            max-height: 300px;
+            object-fit: cover;
             @include border-radius(0);
             @include transition(0.3s, ease-in-out);
         }
