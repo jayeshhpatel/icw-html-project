@@ -220,7 +220,6 @@ if ($('.counter').length) {
 
 // Video Player
 const playIcons = document.querySelectorAll(".is-play-icon");
-
 if (playIcons.length) {
     document.querySelectorAll(".media-block").forEach((videoBlock) => {
         const video = videoBlock.querySelector("video");
@@ -274,6 +273,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }, { threshold: [0.5] });
 
     videos.forEach((video) => observer.observe(video));
+});
+
+const imageBlocks = document.querySelectorAll(".image-block");
+
+window.addEventListener("scroll", function () {
+    let scrollY = window.scrollY;
+
+    imageBlocks.forEach((block, index) => {
+        let direction = index % 2 === 0 ? 1 : -1; // Alternate left and right
+        let moveAmount = scrollY * 0.2 * direction; // Adjust speed by changing multiplier
+        block.style.transform = `translateX(${moveAmount}px)`;
+    });
 });
 
 
