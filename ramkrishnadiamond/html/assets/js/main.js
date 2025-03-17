@@ -137,17 +137,6 @@ jQuery(document).ready(function($) {
             } else {
                 jQuery('.icw-progress-goto').removeClass('active-progress');
             }
-            if ($('.process-content-section').length) {
-                let targetDiv = $('.process-content-wrapper'); // Replace with your target div class
-                let offsetTop = targetDiv.offset().top;
-                let scrollPosition = $(window).scrollTop();
-
-                if (scrollPosition >= offsetTop - 150) {
-                    targetDiv.addClass('is-icon-sticky');
-                } else {
-                    targetDiv.removeClass('is-icon-sticky');
-                }
-            }
         });
     
         jQuery('.icw-progress-goto').on('click', function(event) {
@@ -167,6 +156,20 @@ jQuery(document).ready(function($) {
             $logoBlock.toggleClass('is-animate', windowBottom >= logoBlockTop);
         });
     }
+
+    jQuery(window).on('scroll', function() {
+        if ($('.process-content-section').length) {
+            let targetDiv = $('.process-content-wrapper'); // Replace with your target div class
+            let offsetTop = targetDiv.offset().top;
+            let scrollPosition = $(window).scrollTop();
+
+            if (scrollPosition >= offsetTop - 50) {
+                targetDiv.addClass('is-icon-sticky');
+            } else {
+                targetDiv.removeClass('is-icon-sticky');
+            }
+        }
+    });
 });
 
 // Step Progress Section

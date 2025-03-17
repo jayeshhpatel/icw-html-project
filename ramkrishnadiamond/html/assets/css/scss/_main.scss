@@ -1,5 +1,6 @@
 .main-content-wrapper {
     background-color: $white;
+    z-index: 1;
 }
 
 // Main Section CSS
@@ -181,14 +182,15 @@
         }
     }
     .sort-info {
-        margin-bottom: 30px;  
+        // margin-bottom: 30px;  
         .icon-list {
             margin-top: 30px;
+            max-width: 550px;
         }
     }
 
     .action {
-        margin-top: 25px;
+        margin-top: 30px;
     }
 }
 
@@ -637,6 +639,7 @@
         left: 0;
         display: inline-block;
         z-index: 1;
+        @include transition(0.3s, ease-in-out);
         @media (max-width: 767px) {
             width: 40px;
             height: 40px;
@@ -679,7 +682,7 @@
     }
     .process-content-block { 
         padding-left: 100px;
-        @media (max-width: 992px) {
+        @media (max-width: 767px) {
             padding-left: 55px;
         }  
     }
@@ -750,6 +753,13 @@
 // content-with-background-block
 .content-with-background-block {
     padding: 80px;
+    @media (max-width: 992px) {
+        padding: 50px;
+    }
+    @media (max-width: 767px) {
+        padding: 50px 20px;
+        margin: 0 -15px;
+    }
     &.bg-white {
         background-color: rgba(255, 255, 255, 0.6) !important;
         backdrop-filter: blur(7px);

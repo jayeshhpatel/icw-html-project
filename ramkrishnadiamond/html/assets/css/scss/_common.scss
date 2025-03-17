@@ -193,6 +193,14 @@ img {
         --bs-gutter-x: 1.5rem;  
     }
 }
+.g-50 {
+    --bs-gutter-y: 100px;
+    --bs-gutter-x: 100px;
+    @media (max-width: 767px) {
+        --bs-gutter-y: 1.5rem;
+        --bs-gutter-x: 1.5rem;  
+    }
+}
 
 // Border Radius CSS
 .b-radius {
@@ -499,6 +507,9 @@ img {
 	@include border-radius(0);
 	position: relative;
 	overflow: hidden;
+    @media (max-width: 992px) {
+        margin-bottom: 50px;
+    }
 	&.is-video {
         .play-icon {
             position: absolute;
@@ -549,6 +560,11 @@ img {
             &.ratio-4x3 {
                 --bs-aspect-ratio: 67%;
             }
+        }
+    }
+    &.text-end {
+        @media (max-width: 992px) {
+            text-align: center !important;
         }
     }
 }
@@ -680,6 +696,22 @@ h5, .h5 {
         &::before {
             background-position: top;   
         }
+    }
+}
+
+.fix-multi-circle-vector {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../images/img-bg-multi-circle-bg.svg);
+    background-repeat: no-repeat;
+    background-position: bottom center;        
+    background-size: auto;
+    z-index: -1;
+    @media (max-width: 767px) {
+        background-image: url(../images/img-bg-multi-circle-mobile-bg.svg);       
+        background-size: 100% 100%;
     }
 }
 
@@ -1451,6 +1483,9 @@ h5, .h5 {
         font-weight: 400;
         margin-bottom: 10px;
         color: $black;
+        &:last-child {
+            margin-bottom: 0;
+        }
         @media (max-width:992px) {
             font-size: 16px;
         }
@@ -1463,7 +1498,6 @@ h5, .h5 {
             flex: none;
             display: inline-block;
             margin-right: 10px;
-            margin-top: 4px;
             @media (max-width:992px) {
                 width: 18px;
                 height: 18px;
