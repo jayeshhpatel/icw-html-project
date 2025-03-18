@@ -125,9 +125,9 @@
         margin-bottom: 40px;
     }
     &.text-center {
-        margin: 0 auto 50px !important;
+        margin: 0 auto 50px;
         @media (max-width: 767px) { 
-            margin: 0 auto 40px !important;
+            margin: 0 auto 40px;
         }
     }
     &.sticky-title {
@@ -179,6 +179,9 @@
         margin-top: 30px;
         @media (max-width: 767px) { 
             margin-top: 20px;
+            .btn {
+                width: 100%;
+            }
         }
     }
 }
@@ -277,15 +280,38 @@
         }
         .action {            
             margin-top: 40px;
+            @media (max-width: 767px) {
+                margin-top: 30px;
+                .btn {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .media-block {
+        text-align: right;
+        @media (max-width: 767px) {
+            text-align: left;
+            img {
+                max-width: 80%;
+            }
         }
     }
     .trusted-logo-block { 
+        margin-top: 50px;
         @media (min-width: 992px) {
             max-width: 560px;
         }
-        margin-top: 50px;
         .title {
             color: $white;
+        }
+        @media (max-width: 992px) {
+            .logo-item {
+                img {
+                    max-height: 30px;
+                    width: auto;
+                }
+            }
         }
     }
 }
@@ -321,6 +347,11 @@
         }
         .action {            
             margin-top: 30px;
+            @media (max-width: 767px) {
+                .btn {
+                    width: 100%;
+                }
+            }
         }
     }
 }
@@ -368,7 +399,7 @@
         }
     }
 }
-.logo-style-slider {
+.logo-style-slider, .footer-logo-style-slider {
     -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 10%, rgb(0, 0, 0)90%, rgba(0, 0, 0, 0) 100%);
     mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 10%, rgb(0, 0, 0)90%, rgba(0, 0, 0, 0) 100%);
 }
@@ -488,12 +519,15 @@
             flex: 1 1 auto;
 		}
         .card-action {
-            margin-top: 15px;
-            opacity: 0;
-            visibility: hidden;
-            @include transform(translateY(30px)); 
-            @include transition(0.3s, ease-in-out);           
-            a {            
+            margin-top: 15px;            
+            @include transition(0.3s, ease-in-out);
+            @media (min-width: 992px) {
+                opacity: 0;
+                visibility: hidden;
+                @include transform(translateY(30px));
+            }           
+            a {    
+                display: block;
                 &:hover, &:focus, &:active {
                     .btn-link-arrow {
                         background-size: 0% 1px;
@@ -581,9 +615,11 @@
                 color: $primary;
             }
             .card-action {
-                opacity: 1;
-                visibility: visible;
-                @include transform(translateY(0px));
+                @media (min-width: 992px) {                    
+                    opacity: 1;
+                    visibility: visible;
+                    @include transform(translateY(0px));
+                }    
             }
 		}
 	}
@@ -874,8 +910,7 @@
         padding: 50px;
     }
     @media (max-width: 767px) {
-        padding: 50px 15px;
-        margin: 0 -15px;
+        padding: 25px;
     }
     &.bg-white {
         background-color: rgba(255, 255, 255, 0.6) !important;
@@ -887,6 +922,16 @@
         background-size: 100% 100%;
         & > * {
             color: $white;
+        }
+    }
+    .media-block {
+        // @media (max-width: 992px) {
+        //     margin-bottom: 40px;
+        // }
+    }
+    .section-title {      
+        @media (max-width: 992px) {
+            margin-bottom: 0px;
         }
     }
 }
@@ -903,9 +948,14 @@
         &:not(:last-child) {
             margin-bottom: 30px;
         }
-        img {
-            max-height: 310px;
+        img {            
             width: auto;
+            max-height: 310px;
+            object-fit: cover;
+            object-position: center;
+            @media (max-width: 767px) {                
+                max-height: 130px;
+            }
         }
     }
 }

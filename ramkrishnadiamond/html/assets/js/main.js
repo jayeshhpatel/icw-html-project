@@ -218,6 +218,31 @@ if ($('.counter').length) {
     
 }
 
+// Menu Toggle Button Animation
+const btnToggleBg = document.querySelector(".btn-toggle-bg");
+const navbarToggler = document.querySelector(".navbar-toggler");
+const btnToggleClose = document.querySelector(".btn-toggle-close");
+const menuSidebar = document.querySelector(".menu-sidebar");
+if (navbarToggler) {
+    navbarToggler.addEventListener("click", function () {
+        document.querySelector("body").classList.toggle("overflow-hidden");
+        document.querySelector(".bg-overlay").classList.toggle("is-visible");
+        if (!(menuSidebar.classList.contains("show"))) {
+            setTimeout(() => {
+                menuSidebar.classList.remove("is-text-animate"); 
+            }, 300);
+            if (menuSidebar.querySelector(".current-menu-item")) {
+                setTimeout(() => {
+                    menuSidebar.querySelector(".current-menu-item").classList.add("active");
+                }, 1000);
+            }
+        } else {
+            menuSidebar.classList.add("is-text-animate"); 
+            menuSidebar.querySelector(".current-menu-item").classList.remove("active");
+        }
+    });
+}
+
 // Video Player
 const playIcons = document.querySelectorAll(".is-play-icon");
 if (playIcons.length) {
