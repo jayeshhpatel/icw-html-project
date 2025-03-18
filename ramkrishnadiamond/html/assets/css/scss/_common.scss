@@ -620,6 +620,9 @@ h3, .h3 {
     @media (max-width: 1200px) { 
         font-size: 24px;
     }
+    @media (max-width: 767px) { 
+        font-size: 20px;
+    }
 }
 h4, .h4 {
     font-size: 24px;
@@ -1649,15 +1652,26 @@ h5, .h5 {
 // Special Text CSS
 .special-text {
     white-space: nowrap;
-    font-family: monospace;
-    font-size: 95px;
-    font-weight: 700;
+    font-family: $font-merriweather;
+    font-size: 190px;
+    font-weight: 600;
+    position: relative;  
+    opacity: 0.6;
+    line-height: 1;
+    -webkit-text-stroke: 2px transparent;
+    color: transparent;
+    background: linear-gradient(90deg, #0FA2C7 0%, #953A75 47%, #DFB93B 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    position: relative;
-    -webkit-text-stroke: 2px $black;
-    opacity: 1;
-    line-height: 1;
+    &::before {
+        content: attr(data-text);
+        position: absolute;
+        left: 0;
+        top: 0;
+        -webkit-text-stroke: 4px;
+        -webkit-text-fill-color: white;
+        -webkit-background-clip: text;
+    }
 }
 
 // Page Scroll Progress CSS
