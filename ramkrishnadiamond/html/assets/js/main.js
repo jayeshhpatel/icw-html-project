@@ -301,24 +301,35 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Image Scroll on window scroll
-const imageWrappers = document.querySelectorAll(".image-content-wrapper");
+letterCarousel('.is-left','.image-group', 'left');
+letterCarousel('.is-right','.image-group', 'right');
+	
+function letterCarousel(parent_cls,child_cls,direction) {
+    var e = jQuery(parent_cls+' '+child_cls);
+    
+    jQuery(window).on("scroll", function() {
+        if (jQuery(parent_cls).length) {
+            var t = jQuery(document).scrollTop() + jQuery(window).height(),
+            n = jQuery(parent_cls).offset().top;
+            dire = jQuery(direction);
+            
+            if (n <= t) {
+                var i = jQuery(document).scrollTop() - n + jQuery(window).height();
+                var scroll = i - 250;
+                
+                var scroll_slow = scroll + ((scroll/70)/100);
+                var img_scroll = scroll_slow * 30 /100;
+                
+                var translateX = direction === "left" ? -img_scroll : img_scroll;
 
-function animateOnScroll() {
-    const windowHeight = window.innerHeight;
-    const scrollTop = window.scrollY;
-
-    imageWrappers.forEach(wrapper => {
-        const rect = wrapper.getBoundingClientRect();
-
-        // Check if the element is in the bottom 40% of the screen
-        if (rect.top < windowHeight * 0.6 && rect.bottom > 0) {
-            let speed = wrapper.classList.contains("is-left") ? -0.3 : 0.3;
-            wrapper.style.transform = `translateX(${scrollTop * speed}px)`;
+                e.css({
+                    transform: "translateX(" + translateX + "px)"
+                });
+            }
         }
     });
 }
 
-window.addEventListener("scroll", animateOnScroll);
 
 
 

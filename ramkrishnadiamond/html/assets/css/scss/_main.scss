@@ -939,39 +939,34 @@
 //
 .image-animation-block {
     .image-content-wrapper {
-        @include flexbox;
-        @include align-items(Center);
-        @include justify-content(flex-start);
-        gap: 30px;
-        overflow: hidden;
         &:not(:last-child) {
             margin-bottom: 30px;
+            @media (max-width: 767px) {                
+                margin-bottom: 12px;
+            }
+        }
+    }
+    .image-group {
+        @include flexbox;
+        @include align-items(Center);
+        @include justify-content(center);
+        gap: 30px;
+        transition: transform 0.2s ease-out;
+        @media (max-width: 767px) {                
+            gap: 12px;
         }
         img {            
             width: auto;
             max-height: 310px;
             object-fit: cover;
             object-position: center;
+            @include transition(0.2s, ease-in-out);
             @media (max-width: 767px) {                
                 max-height: 130px;
             }
+            &:hover {
+                @include transform(scale(1.02));
+            }
         }
     }
-}
-.image-animation-block {
-    position: relative;
-    overflow: hidden; /* Prevents unwanted scrolling */
-    width: 100%;
-}
-
-.image-content-wrapper {
-    display: flex;
-    gap: 20px; /* Space between images */
-    transition: transform 0.1s linear;
-}
-
-/* Ensure images stay aligned */
-.image-content-wrapper img {
-    max-width: 100%;
-    height: auto;
 }
