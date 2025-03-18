@@ -1461,35 +1461,14 @@ h5, .h5 {
                 }
             }
         }
-        .footer-logo-block {
+        .footer-logo {
             margin-bottom: 20px;
+            display: inline-block;
             &::before {            
                 content: none;
             }
-            .footer-logo-style-slider {        
-                &.is-grid-logo {            
-                    padding: 0; 
-                    @media (min-width: 767px) {
-                        mask-image: unset;
-                        .splide__list {             
-                            @include flexbox;
-                            @include justify-content(Center);
-                            gap: 30px 50px;
-                        }
-                        .logo-item {
-                            img {
-                                width: auto;
-                                max-height: 45px;
-                            }
-                        }
-                    } 
-                    .logo-item {
-                        img {
-                            width: auto;
-                            max-height: 35px;
-                        }
-                    }
-                }
+            img {
+                max-height: 70px;
             }
         }
         .footer-content {
@@ -1554,33 +1533,30 @@ h5, .h5 {
                 }
             }
         }
-        .logo-block {
-            margin-bottom: 40px;
-            overflow: hidden;
-            overflow-x: auto;
-            &::-webkit-scrollbar { 
-                width:6px; 
-                height: 3px; 
-                background-color: transparent; 
-            }
-            &::-webkit-scrollbar-thumb { 
-                background-color:rgba($white,0.4); 
-            }
-            ul {
-                @include flexbox;
-                @include align-items(center);
-                @include justify-content(center);
-                gap: 40px;
-                @media (max-width: 1200px) {                    
-                    @include justify-content(flex-start);
-                }
-                @media (max-width: 767px) {  
-                    margin-bottom: 10px;
-                }
-                li {
-                    img {
-                        min-width: 100%;
-                        max-width: 132px;
+        .footer-logo-block {
+            margin-bottom: 40px;            
+            .footer-logo-style-slider {        
+                &.is-grid-logo {            
+                    padding: 0; 
+                    @media (min-width: 767px) {
+                        mask-image: unset;
+                        .splide__list {             
+                            @include flexbox;
+                            @include justify-content(Center);
+                            gap: 30px 50px;
+                        }
+                        .logo-item {
+                            img {
+                                width: auto;
+                                max-height: 45px;
+                            }
+                        }
+                    } 
+                    .logo-item {
+                        img {
+                            width: auto;
+                            max-height: 35px;
+                        }
                     }
                 }
             }
@@ -1638,6 +1614,15 @@ h5, .h5 {
                 position: absolute;
                 right: 0;
                 bottom: 0;
+                line-height: 0.7;
+                @media (max-width: 575px) {  
+                    bottom: -15px;
+                }
+                a {
+                    &::before {            
+                        content: none;
+                    }
+                }
             }
         }
     }

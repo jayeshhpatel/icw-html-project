@@ -300,18 +300,26 @@ document.addEventListener("DOMContentLoaded", function () {
     videos.forEach((video) => observer.observe(video));
 });
 
-const imageBlocks = document.querySelectorAll(".image-block");
+// Image Scroll on window scroll
+const imageBlocks = document.querySelectorAll(".image-content-wrapper");
 
-window.addEventListener("scroll", function () {
-    let scrollY = window.scrollY;
+function animateOnScroll() {
+    const windowHeight = window.innerHeight;
 
-    imageBlocks.forEach((block, index) => {
-        let direction = index % 2 === 0 ? 1 : -1; // Alternate left and right
-        let moveAmount = scrollY * 0.2 * direction; // Adjust speed by changing multiplier
-        block.style.transform = `translateX(${moveAmount}px)`;
+    imageBlocks.forEach(block => {
+        const rect = block.getBoundingClientRect();
+        if (rect.top < windowHeight * 0.6) { // When 40% of screen is scrolled
+            if (block.classList.contains("is-left")) {
+                block.classList.add("move-left");
+            } else if (block.classList.contains("is-right")) {
+                block.classList.add("move-right");
+            }
+        }
     });
-});
+}
 
+window.addEventListener("scroll", animateOnScroll);
+animateOnScroll();
 
 
 

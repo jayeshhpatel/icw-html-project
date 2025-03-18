@@ -944,7 +944,6 @@
         @include justify-content(flex-start);
         gap: 30px;
         overflow: hidden;
-        overflow-x: auto;
         &:not(:last-child) {
             margin-bottom: 30px;
         }
@@ -958,4 +957,21 @@
             }
         }
     }
+}
+.image-content-wrapper {
+    opacity: 0;
+    transform: translateX(0);
+    transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+/* Move left */
+.image-content-wrapper.is-left.move-left {
+    transform: translateX(-50px);
+    opacity: 1;
+}
+
+/* Move right */
+.image-content-wrapper.is-right.move-right {
+    transform: translateX(50px);
+    opacity: 1;
 }
