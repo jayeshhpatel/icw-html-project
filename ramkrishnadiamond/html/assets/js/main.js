@@ -301,25 +301,24 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Image Scroll on window scroll
-const imageBlocks = document.querySelectorAll(".image-content-wrapper");
+const imageWrappers = document.querySelectorAll(".image-content-wrapper");
 
 function animateOnScroll() {
     const windowHeight = window.innerHeight;
+    const scrollTop = window.scrollY;
 
-    imageBlocks.forEach(block => {
-        const rect = block.getBoundingClientRect();
-        if (rect.top < windowHeight * 0.6) { // When 40% of screen is scrolled
-            if (block.classList.contains("is-left")) {
-                block.classList.add("move-left");
-            } else if (block.classList.contains("is-right")) {
-                block.classList.add("move-right");
-            }
+    imageWrappers.forEach(wrapper => {
+        const rect = wrapper.getBoundingClientRect();
+
+        // Check if the element is in the bottom 40% of the screen
+        if (rect.top < windowHeight * 0.6 && rect.bottom > 0) {
+            let speed = wrapper.classList.contains("is-left") ? -0.3 : 0.3;
+            wrapper.style.transform = `translateX(${scrollTop * speed}px)`;
         }
     });
 }
 
 window.addEventListener("scroll", animateOnScroll);
-animateOnScroll();
 
 
 
