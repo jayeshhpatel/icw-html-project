@@ -116,6 +116,11 @@ body ::selection {
     --bs-tooltip-bg: #2C323A;
     --bs-tooltip-opacity: 1;
 }
+.icw-tooltip {
+    .tooltip-inner {
+        font-size: 12px;
+    }
+}
 
 .pointer-events-none {
     pointer-events: none !important;
@@ -453,7 +458,7 @@ img {
 }
 
 // Video & Image Background CSS
-.video-bg-block {    
+.media-bg-block {    
     pointer-events: none;   
     position: absolute;
     top: 0;
@@ -503,7 +508,7 @@ img {
     &.bottom-video-content {       
         @media (max-width: 575px) {
             padding-bottom: 300px;
-            .video-bg-block {
+            .media-bg-block {
                 img, video {
                     object-position: bottom center;
                 }
@@ -523,6 +528,18 @@ img {
             @media (max-width: 992px) {
                 max-width: 50%;
             } 
+        }
+    }
+    .hover-block {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        @include transform(translateY(100%));
+        @include transition(0.3s, ease-in-out);
+        .hover-text {
+            color: $white;
+            background-image: linear-gradient(91.66deg, #DFB93B 0%, #0FA2C7 99.72%);
+            padding: 30px 60px;
         }
     }
 	&.is-video {
@@ -571,6 +588,7 @@ img {
                 vertical-align:bottom;
                 max-width: 100%;
                 object-fit: cover;
+                width: 100%;
             }
             &.ratio-4x3 {
                 --bs-aspect-ratio: 67%;
@@ -582,11 +600,63 @@ img {
             text-align: center !important;
         }
     }
+    &:hover {
+        .hover-block {
+            @include transform(translateY(0%));
+        }
+    }
 }
 
 .image-block {
     img {
         @include border-radius(0px);
+    }
+}
+
+.icw-pagination {
+    gap: 5px;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    padding: 0;
+    li {
+        line-height: 0.7;
+    }
+    .splide__pagination__page {
+        width: 10px;
+        height: 10px;
+        flex: none;
+        @include border-radius(20px);
+        @include transform(scale(1));
+        @include transition(0.3s, ease-in-out);
+        opacity: 1;
+        margin: 0;
+        background: $primary;
+        border: 1px solid transparent;
+        &.is-active {
+            width: 22px;
+            border-color: $primary;
+            background: transparent !important;
+            @include transform(scale(1));
+        }
+    }
+    &.is-dark {
+        .splide__pagination__page {
+            background: $black;
+        }
+    }
+    &.is-top {
+        bottom: auto;
+        top: -65px;
+        right: 0;
+        left: auto;
+        padding-right: 0;
+        @media (max-width: 767px) {
+            bottom: -40px;
+            top: auto;
+            left: 0;
+            right: 0;
+        }
     }
 }
 
@@ -625,11 +695,11 @@ h3, .h3 {
     }
 }
 h4, .h4 {
-    font-size: 24px;
-    font-weight: 500;
+    font-size: 22px;
+    font-weight: 400;
     line-height: 1;
     @media (max-width: 1200px) { 
-        font-size: 20px;
+        font-size: 18px;
     }
 }
 h5, .h5 {
@@ -832,12 +902,12 @@ h5, .h5 {
         left: 0;
         width: 100%;
         height: 0;
-        background: $primary;        
+        background: rgba($primary, 0.9);        
         transition: height 0.3s ease-in-out;
         z-index: -1;
+        backdrop-filter: blur(100px);
     }
     &.fixed-header {
-        backdrop-filter: blur(100px);
         &::after {
             height: 100%; 
         }
@@ -1423,7 +1493,7 @@ h5, .h5 {
         width: 100%;        
         padding: 100px 0 30px;
         @media (max-width: 767px) {
-            padding: 60px 0 30px;
+            padding: 60px 0 60px;
         }
         a {
             color: rgba($white, 0.8);
@@ -1618,12 +1688,19 @@ h5, .h5 {
                 right: 0;
                 bottom: 0;
                 line-height: 0.7;
-                @media (max-width: 575px) {  
-                    bottom: -15px;
+                @media (max-width: 767px) {  
+                    bottom: -40px;
+                    left: 0;
                 }
                 a {
-                    &::before {            
+                    opacity: 0.6;
+                    &::before {
                         content: none;
+                    }
+                    &:hover, &:focus {
+                        path {
+                            fill: #0693E3;
+                        }
                     }
                 }
             }

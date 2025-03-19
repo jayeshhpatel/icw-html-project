@@ -1,20 +1,22 @@
 .blog-post-slider-section {
-    .post-content {
-        @media (max-width: 1400px) {
-            .row {
-                @include flex-wrap(nowrap);
-                overflow: hidden;
-                overflow-x: auto;
-                scroll-snap-type: x mandatory; 
-                scroll-padding: 10px;
-                padding-bottom: 15px;
-                & > .col {
-                    max-width: 300px;
-                    scroll-snap-align: center;
-                    flex: 0 0 auto; 
-                    min-width: 300px;
-                }
+    overflow: hidden;
+    .blog-post-splide {  
+        padding-bottom: 40px;      
+        .splide__track {
+            overflow: visible
+        }
+        .post-card {          
+            @media (max-width: 992px) {                 
+                max-width: 300px;
             }
+            @media (max-width: 767px) {
+                max-width: 280px;
+            }
+        }
+        .icw-pagination {
+            left: 0;
+            right: auto;
+            padding: 0
         }
     }
 }
@@ -129,6 +131,7 @@
             .user-detail {
                 .name {
                     font-size: 12px;
+                    text-transform: uppercase;
                 }
                 span {
                     font-size: 10px;

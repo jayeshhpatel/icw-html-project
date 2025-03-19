@@ -136,20 +136,27 @@
     }
     &.d-flex {
         @include align-items(flex-start);
-        flex: 1;
         gap: 30px;
         @media (max-width: 992px) { 
             @include flex-direction(column);
             gap: 20px;
         }
         & > * {
-            flex-grow: 1;
-            flex-basis: 0;
+            flex: 1;
             margin-bottom: 0 !important;
         }
+        h2 {
+            margin-bottom: 0;
+        }
         .sort-info {
-            max-width: 550px;
-        } 
+            p {
+                max-width: 550px;
+                margin-left: auto;
+                @media (max-width: 992px) { 
+                    max-width: 100%;
+                }
+            }
+        }
     }
     .tag-line {
         font-size: 16px;
@@ -176,6 +183,9 @@
         .icon-list {
             margin-top: 30px;
             max-width: 550px;
+        }
+        img {
+            margin-top: 30px;
         }
     }
 
@@ -324,9 +334,12 @@
 .page-header {
     background-color: transparent;
     border: none;
-    padding: 180px 0 150px;
+    padding: 240px 0 150px;
     position: relative;
     overflow: hidden;
+    @media (max-width: 992px) {
+        padding: 150px 0 80px;
+    }
     @media (max-width: 767px) {
         padding: 100px 0 50px;
     }
@@ -343,6 +356,9 @@
         .tag-line {
             margin-bottom: 20px;
             font-weight: 600;
+        }
+        h1 {
+            margin-bottom: 15px;
         }
         .sort-info {
             max-width: 750px;
@@ -481,7 +497,9 @@
             font-size: 45px;
         }
         @media (max-width: 992px) {
-            font-size: 55px;
+            h2 {                
+                font-size: 55px;
+            }
             margin: 2px auto 0 !important;
         }   
         &.text-center {
@@ -510,21 +528,30 @@
             width: auto;
             max-height: 60px;
         }
-    }
+    } 
+    .tag-line {
+        font-size: 16px;
+        font-weight: 600;
+        color: $primary;
+        margin-bottom: 5px;
+        @media (max-width: 767px) { 
+            margin-bottom: 10px;
+        }
+    } 
+    .card-title, h3 {
+        font-weight: 600;
+        font-size: 22px;
+        margin-bottom: 15px;
+        font-family: $bodyfont;
+        @include transition(0.3s, ease-in-out);
+        @media (max-width: 767px) {
+            font-size: 20px;
+        }
+    }        
     .card-body {
         padding: 0;
         @include flexbox;
         @include flex-direction(column);
-        .card-title, h3 {
-			font-weight: 600;
-			font-size: 22px;
-            margin-bottom: 15px;
-            font-family: $bodyfont;
-            @include transition(0.3s, ease-in-out);
-            @media (max-width: 767px) {
-                font-size: 20px;
-            }
-        }
         h3 {
             margin-bottom: 0;
         }
@@ -573,6 +600,7 @@
         .card-title {
             @include flexbox;
             @include align-items(center);
+            margin-bottom: 20px;
             .card-img {
                 width: auto;
                 margin-bottom: 0;
@@ -639,6 +667,9 @@
 }
 
 // Info List Card
+.info-list-cards {
+    margin: 20px 0;
+}
 .info-list-card {	
 	.card-icon {
 		margin-bottom: 15px;
@@ -651,6 +682,7 @@
         font-weight: 700;
 		margin-bottom: 5px;
         font-size: 18px;
+        font-family: $bodyfont;
 		@media (max-width: 992px) {
 			font-size: 16px;
 		}
@@ -660,7 +692,6 @@
                 font-size: 24px;
             }
         }
-
 		a {
 			color: $primary;
 			position: relative;
@@ -670,16 +701,6 @@
 			@include align-items(center);
 			@include transition(0.3s, ease-in-out);
             overflow: hidden;
-			&:hover, &:focus, &:active {
-				color: $primary;
-			}
-			&:hover,&:focus{
-				color: $primary;
-                &::before {
-                    transform: translate3d(150%, 0px, 0px);
-                    transform-style: preserve-3d;
-                }
-			}
 			&::before {
                 content: '';
                 background-color: $primary;
@@ -695,8 +716,18 @@
                 transform: translate3d(0%, 0px, 0px);
                 transform-style: preserve-3d;
                 will-change: transform;
-                @include transition(0.1s, ease-in-out);
+                @include transition(0.3s, ease-in-out);
             }  
+			&:hover, &:focus, &:active {
+				color: $primary;
+			}
+			&:hover,&:focus{
+				color: $primary;
+                &::before {
+                    transform: translate3d(150%, 0px, 0px);
+                    transform-style: preserve-3d;
+                }
+			}
 		}
 	}
 	.card-info {
@@ -709,12 +740,11 @@
         p:not(:last-child) {
             margin-bottom: 5px;
         }
-	}
-    
+	}    
 	&.icon-left-card {
 		@include flexbox();
 		.card-icon{
-			margin-right: 8px;
+			margin-right: 10px;
 			margin-bottom: 0;
 			flex: none;
 		}
@@ -724,7 +754,7 @@
 			@include flexbox();
 			text-align: left !important;
 			.card-icon{
-				margin-right: 15px;
+				margin-right: 10px;
 				margin-bottom: 0;
 				flex: none;
                 img {
@@ -741,11 +771,12 @@
 		}
 	}
     &.with-bg {
-        background: rgba(#F3F4F9, 0.6);
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(8.5px);
         padding: 20px;
     }
-
     &.only-card-title {
+        margin-bottom: 5px;
         .card-content {
             align-self: center;
         }
@@ -753,7 +784,8 @@
             font-size: 18px;
             font-weight: 400;
             margin: 0px;
-            @media (max-width:575px) {
+            line-height: normal;
+            @media (max-width: 992px) {
                 font-size: 16px;
             }
         }
@@ -929,18 +961,23 @@
         background-color: rgba(255, 255, 255, 0.6) !important;
         backdrop-filter: blur(7px);
     }
-    &.bg-img {
-        background-image: url(../images/img-content-section-bg.jpg);
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        & > * {
-            color: $white;
+    .section-title {      
+        @media (max-width: 992px) {
+            margin-bottom: 0px;
         }
     }
-    .media-block {
-        // @media (max-width: 992px) {
-        //     margin-bottom: 40px;
-        // }
+}
+
+// CTA Section
+.cta-block {
+    padding: 80px;
+    position: relative;
+    color: $white;
+    @media (max-width: 992px) {
+        padding: 50px;
+    }
+    @media (max-width: 767px) {
+        padding: 25px;
     }
     .section-title {      
         @media (max-width: 992px) {
@@ -959,14 +996,10 @@
             }
         }
     }
-    .image-group {
-        @include flexbox;
-        @include align-items(Center);
-        @include justify-content(center);
-        gap: 30px;
-        transition: transform 0.2s ease-out;
+    .image-group-block {
+        margin-top: 30px;
         @media (max-width: 767px) {                
-            gap: 12px;
+            margin-top: 12px;
         }
         img {            
             width: auto;
@@ -982,6 +1015,38 @@
             }
         }
     }
+}
+
+// img-text-box-list-section
+.img-text-box-list-section {
+	.img-text-box-lists {		
+		.row:not(:last-child) {
+			margin-bottom: 150px;            
+            @media (max-width: 992px) {
+                margin-bottom: 80px;
+            }
+		}
+        .media-block{
+            @media (max-width: 992px) {
+                margin-bottom: 30px;
+            }
+        }
+        .section-title {
+            margin-bottom: 0;
+            .sort-info {
+                h4 {
+                    margin-bottom: 15px;
+                    font-family: $bodyfont;
+                    font-weight: 500;
+                }
+                p {
+                    strong {
+                        color: $primary;
+                    }
+                }
+            }
+        }
+	}
 }
 
 // Team Card
@@ -1005,8 +1070,8 @@
             @include transition(0.3s, ease-in-out);
         }
         .icon {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             background-size: contain !important;
             display: inline-block;            
             &.icon-share {
@@ -1024,10 +1089,10 @@
         }
         .share-icon-block {
             position: absolute;
-            width: 60px;
-            height: 60px;
+            width: 46px;
+            height: 46px;
             right: 0;
-            bottom: 7px;
+            bottom: 0;
             overflow: hidden;
             z-index: 2;
             @include transition(0.3s, ease-in-out);
@@ -1041,9 +1106,9 @@
             @include transform(scaleY(1));
             transform-origin: bottom;
         }
-        .social-list {
+        .user-social-list {
             position: absolute;
-            width: 60px;
+            width: 46px;
             height: 100%;
             right: 0;
             bottom: 0;
@@ -1052,18 +1117,6 @@
             @include transition(0.3s, ease-in-out);
             transition-delay: 0.3s;
             text-align: center;
-            padding-bottom: 7px;
-            margin-bottom: 0;
-            &::after {
-                content: '';
-                display: block;
-                position: absolute;
-                height: 7px;
-                width: 100%;
-                bottom: 0;
-                z-index: 2;
-                background-color: $white;
-            }
             ul {
                 background: $primary;
                 @include flexbox;
@@ -1072,7 +1125,7 @@
                 @include flex-direction(column);
                 @include flex-wrap(nowrap);
                 position: absolute;
-                bottom: 7px;
+                bottom: 0;
                 width: 100%;
                 padding: 8px 0;
                 @include transform(scaleY(0));
@@ -1085,8 +1138,8 @@
                     @include justify-content(center);
                     @include align-items(center);
                     a {
-                        width: 36px;
-                        height: 36px;
+                        width: 30px;
+                        height: 30px;
                         flex: none;
                         @include flexbox;
                         @include justify-content(center);
@@ -1105,7 +1158,13 @@
             font-size: 16px;
             color: $primary;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+            @media (max-width: 992px) {
+                font-size: 14px;
+            }
+            span {
+                color: $black;
+            }
         }
         .name {
             font-size: 22px;
@@ -1134,7 +1193,7 @@
                 @include transform(scaleY(0));
                 transition-delay: 0.3s;
             }
-            .social-list { 
+            .user-social-list { 
                 ul {
                     @include transform(scaleY(1));                    
                     transition-delay: 0.3s;
@@ -1162,9 +1221,6 @@
             @media (max-width: 992px) {
                 font-size: 20px;
                 margin: 10px 0 0px;
-            }
-            @media (max-width: 767px) {
-                font-size: 18px;
             }
         }
     }
