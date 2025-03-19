@@ -188,8 +188,15 @@
             margin-top: 30px;
             max-width: 550px;
         }
+        ul {
+            margin: 20px 0;
+        }
         img {
             margin-top: 30px;
+        }
+        a {
+            margin-bottom: 5px;
+            display: inline-block;
         }
     }
 
@@ -1271,7 +1278,7 @@
 // Tabs Section
 .sticky-scrollspy-nav {
     position: sticky;
-    top: 90px;
+    top: 110px;
     z-index: 100;
     @include flexbox;
     @include justify-content(center);
@@ -1282,32 +1289,39 @@
     &::-webkit-scrollbar-thumb { background-color:rgba(0,0,0,0.2); }
     @media (max-width: 767px) {
         @include justify-content(flex-start);
+        margin-bottom: 30px;
     }
     ul {
         @include flexbox;
         @include align-items(center);
         width: max-content;
         gap: 10px;
-        background: #EBEBEB;
+        background: #F2F2F2;
+        border: 1px solid rgba(0, 0, 0, 0.2);
         padding: 3px;
         @include border-radius(30px);
         margin-bottom: 5px;
         li {
             a {
-                padding: 12px 40px;
+                padding: 10px 40px;
                 display: block;
                 text-decoration: none;
-                font-size: 16px;
-                font-weight: 700;
+                font-size: 18px;
+                font-weight: 500;
                 @include border-radius(60px);
                 white-space: nowrap;
+                color: $black;
+                min-width: 160px;
+                text-align: center;
                 @media (max-width: 767px) {
                     padding: 8px 25px;
                     font-size: 14px;
+                    min-width: auto;
                 }
                 &.active {
-                    background: #FFFFFF;
-                    @include box-shadow(3px 0px 14px rgba(0, 0, 0, 0.15));
+                    background: rgba(255, 255, 255, 0.82);
+                    border: 1px solid $primary;
+                    box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.15);
                 }
             }
         }
@@ -1317,4 +1331,13 @@
 .scrollspy-content {
     scroll-margin-top: 80px;
     scroll-margin-bottom: 100px;
+    .content-with-background-block {
+        margin-bottom: 150px;
+        @media (max-width: 992px) {
+            margin-bottom: 80px;
+        }
+        @media (max-width: 767px) {
+            margin-bottom: 50px;
+        }
+    }
 }

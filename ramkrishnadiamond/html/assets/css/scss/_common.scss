@@ -753,6 +753,9 @@ h5, .h5 {
 .bg-lightgray {
     background-color: $lightgray !important;
 }
+.bg-lightgreen {
+    background: rgba(172, 221, 222, 0.4) !important;
+}
 .bg-custom {
     background: var(--header-bg, none);
     background-repeat: no-repeat;
@@ -1833,6 +1836,39 @@ h5, .h5 {
             flex: none;
             display: inline-block;
             margin-right: 10px;
+            @media (max-width:992px) {
+                width: 18px;
+                height: 18px;
+            }
+        }
+    }
+} 
+
+// Check Lit
+.check-list {
+    li {
+        @include flexbox;
+        @include align-items(flex-start);
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 5px;
+        color: $black;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        @media (max-width:992px) {
+            font-size: 16px;
+        }
+        &::before {
+            content: '';
+            background: url(../images/icons/icon-check.svg) no-repeat center center;
+            background-size: contain;
+            width: 20px;
+            height: 20px;
+            flex: none;
+            display: inline-block;
+            margin-right: 12px;
+            margin-top: 2px;
             @media (max-width:992px) {
                 width: 18px;
                 height: 18px;
