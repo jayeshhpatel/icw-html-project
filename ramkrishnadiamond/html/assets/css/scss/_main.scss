@@ -180,6 +180,10 @@
             font-family: $bodyfont;
             font-weight: 400;
         }
+        h4 {
+            margin-bottom: 15px;
+            font-family: $bodyfont;
+        }
         .icon-list {
             margin-top: 30px;
             max-width: 550px;
@@ -334,7 +338,7 @@
 .page-header {
     background-color: transparent;
     border: none;
-    padding: 240px 0 150px;
+    padding: 220px 0 150px;
     position: relative;
     overflow: hidden;
     @media (max-width: 992px) {
@@ -1019,7 +1023,15 @@
 
 // img-text-box-list-section
 .img-text-box-list-section {
-	.img-text-box-lists {		
+	.img-text-box-lists {	
+        & > .row {
+            --bs-gutter-y: 70px;
+            --bs-gutter-x: 70px;
+            @media (max-width: 992px) {
+                --bs-gutter-y: 30px;
+                --bs-gutter-x: 30px;  
+            }
+        }	
 		.row:not(:last-child) {
 			margin-bottom: 150px;            
             @media (max-width: 992px) {
@@ -1028,7 +1040,7 @@
 		}
         .media-block{
             @media (max-width: 992px) {
-                margin-bottom: 30px;
+                // margin-bottom: 20px;
             }
         }
         .section-title {
@@ -1047,6 +1059,36 @@
             }
         }
 	}
+}
+
+// Counter Section
+.counter-content-wrapper {
+    @include flexbox;
+    @include align-items(center);
+    @include flex-wrap(wrap);
+    gap: 30px;
+    margin-top: 30px;
+    .counter-box { 
+        flex: 1 1 0;
+    }
+}
+.counter-box {
+    .counter {
+        font-size: 40px;
+        font-weight: 700;
+        font-family: $font-merriweather;
+        color: $black;
+        margin-bottom: 20px;
+        line-height: 1;
+    }
+    .sort-info {
+        color: $black;
+        font-size: 18px;
+        font-weight: 500;
+        @media (max-width: 992px) {
+            font-size: 16px;
+        }
+    }
 }
 
 // Team Card
@@ -1224,4 +1266,55 @@
             }
         }
     }
+}
+
+// Tabs Section
+.sticky-scrollspy-nav {
+    position: sticky;
+    top: 90px;
+    z-index: 100;
+    @include flexbox;
+    @include justify-content(center);
+    margin-bottom: 60px;
+    overflow: hidden;
+    overflow-x: auto;
+    &::-webkit-scrollbar { width:6px; height: 5px; background-color:#fafafa; }
+    &::-webkit-scrollbar-thumb { background-color:rgba(0,0,0,0.2); }
+    @media (max-width: 767px) {
+        @include justify-content(flex-start);
+    }
+    ul {
+        @include flexbox;
+        @include align-items(center);
+        width: max-content;
+        gap: 10px;
+        background: #EBEBEB;
+        padding: 3px;
+        @include border-radius(30px);
+        margin-bottom: 5px;
+        li {
+            a {
+                padding: 12px 40px;
+                display: block;
+                text-decoration: none;
+                font-size: 16px;
+                font-weight: 700;
+                @include border-radius(60px);
+                white-space: nowrap;
+                @media (max-width: 767px) {
+                    padding: 8px 25px;
+                    font-size: 14px;
+                }
+                &.active {
+                    background: #FFFFFF;
+                    @include box-shadow(3px 0px 14px rgba(0, 0, 0, 0.15));
+                }
+            }
+        }
+    }
+}
+
+.scrollspy-content {
+    scroll-margin-top: 80px;
+    scroll-margin-bottom: 100px;
 }
