@@ -530,16 +530,20 @@ img {
             } 
         }
     }
-    .hover-block {
+    .image-caption {
         position: absolute;
         bottom: 0;
         left: 0;
+        background-image: linear-gradient(91.66deg, #DFB93B 0%, #0FA2C7 99.72%);
+        color: $white;           
+        padding: 30px 60px;
         @include transform(translateY(100%));
         @include transition(0.3s, ease-in-out);
-        .hover-text {
-            color: $white;
-            background-image: linear-gradient(91.66deg, #DFB93B 0%, #0FA2C7 99.72%);
-            padding: 30px 60px;
+        @media (max-width: 1200px) {
+            padding: 20px 40px;
+        }
+        &.is-animate {
+            @include transform(translateY(0%));
         }
     }
 	&.is-video {
@@ -598,11 +602,6 @@ img {
     &.text-end {
         @media (max-width: 992px) {
             text-align: center !important;
-        }
-    }
-    &:hover {
-        .hover-block {
-            @include transform(translateY(0%));
         }
     }
 }
@@ -789,6 +788,23 @@ h5, .h5 {
     }
 }
 
+// Vector Animation
+@keyframes starAnimteTop {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    100%{
+        transform: translate(-100px, -200px) rotate(360deg);
+    }
+}
+@keyframes starAnimteBottom {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    100%{
+        transform: translate(30px, 200px) rotate(360deg);
+    }
+}
 .fix-multi-circle-vector {
     position: fixed;
     top: 0;
@@ -803,6 +819,166 @@ h5, .h5 {
         background-image: url(../images/img-bg-multi-circle-mobile-bg.svg);       
         background-size: 100% 100%;
         background-position: center 60%; 
+    }
+}
+.fix-star-vector {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;    
+    z-index: -1;
+    .star-vector {
+        background-image: url(../images/img-star-vector.svg);
+        background-repeat: no-repeat;
+        background-position: center;        
+        background-size: contain;
+        position: absolute;
+        display: block;
+        width: 550px;
+        height: 550px;
+        filter: blur(5px);
+        @media (max-width: 1200px) {
+            width: 400px;
+            height: 400px;
+        }
+        @media (max-width: 767px) {
+            width: 250px;
+            height: 250px;
+        }
+        &.is-top {
+            top: 0;
+            left: -100px;
+            animation: starAnimteTop 8s ease-in-out infinite alternate;
+        }
+        &.is-bottom {
+            width: 500px;
+            height: 500px;
+            bottom: -40px;
+            right: -100px;
+            animation: starAnimteBottom 8s ease-in-out infinite alternate-reverse;
+            @media (max-width: 1200px) {
+                width: 300px;
+                height: 300px;
+                bottom: 0px;
+                right: -70px;
+            }
+            @media (max-width: 767px) {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    }
+}
+
+// Text Animation 
+.animtext {
+    line-height: 1.2;
+    .line {
+      display: block;
+      overflow: hidden;
+      line-height: inherit;
+      & + .line {
+        margin-top: -15px;
+      }
+    }
+    .word {
+        opacity: 0;
+        overflow: hidden;
+        line-height: inherit;
+        padding-left: 10px;
+        &:first-child {
+            padding-left: 0;
+        }
+    }
+    &.line-up {
+        &.animated {
+            .word {
+                animation: animtext-up 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+                animation-delay: calc(0.075s * var(--line-index));            
+            }
+        }
+    }
+    &.word-up {
+        &.animated {
+            .word {
+                animation: animtext-up 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+                animation-delay: calc(0.2s * var(--word-index));
+            }
+        }
+    }
+    &.word-left {
+        .line {
+            overflow: visible;
+        }
+        &.animated {
+            .word {
+                animation: animtext-left 1s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+                animation-delay: calc(0.2s * var(--word-index));
+            }
+        }
+    }
+    &.line-left {
+        .line {
+            overflow: visible;
+        }
+        &.animated {
+            .word {
+                animation: animtext-left 1s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+                animation-delay: calc(0.15s * var(--line-index));
+                opacity: 1;
+            }
+        }
+    }
+    &.char-up {
+        .word {
+            opacity: 1;
+            margin: 0;
+            padding-left: 0;
+        }
+        &.animated {
+            .char {
+                opacity: 0;
+                animation: animtext-up 1s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+                animation-delay: calc(0.5s + (0.015s * var(--char-index)));
+                padding: 0;
+            }
+        }
+    }
+    &.char-left {
+        .word {
+            opacity: 1;
+            margin: 0;
+            padding-left: 0;
+        }
+        &.animated {
+            .char {
+                opacity: 0;
+                animation: animtext-left 1s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+                animation-delay: calc(0.01s * var(--char-index));
+                padding: 0;
+            }
+        }
+    }    
+}
+@keyframes animtext-left {
+    from {
+      transform: translateX(25vw) translateZ(0);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0) translateZ(0);
+      opacity: 1;
+    }
+  }
+@keyframes animtext-up {
+    from {
+        transform: translateY(100%) translateZ(0);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) translateZ(0);
+        opacity: 1;
     }
 }
 

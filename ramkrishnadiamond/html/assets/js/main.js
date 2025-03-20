@@ -6,11 +6,7 @@ var $ = jQuery.noConflict();
 jQuery(document).ready(function($) {
     $('[data-bs-toggle="tooltip"]').tooltip();
 
-    $('.navbar-toggler').on('click', function (e) {
-        $('.navbar-toggler,body,.main-header').toggleClass('is-visible');
-        $('.menu-sidebar').toggleClass('show');
-        e.preventDefault();
-    });
+   
     if ($('.main-header').length) {
         if (jQuery(this).scrollTop() > 100) {
             $(".main-header").addClass("fixed-header");
@@ -218,70 +214,86 @@ if ($('.counter').length) {
     
 }
 
-// Menu Toggle Button Animation
-const btnToggleBg = document.querySelector(".btn-toggle-bg");
+// Menu Toggle Animation
+const mainHeader = document.querySelector(".main-header");
 const navbarToggler = document.querySelector(".navbar-toggler");
-const btnToggleClose = document.querySelector(".btn-toggle-close");
 const menuSidebar = document.querySelector(".menu-sidebar");
+
 if (navbarToggler) {
-    navbarToggler.addEventListener("click", function () {
-        document.querySelector("body").classList.toggle("overflow-hidden");
+    navbarToggler.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        this.classList.toggle("is-visible");
+        mainHeader.classList.toggle("is-visible");
+        menuSidebar.classList.toggle("show");
+        document.body.classList.toggle("overflow-hidden");
         document.querySelector(".bg-overlay").classList.toggle("is-visible");
+
         if (!(menuSidebar.classList.contains("show"))) {
+            // If menu is shown, add animation class and remove active class from menu item
+            menuSidebar.classList.add("is-text-animate");
+            const currentMenuItem = menuSidebar.querySelector(".current-menu-item");
+            if (currentMenuItem) currentMenuItem.classList.remove("active");
+        } else {
+            // If menu is hidden, remove animation class after delay
             setTimeout(() => {
-                menuSidebar.classList.remove("is-text-animate"); 
+                menuSidebar.classList.remove("is-text-animate");
             }, 300);
-            if (menuSidebar.querySelector(".current-menu-item")) {
+
+            // Add active class to menu item after 1 second
+            const currentMenuItem = menuSidebar.querySelector(".current-menu-item");
+            if (currentMenuItem) {
                 setTimeout(() => {
-                    menuSidebar.querySelector(".current-menu-item").classList.add("active");
+                    currentMenuItem.classList.add("active");
                 }, 1000);
             }
-        } else {
-            menuSidebar.classList.add("is-text-animate"); 
-            menuSidebar.querySelector(".current-menu-item").classList.remove("active");
         }
     });
 }
 
-// Video Player
-const playIcons = document.querySelectorAll(".is-play-icon");
-if (playIcons.length) {
-    document.querySelectorAll(".media-block").forEach((videoBlock) => {
-        const video = videoBlock.querySelector("video");
-        const playIcon = videoBlock.querySelector(".is-play-icon");
-
-        if (!video || !playIcon) return;
-
-        // Play/Pause when clicking the play icon
-        playIcon.addEventListener("click", function () {
-            if (video.paused) {
-                video.play();
-                playIcon.style.display = "none";
-            } else {
-                video.pause();
-                playIcon.style.display = "flex";
-            }
-        });
-
-        // Pause when clicking on the video itself
-        video.addEventListener("click", function () {
-            if (!video.paused) {
-                video.pause();
-                playIcon.style.display = "flex";
-            }
-        });
-
-        // Show play icon when video ends
-        video.addEventListener("ended", function () {
-            playIcon.style.display = "flex";
-        });
-    });
-}
-
-// Play Video on Observer
 document.addEventListener("DOMContentLoaded", function () {
-    const videos = document.querySelectorAll(".media-block.is-video video");
+    // Media Block in Image Caption Animation - call function
+    handleScroll ();
 
+    checkAnimations();
+
+    // Video Player
+    const playIcons = document.querySelectorAll(".is-play-icon");
+    if (playIcons.length) {
+        document.querySelectorAll(".media-block").forEach((videoBlock) => {
+            const video = videoBlock.querySelector("video");
+            const playIcon = videoBlock.querySelector(".is-play-icon");
+
+            if (!video || !playIcon) return;
+
+            // Play/Pause when clicking the play icon
+            playIcon.addEventListener("click", function () {
+                if (video.paused) {
+                    video.play();
+                    playIcon.style.display = "none";
+                } else {
+                    video.pause();
+                    playIcon.style.display = "flex";
+                }
+            });
+
+            // Pause when clicking on the video itself
+            video.addEventListener("click", function () {
+                if (!video.paused) {
+                    video.pause();
+                    playIcon.style.display = "flex";
+                }
+            });
+
+            // Show play icon when video ends
+            video.addEventListener("ended", function () {
+                playIcon.style.display = "flex";
+            });
+        });
+    }
+
+    // Play Video on Observer
+    const videos = document.querySelectorAll(".media-block.is-video video");
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             const video = entry.target;
@@ -298,37 +310,77 @@ document.addEventListener("DOMContentLoaded", function () {
     }, { threshold: [0.5] });
 
     videos.forEach((video) => observer.observe(video));
+
+    // Trigger Animations Text Script
+    if (document.querySelectorAll(".animtext").length > 0) {
+        const animtextLine = Splitting({
+            target: document.querySelectorAll(".animtext.line-up, .animtext.line-left, .animtext.word-up, .animtext.word-left"),
+            by: "lines"
+        });
+
+        const animtextChar = Splitting({
+            target: document.querySelectorAll(".animtext.char-up, .animtext.char-left"),
+            by: "chars"
+        });
+
+        animtextLine.forEach((splitResult) => {
+            const wrappedLines = splitResult.lines.map((wordsArr, i) =>
+                `<div class="line" style="--line-index: ${i};">${wordsArr.map((word) => `${word.outerHTML}<span class="whitespace"></span>`).join("")}</div>`
+            ).join("");
+            splitResult.el.innerHTML = wrappedLines;
+        });     
+
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutationRecord) => {
+                console.log("Style changed!", mutationRecord);
+            });
+        });
+
+        const targets = document.getElementsByClassName("word");
+        Array.from(targets).forEach((el) => {
+            observer.observe(el, { attributes: true, attributeFilter: ["style"] });
+        });
+    }
 });
 
-// Image Scroll on window scroll
-letterCarousel('.is-left','.image-group', 'left');
-letterCarousel('.is-right','.image-group', 'right');
-	
-function letterCarousel(parent_cls,child_cls,direction) {
-    var e = jQuery(parent_cls+' '+child_cls);
-    
-    jQuery(window).on("scroll", function() {
-        if (jQuery(parent_cls).length) {
-            var t = jQuery(document).scrollTop() + jQuery(window).height(),
-            n = jQuery(parent_cls).offset().top;
-            dire = jQuery(direction);
-            
-            if (n <= t) {
-                var i = jQuery(document).scrollTop() - n + jQuery(window).height();
-                var scroll = i - 250;
-                
-                var scroll_slow = scroll + ((scroll/70)/100);
-                var img_scroll = scroll_slow * 30 /100;
-                
-                var translateX = direction === "left" ? -img_scroll : img_scroll;
+// Run on scroll
+window.addEventListener("scroll", checkAnimations);
+document.addEventListener('scroll', handleScroll);
 
-                e.css({
-                    transform: "translateX(" + translateX + "px)"
-                });
+// Media Block in Image Caption Animation
+function handleScroll() {
+    document.querySelectorAll('.media-block').forEach((block) => {
+        const rect = block.getBoundingClientRect();
+        const caption = block.querySelector('.image-caption');
+
+        if (caption) {
+            if (rect.top <= window.innerHeight * 0.3 && rect.bottom >= 0) {
+                caption.classList.add('is-animate');
+            } else {
+                caption.classList.remove('is-animate');
             }
         }
     });
 }
+
+// Check if Element is in Viewport
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return rect.top < window.innerHeight && rect.bottom >= 0;
+}
+
+// Trigger Animations Text
+function checkAnimations() {
+    document.querySelectorAll(".animtext").forEach((el) => {
+        if (isInViewport(el)) {
+            el.classList.add("animated");
+        } 
+        // else {
+        //    el.classList.remove("animated");
+        // }
+    });
+}
+
 
 
 

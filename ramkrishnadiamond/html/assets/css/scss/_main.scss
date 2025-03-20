@@ -389,8 +389,8 @@
     }
 }
 
-// sticky-img-section
-.sticky-img-section {
+// Sticky Image
+.sticky-img {
     .media-block {
         position: sticky;
         top: 150px;
@@ -962,6 +962,8 @@
 // content-with-background-block
 .content-with-background-block {
     padding: 80px;
+    background-color: var(--bg-color);
+    color: $black;
     @media (max-width: 992px) {
         padding: 50px;
     }
@@ -995,16 +997,19 @@
             margin-bottom: 0px;
         }
     }
+    .media-block {
+        img {
+            max-width: 50%;
+        }
+    }
 }
 
 // Image Scroll Section
 .image-animation-block {
-    .image-content-wrapper {
-        &:not(:last-child) {
-            margin-bottom: 30px;
-            @media (max-width: 767px) {                
-                margin-bottom: 12px;
-            }
+    &:not(:last-child) {
+        margin-bottom: 30px;
+        @media (max-width: 767px) {                
+            margin-bottom: 12px;
         }
     }
     .image-group-block {
@@ -1012,17 +1017,54 @@
         @media (max-width: 767px) {                
             margin-top: 12px;
         }
-        img {            
-            width: auto;
-            max-height: 310px;
-            object-fit: cover;
-            object-position: center;
-            @include transition(0.2s, ease-in-out);
-            @media (max-width: 767px) {                
-                max-height: 130px;
+        .image-item {
+            overflow: hidden;
+            display: block;
+            position: relative;
+            z-index: 1;
+            &.is-video {
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba($black, 0.5);
+                    z-index: 1;
+                }
+                .play-icon {
+                    position: absolute;
+                    top: calc(50% - 20px);
+                    left: calc(50% - 20px);
+                    width: 40px;
+                    height: 40px;
+                    display: inline-block;
+                    background: url('data:image/svg+xml, <svg width="86" height="86" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M59.7318 40.3511C61.7992 41.4997 61.7865 44.4775 59.7093 45.6084L36.6845 58.1441C34.6854 59.2325 32.25 57.7855 32.25 55.5093V30.182C32.25 27.8946 34.7073 26.4487 36.7069 27.5596L59.7318 40.3511Z" fill="white" stroke="white"></path><path d="M43 78.8332C62.7902 78.8332 78.8333 62.79 78.8333 42.9998C78.8333 23.2096 62.7902 7.1665 43 7.1665C23.2098 7.1665 7.16663 23.2096 7.16663 42.9998C7.16663 62.79 23.2098 78.8332 43 78.8332Z" fill="white" fill-opacity="0.2" stroke="white" stroke-width="2"></path></svg>') no-repeat center center;
+                    background-size: contain;
+                    @include border-radius(50%);
+                    @include transition(0.2s, ease-in-out);
+                    z-index: 1;
+                }
             }
+            img, video {            
+                width: auto;
+                max-height: 310px;
+                object-fit: cover;
+                object-position: center;
+                @include transition(0.3s, ease-in-out);
+                @media (max-width: 767px) {                
+                    max-height: 130px;
+                }
+            }            
             &:hover {
-                @include transform(scale(1.02));
+                img {
+                    @include transform(scale(1.05));
+                }
+                .play-icon {
+                    @include transform(scale(1.1));
+                    @include box-shadow(0 0px 20px rgba($white, 0.3))
+                }
             }
         }
     }
@@ -1074,7 +1116,7 @@
     @include align-items(center);
     @include flex-wrap(wrap);
     gap: 30px;
-    margin-top: 30px;
+    margin-top: 50px;
     .counter-box { 
         flex: 1 1 0;
     }
@@ -1092,6 +1134,7 @@
         color: $black;
         font-size: 18px;
         font-weight: 500;
+        white-space: nowrap;
         @media (max-width: 992px) {
             font-size: 16px;
         }
@@ -1107,6 +1150,7 @@
     .card-img {
         position: relative;
         margin-bottom: 20px;
+        overflow: hidden;
         @media (max-width: 992px) {
             margin-bottom: 15px;
         }
@@ -1152,7 +1196,8 @@
             @include align-items(center);
             @include flex-direction(column);
             @include flex-wrap(nowrap);
-            @include transform(scaleY(1));
+            @include transform(translateY(0));
+            transition-delay: 0.3s;
             transform-origin: bottom;
         }
         .user-social-list {
@@ -1164,7 +1209,6 @@
             overflow: hidden;
             z-index: 2;
             @include transition(0.3s, ease-in-out);
-            transition-delay: 0.3s;
             text-align: center;
             ul {
                 background: $primary;
@@ -1177,9 +1221,10 @@
                 bottom: 0;
                 width: 100%;
                 padding: 8px 0;
-                @include transform(scaleY(0));
+                @include transform(translateY(100%));
                 transform-origin: bottom;
                 @include transition(0.3s, ease-in-out);
+                transition-delay: 0.3s;
                 li {
                     margin: 5px 0;
                     width: 100%;
@@ -1239,13 +1284,12 @@
                 filter: unset;
             }
             .share-icon-block {
-                @include transform(scaleY(0));
+                @include transform(translateY(100%));
                 transition-delay: 0.3s;
             }
             .user-social-list { 
                 ul {
-                    @include transform(scaleY(1));                    
-                    transition-delay: 0.3s;
+                    @include transform(translateY(0));  
                 }
             }
         }
@@ -1288,8 +1332,11 @@
     &::-webkit-scrollbar { width:6px; height: 5px; background-color:#fafafa; }
     &::-webkit-scrollbar-thumb { background-color:rgba(0,0,0,0.2); }
     @media (max-width: 767px) {
-        @include justify-content(flex-start);
         margin-bottom: 30px;
+        top: 80px;
+    }
+    @media (max-width: 575px) {
+        @include justify-content(flex-start);
     }
     ul {
         @include flexbox;
@@ -1316,7 +1363,7 @@
                 @media (max-width: 767px) {
                     padding: 8px 25px;
                     font-size: 14px;
-                    min-width: auto;
+                    min-width: 110px;
                 }
                 &.active {
                     background: rgba(255, 255, 255, 0.82);
