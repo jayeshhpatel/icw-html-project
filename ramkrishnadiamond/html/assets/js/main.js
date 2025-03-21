@@ -126,14 +126,22 @@ jQuery(document).ready(function($) {
 
     jQuery(window).on('scroll', function() {
         if ($('.process-content-section').length) {
-            let targetDiv = $('.process-content-wrapper'); // Replace with your target div class
+            let targetDiv = $('.process-content-wrapper'); 
+            let targetStickyIcon = $('.process-content-wrapper .process-card .card-icon'); 
             let offsetTop = targetDiv.offset().top;
             let scrollPosition = $(window).scrollTop();
 
-            if (scrollPosition >= offsetTop - 50) {
+            if (scrollPosition >= offsetTop - 100) {
                 targetDiv.addClass('is-icon-sticky');
             } else {
                 targetDiv.removeClass('is-icon-sticky');
+            }
+            if(targetStickyIcon.length) {
+                if (scrollPosition >= offsetTop - 110) {
+                    targetStickyIcon.addClass('is-icon-sticky')
+                } else {
+                    targetStickyIcon.removeClass('is-icon-sticky')
+                }
             }
         }
     });
@@ -149,14 +157,14 @@ function updateProgressBars() {
     var activeCount = 0;
 
     $('.process-card').each(function (index) {
-        var cardTop = $(this).offset().top - windowHeight * 0.4; // 40% from top trigger
+        var cardTop = $(this).offset().top - windowHeight * 0.2; 
         var cardHeight = $(this).outerHeight();
         var cardBottom = cardTop + cardHeight;
 
         if (scrollPosition >= cardTop) {
             $(this).addClass('active');
         } else {
-            $(this).removeClass('active'); // Remove when scrolling up
+            $(this).removeClass('active'); 
         }
     });
 

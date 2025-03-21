@@ -811,6 +811,14 @@
 }
 
 // Process Card
+.process-content-section {
+    &.with-bottom-border {
+        hr {
+            margin: 0;
+            border-bottom: 1px solid rgba($black, 0.2);
+        }
+    }
+}
 .process-content-wrapper {
     counter-reset: card-counter;
     position: relative;
@@ -897,94 +905,110 @@
             line-height: 0.9;
         }
     }
-    &.process-content-style2 {
-        &::before {   
-            @media (min-width: 992px) {
-                left: 50%;
-                transform: translateX(-50%);
-                z-index: 2;
+    &.is-zigzag-process {
+        @media (min-width: 992px) {
+            &::after {
+                left: calc(50% - 1px);
             }
-            // content: none;
-        }
-        &::after {
-            @media (min-width: 992px) {
-                left: 50%;
+            .progress-bar {
+                left: calc(50% - 1px);
             }
         }
-        .progress-bar {
-            @media (min-width: 992px) {
-                left: 50%;
-            }
+        &::before {
+            content: none;
         }
         .process-content-block {
-            @media (min-width: 992px) {
-                padding-left: 0;
+            padding-left: 0;
+        }
+        .process-card { 
+            display: grid;
+            grid-template-columns: 1fr 210px 1fr;
+            padding: 0;            
+            @include box-shadow(none);
+            color: $black;
+            margin-bottom: 150px;  
+            &::before {
+                content: none;
             }
-            & > .row {
-                --bs-gutter-x: 200px;
-                @media (max-width: 1200px) {
-                    --bs-gutter-x: 100px;
+            @media (max-width: 1200px) {                
+                grid-template-columns: 1fr 150px 1fr;
+                margin-bottom: 80px; 
+            }     
+            @media (max-width: 992px) {                
+                @include flexbox;
+                @include flex-wrap(wrap);
+                padding-left: 80px;
+                .card-img {
+                    order: 2;
+                    width: 100%;
+                    margin-bottom: 30px;
                 }
-                &:not(:last-child) {
-                    margin-bottom: 250px;            
-                    @media (max-width: 992px) {
-                        margin-bottom: 120px;
+                .card-content {
+                    width: 100%;
+                    order: 3;
+                }
+            }   
+            @media (max-width: 767px) {                
+                padding-left: 60px;
+                margin-bottom: 50px; 
+            }  
+            &.flex-reverse {
+                @media (min-width: 992px) {
+                    .card-content {
+                        order: 1;
                     }
-                    @media (max-width: 767px) {
-                        margin-bottom: 80px;
-                    }
-                }
-                &.flex-md-row-reverse {
-                    .process-card {
-                        // .card-icon {
-                        //     position: sticky;
-                        //     z-index: 1;
-                        //     margin-left: auto;
-                        //     margin-right: -127px;
-                        //     @media (max-width: 1200px) {
-                        //         margin-right: -78px;
-                        //     }
-                        // }
-                    }
-                }
-            }            
-            .media-block {
-                @media (max-width: 992px) {
-                    margin-bottom: 40px;
-                    img {
-                        width: 80%;
-                    }
-                }
-            }
-            .process-card {
-                padding: 0;
-                @include box-shadow(none);
-                color: $black;
-                &::before {
-                    content: none;
-                }
-                // .card-icon {
-                //     position: sticky;
-                //     width: 54px;
-                //     height: 54px;
-                //     z-index: 1;
-                //     margin-left: -127px;
-                //     @media (max-width: 1200px) {
-                //         margin-left: -78px;
-                //     }
-                // }
-                .card-title {
-                    font-size: 38px;
-                    @media (max-width: 992px) {
-                        font-size: 24px;
-                    }
-                }
-                &.active {
                     .card-icon {
-                        svg {
-                            path {
-                                fill: $primary;
-                            }
+                        order: 2;
+                    }
+                    .card-img {
+                        order: 3;
+                    }
+                }
+            }
+            .card-icon {
+                @include inline-flex;
+                @include justify-content(center);
+                margin-top: -12px;
+                z-index: 1;
+                @media (max-width: 992px) {                    
+                    order: 1;
+                    width: 55px;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                }
+                @media (max-width: 767px) {
+                    width: 40px;
+                    margin-top: 0;
+                }
+                svg {
+                    width: 55px;
+                    height: 55px;
+                    @media (max-width: 767px) {
+                        width: 41px;
+                        height: 41px;
+                    }
+                    path {
+                        @include transition(0.3s, ease-in-out);
+                    }
+                }
+                &.is-icon-sticky {                    
+                    svg {
+                        position: sticky;
+                        top: 110px;
+                    }
+                }
+            }
+            .card-title {
+                h3 {
+                    font-size: 38px;
+                }
+            }
+            &.active {
+                .card-icon {
+                    svg {
+                        path {
+                            fill: $primary;
                         }
                     }
                 }
@@ -1023,6 +1047,8 @@
     .card-info {
         h4 {
             margin-bottom: 20px;
+            font-family: $bodyfont;
+            font-weight: 500;
         }
     }
     .card-action {
