@@ -283,9 +283,6 @@
         position: relative;
         z-index: 3;
         max-width: 650px;
-        @media (max-width: 992px) {  
-            margin-top: 40px;
-        }
         &.text-center {           
             margin: 0 auto 50px;
         }
@@ -634,7 +631,7 @@
 		.card-img {
 			margin-bottom: 20px;
 		}
-		h3 {
+		.card-title, h3 {
 			margin-bottom: 0;
 		}
 	}
@@ -675,6 +672,10 @@
             }
 		}
 	}
+}
+.info-card-block {
+    max-width: 1060px;
+    margin: 0 auto;
 }
 
 // Info List Card
@@ -826,8 +827,8 @@
         content: '';
         background: url('data:image/svg+xml, <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 50L16.8152 45.0979C30.6577 41.0623 41.4495 30.1877 45.3789 16.3147L50 0L54.2116 15.8444C58.0309 30.2128 69.1839 41.4779 83.5134 45.4407L100 50L84.8361 53.601C69.5658 57.2273 57.6063 69.0898 53.856 84.3302L50 100L45.2779 82.9745C41.1908 68.2382 29.394 56.9029 14.5065 53.4067L0 50Z" fill="rgb(22 52 108)"/></svg>') no-repeat center center;
         background-size: contain;
-        width: 54px;
-        height: 54px;
+        width: 55px;
+        height: 55px;
         flex: none;
         position: absolute;
         top: 0;
@@ -836,8 +837,8 @@
         z-index: 1;
         @include transition(0.3s, ease-in-out);
         @media (max-width: 767px) {
-            width: 40px;
-            height: 40px;
+            width: 41px;
+            height: 41px;
         }
     }
     &::after {
@@ -941,7 +942,6 @@
                 .card-img {
                     order: 2;
                     width: 100%;
-                    margin-bottom: 30px;
                 }
                 .card-content {
                     width: 100%;
@@ -1002,6 +1002,9 @@
             .card-title {
                 h3 {
                     font-size: 38px;
+                    @media (max-width: 767px) {
+                        font-size: 24px;
+                    }
                 }
             }
             &.active {
@@ -1042,6 +1045,7 @@
         margin-bottom: 20px;
         @media (max-width: 767px) {
             font-size: 20px;
+            margin-bottom: 15px;
         }
     }
     .card-info {
@@ -1104,6 +1108,11 @@
             margin-bottom: 0px;
         }
     }
+    @media (max-height: 1200px) {
+        .media-block {
+            margin-bottom: 40px;
+        }
+    }
 }
 
 // CTA Section
@@ -1123,6 +1132,9 @@
         }
     }
     .media-block {
+        @media (max-width: 992px) {
+            margin-bottom: 30px;
+        }
         img {
             max-width: 50%;
         }
@@ -1199,11 +1211,13 @@
 .img-text-box-list-section {
 	.img-text-box-lists {	
         & > .row {
-            --bs-gutter-y: 70px;
-            --bs-gutter-x: 70px;
-            @media (max-width: 992px) {
+            @media (min-width: 992px) {
                 --bs-gutter-y: 30px;
                 --bs-gutter-x: 30px;  
+            }
+            @media (min-width: 1400px) {
+                --bs-gutter-y: 70px;
+                --bs-gutter-x: 70px;
             }
         }	
 		.row:not(:last-child) {
@@ -1512,4 +1526,12 @@
             margin-bottom: 50px;
         }
     }
+}
+
+// Center Logo Bg Section
+.center-logo-bg-section {
+    background-image: url(../images/img-rkd-logo-light.svg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 800px;
 }

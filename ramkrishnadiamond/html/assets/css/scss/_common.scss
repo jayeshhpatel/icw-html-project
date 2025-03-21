@@ -198,16 +198,14 @@ img {
         --bs-gutter-x: 1.5rem;  
     }
 }
-.g-50 {
-    --bs-gutter-y: 100px;
-    --bs-gutter-x: 100px;
-    @media (max-width: 1400px) {
+.g-50 {   
+    @media (min-width: 992px) {
         --bs-gutter-y: 50px;
         --bs-gutter-x: 50px;  
     }
-    @media (max-width: 767px) {
-        --bs-gutter-y: 1.5rem;
-        --bs-gutter-x: 1.5rem;  
+    @media (min-width: 1400px) {
+        --bs-gutter-y: 100px;
+        --bs-gutter-x: 100px;
     }
 }
 
@@ -566,7 +564,10 @@ img {
 	max-width: 100%;
 	@include border-radius(0);
 	position: relative;
-	overflow: hidden;    
+	overflow: hidden;   
+    @media (max-width: 992px) {
+        margin-bottom: 40px;
+    } 
     img {
         &.mw-50 {
             @media (max-width: 992px) {
@@ -835,11 +836,11 @@ h5, .h5 {
 // Vector Animation
 @keyframes starAnimteTop {
     0% {
-		transform: translate(20%, -10%);
+		transform: translate(15%, 45%);
 	}
 
 	100% {
-		transform: translate(-80%, 50%);
+		transform: translate(-55%, -10%);
 	}
 }
 @keyframes starAnimteBottom {
@@ -847,7 +848,7 @@ h5, .h5 {
 		transform: translate(90%, 50%);
 	}
 	100% {
-		transform: translate(-50%, -20%);
+		transform: translate(-20%, -70%);
 	}
 }
 .fix-multi-circle-vector {
@@ -870,7 +871,7 @@ h5, .h5 {
     position: fixed;
     top: 0;
     width: 100%;
-    height: 100vh;    
+    height: 120vh;    
     z-index: -1;
     overflow: hidden;
     .star-vector {
