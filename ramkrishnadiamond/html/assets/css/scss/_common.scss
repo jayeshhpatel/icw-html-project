@@ -245,48 +245,51 @@ img {
 	font-size: 14px;
     padding: 0 25px; 
 	line-height: 1;
-    overflow: hidden;
+    overflow: hidden;      
+    &::before {
+        content: "";
+        display: block;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        transform: translateY(101%) scale(.5);
+        transform-origin: center top;
+        transition: all .4s cubic-bezier(.165,.84,.44,1);
+        width: 100%;
+    }        
     .btn-text {
         line-height: 1;
-        height: 14px;
         @include flexbox;
         @include flex-direction(column);
         overflow: hidden;
         z-index: 1;
         position: relative;
-        span {
-            @include transition(0.3s, ease-in-out);
+        .text-animate {
+            z-index: 2;
+            span {
+                display: inline-block;
+            }
+            &:nth-of-type(1) {
+                span {
+                    transform: translateY(0);
+                }
+            }
             &:nth-of-type(2) {
-                color: #000120;
                 display: block;
                 left: 0;
                 position: absolute;
                 top: 0;
                 width: 100%;
-                opacity: 0;
+                span {
+                    transform: translateY(100%);
+                }
             }
         }
     }
-    &.btn-animation {        
+    &:hover, &:focus, &:active {   
         &::before {
-            background-color: #000;
-            content: "";
-            display: block;
-            height: 100%;
-            left: 0;
-            position: absolute;
-            top: 0;
-            transform: translateY(101%) scale(.5);
-            transform-origin: center top;
-            transition: all .3s cubic-bezier(.165,.84,.44,1);
-            width: 100%;
-        }
-        &:hover, &:focus, &:active {            
-            color: $white !important;
-            border-color: $black !important;
-            &::before {
-                transform: translateY(0) scale(1);
-            }
+            transform: translateY(0) scale(1);
         }
     }
     &.btn-sm {        
@@ -298,8 +301,11 @@ img {
         border-color: $primary !important;
 		background-color: $primary !important;
         box-shadow: 5px 5px 0px rgba($primary, 0.3);
-        &:hover, &:focus {
-            box-shadow: 3px 3px 0px rgba($primary, 0.3);
+        &::before {
+            background-color: $white;
+        }
+        &:hover, &:focus, &:active {
+            color: $primary !important;
         }
 	}
 	&.btn-white {
@@ -307,8 +313,11 @@ img {
         border-color: $white !important;
 		background-color: $white !important;
         box-shadow: 5px 5px 0px rgba($white, 0.4);
-        &:hover, &:focus {
-            box-shadow: 3px 3px 0px rgba($white, 0.4)
+        &::before {
+            background-color: $black;
+        }
+        &:hover, &:focus, &:active {
+            color: $white !important;
         }
 	}
 	&.btn-dark {
@@ -316,8 +325,8 @@ img {
         border-color: $black !important;
 		background-color: $black !important;
         box-shadow: 5px 5px 0px rgba($black, 0.3);
-        &:hover, &:focus {
-            box-shadow: 3px 3px 0px rgba($black, 0.4);
+        &::before {
+            background-color: $primary;
         }
 	}
 	&.btn-outline-primary {
@@ -325,10 +334,11 @@ img {
         border-color: $primary;
 		background-color: $white;
         box-shadow: 5px 5px 0px rgba($primary, 0.3);
-        &:hover, &:focus {
-            color: $white !important;
+        &::before {
             background-color: $primary;
-            box-shadow: 3px 3px 0px rgba($primary, 0.3);
+        }
+        &:hover, &:focus, &:active {
+            color: $white !important;
         }
 	}
 	&.btn-outline-white {
@@ -336,10 +346,12 @@ img {
         border-color: $white;
 		background-color: transparent;
         box-shadow: 5px 5px 0px rgba($white, 0.4);
-        &:hover, &:focus {
+        &::before {
+            background-color: $black;
+        }
+        &:hover, &:focus, &:active {
             color: $white !important;
             background-color: $black;
-            box-shadow: 3px 3px 0px rgba($white, 0.3);
         }
 	}
 	&.btn-outline-dark {
@@ -347,10 +359,12 @@ img {
         border-color: $black;
 		background-color: $white;
         box-shadow: 5px 5px 0px rgba($black, 0.3);
-        &:hover, &:focus {
+        &::before {
+            background-color: $black;
+        }
+        &:hover, &:focus, &:active {
             color: $white !important;
             background-color: $black;
-            box-shadow: 3px 3px 0px rgba($black, 0.3);
         }
 	}
 }
@@ -836,19 +850,18 @@ h5, .h5 {
 // Vector Animation
 @keyframes starAnimteTop {
     0% {
-		transform: translate(15%, 45%);
+		transform: translate(10%, 5%);
 	}
-
 	100% {
 		transform: translate(-55%, -10%);
 	}
 }
 @keyframes starAnimteBottom {
     0% {
-		transform: translate(90%, 50%);
+		transform: translate(90%, 10%);
 	}
 	100% {
-		transform: translate(-20%, -70%);
+		transform: translate(-20%, -50%);
 	}
 }
 .fix-multi-circle-vector {
@@ -883,7 +896,7 @@ h5, .h5 {
         display: block;
         width: 550px;
         height: 550px;
-        filter: blur(2px);
+        filter: blur(12px);
         @media (max-width: 1200px) {
             width: 400px;
             height: 400px;
