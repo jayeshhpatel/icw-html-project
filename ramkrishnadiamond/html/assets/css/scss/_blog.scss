@@ -643,7 +643,13 @@
     }
 }
 
+.main-section.blog-content-section {    
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
 .blog-content-section {    
+    padding-top: 100px;
+    padding-bottom: 100px;
     .position-sticky {
         @media (min-width: 992px) {
             position: -webkit-sticky !important;
@@ -655,6 +661,7 @@
     .widget-area {
         background: rgba(#F1F1F1, 0.6);
         padding: 20px;
+        margin-bottom: 30px;
         .widget-title {
             color: #090A0C;
             font-weight: 700;
@@ -667,11 +674,11 @@
             padding: 5px 10px 5px 0;
             display: block;
             overflow-y: auto;
-            @media (min-width:992px) {
-                max-height: calc(100vh - 540px);
+            @media (min-width: 992px) {
+                max-height: calc(100vh - 350px);
                 min-height: 170px;
             }
-            @media (max-width:991px) {
+            @media (max-width: 991px) {
                 max-height: calc(100vh - 140px);
                 min-height: 170px;
             }
@@ -708,44 +715,73 @@
             }
         }
     }
+    
+    .social-list {
+        gap: 10px;
+        margin-top: 0;
+        a {
+            width: 38px;
+            height: 38px;
+            background: rgba(#F1F1F1, 0.6);
+            position: relative;
+            overflow: hidden;
+            &::before {
+                content: "" !important;
+                display: block;
+                height: 100%;
+                left: 0;
+                position: absolute;
+                top: 0;
+                transform: translateY(101%) scale(.5);
+                transform-origin: center top;
+                transition: all .4s cubic-bezier(.165,.84,.44,1);
+                width: 100%;
+                background: $primary;
+            }        
+            svg {
+                z-index: 1;
+                path {
+                    fill: $primary;
+                }
+            }
+            &:hover, &:focus {
+                &::before {
+                    transform: translateY(0) scale(1);
+                }
+                svg {
+                    path {
+                        fill: $white;
+                    }
+                }
+            }
+        }
+    }
     .single-content {
         scroll-margin-top: 80px;
         scroll-margin-bottom: 100px;
+        max-width: 920px;
     }
     .post-sticky-content {
-        margin-bottom: 50px;
-
+        margin-bottom: 30px;
         @media (min-width: 768px) { 
             padding-top: 100px;
             margin-top: -100px;
         }
-
-        @media (max-width: 767px) { 
-            margin-bottom: 30px;
-        }
-
         .title-section-action {
             margin-bottom: 25px;
             @media (max-width: 767px) { 
                 margin-bottom: 15px;
             }
-        }
-        h2 {
-            margin-top: 0;
-        }
-        h3 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 10px;
+            h2, h3 {
+                margin-bottom: 0;
+            }
         }
     }
     
     .post-navigation {
         border-top: 1px solid #C8D0D9;
-        border-bottom: 1px solid #C8D0D9;
-        margin-top: 50px;
-        padding-top: 40px;
-        padding-bottom: 30px;
+        margin-top: 30px;
+        padding-top: 30px;
         @include flexbox;
         @include align-items(center);
         @media (max-width: 767px) { 
@@ -755,27 +791,31 @@
         }
         .written-by {
             font-size: 12px;
-            font-weight: 600;
-            color: #4E4E4E;
-            margin-bottom: 8px;
+            font-weight: 500;
+            color: #65717F;
+            margin-bottom: 10px;
+            letter-spacing: 1.8px;
             text-transform: uppercase;
         }
         .user-info {
             height: 100%;
             .user-img {
-                margin-right: 12px;
+                margin-right: 20px;
                 img {
-                    width: 64px;
-                    height: 64px;
+                    width: 48px;
+                    height: 48px;
                     margin: 0;
                 }
             }
             .user-detail {
                 .name {
-                    font-size: 24px;
+                    font-size: 18px;
+                    font-weight: 600;
                 }
                 span {
                     font-size: 16px;
+                    font-weight: 500;
+                    color: #3E4751;
                     display: block;
                 }
             }
@@ -794,78 +834,16 @@
                 margin-top: 30px;
             }
             .share-title {
-                margin-bottom: 30px;
+                margin-bottom: 20px;
+                font-size: 12px;
+                font-weight: 500;
+                letter-spacing: 1.8px;
+                text-transform: uppercase;
+                color: #65717F;
                 @media (max-width: 767px) { 
                     margin-bottom: 15px;
                 }
             }
         }
-    }
-}
-
-.post-newsletter {
-    background-color: #dbebf5 !important;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 3px;
-
-    .post-form__title {
-        font-size: 16px;
-        font-weight: 500;
-        margin-bottom: 15px;
-    }
-
-    .frm-fluent-form .ff-el-group.ff_submit_btn_wrapper {
-        margin-top: 15px;
-        margin-bottom: 0px !important;
-
-    }
-}
-
-// subscribe
-.post-newsletter-subscribe {
-    margin: 50px auto 20px;
-    background-color: #000;
-    background-size: cover;
-    color: #fff;
-    padding: 35px;
-    text-align: left;
-    position: relative;
-
-    @media (min-width: 480px) {
-        background: #000 url(../images/post-newsletter-subscribe.png) right top no-repeat;
-    }
-  
-    @media (max-width: 767px) {
-      padding: 25px;
-    }
-
-    .subscribe-logo {
-        margin-bottom: 30px;
-        img {
-          max-height: 50px;
-          width: auto !important;
-          border-radius:0 !important;
-        }
-      }
-
-    .subscribe-tag-line {
-        font-weight: 600;
-        margin-bottom: 10px;
-        color: $primary;
-    }
-  
-    .subscribe-title {
-      font-weight: 700;
-      font-size: 42px;
-      color: #fff;
-  
-      @media (max-width: 767px) {
-        font-size: 30px;
-      }
-    }
-  
-    .subscribe-action {
-        margin-top: 30px;
     }
 }

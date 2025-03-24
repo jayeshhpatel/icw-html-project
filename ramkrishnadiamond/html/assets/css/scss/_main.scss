@@ -866,7 +866,7 @@
         top: 0;
         left: 26px;
         @media (max-width: 767px) {
-            left: 20px;
+            left: 19px;
         }
     }
     &.is-icon-sticky {
@@ -888,13 +888,13 @@
         background: $primary;
         @include transition(0.3s, ease-in-out);
         @media (max-width: 767px) {
-            left: 20px;
+            left: 19px;
         }
     }
     .process-content-block { 
         padding-left: 100px;
         @media (max-width: 767px) {
-            padding-left: 55px;
+            padding-left: 60px;
         }  
     }
     .process-card {
@@ -993,7 +993,7 @@
                     top: 0;
                 }
                 @media (max-width: 767px) {
-                    width: 40px;
+                    width: 41px;
                     margin-top: 0;
                 }
                 svg {
@@ -1718,5 +1718,214 @@
                 }
             }
         }
+    }
+}
+
+// Single Content
+.single-content {
+    h2, h3, h4, h5 {
+        color: $black;
+        margin-bottom: 20px;
+        font-family: $bodyfont;
+    }
+    h2, .h2 {
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 1.2;
+        @media (max-width: 1200px) { 
+            font-size: 24px;
+        }
+        @media (max-width: 767px) { 
+            font-size: 20px;
+        }
+        &.font-sm {
+            font-size: 24px;
+            @media (max-width: 767px) { 
+                font-size: 20px;
+            }
+        }
+    }
+    h3, .h3 {
+        font-size: 24px;
+        font-weight: 500;
+    }
+
+    strong {
+        font-weight: 600;
+    }
+
+    a {
+        color: $primary;
+        font-weight: 600;
+        text-decoration: none;
+        text-underline-offset: 6px;
+        &:hover, &:focus {
+            text-decoration: underline;
+        }
+    }
+
+    u {
+        text-decoration: underline;
+        text-underline-offset: 6px;
+    }
+    
+    img {
+        width: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+        margin-top: 20px;
+        & + p {
+            margin-top: 40px;
+        }
+    }
+
+    ol:not(.splide__list), ul:not(.splide__list) {
+        margin: 0;
+        padding-left: 20px;
+        li {
+            margin-bottom: 5px;
+            &::marker {
+                font-weight: 600;
+                color: $primary;
+            }
+        }
+        & + p {
+            margin-top: 20px;
+        }
+    }
+
+    ol:not(.splide__list) { 
+        list-style-type: decimal;
+        li {            
+            list-style-type: decimal;
+        }
+        ul:not(.splide__list) {            
+            margin-top: 5px;
+            margin-bottom: 0;
+            li {
+                list-style-type: disc;
+                &::marker {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+
+    ul:not(.splide__list) {
+        list-style-type: disc;
+        li {
+            list-style-type: disc;
+            &::marker {
+                font-size: 20px;
+            }
+            ol:not(.splide__list) {
+                margin-top: 5px;
+                margin-bottom: 0;
+                li {
+                    list-style-type: decimal; 
+                    &::marker {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+    .marker-list {
+        padding-left: 35px !important;
+        margin-bottom: 20px !important;
+        li:where([data-marker]) {
+            position: relative;
+            margin-bottom: 10px;
+            &::before {
+                content: attr(data-marker);
+                margin-right: 10px;
+                position: absolute;
+                left: -35px;
+                font-weight: 600;
+            }
+            .marker-list {
+                padding-left: 45px;
+                margin-top: 10px;
+                li {
+                    &::before {
+                        left: -45px;
+                    }
+                }
+            }
+        }
+    }
+    blockquote {
+        background: $gray;
+        padding: 50px 40px 50px 130px;
+        font-size: 22px;
+        @include border-radius(20px);
+        margin: 40px 0 50px;
+        background-image: url(../images/icons/icon-quote.svg);
+        background-repeat: no-repeat;
+        background-position: 40px 45px;
+        background-size: 45px;
+        line-height: 1.5;
+        @media (max-width: 767px) { 
+            padding: 70px 20px 20px;
+            background-position: 20px 20px;
+            background-size: 32px;
+            font-size: 18px;
+        }
+        .user-info-content {
+            border-top: 1px solid #C8D0D9;
+            margin-top: 40px;
+            padding-top: 25px;
+            @include flexbox;
+            @include align-items(center);
+            @include justify-content(space-between);
+            @media (max-width: 767px) { 
+                @include flex-direction(column);
+                @include align-items(flex-start);
+            }
+            .user-info {
+                .user-img {
+                    margin-right: 12px;
+                    img {
+                        width: 56px;
+                        height: 56px;
+                        margin: 0;
+                    }
+                }
+                .user-detail {
+                    .name {
+                        font-size: 16px;
+                    }
+                    span {
+                        font-size: 14px;
+                        display: block;
+                    }
+                }
+            }
+            .logo {
+                text-align: right;
+                @media (max-width: 767px) { 
+                    margin-top: 24px;
+                    text-align: left;
+                }
+                img {
+                    margin: 0;
+                    @include border-radius(0px);
+                }
+                @media (max-width: 767px) { 
+                    img {
+                        max-width: 80%;
+                    }
+                }
+            }
+        }
+    }
+    
+    .post-sticky-content {  
+        .sort-info {
+            h3, .h3 {
+                font-size: 18px;
+                font-weight: 600;
+            }
+        }   
     }
 }
