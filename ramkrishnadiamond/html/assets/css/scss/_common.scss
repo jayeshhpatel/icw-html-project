@@ -265,7 +265,7 @@ img {
         overflow: hidden;
         position: relative;
         .text-animate {
-            z-index: 2;
+            // z-index: 2;
             span {
                 display: inline-block;
             }
@@ -1705,6 +1705,7 @@ h5, .h5 {
     background-size: cover;
     z-index: 2;
     position: relative;
+    overflow: hidden;
     @media (max-width: 767px) {
         background-image: url(../images/img-mobile-footer-bg.jpg);
     }
@@ -1717,6 +1718,11 @@ h5, .h5 {
             top: 50%;
             left: -52px;
             @include transform(translateY(-50%));
+            user-select: none;
+            pointer-events: none;
+            &.is-animted {                
+                animation: slide-up 0.5s forwards;
+            }
             @media (max-width: 1200px) {
                 left: -32px;
                 img {
@@ -1946,6 +1952,20 @@ h5, .h5 {
                 }
             }
         }
+    }
+}
+
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
     }
 }
 
