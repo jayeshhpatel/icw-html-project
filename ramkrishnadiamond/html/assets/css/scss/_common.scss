@@ -1203,18 +1203,15 @@ h5, .h5 {
                         &::before {
                             content: '';
                             position: absolute;
-                            bottom: 1px;
-                            left: 0;
+                            bottom: 1px;                            
+                            right: 0;
                             @include inline-flex;
                             @include justify-content(flex-end);
                             @include align-items(flex-start);
                             background-color: $white;
-                            width: 100%;
+                            width: 0;
                             height: 1.5px;
-                            margin-left: -110%;
-                            @include transition(0.3s, ease-in-out);
-                            @include transform(translate3d(0%, 0px, 0px));
-                            transform-style: preserve-3d;
+                            transition: width 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
                             will-change: transform;
                         }
                     }
@@ -1222,8 +1219,9 @@ h5, .h5 {
                         a {
                             color: $white;
                             &::before {            
-                                @include transform(translate3d(150%, 0px, 0px));
-                                transform-style: preserve-3d;
+                                width: 100%;
+                                left: 0;
+                                right: auto;
                             }
                         }
                     }
@@ -1660,7 +1658,7 @@ h5, .h5 {
                 .footer-bottom {
                     @include flexbox;
                     gap: 30px 60px;
-                    margin-top: 20px;
+                    margin-top: 30px;
                     @media (max-width: 767px) {
                         @include flex-direction(column);
                     }
@@ -1682,7 +1680,12 @@ h5, .h5 {
                     }
                 }
                 .widget-block {                    
-                    .widget-content {
+                    .widget-content {                        
+                        @media (max-width: 767px) {
+                            &.d-flex {
+                                width: 100%;
+                            }
+                        }
                         .social-list {
                             margin-bottom: 0;
                             @media (max-width: 992px) {
@@ -1717,10 +1720,10 @@ h5, .h5 {
             position: absolute;
             top: 50%;
             left: -52px;
-            @include transform(translateY(-50%));
+            // @include transform(translateY(-50%));
             user-select: none;
             pointer-events: none;
-            &.is-animted {                
+            &.is-animate {                
                 animation: slide-up 0.5s forwards;
             }
             @media (max-width: 1200px) {
@@ -1758,25 +1761,23 @@ h5, .h5 {
             &::before {
                 content: '';
                 position: absolute;
-                bottom: 1px;
-                left: 0;
+                bottom: 1px;                            
+                right: 0;
                 @include inline-flex;
                 @include justify-content(flex-end);
                 @include align-items(flex-start);
                 background-color: $white;
-                width: 100%;
+                width: 0;
                 height: 1.5px;
-                margin-left: -110%;
-                @include transition(0.3s, ease-in-out);
-                @include transform(translate3d(0%, 0px, 0px));
-                transform-style: preserve-3d;
+                transition: width 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
                 will-change: transform;
             }
             &:hover, &:focus {
                 color: $white;
                 &::before {            
-                    @include transform(translate3d(150%, 0px, 0px));
-                    transform-style: preserve-3d;
+                    width: 100%;
+                    left: 0;
+                    right: auto;
                 }
             }
         }
@@ -1823,8 +1824,9 @@ h5, .h5 {
                         a {
                             color: $white;
                             &::before {            
-                                @include transform(translate3d(150%, 0px, 0px));
-                                transform-style: preserve-3d;
+                                width: 100%;
+                                left: 0;
+                                right: auto;
                             }
                         }
                     }

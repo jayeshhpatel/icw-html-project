@@ -157,7 +157,7 @@ function updateProgressBars() {
     var activeCount = 0;
 
     $('.process-card').each(function (index) {
-        var cardTop = $(this).offset().top - windowHeight * 0.2; 
+        var cardTop = $(this).offset().top - windowHeight * 0.9; 
         var cardHeight = $(this).outerHeight();
         var cardBottom = cardTop + cardHeight;
 
@@ -403,6 +403,17 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     // }
+
+    const $logoBlock = $('.site-vertical-logo');
+    if ($logoBlock.length) {
+        $(window).on('scroll', function() {
+            const logoBlockTop = $logoBlock.offset().top;
+            const windowBottom = $(window).scrollTop() + $(window).height();
+
+            // Toggle class based on footer visibility
+            $logoBlock.toggleClass('is-animate', windowBottom >= logoBlockTop);
+        });
+    }
     
 });
 
