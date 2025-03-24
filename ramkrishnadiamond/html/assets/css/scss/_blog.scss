@@ -1,3 +1,99 @@
+// Event Card CSS
+.event-post-slider-section {
+    overflow: hidden;
+    .event-splide {  
+        padding-bottom: 40px;      
+        .splide__track {
+            overflow: visible
+        }
+        .event-card {          
+            @media (max-width: 1200px) {                 
+                max-width: 300px;
+            }
+            @media (max-width: 767px) {
+                max-width: 280px;
+            }
+        }
+        .icw-pagination {
+            left: 0;
+            right: auto;
+            padding: 0
+        }
+    }
+}
+
+.event-card {
+    position: relative;
+    @include flexbox;
+    @include flex-direction(column);
+    text-align: left;
+    .card-img {
+        @include border-radius(0);
+        margin-bottom: 25px;
+        position: relative;
+        overflow: hidden;
+        img {
+            width: 100%;
+            object-fit: cover;
+            @include border-radius(0);
+            @include transition(0.3s, ease-in-out);
+        }
+    }
+    .card-body {
+        flex: 1 1 auto;
+        margin-bottom: 15px;
+        .post-title, h3 {
+            font-size: 20px;
+            font-weight: 400;
+            margin: 0;
+            a {
+                color: $black;
+                text-decoration: none;
+                line-height: normal;
+                transition: all 0.3s,background-size 0.8s;
+                background-image: linear-gradient(to right, $primary 0%, $primary 100%);
+                background-position: 0 100%;
+                background-repeat: no-repeat;
+                background-size: 0 1px;
+            }
+        }
+    }
+    .card-footer {
+        .event-meta-info {
+            .event-date {
+                color: $black;
+                font-size: 16px;
+                font-weight: 500;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+            }
+            .event-location {
+                color: $black;
+                font-size: 14px;
+                font-weight: 500;
+                letter-spacing: 0.1em;
+            }
+        }
+    }
+    &:hover, &:focus {
+        .card-img {
+            img {
+                @include transform(scale(1.05));
+            }
+        }
+        .card-body {
+            h3 {
+                a {
+                    color: $primary;
+                    text-decoration-color: $primary !important;
+                    background-size: 100% 1px;
+                }
+            }
+        }
+    }
+}
+
+// Blog Post Slider
 .blog-post-slider-section {
     overflow: hidden;
     .blog-post-splide {  
@@ -6,7 +102,7 @@
             overflow: visible
         }
         .post-card {          
-            @media (max-width: 992px) {                 
+            @media (max-width: 1200px) {                 
                 max-width: 300px;
             }
             @media (max-width: 767px) {
@@ -412,72 +508,135 @@
     }
 }
   
-// Event Card CSS
-.event-card {
-    position: relative;
-    @include flexbox;
-    @include flex-direction(column);
-    text-align: left;
-    .card-img {
-        @include border-radius(0);
-        margin-bottom: 25px;
-        position: relative;
-        overflow: hidden;
-        img {
-            width: 100%;
-            object-fit: cover;
-            @include border-radius(0);
-            @include transition(0.3s, ease-in-out);
-        }
-    }
-    .card-body {
-        flex: 1 1 auto;
-        margin-bottom: 15px;
-        .post-title, h3 {
-            font-size: 20px;
+// Blog Post Details
+.page-header.single-header {
+    padding: 190px 0 100px;
+    .breadcrumb-nav .breadcrumb {
+        margin-bottom: 30px;
+        .breadcrumb-item {
+            color: $black;
             font-weight: 400;
-            margin: 0;
+            font-size: 14px;
             a {
                 color: $black;
                 text-decoration: none;
-                line-height: normal;
-                transition: all 0.3s,background-size 0.8s;
-                background-image: linear-gradient(to right, $primary 0%, $primary 100%);
-                background-position: 0 100%;
-                background-repeat: no-repeat;
-                background-size: 0 1px;
-            }
-        }
-    }
-    .card-footer {
-        .event-meta-info {
-            .event-date {
-                color: $black;
-                font-size: 16px;
-                font-weight: 500;
-                letter-spacing: 0.1em;
-                text-transform: uppercase;
-            }
-            .event-location {
-                color: $black;
-                font-size: 14px;
-                font-weight: 500;
-                letter-spacing: 0.1em;
-            }
-        }
-    }
-    &:hover, &:focus {
-        .card-img {
-            img {
-                @include transform(scale(1.05));
-            }
-        }
-        .card-body {
-            h3 {
-                a {
+                @include transition(0.2s, ease-in-out);
+                &:hover, &:focus {
                     color: $primary;
-                    text-decoration-color: $primary !important;
-                    background-size: 100% 1px;
+                    text-decoration: underline;
+                }
+            }
+        }
+        .breadcrumb-item +.breadcrumb-item::before {
+            content: '-';
+            color: $black;
+        }
+    }
+    &.is-dark {
+        * {
+            color: #fff;
+        }
+        .breadcrumb-nav .breadcrumb {
+            .breadcrumb-item {
+                color: $white;
+                a {
+                    color: $white;
+                    &:hover, &:focus {
+                        color: rgba($white, 0.8);
+                    }
+                }
+            }
+            .breadcrumb-item +.breadcrumb-item::before {
+                color: $white;
+            }
+        }
+        a.blog-meta-badge {
+            background: transparent;
+            color: #fff;
+            &:hover, &:focus {
+                color: #000;
+                background: $gray;
+            }
+        }
+    }
+}
+
+.blog-header-title {
+    .post-image { 
+        display: block;
+        overflow: hidden;
+        img {
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+    .breadcrumb-nav {
+        margin-bottom: 60px;
+    }
+    .post-content-detail {       
+        .blog-meta-info {                
+            margin-bottom: 20px;
+            .blog-meta-badge {
+                padding: 3px 10px;
+                background: rgba(#F7F8F9, 0.82);
+                color: $primary;
+            }
+            a.blog-meta-badge {
+                &:hover, &:focus {
+                    background: $gray;
+                    color: $black;
+                }
+            }
+        }  
+        .post-title {
+            font-size: 45px;
+            margin-bottom: 20px;
+            @media (max-width: 767px) {
+                font-size: 24px; 
+            }
+            a {
+                text-decoration: none;
+                line-height: 1.2;
+            }
+        }
+        .date-time {
+            font-size: 14px;
+            font-weight: 500;
+            color: #CDCDCD;
+            span {
+                color: #CDCDCD;
+            }
+        }
+        .written-by-user {
+            border-top: 1px solid rgba(#E5E4E2, 0.2);
+            margin-top: 30px;
+            padding-top: 30px;
+            @media (max-width: 767px) {
+                margin-top:25px;
+                padding-top: 25px;
+            }
+            .written-by {
+                text-transform: uppercase;
+                font-size: 12px;
+                font-weight: 500;
+                letter-spacing: 1.8px;
+                color: #CDCDCD;
+                margin-bottom: 8px;
+            }
+            .user-info {
+                .user-img {
+                    margin-right: 12px;
+                    img {
+                        width: 32px;
+                        height: 32px;
+                    }
+                }
+                .user-detail .name {
+                    font-size: 12px;
+                    font-weight: 500;
+                    color: $white;
+                    text-transform: uppercase;
+                    letter-spacing: 1.8px;
                 }
             }
         }
