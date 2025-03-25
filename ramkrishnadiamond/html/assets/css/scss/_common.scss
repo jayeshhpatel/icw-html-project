@@ -1700,6 +1700,90 @@ h5, .h5 {
         }
     }
 }
+body.is-light {
+    .main-header {
+        .navbar {
+            .navbar-brand {
+                img {
+                    filter: brightness(0) invert(1);
+                }
+            }
+        }
+        &:not(.fixed-header) {
+            .navbar {
+                .navbar-brand {
+                    img {
+                        filter: none;
+                    }
+                }
+                .main-menu {
+                    ul {
+                        li {
+                            a {
+                                color: rgba($primary, 0.8);
+                                &::before {
+                                    background-color: $primary;
+                                }
+                            }
+                            &.current-menu-item, &:hover, &:focus {
+                                a {
+                                    color: $primary;
+                                }
+                            }
+                            &.menu-item-has-children {
+                                & > a {
+                                    @media (min-width: 992px) {
+                                        &::after {
+                                            background: url('data:image/svg+xml,<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 1L5 4.5L1.5 1" stroke="rgb(22 51 107)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
+                                        }
+                                    }
+                                }
+                                &:hover, &:focus {
+                                    & > a {
+                                        @media (min-width: 992px) {
+                                            &::after {
+                                                background: url('data:image/svg+xml,<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 1L5 4.5L1.5 1" stroke="rgb(22 51 107)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center center;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .right-menu {
+                    .btn {
+                        color: $white !important;
+                        border-color: $primary !important;
+                        background-color: $primary !important;
+                        box-shadow: 5px 5px 0px rgba($primary, 0.4);
+                        &::before {
+                            background-color: $white;
+                        }
+                        &:hover, &:focus, &:active {
+                            color: $primary !important;
+                        }
+                    }
+                }
+                .navbar-toggler {
+                    .btn-toggle-bg {
+                        svg {
+                            circle {
+                                fill: $white;
+                            }
+                        }
+                        &::before {
+                            background: $primary;
+                        }
+                    }
+                    .btn-toggle-close {
+                        background: $primary;
+                    }
+                }
+            }
+        }
+    }
+}
 
 // Footer CSS
 .main-footer {
