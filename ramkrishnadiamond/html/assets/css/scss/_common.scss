@@ -617,17 +617,13 @@ img {
             @include justify-content(center);
             @include transition(0.3s, ease-in-out);
             svg {
-                width: 56px;
-                height: 56px;
+                width: 80px;
+                height: 80px;
                 flex: none;
                 @include border-radius(50%);
                 @include transition(0.3s, ease-in-out);
                 @include transform(scale(1));
                 z-index: 2;
-                &:hover {
-                    @include box-shadow(0px 5px 15px 0px rgba(0, 0, 0, 0.2));
-                    @include transform(scale(1.1));
-                }
             }
             &.d-hide {
                 opacity: 0;
@@ -654,6 +650,14 @@ img {
             }
             &.ratio-4x3 {
                 --bs-aspect-ratio: 67%;
+            }
+        }        
+        &:hover {
+            .play-icon {
+                svg {
+                    @include box-shadow(0px 0px 15px 0px rgba(255, 255, 255, 0.5));
+                    @include transform(scale(1.1));
+                }
             }
         }
     }
@@ -1078,6 +1082,47 @@ h5, .h5 {
                 svg {
                     path {
                         fill: $secondary
+                    }
+                }
+            }
+        }
+    }
+    &.with-bg {
+        li {
+            a {
+                width: 48px;
+                height: 48px;
+                background: #F1F1F1;
+                backdrop-filter: blur(8.5px);
+                position: relative;
+                overflow: hidden;
+                &::before {
+                    content: "" !important;
+                    display: block;
+                    height: 100%;
+                    left: 0;
+                    position: absolute;
+                    top: 0;
+                    transform: translateY(101%) scale(.5);
+                    transform-origin: center top;
+                    transition: all .4s cubic-bezier(.165,.84,.44,1);
+                    width: 100%;
+                    background: $primary;
+                }        
+                svg {
+                    z-index: 1;
+                    path {
+                        fill: $primary;
+                    }
+                }
+                &:hover, &:focus {
+                    &::before {
+                        transform: translateY(0) scale(1);
+                    }
+                    svg {
+                        path {
+                            fill: $white;
+                        }
                     }
                 }
             }
@@ -2161,17 +2206,18 @@ body.is-light {
 // Icon Lit
 .icon-list {
     li {
-        @include flexbox;
-        @include align-items(flex-start);
         font-size: 18px;
         font-weight: 400;
         margin-bottom: 10px;
         color: $black;
+        position: relative;
+        padding-left: 38px;
         &:last-child {
             margin-bottom: 0;
         }
         @media (max-width:992px) {
             font-size: 16px;
+            padding-left: 30px;
         }
         &::before {
             content: '';
@@ -2181,10 +2227,12 @@ body.is-light {
             height: 28px;
             flex: none;
             display: inline-block;
-            margin-right: 10px;
+            position: absolute;
+            left: 0;
+            top: 0;
             @media (max-width:992px) {
-                width: 18px;
-                height: 18px;
+                width: 20px;
+                height: 20px;
             }
         }
     }
