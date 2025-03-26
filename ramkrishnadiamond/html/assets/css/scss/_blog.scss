@@ -849,3 +849,49 @@
         }
     }
 }
+.readtime-bar {
+    @include flexbox;
+    @include align-items(center);
+    position: sticky;
+    top: 90px;
+    padding: 0;
+    opacity: 0;
+    background-color: $black;
+    @include transition(0.3s, ease-in-out);
+    z-index: 110;
+    padding: 20px 40px;
+    @media (max-width: 992px) {
+        top: 64px;
+        padding: 20px 15px;
+    }
+    &.is-visible {
+        opacity: 1;
+        .progress-bar {
+            height: 5px;
+            .indicator {
+                height: 5px;
+            }
+        }
+    }
+    .progress-bar {
+        background-color: rgba($white, 0.3);
+        height: 0;
+        width: 100%;
+        .indicator {
+            background-color: $secondary;
+            height: 0;
+            width: 0;
+        }
+    }
+    .time-remaining {
+        color: $white;
+        flex-grow: 1;
+        font-size: 16px;
+        font-weight: 700;
+        padding-left: 15px;
+        white-space: nowrap;
+        @media (max-width: 992px) {
+            font-size: 14px;
+        }
+    }
+}

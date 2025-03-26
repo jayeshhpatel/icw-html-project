@@ -413,13 +413,34 @@ document.addEventListener("DOMContentLoaded", function () {
             // Toggle class based on footer visibility
             $logoBlock.toggleClass('is-animate', windowBottom >= logoBlockTop);
         });
-    }
+    }   
     
 });
 
 // Run on scroll
 window.addEventListener("scroll", checkAnimations);
 document.addEventListener('scroll', handleScroll);
+
+document.addEventListener("scroll", function () {
+    var readTimeBar = document.querySelector(".readtime-bar"),
+    indicator = document.querySelector(".readtime-bar .indicator"),
+    minutesDisplay = document.querySelector(".time-remaining .minutes"),
+    readTime = parseInt(document.querySelector(".time-remaining .minutes").textContent);
+    remainingText = document.querySelector(".time-remaining .remainingText"),
+    contentTop = document.querySelector("#single-content-wrapper").offsetTop,
+    contentHeight = document.querySelector("#single-content-wrapper").scrollHeight,
+    maxScroll = (window.innerHeight, contentHeight - window.innerHeight / 2),
+    scrollProgress = ((window.scrollY - contentTop) / maxScroll) * 100;
+    if (scrollProgress <= 100 && scrollProgress >= 0) {
+        readTimeBar.classList.add("is-visible");
+        var u = parseInt((100 - scrollProgress) / (100 / readTime)) + 1;
+        (minutesDisplay.innerHTML = u.toString()), 
+        (remainingText.innerHTML = "minutes"), 1 == u && (remainingText.innerHTML = "minute"), indicator.style.setProperty("width", scrollProgress + "%");
+    } else {
+        scrollProgress < 0 ? (indicator.style.setProperty("width", "0"), readTimeBar.classList.remove("is-visible")) : scrollProgress > 100 && (indicator.style.setProperty("width", "100%"), readTimeBar.classList.remove("is-visible"));
+    }
+});
+
 
 // Media Block in Image Caption Animation
 function handleScroll() {
