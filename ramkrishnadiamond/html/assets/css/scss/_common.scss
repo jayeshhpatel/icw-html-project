@@ -856,31 +856,41 @@ h5, .h5 {
 // Vector Animation
 @keyframes starAnimteTop {
     0% {
-		transform: translate(10%, 5%);
-	}
-	100% {
-		transform: translate(-55%, -10%);
-	}
-    // 0% {
-    //     transform: translate(0%, 0%);
-    // }
-    // 30% {
-    //     transform: translate(5%, 5%);
-    // }
-    // 60% {
-    //     transform: translate(3%,-3%);
-    // }
-    // 100% {
-    //     transform: translate(-65%, -10%);
-    // }
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(15%, 10%);
+    }
+    50% {
+        transform: translate(-10%, 10%);
+    }
+    75% {
+        transform: translate(-10%, -10%);
+    }
+    100% {
+        transform: translate(-15%, 10%);
+        opacity: 0;
+    }
 }
 @keyframes starAnimteBottom {
     0% {
-		transform: translate(90%, 10%);
-	}
-	100% {
-		transform: translate(-20%, -50%);
-	}
+        transform: translate(0, 0); 
+        opacity: 0;
+    }
+    25% {
+        transform: translate(15%, 10%);
+    }
+    50% {
+        transform: translate(-10%, -15%);
+    }
+    75% {
+        transform: translate(-20%, 10%);
+    }
+    100% {
+        transform: translate(30%, 5%);
+        opacity: 1;
+    }
 }
 .fix-multi-circle-vector {
     position: fixed;
@@ -926,7 +936,7 @@ h5, .h5 {
         &.is-top {
             top: 0;
             left: -100px;
-            animation: starAnimteTop 8s ease-in-out infinite alternate-reverse;
+            animation: starAnimteTop 8s linear forwards infinite alternate;
             @media (max-width: 767px) {
                 left: -30px;
             }
@@ -936,9 +946,9 @@ h5, .h5 {
             height: 500px;
             bottom: 0;
             right: -100px;
-            animation: starAnimteBottom 8s ease-in-out infinite alternate;
-            transform: translate(90%, 50%);
-            animation-delay: 8s;
+            opacity: 0;
+            animation: starAnimteBottom 8s linear infinite alternate-reverse;
+            animation-delay: 7s;
             @media (max-width: 1200px) {
                 width: 300px;
                 height: 300px;
