@@ -388,22 +388,21 @@
                             rewind: true,
                             pagination: true,
                             arrows: false,
-                            // autoplay: true,
-                            interval: 5000, // Duration for each slide in ms
+                            interval: 5000,
                             pauseOnHover: false,
                             pauseOnFocus: false,
                             height: '100%',
                             gap: '30px',
                             classes: {
-                                pagination: 'splide__pagination icw-pagination', 
+                                pagination: 'splide__pagination icw-pagination',
                             },
                             breakpoints: {
-                                992: { 
+                                992: {
                                     pagination: false,
                                 },
                             }
                         });
-
+                    
                         function initProcessContent() {
                             if (window.innerWidth <= 992) {
                                 return new Splide('#process-content-slider', {
@@ -414,9 +413,9 @@
                                     pagination: true,
                                     arrows: false,
                                     height: '100%',
-                                    gap: '80px',
+                                    gap: '160px',
                                     classes: {
-                                        pagination: 'splide__pagination icw-pagination', 
+                                        pagination: 'splide__pagination icw-pagination',
                                     },
                                 });
                             } else {
@@ -427,33 +426,18 @@
                                     pagination: false,
                                     arrows: false,
                                     height: '100%',
-                                    gap: '80px'
+                                    gap: '160px'
                                 });
                             }
-                        }                      
-
-                        var processContent = initProcessContent();
-                        var bar = processContent.root.querySelector('.splide__progress__bar');
-
-                        // Function to update the progress bar based on the main slider's current index.
-                        function updateProgress() {
-                            var totalSlides = processImg.Components.Controller.getEnd() + 1;
-                            var currentSlide = processImg.index + 1;
-                            
-                            var rate = Math.min(currentSlide / totalSlides, 1);
-                            if(jQuery(window).width() <= 992) {
-                                bar.style.width = (100 * rate) + '%';
-                            } else {
-                                bar.style.height = (100 * rate) + '%';
-                            }
                         }
-
-                        // Function to update "is-complete" classes on processContent slides.
+                    
+                        var processContent = initProcessContent();
+                    
                         function updateCompleteSlides() {
                             var slides = processContent.Components.Elements.slides;
                             var activeIndex = processContent.index;
-
-                            slides.forEach(function(slide, index) {
+                    
+                            slides.forEach(function (slide, index) {
                                 if (index <= activeIndex) {
                                     slide.classList.add('is-complete');
                                 } else {
@@ -461,40 +445,63 @@
                                 }
                             });
                         }
-                        // Function to update "is-complete" classes on processContent slides.
-                        // function updateCurrentSlides() {
-                        //     var slides = processImg.Components.Elements.slides;
-                        //     var activeIndex = processImg.index;
-
-                        //     slides.forEach(function(slide, index) {
-                        //         var currentImgSlide = slide.querySelector('.slideImg-overlay-block');
-                        //         currentImgSlide.querySelectorAll("span").forEach((element, index) => {
-                        //             element.style.transitionDelay = index * 0.05 + "s"; // Adjust delay as needed
-                        //         });
-                        //         if (index == activeIndex) {
-                        //             console.log(currentImgSlide);                                    
-                        //             currentImgSlide.classList.add('is-animated');
-                        //         } else {
-                        //             currentImgSlide.classList.remove('is-animated');
-                        //         }
-                        //     });
-                        // }
-
+                    
                         function updateAll() {
-                            updateProgress();
-                            // updateCurrentSlides();
-                            if(jQuery(window).width() >= 992) {
+                            if (window.innerWidth >= 992) {
                                 updateCompleteSlides();
                             }
                         }
-
+                    
                         processImg.on('moved', updateAll);
                         processContent.on('mounted moved', updateAll);
-                        processImg.sync(processContent);      
+                        processImg.sync(processContent);
                         processImg.mount();
                         processContent.mount();
+                    
+                        // --- Scroll Sync Logic (Desktop Only) ---
+                        function isInViewportSection(elem) {
+                            const rect = elem.getBoundingClientRect();
+                            return (
+                                rect.bottom > 0 &&
+                                rect.top < (window.innerHeight || document.documentElement.clientHeight)
+                            );
+                        }
 
+                        function scrollActivateInfoCards() {
+                            if (window.innerWidth <= 992) return;
+
+                            const section = document.querySelector('.diamond-process-slider-section');
+                            const cards = document.querySelectorAll('#process-content-slider .info-card');
+
+                            //  If section is completely out of view — remove all is-complete
+                            if (!isInViewportSection(section)) {
+                                document.querySelectorAll('.splide__slide').forEach(slide => {
+                                    slide.classList.remove('is-complete');
+                                });
+                                return;
+                            }
+
+                            cards.forEach((card, index) => {
+                                const rect = card.getBoundingClientRect();
+                                if (rect.top <= 600 && rect.top + card.offsetHeight > 100) {
+                                    console.log(card.offsetHeight );
+                                    
+                                    const parentSlide = card.closest('.splide__slide');
+                                    if (parentSlide && !parentSlide.classList.contains('is-complete')) {
+                                        document.querySelectorAll('.splide__slide').forEach(slide => {
+                                            slide.classList.remove('is-complete');
+                                        });
+                                        parentSlide.classList.add('is-complete');
+                                        processImg.go(index);
+                                    }
+                                }
+                            });
+                        }
+                    
+                        window.addEventListener('scroll', scrollActivateInfoCards);
                     </script>
+                    
+                    
                 </div>
             </section>
             <section class="main-section counter-section py-70">
@@ -656,7 +663,7 @@
                     <script>
                         if (jQuery('.team-splide').length) { 
                             var splide_team = new Splide( '.team-splide', {
-                                type: 'slide',
+                                type: 'loop',
                                 perPage: 2,
                                 perMove: 1,
                                 pagination: true,
@@ -664,6 +671,8 @@
                                 pauseOnHover: true,
                                 autoWidth: true,    
                                 gap: 30,
+                                autoplay: true,
+                                interval: 3000,
                                 classes: {
                                     pagination: 'splide__pagination icw-pagination', 
                                 },
@@ -816,13 +825,15 @@
                     <script>
                         if (jQuery('.blog-post-splide').length) { 
                             var splide_blogPost = new Splide( '.blog-post-splide', {
-                                type: 'slide',
+                                type: 'loop',
                                 perPage: 4,
                                 perMove: 1,
                                 pagination: true,
                                 arrows: false,
                                 pauseOnHover: true,
                                 gap: 30,
+                                autoplay: true,
+                                interval: 3000,
                                 classes: {
                                     pagination: 'splide__pagination icw-pagination', 
                                 },
