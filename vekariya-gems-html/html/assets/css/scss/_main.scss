@@ -1206,16 +1206,20 @@
 // Diamond Process Slider Section 
 .diamond-process-slider-section {
     .process-img-slider {
-        position: relative;
-        max-width: 540px;
+        max-width: 540px;           
         @include border-radius(6px);
+        @media (min-width: 992px) {     
+            position: sticky;
+            top: 150px;
+        }
         @media (max-width: 992px) {                
             max-width: 100%;
         }
         .image-block {
             width: 100%;
             height: 100%;
-            max-height: 600px;
+            max-height: 600px;            
+            @include border-radius(6px);
             @media (max-width: 992px) {
                 max-height: 360px;
             }
@@ -1255,6 +1259,21 @@
     }
     .process-content-slider {
         .info-card {
+            position: relative;
+            @media (min-width: 992px) {   
+                padding-bottom: 250px;
+                margin-bottom: 10px;
+                &::before {
+                    content: '';
+                    background: $secondary;
+                    width: 2px;
+                    min-height: 100%;
+                    position: absolute;
+                    top: 2px;
+                    left: 30px;
+                    z-index: -1;
+                }
+            }
             .card-img-icon {
                 position: relative;
                 &::before {
@@ -1277,6 +1296,12 @@
             &:last-child {
                 margin-bottom: 0 !important;
                 .info-card {
+                    @media (min-width: 992px) {   
+                        padding-bottom: 100px;
+                    }
+                    &::before {
+                        content: none;
+                    }
                     .card-img-icon {
                         &::before {
                             content: none;
@@ -1295,31 +1320,179 @@
                 }
             }
         }
-        .splide__progress {
-            background: #BEBEBE;
-            width: 2px;
-            min-height: 73.5%;
-            position: absolute;
-            top: 2px;
-            left: 30px;
-            @media (max-width: 992px) {                
-                width: calc(100% - 60px);
-                min-height: 2px;
-                height: 2px;
-                top: 25px;
-                left: 60px;
-            }
-            .splide__progress__bar {
+        @media (max-width: 992px) {   
+            .splide__progress {
+                background: #BEBEBE;
                 width: 2px;
-                height: 100%;
-                transition: height 1s ease-in-out;
-                background: $secondary;
+                min-height: 100%;
                 position: absolute;
+                top: 2px;
+                left: 30px;
                 @media (max-width: 992px) {                
-                    width: 0;
+                    width: calc(100% - 60px);
                     min-height: 2px;
                     height: 2px;
-                    transition: width 1s ease-in-out;
+                    top: 25px;
+                    left: 60px;
+                }
+                .splide__progress__bar {
+                    width: 2px;
+                    height: 100%;
+                    transition: height 1s ease-in-out;
+                    background: $secondary;
+                    position: absolute;
+                    @media (max-width: 992px) {                
+                        width: 0;
+                        min-height: 2px;
+                        height: 2px;
+                        transition: width 1s ease-in-out;
+                    }
+                }
+            }
+        }
+    }
+}
+.diamond-process-section {
+    .process-img-slider {
+        max-width: 540px;        
+        position: sticky;
+        top: 150px;
+        @media (max-width: 992px) {
+            display: none;
+        }
+        .left-image-block {
+            position: relative;            
+            .image-block {  
+                transition: all 0.3s ease-in-out;
+                display: none;
+                width: 100%;
+                height: 100%;
+                max-height: 600px;
+                @include border-radius(6px);
+                @media (max-width: 992px) {
+                    max-height: 360px;
+                }
+                &.is-active {
+                    display: block;
+                }
+                img {              
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                    @media (max-width: 992px) {
+                        min-height: 360px;
+                    }
+                }
+            }
+        }  
+        .process-step-nav {
+            @include flexbox;
+            @include align-items(center);
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            gap: 5px;
+            .dot {
+                display: block;
+                width: 10px;
+                height: 10px;
+                flex: none;
+                @include border-radius(20px);
+                @include transform(scale(1));
+                @include transition(0.3s, ease-in-out);
+                opacity: 1;
+                margin: 0;
+                background: $secondary;
+                border: 1px solid transparent;
+                &.is-active {
+                    width: 22px;
+                    border-color: $secondary;
+                    background: transparent !important;
+                    @include transform(scale(1));
+                }
+            }
+        }      
+        .site-logo-img {
+            position: absolute;
+            bottom: 0;
+            left: -50%;
+            @include transform(translateX(50%));
+            min-height: auto;
+            max-width: 275px;
+            z-index: 10;
+            @media (max-width: 992px) {
+                display: none;
+            }
+        }        
+    }
+    .process-content-slider {
+        position: relative;
+    }
+    .info-card { 
+        padding-bottom: 50px;
+        @media (min-width: 992px) {
+            padding-bottom: 250px;
+            margin-bottom: 10px;
+            &::before {
+                content: '';
+                background: $secondary;
+                width: 2px;
+                min-height: 100%;
+                position: absolute;
+                top: 2px;
+                left: 30px;
+                z-index: -1;
+            }
+        }
+        .card-img-icon {
+            position: relative;
+            &::before {
+                content: '';
+                position: absolute;
+                top: -9px;
+                left: 0;
+                width: 100%;
+                height: calc(100% + 18px);
+                background: #fff;
+                z-index: -1;
+            }
+            @media (max-width: 992px) {
+                margin-bottom: 0;
+            }
+        }
+        &.is-active {
+            .card-img-icon {
+                background: $secondary;
+                img {
+                    filter: brightness(0) invert(1);
+                }
+            }
+        }
+        &:last-child {
+            padding-bottom: 100px;
+            &::before {
+                content: none;
+            }
+            .card-img-icon { 
+                &::before {
+                    content: none;
+                }
+            }
+        }
+        .process-step-image {
+            display: none;
+            @media (max-width: 992px) {
+                display: block;
+                @include border-radius(6px);
+                margin-bottom: 30px;
+                img {
+                    width: 100%;
+                    height: auto;
+                    max-height: 400px;
+                    object-fit: cover;
+                    object-position: center;
+                    @include border-radius(6px);
                 }
             }
         }
