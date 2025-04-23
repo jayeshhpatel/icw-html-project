@@ -431,7 +431,21 @@
                             }
                         }
                     
-                        var processContent = initProcessContent();
+                        var processContent = initProcessContent(); 
+                        var bar = processContent.root.querySelector('.splide__progress__bar');
+
+                        // Function to update the progress bar based on the main slider's current index.
+                        function updateProgress() {
+                            var totalSlides = processImg.Components.Controller.getEnd() + 1;
+                            var currentSlide = processImg.index + 1;
+                            
+                            var rate = Math.min(currentSlide / totalSlides, 1);
+                            if(jQuery(window).width() <= 992) {
+                                bar.style.width = (100 * rate) + '%';
+                            } else {
+                                // bar.style.height = (100 * rate) + '%';
+                            }
+                        }
                     
                         function updateCompleteSlides() {
                             var slides = processContent.Components.Elements.slides;
@@ -447,6 +461,7 @@
                         }
                     
                         function updateAll() {
+                            updateProgress();
                             if (window.innerWidth >= 992) {
                                 updateCompleteSlides();
                             }
