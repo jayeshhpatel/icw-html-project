@@ -83,6 +83,11 @@ jQuery(document).ready(function($) {
 //     }, 50);
 // });
 
+$('a._target-popup').on('click', function(e) {
+    e.preventDefault();
+    $('.popup-action').trigger('click');
+});
+
 if ($('.hero-slider').length) {
     $('.hero-slider').slick({
         dots:true,

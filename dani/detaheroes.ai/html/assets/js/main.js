@@ -177,6 +177,7 @@ jQuery(document).ready(function($) {
    }
    if ($('#show-license-key').length) {
       var emailgetearly = localStorage.getItem("email-get-early");
+      console.log("emailgetearly", emailgetearly);
       if(emailgetearly !== "" && emailgetearly != undefined && emailgetearly != null){
          $("#show-license-key").html('<li>from dataheroes.utils import activate_account</li><li>activate_account("<a class="btn-link" href="mailto:'+emailgetearly+'"><strong class="text-darkred">'+emailgetearly+'</strong></a>")</li>');
       }
@@ -194,26 +195,12 @@ jQuery(document).ready(function($) {
          $("div.data-toggle-showhide").hide();
          $("[id=" + $(this).attr("data-toggle") + "]").show();
          return false;
-      });
-   }
-
-   if ($('[data-bs-toggle=tooltip]').length) {
-      $("body").tooltip({ selector: '[data-bs-toggle=tooltip]' });
-   }
-
-   if ($('.play-iframe').length){
-      $('.play-iframe').click(function(ev){	
-          videourl = $(this).data('videosrc')+"?autoplay=1&cc_load_policy=1&api=1&muted=1&rel=0&enablejsapi=1";
-          if($(this).data('ext') == 'mp4'){
-              video = '<div class="video-wrap"><video class="embed-responsive-item" controls autoplay playsinline controlsList="nodownload" oncontextmenu="return false;"><source src="'+videourl+'" type="video/mp4"></video></div>';
-          } else {
-              video = '<div class="video-wrap"><iframe class="embed-responsive-item play-in_iframe" allow="autoplay" src="'+videourl+'" controls="0" scrolling="no" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" allowfullscreen></iframe></div>';
-          }
-          
-          $(this).parents('.play-video-block').html(video);
-          ev.preventDefault();
-      });
+   });
   }
+
+  if ($('[data-bs-toggle=tooltip]').length) {
+   $("body").tooltip({ selector: '[data-bs-toggle=tooltip]' });
+   }
 
 });
 
@@ -240,7 +227,7 @@ function hubspot_labels() {
    jQuery('form').attr('autocomplete','off');
    jQuery('input, .hs-input').attr('autocomplete','off');
 
-   jQuery('input, .hs-input').prop('readonly', true);
+   // jQuery('input, .hs-input').prop('readonly', true);
 
    //turn autocomplete off for forms for Chrome 
    //based on a browser bug noted here: https://bugs.chromium.org/p/chromium/issues/detail?id=370363#c7
@@ -253,7 +240,8 @@ function hubspot_labels() {
        jQuery(this).closest(".hs-form-field").removeClass("not-focused");
        jQuery(this).closest(".hs-form-field").addClass("has-focus");
 
-       jQuery(this).prop('readonly', false);
+      jQuery(this).focus();
+      //  jQuery(this).prop('readonly', false);
        console.log("jay-focus");
 
       // if(emailgetearly){
@@ -280,8 +268,8 @@ function hubspot_labels() {
    });
 
    
-   if(emailgetearly){
-      $(".hs_email input[name='email']").val(emailgetearly).trigger('change');
+   if(emailgetearly !== "" && emailgetearly != null && emailgetearly != undefined){
+      jQuery(".hs_email input[name='email']").val(emailgetearly).trigger('change');
    }
 
    setTimeout(function(){
@@ -296,7 +284,7 @@ function hubspot_labels() {
        jQuery(".form-with-slider-labels .hs-input").val();
 
       var emailgetearly = localStorage.getItem("email-get-early");
-      if(emailgetearly){
+      if(emailgetearly !== "" && emailgetearly != null && emailgetearly != undefined){
          $(".hs_email input[name='email']").val(emailgetearly).trigger('change');
       }
 
@@ -312,6 +300,14 @@ function hubspot_labels() {
              e.preventDefault();
          }
      }
+   });
+
+   jQuery('.form-with-slider-labels .hs-fieldtype-text label').click(function (e) {
+      e.preventDefault();
+      var inputId = jQuery(this).attr('for');
+      var inputField = jQuery('#' + inputId);
+      inputField.focus();
+      console.log("focus", inputId);
    });
 }
 
@@ -354,3 +350,24 @@ function ICWlogMomentNotification() {
        jQuery("body.single-post.show-google-one-tap #credential_picker_container").slideDown();
    }, 30000);
 } */
+
+(function(jQuery) {
+   jQuery.fn.visible = function(partial) {
+   var $t            = $(this),
+       $w            = $(window),
+       viewTop       = $w.scrollTop(),
+       viewBottom    = viewTop + $w.height(),
+       _top          = $t.offset().top,
+       _bottom       = _top + $t.height(),
+       compareTop    = partial === true ? _bottom : _top,
+       compareBottom = partial === true ? _top : _bottom;
+   return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
+};
+})(jQuery);
+jQuery(window).scroll(function(event) {
+   jQuery(".btn-shaking").each(function(i, el) {
+   var el = jQuery(el);
+   if (el.visible(true)) {el.addClass("is-shaking"); 
+   } else {el.removeClass("is-shaking");}
+});
+});

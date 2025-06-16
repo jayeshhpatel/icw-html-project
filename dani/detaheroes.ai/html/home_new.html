@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta name="theme-color" content="#0f8ed6">
+    <meta charset="utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+    
+    <link rel='preload' as='script' href='https://dataheroes.ai/wp-content/themes/dataheroes/assets/js/glightbox.min.js'>
+    <link rel='preload' as='script' href='https://dataheroes.ai/wp-content/themes/dataheroes/assets/js/slick.min.js'>
+
+    <title>Build a Better ML Model | DataHeroes</title>
+    <link rel="preload" as="image" href="https://dataheroes.ai/wp-content/uploads/2023/11/home-arrow.svg" fetchpriority="high">
+    <meta name="description" content="Reduce your dataset to a small subset that maintains the statistical properties and corner cases of your full dataset." class="yoast-seo-meta-tag" />
+    <link rel="canonical" href="https://dataheroes.ai/" class="yoast-seo-meta-tag" />  
+
+    <link rel='preload' href='//fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&#038;family=Poppins:wght@400;500;600;700&#038;family=Source+Code+Pro:wght@500;600&#038;display=swap' type='text/css' media='all' />
+    <link href='https://dataheroes.ai/wp-content/cache/min/1/wp-content/themes/dataheroes/assets/css/main.css?ver=1746856478' type='text/css' media='all' />
+  
+    <script type="text/javascript" src="https://dataheroes.ai/wp-includes/js/jquery/jquery.min.js" id="jquery-core-js"></script>
+   
+    <link rel="icon" href="https://dataheroes.ai/wp-content/uploads/2023/06/cropped-favicon-new-32x32.png" sizes="32x32" />
+    <link rel="icon" href="https://dataheroes.ai/wp-content/uploads/2023/06/cropped-favicon-new-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="https://dataheroes.ai/wp-content/uploads/2023/06/cropped-favicon-new-180x180.png" />
+    <meta name="msapplication-TileImage" content="https://dataheroes.ai/wp-content/uploads/2023/06/cropped-favicon-new-270x270.png" />
+    
+</head>
+
+<body class="home page-template-default page page-id-2816 logged-in admin-bar no-customize-support">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5NW2K82" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <header class="main-header">
+        <nav class="navbar header-section">
+            <div class="container">
+                <div class="header-first-block">
+                    <button type="button" class="sidebar-icon toggle-sidebar d-inline-block d-lg-none"
+                        aria-label="Menu"><span></span><span></span><span></span></button>
+                    <a class="header-logo" href="https://dataheroes.ai/"
+                        title="DataHeroes | Build a Better ML Model, 10x Faster" rel="home"><img
+                            src="/wp-content/themes/dataheroes/assets/images/logo.svg" width="184" height="28"
+                            alt="DataHeroes" /></a>
+                    <div class="menu-list">
+                        <ul id="menu-main-menu" class="mainMenu navbar-nav me-auto">
+                            <li class="menu-width-md menu-item-has-children"><a
+                                    href="/introduction-to-coresets/">Resources</a>
+                                <ul class="sub-menu">
+                                    <li><a href="https://dataheroes.ai/introduction-to-coresets/">Introduction to
+                                            Coresets</a></li>
+                                    <li><a href="https://dataheroes.ai/coresets-and-coreset-trees/">Coresets and Coreset
+                                            Trees</a></li>
+                                    <li><a href="https://dataheroes.ai/sign-up/">Getting Started</a></li>
+                                    <li><a target="_blank" rel="noopener noreferrer nofollow"
+                                            href="https://data-heroes.github.io/dh-library/latest/CODE_WIZARD">Code
+                                            Wizard 🔗</a></li>
+                                    <li><a target="_blank"
+                                            href="https://data-heroes.github.io/dh-library/#new_tab">Documentation
+                                            🔗</a></li>
+                                    <li><a href="https://dataheroes.ai/tutorials/">Tutorials</a></li>
+                                    <li><a href="https://dataheroes.ai/videos/">Videos</a></li>
+                                    <li><a href="https://dataheroes.ai/glossary/">Glossary</a></li>
+                                    <li><a href="https://dataheroes.ai/blog/">Blog</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="https://dataheroes.ai/book-a-demo/">Book a Demo</a></li>
+                        </ul>
+                        <div class="action-btn action-btn-full-m d-block d-lg-none mt-3"><a href="/contact-us/"
+                                class="btn btn-primary-outline" target="_self">Contact Us</a></div>
+                    </div>
+                    <div class="action-btn "><a href="/contact-us/" class="btn btn-primary-outline"
+                            target="_self">Contact Us</a></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="bg-overly"></div>
+    <main id="main-content" class="main-content-wrapper">
+        <section class="main-section bg-none title-center bg-glow pt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <h1>
+                                <div class="title-flex-icon"><strong>Make Better Decisions, Faster</strong><span><img
+                                            decoding="async"
+                                            src="https://dataheroes.ai/wp-content/uploads/2023/11/icon-star.png"
+                                            alt="DataHeroes"></span></div>
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-md-6 mb-4 mb-md-0">
+                                <a href="/real-time-machine-learning/" class="section-title mb-0 col-box">
+                                    <div class="text-center mb-2"><span class="tagline"><img decoding="async"
+                                                loading="lazy" src="/wp-content/uploads/2023/11/icon-real-time.svg"
+                                                width="80" height="80" alt="DataHeroes"></span></div>
+                                    <h2 class="h3">Real Time Machine Learning</h2>
+                                    <div class="sort-info">
+                                        <p>Use DataHeroes to easily turn any new or existing ML model into a real time
+                                            model that can be frequently retrained and dynamically tuned, orders of
+                                            magnitude faster, without increasing retraining costs.</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="/blazing-fast-hyperparameter-tuning/" class="section-title mb-0 col-box">
+                                    <div class="text-center mb-2"><span class="tagline"><img decoding="async"
+                                                loading="lazy" src="/wp-content/uploads/2023/11/icon-fast.svg"
+                                                width="80" height="80" alt="DataHeroes"></span></div>
+                                    <h2 class="h3">Blazing Fast Model Tuning</h2>
+                                    <div class="sort-info">
+                                        <p>Use DataHeroes to improve model quality by running extensive hyperparameter
+                                            tuning, hundreds of times faster, on a cluster or on a single machine.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="flex-arrow-with-btn">
+                            <span class="pt-2"><img decoding="async" loading="lazy"
+                                    src="/wp-content/uploads/2023/11/home-arrow.svg" alt="DataHeroes"></span>
+                            <a href="/sign-up/" class="btn btn-primary">Get Started</a>
+                            <span class="d-none d-lg-block" style="opacity: 0;"><img decoding="async" loading="lazy"
+                                    src="/wp-content/uploads/2023/11/home-arrow.svg" alt="DataHeroes"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="main-section bg-none section-table section-counter pt-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <h2 class="h3">Unique Data Structure, Optimized for ML Operations</h2>
+                            <div class="sort-info">
+                                <p style="text-align: left;">DataHeroes uses a unique Coreset Tree data structure,
+                                    optimized for ML training and tuning, that allows you to train and tune your model
+                                    hundreds of times faster and cheaper without reducing model quality. Use the
+                                    DataHeroes Python library to easily convert your training dataset to a Coreset Tree
+                                    structure and perform all model training and tuning with significantly less compute.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="_icw-code">
+                            <pre class="EnlighterJSRAW" data-enlighter-language="python" data-enlighter-theme="monokai">service_obj = CoresetTreeServiceDTC(
+    data_params=data_params,
+    optimized_for=”training”,
+    n_instances=XXX,
+    model_cls=XGBClassifier,
+)
+# Build the Coreset Tree.
+service_obj.build_from_df(datasets=df)</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="main-section image-content-block bg-none pt-0 m-img-450 image-content-full">
+            <div class="container">
+                <div class="row right-content ">
+                    <div class="col-12 order-2">
+                    </div>
+                    <div class="col-12 order-1">
+                        <div class="section-title mb-0 ">
+                            <h3>Easily Add New Data to your Model, without Creating Bias</h3>
+                            <div class="sort-info">
+                                <p>New data can easily be added to an existing Coreset Tree structure, and the model can
+                                    be updated in minutes, without creating bias. Similarly, data can be removed or
+                                    changed, with the model updating in seconds, without retraining your full dataset.
+                                </p>
+                            </div>
+                            <div class="d-none d-md-block mb-4"><a
+                                    href="https://dataheroes.ai/coresets-and-coreset-trees/" class="btn btn-primary"
+                                    target="_self">Learn more about our Coreset Tree Structure</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-block d-md-none"><a href="https://dataheroes.ai/coresets-and-coreset-trees/"
+                        class="btn btn-primary" target="_self">Learn more about our Coreset Tree Structure</a></div>
+            </div>
+        </section>
+
+        <section class="main-section bg-none pt-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="bio-box" style="max-width: initial;">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-8">
+                                    <div class="bio-info">
+                                        <div class="bio-txt">&#8220;AI Fund is excited to join the investment round in
+                                            DataHeroes, and support Oren, Eitan, Liran and the team to bring coresets to
+                                            the data science community.&#8221;</div>
+                                        <div class="bio-name">
+                                            <div class="d-block d-md-none"><img decoding="async"
+                                                    src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2080%2080'%3E%3C/svg%3E"
+                                                    width="80" height="80" alt="Prof. Andrew Ng"
+                                                    data-lazy-src="/wp-content/uploads/2023/11/bio-andrew-ng-m.png"><noscript><img
+                                                        decoding="async" loading="lazy"
+                                                        src="/wp-content/uploads/2023/11/bio-andrew-ng-m.png" width="80"
+                                                        height="80" alt="Prof. Andrew Ng"></noscript></div>
+                                            <strong>Prof. Andrew Ng</strong><br><span class="text-secondary">CEO at AI
+                                                Fund</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 d-none d-md-block align-self-end">
+                                    <img decoding="async"
+                                        src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E"
+                                        alt="Prof. Andrew Ng"
+                                        data-lazy-src="/wp-content/uploads/2023/11/bio-andrew-ng-833x1024.png"><noscript><img
+                                            decoding="async" loading="lazy"
+                                            src="/wp-content/uploads/2023/11/bio-andrew-ng-833x1024.png"
+                                            alt="Prof. Andrew Ng"></noscript>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="main-section image-content-block bg-none pt-0 align-items-center--row">
+            <div class="container">
+                <div class="row right-content ">
+                    <div class="col-md-6 col-lg-6 order-2 order-md-1">
+                        <div class="card-image-block info-img"><img fetchpriority="high" decoding="async" width="1024"
+                                height="560"
+                                src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20560'%3E%3C/svg%3E"
+                                class="attachment-large size-large" alt="Improve Model Quality"
+                                data-lazy-srcset="https://dataheroes.ai/wp-content/uploads/2023/12/home-improve-model-quality-1024x560.jpg 1024w, https://dataheroes.ai/wp-content/uploads/2023/12/home-improve-model-quality-300x164.jpg 300w, https://dataheroes.ai/wp-content/uploads/2023/12/home-improve-model-quality-768x420.jpg 768w, https://dataheroes.ai/wp-content/uploads/2023/12/home-improve-model-quality.jpg 1304w"
+                                data-lazy-sizes="(max-width: 1024px) 100vw, 1024px"
+                                data-lazy-src="https://dataheroes.ai/wp-content/uploads/2023/12/home-improve-model-quality-1024x560.jpg" /><noscript><img
+                                    fetchpriority="high" decoding="async" width="1024" height="560"
+                                    src="https://dataheroes.ai/wp-content/uploads/2023/12/home-improve-model-quality-1024x560.jpg"
+                                    class="attachment-large size-large" alt="Improve Model Quality"
+                                    srcset="https://dataheroes.ai/wp-content/uploads/2023/12/home-improve-model-quality-1024x560.jpg 1024w, https://dataheroes.ai/wp-content/uploads/2023/12/home-improve-model-quality-300x164.jpg 300w, https://dataheroes.ai/wp-content/uploads/2023/12/home-improve-model-quality-768x420.jpg 768w, https://dataheroes.ai/wp-content/uploads/2023/12/home-improve-model-quality.jpg 1304w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px" /></noscript></div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 order-1 order-md-2">
+                        <div class="section-title mb-0  mb-lg-4">
+                            <h3>Improve Model Quality</h3>
+                            <div class="sort-info">
+                                <p>Use DataHeroes to retrain your model more frequently and test more hyperparameter
+                                    combinations, to ensure you have the most accurate and up-to-date model in
+                                    production.</p>
+                            </div>
+                            <div class="d-none d-md-block mb-4"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-block d-md-none"></div>
+            </div>
+        </section>
+
+        <section class="main-section image-content-block bg-none pt-0 m-img-450">
+            <div class="container">
+                <div class="row right-content align-items-center left-content ">
+                    <div class="col-md-6 col-lg-6 order-2">
+                        <div class="card-image-block info-img"><img decoding="async" width="1024" height="494"
+                                src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20494'%3E%3C/svg%3E"
+                                class="attachment-large size-large" alt="Reduce Compute Costs and Emissions"
+                                data-lazy-srcset="https://dataheroes.ai/wp-content/uploads/2023/12/home-costs-and-emissions-1024x494.jpg 1024w, https://dataheroes.ai/wp-content/uploads/2023/12/home-costs-and-emissions-300x145.jpg 300w, https://dataheroes.ai/wp-content/uploads/2023/12/home-costs-and-emissions-768x370.jpg 768w, https://dataheroes.ai/wp-content/uploads/2023/12/home-costs-and-emissions.jpg 1251w"
+                                data-lazy-sizes="(max-width: 1024px) 100vw, 1024px"
+                                data-lazy-src="https://dataheroes.ai/wp-content/uploads/2023/12/home-costs-and-emissions-1024x494.jpg" /><noscript><img
+                                    decoding="async" width="1024" height="494"
+                                    src="https://dataheroes.ai/wp-content/uploads/2023/12/home-costs-and-emissions-1024x494.jpg"
+                                    class="attachment-large size-large" alt="Reduce Compute Costs and Emissions"
+                                    srcset="https://dataheroes.ai/wp-content/uploads/2023/12/home-costs-and-emissions-1024x494.jpg 1024w, https://dataheroes.ai/wp-content/uploads/2023/12/home-costs-and-emissions-300x145.jpg 300w, https://dataheroes.ai/wp-content/uploads/2023/12/home-costs-and-emissions-768x370.jpg 768w, https://dataheroes.ai/wp-content/uploads/2023/12/home-costs-and-emissions.jpg 1251w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px" /></noscript></div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 order-1">
+                        <div class="section-title mb-0  mb-lg-4">
+                            <h3>Reduce Compute Costs and Emissions</h3>
+                            <div class="sort-info">
+                                <p>Training and tuning your model with DataHeroes consumes orders of magnitude less
+                                    compute resources, allowing you to retrain and tune more frequently while lowering
+                                    costs and emissions.</p>
+                            </div>
+                            <div class="d-none d-md-block mb-4"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-block d-md-none"></div>
+            </div>
+        </section>
+
+        <section class="main-section bg-none text-center bg-half-blue  bg-glow">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-md-6 mb-4 mb-md-0">
+                                <div class="section-title mb-0 col-box">
+                                    <div class="text-center mb-2"><span class="tagline"><img decoding="async"
+                                                loading="lazy" src="/wp-content/uploads/2023/11/icon-real-time.svg"
+                                                width="80" height="80" alt="DataHeroes"></span></div>
+                                    <h3>Real Time Model Training</h3>
+                                    <div class="sort-info">
+                                        <p>Retrain and tune your model monthly, weekly, daily or multiple times per day
+                                            in just a few minutes, whether your dataset is small or massive.</p>
+                                    </div>
+                                    <div class="action-block"><a href="/real-time-machine-learning/"
+                                            class="btn btn-primary">Learn More</a></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="section-title mb-0 col-box">
+                                    <div class="text-center mb-2"><span class="tagline"><img decoding="async"
+                                                loading="lazy" src="/wp-content/uploads/2023/11/icon-fast.svg"
+                                                width="80" height="80" alt="DataHeroes"></span></div>
+                                    <h3>Blazing Fast Hyperparameter Tuning</h3>
+                                    <div class="sort-info">
+                                        <p>Evaluate hundreds of hyperparameter combinations in minutes, either on-prem,
+                                            on your virtual private cloud, or on your own machine.</p>
+                                    </div>
+                                    <div class="action-block"><a href="/blazing-fast-hyperparameter-tuning/"
+                                            class="btn btn-primary">Learn More</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="main-section bg-none pt-0 pb-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="get-start-section">
+                            <div class="section-title">
+                                <h2 class="h1 border-line">Ready to Get Started?</h2>
+                            </div>
+                            <div class="action-btn">
+                                <a href="/sign-up/" class="btn btn-primary">Get Started</a>
+                                <a href="/contact-us/" class="btn btn-primary-outline">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="main-section main-paragraph bg-none title-center col-p-0">
+            <div class="container">
+                <div class="row g-xl-5">
+                    <div class="col-12 col-lg-12">
+                        <div class="section-title">
+                            <h2>Our Blog</h2>
+                            <div class="sort-info blog-details-section">
+                                <p>Stay updated with our latest blog posts, news, and announcements by reading here.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-12">
+                        <div class="sort-info">
+                            <div class="blog-slider">
+                                <div>
+                                    <div class="blog-post">
+                                        <div class="post-thumb-img">
+                                            <img decoding="async"
+                                                src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E"
+                                                alt="Hyperparameter Tuning Methods Every Data Scientist Should Know"
+                                                class="thumb-img"
+                                                data-lazy-src="https://dataheroes.ai/wp-content/uploads/2024/02/post-3021-new-390x250.jpg" /><noscript><img
+                                                    decoding="async"
+                                                    src="https://dataheroes.ai/wp-content/uploads/2024/02/post-3021-new-390x250.jpg"
+                                                    alt="Hyperparameter Tuning Methods Every Data Scientist Should Know"
+                                                    class="thumb-img" /></noscript>
+                                        </div>
+                                        <div class="blog-post-inner">
+                                            <h2 class="post-title">Hyperparameter Tuning Methods Every Data Scientist
+                                                Should Know</h2>
+                                            <div class="post-btn">
+                                                <a href="https://dataheroes.ai/blog/hyperparameter-tuning-methods-every-data-scientist-should-know/"
+                                                    class="btn-post-link with-icon stretched-link"><span>Learn
+                                                        More</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="blog-post">
+                                        <div class="post-thumb-img">
+                                            <img decoding="async"
+                                                src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E"
+                                                alt="Unleashing the Power of ML: The Art of Training Models and Its Vital Significance"
+                                                class="thumb-img"
+                                                data-lazy-src="https://dataheroes.ai/wp-content/uploads/2023/09/post-2748-390x250.jpg" /><noscript><img
+                                                    decoding="async"
+                                                    src="https://dataheroes.ai/wp-content/uploads/2023/09/post-2748-390x250.jpg"
+                                                    alt="Unleashing the Power of ML: The Art of Training Models and Its Vital Significance"
+                                                    class="thumb-img" /></noscript>
+                                        </div>
+                                        <div class="blog-post-inner">
+                                            <h2 class="post-title">Unleashing the Power of ML: The Art of Training
+                                                Models and Its Vital Significance</h2>
+                                            <div class="post-btn">
+                                                <a href="https://dataheroes.ai/blog/unleashing-the-power-of-ml-the-art-of-training-models-and-its-vital-significance/"
+                                                    class="btn-post-link with-icon stretched-link"><span>Learn
+                                                        More</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="blog-post">
+                                        <div class="post-thumb-img">
+                                            <img decoding="async"
+                                                src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E"
+                                                alt="Comparing Customer Segmentation Techniques: KMeans vs. KMeans Coreset from DataHeroes"
+                                                class="thumb-img"
+                                                data-lazy-src="https://dataheroes.ai/wp-content/uploads/2023/09/post-2734-390x250.jpg" /><noscript><img
+                                                    decoding="async"
+                                                    src="https://dataheroes.ai/wp-content/uploads/2023/09/post-2734-390x250.jpg"
+                                                    alt="Comparing Customer Segmentation Techniques: KMeans vs. KMeans Coreset from DataHeroes"
+                                                    class="thumb-img" /></noscript>
+                                        </div>
+                                        <div class="blog-post-inner">
+                                            <h2 class="post-title">Comparing Customer Segmentation Techniques: KMeans
+                                                vs. KMeans Coreset from DataHeroes</h2>
+                                            <div class="post-btn">
+                                                <a href="https://dataheroes.ai/blog/comparing-customer-segmentation-techniques-kmeans-vs-kmeans-coreset-from-dataheroes/"
+                                                    class="btn-post-link with-icon stretched-link"><span>Learn
+                                                        More</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-lg-3">
+                        <a class="footer-logo mb-3" href="https://dataheroes.ai/"
+                            title="DataHeroes | Build a Better ML Model, 10x Faster" rel="home"><img
+                                src="/wp-content/themes/dataheroes/assets/images/logo.svg" width="184" height="28"
+                                alt="DataHeroes" /></a>
+                        <div class="social-shortcode">
+                            <ul class="social-icon">
+                                <li><a href="https://www.linkedin.com/company/dataheroes-ai/about/" target="_blank"
+                                        title="LinkedIn" data-bs-toggle="tooltip"><em
+                                            class="icons icon-linkedin"></em></a></li>
+                                <li><a href="https://twitter.com/DataHeroesAI" target="_blank" title="Twitter"
+                                        data-bs-toggle="tooltip"><em class="icons icon-twitter"></em></a></li>
+                                <li><a href="https://www.facebook.com/profile.php?id=100089325293836" target="_blank"
+                                        title="Facebook" data-bs-toggle="tooltip"><em
+                                            class="icons icon-facebook"></em></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-lg-9">
+                        <div class="footer-grid-menu">
+                            <ul id="menu-footer-menu" class="footer-menu">
+                                <li class="menu-item-has-children"><a href="#">Resources</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="https://dataheroes.ai/introduction-to-coresets/">Introduction to
+                                                Coresets</a></li>
+                                        <li><a href="https://dataheroes.ai/coresets-and-coreset-trees/">Coresets and
+                                                Coreset Trees</a></li>
+                                        <li><a href="https://dataheroes.ai/sign-up/">Getting Started</a></li>
+                                        <li><a target="_blank" rel="noopener noreferrer nofollow"
+                                                href="https://data-heroes.github.io/dh-library/latest/CODE_WIZARD">Code
+                                                Wizard 🔗</a></li>
+                                        <li><a target="_blank"
+                                                href="https://data-heroes.github.io/dh-library/#new_tab">Documentation
+                                                🔗</a></li>
+                                        <li><a href="https://dataheroes.ai/tutorials/">Tutorials</a></li>
+                                        <li><a href="https://dataheroes.ai/videos/">Videos</a></li>
+                                        <li><a href="https://dataheroes.ai/glossary/">Glossary</a></li>
+                                        <li><a href="https://dataheroes.ai/blog/">Blog</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children"><a href="#">Company</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="https://dataheroes.ai/contact-us/">Contact Us</a></li>
+                                        <li><a href="https://dataheroes.ai/book-a-demo/">Book a Demo</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children"><a href="#">Links</a>
+                                    <ul class="sub-menu">
+                                        <li><a rel="privacy-policy" href="https://dataheroes.ai/privacy-policy/">Privacy
+                                                Policy</a></li>
+                                        <li><a href="https://dataheroes.ai/open-source-notice/">Open Source Notice</a>
+                                        </li>
+                                        <li><a href="https://dataheroes.ai/eula/">EULA</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <a href="#" class="back-to-top" aria-label="Back to Top" rel="nofollow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11.62 11.62" fill="white"><path d="M0 5.81l1 1 4.08-4.03v8.84h1.45V2.78l4.05 4.06 1-1L5.81 0z" /></svg></a>    
+    <script type="text/javascript" src="https://dataheroes.ai/wp-content/themes/dataheroes/assets/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://dataheroes.ai/wp-content/themes/dataheroes/assets/js/glightbox.min.js"></script>
+    <script type="text/javascript" src="https://dataheroes.ai/wp-content/themes/dataheroes/assets/js/slick.min.js"></script>
+    <script type="text/javascript" src="https://dataheroes.ai/wp-content/cache/min/1/wp-content/themes/dataheroes/assets/js/main-javascript.js?ver=1746856478"></script>    
+    <script type="text/javascript" src="https://dataheroes.ai/wp-content/themes/dataheroes/assets/js/main.min.js"></script>
+    <link rel='stylesheet' href='https://dataheroes.ai/wp-content/cache/min/1/wp-content/themes/dataheroes/assets/css/main.css?ver=1746856478' type='text/css' media='all' />
+</body>
+
+</html><!-- Rocket no webp -->
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me -->
