@@ -132,6 +132,39 @@
     }
 }
 
+.bg-bottom-theme-logo {
+    position: relative;
+    padding-bottom: 200px !important;
+     @media (max-width: 992px) { 
+        padding-bottom: 120px !important;
+    }
+
+    .container{
+        position: relative;
+        z-index: 1;
+    }
+
+    &::after {
+        content: '';
+        width: 60%;
+        max-width: 900px;
+        height: 300px;
+        background-image: url(../images/img-inner-page-header-logo.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: bottom right;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-bottom-left-radius: 24px;
+        @media (max-width: 767px) {
+            width: 100%;
+            height: 150px;
+        }
+    }
+}
+
 .bg-logovideo {
     position: relative;
     overflow: hidden;
@@ -360,9 +393,9 @@
 
 .section-title {
     // max-width: 750px;
-    margin-bottom: 50px !important;
+    margin-bottom: 50px;
     @media (max-width: 767px) { 
-        margin-bottom: 40px !important;
+        margin-bottom: 40px;
     }
     &.text-center {
         margin: 0 auto 50px;
@@ -742,6 +775,7 @@
         }
     }
     .user-detail {
+        line-height: 1;
         .name {
             font-size: 24px;
             color: $dark;
@@ -755,6 +789,13 @@
         }
         span {
             font-size: 16px;
+            color: $dark300;
+            @media (max-width: 992px) {
+                font-size: 14px;
+            }
+        }
+        small {
+            font-size: 13px;
             color: $dark300;
             @media (max-width: 992px) {
                 font-size: 14px;
@@ -2415,7 +2456,7 @@
             }
         }
     }
-    ul:not(.splide__list) {
+    ul:not(.splide__list, .arrow-list) {
         list-style-type: disc;
         padding-left: 20px;
         margin-bottom: 30px;
@@ -2598,35 +2639,82 @@
         }   
     }
 }
-.product {
-    .hero-header {
-        padding: 170px 0 100px;
-        background-color: #010103;
-        background-image: url(../images/bg-product.png);
-        background-repeat: no-repeat;
-        background-position: bottom right;
-        background-size: auto;
-        .hero-header-fix {
-            img, video {
-                height: 100%;
+
+.resourse-content-section {
+    @media (max-width: 767px) {        
+        .col-sidebar {
+            display: block;
+            .sidebar {
+                border-top: 1px solid #c8d0d9;
+                padding-top: 32px;
             }
-        }
-        .hero-bottom-content {
-            padding-top: 120px;
-            @include border-radius(24px);
-            .sort-info {
-                max-width: 700px;
-                margin: 0 auto;
-                font-size: 32px;
-                text-align: center;
-                .text-light {
-                    color: rgba(#fff, 0.6) !important;
-                }
+            .post-form {
+                margin-top: 0
             }
         }
     }
 }
-.card-block {
-    background: #F7F8F9;
-    @include border-radius(24px);
+.video-block {    
+    @include flexbox;
+    @include align-items(center);
+    height: auto;
+    overflow: hidden;
+    @include border-radius(16px);
+    background: $black;
+    position: relative;
+    max-height: 470px;
+    .thumbnail-video {
+        display: flex;
+        height: auto;
+        width: 100%;
+        .icon-play {
+            background: url(../images/icons/icon-play.svg) no-repeat center center;
+            background-size: contain;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120px;
+            height: 120px;
+            @include transform(translate(-50%, -50%) scale(1));
+            @include transition(0.3s, ease-in-out);
+            @include border-radius(50%);
+            display: inline-block;
+            flex: none;
+            z-index: 2;
+            @media (max-width: 1200px) {
+                width: 90px;
+                height: 90px;
+            }
+            @media (max-width: 992px) {
+                width: 56px;
+                height: 56px;
+            }
+        }
+        .video-wrap {
+            position: relative;
+            padding-bottom: 56.25%;
+            width: 100%;
+            height: 100%;
+            video, iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .thumbnail-img-block {
+            @include flexbox;
+            @include align-items(center);
+            position: relative;
+            background: #000000;
+            overflow: hidden;
+            width: 100%;
+            img {
+                vertical-align: bottom;
+                width: 100%;
+                @include border-radius(16px);
+            }
+        }
+    }
 }

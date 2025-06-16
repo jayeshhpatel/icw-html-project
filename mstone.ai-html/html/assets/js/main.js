@@ -129,6 +129,15 @@ jQuery(document).ready(function($) {
             $logoBlock.toggleClass('is-animate', windowBottom >= logoBlockTop);
         });
     }
+    if($('.play-iframe').length){
+    $('.play-iframe').click(function(ev){	
+        videourl = $(this).data('videosrc')+"?api=1&autoplay=1&muted=1&rel=0&enablejsapi=1";
+        video = '<div class="video-wrap"><iframe class="embed-responsive-item play-in_iframe" src="'+videourl+'" controls="0" scrolling="no" autoplay="false" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
+        $(this).html(video);
+        //$(this).parents('.play-video-block').html(video);
+        ev.preventDefault();
+    });
+  }
 });
 
 // Step Progress Section

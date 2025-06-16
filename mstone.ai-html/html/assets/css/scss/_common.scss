@@ -587,6 +587,121 @@ img {
     }
 }
 
+.video-iframe-block {
+    position: relative;
+    z-index: 1;
+    margin: auto;
+    height: 100%;
+    padding: 16px;
+    @media (max-width:992px) {
+        padding: 10px;
+    }
+    
+    &::before {
+        content: '';
+        background: linear-gradient(0deg, rgba(160, 179, 201, 0.19), rgba(160, 179, 201, 0.19)), rgba(255, 255, 255, 0.01);
+        backdrop-filter: blur(17.2px);
+        @include border-radius(24px);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right:0;
+        bottom: 0;
+    }
+
+    .glow {
+        font-size: 0;
+        display: block;
+        position: absolute;
+        z-index: -1;
+        width: 60%;
+        height: 60%;
+        top: 0;
+        left: 0;
+        &::before {
+            content: '';
+            background: #2F8CF6;
+            mix-blend-mode: plus-lighter;
+            opacity: 0.95;
+            filter: blur(8px);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: -1;
+            @include border-radius(24px);
+        }
+    }
+
+    .video-content {
+        position: relative;
+        z-index: 1;
+
+        @include border-radius(12px);
+        background: $white;
+        padding: 0px;
+    }
+
+    .play-video-block{
+        max-width: 970px;
+        margin: auto;
+        position: relative;
+        overflow: hidden;
+        background-color: #000;
+        -webkit-box-shadow: 0 30px 58px rgba(134, 138, 144 ,0.4);
+        box-shadow: 0 30px 58px rgba(134, 138, 144, 0.4);
+        @include border-radius(12px);
+        .play-iframe{
+            position: relative;
+            img {
+                margin: 0px !important; 
+                vertical-align: bottom;
+                @include border-radius(12px);
+            }
+            &:hover, &:focus {
+                cursor: pointer;
+                .play-icon{
+                    svg{
+                        @include transform(scale(1.2));
+                    }
+                }
+            }
+        }
+        .play-icon{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            @include flexbox();
+            @include align-items(center);
+            @include justify-content(center);
+            @include transition(0.3s, ease-in-out);
+            background: rgba(#fff, 0.3);
+
+            svg{
+                backdrop-filter: blur(5px);
+                @include border-radius(100%);
+                cursor: pointer;@include transition(0.3s, ease-in-out);
+            }
+            @media (max-width:767px) {
+                svg{
+                    width: 60px;
+                    height: 60px;
+                }
+            }
+        }
+        // @media (max-width:767px) {
+        //     @include border-radius(0px);
+        // }
+    }
+
+}
+
 .full-width-block {
     position: relative;
     @include border-radius(24px);
@@ -1416,11 +1531,12 @@ h5, .h5 {
 .arrow-list {
     li {
         @include flexbox;
-        @include align-items(center);
+        @include align-items(flex-start);
         font-size: 24px;
         font-weight: 500;
         margin-bottom: 20px;
         color: $white;
+        
         @media (max-width:992px) {
             font-size: 20px;
         }
@@ -1430,9 +1546,9 @@ h5, .h5 {
             background-size: contain;
             width: 42px;
             height: 42px;
-            flex: none;
             display: inline-block;
             margin-right: 24px;
+            flex: none;
             @media (max-width:992px) {
                 width: 34px;
                 height: 34px;
@@ -1440,24 +1556,20 @@ h5, .h5 {
             }
         }
     }
-} 
-.icon-list {
-    li {
-        @include flexbox;
-        @include align-items(flex-start);
-        font-size: 18px;
-        font-weight: 400;
-        margin-bottom: 20px;
-        color: $white;
+
+    &.is-dark {
+        li {
+            color: $bodyfontcolor;
+        }
+    }
+
+    &.sm {
+       li {
+        font-size: $bodyfontsize;
         @media (max-width:992px) {
-            font-size: 20px;
+            font-size: 16px;
         }
-        .tag-icon {
-            width: 50px;
-            height: 50px;
-            flex: none;
-            margin-right: 25px;
-        }
+       } 
     }
 } 
 
